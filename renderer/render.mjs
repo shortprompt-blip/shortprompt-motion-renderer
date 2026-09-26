@@ -5,6 +5,11 @@ import { spawn } from "node:child_process";
 
 const projectDir = path.resolve(process.argv[2] || "../example");
 const htmlPath = path.join(projectDir, "video.html");
+try {
+  await fs.access(htmlPath);
+} catch {
+  throw new Error(`SP-MOTION HTML not found: ${htmlPath}`);
+}
 const outDir = path.resolve(process.argv[3] || "./frames");
 
 await fs.rm(outDir, { recursive: true, force: true });
