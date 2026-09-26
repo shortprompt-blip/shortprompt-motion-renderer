@@ -75,7 +75,7 @@ jobs:
 
       - name: Generate voiceover
         run: |
-          python renderer/kokoro_tts.py             --text speech.txt             --voice "${{ inputs.voice }}"             --speed "${{ inputs.speed }}"             --output speech.wav
+          python renderer/kokoro_tts.py             --text example/speech.txt             --voice "${{ inputs.voice }}"             --speed "${{ inputs.speed }}"             --output speech.wav
 
       - name: Mux voiceover
         run: |
