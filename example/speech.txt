@@ -1,1 +1,31 @@
-This is the new ShortPrompt Motion HTML-first pipeline. The browser page owns the visual timeline, while Kokoro generates the voiceover separately.
+Can Opus 5.5 build a browser game from scratch?
+
+We are giving the coding agent a high-level goal and following the work as it moves from planning to implementation, testing and verification.
+
+The first step is not writing code.
+
+The agent inspects the repository, identifies the game loop, rendering layer, physics code and existing tests, then turns those findings into an implementation plan.
+
+Next it starts building the core loop.
+
+It adds deterministic updates, keyboard input, collision handling and the browser renderer, while keeping the changes small enough to review.
+
+Then the first regression run exposes a real engineering problem.
+
+At high player velocity, the collision check can miss an obstacle between two frames.
+
+Instead of simply changing the test, the agent traces the failure and changes the implementation.
+
+The frame-only overlap check is replaced with a swept collision test that evaluates the movement path between the current and next position.
+
+Now the affected tests are run again.
+
+All twelve regression tests pass.
+
+The final step is the browser build.
+
+The game loads, the player moves, the score updates, and the production build is verified.
+
+The interesting part is not that an AI wrote some code.
+
+It is that the agent moved through a complete engineering loop: understand the project, implement the feature, detect a failure, diagnose the root cause, change the implementation, rerun the tests and verify the result.

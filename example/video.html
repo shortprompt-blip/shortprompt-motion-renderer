@@ -2,83 +2,120 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>SP-MOTION HTML Demo</title>
+<meta name="viewport" content="width=1080,height=1920">
+<title>Opus 5.5 — Browser Game Build</title>
 <style>
-  * { box-sizing: border-box; }
-  html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; }
-  body {
-    background: #071018;
-    color: #eef7fb;
-    font-family: Inter, Arial, sans-serif;
-  }
-  #app { width: 100%; height: 100%; position: relative; overflow: hidden; }
-  .scene { position: absolute; inset: 0; display: grid; place-items: center; opacity: 0; }
-  .scene.active { opacity: 1; }
-  .panel {
-    width: 82%; padding: 48px; border: 1px solid #29424f;
-    border-radius: 28px; background: rgba(13,27,36,.96);
-    box-shadow: 0 30px 100px rgba(0,0,0,.45);
-  }
-  .eyebrow { color: #71d6ff; font-weight: 800; letter-spacing: .12em; }
-  h1 { font-size: 72px; line-height: 1.02; margin: 18px 0; }
-  p { font-size: 30px; color: #a9bdc8; line-height: 1.4; }
-  .bar { height: 22px; background: #1b303c; border-radius: 99px; overflow: hidden; margin-top: 30px; }
-  .fill { height: 100%; width: 0; background: #71d6ff; }
+*{box-sizing:border-box}html,body{margin:0;width:1080px;height:1920px;background:#07090d;color:#e8edf5;font-family:Inter,ui-sans-serif,system-ui,sans-serif;overflow:hidden}
+#app{position:relative;width:1080px;height:1920px;background:radial-gradient(circle at 70% 15%,#182338 0,#0b0f17 38%,#07090d 75%)}
+.top{height:88px;border-bottom:1px solid #263044;padding:24px 34px;display:flex;align-items:center;justify-content:space-between;background:#0b0f16}
+.brand{font-weight:800;letter-spacing:.08em}.live{font-size:14px;color:#7ee787}
+.main{padding:28px 34px}.hook{font-size:52px;line-height:1.02;font-weight:850;max-width:950px;margin:5px 0 25px}.sub{color:#99a5b8;font-size:21px;max-width:900px}
+.workspace{margin-top:28px;border:1px solid #293348;border-radius:16px;overflow:hidden;background:#0a0d13;box-shadow:0 20px 70px #0008}
+.tabs{height:52px;background:#111722;border-bottom:1px solid #293348;display:flex;align-items:center;gap:26px;padding:0 20px;color:#8e9bb0;font-size:15px}.tabs b{color:#e8edf5}
+.panels{display:grid;grid-template-columns:390px 1fr;min-height:920px}.left{border-right:1px solid #293348}.right{background:#0b1018}
+.panel-title{padding:18px 20px;font-size:14px;color:#8491a6;border-bottom:1px solid #20283a;text-transform:uppercase;letter-spacing:.08em}
+.tree{padding:16px 20px;font:14px/2.1 ui-monospace,monospace;color:#aeb9ca}.tree .active{color:#fff;background:#192131;border-radius:7px;padding:3px 8px}
+.agent{margin:18px 20px;border:1px solid #2e3a50;border-radius:12px;padding:16px;background:#0e141e}.agent h3{margin:0 0 12px;font-size:16px}.step{display:flex;gap:10px;align-items:center;margin:10px 0;font-size:13px;color:#aeb9ca}.dot{width:8px;height:8px;border-radius:50%;background:#64748b}.done .dot{background:#65d98b}.run .dot{background:#74b9ff;box-shadow:0 0 12px #74b9ff}
+.code{padding:24px;font:14px/1.75 ui-monospace,SFMono-Regular,monospace;white-space:pre;color:#b9c4d6}.ln{display:inline-block;width:34px;color:#48556b}.kw{color:#c792ea}.fn{color:#82aaff}.str{color:#c3e88d}.add{display:block;background:#12311f;color:#a8e6b8;border-left:3px solid #4ade80;padding-left:8px}.del{display:block;background:#34151b;color:#f2a7ae;border-left:3px solid #ef5b6b;padding-left:8px}
+.bottom{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:20px}.card{border:1px solid #293348;background:#0d121a;border-radius:14px;padding:18px}.card h3{margin:0 0 12px;font-size:14px;color:#8491a6;text-transform:uppercase}.metric{font-size:30px;font-weight:800}.small{font-size:13px;color:#8996a9;margin-top:5px}
+.game{height:360px;margin:18px 20px;border:1px solid #334057;border-radius:14px;position:relative;overflow:hidden;background:linear-gradient(#091525,#0b1020)}.grid{position:absolute;inset:0;background:linear-gradient(transparent 92%,#263750 93%),linear-gradient(90deg,transparent 92%,#263750 93%);background-size:48px 48px;transform:perspective(300px) rotateX(60deg) translateY(80px) scale(1.5);opacity:.6}.player{position:absolute;width:44px;height:44px;background:#7dd3fc;border-radius:10px;box-shadow:0 0 28px #38bdf8;left:45%;bottom:56px}.ob{position:absolute;width:46px;height:46px;background:#fb7185;border-radius:8px;right:23%;bottom:56px;box-shadow:0 0 20px #fb7185}.gamehud{position:absolute;top:14px;left:16px;font:13px ui-monospace;color:#d9e2f0}.status{position:absolute;bottom:16px;right:16px;font-size:13px;color:#7ee787}
 </style>
 </head>
 <body>
 <div id="app">
-  <section class="scene active" id="hook">
-    <div class="panel">
-      <div class="eyebrow">SP-MOTION HTML RENDERER</div>
-      <h1>HTML becomes the video.</h1>
-      <p>One autonomous page owns the scenes, animation and visual timeline.</p>
-    </div>
-  </section>
+  <div class="top"><div class="brand">CLAUDE CODE · OPUS 5.5</div><div class="live" id="phase">PLANNING</div></div>
+  <div class="main">
+    <div class="hook" id="headline">Can Opus 5.5 build a browser game from scratch?</div>
+    <div class="sub" id="narrative">A long-running coding agent is given the goal. We follow the implementation, test failure, fix and final browser build.</div>
 
-  <section class="scene" id="progress">
-    <div class="panel">
-      <div class="eyebrow">DETERMINISTIC TIMELINE</div>
-      <h1 id="percent">0%</h1>
-      <p>Chromium is rendered frame by frame.</p>
-      <div class="bar"><div class="fill" id="fill"></div></div>
+    <div class="workspace">
+      <div class="tabs"><b>workspace</b><span>terminal</span><span>tests</span><span>preview</span></div>
+      <div class="panels">
+        <section class="left">
+          <div class="panel-title">Project</div>
+          <div class="tree" id="tree">▾ neon-runner<br>&nbsp;&nbsp;▾ src<br>&nbsp;&nbsp;&nbsp;&nbsp;▸ game<br>&nbsp;&nbsp;&nbsp;&nbsp;▸ physics<br>&nbsp;&nbsp;&nbsp;&nbsp;▸ renderer<br>&nbsp;&nbsp;▸ tests<br>&nbsp;&nbsp;package.json<br>&nbsp;&nbsp;vite.config.js</div>
+          <div class="agent">
+            <h3>Agent activity</h3>
+            <div class="step done"><span class="dot"></span>Requirements mapped</div>
+            <div class="step" id="s2"><span class="dot"></span>Inspect project structure</div>
+            <div class="step" id="s3"><span class="dot"></span>Implement game loop</div>
+            <div class="step" id="s4"><span class="dot"></span>Run regression tests</div>
+            <div class="step" id="s5"><span class="dot"></span>Fix failing collision case</div>
+            <div class="step" id="s6"><span class="dot"></span>Verify browser build</div>
+          </div>
+          <div class="panel-title">Execution</div>
+          <div class="tree" id="terminal">› npm test<br><span id="terminal2"></span></div>
+        </section>
+        <section class="right">
+          <div class="panel-title" id="rightTitle">Implementation plan</div>
+          <div id="rightContent">
+            <div class="code"><span class="ln">01</span><span class="kw">const</span> game = <span class="fn">createGame</span>({<br><span class="ln">02</span>  renderer: <span class="str">'canvas'</span>,<br><span class="ln">03</span>  physics: <span class="str">'fixed-step'</span>,<br><span class="ln">04</span>  input: <span class="str">'keyboard'</span><br><span class="ln">05</span>});</div>
+          </div>
+        </section>
+      </div>
     </div>
-  </section>
+
+    <div class="bottom">
+      <div class="card"><h3>Build status</h3><div class="metric" id="metric">Planning</div><div class="small" id="detail">No code executed yet</div></div>
+      <div class="card"><h3>Browser preview</h3><div class="metric" id="browser">Not started</div><div class="small">The final artifact is verified in Chromium.</div></div>
+    </div>
+
+    <div class="game" id="game">
+      <div class="grid"></div><div class="gamehud">NEON RUNNER · SCORE <span id="score">0000</span></div><div class="player" id="player"></div><div class="ob" id="ob"></div><div class="status" id="gameStatus">BUILD PREVIEW</div>
+    </div>
+  </div>
 </div>
-
 <script>
-window.SPMOTION = {
-  width: 1080,
-  height: 1920,
-  fps: 30,
-  duration: 8
-};
-
-function show(id) {
-  document.querySelectorAll(".scene").forEach(x => x.classList.remove("active"));
-  document.getElementById(id).classList.add("active");
-}
-
-window.SPMOTION_RENDER = function(time) {
-  if (time < 3) {
-    show("hook");
+window.SPMOTION={width:1080,height:1920,fps:30,duration:78};
+window.SPMOTION_RENDER=function(time){
+  const phase=document.getElementById('phase'), headline=document.getElementById('headline'), narrative=document.getElementById('narrative');
+  const metric=document.getElementById('metric'), detail=document.getElementById('detail'), browser=document.getElementById('browser');
+  const rightTitle=document.getElementById('rightTitle'), rightContent=document.getElementById('rightContent');
+  const terminal2=document.getElementById('terminal2'), player=document.getElementById('player'), ob=document.getElementById('ob');
+  const score=document.getElementById('score'), gameStatus=document.getElementById('gameStatus');
+  const states=['s2','s3','s4','s5','s6']; states.forEach(id=>document.getElementById(id).className='step');
+  if(time<7){
+    phase.textContent='PLANNING'; metric.textContent='Planning'; detail.textContent='Requirements → architecture → implementation order';
+    headline.textContent='Can Opus 5.5 build a browser game from scratch?';
+    narrative.textContent='The agent turns a high-level goal into a concrete implementation plan before editing files.';
+    rightTitle.textContent='Implementation plan';
+  } else if(time<18){
+    phase.textContent='INSPECTING'; document.getElementById('s2').className='step run'; metric.textContent='Inspecting'; detail.textContent='Mapping files, scripts and existing test surface';
+    headline.textContent='First: understand the project';
+    narrative.textContent='Before changing code, the agent inspects the repository and identifies the game loop, rendering and test boundaries.';
+    rightTitle.textContent='Repository analysis';
+    rightContent.innerHTML='<div class="code"><span class="ln">01</span>src/game/loop.ts<br><span class="ln">02</span>src/physics/collision.ts<br><span class="ln">03</span>src/renderer/canvas.ts<br><span class="ln">04</span>tests/collision.spec.ts<br><span class="ln">05</span><span class="kw">package.json</span></div>';
+  } else if(time<35){
+    phase.textContent='IMPLEMENTING'; document.getElementById('s3').className='step run'; metric.textContent='Implementing'; detail.textContent='Game loop · input · collision · renderer';
+    headline.textContent='Then it builds the core loop';
+    narrative.textContent='The agent adds deterministic updates, keyboard input, collision handling and the canvas renderer, while keeping the changes reviewable.';
+    rightTitle.textContent='Live code changes';
+    rightContent.innerHTML='<div class="code"><span class="ln">21</span><span class="kw">function</span> <span class="fn">update</span>(dt) {<span class="add">  player.x += velocity.x * dt;</span><span class="add">  resolveCollisions(player, obstacles);</span><span class="add">  score += dt * 10;</span><span class="ln">25</span>}</div>';
+  } else if(time<48){
+    phase.textContent='TESTING'; document.getElementById('s4').className='step run'; metric.textContent='9 / 12'; detail.textContent='Regression suite running';
+    headline.textContent='The first build does not pass';
+    narrative.textContent='The regression suite exposes a collision-tunneling case: a fast-moving player can cross an obstacle between frames.';
+    rightTitle.textContent='Test failure';
+    rightContent.innerHTML='<div class="code"><span class="del">FAIL collision.spec.ts</span><span class="del">Expected collision event: true</span><span class="del">Received: false</span><br><span class="ln">case</span> player velocity = 900 px/s</div>';
+    terminal2.textContent='✗ collision.spec.ts — 3 failures';
+  } else if(time<61){
+    phase.textContent='DEBUGGING'; document.getElementById('s5').className='step run'; metric.textContent='Fixing'; detail.textContent='Replacing frame-only collision check with swept test';
+    headline.textContent='It finds the failure and changes the implementation';
+    narrative.textContent='Instead of masking the failing test, the agent traces the missed collision and switches the check to a swept segment against the obstacle bounds.';
+    rightTitle.textContent='Focused diff';
+    rightContent.innerHTML='<div class="code"><span class="ln">31</span><span class="del">if (overlaps(nextBox, obstacle))</span><span class="add">if (sweptIntersects(currentBox, nextBox, obstacle))</span><span class="ln">33</span><span class="add">  return resolveCollision(player, obstacle);</span></div>';
+    terminal2.textContent='› npm test — rerunning affected suite…';
   } else {
-    show("progress");
-    const p = Math.min(100, ((time - 3) / 5) * 100);
-    document.getElementById("percent").textContent = Math.round(p) + "%";
-    document.getElementById("fill").style.width = p + "%";
+    phase.textContent='VERIFIED'; document.getElementById('s6').className='step done'; metric.textContent='12 / 12'; detail.textContent='Regression suite passed';
+    headline.textContent='Now the browser build is actually playable';
+    narrative.textContent='The agent reruns the regression suite, confirms all twelve tests pass, then opens the production build in the browser.';
+    rightTitle.textContent='Verification';
+    rightContent.innerHTML='<div class="code"><span class="add">✓ build completed</span><span class="add">✓ 12 / 12 tests passed</span><span class="add">✓ collision case verified</span><span class="add">✓ browser preview loaded</span></div>';
+    terminal2.textContent='✓ npm test — 12 passed';
+    browser.textContent='PLAYABLE'; browser.style.color='#7ee787'; gameStatus.textContent='VERIFIED BUILD';
+    const p=Math.min(1,(time-61)/17); player.style.left=(25+45*p)+'%'; ob.style.right=(18+35*p)+'%'; score.textContent=String(Math.floor(p*1840)).padStart(4,'0');
   }
 };
-
-// Browser preview: same renderer function, driven by real time.
-let previewStart = performance.now();
-function preview() {
-  const t = (performance.now() - previewStart) / 1000;
-  const local = t % window.SPMOTION.duration;
-  window.SPMOTION_RENDER(local);
-  requestAnimationFrame(preview);
-}
-preview();
 </script>
 </body>
 </html>
