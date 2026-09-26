@@ -25,6 +25,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: npm
+          cache-dependency-path: renderer/package.json
 
       - name: Install FFmpeg
         run: sudo apt-get update && sudo apt-get install -y ffmpeg
@@ -37,22 +39,43 @@ jobs:
 
       - name: Render HTML to WebM
         working-directory: renderer
-        run: node render.mjs ../example ./.frames ../visual.webm
+        run: |
+          node render.mjs ../example ./.frames ../visual.webm
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - name: Setup Python with pip cache
+        uses: actions/setup-python@v6
         with:
           python-version: "3.11"
+          cache: pip
+          cache-dependency-path: renderer/requirements.txt
 
-      - name: Install Kokoro
+      - name: Cache Kokoro / Hugging Face model files
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/huggingface
+            ~/.cache/torch
+          key: kokoro-hf-82m-${{ runner.os }}-${{ hashFiles('renderer/requirements.txt') }}
+          restore-keys: |
+            kokoro-hf-82m-${{ runner.os }}-
+
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-chromium-${{ runner.os }}-v1
+          restore-keys: |
+            playwright-chromium-${{ runner.os }}-
+
+      - name: Install Kokoro dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install kokoro soundfile numpy
+          pip install -r renderer/requirements.txt
           sudo apt-get install -y espeak-ng
 
       - name: Generate voiceover
         run: |
-          python renderer/kokoro_tts.py             --text "$(cat speech.txt)"             --voice "${{ inputs.voice }}"             --speed "${{ inputs.speed }}"             --output speech.wav
+          python renderer/kokoro_tts.py             --text speech.txt             --voice "${{ inputs.voice }}"             --speed "${{ inputs.speed }}"             --output speech.wav
 
       - name: Mux voiceover
         run: |
