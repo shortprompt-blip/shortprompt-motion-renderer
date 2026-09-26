@@ -1,0 +1,1 @@
+This is the new ShortPrompt Motion HTML-first pipeline. The browser page owns the visual timeline, while Kokoro generates the voiceover separately.

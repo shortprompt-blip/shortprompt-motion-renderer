@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SP-MOTION HTML Demo</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; }
+  body {
+    background: #071018;
+    color: #eef7fb;
+    font-family: Inter, Arial, sans-serif;
+  }
+  #app { width: 100%; height: 100%; position: relative; overflow: hidden; }
+  .scene { position: absolute; inset: 0; display: grid; place-items: center; opacity: 0; }
+  .scene.active { opacity: 1; }
+  .panel {
+    width: 82%; padding: 48px; border: 1px solid #29424f;
+    border-radius: 28px; background: rgba(13,27,36,.96);
+    box-shadow: 0 30px 100px rgba(0,0,0,.45);
+  }
+  .eyebrow { color: #71d6ff; font-weight: 800; letter-spacing: .12em; }
+  h1 { font-size: 72px; line-height: 1.02; margin: 18px 0; }
+  p { font-size: 30px; color: #a9bdc8; line-height: 1.4; }
+  .bar { height: 22px; background: #1b303c; border-radius: 99px; overflow: hidden; margin-top: 30px; }
+  .fill { height: 100%; width: 0; background: #71d6ff; }
+</style>
+</head>
+<body>
+<div id="app">
+  <section class="scene active" id="hook">
+    <div class="panel">
+      <div class="eyebrow">SP-MOTION HTML RENDERER</div>
+      <h1>HTML becomes the video.</h1>
+      <p>One autonomous page owns the scenes, animation and visual timeline.</p>
+    </div>
+  </section>
+
+  <section class="scene" id="progress">
+    <div class="panel">
+      <div class="eyebrow">DETERMINISTIC TIMELINE</div>
+      <h1 id="percent">0%</h1>
+      <p>Chromium is rendered frame by frame.</p>
+      <div class="bar"><div class="fill" id="fill"></div></div>
+    </div>
+  </section>
+</div>
+
+<script>
+window.SPMOTION = {
+  width: 1080,
+  height: 1920,
+  fps: 30,
+  duration: 8
+};
+
+function show(id) {
+  document.querySelectorAll(".scene").forEach(x => x.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+}
+
+window.SPMOTION_RENDER = function(time) {
+  if (time < 3) {
+    show("hook");
+  } else {
+    show("progress");
+    const p = Math.min(100, ((time - 3) / 5) * 100);
+    document.getElementById("percent").textContent = Math.round(p) + "%";
+    document.getElementById("fill").style.width = p + "%";
+  }
+};
+
+// Browser preview: same renderer function, driven by real time.
+let previewStart = performance.now();
+function preview() {
+  const t = (performance.now() - previewStart) / 1000;
+  const local = t % window.SPMOTION.duration;
+  window.SPMOTION_RENDER(local);
+  requestAnimationFrame(preview);
+}
+preview();
+</script>
+</body>
+</html>
