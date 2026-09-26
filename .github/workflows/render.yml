@@ -37,7 +37,7 @@ jobs:
 
       - name: Render HTML to WebM
         working-directory: renderer
-        run: node render.mjs ../ ./.frames ../visual.webm
+        run: node render.mjs ../example ./.frames ../visual.webm
 
       - name: Setup Python
         uses: actions/setup-python@v5
