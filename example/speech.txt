@@ -1,15 +1,85 @@
-I gave an AI coding agent one prompt: build a playable 3D browser game from scratch.
+The prompt is deliberately high level: build a playable 3D browser game from a short brief.
 
-No step-by-step implementation. Just the goal, the controls, the game loop, and one important constraint: it has to run reliably in a browser.
+The interesting part is what happens after that prompt.
 
-We follow the work through a realistic desktop workflow: the coding agent, the browser, the terminal, the project files and the final verification.
+The agent starts by inspecting the project instead of immediately generating a page. It maps the entry point, the rendering layer, the gameplay code and the existing test suite, because those boundaries determine where a new feature can safely be introduced.
 
-The agent first inspects the project, identifies the renderer, scene, gameplay logic and regression tests, then starts implementing.
+For the game itself, the implementation is split into a few clear responsibilities.
 
-The browser runs locally while the 3D scene and gameplay systems are connected.
+The browser entry point initializes the game surface and the scene.
 
-Then the regression suite catches a placement edge case. The agent traces the coordinate calculation, fixes deterministic grid snapping and optimizes repeated static geometry.
+The scene layer owns the camera, lighting and world objects.
 
-The tests pass again, the production build completes and the browser preview is verified.
+The gameplay layer owns the tower state: the active block, its position, the current height and the score.
 
-The interesting part is not generating a 3D cube. It is whether the agent can move through the complete engineering loop: inspect, implement, run, diagnose, fix, optimize and verify.
+The interaction layer translates pointer or keyboard input into a placement request instead of modifying the scene directly.
+
+That separation matters because the renderer should not also decide whether a block is valid.
+
+The agent then adds the first JavaScript implementation.
+
+It creates a block factory that receives dimensions and world coordinates and returns a configured game object with its geometry, material and transform.
+
+A placement function takes the interaction coordinates and converts them into world space.
+
+Before the block is committed to the tower, the candidate coordinates are normalized against the game grid. That makes placement deterministic instead of allowing floating-point positions to accumulate between blocks.
+
+The score update is kept separate from rendering. Every successful placement updates the tower height and score, then the renderer reflects the new state.
+
+Now the browser is running from the local development server.
+
+But a visual result is not enough. The agent has to prove that the implementation behaves correctly.
+
+It runs the project tests.
+
+The regression suite catches an edge case in the placement calculation.
+
+The failing assertion shows that a rotated placement produces a fractional grid coordinate where the game expects a deterministic integer position.
+
+Instead of weakening the test, the agent traces the value back through the placement function.
+
+The problem is in the conversion from interaction coordinates to the world grid.
+
+The fix is to make snapping explicit: calculate the candidate world coordinate, divide it by the grid unit, round it to the nearest valid cell, and convert it back to world space before creating the block.
+
+Now the same input produces the same placement even when floating-point calculations introduce small differences.
+
+The agent runs the tests again.
+
+The full regression suite passes.
+
+Next comes the rendering path.
+
+The tower contains static geometry that does not need to be rebuilt on every render cycle.
+
+So the agent changes the implementation to avoid repeatedly generating identical geometry and batches static pieces where possible.
+
+This is not just a visual tweak. It reduces the amount of work the browser performs on every frame.
+
+The terminal shows the effect: fewer render operations while preserving the same scene.
+
+The agent then runs the production build.
+
+The application is bundled, the local server exposes the generated assets, and Edge loads the final browser version.
+
+Now several independent checks have to agree.
+
+The JavaScript compiles.
+
+The automated tests pass.
+
+The production bundle is generated.
+
+And the browser loads the application and executes the game loop.
+
+That is the part of an AI coding agent that is actually interesting.
+
+The capability is not simply generating a large HTML file.
+
+It is translating a high-level requirement into project structure, choosing where the code belongs, implementing the functions that connect those layers, executing the application, reading a real failure, tracing it to the responsible calculation, applying a targeted fix, optimizing the render path and verifying the final build.
+
+The agent is not finished when the code looks plausible.
+
+It is finished when the implementation runs, the regression suite is green and the browser produces the expected result.
+
+That is the engineering loop we wanted to demonstrate: inspect, implement, execute, diagnose, fix, optimize and verify.
