@@ -1,0 +1,10 @@
+SP-MOTION ORIGINAL ASSET LICENCE NOTICE
+
+Asset: assets/characters/original_cc0_runner.glb
+Status: Project-created original asset
+Licence: Creative Commons CC0 1.0 Universal
+
+This asset is dedicated to the public domain to the fullest extent permitted by law.
+No attribution is required. Commercial and non-commercial use, modification, redistribution and incorporation into other projects are permitted, subject to the terms of CC0 1.0.
+
+Official licence deed: https://creativecommons.org/publicdomain/zero/1.0/
