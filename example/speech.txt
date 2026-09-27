@@ -1,31 +1,15 @@
-Can Opus 5.5 build a browser game from scratch?
+I gave an AI coding agent one prompt: build a playable 3D browser game from scratch.
 
-We are giving the coding agent a high-level goal and following the work as it moves from planning to implementation, testing and verification.
+No step-by-step implementation. Just the goal, the controls, the game loop, and one important constraint: it has to run reliably in a browser.
 
-The first step is not writing code.
+We follow the work through a realistic desktop workflow: the coding agent, the browser, the terminal, the project files and the final verification.
 
-The agent inspects the repository, identifies the game loop, rendering layer, physics code and existing tests, then turns those findings into an implementation plan.
+The agent first inspects the project, identifies the renderer, scene, gameplay logic and regression tests, then starts implementing.
 
-Next it starts building the core loop.
+The browser runs locally while the 3D scene and gameplay systems are connected.
 
-It adds deterministic updates, keyboard input, collision handling and the browser renderer, while keeping the changes small enough to review.
+Then the regression suite catches a placement edge case. The agent traces the coordinate calculation, fixes deterministic grid snapping and optimizes repeated static geometry.
 
-Then the first regression run exposes a real engineering problem.
+The tests pass again, the production build completes and the browser preview is verified.
 
-At high player velocity, the collision check can miss an obstacle between two frames.
-
-Instead of simply changing the test, the agent traces the failure and changes the implementation.
-
-The frame-only overlap check is replaced with a swept collision test that evaluates the movement path between the current and next position.
-
-Now the affected tests are run again.
-
-All twelve regression tests pass.
-
-The final step is the browser build.
-
-The game loads, the player moves, the score updates, and the production build is verified.
-
-The interesting part is not that an AI wrote some code.
-
-It is that the agent moved through a complete engineering loop: understand the project, implement the feature, detect a failure, diagnose the root cause, change the implementation, rerun the tests and verify the result.
+The interesting part is not generating a 3D cube. It is whether the agent can move through the complete engineering loop: inspect, implement, run, diagnose, fix, optimize and verify.
