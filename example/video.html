@@ -1,37 +1,39 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=1080,height=1920">
+<!doctype html><html><head><meta charset="utf-8">
 <style>
 *{box-sizing:border-box}html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#050811;color:#eef;font-family:Inter,Segoe UI,Arial}
-#frame{position:relative;width:1080px;height:1920px;background:radial-gradient(circle at 50% 25%,#1b3457,#070b14 48%,#03050a)}
-.top{position:absolute;top:38px;left:34px;right:34px;display:flex;justify-content:space-between;z-index:10;font:700 17px Consolas;color:#cfe1f5;letter-spacing:.5px}
-.badge{padding:10px 14px;border:1px solid #35506c;border-radius:9px;background:#07111de6}.live{color:#7fffd4}
+#f{position:relative;width:1080px;height:1920px;background:radial-gradient(circle at 50% 23%,#1c3558,#070b14 50%,#03050a)}
+.top{position:absolute;top:38px;left:34px;right:34px;display:flex;justify-content:space-between;z-index:10;font:700 17px Consolas}.badge{padding:10px 14px;border:1px solid #35506c;border-radius:9px;background:#07111de8}.live{color:#7fffd4}
 .game{position:absolute;left:28px;right:28px;top:130px;height:1190px;border:1px solid #34475d;border-radius:22px;overflow:hidden;background:radial-gradient(circle at 50% 20%,#294a78,#101b2e 42%,#05070c)}
 .city{position:absolute;bottom:0;left:0;right:0;height:48%;background:#080d16;clip-path:polygon(0 38%,6% 25%,12% 42%,18% 17%,24% 38%,31% 23%,38% 41%,45% 12%,51% 37%,58% 20%,65% 42%,72% 15%,79% 39%,86% 24%,93% 41%,100% 27%,100% 100%,0 100%)}
 .floor{position:absolute;left:-10%;right:-10%;bottom:-25%;height:66%;transform:perspective(700px) rotateX(57deg);background:#111d2c;border-top:1px solid #3a668a}.grid{position:absolute;inset:0;background-image:linear-gradient(#2e80a455 1px,transparent 1px),linear-gradient(90deg,#2e80a455 1px,transparent 1px);background-size:65px 65px}
 .hud{position:absolute;top:25px;left:26px;right:26px;display:flex;justify-content:space-between;font:700 16px Consolas}.score{color:#7fffd4;font-size:24px}
 .player{position:absolute;left:50%;bottom:26%;width:58px;height:76px;transform:translateX(-50%);background:linear-gradient(#65f5ff,#2864ff);clip-path:polygon(50% 0,100% 100%,50% 77%,0 100%);filter:drop-shadow(0 0 18px #39eaff);z-index:5}
 .enemy{position:absolute;width:34px;height:34px;border-radius:50%;background:#ff416c;box-shadow:0 0 22px #ff416c}.coin{position:absolute;width:25px;height:25px;border-radius:50%;border:4px solid #ffd86b;box-shadow:0 0 18px #ffd86b}
-.hook{position:absolute;left:50%;top:1320px;transform:translateX(-50%);width:900px;text-align:center;font-weight:800;font-size:48px;line-height:1.08;text-shadow:0 0 30px #37eaff}.hook span{color:#72f4ff}
-.trace{position:absolute;left:58px;right:58px;top:1480px;padding:24px;border:1px solid #34475d;border-radius:16px;background:#0a1019e8;font:16px/1.6 Consolas;color:#b8c9db}.trace b{color:#7fffd4}
-.final{position:absolute;left:50%;top:1740px;transform:translateX(-50%);text-align:center;font-size:45px;font-weight:900;opacity:0;text-shadow:0 0 30px #37eaff}.final small{display:block;margin-top:10px;font:15px Consolas;color:#aabbd0}
-</style></head><body><div id="frame">
+.hook{position:absolute;left:50%;top:1350px;transform:translateX(-50%);width:900px;text-align:center;font-weight:800;font-size:47px;line-height:1.08;text-shadow:0 0 30px #37eaff}.hook span{color:#72f4ff}
+.trace{position:absolute;left:58px;right:58px;top:1500px;padding:24px;border:1px solid #34475d;border-radius:16px;background:#0a1019e8;font:16px/1.6 Consolas;color:#b8c9db}.trace b{color:#7fffd4}.final{position:absolute;left:50%;top:1740px;transform:translateX(-50%);text-align:center;font-size:44px;font-weight:900;opacity:0;text-shadow:0 0 30px #37eaff}.final small{display:block;margin-top:10px;font:15px Consolas;color:#aabbd0}
+</style></head><body><div id="f">
 <div class="top"><div class="badge">AI BUILD · <span class="live">LIVE</span></div><div class="badge">GPT + LUNA</div></div>
 <div class="game"><div class="hud"><div>NEON ESCAPE</div><div>SCORE <span id="score" class="score">000000</span> · ENERGY <span id="energy">100</span>%</div></div><div class="city"></div><div class="floor"><div class="grid"></div></div><div id="objects"></div><div id="player" class="player"></div></div>
 <div class="hook" id="hook">WE ASKED AI TO<br><span>BUILD A BROWSER GAME.</span></div>
-<div class="trace"><b>BUILD TRACE</b><br><span id="traceText">Creating game loop and input state…</span></div>
+<div class="trace"><b>BUILD TRACE</b><br><span id="traceText">Starting the project…</span></div>
 <div class="final" id="final">AI DIDN'T DESIGN IT.<small>IT BUILT IT.</small></div>
 <script>
 window.SPMOTION={width:1080,height:1920,fps:30,duration:45};
 let seed=17;const rnd=()=>((seed=seed*1664525+1013904223>>>0)/4294967296);
 window.SPMOTION_RENDER=t=>{
- const phase=t<5?0:t<11?1:t<17?2:t<25?3:t<35?4:5;
- const traces=["Starting the browser-game architecture…","Creating the game loop and input state…","Generating procedural obstacles and energy…","Adding collision detection and score state…","Running the game in Chromium and tuning difficulty…","Final interaction verified — the game is running."];
- document.getElementById("traceText").textContent=traces[phase];
- document.getElementById("score").textContent=String(Math.max(0,((t-5)*185)|0)).padStart(6,"0");
- document.getElementById("energy").textContent=Math.max(18,100-((Math.max(0,t-10)*2.1)|0));
- document.getElementById("player").style.left=(50+Math.sin(t/2.8)*30)+"%";
- let o=document.getElementById("objects");o.innerHTML="";
- for(let i=0;i<9;i++){let e=document.createElement("div");e.className=i%3?"enemy":"coin";e.style.left=(12+rnd()*76)*10.8+"px";e.style.top=(70+((t*55+i*121)%850))+"px";o.appendChild(e)}
- document.getElementById("hook").style.opacity=t<9?1:0;
- document.getElementById("final").style.opacity=t>37?1:0;
+/* Deliberately slower state changes: each phase has breathing room. */
+let phase=t<5?0:t<12?1:t<19?2:t<26?3:t<35?4:5;
+let traces=["Starting the project…","Building the game loop and input state…","Adding procedural spawning and collision logic…","First browser run — checking the actual interaction…","Tuning difficulty and verifying score/energy state…","Final browser run verified — playable loop is stable."];
+document.getElementById("traceText").textContent=traces[phase];
+let score=Math.max(0,((t-12)*95)|0);document.getElementById("score").textContent=String(score).padStart(6,"0");
+document.getElementById("energy").textContent=Math.max(30,100-((Math.max(0,t-19)*1.35)|0));
+/* Movement is intentionally restrained; it should read as gameplay, not a motion graphic. */
+document.getElementById("player").style.left=(50+Math.sin(t/3.8)*20)+"%";
+let o=document.getElementById("objects");o.innerHTML="";
+for(let i=0;i<6;i++){let e=document.createElement("div");e.className=i%3?"enemy":"coin";
+let progress=Math.max(0,t-17);e.style.left=(15+rnd()*70)*10.8+"px";
+e.style.top=(120+((progress*30+i*170)%700))+"px";o.appendChild(e)}
+document.getElementById("hook").style.opacity=t<7?1:0;
+document.getElementById("final").style.opacity=t>39?1:0;
 };
 </script></div></body></html>
