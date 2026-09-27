@@ -1,85 +1,81 @@
-The prompt is deliberately high level: build a playable 3D browser game from a short brief.
+What happens when GPT-6 Astra is not just asked to write code, but is given control of an entire computer?
 
-The interesting part is what happens after that prompt.
+For this case study, the instruction is deliberately simple: open the project, find why the 3D application is failing, fix the issue, run the project, test the main interaction, and verify the final build.
 
-The agent starts by inspecting the project instead of immediately generating a page. It maps the entry point, the rendering layer, the gameplay code and the existing test suite, because those boundaries determine where a new feature can safely be introduced.
+The important part is that the agent has to work through the graphical environment.
 
-For the game itself, the implementation is split into a few clear responsibilities.
+Astra starts on the desktop.
 
-The browser entry point initializes the game surface and the scene.
+It opens the project from File Explorer instead of receiving a preselected file.
 
-The scene layer owns the camera, lighting and world objects.
+It launches the local development environment and opens the application in Microsoft Edge.
 
-The gameplay layer owns the tower state: the active block, its position, the current height and the score.
+The first browser run exposes a failure: the block-placement interaction crashes.
 
-The interaction layer translates pointer or keyboard input into a placement request instead of modifying the scene directly.
+Now the task changes from generation to diagnosis.
 
-That separation matters because the renderer should not also decide whether a block is valid.
+Astra reads the terminal output and follows the stack trace back into the project.
 
-The agent then adds the first JavaScript implementation.
+The failure points to the placement module.
 
-It creates a block factory that receives dimensions and world coordinates and returns a configured game object with its geometry, material and transform.
+The active block is being passed into the placement routine before its world transform has been initialized.
 
-A placement function takes the interaction coordinates and converts them into world space.
+The renderer expects a valid position object, but the factory is returning the object before that state exists.
 
-Before the block is committed to the tower, the candidate coordinates are normalized against the game grid. That makes placement deterministic instead of allowing floating-point positions to accumulate between blocks.
+Astra does not work around the error in the browser. It changes the implementation.
 
-The score update is kept separate from rendering. Every successful placement updates the tower height and score, then the renderer reflects the new state.
+The block factory is updated so every new block receives its transform state when it is created.
 
-Now the browser is running from the local development server.
+The placement function can then operate on a valid world position instead of checking for an object that may not exist.
 
-But a visual result is not enough. The agent has to prove that the implementation behaves correctly.
+Now Astra goes back to the terminal.
 
-It runs the project tests.
+First it runs the targeted placement test.
 
-The regression suite catches an edge case in the placement calculation.
+Eight tests pass.
 
-The failing assertion shows that a rotated placement produces a fractional grid coordinate where the game expects a deterministic integer position.
+Then it runs the full regression suite.
 
-Instead of weakening the test, the agent traces the value back through the placement function.
+Twenty-one tests pass with zero failures.
 
-The problem is in the conversion from interaction coordinates to the world grid.
+But unit tests are not enough for a computer-use task.
 
-The fix is to make snapping explicit: calculate the candidate world coordinate, divide it by the grid unit, round it to the nearest valid cell, and convert it back to world space before creating the block.
+The agent rebuilds the application and returns to the browser.
 
-Now the same input produces the same placement even when floating-point calculations introduce small differences.
+This time it performs the interaction itself through the desktop interface.
 
-The agent runs the tests again.
+The block can be placed, the tower state updates, and the browser continues running the game loop without the original exception.
 
-The full regression suite passes.
+Finally, Astra verifies the production build.
 
-Next comes the rendering path.
+The application is rebuilt, the preview is launched, and the browser is checked again against the same interaction that originally failed.
 
-The tower contains static geometry that does not need to be rebuilt on every render cycle.
+This is the part of computer use that matters.
 
-So the agent changes the implementation to avoid repeatedly generating identical geometry and batches static pieces where possible.
+The model is not simply producing text or returning a code patch.
 
-This is not just a visual tweak. It reduces the amount of work the browser performs on every frame.
+It is coordinating multiple interfaces: File Explorer to locate the project, the terminal to execute commands, the browser to reproduce the failure, the source files to understand the implementation, and the browser again to verify the result.
 
-The terminal shows the effect: fewer render operations while preserving the same scene.
+The computer becomes part of the reasoning loop.
 
-The agent then runs the production build.
+Observe the screen.
 
-The application is bundled, the local server exposes the generated assets, and Edge loads the final browser version.
+Choose an action.
 
-Now several independent checks have to agree.
+Inspect the result.
 
-The JavaScript compiles.
+Update the hypothesis.
 
-The automated tests pass.
+Change the implementation.
 
-The production bundle is generated.
+Run the software again.
 
-And the browser loads the application and executes the game loop.
+And verify whether the original failure is actually gone.
 
-That is the part of an AI coding agent that is actually interesting.
+That is very different from asking an AI to generate a code snippet.
 
-The capability is not simply generating a large HTML file.
+It is an end-to-end software workflow carried out through the same interfaces a developer would normally use.
 
-It is translating a high-level requirement into project structure, choosing where the code belongs, implementing the functions that connect those layers, executing the application, reading a real failure, tracing it to the responsible calculation, applying a targeted fix, optimizing the render path and verifying the final build.
+And in this case study, the success condition is simple: the bug is reproduced, the root cause is isolated, the implementation is fixed, the regression suite is green, and the final application works in the browser.
 
-The agent is not finished when the code looks plausible.
-
-It is finished when the implementation runs, the regression suite is green and the browser produces the expected result.
-
-That is the engineering loop we wanted to demonstrate: inspect, implement, execute, diagnose, fix, optimize and verify.
+That is the capability we wanted to test: not whether an AI can write code, but whether it can use a computer to complete the engineering task.
