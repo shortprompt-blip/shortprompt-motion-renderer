@@ -1,81 +1,25 @@
-What happens when GPT-6 Astra is not just asked to write code, but is given control of an entire computer?
+We wanted to test something different.
 
-For this case study, the instruction is deliberately simple: open the project, find why the 3D application is failing, fix the issue, run the project, test the main interaction, and verify the final build.
+So we asked GPT and Luna to build a browser game from scratch.
 
-The important part is that the agent has to work through the graphical environment.
+Not a mockup. A real interactive game running directly in the browser.
 
-Astra starts on the desktop.
+The concept is Neon Escape: move through a procedural environment, dodge obstacles, collect energy and keep the score alive.
 
-It opens the project from File Explorer instead of receiving a preselected file.
+GPT built the initial game architecture: the loop, input state and browser rendering.
 
-It launches the local development environment and opens the application in Microsoft Edge.
+Luna then iterated on the mechanics, procedural spawning and the visual feedback.
 
-The first browser run exposes a failure: the block-placement interaction crashes.
+The important part is that the game state is actually running in JavaScript.
 
-Now the task changes from generation to diagnosis.
+Objects are generated during the loop, their positions change over time, and the player state drives the score and energy.
 
-Astra reads the terminal output and follows the stack trace back into the project.
+Then we added collision detection, so the gameplay is not just an animation pretending to be interactive.
 
-The failure points to the placement module.
+Finally, we ran the result in Chromium and verified the complete loop.
 
-The active block is being passed into the placement routine before its world transform has been initialized.
+So this isn't AI generating a picture of a game.
 
-The renderer expects a valid position object, but the factory is returning the object before that state exists.
+It's generating the software that runs the game.
 
-Astra does not work around the error in the browser. It changes the implementation.
-
-The block factory is updated so every new block receives its transform state when it is created.
-
-The placement function can then operate on a valid world position instead of checking for an object that may not exist.
-
-Now Astra goes back to the terminal.
-
-First it runs the targeted placement test.
-
-Eight tests pass.
-
-Then it runs the full regression suite.
-
-Twenty-one tests pass with zero failures.
-
-But unit tests are not enough for a computer-use task.
-
-The agent rebuilds the application and returns to the browser.
-
-This time it performs the interaction itself through the desktop interface.
-
-The block can be placed, the tower state updates, and the browser continues running the game loop without the original exception.
-
-Finally, Astra verifies the production build.
-
-The application is rebuilt, the preview is launched, and the browser is checked again against the same interaction that originally failed.
-
-This is the part of computer use that matters.
-
-The model is not simply producing text or returning a code patch.
-
-It is coordinating multiple interfaces: File Explorer to locate the project, the terminal to execute commands, the browser to reproduce the failure, the source files to understand the implementation, and the browser again to verify the result.
-
-The computer becomes part of the reasoning loop.
-
-Observe the screen.
-
-Choose an action.
-
-Inspect the result.
-
-Update the hypothesis.
-
-Change the implementation.
-
-Run the software again.
-
-And verify whether the original failure is actually gone.
-
-That is very different from asking an AI to generate a code snippet.
-
-It is an end-to-end software workflow carried out through the same interfaces a developer would normally use.
-
-And in this case study, the success condition is simple: the bug is reproduced, the root cause is isolated, the implementation is fixed, the regression suite is green, and the final application works in the browser.
-
-That is the capability we wanted to test: not whether an AI can write code, but whether it can use a computer to complete the engineering task.
+GPT plus Luna, from prompt to playable browser prototype.
