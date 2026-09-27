@@ -1,0 +1,53 @@
+{
+  "pipeline": "Three.js + GLTFLoader",
+  "format": "GLB/glTF 2.0",
+  "license_policy": {
+    "required": true,
+    "preferred": ["CC0-1.0", "Public Domain", "Project-created CC0-1.0"],
+    "rule": "No asset enters production without an explicit, recorded licence. Free/royalty-free wording alone is insufficient."
+  },
+  "character": {
+    "name": "Original CC0 Runner",
+    "file": "assets/characters/original_cc0_runner.glb",
+    "creator": "ShortPrompt project-created asset",
+    "license": "CC0-1.0",
+    "third_party": false,
+    "commercial_use": true,
+    "attribution_required": false,
+    "source_note": "Original asset created for this project; no commercial-game character or copyrighted IP used."
+  },
+  "verified_reference_sources": [
+    {
+      "name": "Poly Haven",
+      "use": "photoreal HDRIs, PBR textures, 3D models",
+      "license": "CC0",
+      "url": "https://polyhaven.com/"
+    },
+    {
+      "name": "Kenney Nature Kit",
+      "use": "trees, rocks, foliage",
+      "license": "CC0",
+      "url": "https://kenney.nl/assets/nature-kit"
+    },
+    {
+      "name": "Kenney Platformer Kit",
+      "use": "3D platformer characters and props",
+      "license": "CC0",
+      "url": "https://kenney.nl/assets/platformer-kit"
+    },
+    {
+      "name": "Quaternius Ultimate Modular Men Pack",
+      "use": "verified alternative source for rigged/animated human characters",
+      "license": "CC0",
+      "url": "https://quaternius.com/packs/ultimatemodularcharacters.html"
+    }
+  ],
+  "production_layout": [
+    "assets/characters/*.glb",
+    "assets/environment/*.glb",
+    "assets/textures/*.jpg|*.png|*.webp",
+    "assets/hdri/*.hdr|*.exr",
+    "assets/LICENSES/*",
+    "video.html"
+  ]
+}
