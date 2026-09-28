@@ -1,0 +1,31 @@
+{
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "deviceScaleFactor": 1,
+  "sources": [
+    {
+      "id": "example-source",
+      "url": "https://example.com",
+      "waitUntil": "domcontentloaded",
+      "waitMs": 1000,
+      "actions": [
+        {
+          "type": "scroll",
+          "y": 500
+        },
+        {
+          "type": "wait",
+          "ms": 1000
+        },
+        {
+          "type": "screenshot",
+          "output": "assets/evidence/example-source-01.png",
+          "fullPage": false
+        }
+      ],
+      "output": "assets/evidence/example-source-final.png"
+    }
+  ]
+}
