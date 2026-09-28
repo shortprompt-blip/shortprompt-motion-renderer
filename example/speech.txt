@@ -1,27 +1,15 @@
-Gemini 4 demos are everywhere.
+If you use Claude for difficult coding or agentic work, choosing Opus is only half the setup.
 
-So we did not recreate them. We went back to the pages where the demos were actually published.
+In Claude Desktop, open the model menu next to the send button and select Opus 5.5.
 
-This is a real browser capture of the source article.
+Now open Effort. Anthropic currently offers Low, Medium, High, Extra high, and Max on Opus 5.5.
 
-And here is the cycling pelican: real controls, animation, day and night states.
+For routine work, lower effort can save usage. For a long-running coding task, Extra high is designed for deeper work. And for the hardest, correctness-critical tasks, Anthropic recommends Max.
 
-Next, the voxel pagoda.
+There’s one important detail: with Opus 5.5, thinking is always on. The effort setting controls how much work Claude applies to the response.
 
-Then the Airbus H145.
+So the practical setup for a demanding task is simple: Opus 5.5, then choose the effort level that matches the job.
 
-And finally, the flight simulator comparison.
+Higher effort can mean better depth, but it also takes longer and uses more tokens.
 
-But here is the important part.
-
-The demos are real published results. The model attribution is a different question.
-
-The Arena entry was labelled Gemini 3.8 Flash, while testers reported that it was actually Gemini 4 Pro. That identification has not been officially confirmed by Google.
-
-So our conclusion is simple:
-
-Real demo. Unproven model.
-
-That distinction is the story.
-
-In the full video, we follow every source and separate what we can verify from what is only being reported.
+That’s the configuration to remember: choose the model, then tune the effort.
