@@ -1,0 +1,40 @@
+name: Capture real Gemini demo evidence
+
+on:
+  workflow_dispatch:
+
+jobs:
+  capture-evidence:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install Playwright
+        run: |
+          npm init -y
+          npm install playwright
+          npx playwright install --with-deps chromium
+
+      - name: Capture REAL source screenshots
+        run: node capture/capture.mjs
+
+      - name: Verify evidence files exist
+        run: |
+          test -s assets/evidence/gemini4-article.png
+          test -s assets/evidence/gemini4-pelican.png
+          test -s assets/evidence/gemini4-pagoda.png
+          test -s assets/evidence/gemini4-h145.png
+          test -s assets/evidence/gemini4-flight-sim.png
+          test -s assets/evidence/official-gemini38-evidence.png
+
+      - name: Upload evidence artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: gemini4-real-demo-evidence
+          path: assets/evidence/
