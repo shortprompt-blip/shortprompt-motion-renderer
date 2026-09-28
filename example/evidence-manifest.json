@@ -1,0 +1,32 @@
+{
+  "production": "@SP-MOTION V1.4 HTML-FIRST",
+  "principle": "Only real browser captures may occupy evidence slots. No recreated demo images.",
+  "sources": [
+    {
+      "url": "https://atoms.dev/blog/gemini-4-pro-examples",
+      "type": "reported_source",
+      "claims": [
+        "six reported Gemini 4 Pro demos",
+        "Arena entry labeled gemini-3.8-flash",
+        "identification as Gemini 4 Pro attributed to testers, not official Google confirmation"
+      ]
+    },
+    {
+      "url": "https://deepmind.google/models/gemini/flash/",
+      "type": "official_source",
+      "claims": [
+        "Gemini 3.8 Flash official hands-on examples including Chromancers and DOS Google Maps"
+      ]
+    }
+  ],
+  "captures": [
+    "gemini4-article.png",
+    "gemini4-pelican.png",
+    "gemini4-pagoda.png",
+    "gemini4-h145.png",
+    "gemini4-flight-sim.png",
+    "official-gemini38-evidence.png"
+  ],
+  "capture_method": "Playwright screenshots of the actual source pages",
+  "licensing_note": "These captures are editorial evidence from source pages. Do not treat them as redistributed source assets outside the video project; respect source terms and platform rights."
+}

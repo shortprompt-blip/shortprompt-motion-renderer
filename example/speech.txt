@@ -1,19 +1,27 @@
-You've probably seen these Gemini 4 demos all over the internet.
+Gemini 4 demos are everywhere.
 
-But instead of trusting the clips, let's trace them back to the source.
+So we did not recreate them. We went back to the pages where the demos were actually published.
 
-This one is real. Google DeepMind itself shows Chromancers as a game built with Gemini 3.8 Flash in Google Antigravity.
+This is a real browser capture of the source article.
 
-And here's another: a fully functional DOS version of Google Maps, also explicitly attributed by Google to Gemini 3.8 Flash.
+And here is the cycling pelican: real controls, animation, day and night states.
 
-But Gemini 4 is different.
+Next, the voxel pagoda.
 
-Developers have shared impressive demos attributed to Gemini 4 Pro, including 3D scenes, websites and games.
+Then the Airbus H145.
 
-The important distinction is this: the demos may be real, but the model attribution is not the same thing as official confirmation.
+And finally, the flight simulator comparison.
 
-So a real demo does not automatically prove which model created it.
+But here is the important part.
 
-We traced the sources so you don't have to.
+The demos are real published results. The model attribution is a different question.
 
-The full breakdown is next.
+The Arena entry was labelled Gemini 3.8 Flash, while testers reported that it was actually Gemini 4 Pro. That identification has not been officially confirmed by Google.
+
+So our conclusion is simple:
+
+Real demo. Unproven model.
+
+That distinction is the story.
+
+In the full video, we follow every source and separate what we can verify from what is only being reported.
