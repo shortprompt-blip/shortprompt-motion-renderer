@@ -6,14 +6,35 @@
   "deviceScaleFactor": 1,
   "sources": [
     {
-      "id": "example-source",
-      "url": "https://example.com",
+      "id": "google-deepmind-gemini",
+      "url": "https://deepmind.google/models/gemini/",
       "waitUntil": "domcontentloaded",
-      "waitMs": 1000,
+      "waitMs": 2500,
       "actions": [
         {
           "type": "scroll",
-          "y": 500
+          "y": 700
+        },
+        {
+          "type": "wait",
+          "ms": 1200
+        },
+        {
+          "type": "screenshot",
+          "output": "assets/evidence/google-deepmind-gemini.png"
+        }
+      ],
+      "output": "assets/evidence/google-deepmind-gemini-final.png"
+    },
+    {
+      "id": "reported-gemini4-examples",
+      "url": "https://atoms.mgx.dev/blog/gemini-4-pro-examples",
+      "waitUntil": "domcontentloaded",
+      "waitMs": 1800,
+      "actions": [
+        {
+          "type": "scroll",
+          "y": 900
         },
         {
           "type": "wait",
@@ -21,11 +42,10 @@
         },
         {
           "type": "screenshot",
-          "output": "assets/evidence/example-source-01.png",
-          "fullPage": false
+          "output": "assets/evidence/gemini4-reported-examples.png"
         }
       ],
-      "output": "assets/evidence/example-source-final.png"
+      "output": "assets/evidence/gemini4-reported-final.png"
     }
   ]
 }
