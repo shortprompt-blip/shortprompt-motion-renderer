@@ -1,0 +1,66 @@
+{
+  "name": "Gemini source investigation \u2014 real browser replay",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "videoSize": {
+    "width": 1440,
+    "height": 900
+  },
+  "timeout": 30000,
+  "endWaitMs": 1200,
+  "steps": [
+    {
+      "type": "goto",
+      "url": "https://www.google.com/search?q=Gemini+AI+official+announcement",
+      "waitUntil": "domcontentloaded"
+    },
+    {
+      "type": "wait",
+      "ms": 1800
+    },
+    {
+      "type": "goto",
+      "url": "https://deepmind.google/models/gemini/",
+      "waitUntil": "domcontentloaded"
+    },
+    {
+      "type": "wait",
+      "ms": 2500
+    },
+    {
+      "type": "scroll",
+      "y": 650
+    },
+    {
+      "type": "wait",
+      "ms": 1200
+    },
+    {
+      "type": "screenshot",
+      "file": "01-google-deepmind.png"
+    },
+    {
+      "type": "goto",
+      "url": "https://atoms.dev/blog/gemini-4-pro-examples",
+      "waitUntil": "domcontentloaded"
+    },
+    {
+      "type": "wait",
+      "ms": 2200
+    },
+    {
+      "type": "scroll",
+      "y": 700
+    },
+    {
+      "type": "wait",
+      "ms": 1200
+    },
+    {
+      "type": "screenshot",
+      "file": "02-reported-gemini4-source.png"
+    }
+  ]
+}
