@@ -67,3 +67,21 @@ sp-motion-output/final.webm
 
 The HTML is rendered in an isolated Chromium page. It is never injected into
 the SP-MOTION editor DOM. This eliminates CSS/UI collisions with the editor.
+SP-MOTION GitHub Actions update
+These files implement the optional research_capture stage discussed for @SP-MOTION.
+Files
+.github/workflows/render.yml — adds the optional capture step before Kokoro.
+renderer/capture.mjs — deterministic Playwright capture utility.
+example/capture.json — example manifest; replace the example URL/actions with real sources.
+Behavior
+If example/capture.json is absent, the capture step exits successfully and the normal render is unchanged.
+If it exists, Playwright:
+opens each declared source;
+performs only declared actions;
+saves screenshots under example/assets/evidence/;
+closes the browser.
+The final renderer then uses those local assets. It does not fetch research sources during frame rendering.
+Important
+Do not present a captured source as evidence of a model's authorship unless the source itself supports that claim. Keep source provenance in the project/editorial layer.
+The existing audio-master timing in renderer/render.mjs is intentionally unchanged.
+
