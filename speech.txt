@@ -1,0 +1,27 @@
+Gemini 4 demos are everywhere.
+
+So we did not recreate them. We went back to the pages where the demos were actually published.
+
+This is a real browser capture of the source article.
+
+And here is the cycling pelican: real controls, animation, day and night states.
+
+Next, the voxel pagoda.
+
+Then the Airbus H145.
+
+And finally, the flight simulator comparison.
+
+But here is the important part.
+
+The demos are real published results. The model attribution is a different question.
+
+The Arena entry was labelled Gemini 3.8 Flash, while testers reported that it was actually Gemini 4 Pro. That identification has not been officially confirmed by Google.
+
+So our conclusion is simple:
+
+Real demo. Unproven model.
+
+That distinction is the story.
+
+In the full video, we follow every source and separate what we can verify from what is only being reported.
