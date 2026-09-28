@@ -67,6 +67,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r renderer/requirements.txt
 
+      - name: Research capture — optional
+        run: |
+          node renderer/capture.mjs example
+
       - name: Generate voiceover — master clock
         run: |
           python renderer/kokoro_tts.py \
