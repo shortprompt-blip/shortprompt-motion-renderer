@@ -1,15 +1,15 @@
-If you use Claude for difficult coding or agentic work, choosing Opus is only half the setup.
+Most AI token waste comes from one simple mistake: giving the model far more context than the task actually needs.
 
-In Claude Desktop, open the model menu next to the send button and select Opus 5.5.
+Here are ten ways to use fewer AI tokens.
 
-Now open Effort. Anthropic currently offers Low, Medium, High, Extra high, and Max on Opus 5.5.
+First, send only the context the model needs. Second, don't paste an entire repository when one file is relevant. Third, summarize old conversation history instead of carrying every message forward.
 
-For routine work, lower effort can save usage. For a long-running coding task, Extra high is designed for deeper work. And for the hardest, correctness-critical tasks, Anthropic recommends Max.
+Fourth, don't repeat constraints that haven't changed. Fifth, use structured input so the model can parse the information efficiently. Sixth, request the exact output format you need.
 
-There’s one important detail: with Opus 5.5, thinking is always on. The effort setting controls how much work Claude applies to the response.
+Seventh, don't ask the model to repeat information you already provided. Eighth, split oversized tasks intelligently instead of sending one giant prompt.
 
-So the practical setup for a demanding task is simple: Opus 5.5, then choose the effort level that matches the job.
+Ninth, when working with code, use a focused diff or targeted file instead of the entire file whenever possible. And tenth, keep reusable context compact.
 
-Higher effort can mean better depth, but it also takes longer and uses more tokens.
+The key is not to remove useful information. It's to remove context that is repeated, stale, irrelevant, or redundant.
 
-That’s the configuration to remember: choose the model, then tune the effort.
+And that's how you can often get the same task done with far fewer tokens.
