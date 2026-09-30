@@ -1,46 +1,38 @@
 Gemini 4 is coming. But how much of what you are hearing about it is actually real?
 
-Google has confirmed that Gemini 4 is in development. In July, Google said it had started its most ambitious pre-training run yet for Gemini 4. And in September, DeepMind chief Koray Kavukcuoglu said the model had moved into post-training and could arrive well before the end of 2026.
+Google has confirmed one important thing: Gemini 4 is being trained. In July, Google described it as its most ambitious pre-training run yet. More recent reporting says the model has moved into refinement. But Google has not published the final model card, API specification, benchmark table, or launch configuration.
 
-But Google has not published the final Gemini 4 model card, API specification, benchmark results, or launch configuration.
+So let’s separate the confirmed facts from the leaks.
 
-So let's separate the confirmed facts from the leaks.
+The most interesting leak is a reported two-hundred-fifty-six-thousand-token output limit. For comparison, Google’s current Gemini 3.8 Flash documentation lists a maximum output of sixty-five-thousand five-hundred thirty-six tokens. If the leaked Gemini 4 number is real, that would be roughly four times larger.
 
-The most interesting leak is a reported 256-thousand-token output limit. For comparison, Google's current Gemini 3.8 Flash documentation lists a maximum output of 65,536 tokens. That means the leaked number would be roughly four times larger.
+Why does that matter? A larger output budget could make giant code transformations, long technical reports and extended agent workflows more practical. But there is a catch: this is a leak about an alleged checkpoint. A training checkpoint is not the same thing as a shipping product.
 
-Why does that matter? Because a huge output budget could make long code transformations, large technical reports and extended agentic workflows much more practical.
+Then the claims get much less certain.
 
-But there is an important catch: this number comes from reporting about an alleged internal checkpoint. A leaked checkpoint is not the same thing as a shipping product.
+Leak coverage has also discussed a multi-million-token context window and a selectable high-effort reasoning mode. A two-million-token figure appears in some reporting, but Google has not published it as an official Gemini 4 specification.
 
-Then things get much less certain.
-
-Leak coverage has also discussed a multi-million-token context window and a selectable high-effort reasoning mode. Some reports describe a two-million-token context figure, while other posts make much larger claims.
-
-And this is exactly where we need to slow down.
-
-The most extreme claims — including ten-million-token context, persistent memory and other unusual capabilities — do not have the same level of evidence. They should be treated as rumors, not specifications.
+And the most extreme claims, including ten-million-token context, persistent memory and dramatic benchmark numbers, need much stronger evidence. They should be treated as rumors, not specifications.
 
 There is another reason Gemini 4 is getting attention.
 
-Anonymous tests on public model-comparison platforms have been attributed by the community to possible Gemini 4 checkpoints. People have reported impressive SVG generation, three-dimensional scenes and interactive simulations.
+Anonymous model-comparison tests have been attributed by the community to possible Gemini 4 checkpoints. Reports describe impressive SVG generation, three-dimensional scenes and interactive simulations. But the attribution is not proven. An anonymous model label does not tell us what model is actually running behind it.
 
-But attribution is still uncertain.
-
-So those demonstrations are interesting evidence of what a possible checkpoint may be capable of — not proof of what Gemini 4 will ship with.
+So those demonstrations are interesting clues, not proof of what Gemini 4 will ship with.
 
 And Google is not competing against the models that existed six months ago.
 
-GPT-6 Astra is already deployed, with OpenAI positioning it at the frontier for computer use, browsing, software engineering, science and professional work.
+GPT-6 Astra is already shipping. OpenAI positions it for complex reasoning, coding, research, browsing and computer use, with a one-point-zero-five-million-token context window and a one-hundred-twenty-eight-thousand-token maximum output.
 
-Claude Opus 5.5 is also already available. Anthropic describes it as a model for complex work, and reported that one tester completed a six-hundred-eighty-thousand-line code migration in less than a day.
+Claude Fable 5.1 is also available. Anthropic positions it as a frontier model for coding, knowledge work and long-running problem solving.
 
-And Google's own Gemini 3.8 Flash already supports more than one million input tokens, thinking, code execution and computer use in preview.
+And Google’s own Gemini 3.8 Flash already supports more than one million input tokens, sixty-five-thousand five-hundred thirty-six output tokens, thinking and computer use in preview.
 
 So Gemini 4 does not just need a bigger context window or a bigger output limit.
 
-It needs to prove five things.
+It needs to prove four things.
 
-Can it reason better? Can it work autonomously for longer? Can it modify and verify large codebases? Can it use a computer reliably? And most importantly, can independent testers reproduce the results?
+Can it reason better? Can it work autonomously for longer? Can it modify and verify large codebases? And can it use a computer reliably and finish the task?
 
 That is the real benchmark.
 
@@ -52,6 +44,6 @@ But the final capability is still unproven.
 
 So when you see a headline saying Gemini 4 destroys every other model, look for the evidence behind the claim.
 
-Because 256-thousand tokens is a specification.
+Because two-hundred-fifty-six-thousand tokens is a specification.
 
-Useful, reliable autonomy is the real test.
+Reliable autonomy is the real test.
