@@ -1,19 +1,57 @@
-If Claude gives you long, messy answers, the problem may be your prompt.
-Here are five prompt patterns you can reuse to get better results with less wasted output.
+Gemini 4 is coming. But how much of what you are hearing about it is actually real?
 
-Number one: give Claude a role and an exact output contract.
-Act as a senior Python reviewer. Return only: verdict, three issues, and the smallest safe patch.
+Google has confirmed that Gemini 4 is in development. In July, Google said it had started its most ambitious pre-training run yet for Gemini 4. And in September, DeepMind chief Koray Kavukcuoglu said the model had moved into post-training and could arrive well before the end of 2026.
 
-Number two: add the context that actually matters.
-Explain the goal, constraints, and why the task matters before asking for the solution.
+But Google has not published the final Gemini 4 model card, API specification, benchmark results, or launch configuration.
 
-Number three: separate instructions from data with XML tags.
-Use instruction, context, input, and output sections so Claude can tell what is a rule and what is source material.
+So let's separate the confirmed facts from the leaks.
 
-Number four: show examples.
-Give Claude two or three examples of the input and the output you want. This is one of Anthropic's recommended ways to steer format and consistency.
+The most interesting leak is a reported 256-thousand-token output limit. For comparison, Google's current Gemini 3.8 Flash documentation lists a maximum output of 65,536 tokens. That means the leaked number would be roughly four times larger.
 
-And number five: control the answer size.
-Ask for the final answer only, with a strict format and a maximum number of bullets. You get the information you need without a giant response.
+Why does that matter? Because a huge output budget could make long code transformations, large technical reports and extended agentic workflows much more practical.
 
-These patterns are based on Anthropic's official prompting guidance. Save them, and test them on your next Claude task.
+But there is an important catch: this number comes from reporting about an alleged internal checkpoint. A leaked checkpoint is not the same thing as a shipping product.
+
+Then things get much less certain.
+
+Leak coverage has also discussed a multi-million-token context window and a selectable high-effort reasoning mode. Some reports describe a two-million-token context figure, while other posts make much larger claims.
+
+And this is exactly where we need to slow down.
+
+The most extreme claims — including ten-million-token context, persistent memory and other unusual capabilities — do not have the same level of evidence. They should be treated as rumors, not specifications.
+
+There is another reason Gemini 4 is getting attention.
+
+Anonymous tests on public model-comparison platforms have been attributed by the community to possible Gemini 4 checkpoints. People have reported impressive SVG generation, three-dimensional scenes and interactive simulations.
+
+But attribution is still uncertain.
+
+So those demonstrations are interesting evidence of what a possible checkpoint may be capable of — not proof of what Gemini 4 will ship with.
+
+And Google is not competing against the models that existed six months ago.
+
+GPT-6 Astra is already deployed, with OpenAI positioning it at the frontier for computer use, browsing, software engineering, science and professional work.
+
+Claude Opus 5.5 is also already available. Anthropic describes it as a model for complex work, and reported that one tester completed a six-hundred-eighty-thousand-line code migration in less than a day.
+
+And Google's own Gemini 3.8 Flash already supports more than one million input tokens, thinking, code execution and computer use in preview.
+
+So Gemini 4 does not just need a bigger context window or a bigger output limit.
+
+It needs to prove five things.
+
+Can it reason better? Can it work autonomously for longer? Can it modify and verify large codebases? Can it use a computer reliably? And most importantly, can independent testers reproduce the results?
+
+That is the real benchmark.
+
+Right now, the strongest conclusion is simple.
+
+Gemini 4 is real. Its training is real. The leaked specifications are interesting. Some reported demonstrations are impressive.
+
+But the final capability is still unproven.
+
+So when you see a headline saying Gemini 4 destroys every other model, look for the evidence behind the claim.
+
+Because 256-thousand tokens is a specification.
+
+Useful, reliable autonomy is the real test.
