@@ -1,21 +1,196 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=1080,height=1920,initial-scale=1"><title>5 Advanced Tricks to Reduce AI Token Usage</title>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1080,height=1920,initial-scale=1">
+<title>5 Claude Prompts to Get Better Results</title>
 <style>
-*{box-sizing:border-box}html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#090a0d;color:#f4f3ef;font-family:Inter,system-ui,sans-serif}#stage{position:absolute;inset:0;background:radial-gradient(circle at 50% 10%,#25272d 0,#111318 34%,#090a0d 100%)}header{height:112px;border-bottom:1px solid #30333a;display:flex;align-items:center;padding:0 48px}.brand{font-size:27px;font-weight:850}.series{margin-left:auto;color:#9297a3;font-size:14px;letter-spacing:1.5px;text-transform:uppercase}.badge{position:absolute;right:62px;top:138px;padding:10px 15px;border-radius:15px;background:#eeeae1;color:#111318;font-size:14px;font-weight:850;letter-spacing:1px}.hero{padding:72px 62px}.kicker{color:#9ea3ae;font-size:17px;letter-spacing:2px;text-transform:uppercase;margin-bottom:18px}h1{font-size:60px;line-height:1.03;letter-spacing:-2.8px;margin:0;max-width:900px}.subtitle{margin-top:22px;max-width:850px;color:#b0b4bd;font-size:22px;line-height:1.45}.panel{position:absolute;left:62px;right:62px;top:540px;background:#15171c;border:1px solid #30343c;border-radius:25px;padding:30px;box-shadow:0 25px 80px #0009}.panel h2{margin:0 0 9px;font-size:28px}.panel .why{color:#9da2ad;font-size:17px;line-height:1.45;margin-bottom:23px}.code{background:#0d0f13;border:1px solid #292c33;border-radius:17px;padding:23px;font:17px/1.55 ui-monospace,monospace;color:#dfe1e5;white-space:pre-wrap}.result{margin-top:18px;display:flex;gap:14px}.pill{padding:11px 14px;border:1px solid #343740;border-radius:12px;color:#b7bbc4;font-size:14px}.pill strong{color:#fff}.progress{height:10px;border-radius:6px;background:#292c33;margin-top:23px;overflow:hidden}.bar{height:100%;width:100%;background:#e9e6df}.counter{display:flex;justify-content:space-between;margin-top:13px;color:#8f949f;font-size:14px}.counter b{color:#f4f3ef}.step{position:absolute;left:62px;right:62px;top:450px;opacity:0;font-size:19px;color:#aeb2bb}.step strong{color:#fff}#summary{position:absolute;left:62px;right:62px;top:540px;display:grid;gap:13px;opacity:0}.item{background:#15171c;border:1px solid #30343c;border-radius:16px;padding:18px 21px;display:flex;align-items:center;gap:18px}.num{font-size:14px;color:#777d89;width:30px}.item b{font-size:20px}.item span{margin-left:auto;color:#9297a2;font-size:14px}#final{position:absolute;left:62px;right:62px;bottom:120px;background:#121419;border:1px solid #383b44;border-radius:18px;padding:21px 24px;color:#c5c8cf;font-size:19px;line-height:1.4;opacity:0}#final b{color:#fff}.foot{position:absolute;bottom:34px;left:62px;color:#686e79;font-size:12px}
-</style></head><body><div id="stage"><header><div class="brand">SHORTPROMPT</div><div class="series">TOKEN SAVING SERIES · 02</div></header><div class="badge">5 ADVANCED TRICKS</div>
-<section class="hero"><div class="kicker">AI TOKEN OPTIMIZATION</div><h1>5 Advanced Tricks to Reduce AI Token Usage</h1><div class="subtitle">Go beyond shorter prompts: compress context, retrieve only what matters, and keep agent state small.</div></section>
-<div id="step" class="step"></div><div id="panel" class="panel"><h2 id="title"></h2><div id="why" class="why"></div><div id="code" class="code"></div><div class="result"><div class="pill"><strong>Keep</strong> useful state</div><div class="pill"><strong>Drop</strong> stale context</div><div class="pill"><strong>Reveal</strong> detail when needed</div></div><div class="progress"><div id="bar" class="bar"></div></div><div class="counter"><span>Context footprint</span><b id="count">100%</b></div></div>
-<div id="summary"><div class="item"><div class="num">01</div><b>Compress context</b><span>Keep state, drop history</span></div><div class="item"><div class="num">02</div><b>Progressive disclosure</b><span>Reveal detail only when needed</span></div><div class="item"><div class="num">03</div><b>Retrieve, don't inject</b><span>Fetch relevant data on demand</span></div><div class="item"><div class="num">04</div><b>Keep agent state compact</b><span>Persist only what matters</span></div><div class="item"><div class="num">05</div><b>Separate data from instructions</b><span>Avoid duplicated context</span></div></div>
-<div id="final"><b>The advanced rule:</b> don't make the model remember everything. Give it a compact state and reveal additional context only when the task actually requires it.</div><div class="foot">Conceptual examples · savings depend on the model, task and context</div></div>
+  *{box-sizing:border-box}
+  html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#0b0d12;color:#f4f5f7;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+  body{background:
+    radial-gradient(circle at 82% 10%,rgba(214,153,91,.12),transparent 30%),
+    radial-gradient(circle at 12% 88%,rgba(120,92,255,.10),transparent 32%),
+    #0b0d12}
+  #app{position:relative;width:1080px;height:1920px}
+  .topline{position:absolute;left:70px;right:70px;top:55px;height:44px;display:flex;align-items:center;justify-content:space-between;color:#8e949f;font-size:19px;letter-spacing:.08em;text-transform:uppercase}
+  .brand{color:#f0f1f3;font-weight:700;letter-spacing:.02em;text-transform:none;font-size:23px}
+  .recon{border:1px solid #343943;border-radius:999px;padding:9px 16px;font-size:14px;color:#9da3ae}
+  .scene{position:absolute;inset:0;opacity:0;transform:translateY(18px);transition:opacity .35s ease,transform .35s ease;pointer-events:none}
+  .scene.active{opacity:1;transform:translateY(0)}
+  .hook{padding:150px 72px}
+  .eyebrow{font-size:22px;color:#d99a5e;letter-spacing:.13em;text-transform:uppercase;font-weight:700;margin-bottom:28px}
+  h1{font-size:78px;line-height:1.02;letter-spacing:-.055em;margin:0 0 34px;max-width:900px}
+  .hook p{font-size:30px;line-height:1.38;color:#aeb4bf;max-width:850px;margin:0}
+  .accent{color:#f0b274}
+  .number{position:absolute;left:72px;top:120px;font-size:150px;font-weight:800;color:#1b1e26;line-height:1}
+  .prompt-stage{padding:145px 58px 60px}
+  .card-title{display:flex;align-items:flex-end;justify-content:space-between;margin:0 10px 28px}
+  .card-title .num{font-size:23px;color:#d99a5e;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+  .card-title h2{font-size:48px;letter-spacing:-.035em;margin:8px 0 0;line-height:1.05}
+  .window{height:1190px;border:1px solid #30343d;border-radius:28px;background:#11141a;box-shadow:0 25px 80px rgba(0,0,0,.38);overflow:hidden}
+  .windowbar{height:66px;border-bottom:1px solid #2a2e36;display:flex;align-items:center;padding:0 24px;gap:9px}
+  .dot{width:11px;height:11px;border-radius:50%;background:#3a3f49}
+  .windowlabel{margin-left:15px;color:#9da3ae;font-size:18px}
+  .chat{display:grid;grid-template-columns:190px 1fr;height:1124px}
+  .sidebar{border-right:1px solid #292d35;padding:25px 18px;color:#858b97}
+  .sideitem{height:42px;border-radius:9px;padding:11px 12px;font-size:15px;margin-bottom:8px}
+  .sideitem.active{background:#20242c;color:#e7e9ed}
+  .conversation{padding:38px 42px;position:relative}
+  .prompt-label{font-size:15px;text-transform:uppercase;letter-spacing:.1em;color:#7f8793;margin-bottom:15px}
+  .promptbox{border:1px solid #3b404a;border-radius:17px;background:#171a21;padding:28px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:23px;line-height:1.48;color:#e9e9ec;min-height:250px;white-space:pre-wrap}
+  .cursor{display:inline-block;width:10px;height:25px;background:#d99a5e;vertical-align:-4px;animation:blink 1s step-end infinite}
+  @keyframes blink{50%{opacity:0}}
+  .result{margin-top:26px;border:1px solid #2d323b;border-radius:17px;background:#101319;padding:25px;opacity:0;transform:translateY(15px)}
+  .result.show{opacity:1;transform:translateY(0);transition:opacity .35s,transform .35s}
+  .resulthead{display:flex;justify-content:space-between;color:#8e95a0;font-size:15px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:17px}
+  .resulttext{font-size:23px;line-height:1.48;color:#d8dbe1}
+  .chip{display:inline-block;border:1px solid #4a3b2b;background:#241c14;color:#e4b783;border-radius:999px;padding:7px 12px;font-size:14px;margin-top:16px}
+  .why{position:absolute;left:42px;right:42px;bottom:30px;border-left:3px solid #d99a5e;padding:10px 18px;color:#9ca3ae;font-size:17px;line-height:1.4}
+  .progress{position:absolute;left:72px;right:72px;bottom:52px;height:5px;background:#252932;border-radius:99px;overflow:hidden}
+  .progress i{display:block;height:100%;width:0;background:#d99a5e;border-radius:99px}
+  .recap{padding:155px 72px}
+  .recap h2{font-size:66px;line-height:1.03;letter-spacing:-.05em;margin:0 0 38px}
+  .list{display:grid;gap:18px;max-width:900px}
+  .item{display:flex;gap:22px;align-items:center;padding:22px 25px;border:1px solid #2f333c;border-radius:18px;background:#11141a}
+  .item b{font-size:24px;color:#d99a5e;width:45px}
+  .item span{font-size:25px;color:#dfe2e7}
+  .source{position:absolute;left:72px;right:72px;bottom:110px;color:#777f8b;font-size:16px;line-height:1.5}
+  .cta{position:absolute;bottom:52px;right:72px;color:#f0b274;font-weight:700;font-size:20px}
+</style>
+</head>
+<body>
+<div id="app">
+  <div class="topline">
+    <div class="brand">ShortPrompt / Claude Productivity</div>
+    <div class="recon">UI RECONSTRUCTION · NOT A SCREEN RECORDING</div>
+  </div>
+
+  <section id="hook" class="scene hook active">
+    <div class="eyebrow">5 prompt patterns</div>
+    <h1>Get <span class="accent">better Claude results</span> without wasting output.</h1>
+    <p>Five reusable prompt patterns based on Anthropic's current prompting guidance.</p>
+  </section>
+
+  <section id="cards"></section>
+
+  <section id="recap" class="scene recap">
+    <div class="eyebrow">Save these</div>
+    <h2>Five prompts.<br><span class="accent">One better workflow.</span></h2>
+    <div class="list">
+      <div class="item"><b>01</b><span>Role + exact output contract</span></div>
+      <div class="item"><b>02</b><span>Relevant context + goal</span></div>
+      <div class="item"><b>03</b><span>XML structure for complex prompts</span></div>
+      <div class="item"><b>04</b><span>Examples to steer format</span></div>
+      <div class="item"><b>05</b><span>Strict output limits</span></div>
+    </div>
+    <div class="source">Source basis: Anthropic, “Prompting best practices.” Patterns are editorial examples, not official Anthropic prompt templates.</div>
+    <div class="cta">Test one on your next Claude task →</div>
+  </section>
+
+  <div class="progress"><i id="bar"></i></div>
+</div>
+
 <script>
-window.SPMOTION={width:1080,height:1920,fps:30,duration:72};
-const data=[
-["01 · Context Compression","Replace a long conversation or document with a compact state that preserves only decisions, constraints and unresolved work.","FULL HISTORY\n→ repeated requirements\n→ resolved questions\n→ old attempts\n\nCOMPACT STATE\n→ current goal\n→ active constraints\n→ decisions\n→ next action"],
-["02 · Progressive Disclosure","Don't send every detail up front. Reveal the information needed for the current step, then continue with the result.","STEP 1\n→ goal + minimal constraints\n\nSTEP 2\n→ only the relevant file\n\nSTEP 3\n→ only the error output\n\nSTEP 4\n→ apply the focused change"],
-["03 · Retrieve, Don't Inject","Instead of placing an entire knowledge base into every prompt, retrieve only the small set of information relevant to the current question.","BAD\nPROMPT + ENTIRE KNOWLEDGE BASE\n\nBETTER\nPROMPT\n   ↓\nRETRIEVE RELEVANT CHUNKS\n   ↓\nANSWER"],
-["04 · Keep Agent State Compact","For long-running agents, store a small task state instead of replaying the complete interaction history on every turn.","AGENT STATE\ngoal\nconstraints\ncompleted steps\nopen issues\nnext action\n\nNOT\nevery previous message"],
-["05 · Separate Data From Instructions","Keep reusable instructions stable and pass changing data separately. This reduces accidental repetition and makes context easier to control.","INSTRUCTIONS\n→ stable rules\n\nDATA\n→ current input\n\nOUTPUT\n→ exact format\n\nREUSE THE RULES\nWITHOUT REPEATING THE DATA"]];
-const title=document.getElementById('title'),why=document.getElementById('why'),code=document.getElementById('code'),bar=document.getElementById('bar'),count=document.getElementById('count'),panel=document.getElementById('panel'),step=document.getElementById('step'),summary=document.getElementById('summary'),final=document.getElementById('final');
-function op(e,v){e.style.opacity=v}
-window.SPMOTION_RENDER=function(t){op(panel,1);op(step,1);op(summary,0);op(final,0);if(t<60){let i=Math.min(4,Math.floor(t/12)),local=t%12;title.textContent=data[i][0];why.textContent=data[i][1];code.textContent=data[i][2];step.innerHTML="<strong>TRICK "+String(i+1).padStart(2,"0")+"</strong> · "+data[i][1];let pct=Math.max(38,100-local*5.2);bar.style.width=pct+"%";count.textContent=Math.round(pct)+"%"}else if(t<66){op(panel,0);op(step,0);op(summary,1)}else{op(panel,0);op(step,0);op(summary,1);op(final,1)}};
-window.SPMOTION_RENDER(0);
-</script></body></html>
+window.SPMOTION = {width:1080,height:1920,fps:30,duration:58};
+
+const cards = [
+  {
+    n:"01", title:"Role + output contract",
+    prompt:"Act as a senior Python reviewer.\\nReturn only:\\n1. Verdict\\n2. Three issues\\n3. Smallest safe patch",
+    result:"A defined role plus an exact output format reduces ambiguity and makes the answer easier to use.",
+    chip:"CLEAR + DIRECT"
+  },
+  {
+    n:"02", title:"Give the context that matters",
+    prompt:"<goal>Reduce checkout latency.</goal>\\n<constraints>No API changes.</constraints>\\n<task>Find the highest-impact fixes.</task>",
+    result:"Claude now knows the goal, the constraints, and why the task matters before choosing a solution.",
+    chip:"CONTEXT"
+  },
+  {
+    n:"03", title:"Structure complex prompts",
+    prompt:"<instructions>Review the input.</instructions>\\n<context>Project background...</context>\\n<input>Code to inspect...</input>\\n<output>Return findings.</output>",
+    result:"XML tags separate instructions, context, input, and output so complex prompts are easier to parse.",
+    chip:"XML STRUCTURE"
+  },
+  {
+    n:"04", title:"Show examples",
+    prompt:"<examples>\\n<example>Input A → Output A</example>\\n<example>Input B → Output B</example>\\n</examples>",
+    result:"A couple of relevant examples can steer format, tone, and consistency more reliably than a vague description.",
+    chip:"FEW-SHOT"
+  },
+  {
+    n:"05", title:"Control answer size",
+    prompt:"Return only the final answer.\\nMaximum 5 bullets.\\nNo restatement.\\nNo preamble.\\nInclude only decision-relevant details.",
+    result:"Explicit output constraints help keep the response focused when you need a compact answer.",
+    chip:"LOWER OUTPUT"
+  }
+];
+
+const cardsRoot=document.getElementById("cards");
+cards.forEach((c,i)=>{
+  const s=document.createElement("section");
+  s.className="scene prompt-stage";
+  s.id="card"+i;
+  s.innerHTML=`
+    <div class="card-title">
+      <div><div class="num">Prompt ${c.n}</div><h2>${c.title}</h2></div>
+    </div>
+    <div class="window">
+      <div class="windowbar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="windowlabel">Claude · conversation</span></div>
+      <div class="chat">
+        <aside class="sidebar">
+          <div class="sideitem active">New conversation</div>
+          <div class="sideitem">Prompt experiments</div>
+          <div class="sideitem">Code review</div>
+          <div class="sideitem">Research</div>
+        </aside>
+        <main class="conversation">
+          <div class="prompt-label">User prompt</div>
+          <div class="promptbox"><span class="typed"></span><span class="cursor"></span></div>
+          <div class="result">
+            <div class="resulthead"><span>Claude response</span><span>illustrative</span></div>
+            <div class="resulttext">${c.result}</div>
+            <div class="chip">${c.chip}</div>
+          </div>
+          <div class="why">Why it works: ${c.n==="01"?"Specific instructions make the desired behavior explicit.":c.n==="02"?"Relevant context helps Claude target the actual goal.":c.n==="03"?"Descriptive tags reduce ambiguity in mixed-content prompts.":c.n==="04"?"Examples demonstrate the output pattern you want.":"Explicit format and length constraints keep the answer focused."}</div>
+        </main>
+      </div>
+    </div>`;
+  cardsRoot.appendChild(s);
+});
+
+const scenes=[document.getElementById("hook"),...cards.map((_,i)=>document.getElementById("card"+i)),document.getElementById("recap")];
+const starts=[0,4,14.5,25,35.5,46,56];
+const ends=[4,14.5,25,35.5,46,56,58];
+
+function clamp(x,a,b){return Math.max(a,Math.min(b,x));}
+function typeText(el,text,p){
+  const count=Math.floor(clamp(p,0,1)*text.length);
+  el.textContent=text.slice(0,count);
+}
+
+window.SPMOTION_RENDER=function(time){
+  const t=clamp(time,0,58);
+  scenes.forEach((s,i)=>{
+    s.classList.toggle("active",t>=starts[i] && t<ends[i] || (i===scenes.length-1 && t>=starts[i]));
+  });
+
+  if(t<4){
+    document.getElementById("bar").style.width=(t/58*100)+"%";
+    return;
+  }
+
+  for(let i=0;i<5;i++){
+    const local=t-starts[i+1];
+    const s=document.getElementById("card"+i);
+    const typed=s.querySelector(".typed");
+    const result=s.querySelector(".result");
+    const typing=clamp(local/2.4,0,1);
+    typeText(typed,cards[i].prompt,typing);
+    result.classList.toggle("show",local>=2.8);
+  }
+  document.getElementById("bar").style.width=(t/58*100)+"%";
+};
+</script>
+</body>
+</html>

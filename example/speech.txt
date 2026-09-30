@@ -1,29 +1,19 @@
-Most people try to save AI tokens by making their prompts shorter.
+If Claude gives you long, messy answers, the problem may be your prompt.
+Here are five prompt patterns you can reuse to get better results with less wasted output.
 
-But once you understand the basics, there are more powerful techniques.
+Number one: give Claude a role and an exact output contract.
+Act as a senior Python reviewer. Return only: verdict, three issues, and the smallest safe patch.
 
-Here are five advanced ways to reduce token usage.
+Number two: add the context that actually matters.
+Explain the goal, constraints, and why the task matters before asking for the solution.
 
-Number one: context compression.
+Number three: separate instructions from data with XML tags.
+Use instruction, context, input, and output sections so Claude can tell what is a rule and what is source material.
 
-Instead of carrying an entire conversation forward, keep a compact state containing the current goal, active constraints, important decisions, and unresolved work. Drop questions and information that are already settled.
+Number four: show examples.
+Give Claude two or three examples of the input and the output you want. This is one of Anthropic's recommended ways to steer format and consistency.
 
-Number two: progressive disclosure.
+And number five: control the answer size.
+Ask for the final answer only, with a strict format and a maximum number of bullets. You get the information you need without a giant response.
 
-Don't give the model every detail at the beginning. Start with the minimum context needed for the current step, then reveal the relevant file, error, or specification only when it becomes necessary.
-
-Number three: retrieve, don't inject.
-
-If you have a large knowledge base, don't paste all of it into every prompt. Retrieve only the small pieces relevant to the current task.
-
-Number four: keep agent state compact.
-
-Long-running agents can waste tokens replaying their entire history. Store the goal, constraints, completed work, open issues, and next action instead of every previous message.
-
-Number five: separate data from instructions.
-
-Keep stable instructions reusable, and pass changing data separately. This makes the context easier to control and avoids repeating information that hasn't changed.
-
-The advanced rule is simple: don't make the model remember everything.
-
-Give it a compact state, and reveal additional context only when the task actually requires it.
+These patterns are based on Anthropic's official prompting guidance. Save them, and test them on your next Claude task.
