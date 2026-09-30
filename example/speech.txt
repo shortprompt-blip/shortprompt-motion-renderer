@@ -1,15 +1,29 @@
-Most AI token waste comes from one simple mistake: giving the model far more context than the task actually needs.
+Most people try to save AI tokens by making their prompts shorter.
 
-Here are ten ways to use fewer AI tokens.
+But once you understand the basics, there are more powerful techniques.
 
-First, send only the context the model needs. Second, don't paste an entire repository when one file is relevant. Third, summarize old conversation history instead of carrying every message forward.
+Here are five advanced ways to reduce token usage.
 
-Fourth, don't repeat constraints that haven't changed. Fifth, use structured input so the model can parse the information efficiently. Sixth, request the exact output format you need.
+Number one: context compression.
 
-Seventh, don't ask the model to repeat information you already provided. Eighth, split oversized tasks intelligently instead of sending one giant prompt.
+Instead of carrying an entire conversation forward, keep a compact state containing the current goal, active constraints, important decisions, and unresolved work. Drop questions and information that are already settled.
 
-Ninth, when working with code, use a focused diff or targeted file instead of the entire file whenever possible. And tenth, keep reusable context compact.
+Number two: progressive disclosure.
 
-The key is not to remove useful information. It's to remove context that is repeated, stale, irrelevant, or redundant.
+Don't give the model every detail at the beginning. Start with the minimum context needed for the current step, then reveal the relevant file, error, or specification only when it becomes necessary.
 
-And that's how you can often get the same task done with far fewer tokens.
+Number three: retrieve, don't inject.
+
+If you have a large knowledge base, don't paste all of it into every prompt. Retrieve only the small pieces relevant to the current task.
+
+Number four: keep agent state compact.
+
+Long-running agents can waste tokens replaying their entire history. Store the goal, constraints, completed work, open issues, and next action instead of every previous message.
+
+Number five: separate data from instructions.
+
+Keep stable instructions reusable, and pass changing data separately. This makes the context easier to control and avoids repeating information that hasn't changed.
+
+The advanced rule is simple: don't make the model remember everything.
+
+Give it a compact state, and reveal additional context only when the task actually requires it.
