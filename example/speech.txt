@@ -1,43 +1,43 @@
-Fable 5.2 may be the next big Claude model. But there is a problem: Anthropic has not announced it.
+Google just unveiled Gemini 4 Argon — and this is not another small model update.
 
-So what is actually happening?
+Argon is Google's new frontier model for complex coding, enterprise knowledge work, and cybersecurity.
 
-As of October first, Anthropic's official model documentation still lists Claude Fable 5.1 as the current Fable model. Fable 5.1 has a one-million-token context window, up to 128-thousand output tokens, adaptive thinking, and a high default effort level.
+But the number getting the most attention is one million.
 
-The Fable 5.2 story comes from leaks and user reports.
+Google says Argon's output limit jumps from 64 thousand tokens to an industry-leading one million tokens.
 
-One widely circulated report claimed Anthropic was preparing a new pretraining run, with a release window around late September or early October. Then, in September, several users reported something more interesting: prompts sent to Fable 5.1 inside Claude Code appeared to be routed to a newer system.
+That means a single trajectory can contain hundreds of thousands of generated tokens for a long, complex task.
 
-But this is not proof of a Fable 5.2 release. There is still no public model identifier, no model card, no official pricing, and no Anthropic announcement for Fable 5.2.
+And Google is showing why that matters.
 
-What makes the rumor interesting is the demos.
+Its engineers are using Argon for large code migrations, including projects scaling to more than 800 thousand lines of code.
 
-Accounts tracking the leak have shown interactive JavaScript and canvas experiments reportedly generated in a single pass: animated characters, small virtual worlds, and complete browser experiences built directly in code.
+In one example, Argon helped replace 32 thousand lines of SIMD code in a Rust video decoder, producing a version that Google says runs 2.7 times faster than the existing Rust port.
 
-If those reports are genuine, the interesting upgrade would not simply be better chat.
+On DeepSWE version 1.1, Google's reported score is 77.9 percent for real-world, long-horizon software engineering tasks.
 
-It would be stronger long-horizon coding, more autonomous tool use, and better ability to turn a complex prompt into a working interactive artifact.
+Then there is cybersecurity.
 
-And that matters because Fable 5.1 is already designed for demanding reasoning and long-running agentic work.
+Google says Argon can autonomously find, validate, and patch critical vulnerabilities.
 
-But there is another problem for Anthropic.
+On CWE-bench version 1, Google reports a top score of 68 percent.
 
-Fable 5.1 is expensive: ten dollars per million input tokens and fifty dollars per million output tokens. Meanwhile, Anthropic has already released cheaper models such as Opus 5.5.
+And this is where the launch gets unusual.
 
-So Fable 5.2 would need to justify its premium.
+Argon is not broadly available yet.
 
-For now, the scoreboard is simple.
+It is first rolling out to trusted cyber defenders through Google's Fairwind program, while Google strengthens its frontier safety measures.
 
-Confirmed: Fable 5.1.
+The introductory API price is two dollars per million input tokens and ten dollars per million output tokens. After the introductory period, Google says the price will become four dollars and twenty dollars.
 
-Reported: possible hidden routing and impressive coding demos.
+So what is Gemini 4 Argon really?
 
-Unknown: the model identity, specifications, benchmarks, price, and release date.
+Not simply a chatbot with a bigger context window.
 
-So is Fable 5.2 real?
+Google is positioning it as a model for long-horizon work — coding, research, enterprise workflows, and defensive cybersecurity.
 
-There are enough signals to watch it closely.
+The real test will be what happens when developers get access.
 
-But until Anthropic publishes the model, Fable 5.2 is still a rumor — not a product.
+One million output tokens sounds huge.
 
-And that distinction is exactly what we'll be watching next.
+Now we have to see what Argon can actually do with them.
