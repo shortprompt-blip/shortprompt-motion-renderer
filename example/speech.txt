@@ -1,49 +1,43 @@
-Gemini 4 is coming. But how much of what you are hearing about it is actually real?
+Fable 5.2 may be the next big Claude model. But there is a problem: Anthropic has not announced it.
 
-Google has confirmed one important thing: Gemini 4 is being trained. In July, Google described it as its most ambitious pre-training run yet. More recent reporting says the model has moved into refinement. But Google has not published the final model card, API specification, benchmark table, or launch configuration.
+So what is actually happening?
 
-So let’s separate the confirmed facts from the leaks.
+As of October first, Anthropic's official model documentation still lists Claude Fable 5.1 as the current Fable model. Fable 5.1 has a one-million-token context window, up to 128-thousand output tokens, adaptive thinking, and a high default effort level.
 
-The most interesting leak is a reported two-hundred-fifty-six-thousand-token output limit. For comparison, Google’s current Gemini 3.8 Flash documentation lists a maximum output of sixty-five-thousand five-hundred thirty-six tokens. If the leaked Gemini 4 number is real, that would be roughly four times larger.
+The Fable 5.2 story comes from leaks and user reports.
 
-Why does that matter? A larger output budget could make giant code transformations, long technical reports and extended agent workflows more practical. But there is a catch: this is a leak about an alleged checkpoint. A training checkpoint is not the same thing as a shipping product.
+One widely circulated report claimed Anthropic was preparing a new pretraining run, with a release window around late September or early October. Then, in September, several users reported something more interesting: prompts sent to Fable 5.1 inside Claude Code appeared to be routed to a newer system.
 
-Then the claims get much less certain.
+But this is not proof of a Fable 5.2 release. There is still no public model identifier, no model card, no official pricing, and no Anthropic announcement for Fable 5.2.
 
-Leak coverage has also discussed a multi-million-token context window and a selectable high-effort reasoning mode. A two-million-token figure appears in some reporting, but Google has not published it as an official Gemini 4 specification.
+What makes the rumor interesting is the demos.
 
-And the most extreme claims, including ten-million-token context, persistent memory and dramatic benchmark numbers, need much stronger evidence. They should be treated as rumors, not specifications.
+Accounts tracking the leak have shown interactive JavaScript and canvas experiments reportedly generated in a single pass: animated characters, small virtual worlds, and complete browser experiences built directly in code.
 
-There is another reason Gemini 4 is getting attention.
+If those reports are genuine, the interesting upgrade would not simply be better chat.
 
-Anonymous model-comparison tests have been attributed by the community to possible Gemini 4 checkpoints. Reports describe impressive SVG generation, three-dimensional scenes and interactive simulations. But the attribution is not proven. An anonymous model label does not tell us what model is actually running behind it.
+It would be stronger long-horizon coding, more autonomous tool use, and better ability to turn a complex prompt into a working interactive artifact.
 
-So those demonstrations are interesting clues, not proof of what Gemini 4 will ship with.
+And that matters because Fable 5.1 is already designed for demanding reasoning and long-running agentic work.
 
-And Google is not competing against the models that existed six months ago.
+But there is another problem for Anthropic.
 
-GPT-6 Astra is already shipping. OpenAI positions it for complex reasoning, coding, research, browsing and computer use, with a one-point-zero-five-million-token context window and a one-hundred-twenty-eight-thousand-token maximum output.
+Fable 5.1 is expensive: ten dollars per million input tokens and fifty dollars per million output tokens. Meanwhile, Anthropic has already released cheaper models such as Opus 5.5.
 
-Claude Fable 5.1 is also available. Anthropic positions it as a frontier model for coding, knowledge work and long-running problem solving.
+So Fable 5.2 would need to justify its premium.
 
-And Google’s own Gemini 3.8 Flash already supports more than one million input tokens, sixty-five-thousand five-hundred thirty-six output tokens, thinking and computer use in preview.
+For now, the scoreboard is simple.
 
-So Gemini 4 does not just need a bigger context window or a bigger output limit.
+Confirmed: Fable 5.1.
 
-It needs to prove four things.
+Reported: possible hidden routing and impressive coding demos.
 
-Can it reason better? Can it work autonomously for longer? Can it modify and verify large codebases? And can it use a computer reliably and finish the task?
+Unknown: the model identity, specifications, benchmarks, price, and release date.
 
-That is the real benchmark.
+So is Fable 5.2 real?
 
-Right now, the strongest conclusion is simple.
+There are enough signals to watch it closely.
 
-Gemini 4 is real. Its training is real. The leaked specifications are interesting. Some reported demonstrations are impressive.
+But until Anthropic publishes the model, Fable 5.2 is still a rumor — not a product.
 
-But the final capability is still unproven.
-
-So when you see a headline saying Gemini 4 destroys every other model, look for the evidence behind the claim.
-
-Because two-hundred-fifty-six-thousand tokens is a specification.
-
-Reliable autonomy is the real test.
+And that distinction is exactly what we'll be watching next.
