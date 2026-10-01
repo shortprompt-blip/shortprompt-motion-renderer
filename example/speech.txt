@@ -1,43 +1,53 @@
-Google just unveiled Gemini 4 Argon — and this is not another small model update.
+Gemini 4 Argon is everywhere right now.
 
-Argon is Google's new frontier model for complex coding, enterprise knowledge work, and cybersecurity.
+But did Google actually build the best AI model?
 
-But the number getting the most attention is one million.
+Let's compare the numbers.
 
-Google says Argon's output limit jumps from 64 thousand tokens to an industry-leading one million tokens.
+On DeepSWE version 1.1, Google reports Argon at 77.9 percent. Claude Opus 5.5 is at 74.2. GPT-6 Astra is at 74.1. Argon wins this one.
 
-That means a single trajectory can contain hundreds of thousands of generated tokens for a long, complex task.
+But change the benchmark.
 
-And Google is showing why that matters.
+On FrontierSWE version 2, Argon drops to 55 percent. GPT-6 Astra reaches 65.5. Claude Opus 5.5 reaches 62.3.
 
-Its engineers are using Argon for large code migrations, including projects scaling to more than 800 thousand lines of code.
+So on this coding benchmark, Argon is last.
 
-In one example, Argon helped replace 32 thousand lines of SIMD code in a Rust video decoder, producing a version that Google says runs 2.7 times faster than the existing Rust port.
+Terminal-Bench 4.0 tells a similar story. Argon scores 57.4 percent. Opus 5.5 scores 66.4. That's a nine-point gap in Claude's favor.
 
-On DeepSWE version 1.1, Google's reported score is 77.9 percent for real-world, long-horizon software engineering tasks.
+So the claim that Gemini 4 Argon simply beats every other model at coding is not supported by the published numbers.
 
-Then there is cybersecurity.
+But there is another side.
 
-Google says Argon can autonomously find, validate, and patch critical vulnerabilities.
+On long-context reasoning, Argon looks extremely strong. Google reports 84.2 percent on GraphWalks for problems from 256 thousand to one million tokens.
 
-On CWE-bench version 1, Google reports a top score of 68 percent.
+On LVBench, which measures long-video understanding, Argon reaches 91.7 percent.
 
-And this is where the launch gets unusual.
+And on AutomationBench, Google reports 51.3 percent for Argon, ahead of GPT-6 Astra at 41.4 and Claude Opus 5.5 at 42.5.
 
-Argon is not broadly available yet.
+Cybersecurity is another major strength.
 
-It is first rolling out to trusted cyber defenders through Google's Fairwind program, while Google strengthens its frontier safety measures.
+On CWE-bench version 1, Argon scores 68 percent, tied for the top published score in the comparison.
 
-The introductory API price is two dollars per million input tokens and ten dollars per million output tokens. After the introductory period, Google says the price will become four dollars and twenty dollars.
+So what is Gemini 4 Argon actually best at?
 
-So what is Gemini 4 Argon really?
+Not everything.
 
-Not simply a chatbot with a bigger context window.
+The pattern is much more interesting.
 
-Google is positioning it as a model for long-horizon work — coding, research, enterprise workflows, and defensive cybersecurity.
+Argon looks particularly strong when the job requires long reasoning, huge inputs, knowledge work, multimodal understanding, and complex workflows.
 
-The real test will be what happens when developers get access.
+But terminal-heavy agent work is a different story.
 
-One million output tokens sounds huge.
+And there is one more caveat.
 
-Now we have to see what Argon can actually do with them.
+These comparisons come from Google's launch evaluation table. Argon is only beginning its limited rollout, so independent reproduction is still important.
+
+The takeaway?
+
+Gemini 4 Argon is absolutely a frontier model.
+
+But the real story isn't 'Google destroyed everyone.'
+
+It's that the AI race is becoming benchmark-specific.
+
+The best model depends on what you actually ask it to do.

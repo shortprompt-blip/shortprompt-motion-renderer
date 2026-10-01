@@ -1,56 +1,23 @@
-<!doctype html><html><head><meta charset="utf-8"><style>
-*{box-sizing:border-box}html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#fff;color:#101318;font-family:Arial,Helvetica,sans-serif}
-#app{position:relative;width:1080px;height:1920px;background:#fff}.top{position:absolute;top:42px;left:55px;right:55px;display:flex;justify-content:space-between;z-index:10;font-weight:800;letter-spacing:.08em;font-size:20px}.tag{background:#101318;color:#fff;padding:10px 15px;border-radius:18px}
-.scene{position:absolute;inset:0;padding:160px 55px 100px;opacity:0}.scene.active{opacity:1}
-.k{font-size:19px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:#1769ff;margin-bottom:18px}
-h1{font-size:74px;line-height:.98;letter-spacing:-.05em;margin:0 0 25px}h2{font-size:45px;line-height:1.04;letter-spacing:-.035em;margin:0 0 25px}
-p{font-size:27px;line-height:1.38;color:#303640}.card{border:2px solid #e2e5ea;border-radius:26px;padding:28px;background:#fafbfc;box-shadow:0 16px 40px #0d17200d}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.metric{font-size:56px;font-weight:900;letter-spacing:-.04em}.small{font-size:18px;color:#68717d;margin-top:7px}
-.hero{border-radius:30px;background:#101318;color:white;padding:38px;box-shadow:0 25px 70px #10131822}.browser{border:2px solid #dfe3e8;border-radius:22px;overflow:hidden;box-shadow:0 20px 55px #18202b14}.bar{height:55px;background:#f4f5f7;display:flex;align-items:center;padding:0 18px;gap:8px}.dot{width:11px;height:11px;border-radius:50%;background:#b7bec7}.url{flex:1;margin-left:10px;background:white;border:1px solid #dce1e6;border-radius:10px;padding:9px 14px;color:#66707d;font:15px monospace}.body{height:760px;padding:30px;background:#fff}
-.code{background:#11151b;color:#e9edf2;border-radius:18px;padding:24px;font:18px/1.55 monospace;white-space:pre-wrap}.hl{color:#6ab0ff}.ok{color:#72e0a5}.warn{color:#ffd166}
-.bargraph{height:250px;display:flex;align-items:end;gap:18px;margin-top:25px}.barx{flex:1;background:#dce4ee;border-radius:12px 12px 0 0;position:relative}.barx span{position:absolute;top:-32px;width:100%;text-align:center;font-weight:800}.barx.active{background:#1769ff}
-.big{font-size:105px;font-weight:950;letter-spacing:-.08em}.center{height:100%;display:flex;align-items:center;justify-content:center;text-align:center}
-.note{margin-top:20px;padding:16px 18px;border-left:5px solid #1769ff;background:#f4f7fb;font-size:19px;color:#4d5662}.source{position:absolute;left:55px;right:55px;bottom:72px;font-size:13px;color:#858d97}
-.timeline{position:absolute;left:55px;right:55px;bottom:32px;height:5px;background:#e5e7eb}.progress{height:100%;width:0;background:#1769ff}
-</style></head><body><div id="app">
-<div class="top"><div>SHORTPROMPT / FRONTIER WATCH</div><div class="tag">GEMINI 4 ARGON</div></div>
-
-<section class="scene" data-a="0" data-b="13"><div class="k">Just announced</div><h1>Gemini 4 Argon<br>is here.</h1><div class="hero"><div style="font-size:29px;font-weight:800">Google's new frontier model</div><p style="color:#d9e0e8">Built for long-horizon coding, enterprise knowledge work and cybersecurity defense.</p></div><div class="note">FIRST FRAME / THUMBNAIL FRAME — Gemini 4 Argon • 1 MILLION OUTPUT TOKENS</div></section>
-
-<section class="scene" data-a="13" data-b="30"><div class="k">The headline number</div><h2>One million output tokens.</h2><div class="grid"><div class="card"><div class="metric">1M</div><div class="small">maximum output tokens</div></div><div class="card"><div class="metric">64K → 1M</div><div class="small">Google says the limit expanded from 64K</div></div></div><div class="note">The one-million figure is an output limit, not the same thing as a one-million-token context window.</div></section>
-
-<section class="scene" data-a="30" data-b="51"><div class="k">Real software engineering</div><h2>Google says Argon is already working on huge codebases.</h2><div class="browser"><div class="bar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><div class="url">internal-code-migration.example</div></div><div class="body"><div class="code"><span class="hl">MIGRATION JOB</span>
-
-C / C++  →  Rust
-
-Project size
-800,000+ lines
-
-Argon agents
-→ inspect
-→ rewrite
-→ profile
-→ test
-→ audit
-
-<span class="ok">STATUS: REVIEW REQUIRED</span></div><div class="note">Editorial reconstruction based on Google's published example.</div></div></div></section>
-
-<section class="scene" data-a="51" data-b="70"><div class="k">One concrete example</div><h2>32K lines of SIMD code.</h2><div class="card"><div class="metric">2.7× faster</div><p>Google says Argon replaced 32K lines of SIMD code in a Rust video decoder after multiple profile-guided experiments.</p></div><div class="bargraph"><div class="barx" style="height:35%"><span>Rust port</span></div><div class="barx active" style="height:94%"><span>Argon result</span></div></div></section>
-
-<section class="scene" data-a="70" data-b="87"><div class="k">Coding benchmark</div><h2>DeepSWE v1.1</h2><div class="center"><div><div class="big">77.9%</div><p>Google reports a new state-of-the-art result for real-world, long-horizon software engineering.</p></div></div></section>
-
-<section class="scene" data-a="87" data-b="106"><div class="k">Cybersecurity</div><h2>Argon is built to find, validate and patch vulnerabilities.</h2><div class="grid"><div class="card"><div class="metric">68%</div><div class="small">CWE-bench v1 — Google reported score</div></div><div class="card"><div class="metric">20</div><div class="small">programming languages covered in Google's internal vulnerability benchmark</div></div></div><div class="note">Google says Argon can autonomously discover, validate and patch critical vulnerabilities.</div></section>
-
-<section class="scene" data-a="106" data-b="125"><div class="k">But there is a catch</div><h2>It isn't broadly available yet.</h2><div class="hero"><div class="metric" style="font-size:48px">FAIRWIND</div><p style="color:#d9e0e8">Argon is initially rolling out to trusted cyber defenders while Google strengthens frontier safeguards.</p></div><div class="note">Broader availability is planned for paid API customers and Google AI Ultra subscribers.</div></section>
-
-<section class="scene" data-a="125" data-b="143"><div class="k">Price</div><h2>What will Argon cost?</h2><div class="grid"><div class="card"><div class="small">INTRODUCTORY</div><div class="metric">$2 / $10</div><div class="small">input / output per 1M tokens</div></div><div class="card"><div class="small">AFTER INTRO PERIOD</div><div class="metric">$4 / $20</div><div class="small">input / output per 1M tokens</div></div></div><div class="note">Google says cached input tokens receive a 95% discount during the introductory pricing.</div></section>
-
-<section class="scene" data-a="143" data-b="155"><div class="center"><div><div class="k">The real question</div><div class="big">1M tokens.</div><h2>Now show us what it can actually do.</h2><p>Gemini 4 Argon is positioned as a model for long-horizon work — not simply a bigger chatbot.</p></div></div></section>
-
-<div class="source">Source: Google / Gemini 4 Argon announcement, Sep. 30, 2026. All UI screens are editorial reconstructions, not screenshots of private Google systems.</div>
-<div class="timeline"><div class="progress" id="progress"></div></div></div>
-<script>
-window.SPMOTION={width:1080,height:1920,fps:30,duration:155};
-const scenes=[...document.querySelectorAll('.scene')],progress=document.getElementById('progress');
-window.SPMOTION_RENDER=function(t){scenes.forEach(s=>s.classList.toggle('active',t>=+s.dataset.a&&t<+s.dataset.b));progress.style.width=Math.max(0,Math.min(1,t/155))*100+'%'};window.SPMOTION_RENDER(0);
-</script></body></html>
+<!doctype html><meta charset="utf-8"><style>
+*{box-sizing:border-box}html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#fff;color:#101318;font-family:Arial,sans-serif}
+#app{width:1080px;height:1920px;position:relative;background:#fff}.top{position:absolute;top:38px;left:55px;right:55px;display:flex;justify-content:space-between;font-size:19px;font-weight:800;z-index:9}.tag{background:#101318;color:#fff;padding:10px 15px;border-radius:18px}
+.scene{position:absolute;inset:0;padding:145px 55px 100px;opacity:0}.scene.active{opacity:1}.k{font-size:19px;font-weight:900;letter-spacing:.15em;color:#1769ff;text-transform:uppercase;margin-bottom:15px}
+h1{font-size:72px;line-height:.97;letter-spacing:-.05em;margin:0 0 25px}h2{font-size:47px;line-height:1.02;letter-spacing:-.04em;margin:0 0 24px}p{font-size:26px;line-height:1.34;color:#303640}
+.hero,.card{border-radius:28px;padding:32px}.hero{background:#101318;color:#fff}.card{border:2px solid #e1e5ea;background:#fafbfc;box-shadow:0 15px 38px #1013180d}.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.metric{font-size:56px;font-weight:950}.big{font-size:105px;font-weight:950;letter-spacing:-.08em}
+.chart{height:610px;display:flex;align-items:end;gap:28px;padding:0 25px 60px;border-bottom:2px solid #cfd5dc}.col{flex:1;background:#1769ff;border-radius:14px 14px 0 0;position:relative}.col.alt{background:#9da8b5}.col.third{background:#d1d7de}.val{position:absolute;top:-45px;left:0;right:0;text-align:center;font-size:23px;font-weight:900}.lab{position:absolute;bottom:-52px;left:-20px;right:-20px;text-align:center;font-size:16px;font-weight:800}
+.row{display:grid;grid-template-columns:210px 1fr 100px;align-items:center;gap:15px;margin:22px 0;font-weight:800}.track{height:34px;background:#e8ebef;border-radius:10px;overflow:hidden}.fill{height:100%;background:#1769ff}.gray{background:#9da8b5}.note{margin-top:18px;padding:15px 17px;border-left:5px solid #1769ff;background:#f3f6fa;font-size:18px;color:#4e5865}
+.center{height:650px;display:flex;align-items:center;justify-content:center;text-align:center}.pill{display:inline-block;border:2px solid #dfe4ea;border-radius:999px;padding:10px 16px;margin:5px;font-weight:800}.blue{border-color:#1769ff;color:#1769ff}
+.timeline{position:absolute;left:55px;right:55px;bottom:30px;height:5px;background:#e5e7eb}.progress{height:100%;background:#1769ff}.source{position:absolute;left:55px;right:55px;bottom:58px;font-size:12px;color:#89919b}
+</style><div id="app"><div class="top"><div>SHORTPROMPT / BENCHMARK WATCH</div><div class="tag">GEMINI 4 ARGON</div></div>
+<section class="scene" data-a="0" data-b="13"><div class="k">The benchmark question</div><h1>Did Google build<br>the best AI?</h1><div class="hero"><b style="font-size:30px">Gemini 4 Argon vs the frontier</b><p style="color:#d9e0e8">The answer changes depending on what you ask the models to do.</p></div><div class="note">THUMBNAIL FRAME — BIG QUESTION + BIG DATA</div></section>
+<section class="scene" data-a="13" data-b="31"><div class="k">Software engineering</div><h2>DeepSWE v1.1</h2><div class="chart"><div class="col" style="height:390px"><div class="val">77.9%</div><div class="lab">Argon</div></div><div class="col alt" style="height:371px"><div class="val">74.2%</div><div class="lab">Opus 5.5</div></div><div class="col third" style="height:370px"><div class="val">74.1%</div><div class="lab">GPT-6 Astra</div></div></div><div class="note">Google reports Argon first on this long-horizon software engineering test.</div></section>
+<section class="scene" data-a="31" data-b="50"><div class="k">Change the benchmark</div><h2>FrontierSWE v2</h2><div class="row">GPT-6 Astra<div class="track"><div class="fill" style="width:65.5%"></div></div>65.5%</div><div class="row">Opus 5.5<div class="track"><div class="fill gray" style="width:62.3%"></div></div>62.3%</div><div class="row">Argon<div class="track"><div class="fill gray" style="width:55%"></div></div>55.0%</div><div class="note">Argon is last of these three on this published comparison.</div></section>
+<section class="scene" data-a="50" data-b="67"><div class="k">Terminal work</div><h2>Terminal-Bench 4.0</h2><div class="grid" style="margin-top:80px"><div class="card"><div class="metric">66.4%</div><p>Claude Opus 5.5</p></div><div class="card"><div class="metric">57.4%</div><p>Gemini 4 Argon</p></div></div><div class="big" style="font-size:70px;margin-top:60px">−9.0 pts</div><p>Terminal-heavy agent work is not where Argon leads.</p></section>
+<section class="scene" data-a="67" data-b="84"><div class="k">Long-context reasoning</div><h2>256K → 1M token problems</h2><div class="center"><div><div class="big">84.2%</div><p>GraphWalks BFS — Google's reported score for the 256K–1M range.</p></div></div></section>
+<section class="scene" data-a="84" data-b="101"><div class="k">Long video understanding</div><h2>LVBench</h2><div class="chart"><div class="col" style="height:458px"><div class="val">91.7%</div><div class="lab">Argon</div></div><div class="col alt" style="height:438px"><div class="val">87.5%</div><div class="lab">GPT-6 Astra</div></div><div class="col third" style="height:419px"><div class="val">83.7%</div><div class="lab">Opus 5.5</div></div></div></section>
+<section class="scene" data-a="101" data-b="118"><div class="k">Enterprise automation</div><h2>AutomationBench</h2><div class="row">Argon<div class="track"><div class="fill" style="width:51.3%"></div></div>51.3%</div><div class="row">Opus 5.5<div class="track"><div class="fill gray" style="width:42.5%"></div></div>42.5%</div><div class="row">GPT-6 Astra<div class="track"><div class="fill gray" style="width:41.4%"></div></div>41.4%</div></section>
+<section class="scene" data-a="118" data-b="135"><div class="k">Cybersecurity</div><h2>CWE-bench v1</h2><div class="center"><div><div class="big">68%</div><p>Argon ties for the top published score.</p><span class="pill blue">Discovery</span><span class="pill">Validation</span><span class="pill">Patching</span></div></div></section>
+<section class="scene" data-a="135" data-b="158"><div class="k">The honest verdict</div><h1>There is no single<br>“best AI”.</h1><div class="hero"><b style="font-size:28px">Argon wins important categories.</b><p style="color:#d9e0e8">Other models still lead on terminal-heavy agent work and some coding evaluations.</p></div><div class="note">Vendor-published benchmark figures. Independent reproduction still matters.</div></section>
+<section class="scene" data-a="158" data-b="165"><div class="center"><div><div class="k">The AI race is changing</div><div class="big" style="font-size:82px">Task ≠ Model</div><h2>The best model depends on what you ask it to do.</h2></div></div></section>
+<div class="source">Source: Google Gemini 4 Argon launch announcement and published evaluation comparisons, Sep. 30, 2026. Vendor-published figures unless independently reproduced.</div><div class="timeline"><div class="progress" id="progress"></div></div></div>
+<script>window.SPMOTION={width:1080,height:1920,fps:30,duration:165};const ss=[...document.querySelectorAll('.scene')],p=document.getElementById('progress');window.SPMOTION_RENDER=t=>{ss.forEach(s=>s.classList.toggle('active',t>=+s.dataset.a&&t<+s.dataset.b));p.style.width=Math.min(100,t/165*100)+'%'};window.SPMOTION_RENDER(0)</script>
