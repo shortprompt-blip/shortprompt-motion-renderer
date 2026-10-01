@@ -1,53 +1,31 @@
-Gemini 4 Argon is everywhere right now.
+Want to remix a song with AI? Here is a workflow you can actually use.
 
-But did Google actually build the best AI model?
+First, give ChatGPT the track information you have and ask it to analyze the song before generating anything.
 
-Let's compare the numbers.
+Use this prompt:
+Analyze this song as a producer. Identify the BPM, key if known, structure, energy changes, instrumentation, vocal style, and the sections that would work best for a remix.
 
-On DeepSWE version 1.1, Google reports Argon at 77.9 percent. Claude Opus 5.5 is at 74.2. GPT-6 Astra is at 74.1. Argon wins this one.
+Then don't ask for a generic remix. Tell ChatGPT exactly what you want to change.
 
-But change the benchmark.
+For example:
+Turn this into a melodic house remix at 124 BPM. Keep the recognizable vocal idea, but redesign the drums, bass, harmony and arrangement. Give me a complete remix blueprint with an intro, build, drop, breakdown and final drop.
 
-On FrontierSWE version 2, Argon drops to 55 percent. GPT-6 Astra reaches 65.5. Claude Opus 5.5 reaches 62.3.
+Now ChatGPT can turn that idea into a production plan.
 
-So on this coding benchmark, Argon is last.
+Ask it to make the plan actionable. For every section, specify the BPM, drum pattern, bass role, main instruments, vocal treatment, energy level and transition.
 
-Terminal-Bench 4.0 tells a similar story. Argon scores 57.4 percent. Opus 5.5 scores 66.4. That's a nine-point gap in Claude's favor.
+Then copy the final blueprint into your AI music workflow.
 
-So the claim that Gemini 4 Argon simply beats every other model at coding is not supported by the published numbers.
+If your music tool accepts section prompts, use one prompt per section instead of one giant prompt.
 
-But there is another side.
+The intro can be minimal and filtered. The build can gradually add percussion and tension. Then the drop gets the full bass, drums and main hook. Finally, compare the original and the remix side by side.
 
-On long-context reasoning, Argon looks extremely strong. Google reports 84.2 percent on GraphWalks for problems from 256 thousand to one million tokens.
+The goal is not to ask ChatGPT to magically make the finished record. Use ChatGPT as the producer's planning layer.
 
-On LVBench, which measures long-video understanding, Argon reaches 91.7 percent.
+It analyzes the source, designs the remix, and gives you structured instructions that you can execute in your music generator or DAW.
 
-And on AutomationBench, Google reports 51.3 percent for Argon, ahead of GPT-6 Astra at 41.4 and Claude Opus 5.5 at 42.5.
+One more tip: iterate one variable at a time. Change the genre, BPM, bass or arrangement separately. That makes it much easier to understand why version two sounds better than version one.
 
-Cybersecurity is another major strength.
+And that is the whole workflow: analyze the song, design the remix with ChatGPT, generate each section, iterate, then assemble the final track.
 
-On CWE-bench version 1, Argon scores 68 percent, tied for the top published score in the comparison.
-
-So what is Gemini 4 Argon actually best at?
-
-Not everything.
-
-The pattern is much more interesting.
-
-Argon looks particularly strong when the job requires long reasoning, huge inputs, knowledge work, multimodal understanding, and complex workflows.
-
-But terminal-heavy agent work is a different story.
-
-And there is one more caveat.
-
-These comparisons come from Google's launch evaluation table. Argon is only beginning its limited rollout, so independent reproduction is still important.
-
-The takeaway?
-
-Gemini 4 Argon is absolutely a frontier model.
-
-But the real story isn't 'Google destroyed everyone.'
-
-It's that the AI race is becoming benchmark-specific.
-
-The best model depends on what you actually ask it to do.
+AI doesn't replace the producer here. It gives you a much faster starting point.
