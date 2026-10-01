@@ -1,17 +1,19 @@
-Here’s a practical way to remix a song with AI.
+What if you could turn one simple prompt into a complete AI remix workflow?
 
-First, start with the original track and extract the useful musical information: tempo, key, energy, and the structure of the arrangement.
+Instead of showing a static slide, this example makes the process visible.
 
-In this example, the source is one hundred and twenty-four BPM in A minor.
+First, the prompt captures the creative intent: make the track darker, tighter, and more energetic while keeping the hook.
 
-Now define what should change, instead of asking for a completely different song. Keep the main hook, tighten the drums, and push the energy toward a dance remix.
+Then the system analyzes useful parameters like tempo and energy.
 
-That distinction matters because the AI now has a constrained transformation target.
+Watch the interface change as the transformation happens.
 
-Next, rebuild the arrangement around those constraints. The important part is not the label on the screen — it is the change in the musical structure: the rhythm becomes denser, the energy rises, and the drop gets a new role.
+The waveform becomes more complex, the values move, and the workflow advances from analysis to transformation.
 
-Finally, compare the original with the remix.
+Finally, the result is compared with the original.
 
-The goal is not simply to make something different. A useful AI remix keeps the identity of the source while deliberately changing the parts you asked it to change.
+That is the visual direction for ShortPrompt Motion: the interface should not just describe the process.
 
-That is the workflow: analyze, define the target, generate the transformation, and then compare the result.
+It should visibly perform the process.
+
+Every important step creates a new state, and every state gives the viewer something to watch.
