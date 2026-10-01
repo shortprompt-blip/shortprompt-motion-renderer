@@ -1,19 +1,15 @@
-What if you could turn one simple prompt into a complete AI remix workflow?
+OpenAI has introduced Dots, a new kind of personal AI agent designed to keep working on your goals in the background.
 
-Instead of showing a static slide, this example makes the process visible.
+Instead of asking for a single answer and starting over every time, you give a Dot a goal and let it work through the task.
 
-First, the prompt captures the creative intent: make the track darker, tighter, and more energetic while keeping the hook.
+In this example, we give it a simple project brief and connect the sources it needs.
 
-Then the system analyzes useful parameters like tempo and energy.
+Dots can then organize information, identify the important tasks, and prepare a concise action list.
 
-Watch the interface change as the transformation happens.
+The key idea is that the agent keeps working toward the goal instead of waiting for you to guide every single step.
 
-The waveform becomes more complex, the values move, and the workflow advances from analysis to transformation.
+And before actions are taken, permissions and connected services can be reviewed.
 
-Finally, the result is compared with the original.
+Once the work is complete, the result is ready for you to inspect and approve.
 
-That is the visual direction for ShortPrompt Motion: the interface should not just describe the process.
-
-It should visibly perform the process.
-
-Every important step creates a new state, and every state gives the viewer something to watch.
+That is the interesting part of Dots: AI that works in the background, while you stay in control.

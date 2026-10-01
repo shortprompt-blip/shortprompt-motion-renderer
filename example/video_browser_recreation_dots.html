@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1080,height=1920,initial-scale=1">
+<title>SP-MOTION Browser Recreation — Dots</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;width:1080px;height:1920px;background:#08090c;color:#f7f7f8;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;overflow:hidden}
+body{display:flex;align-items:center;justify-content:center}
+:root{--bg:#0b0c10;--panel:#13151b;--panel2:#191b22;--line:#2b2e38;--muted:#9297a5;--accent:#7c7cff;--good:#58d68d;--warn:#f2c66d}
+.scene{width:100%;height:100%;padding:58px 54px;position:relative;background:radial-gradient(circle at 50% 5%,#252438 0,#0b0c10 34%,#08090c 72%)}
+.kicker{font-size:22px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#a8acba;margin-bottom:18px}.headline{font-size:58px;line-height:1.02;font-weight:800;letter-spacing:-.04em;max-width:880px}.sub{font-size:25px;line-height:1.35;color:#b8bcc7;max-width:850px;margin-top:20px}
+.browser{position:absolute;left:54px;right:54px;top:430px;bottom:72px;border:1px solid #343744;border-radius:24px;background:#0d0f14;box-shadow:0 30px 90px rgba(0,0,0,.55);overflow:hidden;transform-origin:center top}
+.chrome{height:76px;background:#17191f;border-bottom:1px solid #30333d;display:flex;align-items:center;padding:0 22px;gap:14px}.dots{display:flex;gap:8px}.dot{width:13px;height:13px;border-radius:50%;background:#545864}.tab{height:46px;min-width:300px;padding:0 18px;border-radius:12px 12px 0 0;background:#22252d;display:flex;align-items:center;gap:10px;font-size:17px;color:#d9dbe1}.favicon{width:20px;height:20px;border-radius:6px;background:linear-gradient(135deg,#8b83ff,#55d8a0)}.address{position:absolute;left:250px;right:24px;height:40px;border-radius:20px;background:#0e1015;border:1px solid #30333d;display:flex;align-items:center;padding:0 16px;color:#8f94a2;font-size:16px}.address b{color:#cdd0d8;font-weight:600}.app{height:calc(100% - 76px);display:grid;grid-template-columns:230px 1fr}.side{border-right:1px solid #2b2e37;padding:26px 18px;background:#111318}.brand{font-weight:800;font-size:21px;margin:0 0 28px 8px}.nav{display:flex;align-items:center;gap:11px;padding:12px 12px;border-radius:11px;color:#9ea3b0;margin-bottom:7px;font-size:16px}.nav.active{background:#252834;color:#fff}.nav .ico{width:22px;text-align:center}.workspace{padding:34px 34px;position:relative;background:linear-gradient(180deg,#12141a,#0f1116)}
+.toprow{display:flex;justify-content:space-between;align-items:center}.title{font-size:30px;font-weight:800}.status{font-size:13px;padding:7px 11px;border-radius:999px;background:#1c2028;color:#9fa5b4;border:1px solid #303541}.card{margin-top:24px;border:1px solid #30333e;background:#171920;border-radius:18px;padding:22px}.label{font-size:13px;text-transform:uppercase;letter-spacing:.1em;color:#858b9a;font-weight:700}.goal{font-size:23px;line-height:1.3;margin-top:10px;color:#f2f3f6}.row{display:flex;gap:14px;margin-top:20px}.mini{flex:1;border:1px solid #30333e;border-radius:14px;padding:16px;background:#12141a}.mini strong{display:block;font-size:15px}.mini span{display:block;color:#8f95a3;font-size:13px;margin-top:6px}.run{margin-top:20px;width:100%;height:48px;border:0;border-radius:12px;background:#f2f2f5;color:#11131a;font-size:16px;font-weight:800}.log{margin-top:20px}.event{display:flex;gap:13px;padding:13px 0;border-bottom:1px solid #292c35;color:#b8bdc8;font-size:14px}.bullet{width:9px;height:9px;border-radius:50%;background:#545967;margin-top:5px;flex:0 0 auto}.event.active .bullet{background:var(--good);box-shadow:0 0 0 4px rgba(88,214,141,.1)}.event.active{color:#f3f4f7}.result{margin-top:22px;border:1px solid #39404c;border-radius:16px;padding:18px;background:linear-gradient(180deg,#171a21,#12141a)}.resultHead{display:flex;justify-content:space-between}.pill{font-size:12px;padding:5px 8px;border-radius:8px;background:#1e2b24;color:#76e0a2}.result h3{margin:10px 0 7px;font-size:19px}.result p{margin:0;color:#9da3af;font-size:14px;line-height:1.45}.cursor{position:absolute;width:25px;height:25px;z-index:10;pointer-events:none;filter:drop-shadow(0 3px 4px rgba(0,0,0,.45));transform:translate(-2px,-2px)}.cursor:before{content:"";position:absolute;left:2px;top:2px;width:0;height:0;border-top:20px solid #fff;border-right:14px solid transparent;transform:rotate(-15deg);filter:drop-shadow(0 0 1px #111)}.clickRing{position:absolute;width:34px;height:34px;border:2px solid rgba(124,124,255,.7);border-radius:50%;opacity:0}.simulation{position:absolute;right:72px;top:395px;font-size:12px;letter-spacing:.12em;color:#727887;text-transform:uppercase}.progress{position:absolute;left:54px;right:54px;bottom:34px;height:3px;background:#242731;border-radius:2px;overflow:hidden}.progress i{display:block;height:100%;width:0;background:#8d8cff}
+@media(max-width:900px){html,body{width:100vw;height:100vh}.scene{transform-origin:top left}}
+</style>
+</head>
+<body>
+<div class="scene">
+  <div class="kicker">SP-MOTION · Browser recreation</div>
+  <div class="headline">OpenAI's new Dots can work on your goals in the background.</div>
+  <div class="sub">A visual reconstruction of the workflow: create a Dot, give it a goal, watch it work, then inspect the result.</div>
+  <div class="simulation">editorial reconstruction · not a live capture</div>
+
+  <div class="browser" id="browser">
+    <div class="chrome"><div class="dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><div class="tab"><span class="favicon"></span> Dots · Personal agent</div><div class="address">⌁&nbsp;&nbsp;<b>chatgpt.com/dots</b></div></div>
+    <div class="app">
+      <aside class="side">
+        <div class="brand">Dots</div>
+        <div class="nav active"><span class="ico">◉</span> Overview</div>
+        <div class="nav"><span class="ico">✦</span> My Dot</div>
+        <div class="nav"><span class="ico">⌁</span> Activity</div>
+        <div class="nav"><span class="ico">▣</span> Connections</div>
+        <div class="nav"><span class="ico">⚙</span> Permissions</div>
+      </aside>
+      <main class="workspace">
+        <div class="toprow"><div class="title">My Dot</div><div class="status" id="status">Ready</div></div>
+        <div class="card">
+          <div class="label">Goal</div>
+          <div class="goal" id="goal">Find the key tasks in my project updates and prepare a concise action list.</div>
+          <div class="row">
+            <div class="mini"><strong>Slack</strong><span id="slackState">Not connected</span></div>
+            <div class="mini"><strong>Docs</strong><span id="docsState">Not connected</span></div>
+            <div class="mini"><strong>Review</strong><span>Required</span></div>
+          </div>
+          <button class="run" id="run">Start Dot</button>
+          <div class="log" id="log">
+            <div class="event" id="e1"><span class="bullet"></span><span>Waiting for a goal…</span></div>
+            <div class="event" id="e2"><span class="bullet"></span><span>Permissions will be checked before actions.</span></div>
+            <div class="event" id="e3"><span class="bullet"></span><span>Results will appear here.</span></div>
+          </div>
+          <div class="result" id="result">
+            <div class="resultHead"><div class="label">Completed</div><div class="pill">Ready for review</div></div>
+            <h3>Action list prepared</h3>
+            <p>3 priorities found · 2 follow-ups drafted · 1 item needs your approval.</p>
+          </div>
+        </div>
+      </main>
+    </div>
+    <div class="cursor" id="cursor"></div><div class="clickRing" id="ring"></div>
+  </div>
+  <div class="progress"><i id="progress"></i></div>
+</div>
+<script>
+window.SPMOTION={width:1080,height:1920,fps:30,duration:60};
+const $=id=>document.getElementById(id);
+const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
+const ease=v=>{v=clamp(v);return v*v*(3-2*v)};
+const lerp=(a,b,p)=>a+(b-a)*p;
+
+function setActive(id,on){$(id).classList.toggle('active',on)}
+function render(time){
+  const duration=Math.max(0.001,Number(window.SPMOTION.duration)||1);
+  const t=clamp(Number(time)||0,0,duration);
+  const p=t/duration;
+  $('progress').style.width=(p*100)+'%';
+
+  // 0-15%: browser enters and settles.
+  const enter=ease(p/0.10);
+  $('browser').style.opacity=enter;
+  $('browser').style.transform=`translateY(${(1-enter)*28}px) scale(${0.985+0.015*enter})`;
+
+  // Semantic interaction timeline across the complete audio duration.
+  const phase=p<0.18?0:p<0.34?1:p<0.50?2:p<0.70?3:4;
+  $('status').textContent=['Ready','Goal entered','Connecting','Dot working','Result ready'][phase];
+  $('slackState').textContent=phase>=2?'Connected':'Not connected';
+  $('docsState').textContent=phase>=2?'Connected':'Not connected';
+  $('run').textContent=phase>=3?'Dot is working…':'Start Dot';
+  $('run').style.opacity=phase>=3?.65:1;
+
+  setActive('e1',phase>=2); setActive('e2',phase>=2); setActive('e3',phase>=4);
+  $('result').style.opacity=ease(clamp((p-.68)/.16));
+  $('result').style.transform=`translateY(${(1-ease(clamp((p-.68)/.16)))*12}px)`;
+
+  // Cursor actions are tied to normalized time, never to a separate clock.
+  let x=720,y=760;
+  if(p<.18){x=790;y=500}
+  else if(p<.34){const q=ease((p-.18)/.16);x=lerp(820,610,q);y=lerp(690,690,q)}
+  else if(p<.50){const q=ease((p-.34)/.16);x=lerp(610,520,q);y=lerp(690,920,q)}
+  else {const q=ease(clamp((p-.50)/.18));x=lerp(520,780,q);y=lerp(920,1080,q)}
+  $('cursor').style.left=x+'px';$('cursor').style.top=y+'px';
+
+  const clickAt=.34;
+  const clickDistance=Math.abs(p-clickAt);
+  const ringOpacity=clickDistance<.018?Math.sin((1-clickDistance/.018)*Math.PI):0;
+  $('ring').style.opacity=ringOpacity;
+  $('ring').style.left=(x-5)+'px';$('ring').style.top=(y-5)+'px';
+}
+window.SPMOTION_RENDER=render;
+render(0);
+</script>
+</body>
+</html>
