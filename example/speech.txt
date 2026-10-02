@@ -1,21 +1,15 @@
-I gave GPT-6 Astra, Claude Opus 5.5, and Fable 5.1 the exact same prompt.
+Which AI should you use for coding: Claude Sonnet 5.5 or GPT-6 Sol?
 
-Build a landing page for an AI product — and make it look like a real product, not a demo.
+Let's give them the same real-world task: find the root cause of a bug, fix it, and verify the change.
 
-Same task. Same goal. No extra instructions.
+Sonnet 5.5 is built for well-scoped everyday coding. It gets up to speed on a codebase quickly, keeps changes reviewable, and is designed for fast iteration.
 
-Now watch what happens.
+GPT-6 Sol is built for complex coding and agentic workflows, with tools like code interpreter, hosted shell, apply patch, and computer use.
 
-Astra starts with the full product structure.
-Opus builds out the interface and copy.
-Fable takes a different route through the same challenge.
+So for a focused bug fix, Sonnet is a strong default.
 
-And while they're working, we're comparing the outputs — not just the model names.
+But when the task expands into a larger, tool-heavy workflow, Sol becomes more interesting.
 
-Because benchmarks can tell you what a model scores on a test.
+The answer isn't which model is better.
 
-But the real question is simple:
-
-Which result would you actually use?
-
-This is round one.
+It's which workflow you actually have.
