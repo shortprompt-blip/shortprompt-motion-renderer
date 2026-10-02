@@ -1,85 +1,21 @@
-Most people don't have a knowledge problem. They have a retrieval problem.
+I gave GPT-6 Astra, Claude Opus 5.5, and Fable 5.1 the exact same prompt.
 
-We save articles, screenshots, bookmarks, PDFs, meeting notes, ideas and AI conversations every day. The information keeps growing, but when we actually need something, we often don't know where it is.
+Build a landing page for an AI product — and make it look like a real product, not a demo.
 
-A Second Brain is a simple answer: build a trusted external system where useful information can be captured, organized, connected and turned into action.
+Same task. Same goal. No extra instructions.
 
-In this video, I'll show you how to build one from scratch, using a practical version of Tiago Forte's Building a Second Brain methodology, while keeping the system simple enough to maintain.
+Now watch what happens.
 
-Step one is capture.
+Astra starts with the full product structure.
+Opus builds out the interface and copy.
+Fable takes a different route through the same challenge.
 
-Do not try to save everything. Decide what deserves to enter your system. Start with information you are likely to use again: ideas, useful references, project material, lessons, decisions and things you want to remember.
+And while they're working, we're comparing the outputs — not just the model names.
 
-The goal is to move valuable information out of your head and into a trusted place. That is cognitive offloading: instead of depending entirely on memory, you create an external record you can retrieve later.
+Because benchmarks can tell you what a model scores on a test.
 
-In our example, watch the brain start almost empty. We capture a PDF, a web article, a meeting note, an AI conversation and a useful idea. Each item becomes a node.
+But the real question is simple:
 
-But capture alone creates another problem: a giant pile of notes.
+Which result would you actually use?
 
-So step two is organize.
-
-Forte's PARA method is designed as an implementation structure for a Second Brain. PARA stands for Projects, Areas, Resources and Archives.
-
-Projects are things with a desired outcome and a finish line. Areas are responsibilities you maintain over time. Resources are topics or interests you may want to reference. Archives hold things that are inactive but worth keeping.
-
-The important idea is that organization should help you find information when you need it, not force you to maintain a perfect taxonomy.
-
-Now watch the interface change. We take the captured documents and move them into these four spaces. The brain becomes more structured, but we are still not trying to make every note perfect.
-
-Step three is distill.
-
-This is where a Second Brain becomes useful instead of becoming a digital attic.
-
-When you revisit a source, don't necessarily keep everything. Extract the parts that are useful for future you. Highlight the key idea, write a concise summary, keep the important quote or turn a long document into a small set of actionable notes.
-
-Think of it as compressing information without losing the meaning you are most likely to need.
-
-Watch what happens to our PDF. We zoom into the document, select the important passages, and turn them into a smaller set of connected notes. The original source stays available, but the useful knowledge becomes easier to scan.
-
-Now let's connect the notes.
-
-A Second Brain becomes more valuable when ideas relate to projects, questions and other insights. The system is not just a filing cabinet. It is a network you can revisit.
-
-Watch the nodes spread across the workspace. A research note connects to a project. Another insight connects to an older idea. The relationship is what makes the information easier to reuse later.
-
-The goal is not to create thousands of links. Create the connections that help you think, decide or create.
-
-Step four is express.
-
-This is the part people often miss. The goal of a Second Brain isn't to build the world's biggest library. It is to help you create something.
-
-A note can become a decision, a project plan, a presentation, an article, a video, a piece of code or a better question.
-
-So let's follow one idea through the system. A captured research note connects to a project. The project connects to several distilled insights. Those insights become the outline for a real piece of work.
-
-That is the complete CODE loop: Capture, Organize, Distill and Express.
-
-Now let's make the system practical.
-
-Choose one notes or knowledge app. You do not need the perfect tool. Start with the one you will actually open every day.
-
-Create the four PARA areas. Then create one simple inbox or capture location. When something useful appears, capture it quickly. Don't stop to perfectly organize it.
-
-Once or twice a week, process the inbox. Move items to the appropriate PARA location, archive what is no longer active, and distill the sources that you expect to use.
-
-Then connect notes to real projects. If a note never supports a decision, project, question or creative output, ask whether it really needs to stay prominent.
-
-And if you use AI, give it access to the right context instead of dumping your entire database into every prompt. Your Second Brain becomes more powerful when the information is structured into useful context.
-
-You can think of the final system as a living graph.
-
-Documents are the raw material. PARA gives them a home. Distillation turns them into useful knowledge. Connections show relationships. Projects turn knowledge into action.
-
-And the graph should keep changing.
-
-A new article can connect to an old idea. A finished project can move to the archive. A recurring responsibility can produce new notes. A new insight can change the way you understand everything around it.
-
-The mistake is trying to build the perfect Second Brain on day one.
-
-Don't.
-
-Build the smallest system you can trust. Capture a few useful things. Organize them simply. Distill what matters. Express something real.
-
-Then repeat.
-
-That is how a collection of notes becomes a Second Brain: not because it stores everything, but because it reliably helps you find, connect and use what matters when you need it.
+This is round one.
