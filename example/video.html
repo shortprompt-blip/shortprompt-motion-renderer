@@ -2,135 +2,157 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Sonnet 5.5 — Source to Workflow</title>
+<meta name="viewport" content="width=1080,height=1920,initial-scale=1">
+<title>Sonnet 5.5 — Evidence Workflow</title>
 <style>
-#sp-sonnet55-root,#sp-sonnet55-root *{box-sizing:border-box}
-#sp-sonnet55-root{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;background:#f5f6f8;color:#111318;font-family:Inter,Arial,sans-serif}
-#sp-sonnet55-root .sp55-app{position:absolute;inset:0;padding:38px 42px}
-#sp-sonnet55-root .sp55-top{display:flex;justify-content:space-between;font-size:13px;font-weight:900;letter-spacing:.08em}
-#sp-sonnet55-root .sp55-dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:#315cff;margin-right:8px}
-#sp-sonnet55-root .sp55-h1{font-size:50px;line-height:.96;letter-spacing:-.045em;margin:28px 0 7px;max-width:930px}
-#sp-sonnet55-root .sp55-lead{font-size:18px;color:#68707a}
-#sp-sonnet55-root .sp55-browser{margin-top:20px;height:1080px;background:#fff;border:2px solid #dfe3e8;border-radius:22px;overflow:hidden;box-shadow:0 16px 45px rgba(17,19,24,.10)}
-#sp-sonnet55-root .sp55-bar{height:58px;border-bottom:1px solid #e0e3e7;display:flex;align-items:center;padding:0 16px;gap:7px;background:#fafbfc}
-#sp-sonnet55-root .sp55-b{width:9px;height:9px;border-radius:50%;background:#cdd2d9}
-#sp-sonnet55-root .sp55-url{margin-left:8px;flex:1;background:#eef0f3;border-radius:8px;height:29px;padding:7px 11px;font-size:11px;color:#68707b;font-weight:750}
-#sp-sonnet55-root .sp55-viewport{position:relative;height:1020px;overflow:hidden;background:#fff}
-#sp-sonnet55-root .sp55-source{position:absolute;inset:0;display:none;opacity:0}
-#sp-sonnet55-root .sp55-source.sp55-visible{display:block;opacity:1}
-#sp-sonnet55-root .sp55-source img{display:block;width:100%;height:100%;object-fit:contain;object-position:top center;background:#fff}
-#sp-sonnet55-root .sp55-demo{position:absolute;inset:0;display:none;background:#10131a;color:#e9edf3}
-#sp-sonnet55-root .sp55-sidebar{position:absolute;left:0;top:0;bottom:0;width:190px;background:#171a21;padding:18px 12px}
-#sp-sonnet55-root .sp55-sidebar div{font:12px Arial;color:#9ca4af;padding:9px 8px;border-radius:7px}
-#sp-sonnet55-root .sp55-sidebar .sp55-sel{background:#2a2f39;color:#fff}
-#sp-sonnet55-root .sp55-editor{position:absolute;left:190px;right:0;top:0;height:600px;padding:24px 28px}
-#sp-sonnet55-root .sp55-tabs{font:11px Arial;color:#9ea6b2}
-#sp-sonnet55-root .sp55-code{margin-top:20px;font:13px/1.7 ui-monospace,SFMono-Regular,Consolas,monospace;white-space:pre;color:#cbd2dc}
-#sp-sonnet55-root .sp55-terminal{position:absolute;left:190px;right:0;bottom:0;height:420px;background:#0b0e13;border-top:1px solid #2a3038;padding:18px 28px;font:13px/1.7 ui-monospace,SFMono-Regular,Consolas,monospace}
-#sp-sonnet55-root .sp55-red{color:#ff7a7a}.sp55-green{color:#7ee787}.sp55-muted{color:#8d96a3}
-#sp-sonnet55-root .sp55-panel{position:absolute;left:22px;right:22px;bottom:22px;background:#fff;color:#111318;border:2px solid #315cff;border-radius:15px;padding:13px 15px;z-index:4}
-#sp-sonnet55-root .sp55-panel b{font-size:14px}.sp55-panel span{display:block;color:#6e7480;font-size:11px;margin-top:4px}
-#sp-sonnet55-root .sp55-tag{position:absolute;left:24px;top:22px;background:#111318;color:#fff;border-radius:10px;padding:10px 12px;font-size:10px;font-weight:900;z-index:5}
-#sp-sonnet55-root .sp55-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
-#sp-sonnet55-root .sp55-card{background:#fff;border:2px solid #e0e4e8;border-radius:16px;padding:14px;min-height:132px}
-#sp-sonnet55-root .sp55-label{font-size:9px;letter-spacing:.12em;color:#7a828d;font-weight:950}
-#sp-sonnet55-root .sp55-card h2{font-size:18px;margin:6px 0}.sp55-card p{font-size:12px;line-height:1.35;color:#68707a;margin:0}
-#sp-sonnet55-root .sp55-take{margin-top:12px;background:#111318;color:#fff;border-radius:17px;padding:16px;opacity:0}
-#sp-sonnet55-root .sp55-take b{display:block;font-size:19px}.sp55-take span{display:block;margin-top:4px;color:#c5cad2;font-size:11px}
-#sp-sonnet55-root .sp55-footer{position:absolute;left:42px;right:42px;bottom:20px;display:flex;justify-content:space-between;color:#858c96;font-size:9px;font-weight:900;letter-spacing:.06em}
+*{box-sizing:border-box}
+html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#f5f6f8;color:#111318;font-family:Inter,Arial,sans-serif}
+#sp55{position:absolute;inset:0;padding:46px 52px}
+#sp55 .top{display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:900;letter-spacing:.08em}
+#sp55 .dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:#315cff;margin-right:8px}
+#sp55 .clock{font-variant-numeric:tabular-nums;color:#737a84}
+#sp55 h1{font-size:48px;line-height:.98;letter-spacing:-.045em;margin:26px 0 8px;max-width:900px}
+#sp55 .lead{font-size:17px;color:#69717c;max-width:900px}
+#sp55 .sourceStage{position:absolute;left:52px;right:52px;top:300px;height:560px;border:2px solid #dfe3e8;border-radius:22px;background:#fff;box-shadow:0 18px 55px rgba(17,19,24,.09);overflow:hidden}
+#sp55 .browserBar{height:50px;border-bottom:1px solid #e2e5e9;display:flex;align-items:center;padding:0 14px;gap:6px;background:#fafbfc}
+#sp55 .browserDot{width:8px;height:8px;border-radius:50%;background:#cfd4da}
+#sp55 .url{margin-left:8px;flex:1;height:27px;border-radius:7px;background:#eef0f3;padding:7px 10px;font-size:10px;color:#68707b;font-weight:750;overflow:hidden;white-space:nowrap}
+#sp55 .sourceViewport{position:absolute;left:0;right:0;top:50px;height:508px;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden}
+#sp55 .sourceFrame{width:900px;height:506px;display:none;opacity:0;background:#fff;border-radius:8px;overflow:hidden}
+#sp55 .sourceFrame.visible{display:block;opacity:1}
+#sp55 .sourceFrame img{display:block;width:100%;height:100%;object-fit:contain;object-position:center;background:#fff}
+#sp55 .sourceCaption{position:absolute;left:16px;top:66px;z-index:5;background:#111318;color:#fff;border-radius:9px;padding:8px 10px;font-size:9px;font-weight:900;letter-spacing:.06em}
+#sp55 .demo{position:absolute;inset:0;display:none;background:#11141a;color:#e9edf3}
+#sp55 .demoSide{position:absolute;left:0;top:0;bottom:0;width:155px;background:#171a21;padding:15px 10px}
+#sp55 .demoSide div{font-size:10px;color:#9ca4af;padding:8px;border-radius:6px}
+#sp55 .demoSide .sel{background:#2b303a;color:#fff}
+#sp55 .demoMain{position:absolute;left:155px;right:0;top:0;bottom:0;padding:20px}
+#sp55 .demoCode{font:11px/1.65 ui-monospace,SFMono-Regular,Consolas,monospace;white-space:pre;color:#cbd2dc}
+#sp55 .terminal{position:absolute;left:175px;right:20px;bottom:20px;height:145px;border:1px solid #2a3038;border-radius:10px;background:#0b0e13;padding:12px;font:10px/1.6 ui-monospace,SFMono-Regular,Consolas,monospace}
+#sp55 .red{color:#ff7a7a}.green{color:#7ee787}.muted{color:#8d96a3}
+#sp55 .demoBadge{position:absolute;right:16px;top:16px;background:#315cff;color:#fff;border-radius:9px;padding:8px 10px;font-size:9px;font-weight:900}
+#sp55 .infoGrid{position:absolute;left:52px;right:52px;top:900px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+#sp55 .card{background:#fff;border:2px solid #e1e5ea;border-radius:15px;padding:14px;min-height:126px}
+#sp55 .label{font-size:9px;letter-spacing:.12em;color:#7b838e;font-weight:950}
+#sp55 .card h2{font-size:18px;margin:7px 0 5px}
+#sp55 .card p{font-size:11px;line-height:1.35;color:#69717c;margin:0}
+#sp55 .timeline{position:absolute;left:52px;right:52px;top:1190px;height:150px;display:flex;gap:10px}
+#sp55 .step{flex:1;border:2px solid #e2e6eb;border-radius:14px;background:#fff;padding:12px;opacity:.4;transform:translateY(8px)}
+#sp55 .step.active{opacity:1;transform:translateY(0);border-color:#315cff;box-shadow:0 10px 28px rgba(49,92,255,.10)}
+#sp55 .step b{font-size:10px;color:#315cff}.step h3{font-size:15px;margin:6px 0 3px}.step p{font-size:10px;color:#707782;margin:0;line-height:1.25}
+#sp55 .take{position:absolute;left:52px;right:52px;top:1380px;background:#111318;color:#fff;border-radius:17px;padding:17px 18px;opacity:0}
+#sp55 .take b{display:block;font-size:18px}.take span{display:block;font-size:10px;color:#c5cad2;margin-top:4px}
+#sp55 .footer{position:absolute;left:52px;right:52px;bottom:30px;display:flex;justify-content:space-between;color:#818893;font-size:8px;font-weight:900;letter-spacing:.06em}
 </style>
 </head>
 <body>
-<div id="sp-sonnet55-root">
-<div class="sp55-app">
-<div class="sp55-top"><div><span class="sp55-dot"></span>SHORTPROMPT / SOURCE → WORKFLOW</div><div id="sp55-clock">00:00</div></div>
-<div class="sp55-h1">Sonnet 5.5: from source evidence to a coding workflow</div>
-<div class="sp55-lead">Four distinct source captures, then one controlled coding demonstration.</div>
-<div class="sp55-browser">
-<div class="sp55-bar"><span class="sp55-b"></span><span class="sp55-b"></span><span class="sp55-b"></span><div class="sp55-url" id="sp55-url">source</div></div>
-<div class="sp55-viewport">
-<div class="sp55-source" id="sp55-s1"><img src="spmotion://source/sonnet-announce"></div>
-<div class="sp55-source" id="sp55-s2"><img src="spmotion://source/sonnet-overview"></div>
-<div class="sp55-source" id="sp55-s3"><img src="spmotion://source/github-node"></div>
-<div class="sp55-source" id="sp55-s4"><img src="spmotion://source/github-actions"></div>
-<div class="sp55-demo" id="sp55-demo">
-<div class="sp55-sidebar"><div class="sp55-sel">bug-demo</div><div>src</div><div>tests</div><div>.github</div><div>README.md</div></div>
-<div class="sp55-editor"><div class="sp55-tabs">src / parser.js</div><div class="sp55-code" id="sp55-code"></div></div>
-<div class="sp55-terminal" id="sp55-terminal"></div>
-<div class="sp55-panel"><b id="sp55-demo-state">CONTROLLED SIMULATION</b><span id="sp55-demo-detail">Designed workflow; not an observed model run.</span></div>
-<div class="sp55-tag" id="sp55-tag">CONTROLLED DEMO</div>
+<div id="sp55">
+  <div class="top"><div><span class="dot"></span>SHORTPROMPT / SOURCE EVIDENCE</div><div class="clock" id="clock">00:00</div></div>
+  <h1>Sonnet 5.5: source evidence before the coding test</h1>
+  <div class="lead">Real page captures are presented as 16:9 browser screens. Long pages use separate scroll-position captures instead of cropping one image.</div>
+
+  <div class="sourceStage">
+    <div class="browserBar"><i class="browserDot"></i><i class="browserDot"></i><i class="browserDot"></i><div class="url" id="url">source</div></div>
+    <div class="sourceViewport">
+      <div class="sourceCaption" id="caption">SOURCE</div>
+      <div class="sourceFrame" id="s1"><img src="spmotion://source/sonnet-top"></div>
+      <div class="sourceFrame" id="s2"><img src="spmotion://source/sonnet-coding"></div>
+      <div class="sourceFrame" id="s3"><img src="spmotion://source/github-node"></div>
+      <div class="sourceFrame" id="s4"><img src="spmotion://source/github-actions"></div>
+      <div class="demo" id="demo">
+        <div class="demoSide"><div class="sel">bug-demo</div><div>src</div><div>tests</div><div>.github</div><div>README</div></div>
+        <div class="demoMain">
+          <div class="demoBadge" id="demoBadge">CONTROLLED DEMO</div>
+          <div class="demoCode" id="demoCode"></div>
+        </div>
+        <div class="terminal" id="terminal"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="infoGrid">
+    <div class="card"><div class="label">CURRENT EVIDENCE</div><h2 id="title">Official source</h2><p id="copy">A real browser capture, shown without stretching or cropping.</p></div>
+    <div class="card"><div class="label">DISPLAY RULE</div><h2>16:9 viewport</h2><p>Each capture is framed at its native aspect ratio. Scroll states are separate captures.</p></div>
+  </div>
+
+  <div class="timeline">
+    <div class="step active" id="st1"><b>01</b><h3>Source</h3><p>Official page.</p></div>
+    <div class="step" id="st2"><b>02</b><h3>Context</h3><p>Relevant section.</p></div>
+    <div class="step" id="st3"><b>03</b><h3>Workflow</h3><p>GitHub docs.</p></div>
+    <div class="step" id="st4"><b>04</b><h3>Test</h3><p>Controlled demo.</p></div>
+  </div>
+
+  <div class="take" id="take"><b>Evidence → workflow → verification.</b><span>The source captures are distinct states, not a looping slideshow.</span></div>
+  <div class="footer"><span>SP-MOTION / 16:9 SCREEN EVIDENCE CONTRACT</span><span>KOKORO AUDIO IS MASTER DURATION</span></div>
 </div>
-</div></div>
-<div class="sp55-cards"><div class="sp55-card"><div class="sp55-label">CURRENT EVIDENCE</div><h2 id="sp55-card-title"></h2><p id="sp55-card-copy"></p></div><div class="sp55-card"><div class="sp55-label">WORKFLOW STATE</div><h2 id="sp55-state-title">Source review</h2><p id="sp55-state-copy">Each source appears once. No internal replay loop.</p></div></div>
-<div class="sp55-take" id="sp55-take"><b>Claims → evidence → workflow.</b><span>Distinct captures first; controlled demo second.</span></div>
-<div class="sp55-footer"><span>SP-MOTION / UNIQUE SOURCE CAPTURES</span><span>KOKORO-DURATION AUTHORITATIVE</span></div>
-</div>
-</div>
+
 <script>
 window.SPMOTION={width:1080,height:1920,fps:30,duration:48};
-const sp55$=id=>document.getElementById(id);
-const DESIGN_DURATION=48;
-const scenes=[
- {a:0,b:6,id:"sp55-s1",url:"anthropic.com/claude-sonnet-5-5",title:"Launch source",copy:"Start with the official Sonnet 5.5 launch material.",tag:"SOURCE 01 · ANTHROPIC"},
- {a:6,b:12,id:"sp55-s2",url:"anthropic.com/claude/sonnet",title:"Model overview",copy:"A second, distinct source gives the model context.",tag:"SOURCE 02 · ANTHROPIC"},
- {a:12,b:18,id:"sp55-s3",url:"docs.github.com/actions/tutorials/build-and-test-code/nodejs",title:"Build and test",copy:"GitHub documents the Node.js build-and-test workflow.",tag:"SOURCE 03 · GITHUB DOCS"},
- {a:18,b:24,id:"sp55-s4",url:"docs.github.com/actions/get-started/quickstart",title:"Automate the check",copy:"The Actions quickstart shows how the check can be automated.",tag:"SOURCE 04 · GITHUB ACTIONS"},
- {a:24,b:32,id:"demo",url:"github.local/bug-demo/src/parser.js",title:"Controlled coding demo",copy:"Now we move from evidence into a clearly labelled simulation.",tag:"CONTROLLED DEMO"},
- {a:32,b:40,id:"demo",url:"github.local/bug-demo/tests",title:"Patch and test",copy:"The designed workflow moves from a failing test to a focused patch.",tag:"CONTROLLED DEMO · TEST"},
- {a:40,b:48,id:"demo",url:"github.local/bug-demo/result",title:"Verified state",copy:"The demonstration ends on a stable result instead of restarting.",tag:"CONTROLLED DEMO · RESULT"}
+
+const $=id=>document.getElementById(id);
+const designDuration=window.SPMOTION.duration;
+const sourceWindows=[
+  [0,8,"s1","https://www.anthropic.com/claude-sonnet-5-5","SOURCE 01 · OFFICIAL LAUNCH","Official Sonnet 5.5 source."],
+  [8,16,"s2","https://www.anthropic.com/claude-sonnet-5-5 · coding section","SOURCE 02 · CODING CONTEXT","A separate scroll-position capture of the relevant coding section."],
+  [16,24,"s3","https://docs.github.com/en/actions/tutorials/build-and-test-code/nodejs","SOURCE 03 · GITHUB DOCS","Node.js build-and-test workflow."],
+  [24,32,"s4","https://docs.github.com/en/actions/get-started/quickstart","SOURCE 04 · ACTIONS","GitHub Actions quickstart."],
+  [32,40,"demo","github.local/sonnet55-eval","CONTROLLED DEMO","A clearly labelled simulation, not an observed model output."],
+  [40,48,"demo","github.local/sonnet55-eval/result","CONTROLLED DEMO · RESULT","Stable final state."]
 ];
-let sp55Scene=-1,sp55DemoState=-1;
-function sp55ResetSources(){
- ["sp55-s1","sp55-s2","sp55-s3","sp55-s4"].forEach(id=>{
-  const e=sp55$(id);e.classList.remove("sp55-visible");e.style.display="none";
- });
- sp55$("sp55-demo").style.display="none";
+
+let lastScene=-1,lastDemo=-1;
+function hideAll(){
+  ["s1","s2","s3","s4"].forEach(id=>{const e=$(id);e.classList.remove("visible");e.style.display="none"});
+  $("demo").style.display="none";
 }
-function sp55SetSource(s){
- if(sp55Scene===s.index)return;
- sp55Scene=s.index;
- sp55ResetSources();
- if(s.id==="demo"){sp55$("sp55-demo").style.display="block";return}
- const e=sp55$(s.id);e.style.display="block";e.classList.add("sp55-visible");
+function activate(id){
+  hideAll();
+  if(id==="demo")$("demo").style.display="block";
+  else {const e=$(id);e.style.display="block";e.classList.add("visible")}
 }
-function sp55SetDemoState(t){
- const state=t<32?0:t<40?1:2;
- if(state===sp55DemoState)return;
- sp55DemoState=state;
- const fixed=state>=1,passed=state>=2;
- sp55$("sp55-code").textContent=fixed?
+function demoState(td){
+  const state=td<36?0:1;
+  if(state===lastDemo)return;
+  lastDemo=state;
+  $("demoCode").textContent=state===0?
+`function parseVersion(input) {
+  const match = input.match(/v(\\d+)\\.(\\d+)/);
+  return { major: match[1], minor: match[2] };
+}`:
 `function parseVersion(input) {
   const match = input.match(/v(\\d+)\\.(\\d+)/);
   if (!match) return null;
   return { major: Number(match[1]), minor: Number(match[2]) };
-}`:
-`function parseVersion(input) {
-  const match = input.match(/v(\\d+)\\.(\\d+)/);
-  return { major: match[1], minor: match[2] };
 }`;
- sp55$("sp55-terminal").innerHTML=passed?
-'<span class="sp55-muted">$ npm test</span><br><span class="sp55-green">✓ parser › invalid input should not crash</span><br><span class="sp55-green">✓ 14 tests passed</span><br><span class="sp55-muted">0 failed · verified</span>':
-'<span class="sp55-muted">$ npm test</span><br><span class="sp55-red">✕ parser › invalid input should not crash</span><br><span class="sp55-muted">TypeError: Cannot read properties of null</span>';
- sp55$("sp55-demo-state").textContent=passed?"CONTROLLED SIMULATION · VERIFIED STATE":fixed?"CONTROLLED SIMULATION · PATCH APPLIED":"CONTROLLED SIMULATION · BUG STATE";
- sp55$("sp55-demo-detail").textContent=passed?"Green state in the designed demonstration.":fixed?"Focused null guard and numeric parsing applied.":"Invalid input reaches a missing match in the designed bug.";
- sp55$("sp55-tag").textContent=passed?"DEMO RESULT · VERIFIED":fixed?"DEMO STEP · PATCH":"DEMO STEP · BUG";
+  $("terminal").innerHTML=state===0?
+  '<span class="muted">$ npm test</span><br><span class="red">✕ invalid input should not crash</span><br><span class="muted">TypeError: Cannot read properties of null</span>':
+  '<span class="muted">$ npm test</span><br><span class="green">✓ invalid input should not crash</span><br><span class="green">✓ 14 tests passed · verified</span>';
+  $("demoBadge").textContent=state===0?"CONTROLLED DEMO · BUG":"CONTROLLED DEMO · VERIFIED";
 }
 function render(time){
- const audioDuration=Math.max(.001,Number(window.SPMOTION.duration)||DESIGN_DURATION);
- const t=Math.max(0,Math.min(Number(time)||0,audioDuration));
- const td=Math.max(0,Math.min(DESIGN_DURATION,t/audioDuration*DESIGN_DURATION));
- sp55$("sp55-clock").textContent=String(Math.floor(t/60)).padStart(2,"0")+":"+String(Math.floor(t%60)).padStart(2,"0");
- let s=scenes[scenes.length-1],idx=scenes.length-1;
- for(let i=0;i<scenes.length;i++){if(td<scenes[i].b){s=scenes[i];idx=i;break}}
- sp55SetSource({...s,index:idx});
- sp55$("sp55-url").textContent=s.url;
- sp55$("sp55-card-title").textContent=s.title;
- sp55$("sp55-card-copy").textContent=s.copy;
- sp55$("sp55-state-title").textContent=td<24?"Source review":td<40?"Controlled test":"Verified state";
- sp55$("sp55-state-copy").textContent=td<24?"Each source appears once. No internal replay loop.":td<40?"Bug → patch → test, explicitly labelled as a simulation.":"The final state remains stable until audio ends.";
- if(s.id==="demo")sp55SetDemoState(td);
- const take=sp55$("sp55-take");
- take.style.opacity=td>=42?1:0;
+  const t=Math.max(0,Math.min(Number(time)||0,designDuration));
+  const p=t/designDuration;
+  $("clock").textContent=String(Math.floor(t/60)).padStart(2,"0")+":"+String(Math.floor(t%60)).padStart(2,"0");
+
+  let index=sourceWindows.length-1;
+  for(let i=0;i<sourceWindows.length;i++){if(t<sourceWindows[i][1]){index=i;break}}
+  const s=sourceWindows[index];
+
+  if(index!==lastScene){
+    lastScene=index;
+    activate(s[2]);
+  }
+
+  $("url").textContent=s[3];
+  $("caption").textContent=s[4];
+  $("title").textContent=s[2]==="demo"?(index===4?"Controlled coding demo":"Verified result"):s[5];
+  $("copy").textContent=s[5];
+
+  const state=index<2?0:index<4?2:3;
+  ["st1","st2","st3","st4"].forEach((id,i)=>$(id).classList.toggle("active",i===state));
+
+  $("take").style.opacity=t>=40?1:0;
+  if(s[2]==="demo")demoState(t);
 }
 window.SPMOTION_RENDER=render;
 render(0);
