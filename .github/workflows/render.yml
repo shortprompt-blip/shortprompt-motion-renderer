@@ -35,16 +35,6 @@ jobs:
           cache: pip
           cache-dependency-path: renderer/requirements.txt
 
-      - name: Cache Kokoro / Hugging Face model files
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.cache/huggingface
-            ~/.cache/torch
-          key: kokoro-hf-82m-${{ runner.os }}-${{ hashFiles('renderer/requirements.txt') }}
-          restore-keys: |
-            kokoro-hf-82m-${{ runner.os }}-
-
       - name: Cache Playwright browsers
         uses: actions/cache@v4
         with:
@@ -73,10 +63,8 @@ jobs:
       - name: Embed REAL source captures into video.html
         run: node renderer/embed-evidence.mjs example
 
-      - name: Verify source evidence is embedded
-        run: |
-          test -s example/assets/evidence/sonnet-official.png
-          grep -q 'data:image/png;base64,' example/video.html
+      - name: Verify source evidence
+        run: node renderer/verify-evidence.mjs example
 
       - name: Generate voiceover — master clock
         run: |
@@ -86,14 +74,13 @@ jobs:
             --speed "${{ inputs.speed }}" \
             --output speech.wav
 
-      - name: Render HTML to WebM using exact speech duration
+      - name: Render HTML
         working-directory: renderer
         run: |
           node render.mjs ../example ./.frames ../visual.webm ../speech.wav
 
       - name: Mux voiceover
-        run: |
-          node renderer/mux.mjs visual.webm speech.wav final.webm
+        run: node renderer/mux.mjs visual.webm speech.wav final.webm
 
       - name: Upload final video
         uses: actions/upload-artifact@v4
