@@ -1,53 +1,37 @@
 {
-  "viewport": {
-    "width": 1920,
-    "height": 1080,
-    "deviceScaleFactor": 1
-  },
+  "viewport": {"width": 1920, "height": 1080, "deviceScaleFactor": 1 },
   "sources": [
     {
-      "id": "sonnet-top",
+      "id": "sonnet-overview",
       "url": "https://www.anthropic.com/claude-sonnet-5-5",
       "waitUntil": "domcontentloaded",
-      "waitMs": 1200,
-      "fullPage": false,
-      "scrollY": 0,
-      "output": "assets/evidence/sonnet-top.png",
-      "captureMode": "viewport",
-      "captureTarget": "page"
+      "waitMs": 1800,
+      "fullPage": true,
+      "output": "assets/evidence/sonnet-overview.png"
     },
     {
-      "id": "sonnet-coding",
-      "url": "https://www.anthropic.com/claude-sonnet-5-5",
+      "id": "sonnet-announcement",
+      "url": "https://www.anthropic.com/news/claude-sonnet-5-5",
       "waitUntil": "domcontentloaded",
-      "waitMs": 1200,
-      "fullPage": false,
-      "scrollY": 900,
-      "output": "assets/evidence/sonnet-coding.png",
-      "captureMode": "viewport",
-      "captureTarget": "page"
+      "waitMs": 1800,
+      "fullPage": true,
+      "output": "assets/evidence/sonnet-announcement.png"
     },
     {
       "id": "github-node",
       "url": "https://docs.github.com/en/actions/tutorials/build-and-test-code/nodejs",
       "waitUntil": "domcontentloaded",
       "waitMs": 1200,
-      "fullPage": false,
-      "scrollY": 0,
-      "output": "assets/evidence/github-node.png",
-      "captureMode": "viewport",
-      "captureTarget": "page"
+      "fullPage": true,
+      "output": "assets/evidence/github-node.png"
     },
     {
       "id": "github-actions",
       "url": "https://docs.github.com/en/actions/get-started/quickstart",
       "waitUntil": "domcontentloaded",
       "waitMs": 1200,
-      "fullPage": false,
-      "scrollY": 0,
-      "output": "assets/evidence/github-actions.png",
-      "captureMode": "viewport",
-      "captureTarget": "page"
+      "fullPage": true,
+      "output": "assets/evidence/github-actions.png"
     }
   ]
 }
