@@ -1,0 +1,14 @@
+{
+  "viewport": { "width": 1440, "height": 900 },
+  "deviceScaleFactor": 1,
+  "sources": [
+    {
+      "id": "sonnet-official",
+      "url": "https://www.anthropic.com/claude/sonnet",
+      "waitUntil": "domcontentloaded",
+      "waitMs": 3000,
+      "fullPage": true,
+      "output": "assets/evidence/sonnet-official.png"
+    }
+  ]
+}

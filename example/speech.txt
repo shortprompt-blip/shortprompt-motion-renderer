@@ -1,15 +1,15 @@
-Which AI should you use for coding: Claude Sonnet 5.5 or GPT-6 Sol?
+Sonnet 5.5: what is it actually built for?
 
-Let's give them the same real-world task: find the root cause of a bug, fix it, and verify the change.
+Let's start with the source.
 
-Sonnet 5.5 is built for well-scoped everyday coding. It gets up to speed on a codebase quickly, keeps changes reviewable, and is designed for fast iteration.
+Anthropic describes Sonnet 5.5 as a faster, lower-cost complement to Opus 5.5, strongest at well-scoped everyday tasks.
 
-GPT-6 Sol is built for complex coding and agentic workflows, with tools like code interpreter, hosted shell, apply patch, and computer use.
+And in coding, the use cases are very specific: building features, fixing bugs, and reviewing code.
 
-So for a focused bug fix, Sonnet is a strong default.
+So instead of asking whether Sonnet is simply better, let's turn that claim into a practical test.
 
-But when the task expands into a larger, tool-heavy workflow, Sol becomes more interesting.
+Give it one real bug.
 
-The answer isn't which model is better.
+Find the root cause, make a focused change, and verify the result.
 
-It's which workflow you actually have.
+That's the format for this series: source first, evidence second, practical case third.

@@ -1,16 +1,133 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=1080,height=1920"><title>Sonnet 5.5 vs GPT-6 Sol</title><style>
-*{box-sizing:border-box}html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#f7f8fa;color:#111318;font-family:Inter,Arial,sans-serif}#app{padding:58px 48px}.header{display:flex;justify-content:space-between;font-weight:900;font-size:19px}.brand:before{content:"";display:inline-block;width:12px;height:12px;background:#315cff;border-radius:50%;margin-right:10px}.clock{color:#777}.hero{margin-top:55px}.kicker{font-size:16px;font-weight:900;letter-spacing:.14em;color:#315cff}h1{font-size:62px;line-height:.95;letter-spacing:-.055em;margin:12px 0}.sub{font-size:23px;color:#666;line-height:1.3}.task,.reason{background:#fff;border:2px solid #e4e7ec;border-radius:22px;padding:18px 20px;margin-top:25px}.task{background:#111318;color:white;border:0}.label{font-size:11px;font-weight:900;letter-spacing:.12em;color:#aeb5c1;margin-bottom:9px}.tasktext{font-size:21px}.duel{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:22px}.panel{background:#fff;border:2px solid #e4e7ec;border-radius:24px;overflow:hidden;opacity:.35;transform:translateY(15px)}.panel.live{opacity:1;transform:none}.head{height:68px;padding:0 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #e6e8ec;font-weight:900}.badge{font-size:10px;padding:6px 8px;border-radius:99px;background:#eef1f5;color:#69717d}.browser{margin:13px;border:1px solid #dfe3e8;border-radius:14px;overflow:hidden}.bar{height:28px;background:#fafafa;border-bottom:1px solid #ddd;padding:8px}.code{height:255px;background:#111318;color:#dce2ea;padding:15px;font:12px/1.8 monospace}.kw{color:#9fb4ff}.fn{color:#e8a7ff}.err{color:#ffadad}.ok{color:#9ee0b8;opacity:0}.term{margin:13px;background:#111318;color:#dce2ea;border-radius:14px;padding:12px;font:11px/1.8 monospace}.tl{opacity:.15}.show{opacity:1}.progress{height:7px;background:#edf0f4;margin:0 13px 13px;border-radius:9px}.fill{height:100%;width:0;background:#315cff;border-radius:9px}.status{padding:0 13px 14px;display:flex;justify-content:space-between;font-size:11px;font-weight:800;color:#737a84}.reason{margin-top:18px}.reasonTop{display:flex;justify-content:space-between;font-weight:900}.state{color:#315cff;font-size:10px}.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px}.step{background:#f4f5f7;border-radius:11px;padding:10px;opacity:.3}.step.on{opacity:1;background:#eef1ff}.step b{font-size:9px;color:#315cff}.step span{display:block;margin-top:5px;font-size:11px;font-weight:850}.verdict{text-align:center;font-size:25px;font-weight:950;margin-top:16px;opacity:0}.verdict span{color:#315cff}.note{text-align:center;color:#777;font-size:11px;margin-top:8px;opacity:0}.footer{position:fixed;bottom:40px;left:48px;right:48px;display:flex;justify-content:space-between;color:#858b95;font-size:11px;font-weight:900;letter-spacing:.05em}.cursor{position:fixed;width:20px;height:20px;background:#111318;clip-path:polygon(0 0,100% 42%,58% 48%,72% 100%,55% 100%,43% 53%,0 100%);opacity:0}
-</style></head><body><div id="app">
-<div class="header"><div class="brand">SHORTPROMPT / AI WORKFLOW</div><div class="clock" id="clock">00:00</div></div>
-<section class="hero"><div class="kicker">CASE 01 — CODING</div><h1>Sonnet 5.5 vs GPT-6 Sol</h1><div class="sub">Don't ask which model is better. Ask which model fits the job.</div></section>
-<div class="task"><div class="label">THE SAME REAL-WORLD TASK</div><div class="tasktext" id="task"></div></div>
-<section class="duel">
-<article class="panel" id="p1"><div class="head">Claude Sonnet 5.5 <span class="badge" id="b1">READY</span></div><div class="browser"><div class="bar">● ● ●</div><div class="code"><div><span class="kw">function</span> <span class="fn">checkout</span>(cart) {</div><div> const total = cart.reduce(...);</div><div> return payment(total);</div><br><div class="err">TypeError: payment is not defined</div><div>// find root cause</div><br><div class="ok" id="ok1">✓ patch prepared for review</div></div></div><div class="term"><div class="tl" id="s1">$ inspect checkout.js</div><div class="tl" id="s2">$ trace payment()</div><div class="tl" id="s3">$ apply minimal patch</div></div><div class="progress"><div class="fill" id="f1"></div></div><div class="status"><span id="st">Waiting</span><span>FOCUSED TASK</span></div></article>
-<article class="panel" id="p2"><div class="head">GPT-6 Sol <span class="badge" id="b2">READY</span></div><div class="browser"><div class="bar">● ● ●</div><div class="code"><div><span class="kw">function</span> <span class="fn">checkout</span>(cart) {</div><div> const total = cart.reduce(...);</div><div> return payment(total);</div><br><div class="err">TypeError: payment is not defined</div><div>// inspect → patch → verify</div><br><div class="ok" id="ok2">✓ verification pass ready</div></div></div><div class="term"><div class="tl" id="g1">$ inspect repository</div><div class="tl" id="g2">$ run test suite</div><div class="tl" id="g3">$ apply patch + verify</div></div><div class="progress"><div class="fill" id="f2"></div></div><div class="status"><span id="gs">Waiting</span><span>AGENTIC FLOW</span></div></article></section>
-<div class="reason"><div class="reasonTop"><span>HOW TO CHOOSE</span><span class="state" id="rs">WAITING</span></div><div class="steps"><div class="step" id="r1"><b>01</b><span>Scope</span></div><div class="step" id="r2"><b>02</b><span>Codebase</span></div><div class="step" id="r3"><b>03</b><span>Tools</span></div><div class="step" id="r4"><b>04</b><span>Workflow</span></div></div><div class="verdict" id="v">Focused bug fix → <span>Sonnet 5.5</span></div><div class="note" id="n">For larger, tool-heavy workflows, Sol becomes more compelling.</div></div>
-<div class="cursor" id="cur"></div><div class="footer"><span>ILLUSTRATIVE WORKFLOW — NOT A BENCHMARK</span><span>CASE 01 / CODING</span></div></div>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1080,height=1920,initial-scale=1">
+<title>SP-MOTION — Sonnet 5.5 Source Evidence</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#f5f6f8;color:#111318;font-family:Inter,Arial,sans-serif}
+#app{position:absolute;inset:0;padding:52px 46px}
+.header{display:flex;justify-content:space-between;font-size:15px;font-weight:900;letter-spacing:.06em}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:#315cff;margin-right:8px}
+.clock{color:#747b85;font-variant-numeric:tabular-nums}
+.hero{margin-top:42px}
+.kicker{font-size:15px;font-weight:950;letter-spacing:.14em;color:#315cff}
+h1{font-size:58px;line-height:.95;letter-spacing:-.055em;margin:10px 0 9px}
+.lead{font-size:21px;line-height:1.3;color:#676d77;max-width:930px}
+.browser{margin-top:24px;height:1030px;background:#fff;border:2px solid #e0e3e8;border-radius:24px;overflow:hidden;box-shadow:0 18px 55px rgba(17,19,24,.09)}
+.bar{height:61px;border-bottom:1px solid #e1e4e8;display:flex;align-items:center;padding:0 18px;gap:8px;background:#fafbfc}
+.b{width:9px;height:9px;border-radius:50%;background:#cfd4db}
+.url{margin-left:8px;flex:1;background:#eef0f3;border-radius:10px;height:31px;padding:7px 12px;font-size:12px;color:#6d7480;font-weight:750}
+.viewport{position:relative;height:967px;overflow:hidden;background:#fff}
+#sourcePage{position:absolute;left:0;top:0;width:100%;height:auto;display:block;transform-origin:50% 0}
+#focus{position:absolute;left:25px;right:25px;top:0;height:150px;border:4px solid #315cff;border-radius:17px;background:rgba(49,92,255,.06);opacity:0;pointer-events:none}
+#tag{position:absolute;left:32px;bottom:28px;background:#111318;color:#fff;border-radius:12px;padding:11px 14px;font-size:11px;font-weight:900;letter-spacing:.04em;opacity:0}
+.cursor{position:absolute;width:23px;height:23px;z-index:5;opacity:0}
+.cursor:before{content:"";position:absolute;left:0;top:0;border-left:11px solid #111318;border-top:8px solid transparent;border-bottom:8px solid transparent;transform:rotate(-22deg)}
+.cursor:after{content:"";position:absolute;left:10px;top:12px;width:10px;height:3px;background:#111318;transform:rotate(35deg)}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:17px}
+.card{background:#fff;border:2px solid #e1e4e8;border-radius:18px;padding:17px;min-height:145px}
+.label{font-size:10px;letter-spacing:.12em;color:#7c838d;font-weight:950}
+.card h2{font-size:20px;margin:8px 0}
+.card p{font-size:13px;line-height:1.35;color:#676e78;margin:0}
+.take{margin-top:15px;background:#111318;color:#fff;border-radius:19px;padding:18px;opacity:0;transform:translateY(10px)}
+.take b{display:block;font-size:23px}.take span{display:block;margin-top:5px;color:#c5cad2;font-size:12px}
+.footer{position:absolute;left:46px;right:46px;bottom:30px;display:flex;justify-content:space-between;color:#858b95;font-size:10px;font-weight:900;letter-spacing:.06em}
+</style>
+</head>
+<body>
+<div id="app">
+  <div class="header">
+    <div><span class="dot"></span>SHORTPROMPT / SOURCE EVIDENCE</div>
+    <div class="clock" id="clock">00:00</div>
+  </div>
+
+  <section class="hero">
+    <div class="kicker">CASE 01 — CODING</div>
+    <h1>Sonnet 5.5: what is it actually built for?</h1>
+    <div class="lead">Real source page → evidence → practical coding case.</div>
+  </section>
+
+  <div class="browser">
+    <div class="bar"><span class="b"></span><span class="b"></span><span class="b"></span><div class="url">anthropic.com/claude/sonnet</div></div>
+    <div class="viewport">
+      <img id="sourcePage" src="spmotion://source/sonnet-official" alt="Captured official source page">
+      <div id="focus"></div>
+      <div id="tag">SOURCE EVIDENCE · CODING</div>
+      <div class="cursor" id="cursor"></div>
+    </div>
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <div class="label">SOURCE SAYS</div>
+      <h2>Focused coding</h2>
+      <p>Building features, fixing bugs and reviewing code are explicitly listed use cases.</p>
+    </div>
+    <div class="card">
+      <div class="label">PRACTICAL TEST</div>
+      <h2>Fix one real bug</h2>
+      <p>Find the cause → make a focused change → verify the result.</p>
+    </div>
+  </div>
+
+  <div class="take" id="take">
+    <b>Source → evidence → workflow.</b>
+    <span>Editorial demonstration — not an independent benchmark.</span>
+  </div>
+
+  <div class="footer">
+    <span>REAL WEB CAPTURE — EMBEDDED BEFORE RENDER</span>
+    <span>SONNET 5.5 / CODING</span>
+  </div>
+</div>
+
 <script>
-window.SPMOTION={width:1080,height:1920,fps:30};const $=id=>document.getElementById(id);const C=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));const E=v=>{v=C(v);return v*v*(3-2*v)};const B=(t,a,b)=>E((t-a)/(b-a));const T=(s,t,a,b)=>s.slice(0,Math.floor(s.length*B(t,a,b)));function bar(id,v){$(id).style.width=C(v)*100+"%"}function on(id,v){$(id).classList.toggle("on",v)}
-function render(time){const t=Math.max(0,time);$("clock").textContent="00:"+String(Math.floor(t)).padStart(2,"0");$("task").textContent=T("Find the root cause of this bug, fix it, and verify the change.",t,1.3,4.5)+(t<4.7?"▌":"");const live=t>4.8; $("p1").classList.toggle("live",live);$("p2").classList.toggle("live",live);bar("f1",B(t,5,17));bar("f2",B(t,5.2,20));$("b1").textContent=t<5?"READY":t<17?"WORKING":"READY";$("b2").textContent=t<5?"READY":t<20?"WORKING":"READY";$("st").textContent=t<7?"Prompt sent":t<11?"Reading codebase":t<15?"Finding root cause":t<17?"Applying patch":"Ready";$("gs").textContent=t<7?"Prompt sent":t<12?"Inspecting repository":t<16?"Running tools":t<20?"Verifying change":"Ready";["s1","s2","s3"].forEach((x,i)=>$(x).classList.toggle("show",t>=7+i*2.8));["g1","g2","g3"].forEach((x,i)=>$(x).classList.toggle("show",t>=7+i*3.4));$("ok1").style.opacity=B(t,13,17);$("ok2").style.opacity=B(t,16,20);["r1","r2","r3","r4"].forEach((x,i)=>on(x,t>=7+i*3));$("rs").textContent=t<7?"WAITING":t<17?"ANALYZING":"DECISION";$("v").style.opacity=B(t,20,23);$("n").style.opacity=B(t,21.5,24)}
-window.SPMOTION_RENDER=render;render(0);let ps=performance.now();function preview(n){render((n-ps)/1000);requestAnimationFrame(preview)}requestAnimationFrame(preview);
-</script></body></html>
+window.SPMOTION={width:1080,height:1920,fps:30};
+const $=id=>document.getElementById(id);
+const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
+const ease=v=>{v=clamp(v);return v*v*(3-2*v)};
+const between=(t,a,b)=>ease((t-a)/(b-a));
+
+function render(time){
+  const t=Math.max(0,time);
+  $("clock").textContent="00:"+String(Math.floor(t)).padStart(2,"0");
+
+  const pageY =
+    t<3 ? 0 :
+    t<8 ? -between(t,3,8)*360 :
+    t<12 ? -360 :
+    t<16 ? -360-between(t,12,16)*470 :
+    -830;
+
+  const zoom=t<6?1:t<10?1+between(t,6,10)*.07:1.07;
+  $("sourcePage").style.transform=`translateY(${pageY}px) scale(${zoom})`;
+
+  const focus=between(t,8.2,10.3);
+  $("focus").style.opacity=focus;
+  $("tag").style.opacity=between(t,9.2,11.2);
+
+  const c=$("cursor");
+  let x=780,y=170,o=0;
+  if(t>=2&&t<5){const q=between(t,2,5);x=820-q*480;y=180+q*220;o=1}
+  else if(t>=5&&t<9){const q=between(t,5,9);x=330+q*390;y=390+q*230;o=1}
+  else if(t>=9&&t<14){const q=between(t,9,14);x=720-q*300;y=680+q*90;o=1}
+  c.style.left=x+"px";c.style.top=y+"px";c.style.opacity=o;
+
+  const a=between(t,16,18);
+  $("take").style.opacity=a;
+  $("take").style.transform=`translateY(${(1-a)*10}px)`;
+}
+
+window.SPMOTION_RENDER=render;
+render(0);
+let previewStart=performance.now();
+function preview(now){
+  render((now-previewStart)/1000);
+  requestAnimationFrame(preview);
+}
+requestAnimationFrame(preview);
+</script>
+</body>
+</html>
