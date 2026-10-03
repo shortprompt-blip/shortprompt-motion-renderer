@@ -4,49 +4,33 @@
       "id": "sonnet-announce",
       "url": "https://www.anthropic.com/claude-sonnet-5-5",
       "waitUntil": "domcontentloaded",
-      "waitMs": 3500,
-      "fullPage": true,
+      "waitMs": 1500,
+      "fullPage": false,
       "output": "assets/evidence/sonnet-announce.png"
     },
     {
       "id": "sonnet-overview",
       "url": "https://www.anthropic.com/claude/sonnet",
       "waitUntil": "domcontentloaded",
-      "waitMs": 3500,
-      "fullPage": true,
+      "waitMs": 1500,
+      "fullPage": false,
       "output": "assets/evidence/sonnet-overview.png"
-    },
-    {
-      "id": "sonnet-transparency",
-      "url": "https://www.anthropic.com/transparency",
-      "waitUntil": "domcontentloaded",
-      "waitMs": 3500,
-      "fullPage": true,
-      "output": "assets/evidence/sonnet-transparency.png"
     },
     {
       "id": "github-node",
       "url": "https://docs.github.com/en/actions/tutorials/build-and-test-code/nodejs",
       "waitUntil": "domcontentloaded",
-      "waitMs": 3000,
-      "fullPage": true,
+      "waitMs": 1500,
+      "fullPage": false,
       "output": "assets/evidence/github-node.png"
     },
     {
       "id": "github-actions",
       "url": "https://docs.github.com/en/actions/get-started/quickstart",
       "waitUntil": "domcontentloaded",
-      "waitMs": 3000,
-      "fullPage": true,
+      "waitMs": 1500,
+      "fullPage": false,
       "output": "assets/evidence/github-actions.png"
-    },
-    {
-      "id": "github-javascript-action",
-      "url": "https://docs.github.com/en/actions/tutorials/create-actions/create-a-javascript-action",
-      "waitUntil": "domcontentloaded",
-      "waitMs": 3000,
-      "fullPage": true,
-      "output": "assets/evidence/github-javascript-action.png"
     }
   ]
 }

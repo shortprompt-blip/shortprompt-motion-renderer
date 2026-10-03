@@ -1,39 +1,27 @@
-Claude Sonnet 5.5 is being positioned as a faster, lower-cost model for practical work, including fixing bugs.
+Let's evaluate Sonnet 5.5 the way I prefer to evaluate an AI coding model: start with the sources, then turn the claims into a concrete workflow.
 
-But instead of stopping at the announcement, let's follow the evidence.
+First, the official launch material.
 
-First, the launch page gives us the high-level claim.
+Then a separate model overview, so we are not relying on one page alone.
 
-Then we move to the Sonnet overview to see where the model sits in the wider Claude lineup.
+Now switch to GitHub. Its Node.js guide shows the basic build-and-test pattern.
 
-Next, Anthropic's transparency material gives us additional model context.
+And the Actions quickstart shows how that check can be automated.
 
-Now let's switch perspective.
+Now for a controlled coding demonstration.
 
-If the goal is practical coding, the workflow around the code matters too.
+Here is a deliberately broken parser. Invalid input can leave the match empty, but the code immediately reads from it.
 
-GitHub's documentation shows a simple pattern: build the project, run the tests, and use automation to repeat that check when code changes.
+The test fails.
 
-The Actions documentation takes that one step further, showing how a workflow can run automatically.
-
-And the JavaScript Action guide shows how an action itself can be tested inside a workflow.
-
-Now let's put those ideas into one controlled demonstration.
-
-Here is a deliberately broken parser.
-
-Invalid input makes the regular expression return no match, but the code immediately tries to read from that missing result.
-
-The first test fails.
-
-A focused patch adds a guard and normalizes the parsed values.
+The focused patch adds a guard and normalizes the parsed values.
 
 Run the test again.
 
-The designed scenario now reaches a green test state.
+The designed scenario is now green.
 
-This isn't an independent benchmark, and we aren't claiming that the model produced this exact patch.
+This is not an independent benchmark, and I am not presenting the simulated patch as an observed model output.
 
-The point is the workflow: start from a published claim, inspect the evidence, define a concrete coding task, make the change, and verify the result.
+The useful part is the evaluation method: source evidence, a concrete task, a change, and a verification step.
 
-That is a much more useful way to evaluate an AI coding model than watching the same screenshot repeat for the rest of the video.
+That is a much better test of a coding assistant than letting one screenshot repeat for an entire video.
