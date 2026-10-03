@@ -16,7 +16,7 @@ There's another practical question: what does the model do when the software is 
 
 So let's forget the marketing for a moment.
 
-Here's a real bug.
+Here's a controlled bug scenario.
 
 The parser expects a version string, but invalid input makes the match return null.
 
@@ -28,7 +28,7 @@ Before the patch, it fails.
 
 After the fix, the parser handles invalid input safely.
 
-And the test suite is green.
+In this controlled scenario, the test suite is green.
 
 That's the part that matters.
 
