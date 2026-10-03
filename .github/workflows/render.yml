@@ -67,9 +67,16 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r renderer/requirements.txt
 
-      - name: Research capture — optional
+      - name: Capture REAL source pages
+        run: node renderer/capture.mjs example
+
+      - name: Embed REAL source captures into video.html
+        run: node renderer/embed-evidence.mjs example
+
+      - name: Verify source evidence is embedded
         run: |
-          node renderer/capture.mjs example
+          test -s example/assets/evidence/sonnet-official.png
+          grep -q 'data:image/png;base64,' example/video.html
 
       - name: Generate voiceover — master clock
         run: |

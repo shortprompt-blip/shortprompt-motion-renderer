@@ -1,4 +1,4 @@
-name: Capture real Gemini demo evidence
+name: Capture real source evidence
 
 on:
   workflow_dispatch:
@@ -13,28 +13,29 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 20
 
       - name: Install Playwright
+        working-directory: renderer
         run: |
-          npm init -y
-          npm install playwright
+          npm install
           npx playwright install --with-deps chromium
 
       - name: Capture REAL source screenshots
-        run: node capture/capture.mjs
+        run: node renderer/capture.mjs example
 
-      - name: Verify evidence files exist
+      - name: Embed captures into video.html
+        run: node renderer/embed-evidence.mjs example
+
+      - name: Verify evidence
         run: |
-          test -s assets/evidence/gemini4-article.png
-          test -s assets/evidence/gemini4-pelican.png
-          test -s assets/evidence/gemini4-pagoda.png
-          test -s assets/evidence/gemini4-h145.png
-          test -s assets/evidence/gemini4-flight-sim.png
-          test -s assets/evidence/official-gemini38-evidence.png
+          test -s example/assets/evidence/sonnet-official.png
+          grep -q 'data:image/png;base64,' example/video.html
 
       - name: Upload evidence artifact
         uses: actions/upload-artifact@v4
         with:
-          name: gemini4-real-demo-evidence
-          path: assets/evidence/
+          name: sp-motion-real-source-evidence
+          path: |
+            example/assets/evidence/
+            example/video.html
