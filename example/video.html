@@ -1,41 +1,202 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=1080,height=1920,initial-scale=1"><title>Sonnet 5.5 — Real Source Evidence</title>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1080,height=1920,initial-scale=1">
+<title>Sonnet 5.5 — Real Source Evidence</title>
 <style>
-*{box-sizing:border-box}html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#f5f6f8;color:#111318;font-family:Inter,Arial,sans-serif}body{position:relative}#app{position:absolute;inset:0;padding:50px 44px}.top{display:flex;justify-content:space-between;font-size:15px;font-weight:900;letter-spacing:.06em}.dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:#315cff;margin-right:8px}h1{font-size:55px;line-height:.96;letter-spacing:-.05em;margin:35px 0 8px}.lead{font-size:20px;color:#6a7079}.browser{margin-top:22px;height:1050px;background:#fff;border:2px solid #e0e3e8;border-radius:24px;overflow:hidden;box-shadow:0 18px 55px rgba(17,19,24,.09)}.bar{height:61px;border-bottom:1px solid #e1e4e8;display:flex;align-items:center;padding:0 18px;gap:8px;background:#fafbfc}.b{width:9px;height:9px;border-radius:50%;background:#cfd4db}.url{margin-left:8px;flex:1;background:#eef0f3;border-radius:9px;height:31px;padding:7px 12px;font-size:12px;color:#6d7480;font-weight:750}.viewport{position:relative;height:989px;overflow:hidden;background:#fff}.source{position:absolute;inset:0;display:none;opacity:0;transform:translate3d(0,0,0) scale(1);transform-origin:50% 25%}.source.active{display:block}.source img{display:block;width:100%;height:auto}.focus{position:absolute;left:25px;right:25px;height:145px;border:4px solid #315cff;border-radius:17px;background:rgba(49,92,255,.06);opacity:0;pointer-events:none}.tag{position:absolute;left:32px;bottom:28px;background:#111318;color:#fff;border-radius:12px;padding:11px 14px;font-size:11px;font-weight:900;opacity:0}.cursor{position:absolute;width:23px;height:23px;z-index:20;opacity:0;pointer-events:none}.cursor:before{content:"";position:absolute;border-left:11px solid #111318;border-top:8px solid transparent;border-bottom:8px solid transparent;transform:rotate(-22deg)}.cursor:after{content:"";position:absolute;left:10px;top:12px;width:10px;height:3px;background:#111318;transform:rotate(35deg)}.cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}.card{background:#fff;border:2px solid #e1e4e8;border-radius:18px;padding:16px;min-height:142px}.label{font-size:10px;letter-spacing:.12em;color:#7c838d;font-weight:950}.card h2{font-size:19px;margin:7px 0}.card p{font-size:13px;line-height:1.35;color:#676e78;margin:0}.take{margin-top:14px;background:#111318;color:#fff;border-radius:19px;padding:18px;opacity:0;transform:translateY(10px)}.take b{display:block;font-size:22px}.take span{display:block;margin-top:5px;color:#c5cad2;font-size:12px}.footer{position:absolute;left:44px;right:44px;bottom:28px;display:flex;justify-content:space-between;color:#858b95;font-size:10px;font-weight:900;letter-spacing:.06em}
-</style></head><body><div id="app">
-<div class="top"><div><span class="dot"></span>SHORTPROMPT / SOURCE EVIDENCE</div><div id="clock">00:00</div></div>
-<h1>Sonnet 5.5: can it actually fix a bug?</h1><div class="lead">Real source captures first. Practical test second.</div>
-<div class="browser"><div class="bar"><span class="b"></span><span class="b"></span><span class="b"></span><div class="url" id="url">anthropic.com/claude-sonnet-5-5</div></div><div class="viewport">
-<div class="source" data-source="sonnet-launch"><img src="spmotion://source/sonnet-launch" alt=""></div>
-<div class="source" data-source="sonnet-coding"><img src="spmotion://source/sonnet-coding" alt=""></div>
-<div class="source" data-source="sonnet-benchmark"><img src="spmotion://source/sonnet-benchmark" alt=""></div>
-<div class="source" data-source="sonnet-pricing"><img src="spmotion://source/sonnet-pricing" alt=""></div>
-<div class="focus" id="focus"></div><div class="tag" id="tag">REAL SOURCE · EVIDENCE</div><div class="cursor" id="cursor"></div>
-</div></div>
-<div class="cards"><div class="card"><div class="label">SOURCE</div><h2 id="sourceTitle">What Anthropic claims</h2><p id="sourceCopy">The real page is captured automatically and shown as editorial evidence.</p></div><div class="card"><div class="label">TEST</div><h2>One practical bug</h2><p>Find the root cause → patch it → verify the result.</p></div></div>
-<div class="take" id="take"><b>Source → evidence → practical test.</b><span>Editorial demonstration — not an independent benchmark.</span></div>
-<div class="footer"><span>REAL WEB CAPTURES EMBEDDED BEFORE RENDER</span><span>SONNET 5.5</span></div></div>
+*{box-sizing:border-box}
+html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#f5f6f8;color:#111318;font-family:Inter,Arial,sans-serif}
+body{position:relative}
+#app{position:absolute;inset:0;padding:50px 44px}
+.top{display:flex;justify-content:space-between;font-size:15px;font-weight:900;letter-spacing:.06em}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:#315cff;margin-right:8px}
+h1{font-size:55px;line-height:.96;letter-spacing:-.05em;margin:35px 0 8px}
+.lead{font-size:20px;color:#6a7079}
+.browser{margin-top:22px;height:1050px;background:#fff;border:2px solid #e0e3e8;border-radius:24px;overflow:hidden;box-shadow:0 18px 55px rgba(17,19,24,.09)}
+.bar{height:61px;border-bottom:1px solid #e1e4e8;display:flex;align-items:center;padding:0 18px;gap:8px;background:#fafbfc}
+.b{width:9px;height:9px;border-radius:50%;background:#cfd4db}
+.url{margin-left:8px;flex:1;background:#eef0f3;border-radius:9px;height:31px;padding:7px 12px;font-size:12px;color:#6d7480;font-weight:750}
+.viewport{position:relative;height:989px;overflow:hidden;background:#fff}
+.source{position:absolute;inset:0;display:none;opacity:0;transform:translate3d(0,0,0) scale(1);transform-origin:50% 25%;will-change:transform,opacity}
+.source.active{display:block}
+.source img{display:block;width:100%;height:auto}
+.focus{position:absolute;left:25px;right:25px;height:145px;border:4px solid #315cff;border-radius:17px;background:rgba(49,92,255,.06);opacity:0;pointer-events:none}
+.tag{position:absolute;left:32px;bottom:28px;background:#111318;color:#fff;border-radius:12px;padding:11px 14px;font-size:11px;font-weight:900;opacity:0}
+.cursor{position:absolute;width:23px;height:23px;z-index:20;opacity:0;pointer-events:none}
+.cursor:before{content:"";position:absolute;border-left:11px solid #111318;border-top:8px solid transparent;border-bottom:8px solid transparent;transform:rotate(-22deg)}
+.cursor:after{content:"";position:absolute;left:10px;top:12px;width:10px;height:3px;background:#111318;transform:rotate(35deg)}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
+.card{background:#fff;border:2px solid #e1e4e8;border-radius:18px;padding:16px;min-height:142px}
+.label{font-size:10px;letter-spacing:.12em;color:#7c838d;font-weight:950}
+.card h2{font-size:19px;margin:7px 0}
+.card p{font-size:13px;line-height:1.35;color:#676e78;margin:0}
+.take{margin-top:14px;background:#111318;color:#fff;border-radius:19px;padding:18px;opacity:0;transform:translateY(10px)}
+.take b{display:block;font-size:22px}
+.take span{display:block;margin-top:5px;color:#c5cad2;font-size:12px}
+.footer{position:absolute;left:44px;right:44px;bottom:28px;display:flex;justify-content:space-between;color:#858b95;font-size:10px;font-weight:900;letter-spacing:.06em}
+</style>
+</head>
+<body>
+<div id="app">
+  <div class="top">
+    <div><span class="dot"></span>SHORTPROMPT / SOURCE EVIDENCE</div>
+    <div id="clock">00:00</div>
+  </div>
+
+  <h1>Sonnet 5.5: can it actually fix a bug?</h1>
+  <div class="lead">Real source captures first. Practical test second.</div>
+
+  <div class="browser">
+    <div class="bar">
+      <span class="b"></span><span class="b"></span><span class="b"></span>
+      <div class="url" id="url">anthropic.com/claude-sonnet-5-5</div>
+    </div>
+    <div class="viewport">
+      <div class="source" data-source="sonnet-launch">
+        <img src="spmotion://source/sonnet-launch" alt="">
+      </div>
+      <div class="source" data-source="sonnet-coding">
+        <img src="spmotion://source/sonnet-coding" alt="">
+      </div>
+      <div class="source" data-source="sonnet-benchmark">
+        <img src="spmotion://source/sonnet-benchmark" alt="">
+      </div>
+      <div class="source" data-source="sonnet-pricing">
+        <img src="spmotion://source/sonnet-pricing" alt="">
+      </div>
+
+      <div class="focus" id="focus"></div>
+      <div class="tag" id="tag">REAL SOURCE · EVIDENCE</div>
+      <div class="cursor" id="cursor"></div>
+    </div>
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <div class="label">SOURCE</div>
+      <h2 id="sourceTitle">What Anthropic claims</h2>
+      <p id="sourceCopy">The real page is captured automatically and shown as editorial evidence.</p>
+    </div>
+    <div class="card">
+      <div class="label">TEST</div>
+      <h2>One practical bug</h2>
+      <p>Find the root cause → patch it → verify the result.</p>
+    </div>
+  </div>
+
+  <div class="take" id="take">
+    <b>Source → evidence → practical test.</b>
+    <span>Editorial demonstration — not an independent benchmark.</span>
+  </div>
+
+  <div class="footer">
+    <span>REAL WEB CAPTURES EMBEDDED BEFORE RENDER</span>
+    <span>SONNET 5.5</span>
+  </div>
+</div>
+
 <script>
-window.SPMOTION={width:1080,height:1920,fps:30};
-const $=id=>document.getElementById(id),clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v)),ease=v=>{v=clamp(v);return v*v*(3-2*v)};
-const sources=[
-{id:"sonnet-launch",url:"anthropic.com/claude-sonnet-5-5",title:"What Anthropic claims",copy:"The official Sonnet 5.5 page provides the first source context."},
-{id:"sonnet-coding",url:"anthropic.com/claude/sonnet",title:"Coding use cases",copy:"The coding page shows the practical tasks being discussed."},
-{id:"sonnet-benchmark",url:"anthropic.com/claude-sonnet-5-5",title:"Benchmark evidence",copy:"The source page provides the published benchmark context."},
-{id:"sonnet-pricing",url:"anthropic.com/claude-sonnet-5-5",title:"Workload context",copy:"Pricing and workload information adds context to the claims."}
+/*
+ * SP-MOTION TIMING CONTRACT:
+ * - duration = AUTHORING/DESIGN timeline, deliberately 60s.
+ * - Kokoro/renderer determines final output duration.
+ * - renderer maps actual audio time -> this design timeline before calling
+ *   SPMOTION_RENDER(designTime).
+ */
+window.SPMOTION = {
+  width: 1080,
+  height: 1920,
+  fps: 30,
+  duration: 60
+};
+
+const $ = id => document.getElementById(id);
+const clamp = (v,a=0,b=1) => Math.max(a,Math.min(b,v));
+const ease = v => { v=clamp(v); return v*v*(3-2*v); };
+
+const sources = [
+  { id:"sonnet-launch",    url:"anthropic.com/claude-sonnet-5-5", title:"What Anthropic claims", copy:"The official Sonnet 5.5 page provides the first source context." },
+  { id:"sonnet-coding",    url:"anthropic.com/claude/sonnet",     title:"Coding use cases", copy:"The coding page shows the practical tasks being discussed." },
+  { id:"sonnet-benchmark", url:"anthropic.com/claude-sonnet-5-5", title:"Benchmark evidence", copy:"The source page provides the published benchmark context." },
+  { id:"sonnet-pricing",   url:"anthropic.com/claude-sonnet-5-5", title:"Workload context", copy:"Pricing and workload information adds context to the claims." }
 ];
-const layers=[...document.querySelectorAll(".source")];
-function duration(){return Math.max(.001,Number(window.SPMOTION?.duration)||1)}
-function win(i){const a=[0,.22,.47,.72],b=[.22,.47,.72,1];return[a[i],b[i]]}
-function active(i){layers.forEach((x,n)=>{const on=n===i;x.classList.toggle("active",on);x.style.visibility=on?"visible":"hidden";x.style.opacity=on?"1":"0"})}
-function render(time){
- const d=duration(),t=clamp(Number(time)||0,0,d),p=t/d;$("clock").textContent=String(Math.floor(t/60)).padStart(2,"0")+":"+String(Math.floor(t%60)).padStart(2,"0");
- let i=sources.length-1;for(let n=0;n<sources.length;n++){if(p<win(n)[1]||n===sources.length-1){i=n;break}}
- const [a,b]=win(i),local=clamp((p-a)/(b-a)),s=sources[i];active(i);$("url").textContent=s.url;$("sourceTitle").textContent=s.title;$("sourceCopy").textContent=s.copy;
- const enter=ease(local/.16),move=ease((local-.16)/.68),scale=1+.075*move,y=-Math.round(380*move);
- layers[i].style.transform=`translate3d(0,${y+(1-enter)*24}px,0) scale(${scale})`;
- $("tag").style.opacity=ease((local-.08)/.14);$("focus").style.opacity=ease((local-.42)/.18);$("focus").style.top=(400+i*42)+"px";
- const c=ease((local-.20)/.50);$("cursor").style.opacity=c;$("cursor").style.left=(820-390*c)+"px";$("cursor").style.top=(180+230*c)+"px";
- const end=ease((p-.88)/.12);$("take").style.opacity=end;$("take").style.transform=`translateY(${(1-end)*10}px)`;
+
+const layers = [...document.querySelectorAll(".source")];
+
+const sourceWindows = [
+  [0.00, 0.22],
+  [0.22, 0.47],
+  [0.47, 0.72],
+  [0.72, 1.00]
+];
+
+function setActive(index){
+  layers.forEach((layer,i)=>{
+    const active = i === index;
+    layer.classList.toggle("active",active);
+    layer.style.visibility = active ? "visible" : "hidden";
+    layer.style.pointerEvents = active ? "auto" : "none";
+    layer.style.opacity = active ? "1" : "0";
+  });
 }
-window.SPMOTION_RENDER=render;render(0);
-</script></body></html>
+
+function render(time){
+  const designDuration = Number(window.SPMOTION.duration);
+  if (!Number.isFinite(designDuration) || designDuration <= 0) {
+    throw new Error("SP-MOTION contract error: positive design duration required");
+  }
+
+  const t = clamp(Number(time)||0,0,designDuration);
+  const p = t/designDuration;
+
+  $("clock").textContent =
+    String(Math.floor(t/60)).padStart(2,"0")+":"+
+    String(Math.floor(t%60)).padStart(2,"0");
+
+  let index = sources.length - 1;
+  for(let i=0;i<sources.length;i++){
+    const [a,b] = sourceWindows[i];
+    if(p < b || i === sources.length-1){
+      index = i;
+      break;
+    }
+  }
+
+  const [a,b] = sourceWindows[index];
+  const local = clamp((p-a)/Math.max(0.0001,b-a));
+  const source = sources[index];
+
+  setActive(index);
+  $("url").textContent = source.url;
+  $("sourceTitle").textContent = source.title;
+  $("sourceCopy").textContent = source.copy;
+
+  // Deterministic camera/evidence motion driven only by renderer time.
+  const enter = ease(local/0.16);
+  const move = ease((local-0.16)/0.68);
+  const scale = 1 + 0.075*move;
+  const translateY = -Math.round(380*move);
+
+  layers[index].style.transform =
+    `translate3d(0,${translateY + (1-enter)*24}px,0) scale(${scale})`;
+
+  $("tag").style.opacity = ease((local-0.08)/0.14);
+  $("focus").style.opacity = ease((local-0.42)/0.18);
+  $("focus").style.top = (400 + index*42) + "px";
+
+  const cursorIn = ease((local-0.20)/0.50);
+  $("cursor").style.opacity = cursorIn;
+  $("cursor").style.left = (820 - 390*cursorIn) + "px";
+  $("cursor").style.top = (180 + 230*cursorIn) + "px";
+
+  const end = ease((p-0.88)/0.12);
+  $("take").style.opacity = end;
+  $("take").style.transform = `translateY(${(1-end)*10}px)`;
+}
+
+window.SPMOTION_RENDER = render;
+render(0);
+</script>
+</body>
+</html>
