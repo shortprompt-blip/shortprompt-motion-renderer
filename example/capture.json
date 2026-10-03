@@ -1,8 +1,1 @@
-{
-  "sources": [
-    {"id":"sonnet-launch","url":"https://www.anthropic.com/claude-sonnet-5-5","waitUntil":"domcontentloaded","waitMs":3500,"fullPage":true,"output":"assets/evidence/sonnet-launch.png"},
-    {"id":"sonnet-coding","url":"https://www.anthropic.com/claude/sonnet","waitUntil":"domcontentloaded","waitMs":3000,"fullPage":true,"output":"assets/evidence/sonnet-coding.png"},
-    {"id":"sonnet-benchmark","url":"https://www.anthropic.com/claude-sonnet-5-5","waitUntil":"domcontentloaded","waitMs":3500,"fullPage":true,"output":"assets/evidence/sonnet-benchmark.png"},
-    {"id":"sonnet-pricing","url":"https://www.anthropic.com/claude-sonnet-5-5","waitUntil":"domcontentloaded","waitMs":3500,"fullPage":true,"output":"assets/evidence/sonnet-pricing.png"}
-  ]
-}
+{"sources":[{"id":"sonnet-launch","url":"https://www.anthropic.com/claude-sonnet-5-5","waitUntil":"domcontentloaded","waitMs":3500,"fullPage":true,"output":"assets/evidence/sonnet-launch.png"},{"id":"sonnet-coding","url":"https://www.anthropic.com/claude/sonnet","waitUntil":"domcontentloaded","waitMs":3000,"fullPage":true,"output":"assets/evidence/sonnet-coding.png"},{"id":"sonnet-benchmark","url":"https://www.anthropic.com/claude-sonnet-5-5","waitUntil":"domcontentloaded","waitMs":3500,"fullPage":true,"output":"assets/evidence/sonnet-benchmark.png"},{"id":"sonnet-pricing","url":"https://www.anthropic.com/claude-sonnet-5-5","waitUntil":"domcontentloaded","waitMs":3500,"fullPage":true,"output":"assets/evidence/sonnet-pricing.png"}]}

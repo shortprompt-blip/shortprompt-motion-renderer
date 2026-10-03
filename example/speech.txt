@@ -1,21 +1,35 @@
-Sonnet 5.5: can it actually fix a bug?
+Sonnet 5.5: can it actually fix a real bug?
 
-Let’s start with what Anthropic itself says.
+Anthropic says Sonnet 5.5 is built for serious coding work.
 
-Sonnet 5.5 is positioned for well-scoped everyday work, including coding.
+So let's look past the headline and start with the source.
 
-And the coding use cases are concrete: building features, fixing bugs, and reviewing code.
+The published Sonnet 5.5 material describes coding and practical software tasks.
 
-Anthropic also publishes benchmark results for coding and agentic tasks.
+The coding use cases make that promise more concrete.
 
-And it gives workload and pricing information, so we can judge the model in context rather than from one headline number.
+Anthropic also publishes benchmark results, giving us evidence we can actually inspect.
 
-But claims are not the same as a real test.
+But benchmarks don't tell us everything.
 
-So here’s the practical case.
+There's another practical question: what does the model do when the software is simply broken?
 
-Give Sonnet one real bug.
+So let's forget the marketing for a moment.
 
-Find the root cause, make a focused change, and verify the result.
+Here's a real bug.
 
-That’s what we actually want to know: not just what the model claims to do, but how useful that workflow is in practice.
+The parser expects a version string, but invalid input makes the match return null.
+
+The model needs to find the cause, make a focused patch, and avoid changing unrelated code.
+
+Now run the test.
+
+Before the patch, it fails.
+
+After the fix, the parser handles invalid input safely.
+
+And the test suite is green.
+
+That's the part that matters.
+
+Not just whether a model can talk about coding, but whether it can take a broken piece of software and move it toward a verified result.
