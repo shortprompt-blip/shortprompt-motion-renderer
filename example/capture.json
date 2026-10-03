@@ -12,7 +12,9 @@
       "waitMs": 1200,
       "fullPage": false,
       "scrollY": 0,
-      "output": "assets/evidence/sonnet-top.png"
+      "output": "assets/evidence/sonnet-top.png",
+      "captureMode": "viewport",
+      "captureTarget": "page"
     },
     {
       "id": "sonnet-coding",
@@ -21,7 +23,9 @@
       "waitMs": 1200,
       "fullPage": false,
       "scrollY": 900,
-      "output": "assets/evidence/sonnet-coding.png"
+      "output": "assets/evidence/sonnet-coding.png",
+      "captureMode": "viewport",
+      "captureTarget": "page"
     },
     {
       "id": "github-node",
@@ -30,7 +34,9 @@
       "waitMs": 1200,
       "fullPage": false,
       "scrollY": 0,
-      "output": "assets/evidence/github-node.png"
+      "output": "assets/evidence/github-node.png",
+      "captureMode": "viewport",
+      "captureTarget": "page"
     },
     {
       "id": "github-actions",
@@ -39,7 +45,9 @@
       "waitMs": 1200,
       "fullPage": false,
       "scrollY": 0,
-      "output": "assets/evidence/github-actions.png"
+      "output": "assets/evidence/github-actions.png",
+      "captureMode": "viewport",
+      "captureTarget": "page"
     }
   ]
 }

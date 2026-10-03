@@ -49,12 +49,12 @@ html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#f5f6f8
 <div id="sp55">
   <div class="top"><div><span class="dot"></span>SHORTPROMPT / SOURCE EVIDENCE</div><div class="clock" id="clock">00:00</div></div>
   <h1>Sonnet 5.5: source evidence before the coding test</h1>
-  <div class="lead">Real page captures are presented as 16:9 browser screens. Long pages use separate scroll-position captures instead of cropping one image.</div>
+  <div class="lead">Real page captures are full Chromium viewport screenshots. They are never extracted from a DOM element, hero image, og:image, or cropped page asset. Long pages use separate viewport captures at different scroll positions.</div>
 
   <div class="sourceStage">
     <div class="browserBar"><i class="browserDot"></i><i class="browserDot"></i><i class="browserDot"></i><div class="url" id="url">source</div></div>
     <div class="sourceViewport">
-      <div class="sourceCaption" id="caption">SOURCE</div>
+      <div class="sourceCaption" id="caption">REAL VIEWPORT CAPTURE</div>
       <div class="sourceFrame" id="s1"><img src="spmotion://source/sonnet-top"></div>
       <div class="sourceFrame" id="s2"><img src="spmotion://source/sonnet-coding"></div>
       <div class="sourceFrame" id="s3"><img src="spmotion://source/github-node"></div>
@@ -92,8 +92,8 @@ window.SPMOTION={width:1080,height:1920,fps:30,duration:48};
 const $=id=>document.getElementById(id);
 const designDuration=window.SPMOTION.duration;
 const sourceWindows=[
-  [0,8,"s1","https://www.anthropic.com/claude-sonnet-5-5","SOURCE 01 · OFFICIAL LAUNCH","Official Sonnet 5.5 source."],
-  [8,16,"s2","https://www.anthropic.com/claude-sonnet-5-5 · coding section","SOURCE 02 · CODING CONTEXT","A separate scroll-position capture of the relevant coding section."],
+  [0,8,"s1","https://www.anthropic.com/claude-sonnet-5-5","SOURCE 01 · FULL VIEWPORT","Full Chromium viewport of the official source page — not an extracted page image."],
+  [8,16,"s2","https://www.anthropic.com/claude-sonnet-5-5 · coding section","SOURCE 02 · FULL VIEWPORT / SCROLL","A second full Chromium viewport after scrolling — not a DOM crop or extracted image."],
   [16,24,"s3","https://docs.github.com/en/actions/tutorials/build-and-test-code/nodejs","SOURCE 03 · GITHUB DOCS","Node.js build-and-test workflow."],
   [24,32,"s4","https://docs.github.com/en/actions/get-started/quickstart","SOURCE 04 · ACTIONS","GitHub Actions quickstart."],
   [32,40,"demo","github.local/sonnet55-eval","CONTROLLED DEMO","A clearly labelled simulation, not an observed model output."],
@@ -154,6 +154,17 @@ function render(time){
   $("take").style.opacity=t>=40?1:0;
   if(s[2]==="demo")demoState(t);
 }
+function assertEvidenceContract(){
+  const frames=["s1","s2","s3","s4"];
+  for(const id of frames){
+    const img=$(id)?.querySelector("img");
+    if(!img || !img.src) throw new Error("Missing evidence image: "+id);
+    if(!img.src.startsWith("data:image/") && !img.src.startsWith("spmotion://source/")){
+      throw new Error("Evidence must be embedded/local: "+id);
+    }
+  }
+}
+assertEvidenceContract();
 window.SPMOTION_RENDER=render;
 render(0);
 </script>
