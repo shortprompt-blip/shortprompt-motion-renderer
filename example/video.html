@@ -1,41 +1,85 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=1080,height=1920,initial-scale=1"><title>Sonnet 5.5 — Real Bug</title>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1080,height=1920,initial-scale=1">
+<title>Sonnet 5.5 — From Claim to Verified Workflow</title>
 <style>
-*{box-sizing:border-box}html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#f4f5f7;color:#111318;font-family:Arial,sans-serif}#app{padding:48px 44px}.top{display:flex;justify-content:space-between;font-size:14px;font-weight:900;letter-spacing:.08em}.dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:#315cff;margin-right:8px}h1{font-size:54px;line-height:.94;letter-spacing:-.05em;margin:34px 0 8px}.lead{font-size:19px;color:#6b727d}.browser{margin-top:22px;height:1060px;background:#fff;border:2px solid #dfe3e8;border-radius:24px;overflow:hidden;box-shadow:0 18px 55px #00000018}.bar{height:62px;border-bottom:1px solid #e0e3e7;display:flex;align-items:center;padding:0 18px;gap:8px;background:#fafbfc}.b{width:9px;height:9px;border-radius:50%;background:#cdd2d9}.url{margin-left:9px;flex:1;background:#eef0f3;border-radius:9px;height:31px;padding:7px 12px;font-size:12px;color:#68707b;font-weight:750}.viewport{position:relative;height:998px;overflow:hidden;background:#fff}.source{position:absolute;inset:0;display:none;opacity:0}.source.active{display:block}.source img{display:block;width:100%;height:auto}.recon{position:absolute;inset:0;display:none;background:#10131a;color:#e9edf3}.idebar{position:absolute;left:0;top:0;bottom:0;width:205px;background:#171a21;padding:22px 14px}.idebar div{font-size:12px;color:#9ca4af;padding:9px 8px}.idebar .sel{background:#2a2f39;color:#fff}.editor{position:absolute;left:205px;right:0;top:0;height:610px;padding:25px 30px}.tabs{color:#9ea6b2;font-size:11px}.code{margin-top:20px;font:13px/1.72 monospace;white-space:pre;color:#cbd2dc}.terminal{position:absolute;left:205px;right:0;bottom:0;height:388px;background:#0b0e13;border-top:1px solid #2a3038;padding:20px 30px;font:13px/1.7 monospace}.red{color:#ff7a7a}.green{color:#7ee787}.muted{color:#8d96a3}.focus{position:absolute;left:25px;right:25px;height:150px;border:4px solid #315cff;border-radius:18px;background:#315cff0d;opacity:0;z-index:40}.tag{position:absolute;left:30px;bottom:28px;background:#111318;color:#fff;border-radius:12px;padding:11px 14px;font-size:11px;font-weight:900;opacity:0;z-index:45}.cursor{position:absolute;width:24px;height:24px;z-index:50;opacity:0}.cursor:before{content:"";position:absolute;border-left:11px solid #111318;border-top:8px solid transparent;border-bottom:8px solid transparent;transform:rotate(-22deg)}.cursor:after{content:"";position:absolute;left:10px;top:12px;width:10px;height:3px;background:#111318;transform:rotate(35deg)}.cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}.card{background:#fff;border:2px solid #e0e4e8;border-radius:18px;padding:16px;min-height:145px}.label{font-size:10px;letter-spacing:.12em;color:#7a828d;font-weight:950}.card h2{font-size:19px;margin:7px 0}.card p{font-size:13px;line-height:1.35;color:#68707a;margin:0}.take{margin-top:14px;background:#111318;color:#fff;border-radius:19px;padding:18px;opacity:0}.take b{display:block;font-size:21px}.take span{display:block;margin-top:5px;color:#c5cad2;font-size:12px}.footer{position:absolute;left:44px;right:44px;bottom:26px;display:flex;justify-content:space-between;color:#858c96;font-size:10px;font-weight:900;letter-spacing:.06em}
-</style></head><body><div id="app">
-<div class="top"><div><span class="dot"></span>SHORTPROMPT / SOURCE → TEST</div><div id="clock">00:00</div></div>
-<h1>Sonnet 5.5: can it actually fix a real bug?</h1><div class="lead">Claims → evidence → practical test → verified result.</div>
-<div class="browser"><div class="bar"><span class="b"></span><span class="b"></span><span class="b"></span><div class="url" id="url"></div></div><div class="viewport">
-<div class="source" id="s1"><img src="spmotion://source/sonnet-launch"></div>
-<div class="source" id="s2"><img src="spmotion://source/sonnet-coding"></div>
-<div class="source" id="s3"><img src="spmotion://source/sonnet-benchmark"></div>
-<div class="source" id="s4"><img src="spmotion://source/sonnet-pricing"></div>
-<div class="recon" id="demo"><div class="idebar"><div class="sel">bug-demo</div><div>src</div><div>tests</div><div>package.json</div><div>README.md</div></div><div class="editor"><div class="tabs">src / parser.js</div><div class="code" id="code"></div></div><div class="terminal" id="terminal"></div></div>
-<div class="focus" id="focus"></div><div class="tag" id="tag">SIMULATION · CONTROLLED TEST</div><div class="cursor" id="cursor"></div>
+*{box-sizing:border-box}html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#f5f6f8;color:#111318;font-family:Inter,Arial,sans-serif}
+#app{position:absolute;inset:0;padding:48px 44px}.top{display:flex;justify-content:space-between;font-size:14px;font-weight:900;letter-spacing:.08em}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:#315cff;margin-right:8px}
+h1{font-size:54px;line-height:.94;letter-spacing:-.05em;margin:34px 0 8px;max-width:920px}.lead{font-size:19px;color:#68707a}
+.browser{margin-top:22px;height:1060px;background:#fff;border:2px solid #dfe3e8;border-radius:24px;overflow:hidden;box-shadow:0 18px 55px #11131818}
+.bar{height:62px;border-bottom:1px solid #e0e3e7;display:flex;align-items:center;padding:0 18px;gap:8px;background:#fafbfc}
+.b{width:9px;height:9px;border-radius:50%;background:#cdd2d9}.url{margin-left:9px;flex:1;background:#eef0f3;border-radius:9px;height:31px;padding:7px 12px;font-size:12px;color:#68707b;font-weight:750}
+.viewport{position:relative;height:998px;overflow:hidden;background:#fff}.source{position:absolute;inset:0;display:none;opacity:0;will-change:transform}.source.active{display:block}.source img{display:block;width:100%;height:auto}
+.demo{position:absolute;inset:0;display:none;background:#10131a;color:#e9edf3}.sidebar{position:absolute;left:0;top:0;bottom:0;width:205px;background:#171a21;padding:20px 14px}.sidebar div{font:12px Arial;color:#9ca4af;padding:9px 8px;border-radius:7px}.sidebar .sel{background:#2a2f39;color:#fff}
+.editor{position:absolute;left:205px;right:0;top:0;height:590px;padding:25px 30px}.tabs{font:11px Arial;color:#9ea6b2}.code{margin-top:22px;font:13px/1.72 ui-monospace,SFMono-Regular,Consolas,monospace;white-space:pre;color:#cbd2dc}
+.terminal{position:absolute;left:205px;right:0;bottom:0;height:408px;background:#0b0e13;border-top:1px solid #2a3038;padding:20px 30px;font:13px/1.7 ui-monospace,SFMono-Regular,Consolas,monospace}
+.red{color:#ff7a7a}.green{color:#7ee787}.muted{color:#8d96a3}
+.panel{position:absolute;left:24px;right:24px;bottom:24px;background:#fff;color:#111318;border:2px solid #315cff;border-radius:16px;padding:14px 16px;z-index:20}.panel b{font-size:15px}.panel span{display:block;color:#6e7480;font-size:11px;margin-top:4px}
+.focus{position:absolute;left:25px;right:25px;height:155px;border:4px solid #315cff;border-radius:18px;background:#315cff0d;opacity:0;z-index:40;pointer-events:none}
+.tag{position:absolute;left:30px;top:26px;background:#111318;color:#fff;border-radius:12px;padding:11px 14px;font-size:11px;font-weight:900;opacity:0;z-index:45}
+.cursor{position:absolute;width:24px;height:24px;z-index:50;opacity:0;pointer-events:none}.cursor:before{content:"";position:absolute;border-left:11px solid #111318;border-top:8px solid transparent;border-bottom:8px solid transparent;transform:rotate(-22deg)}.cursor:after{content:"";position:absolute;left:10px;top:12px;width:10px;height:3px;background:#111318;transform:rotate(35deg)}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}.card{background:#fff;border:2px solid #e0e4e8;border-radius:18px;padding:16px;min-height:145px}.label{font-size:10px;letter-spacing:.12em;color:#7a828d;font-weight:950}.card h2{font-size:19px;margin:7px 0}.card p{font-size:13px;line-height:1.35;color:#68707a;margin:0}
+.take{margin-top:14px;background:#111318;color:#fff;border-radius:19px;padding:18px;opacity:0}.take b{display:block;font-size:21px}.take span{display:block;margin-top:5px;color:#c5cad2;font-size:12px}
+.footer{position:absolute;left:44px;right:44px;bottom:26px;display:flex;justify-content:space-between;color:#858c96;font-size:10px;font-weight:900;letter-spacing:.06em}
+</style>
+</head>
+<body>
+<div id="app">
+<div class="top"><div><span class="dot"></span>SHORTPROMPT / SOURCE → WORKFLOW</div><div id="clock">00:00</div></div>
+<h1>Sonnet 5.5: from claim to a verified coding workflow</h1>
+<div class="lead">Six distinct sources, then a controlled browser demo — no repeated capture loop.</div>
+<div class="browser">
+<div class="bar"><span class="b"></span><span class="b"></span><span class="b"></span><div class="url" id="url">anthropic.com</div></div>
+<div class="viewport">
+<div class="source" id="s1"><img src="spmotion://source/sonnet-announce"></div>
+<div class="source" id="s2"><img src="spmotion://source/sonnet-overview"></div>
+<div class="source" id="s3"><img src="spmotion://source/sonnet-transparency"></div>
+<div class="source" id="s4"><img src="spmotion://source/github-node"></div>
+<div class="source" id="s5"><img src="spmotion://source/github-actions"></div>
+<div class="source" id="s6"><img src="spmotion://source/github-javascript-action"></div>
+<div class="demo" id="demo">
+<div class="sidebar"><div class="sel">bug-demo</div><div>src</div><div>tests</div><div>.github</div><div>README.md</div></div>
+<div class="editor"><div class="tabs">src / parser.js</div><div class="code" id="code"></div></div>
+<div class="terminal" id="terminal"></div>
+<div class="panel"><b id="demoState">CONTROLLED SIMULATION</b><span id="demoDetail">The visual below demonstrates the workflow; it is not presented as an observed model run.</span></div>
+</div>
+<div class="focus" id="focus"></div><div class="tag" id="tag"></div><div class="cursor" id="cursor"></div>
 </div></div>
-<div class="cards"><div class="card"><div class="label">EVIDENCE</div><h2 id="cardTitle"></h2><p id="cardCopy"></p></div><div class="card"><div class="label">TEST</div><h2 id="testTitle">Real bug</h2><p id="testCopy">Find the cause → patch the code → run the test.</p></div></div>
-<div class="take" id="take"><b>Claims → evidence → controlled test.</b><span>The practical test is the part that matters.</span></div>
-<div class="footer"><span>REAL SOURCE CAPTURES + DETERMINISTIC DEMO</span><span>SONNET 5.5</span></div></div>
+<div class="cards"><div class="card"><div class="label">CURRENT EVIDENCE</div><h2 id="cardTitle"></h2><p id="cardCopy"></p></div><div class="card"><div class="label">WORKFLOW STATE</div><h2 id="stateTitle">Source review</h2><p id="stateCopy">Each source is unique and appears once; no modulo loop is used.</p></div></div>
+<div class="take"><b id="takeTitle">Claims → evidence → workflow.</b><span id="takeCopy">Distinct source captures are shown once; the demo starts only after the evidence sequence.</span></div>
+<div class="footer"><span>SP-MOTION / UNIQUE SOURCE CAPTURES</span><span>VOICEOVER-DRIVEN TIMELINE</span></div>
+</div>
 <script>
-window.SPMOTION={width:1080,height:1920,fps:30,duration:60};
+/* SP-MOTION: renderer clock is authoritative. No modulo loop and no fixed 60s clamp. */
+window.SPMOTION={width:1080,height:1920,fps:30,duration:78};
 const $=id=>document.getElementById(id),clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v)),ease=v=>{v=clamp(v);return v*v*(3-2*v)};
-const windows=[
-[0,.13,"s1","anthropic.com/claude-sonnet-5-5","What Anthropic claims","The published Sonnet 5.5 material establishes the capabilities we are testing.","REAL SOURCE · LAUNCH"],
-[.13,.27,"s2","anthropic.com/claude/sonnet","Coding use cases","The coding source gives us the practical workflow to put under pressure.","REAL SOURCE · CODING"],
-[.27,.40,"s3","anthropic.com/claude-sonnet-5-5","Benchmark evidence","Published benchmark context gives us evidence — but not the whole story.","REAL SOURCE · BENCHMARK"],
-[.40,.51,"s4","anthropic.com/claude-sonnet-5-5","Workload context","Pricing and workload context adds practical context.","REAL SOURCE · CONTEXT"],
-[.51,.72,"demo","github.local/bug-demo/src/parser.js","Now test it","Forget the headline. Give the model one real bug.","PRACTICAL TEST"],
-[.72,1,"demo","github.local/bug-demo/tests","Verify the fix","Does the test pass after the patch?","RESULT · VERIFIED"]
+const sources=["s1","s2","s3","s4","s5","s6"];
+const scenes=[
+{a:0,b:9,id:"s1",url:"anthropic.com/claude-sonnet-5-5",title:"The launch claim",copy:"Anthropic positions Sonnet 5.5 as a faster, lower-cost model for well-scoped work and bug fixing.",tag:"SOURCE 01 · ANTHROPIC"},
+{a:9,b:18,id:"s2",url:"anthropic.com/claude/sonnet",title:"Where it fits",copy:"The model overview places Sonnet inside the Claude family and shows the current lineup.",tag:"SOURCE 02 · MODEL OVERVIEW"},
+{a:18,b:27,id:"s3",url:"anthropic.com/transparency",title:"Model context",copy:"Anthropic's transparency hub provides model reports and deployment context.",tag:"SOURCE 03 · TRANSPARENCY"},
+{a:27,b:36,id:"s4",url:"docs.github.com/actions/tutorials/build-and-test-code/nodejs",title:"Testing the code",copy:"GitHub's Node.js workflow guide shows the build-and-test path used by CI.",tag:"SOURCE 04 · GITHUB DOCS"},
+{a:36,b:45,id:"s5",url:"docs.github.com/actions/get-started/quickstart",title:"Automating the check",copy:"GitHub Actions can automate builds and tests when code changes are pushed.",tag:"SOURCE 05 · ACTIONS"},
+{a:45,b:54,id:"s6",url:"docs.github.com/actions/tutorials/create-actions/create-a-javascript-action",title:"An action in practice",copy:"GitHub documents how a JavaScript action is tested inside a workflow.",tag:"SOURCE 06 · JAVASCRIPT ACTION"},
+{a:54,b:64,id:"demo",url:"github.local/bug-demo/src/parser.js",title:"Now the controlled test",copy:"We move from source evidence to a clearly labelled coding simulation.",tag:"CONTROLLED DEMO"},
+{a:64,b:72,id:"demo",url:"github.local/bug-demo/tests",title:"Run the check",copy:"The simulated workflow goes from failing test to a focused patch and verification.",tag:"CONTROLLED DEMO · TEST"},
+{a:72,b:78,id:"demo",url:"github.local/bug-demo/result",title:"The takeaway",copy:"The visual proves the workflow structure — not an independent benchmark result.",tag:"RESULT · CONTROLLED"}
 ];
-function hide(){document.querySelectorAll(".source").forEach(x=>{x.classList.remove("active");x.style.visibility="hidden";x.style.opacity=0});$("demo").style.display="none";$("focus").style.opacity=0;$("cursor").style.opacity=0}
-function render(time){
-const d=Number(window.SPMOTION.duration);if(!Number.isFinite(d)||d<=0)throw Error("Invalid SP-MOTION duration");
-const t=clamp(Number(time)||0,0,d),p=t/d;$("clock").textContent=Math.floor(t/60).toString().padStart(2,"0")+":"+Math.floor(t%60).toString().padStart(2,"0");
-let w=windows.at(-1);for(const x of windows)if(p<x[1]){w=x;break}hide();const local=clamp((p-w[0])/(w[1]-w[0]));
-$("url").textContent=w[3];$("cardTitle").textContent=w[4];$("cardCopy").textContent=w[5];$("tag").textContent=w[6];
-if(w[2]!=="demo"){let e=$(w[2]);e.classList.add("active");e.style.visibility="visible";e.style.opacity=1;let m=ease((local-.08)/.82);e.style.transform=`translate3d(0,${-390*m+(1-ease(local/.14))*28}px,0) scale(${1+.065*m})`;$("tag").style.opacity=ease((local-.04)/.12);$("focus").style.opacity=ease((local-.42)/.16);$("focus").style.top=(360+["s1","s2","s3","s4"].indexOf(w[2])*62)+"px";let c=ease((local-.18)/.52);$("cursor").style.opacity=c;$("cursor").style.left=820-390*c+"px";$("cursor").style.top=170+250*c+"px"}
-else{$("demo").style.display="block";$("demo").style.opacity=1;$("demo").style.transform=`scale(${.985+.015*ease(local/.8)})`;$("tag").style.opacity=ease((local-.03)/.10);
-const fixed=p>.62; $("code").textContent=fixed?"function parseVersion(input) {\n  const match = input.match(/v(\\d+)\\.(\\d+)/);\n  if (!match) return null;\n  return { major: Number(match[1]), minor: Number(match[2]) };\n}":"function parseVersion(input) {\n  const match = input.match(/v(\\d+)\\.(\\d+)/);\n  return { major: match[1], minor: match[2] };\n}";
-const passed=p>.82;$("terminal").innerHTML=passed?'<span class="muted">$ npm test</span><br><span class="green">✓ parser › invalid input should not crash</span><br><span class="green">✓ 14 tests passed</span><br><span class="muted">0 failed · verified</span>':'<span class="muted">$ npm test</span><br><span class="red">✕ parser › invalid input should not crash</span><br><span class="muted">TypeError: Cannot read properties of null</span>';if(p>.72){$("testTitle").textContent="Verified result";$("testCopy").textContent="The failing test turns green after the focused patch."}}
-$("take").style.opacity=ease((p-.91)/.09)}
+function reset(){sources.forEach(id=>{const e=$(id);e.classList.remove("active");e.style.visibility="hidden";e.style.opacity=0;e.style.transform="none"});$("demo").style.display="none";$("focus").style.opacity=0;$("cursor").style.opacity=0;$("tag").style.opacity=0}
+function sourceView(s,p){const e=$(s.id);e.classList.add("active");e.style.visibility="visible";e.style.opacity=1;const m=ease((p-.08)/.82);e.style.transform=`translate3d(0,${-300*m+(1-ease(p/.14))*24}px,0) scale(${1+.055*m})`;$("tag").style.opacity=ease((p-.03)/.12);$("focus").style.opacity=ease((p-.42)/.16);$("focus").style.top=(280+Math.max(0,sources.indexOf(s.id))*55)+"px";const c=ease((p-.18)/.52);$("cursor").style.opacity=c;$("cursor").style.left=(825-400*c)+"px";$("cursor").style.top=(155+250*c)+"px"}
+function demoView(t){$("demo").style.display="block";$("demo").style.opacity=1;const fixed=t>=61,passed=t>=68;$("code").textContent=fixed?`function parseVersion(input) {
+  const match = input.match(/v(\\\\d+)\\\\.(\\\\d+)/);
+  if (!match) return null;
+  return { major: Number(match[1]), minor: Number(match[2]) };
+}`:`function parseVersion(input) {
+  const match = input.match(/v(\\\\d+)\\\\.(\\\\d+)/);
+  return { major: match[1], minor: match[2] };
+}`;$("terminal").innerHTML=passed?'<span class="muted">$ npm test</span><br><span class="green">✓ parser › invalid input should not crash</span><br><span class="green">✓ 14 tests passed</span><br><span class="muted">0 failed · verified</span>':'<span class="muted">$ npm test</span><br><span class="red">✕ parser › invalid input should not crash</span><br><span class="muted">TypeError: Cannot read properties of null</span>';$("demoState").textContent=passed?"CONTROLLED SIMULATION · VERIFIED STATE":fixed?"CONTROLLED SIMULATION · PATCH APPLIED":"CONTROLLED SIMULATION · BUG STATE";$("demoDetail").textContent=passed?"The test is green in the designed demonstration. It is not presented as an observed model run.":fixed?"The designed patch adds a null guard and numeric parsing.":"The designed bug makes invalid input reach a null match.";$("tag").style.opacity=1;$("tag").textContent=passed?"DEMO RESULT · VERIFIED":fixed?"DEMO STEP · PATCH":"DEMO STEP · BUG"}
+function render(time){const t=Math.max(0,Number(time)||0);$("clock").textContent=String(Math.floor(t/60)).padStart(2,"0")+":"+String(Math.floor(t%60)).padStart(2,"0");reset();let s=scenes[scenes.length-1];for(const x of scenes){if(t<x.b){s=x;break}}$("url").textContent=s.url;$("cardTitle").textContent=s.title;$("cardCopy").textContent=s.copy;const p=clamp((t-s.a)/Math.max(.001,s.b-s.a));if(s.id==="demo")demoView(t);else sourceView(s,p);if(t>=72){$("stateTitle").textContent="Takeaway";$("stateCopy").textContent="The evidence sequence is complete; the ending remains stable until export ends."}else if(t>=54){$("stateTitle").textContent="Controlled test";$("stateCopy").textContent="Bug → patch → test, explicitly labelled as a simulation."}else{$("stateTitle").textContent="Source review";$("stateCopy").textContent="Each source is unique and appears once; no modulo loop is used."}$("take").style.opacity=ease((t-72)/5)}
 window.SPMOTION_RENDER=render;render(0);
-</script></body></html>
+</script>
+</body>
+</html>

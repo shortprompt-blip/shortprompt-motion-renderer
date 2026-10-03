@@ -1,35 +1,39 @@
-Sonnet 5.5: can it actually fix a real bug?
+Claude Sonnet 5.5 is being positioned as a faster, lower-cost model for practical work, including fixing bugs.
 
-Anthropic says Sonnet 5.5 is built for serious coding work.
+But instead of stopping at the announcement, let's follow the evidence.
 
-So let's look past the headline and start with the source.
+First, the launch page gives us the high-level claim.
 
-The published Sonnet 5.5 material describes coding and practical software tasks.
+Then we move to the Sonnet overview to see where the model sits in the wider Claude lineup.
 
-The coding use cases make that promise more concrete.
+Next, Anthropic's transparency material gives us additional model context.
 
-Anthropic also publishes benchmark results, giving us evidence we can actually inspect.
+Now let's switch perspective.
 
-But benchmarks don't tell us everything.
+If the goal is practical coding, the workflow around the code matters too.
 
-There's another practical question: what does the model do when the software is simply broken?
+GitHub's documentation shows a simple pattern: build the project, run the tests, and use automation to repeat that check when code changes.
 
-So let's forget the marketing for a moment.
+The Actions documentation takes that one step further, showing how a workflow can run automatically.
 
-Here's a controlled bug scenario.
+And the JavaScript Action guide shows how an action itself can be tested inside a workflow.
 
-The parser expects a version string, but invalid input makes the match return null.
+Now let's put those ideas into one controlled demonstration.
 
-The model needs to find the cause, make a focused patch, and avoid changing unrelated code.
+Here is a deliberately broken parser.
 
-Now run the test.
+Invalid input makes the regular expression return no match, but the code immediately tries to read from that missing result.
 
-Before the patch, it fails.
+The first test fails.
 
-After the fix, the parser handles invalid input safely.
+A focused patch adds a guard and normalizes the parsed values.
 
-In this controlled scenario, the test suite is green.
+Run the test again.
 
-That's the part that matters.
+The designed scenario now reaches a green test state.
 
-Not just whether a model can talk about coding, but whether it can take a broken piece of software and move it toward a verified result.
+This isn't an independent benchmark, and we aren't claiming that the model produced this exact patch.
+
+The point is the workflow: start from a published claim, inspect the evidence, define a concrete coding task, make the change, and verify the result.
+
+That is a much more useful way to evaluate an AI coding model than watching the same screenshot repeat for the rest of the video.
