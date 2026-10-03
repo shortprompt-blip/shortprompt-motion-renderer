@@ -1,15 +1,21 @@
-Sonnet 5.5: what is it actually built for?
+Sonnet 5.5: can it actually fix a bug?
 
-Let's start with the source.
+Let’s start with what Anthropic itself says.
 
-Anthropic describes Sonnet 5.5 as a faster, lower-cost complement to Opus 5.5, strongest at well-scoped everyday tasks.
+Sonnet 5.5 is positioned for well-scoped everyday work, including coding.
 
-And in coding, the use cases are very specific: building features, fixing bugs, and reviewing code.
+And the coding use cases are concrete: building features, fixing bugs, and reviewing code.
 
-So instead of asking whether Sonnet is simply better, let's turn that claim into a practical test.
+Anthropic also publishes benchmark results for coding and agentic tasks.
 
-Give it one real bug.
+And it gives workload and pricing information, so we can judge the model in context rather than from one headline number.
+
+But claims are not the same as a real test.
+
+So here’s the practical case.
+
+Give Sonnet one real bug.
 
 Find the root cause, make a focused change, and verify the result.
 
-That's the format for this series: source first, evidence second, practical case third.
+That’s what we actually want to know: not just what the model claims to do, but how useful that workflow is in practice.
