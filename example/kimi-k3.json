@@ -1,0 +1,122 @@
+{
+  "project": {
+    "name": "Kimi K3 — The Real Story",
+    "format": "vertical",
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "cluster": "generic_html",
+    "duration": 64
+  },
+  "audio": {
+    "enabled": true,
+    "voice": "en-US"
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "start": 0,
+      "end": 6,
+      "speech": "Kimi K3 is not interesting just because it is huge. The interesting part is what Moonshot is trying to do with that scale.",
+      "html_ref": "kimi-k3.html",
+      "camera": {
+        "type": "push_in",
+        "intensity": 0.7
+      },
+      "transition": {
+        "type": "fade"
+      }
+    },
+    {
+      "id": "scale",
+      "start": 6,
+      "end": 13,
+      "speech": "At 2.8 trillion parameters, K3 is positioned as an open three-trillion-class model, with native vision and a one-million-token context window.",
+      "html_ref": "kimi-k3.html",
+      "camera": {
+        "type": "focus",
+        "target": "scale"
+      }
+    },
+    {
+      "id": "context",
+      "start": 13,
+      "end": 20,
+      "speech": "That context changes the type of work you can give it. Large codebases, long documents and extended reasoning can stay inside one working context instead of being constantly split apart.",
+      "html_ref": "kimi-k3.html",
+      "camera": {
+        "type": "zoom",
+        "target": "context"
+      }
+    },
+    {
+      "id": "agent",
+      "start": 20,
+      "end": 27,
+      "speech": "But K3 is not being presented as only a bigger chatbot. Moonshot is pushing it toward long-horizon work: coding, knowledge work and agent tasks.",
+      "html_ref": "kimi-k3.html",
+      "camera": {
+        "type": "pan",
+        "target": "workflow"
+      }
+    },
+    {
+      "id": "coding",
+      "start": 27,
+      "end": 34,
+      "speech": "In Kimi Code, K3 is the flagship model, with low, high and max reasoning effort and up to one million tokens of context on eligible plans.",
+      "html_ref": "kimi-k3.html",
+      "camera": {
+        "type": "focus",
+        "target": "code"
+      }
+    },
+    {
+      "id": "thinking",
+      "start": 34,
+      "end": 42,
+      "speech": "The important distinction is the workflow. Kimi can work across code, files and tools while maintaining a long-running task instead of stopping after one isolated answer.",
+      "html_ref": "kimi-k3.html",
+      "camera": {
+        "type": "split_focus",
+        "target": "reasoning"
+      }
+    },
+    {
+      "id": "swarm",
+      "start": 42,
+      "end": 50,
+      "speech": "And the Kimi platform also exposes Agent and Agent Swarm workflows for tasks such as research, documents, data analysis and large-scale parallel processing.",
+      "html_ref": "kimi-k3.html",
+      "camera": {
+        "type": "push_in",
+        "target": "swarm"
+      }
+    },
+    {
+      "id": "stack",
+      "start": 50,
+      "end": 57,
+      "speech": "So the real K3 story is not simply 2.8 trillion parameters. It is the combination of scale, native vision, massive context and long-horizon agentic work.",
+      "html_ref": "kimi-k3.html",
+      "camera": {
+        "type": "pull_back",
+        "target": "stack"
+      }
+    },
+    {
+      "id": "final",
+      "start": 57,
+      "end": 64,
+      "speech": "That is what makes Kimi K3 worth watching: not another chatbot benchmark, but an attempt to turn an open model into a system that can handle much larger jobs.",
+      "html_ref": "kimi-k3.html",
+      "camera": {
+        "type": "hold",
+        "target": "takeaway"
+      },
+      "transition": {
+        "type": "fade"
+      }
+    }
+  ]
+}
