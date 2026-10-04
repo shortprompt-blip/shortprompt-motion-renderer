@@ -88,5 +88,3 @@ jobs:
           name: sp-motion-output
           path: |
             final.webm
-            visual.webm
-            speech.wav
