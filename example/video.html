@@ -1,37 +1,339 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=1080,height=1920,initial-scale=1"><title>Kimi K3</title>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1080,height=1920,initial-scale=1">
+<title>Kimi K3 — The Open 3T-Class Model</title>
 <style>
-*{box-sizing:border-box}html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#f5f6f8;color:#111318;font-family:Inter,Arial,sans-serif}
-#app{position:absolute;inset:0;padding:72px 52px}.header{display:flex;justify-content:space-between;font-weight:900;font-size:20px}.logo{display:flex;gap:10px}.logo i{width:11px;height:11px;border-radius:50%;background:#315cff}.tc{color:#777}
-.hero{margin-top:72px}.kicker{font-size:18px;font-weight:900;letter-spacing:.14em;color:#315cff}h1{font-size:66px;line-height:.96;letter-spacing:-.055em;margin:12px 0 14px}.lead{font-size:25px;line-height:1.28;color:#666}
-.browser{position:absolute;left:52px;right:52px;top:450px;height:1060px;border:2px solid #e1e4e9;border-radius:30px;background:#fff;box-shadow:0 25px 75px rgba(17,19,24,.12);overflow:hidden}.browserbar{height:74px;border-bottom:2px solid #e5e7eb;display:flex;align-items:center;gap:16px;padding:0 22px}.dots{display:flex;gap:7px}.dots i{width:11px;height:11px;border-radius:50%;background:#d5d9df}.url{height:38px;flex:1;border:1px solid #dfe3e8;border-radius:10px;padding:8px 13px;font-size:15px;color:#6c727b;white-space:nowrap;overflow:hidden}
-.evidence{position:absolute;left:16px;right:16px;top:90px;bottom:16px;overflow:hidden;background:#fff;border-radius:20px;opacity:0}.evidence.active{opacity:1}
-.evidence img{display:block;width:100%;height:auto;max-width:none;max-height:none;object-fit:initial;object-position:top left;background:#fff;transform-origin:top left;will-change:transform}
-.label{position:absolute;left:20px;top:112px;z-index:4;background:#111;color:#fff;padding:8px 12px;border-radius:9px;font-size:11px;font-weight:900}
-.info{position:absolute;left:52px;right:52px;bottom:170px;display:flex;gap:14px}.card{flex:1;background:#fff;border:1px solid #e0e3e8;border-radius:18px;padding:18px 20px}.card small{display:block;color:#315cff;font-weight:900;font-size:11px;letter-spacing:.08em}.card strong{font-size:24px}.card p{margin:7px 0 0;color:#747982;font-size:15px}
-.steps{position:absolute;left:52px;right:52px;bottom:76px;display:flex;gap:10px}.step{flex:1;border:2px solid #e5e7eb;border-radius:15px;background:#fff;padding:12px 13px;opacity:.35}.step.active{opacity:1;border-color:#315cff}.step b{font-size:12px;color:#315cff}.step span{display:block;margin-top:5px;font-size:14px;font-weight:800}.footer{position:absolute;left:52px;right:52px;bottom:36px;display:flex;justify-content:space-between;color:#777c86;font-size:13px;font-weight:800}
-</style></head><body><div id="app">
-<div class="header"><div class="logo"><i></i>SHORTPROMPT / MODEL WATCH</div><div class="tc" id="tc">00:00</div></div>
-<section class="hero"><div class="kicker">NEW FLAGSHIP</div><h1>Kimi K3: the new open frontier model.</h1><div class="lead">Four real source pages. Captured first, embedded second, animated third.</div></section>
-<div class="browser"><div class="browserbar"><div class="dots"><i></i><i></i><i></i></div><div class="url" id="url"></div></div>
-<div class="evidence active" id="e0"><img src="spmotion://source/kimi-k3"></div>
-<div class="evidence" id="e1"><img src="spmotion://source/kimi-models"></div>
-<div class="evidence" id="e2"><img src="spmotion://source/kimi-code-models"></div>
-<div class="evidence" id="e3"><img src="spmotion://source/kimi-agent"></div><div class="label" id="label"></div></div>
-<div class="info"><div class="card"><small id="ck">WHY IT MATTERS</small><strong id="ct">2.8T parameters</strong><p id="cp">Moonshot describes K3 as its most capable model.</p></div><div class="card"><small>CONTEXT</small><strong>1M tokens</strong><p>Native vision and long-context workflows are part of the flagship positioning.</p></div></div>
-<div class="steps"><div class="step active" id="s0"><b>01</b><span>Flagship</span></div><div class="step" id="s1"><b>02</b><span>Model lineup</span></div><div class="step" id="s2"><b>03</b><span>Coding</span></div><div class="step" id="s3"><b>04</b><span>Agents</span></div></div>
-<div class="footer"><span>EMBEDDED REAL SOURCE EVIDENCE</span><span id="state">STATE 01 / 04</span></div></div>
+*{box-sizing:border-box}
+html,body{
+  margin:0;width:1080px;height:1920px;overflow:hidden;
+  background:#f4f5f7;color:#111318;
+  font-family:Inter,Arial,sans-serif
+}
+body{position:relative}
+#app{position:absolute;inset:0;padding:48px 44px}
+.top{
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:15px;font-weight:900;letter-spacing:.055em
+}
+.brand{display:flex;align-items:center;gap:8px}
+.brand-dot{width:9px;height:9px;border-radius:50%;background:#315cff}
+.clock{color:#747a84}
+.hero{margin-top:34px}
+.kicker{
+  font-size:15px;font-weight:950;letter-spacing:.15em;
+  color:#315cff;text-transform:uppercase
+}
+h1{
+  font-size:61px;line-height:.94;letter-spacing:-.055em;
+  margin:11px 0 12px;max-width:900px
+}
+.lead{
+  max-width:900px;font-size:21px;line-height:1.3;color:#666d77
+}
+.browser{
+  position:absolute;left:44px;right:44px;top:360px;height:1085px;
+  background:#fff;border:2px solid #dfe3e8;border-radius:27px;
+  overflow:hidden;box-shadow:0 22px 70px rgba(17,19,24,.12)
+}
+.bar{
+  height:64px;border-bottom:1px solid #e2e5e9;
+  display:flex;align-items:center;gap:8px;padding:0 18px;background:#fafbfc
+}
+.dot{width:10px;height:10px;border-radius:50%;background:#d1d5db}
+.url{
+  margin-left:8px;flex:1;height:32px;border:1px solid #dfe3e8;
+  border-radius:9px;padding:7px 12px;font-size:12px;color:#666d77;
+  white-space:nowrap;overflow:hidden
+}
+.viewport{
+  position:relative;height:1019px;overflow:hidden;background:#fff
+}
+.source{
+  position:absolute;left:0;top:0;width:100%;
+  visibility:hidden;opacity:0;
+  transform:translate3d(0,0,0) scale(1);
+  transform-origin:50% 0;
+  will-change:transform,opacity
+}
+.source.active{visibility:visible;opacity:1}
+.source img{
+  display:block;width:100%;height:auto;max-width:none;max-height:none;
+  user-select:none;-webkit-user-drag:none
+}
+.scrim{
+  position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(to bottom,rgba(255,255,255,.04),transparent 16%,transparent 82%,rgba(255,255,255,.18))
+}
+.chapter{
+  position:absolute;left:26px;top:24px;z-index:10;
+  background:#111318;color:#fff;border-radius:10px;
+  padding:9px 12px;font-size:10px;font-weight:950;
+  letter-spacing:.07em;opacity:0
+}
+.cursor{
+  position:absolute;width:28px;height:28px;z-index:12;
+  opacity:0;pointer-events:none
+}
+.cursor:before{
+  content:"";position:absolute;left:2px;top:0;
+  width:0;height:0;border-left:12px solid #111318;
+  border-top:18px solid transparent;border-bottom:8px solid transparent;
+  transform:rotate(-28deg)
+}
+.cursor:after{
+  content:"";position:absolute;left:14px;top:16px;width:10px;height:4px;
+  background:#111318;border-radius:3px;transform:rotate(34deg)
+}
+.click{
+  position:absolute;width:58px;height:58px;border:3px solid #315cff;
+  border-radius:50%;z-index:11;opacity:0;pointer-events:none;
+  transform:translate(-50%,-50%) scale(.4)
+}
+.click.on{animation:click .55s ease-out forwards}
+@keyframes click{
+  0%{opacity:.85;transform:translate(-50%,-50%) scale(.35)}
+  100%{opacity:0;transform:translate(-50%,-50%) scale(1.25)}
+}
+.scrollbar{
+  position:absolute;right:13px;top:18px;bottom:18px;width:4px;
+  background:#e4e7eb;border-radius:9px;z-index:9;opacity:.7
+}
+.scrollthumb{
+  position:absolute;left:0;width:4px;height:115px;border-radius:9px;
+  background:#315cff;transform:translateY(0)
+}
+.meta{
+  position:absolute;left:44px;right:44px;top:1470px;
+  display:grid;grid-template-columns:1fr 1fr;gap:14px
+}
+.card{
+  background:#fff;border:1px solid #e0e3e8;border-radius:18px;
+  padding:17px 19px;min-height:132px
+}
+.card small{
+  display:block;color:#315cff;font-size:10px;font-weight:950;
+  letter-spacing:.12em;margin-bottom:7px
+}
+.card strong{font-size:23px;letter-spacing:-.02em}
+.card p{margin:7px 0 0;color:#707680;font-size:14px;line-height:1.35}
+.bottom{
+  position:absolute;left:44px;right:44px;bottom:54px;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:10px
+}
+.step{
+  background:#fff;border:2px solid #e5e7eb;border-radius:15px;
+  padding:12px 13px;opacity:.38;min-height:72px
+}
+.step.active{opacity:1;border-color:#315cff}
+.step b{font-size:11px;color:#315cff}
+.step span{display:block;margin-top:4px;font-size:13px;font-weight:850}
+.footer{
+  position:absolute;left:44px;right:44px;bottom:22px;
+  display:flex;justify-content:space-between;color:#858b95;
+  font-size:10px;font-weight:900;letter-spacing:.05em
+}
+</style>
+</head>
+<body>
+<div id="app">
+  <div class="top">
+    <div class="brand"><span class="brand-dot"></span>KIMI / AI MODELS</div>
+    <div class="clock" id="clock">00:00</div>
+  </div>
+
+  <section class="hero">
+    <div class="kicker">KIMI K3</div>
+    <h1>The open 3T-class model is here.</h1>
+    <div class="lead">2.8 trillion parameters, native vision and a 1-million-token context window. Here is what K3 changes in practice.</div>
+  </section>
+
+  <div class="browser">
+    <div class="bar">
+      <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+      <div class="url" id="url"></div>
+    </div>
+
+    <div class="viewport" id="viewport">
+      <div class="source active" id="e0"><img src="spmotion://source/kimi-k3" alt=""></div>
+      <div class="source" id="e1"><img src="spmotion://source/moonshot-home" alt=""></div>
+      <div class="source" id="e2"><img src="spmotion://source/kimi-code-models" alt=""></div>
+      <div class="source" id="e3"><img src="spmotion://source/kimi-agent" alt=""></div>
+      <div class="scrim"></div>
+      <div class="chapter" id="chapter"></div>
+      <div class="cursor" id="cursor"></div>
+      <div class="click" id="click"></div>
+      <div class="scrollbar"><div class="scrollthumb" id="scrollthumb"></div></div>
+    </div>
+  </div>
+
+  <div class="meta">
+    <div class="card">
+      <small id="cardLabel">THE MODEL</small>
+      <strong id="cardTitle">2.8T parameters</strong>
+      <p id="cardCopy">Kimi describes K3 as its most capable model, built for long-horizon coding, reasoning and knowledge work.</p>
+    </div>
+    <div class="card">
+      <small id="cardLabel2">WHY IT MATTERS</small>
+      <strong id="cardTitle2">1M-token context</strong>
+      <p id="cardCopy2">The long context and native vision are designed for large projects, documents and multimodal workflows.</p>
+    </div>
+  </div>
+
+  <div class="bottom">
+    <div class="step active" id="s0"><b>01</b><span>K3</span></div>
+    <div class="step" id="s1"><b>02</b><span>Why it matters</span></div>
+    <div class="step" id="s2"><b>03</b><span>Kimi Code</span></div>
+    <div class="step" id="s3"><b>04</b><span>Agents</span></div>
+  </div>
+
+  <div class="footer">
+    <span>KIMI K3 · JULY 2026</span>
+    <span id="state">01 / 04</span>
+  </div>
+</div>
+
 <script>
-window.SPMOTION={width:1080,height:1920,fps:30,duration:60};
-const $=id=>document.getElementById(id),frames=[$("e0"),$("e1"),$("e2"),$("e3")],steps=[$("s0"),$("s1"),$("s2"),$("s3")];
-const urls=["kimi.com/en/blog/kimi-k3","kimi.ai/ai-models","kimi.com/code/docs/en/kimi-code/models.html","kimi.com/en/help/agent/agent-overview"];
-const labels=["SOURCE 01 · OFFICIAL LAUNCH","SOURCE 02 · MODEL OVERVIEW","SOURCE 03 · CODING MODELS","SOURCE 04 · AGENT WORKFLOWS"];
-const cards=[["WHY IT MATTERS","2.8T parameters","Moonshot describes K3 as its most capable model."],["THE LINEUP","K3 flagship","The model page separates K3 from coding-focused options."],["FOR CODING","K2.8 Preview","Kimi Code currently lists K2.8 Preview and K2.7 Code HighSpeed alongside K3."],["FOR AGENTS","K3 + Swarm","Kimi positions K3 for agent tasks and large-scale parallel workflows."]];
-function clamp(v,a=0,b=1){return Math.max(a,Math.min(b,v))}function ease(v){v=clamp(v);return v*v*(3-2*v)}
-function render(time){const D=60,t=clamp(Number(time)||0,0,D),p=t/D,i=Math.min(3,Math.floor(p*4)),local=clamp((p-i*.25)/.25);
-frames.forEach((f,n)=>f.classList.toggle("active",n===i));steps.forEach((s,n)=>s.classList.toggle("active",n===i));
-$("tc").textContent="00:"+String(Math.floor(t)).padStart(2,"0");$("state").textContent="STATE "+String(i+1).padStart(2,"0")+" / 04";$("url").textContent=urls[i];$("label").textContent=labels[i];
-$("ck").textContent=cards[i][0];$("ct").textContent=cards[i][1];$("cp").textContent=cards[i][2];
-const img=frames[i].querySelector("img"),vp=frames[i];if(img&&vp){const nw=img.naturalWidth||1920,nh=img.naturalHeight||1080,vw=vp.clientWidth||1,vh=vp.clientHeight||1,dh=nh*(vw/nw),maxY=Math.max(0,dh-vh),travel=ease(clamp((local-.10)/.90)),y=maxY*travel;img.style.width="100%";img.style.height="auto";img.style.maxWidth="none";img.style.maxHeight="none";img.style.transform=`translate3d(0,${-y}px,0)`}}
-window.SPMOTION_RENDER=render;render(0);
-</script></body></html>
+window.SPMOTION={width:1080,height:1920,fps:30};
+
+const $=id=>document.getElementById(id);
+const layers=[$("e0"),$("e1"),$("e2"),$("e3")];
+const steps=[$("s0"),$("s1"),$("s2"),$("s3")];
+
+const sources=[
+  {
+    url:"kimi.com/en/blog/kimi-k3",
+    chapter:"KIMI K3 · LAUNCH",
+    label:"THE MODEL",
+    title:"2.8T parameters",
+    copy:"Kimi describes K3 as its most capable model, built for long-horizon coding, reasoning and knowledge work.",
+    label2:"CONTEXT",
+    title2:"1M tokens",
+    copy2:"Native vision and a million-token context window are core parts of the K3 architecture.",
+    click:[0.67,0.33]
+  },
+  {
+    url:"moonshot.ai",
+    chapter:"MOONSHOT AI · PRODUCT",
+    label:"POSITIONING",
+    title:"Open frontier intelligence",
+    copy:"Moonshot positions K3 as its latest flagship for complex work across coding, analysis and creation.",
+    label2:"MULTIMODAL",
+    title2:"Native vision",
+    copy2:"The flagship is designed to combine long-context reasoning with multimodal understanding.",
+    click:[0.74,0.48]
+  },
+  {
+    url:"kimi.com/code/docs/en/kimi-code/models.html",
+    chapter:"KIMI CODE · MODELS",
+    label:"FOR CODING",
+    title:"K3 + K2.8 Preview",
+    copy:"Kimi Code currently lists K3, K2.8 Preview and K2.7 Code HighSpeed for different coding workloads.",
+    label2:"1M CONTEXT",
+    title2:"K3",
+    copy2:"The K3 model ID supports up to 1M context on eligible plans; K2.8 Preview also supports up to 1M.",
+    click:[0.69,0.57]
+  },
+  {
+    url:"kimi.com/en/help/agent/agent-overview",
+    chapter:"KIMI · AGENTS",
+    label:"AGENT WORK",
+    title:"Long-horizon execution",
+    copy:"Kimi describes K3 as strengthening agentic coding and long-running task execution.",
+    label2:"AGENT SWARM",
+    title2:"Parallel work",
+    copy2:"K3-powered Agent Swarm is positioned for large-scale parallel search and batch processing.",
+    click:[0.63,0.44]
+  }
+];
+
+function clamp(v,a=0,b=1){return Math.max(a,Math.min(b,v))}
+function ease(v){v=clamp(v);return v*v*(3-2*v)}
+function duration(){
+  return Math.max(.001,Number(window.SPMOTION&&window.SPMOTION.duration)||1)
+}
+function windows(i){
+  const starts=[0,.25,.50,.75], ends=[.25,.50,.75,1];
+  return [starts[i],ends[i]]
+}
+function activate(i){
+  layers.forEach((x,n)=>{
+    const on=n===i;
+    x.classList.toggle("active",on);
+    x.style.visibility=on?"visible":"hidden";
+    x.style.opacity=on?"1":"0";
+  });
+  steps.forEach((x,n)=>x.classList.toggle("active",n===i));
+}
+function render(time){
+  const D=duration(),t=clamp(Number(time)||0,0,D),p=t/D;
+  let i=3;
+  for(let n=0;n<4;n++){const [a,b]=windows(n);if(p<b||n===3){i=n;break}}
+  const [a,b]=windows(i),local=clamp((p-a)/(b-a));
+  const s=sources[i],img=layers[i].querySelector("img"),vp=$("viewport");
+
+  activate(i);
+  $("clock").textContent=String(Math.floor(t/60)).padStart(2,"0")+":"+String(Math.floor(t%60)).padStart(2,"0");
+  $("state").textContent=String(i+1).padStart(2,"0")+" / 04";
+  $("url").textContent=s.url;
+  $("chapter").textContent=s.chapter;
+  $("cardLabel").textContent=s.label;
+  $("cardTitle").textContent=s.title;
+  $("cardCopy").textContent=s.copy;
+  $("cardLabel2").textContent=s.label2;
+  $("cardTitle2").textContent=s.title2;
+  $("cardCopy2").textContent=s.copy2;
+
+  const nw=img.naturalWidth||1920,nh=img.naturalHeight||1080;
+  const vw=vp.clientWidth||992,vh=vp.clientHeight||1019;
+  const scaleToWidth=vw/nw;
+  const imageH=nh*scaleToWidth;
+  const maxY=Math.max(0,imageH-vh);
+
+  // Slow documentary-style page scroll: reveal, travel, settle.
+  const intro=ease(clamp(local/.12));
+  const travel=ease(clamp((local-.12)/.76));
+  const settle=ease(clamp((local-.88)/.12));
+
+  const startY=0;
+  const endY=maxY;
+  const y=startY+(endY-startY)*travel;
+
+  // Tiny scale keeps text readable while adding the same "live page" feel.
+  const zoom=1+0.025*ease(clamp((local-.12)/.70));
+  const x=(vw-vw*zoom)/2;
+
+  img.style.width="100%";
+  img.style.height="auto";
+  img.style.transform=`translate3d(${x}px,${-y+(1-intro)*18}px,0) scale(${zoom})`;
+  layers[i].style.transform="translate3d(0,0,0)";
+
+  $("chapter").style.opacity=ease(clamp((local-.02)/.12));
+
+  // Scroll thumb follows the actual full-page position.
+  const thumbTravel=Math.max(0,($("scrollbar")?.clientHeight||983)-115);
+  $("scrollthumb").style.transform=`translateY(${thumbTravel*travel}px)`;
+
+  // Cursor + click accent, kept subtle and deterministic.
+  const cp=s.click;
+  const cursorT=ease(clamp((local-.34)/.30));
+  $("cursor").style.opacity=cursorT*(1-settle*.65);
+  $("cursor").style.left=(cp[0]*vw-14)+"px";
+  $("cursor").style.top=(cp[1]*vh-14)+"px";
+
+  const clickT=local>.48&&local<.58;
+  if(clickT && !$("click").classList.contains("on")){
+    $("click").style.left=(cp[0]*vw)+"px";
+    $("click").style.top=(cp[1]*vh)+"px";
+    $("click").classList.remove("on");
+    void $("click").offsetWidth;
+    $("click").classList.add("on");
+  }
+  if(!clickT)$("click").classList.remove("on");
+}
+window.SPMOTION_RENDER=render;
+render(0);
+</script>
+</body>
+</html>
