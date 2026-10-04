@@ -1,11 +1,11 @@
-Kimi K3 is one of the most ambitious open models released this year. And the interesting part is not just the number of parameters.
+Kimi can now operate a real browser.
 
-K3 has 2.8 trillion parameters, native vision, and a context window of up to one million tokens. That combination is designed for much larger tasks than a normal chat session.
+In Kimi Work, the Agent browser can directly click, type, and navigate inside browser tabs tied to the conversation.
 
-A million tokens means an entire large codebase can fit into one working context, including dependencies across files. That changes how you can approach refactoring and long engineering tasks.
+That changes the workflow. Instead of only telling you what to do, Kimi can turn a goal into browser actions.
 
-Kimi is also pushing K3 toward long-horizon agentic work. The model can read code, edit files, use tools, and keep adjusting its approach as the task evolves.
+The interesting part is the loop: understand the task, act in the browser, inspect what happened, then continue.
 
-And the same ecosystem extends into Agent Swarm, where Kimi can coordinate many subagents for large-scale search and batch processing.
+And Kimi's latest Agent workflow is built around exactly this kind of long-running task execution.
 
-So the real K3 story is scale plus context plus vision plus agents. It is less about having a bigger chatbot, and more about giving an open model enough room to handle an entire job.
+So Kimi is moving from answering inside a chat to actually operating the tools around it.
