@@ -1,107 +1,12 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=1080,height=1920,initial-scale=1">
-<title>Kimi K3 — What Actually Matters</title>
-<style>
-*{box-sizing:border-box}html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#080a0f;font-family:Arial,sans-serif}
-#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:#080a0f}
-#top{position:absolute;z-index:30;left:64px;right:64px;top:58px;display:flex;justify-content:space-between;font-size:20px;font-weight:800}
-#browser{position:absolute;z-index:2;left:55px;right:55px;top:150px;bottom:90px;background:#fff;border-radius:30px;overflow:hidden;box-shadow:0 35px 110px #0009}
-#chrome{height:72px;background:#f5f6f8;border-bottom:1px solid #ddd;display:flex;align-items:center;padding:0 24px;gap:9px}
-.dot{width:11px;height:11px;border-radius:50%;background:#c9cdd4}.url{margin-left:12px;flex:1;height:38px;line-height:38px;border:1px solid #ddd;border-radius:10px;padding:0 14px;color:#777;font-size:14px}
-#viewport{position:absolute;left:0;right:0;top:72px;bottom:0;overflow:hidden}
-#page{position:absolute;left:0;top:0;width:100%;transform-origin:50% 0;will-change:transform}
-.capture{position:absolute;left:0;top:0;width:100%;display:none;background:#fff}
-.capture.active{display:block}
-.capture img{display:block;width:100%;height:auto;max-width:none}
-#cursor{position:absolute;z-index:50;width:34px;height:42px;opacity:0;pointer-events:none}
-#cursor:before{content:"";position:absolute;left:2px;top:0;border-left:15px solid #111;border-top:24px solid transparent;border-bottom:11px solid transparent;transform:rotate(-25deg)}
-#cursor:after{content:"";position:absolute;left:18px;top:23px;width:11px;height:4px;background:#111;transform:rotate(35deg);border-radius:4px}
-#click{position:absolute;z-index:49;width:58px;height:58px;border:3px solid #5274ff;border-radius:50%;opacity:0;transform:translate(-50%,-50%) scale(.25);pointer-events:none}
-.flash{animation:click .55s ease-out}@keyframes click{0%{opacity:.9;transform:translate(-50%,-50%) scale(.25)}100%{opacity:0;transform:translate(-50%,-50%) scale(1.5)}}
-#tag{position:absolute;z-index:30;left:64px;bottom:42px;color:#8d94a0;font-size:16px;font-weight:800}
-#progress{position:absolute;z-index:31;left:64px;right:64px;bottom:26px;height:3px;background:#262a34}
-#progress i{display:block;height:100%;width:0;background:#6e8cff}
-</style>
-</head>
-<body>
-<div id="stage">
-<div id="top"><span>KIMI K3</span><span id="clock">00:00</span></div>
-<div id="browser">
-<div id="chrome"><i class="dot"></i><i class="dot"></i><i class="dot"></i><div class="url" id="url">kimi.com/en/blog/kimi-k3</div></div>
-<div id="viewport">
-<div id="page">
-<div class="capture active" id="cap0"><img src="spmotion://source/kimi-k3" alt="Kimi K3 official page"></div>
-<div class="capture" id="cap1"><img src="spmotion://source/moonshot-home" alt="Moonshot official page"></div>
-<div class="capture" id="cap2"><img src="spmotion://source/kimi-code-models" alt="Kimi Code models"></div>
-<div class="capture" id="cap3"><img src="spmotion://source/kimi-agent" alt="Kimi Agent"></div>
-</div>
-<div id="cursor"></div><div id="click"></div>
-</div>
-</div>
-<div id="tag">OFFICIAL SOURCES</div>
-<div id="progress"><i></i></div>
-</div>
-<script>
-window.SPMOTION={width:1080,height:1920,fps:30,duration:75};
-const S=[
- ["kimi-k3","kimi.com/en/blog/kimi-k3"],
- ["moonshot-home","moonshot.ai"],
- ["kimi-code-models","kimi.com/code/docs/en/kimi-code/models.html"],
- ["kimi-agent","kimi.com/en/help/agent/agent-overview"]
-];
-const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
-const ease=v=>{v=clamp(v);return v*v*(3-2*v)};
-let lastClick=-1;
-
-function setSource(n){
- for(let i=0;i<4;i++)document.getElementById("cap"+i).classList.toggle("active",i===n);
- document.getElementById("url").textContent=S[n][1];
-}
-function render(time){
- time=clamp(time,0,75);
- document.getElementById("clock").textContent="00:"+String(Math.floor(time)).padStart(2,"0");
- document.querySelector("#progress i").style.width=(time/75*100)+"%";
-
- const n=time<20?0:time<38?1:time<57?2:3;
- const local=n===0?time/20:n===1?(time-20)/18:n===2?(time-38)/19:(time-57)/18;
- setSource(n);
-
- const img=document.querySelector("#cap"+n+" img");
- const vp=document.getElementById("viewport");
- const iw=img.naturalWidth||1920, ih=img.naturalHeight||1080;
- const displayH=ih*(vp.clientWidth/iw);
- const maxY=Math.max(0,displayH-vp.clientHeight);
-
- let q=ease(local);
- let cameraProgress;
- if(local<.18) cameraProgress=.10*ease(local/.18);
- else if(local<.42) cameraProgress=.10+.32*ease((local-.18)/.24);
- else if(local<.60) cameraProgress=.42+.16*ease((local-.42)/.18);
- else if(local<.82) cameraProgress=.58+.30*ease((local-.60)/.22);
- else cameraProgress=.88+.12*ease((local-.82)/.18);
-
- let zoom=local<.18?1.01+.02*q:local<.62?1.03+.06*q:1.09-.07*ease((local-.62)/.38);
- img.style.transform="translate3d(0,"+(-maxY*cameraProgress)+"px,0) scale("+zoom+")";
- img.style.transformOrigin="50% 0";
-
- const cursor=document.getElementById("cursor");
- let visible=false,x=0,y=0,ck=-1;
- if(local>.27&&local<.37){visible=true;x=690;y=340;ck=n*2}
- else if(local>.61&&local<.71){visible=true;x=430;y=480;ck=n*2+1}
- cursor.style.left=x+"px";cursor.style.top=y+"px";cursor.style.opacity=visible?1:0;
-
- if(visible&&ck!==lastClick){
-  const c=document.getElementById("click");
-  c.style.left=x+"px";c.style.top=y+"px";
-  c.classList.remove("flash");void c.offsetWidth;c.classList.add("flash");
-  lastClick=ck;
- }
-}
-window.SPMOTION_RENDER=render;
-render(0);
-</script>
-</body>
-</html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=1080,height=1920,initial-scale=1"><title>Kimi K3 — Scale, Context, Agents</title><style>
+#sp-k3-root{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;background:#07090d;color:#f7f8fb;font-family:Inter,Arial,sans-serif}#sp-k3-root .bg{position:absolute;inset:0;background:radial-gradient(circle at 78% 15%,#182b4a 0,#0a0e16 38%,#07090d 76%)}#sp-k3-root .grid{position:absolute;inset:-20%;opacity:.12;background-image:linear-gradient(#8fa0b81f 1px,transparent 1px),linear-gradient(90deg,#8fa0b81f 1px,transparent 1px);background-size:60px 60px;transform:perspective(800px) rotateX(58deg) translateY(35%)}#sp-k3-root .top{position:absolute;z-index:20;left:64px;right:64px;top:58px;display:flex;justify-content:space-between;font-size:19px;font-weight:850;letter-spacing:.08em}.brand{font-size:25px}.clock{color:#8b96a6}.scene{position:absolute;inset:0;opacity:0}.scene.on{opacity:1}.kicker{position:absolute;left:64px;top:235px;color:#7894ff;font-size:18px;font-weight:900;letter-spacing:.18em}.title{position:absolute;left:64px;right:64px;top:285px;font-size:82px;line-height:.92;letter-spacing:-.055em;font-weight:950}.lead{position:absolute;left:68px;right:90px;top:515px;max-width:870px;color:#aeb8c6;font-size:28px;line-height:1.28}.source{position:absolute;left:64px;bottom:72px;color:#697586;font-size:14px;font-weight:700;letter-spacing:.04em}.metric{position:absolute;left:64px;right:64px;top:330px;display:flex;align-items:flex-end;gap:28px}.metric .num{font-size:178px;font-weight:950;letter-spacing:-.09em;line-height:.8}.metric .unit{font-size:24px;color:#98a6b8;font-weight:850;letter-spacing:.12em;margin-bottom:8px}.chips{position:absolute;left:64px;right:64px;top:610px;display:flex;gap:13px;flex-wrap:wrap}.chip{padding:14px 18px;border:1px solid #354255;background:#0e141e;border-radius:999px;color:#dce3ec;font-weight:800;font-size:16px}.context-card{position:absolute;left:64px;right:64px;top:340px;height:520px;border:1px solid #334052;border-radius:30px;background:#0c1119e8;overflow:hidden}.context-head{height:70px;border-bottom:1px solid #2b3543;display:flex;align-items:center;padding:0 24px;gap:9px;color:#7f8a99}.dot{width:10px;height:10px;border-radius:50%;background:#596474}.code{padding:28px 30px;font-family:ui-monospace,SFMono-Regular,monospace;font-size:18px;line-height:1.7;color:#cad3df}.code b{color:#7894ff}.code em{color:#8dd5a2;font-style:normal}.million{position:absolute;right:55px;top:375px;font-size:82px;font-weight:950;letter-spacing:-.06em;color:#7894ff}.million-label{position:absolute;right:60px;top:465px;color:#9aa6b6;font-size:16px;font-weight:850;letter-spacing:.13em}.flow{position:absolute;left:64px;right:64px;top:380px;display:flex;align-items:center;justify-content:space-between}.node{width:205px;min-height:175px;border:1px solid #344052;background:#0d131c;border-radius:25px;padding:25px;transform:translateY(30px);opacity:.35}.node.active{border-color:#7894ff;box-shadow:0 15px 45px #4f68c522;opacity:1;transform:translateY(0)}.node strong{font-size:25px}.node span{display:block;color:#8e9bab;line-height:1.35;margin-top:13px;font-size:16px}.arrow{font-size:38px;color:#66758a;opacity:.6}.terminal{position:absolute;left:64px;right:64px;top:300px;height:710px;border:1px solid #303b4a;border-radius:28px;background:#080b10;overflow:hidden;box-shadow:0 30px 90px #0009}.termbar{height:65px;border-bottom:1px solid #293342;display:flex;align-items:center;padding:0 22px;gap:8px;color:#7f8997;font-size:14px}.termbody{padding:30px;font-family:ui-monospace,SFMono-Regular,monospace;font-size:17px;line-height:1.7;color:#c5cedb}.progress{position:absolute;left:64px;right:64px;top:1040px;height:12px;background:#18202b;border-radius:30px;overflow:hidden}.progress i{display:block;width:0;height:100%;background:#7894ff;border-radius:30px}.swarm{position:absolute;left:64px;right:64px;top:350px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}.worker{height:165px;border:1px solid #334052;background:#0c121a;border-radius:23px;padding:22px;opacity:.3;transform:scale(.96)}.worker.live{opacity:1;border-color:#7894ff;transform:scale(1);box-shadow:0 15px 50px #4f68c522}.worker b{font-size:20px}.worker small{display:block;color:#8d99a9;margin-top:12px;line-height:1.35}.hub{position:absolute;left:50%;top:850px;transform:translateX(-50%);width:260px;height:74px;border:1px solid #7894ff;background:#10192a;border-radius:22px;display:flex;align-items:center;justify-content:center;font-weight:900;letter-spacing:.08em;box-shadow:0 20px 60px #4f68c533}.final{text-align:center;position:absolute;left:64px;right:64px;top:300px}.pulse{position:absolute;left:50%;top:560px;width:360px;height:360px;border-radius:50%;border:1px solid #7894ff33;transform:translate(-50%,-50%);box-shadow:0 0 120px #7894ff16}
+</style></head><body><div id="sp-k3-root"><div class="bg"></div><div class="grid"></div><div class="top"><div class="brand">KIMI K3</div><div class="clock" id="clock">00:00</div></div>
+<section class="scene" data-s="0"><div class="kicker">OPEN FRONTIER INTELLIGENCE</div><div class="title">K3 is not<br>just a bigger model.</div><div class="lead">The interesting part is what that scale enables: more context, native vision and longer-running agentic work.</div><div class="source">SOURCE: KIMI K3 OFFICIAL ANNOUNCEMENT</div></section>
+<section class="scene" data-s="1"><div class="kicker">MODEL SCALE</div><div class="metric"><div class="num" id="params">0.0T</div><div class="unit">PARAMETERS</div></div><div class="chips"><div class="chip">KIMI DELTA ATTENTION</div><div class="chip">ATTENTION RESIDUALS</div><div class="chip">NATIVE VISION</div></div><div class="source">SOURCE: KIMI K3 OFFICIAL ANNOUNCEMENT</div></section>
+<section class="scene" data-s="2"><div class="kicker">LONG CONTEXT</div><div class="context-card"><div class="context-head"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span style="margin-left:9px">large-project / workspace</span></div><div class="code"><div><b>01</b> import architecture from <em>"entire-project"</em></div><div><b>02</b> trace dependencies across modules</div><div><b>03</b> inspect interfaces and references</div><div><b>04</b> plan a project-wide refactor</div><div><b>05</b> preserve behavior across the codebase</div></div><div class="million" id="million">0</div><div class="million-label">TOKEN CONTEXT</div></div><div class="source">SOURCE: KIMI CODE DOCUMENTATION • VISUAL RECONSTRUCTION</div></section>
+<section class="scene" data-s="3"><div class="kicker">WHAT 1M CHANGES</div><div class="flow"><div class="node" data-n="0"><strong>READ</strong><span>Understand files and dependencies.</span></div><div class="arrow">→</div><div class="node" data-n="1"><strong>REASON</strong><span>Keep the larger task in context.</span></div><div class="arrow">→</div><div class="node" data-n="2"><strong>EDIT</strong><span>Apply changes across the project.</span></div><div class="arrow">→</div><div class="node" data-n="3"><strong>VERIFY</strong><span>Test and iterate.</span></div></div><div class="source">DOCUMENTED CAPABILITY • WORKFLOW RECONSTRUCTED FOR ILLUSTRATION</div></section>
+<section class="scene" data-s="4"><div class="kicker">AGENTIC CODING</div><div class="terminal"><div class="termbar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span style="margin-left:10px">kimi-code / workspace</span></div><div class="termbody" id="terminalText"></div></div><div class="progress"><i id="taskProgress"></i></div><div class="source">SOURCE: KIMI CODE DOCUMENTATION • VISUAL RECONSTRUCTION</div></section>
+<section class="scene" data-s="5"><div class="kicker">AGENT SWARM</div><div class="swarm"><div class="worker" data-w="0"><b>RESEARCH</b><small>Search sources and collect evidence.</small></div><div class="worker" data-w="1"><b>DOCUMENTS</b><small>Process long files in parallel.</small></div><div class="worker" data-w="2"><b>DATA</b><small>Analyze structured information.</small></div><div class="worker" data-w="3"><b>WEB</b><small>Run independent searches.</small></div><div class="worker" data-w="4"><b>VERIFY</b><small>Cross-check intermediate results.</small></div><div class="worker" data-w="5"><b>SYNTHESIZE</b><small>Bring outputs back together.</small></div></div><div class="hub">K3 SWARM</div><div class="source">SOURCE: KIMI AGENT SWARM HELP CENTER • VISUAL RECONSTRUCTION</div></section>
+<section class="scene" data-s="6"><div class="kicker">THE K3 STACK</div><div class="title" style="top:290px;font-size:67px">SCALE<br>CONTEXT<br>VISION<br>AGENTS</div><div class="chips" style="top:730px"><div class="chip">2.8T PARAMETERS</div><div class="chip">UP TO 1M TOKENS</div><div class="chip">NATIVE VISION</div><div class="chip">LONG-HORIZON TASKS</div></div><div class="source">SOURCES: KIMI OFFICIAL ANNOUNCEMENT • KIMI CODE • KIMI HELP CENTER</div></section>
+<section class="scene" data-s="7"><div class="final"><div class="kicker" style="position:static">THE TAKEAWAY</div><div class="title" style="position:static;margin-top:42px">A bigger model<br>is only the start.</div><div class="lead" style="position:static;margin:42px auto 0">K3 is designed to give an open model enough scale and context to work on the whole job.</div><div class="chips" style="position:static;justify-content:center;margin-top:45px"><div class="chip">2.8T</div><div class="chip">1M CONTEXT</div><div class="chip">VISION</div><div class="chip">AGENTS</div></div></div><div class="pulse"></div><div class="source">SOURCE: KIMI K3 OFFICIAL ANNOUNCEMENT</div></section></div>
+<script>(function(){const r=document.getElementById('sp-k3-root'),sc=[...r.querySelectorAll('.scene')],ranges=[[0,6],[6,12],[12,19],[19,26],[26,33],[33,40],[40,47],[47,54]],clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v)),ease=v=>{v=clamp(v);return v*v*(3-2*v)};window.SPMOTION={width:1080,height:1920,fps:30,duration:54};function typeText(s,p){return s.slice(0,Math.floor(s.length*ease(p)))}function render(time){let t=clamp(time,0,54);r.querySelector('#clock').textContent='00:'+String(Math.floor(t)).padStart(2,'0');ranges.forEach((x,i)=>{let e=sc[i],p=ease((t-x[0])/(x[1]-x[0])),on=t>=x[0]&&t<=x[1];e.classList.toggle('on',on);if(on){e.style.transform='translate3d(0,'+((1-ease(Math.min(1,(t-x[0])/.8)))*28)+'px,0) scale(.985)';e.style.opacity=Math.min(1,ease((t-x[0])/.8),ease((x[1]-t)/.8))}});r.querySelector('#params').textContent=(2.8*ease((t-6)/2)).toFixed(1)+'T';r.querySelector('#million').textContent=Math.round(1048576*ease((t-12)/2)).toLocaleString('en-US');[...r.querySelectorAll('[data-s="3"] .node')].forEach((n,i)=>n.classList.toggle('active',i===Math.min(3,Math.floor(clamp((t-19)/7)*4.01))));let term='> kimi-code --task refactor-project\n\n[01] reading workspace...\n[02] tracing dependencies...\n[03] editing modules...\n[04] running tests...\n[05] verifying changes...\n\n✓ task completed';r.querySelector('#terminalText').innerHTML=typeText(term,(t-26)/6).replace(/\n/g,'<br>');r.querySelector('#taskProgress').style.width=(100*ease((t-26)/6))+'%';[...r.querySelectorAll('.worker')].forEach((w,i)=>w.classList.toggle('live',i<Math.floor(clamp((t-33)/7)*7)));let p=clamp((t-47)/7);r.querySelector('.pulse').style.transform='translate(-50%,-50%) scale('+(1+.18*Math.sin(p*Math.PI))+')'}window.SPMOTION_RENDER=render;render(0)})();</script></body></html>
