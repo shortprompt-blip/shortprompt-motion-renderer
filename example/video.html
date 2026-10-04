@@ -1,26 +1,107 @@
-<!doctype html><html><head><meta charset="utf-8"><style>
-*{box-sizing:border-box}html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#080a0f;font-family:Arial;color:#fff}
-#stage{position:relative;width:1080px;height:1920px;overflow:hidden}#top{position:absolute;z-index:5;left:64px;right:64px;top:58px;display:flex;justify-content:space-between;font-size:20px;font-weight:800}
-#browser{position:absolute;left:55px;right:55px;top:150px;bottom:90px;background:#fff;border-radius:30px;overflow:hidden;box-shadow:0 35px 110px #0009}
-#chrome{height:72px;background:#f5f6f8;border-bottom:1px solid #ddd;display:flex;align-items:center;padding:0 24px;gap:9px}.dot{width:11px;height:11px;border-radius:50%;background:#c9cdd4}.url{margin-left:12px;flex:1;height:38px;line-height:38px;border:1px solid #ddd;border-radius:10px;padding:0 14px;color:#777;font-size:14px}
-#viewport{position:absolute;left:0;right:0;top:72px;bottom:0;overflow:hidden}#page{position:absolute;left:0;top:0;width:100%;transform-origin:50% 0}
-.capture{width:100%;background:#fff}.capture img{display:block;width:100%;height:auto}
-#cursor{position:absolute;z-index:9;width:34px;height:42px;opacity:0}.#cursor:before{content:""}
-#click{position:absolute;z-index:8;width:58px;height:58px;border:3px solid #5274ff;border-radius:50%;opacity:0;transform:translate(-50%,-50%) scale(.25)}.flash{animation:click .55s ease-out}@keyframes click{to{opacity:0;transform:translate(-50%,-50%) scale(1.5)}}
-#tag{position:absolute;bottom:42px;left:64px;color:#8d94a0;font-size:16px;font-weight:800}
-#progress{position:absolute;left:64px;right:64px;bottom:26px;height:3px;background:#262a34}#progress i{display:block;height:100%;width:0;background:#6e8cff}
-</style></head><body><div id="stage"><div id="top"><span>KIMI K3</span><span id="clock">00:00</span></div>
-<div id="browser"><div id="chrome"><i class="dot"></i><i class="dot"></i><i class="dot"></i><div class="url" id="url">kimi.com/en/blog/kimi-k3</div></div><div id="viewport"><div id="page">
-<!-- spmotion://source/kimi-k3 --><div class="capture" id="cap0"><img id="img0"></div>
-<!-- spmotion://source/moonshot-home --><div class="capture" id="cap1" style="display:none"><img id="img1"></div>
-<!-- spmotion://source/kimi-code-models --><div class="capture" id="cap2" style="display:none"><img id="img2"></div>
-<!-- spmotion://source/kimi-agent --><div class="capture" id="cap3" style="display:none"><img id="img3"></div>
-</div><div id="cursor"></div><div id="click"></div></div></div><div id="tag">OFFICIAL SOURCES</div><div id="progress"><i></i></div></div>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1080,height=1920,initial-scale=1">
+<title>Kimi K3 — What Actually Matters</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#080a0f;font-family:Arial,sans-serif}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:#080a0f}
+#top{position:absolute;z-index:30;left:64px;right:64px;top:58px;display:flex;justify-content:space-between;font-size:20px;font-weight:800}
+#browser{position:absolute;z-index:2;left:55px;right:55px;top:150px;bottom:90px;background:#fff;border-radius:30px;overflow:hidden;box-shadow:0 35px 110px #0009}
+#chrome{height:72px;background:#f5f6f8;border-bottom:1px solid #ddd;display:flex;align-items:center;padding:0 24px;gap:9px}
+.dot{width:11px;height:11px;border-radius:50%;background:#c9cdd4}.url{margin-left:12px;flex:1;height:38px;line-height:38px;border:1px solid #ddd;border-radius:10px;padding:0 14px;color:#777;font-size:14px}
+#viewport{position:absolute;left:0;right:0;top:72px;bottom:0;overflow:hidden}
+#page{position:absolute;left:0;top:0;width:100%;transform-origin:50% 0;will-change:transform}
+.capture{position:absolute;left:0;top:0;width:100%;display:none;background:#fff}
+.capture.active{display:block}
+.capture img{display:block;width:100%;height:auto;max-width:none}
+#cursor{position:absolute;z-index:50;width:34px;height:42px;opacity:0;pointer-events:none}
+#cursor:before{content:"";position:absolute;left:2px;top:0;border-left:15px solid #111;border-top:24px solid transparent;border-bottom:11px solid transparent;transform:rotate(-25deg)}
+#cursor:after{content:"";position:absolute;left:18px;top:23px;width:11px;height:4px;background:#111;transform:rotate(35deg);border-radius:4px}
+#click{position:absolute;z-index:49;width:58px;height:58px;border:3px solid #5274ff;border-radius:50%;opacity:0;transform:translate(-50%,-50%) scale(.25);pointer-events:none}
+.flash{animation:click .55s ease-out}@keyframes click{0%{opacity:.9;transform:translate(-50%,-50%) scale(.25)}100%{opacity:0;transform:translate(-50%,-50%) scale(1.5)}}
+#tag{position:absolute;z-index:30;left:64px;bottom:42px;color:#8d94a0;font-size:16px;font-weight:800}
+#progress{position:absolute;z-index:31;left:64px;right:64px;bottom:26px;height:3px;background:#262a34}
+#progress i{display:block;height:100%;width:0;background:#6e8cff}
+</style>
+</head>
+<body>
+<div id="stage">
+<div id="top"><span>KIMI K3</span><span id="clock">00:00</span></div>
+<div id="browser">
+<div id="chrome"><i class="dot"></i><i class="dot"></i><i class="dot"></i><div class="url" id="url">kimi.com/en/blog/kimi-k3</div></div>
+<div id="viewport">
+<div id="page">
+<div class="capture active" id="cap0"><img src="spmotion://source/kimi-k3" alt="Kimi K3 official page"></div>
+<div class="capture" id="cap1"><img src="spmotion://source/moonshot-home" alt="Moonshot official page"></div>
+<div class="capture" id="cap2"><img src="spmotion://source/kimi-code-models" alt="Kimi Code models"></div>
+<div class="capture" id="cap3"><img src="spmotion://source/kimi-agent" alt="Kimi Agent"></div>
+</div>
+<div id="cursor"></div><div id="click"></div>
+</div>
+</div>
+<div id="tag">OFFICIAL SOURCES</div>
+<div id="progress"><i></i></div>
+</div>
 <script>
 window.SPMOTION={width:1080,height:1920,fps:30,duration:75};
-const S=[["kimi-k3","kimi.com/en/blog/kimi-k3"],["moonshot-home","moonshot.ai"],["kimi-code-models","kimi.com/code/docs/en/kimi-code/models.html"],["kimi-agent","kimi.com/en/help/agent/agent-overview"]];
-const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v)),ease=v=>{v=clamp(v);return v*v*(3-2*v)};let last=-1;
-function setS(n){for(let i=0;i<4;i++)document.getElementById("cap"+i).style.display=i===n?"block":"none";document.getElementById("url").textContent=S[n][1]}
-function render(t){t=clamp(t,0,75);document.getElementById("clock").textContent="00:"+String(Math.floor(t)).padStart(2,"0");document.querySelector("#progress i").style.width=t/75*100+"%";let n=t<20?0:t<38?1:t<57?2:3,l=n? n===1?(t-20)/18:n===2?(t-38)/19:(t-57)/18:t/20;setS(n);let img=document.getElementById("img"+n),q=ease(l),vp=document.getElementById("viewport"),h=(img.naturalHeight||1080)*(vp.clientWidth/(img.naturalWidth||1920)),max=Math.max(0,h-vp.clientHeight),z=l>.4?1.08:1.02;img.style.transform=`translate3d(0,${-max*(q*(.12+.88*q))}px,0) scale(${z})`;img.style.transformOrigin="50% 0";let c=document.getElementById("cursor"),x=690,y=340,show=l>.27&&l<.38||l>.61&&l<.71;c.style.left=x+"px";c.style.top=y+"px";c.style.opacity=show?1:0;let k=n*2+(l>.61?1:0);if(show&&k!==last){let e=document.getElementById("click");e.style.left=x+"px";e.style.top=y+"px";e.classList.remove("flash");void e.offsetWidth;e.classList.add("flash");last=k}}
-window.SPMOTION_RENDER=render;render(0);
-</script></body></html>
+const S=[
+ ["kimi-k3","kimi.com/en/blog/kimi-k3"],
+ ["moonshot-home","moonshot.ai"],
+ ["kimi-code-models","kimi.com/code/docs/en/kimi-code/models.html"],
+ ["kimi-agent","kimi.com/en/help/agent/agent-overview"]
+];
+const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
+const ease=v=>{v=clamp(v);return v*v*(3-2*v)};
+let lastClick=-1;
+
+function setSource(n){
+ for(let i=0;i<4;i++)document.getElementById("cap"+i).classList.toggle("active",i===n);
+ document.getElementById("url").textContent=S[n][1];
+}
+function render(time){
+ time=clamp(time,0,75);
+ document.getElementById("clock").textContent="00:"+String(Math.floor(time)).padStart(2,"0");
+ document.querySelector("#progress i").style.width=(time/75*100)+"%";
+
+ const n=time<20?0:time<38?1:time<57?2:3;
+ const local=n===0?time/20:n===1?(time-20)/18:n===2?(time-38)/19:(time-57)/18;
+ setSource(n);
+
+ const img=document.querySelector("#cap"+n+" img");
+ const vp=document.getElementById("viewport");
+ const iw=img.naturalWidth||1920, ih=img.naturalHeight||1080;
+ const displayH=ih*(vp.clientWidth/iw);
+ const maxY=Math.max(0,displayH-vp.clientHeight);
+
+ let q=ease(local);
+ let cameraProgress;
+ if(local<.18) cameraProgress=.10*ease(local/.18);
+ else if(local<.42) cameraProgress=.10+.32*ease((local-.18)/.24);
+ else if(local<.60) cameraProgress=.42+.16*ease((local-.42)/.18);
+ else if(local<.82) cameraProgress=.58+.30*ease((local-.60)/.22);
+ else cameraProgress=.88+.12*ease((local-.82)/.18);
+
+ let zoom=local<.18?1.01+.02*q:local<.62?1.03+.06*q:1.09-.07*ease((local-.62)/.38);
+ img.style.transform="translate3d(0,"+(-maxY*cameraProgress)+"px,0) scale("+zoom+")";
+ img.style.transformOrigin="50% 0";
+
+ const cursor=document.getElementById("cursor");
+ let visible=false,x=0,y=0,ck=-1;
+ if(local>.27&&local<.37){visible=true;x=690;y=340;ck=n*2}
+ else if(local>.61&&local<.71){visible=true;x=430;y=480;ck=n*2+1}
+ cursor.style.left=x+"px";cursor.style.top=y+"px";cursor.style.opacity=visible?1:0;
+
+ if(visible&&ck!==lastClick){
+  const c=document.getElementById("click");
+  c.style.left=x+"px";c.style.top=y+"px";
+  c.classList.remove("flash");void c.offsetWidth;c.classList.add("flash");
+  lastClick=ck;
+ }
+}
+window.SPMOTION_RENDER=render;
+render(0);
+</script>
+</body>
+</html>
