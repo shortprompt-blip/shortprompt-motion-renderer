@@ -1,21 +1,25 @@
-Kimi just released K3, and it is not a small update.
+Kimi just released K3, and this is much bigger than a routine model update.
 
-Moonshot describes it as a 2.8 trillion parameter model, with native vision and a one-million-token context window.
+K3 is a 2.8 trillion parameter open model built with Kimi Delta Attention and Attention Residuals. It also brings native vision and a context window of up to one million tokens.
 
-The interesting part is what that means in practice.
+So what does that actually mean?
 
-K3 is built for long-horizon work: large codebases, complex reasoning, documents, and tasks where the model has to keep context for much longer.
+Start with the official Kimi announcement. As we scroll through the page, the important part is not just the parameter count. Kimi is positioning K3 for long-horizon coding, knowledge work and reasoning.
 
-And Kimi is not positioning K3 as just another chatbot. The same model sits inside Kimi Code, where the company is targeting serious software development.
+That one-million-token context is especially interesting for large projects. Instead of constantly cutting a huge codebase into smaller pieces, K3 is designed to keep much more of the project in context at once.
 
-Today, Kimi Code lists K3 alongside K2.8 Preview and a high-speed K2.7 coding model. So the important distinction is not simply which model is newest. It is which model and context size fit the workload.
+Now move to Kimi Code.
 
-Then there is the agent side.
+This is where the model becomes a practical developer tool. Kimi Code is built around code reading, file editing and command execution, and K3 is its flagship model.
 
-Kimi says K3 strengthens long-running agentic tasks, including coding workflows, terminal interaction, and large-scale parallel work through Agent Swarm.
+The interesting part is the workflow: the model is not presented simply as a chatbot that writes a snippet. It is designed for longer engineering tasks, where the agent can inspect a project, make changes and continue working across multiple steps.
 
-So the real story behind K3 is not just 2.8 trillion parameters.
+And finally, look at the current model configuration.
 
-It is the combination: open weights, native vision, a million-token context window, coding, and agents in the same ecosystem.
+Kimi Code now separates K3 from K2.8 Preview and K2.7 Code HighSpeed. K3 is the flagship option, with the full one-million-token context available on higher tiers, while the other models trade some capability or context for different speed and usage characteristics.
 
-That makes K3 one of the most interesting open models to watch right now.
+So the takeaway is simple.
+
+Kimi K3 is not interesting just because it has 2.8 trillion parameters. The more important story is the combination of massive context, native multimodal understanding and an agent-oriented coding workflow.
+
+If you work with large codebases or long-running AI tasks, that combination is what makes K3 worth watching.

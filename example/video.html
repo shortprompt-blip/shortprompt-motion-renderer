@@ -6,331 +6,135 @@
 <title>Kimi K3 — The Open 3T-Class Model</title>
 <style>
 *{box-sizing:border-box}
-html,body{
-  margin:0;width:1080px;height:1920px;overflow:hidden;
-  background:#f4f5f7;color:#111318;
-  font-family:Inter,Arial,sans-serif
-}
+html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#080a0f;color:#f5f7fb;font-family:Inter,Arial,sans-serif}
 body{position:relative}
-#app{position:absolute;inset:0;padding:48px 44px}
-.top{
-  display:flex;justify-content:space-between;align-items:center;
-  font-size:15px;font-weight:900;letter-spacing:.055em
-}
-.brand{display:flex;align-items:center;gap:8px}
-.brand-dot{width:9px;height:9px;border-radius:50%;background:#315cff}
-.clock{color:#747a84}
-.hero{margin-top:34px}
-.kicker{
-  font-size:15px;font-weight:950;letter-spacing:.15em;
-  color:#315cff;text-transform:uppercase
-}
-h1{
-  font-size:61px;line-height:.94;letter-spacing:-.055em;
-  margin:11px 0 12px;max-width:900px
-}
-.lead{
-  max-width:900px;font-size:21px;line-height:1.3;color:#666d77
-}
-.browser{
-  position:absolute;left:44px;right:44px;top:360px;height:1085px;
-  background:#fff;border:2px solid #dfe3e8;border-radius:27px;
-  overflow:hidden;box-shadow:0 22px 70px rgba(17,19,24,.12)
-}
-.bar{
-  height:64px;border-bottom:1px solid #e2e5e9;
-  display:flex;align-items:center;gap:8px;padding:0 18px;background:#fafbfc
-}
-.dot{width:10px;height:10px;border-radius:50%;background:#d1d5db}
-.url{
-  margin-left:8px;flex:1;height:32px;border:1px solid #dfe3e8;
-  border-radius:9px;padding:7px 12px;font-size:12px;color:#666d77;
-  white-space:nowrap;overflow:hidden
-}
-.viewport{
-  position:relative;height:1019px;overflow:hidden;background:#fff
-}
-.source{
-  position:absolute;left:0;top:0;width:100%;
-  visibility:hidden;opacity:0;
-  transform:translate3d(0,0,0) scale(1);
-  transform-origin:50% 0;
-  will-change:transform,opacity
-}
-.source.active{visibility:visible;opacity:1}
-.source img{
-  display:block;width:100%;height:auto;max-width:none;max-height:none;
-  user-select:none;-webkit-user-drag:none
-}
-.scrim{
-  position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(to bottom,rgba(255,255,255,.04),transparent 16%,transparent 82%,rgba(255,255,255,.18))
-}
-.chapter{
-  position:absolute;left:26px;top:24px;z-index:10;
-  background:#111318;color:#fff;border-radius:10px;
-  padding:9px 12px;font-size:10px;font-weight:950;
-  letter-spacing:.07em;opacity:0
-}
-.cursor{
-  position:absolute;width:28px;height:28px;z-index:12;
-  opacity:0;pointer-events:none
-}
-.cursor:before{
-  content:"";position:absolute;left:2px;top:0;
-  width:0;height:0;border-left:12px solid #111318;
-  border-top:18px solid transparent;border-bottom:8px solid transparent;
-  transform:rotate(-28deg)
-}
-.cursor:after{
-  content:"";position:absolute;left:14px;top:16px;width:10px;height:4px;
-  background:#111318;border-radius:3px;transform:rotate(34deg)
-}
-.click{
-  position:absolute;width:58px;height:58px;border:3px solid #315cff;
-  border-radius:50%;z-index:11;opacity:0;pointer-events:none;
-  transform:translate(-50%,-50%) scale(.4)
-}
-.click.on{animation:click .55s ease-out forwards}
-@keyframes click{
-  0%{opacity:.85;transform:translate(-50%,-50%) scale(.35)}
-  100%{opacity:0;transform:translate(-50%,-50%) scale(1.25)}
-}
-.scrollbar{
-  position:absolute;right:13px;top:18px;bottom:18px;width:4px;
-  background:#e4e7eb;border-radius:9px;z-index:9;opacity:.7
-}
-.scrollthumb{
-  position:absolute;left:0;width:4px;height:115px;border-radius:9px;
-  background:#315cff;transform:translateY(0)
-}
-.meta{
-  position:absolute;left:44px;right:44px;top:1470px;
-  display:grid;grid-template-columns:1fr 1fr;gap:14px
-}
-.card{
-  background:#fff;border:1px solid #e0e3e8;border-radius:18px;
-  padding:17px 19px;min-height:132px
-}
-.card small{
-  display:block;color:#315cff;font-size:10px;font-weight:950;
-  letter-spacing:.12em;margin-bottom:7px
-}
-.card strong{font-size:23px;letter-spacing:-.02em}
-.card p{margin:7px 0 0;color:#707680;font-size:14px;line-height:1.35}
-.bottom{
-  position:absolute;left:44px;right:44px;bottom:54px;
-  display:grid;grid-template-columns:repeat(4,1fr);gap:10px
-}
-.step{
-  background:#fff;border:2px solid #e5e7eb;border-radius:15px;
-  padding:12px 13px;opacity:.38;min-height:72px
-}
-.step.active{opacity:1;border-color:#315cff}
-.step b{font-size:11px;color:#315cff}
-.step span{display:block;margin-top:4px;font-size:13px;font-weight:850}
-.footer{
-  position:absolute;left:44px;right:44px;bottom:22px;
-  display:flex;justify-content:space-between;color:#858b95;
-  font-size:10px;font-weight:900;letter-spacing:.05em
-}
+#stage{position:absolute;inset:0;overflow:hidden;background:#080a0f}
+#top{position:absolute;z-index:30;left:64px;right:64px;top:58px;display:flex;justify-content:space-between;align-items:center;font-size:20px;font-weight:800}
+.brand{display:flex;align-items:center;gap:12px}.brand i{width:12px;height:12px;border-radius:50%;background:#6e8cff}
+.clock{font-variant-numeric:tabular-nums;color:#7e8592}
+#browser{position:absolute;z-index:2;left:55px;right:55px;top:150px;bottom:90px;border-radius:30px;overflow:hidden;background:#fff;box-shadow:0 35px 110px rgba(0,0,0,.55)}
+#chrome{height:72px;background:#f5f6f8;border-bottom:1px solid #ddd;display:flex;align-items:center;padding:0 24px;gap:9px}
+.dot{width:11px;height:11px;border-radius:50%;background:#c9cdd4}.url{margin-left:12px;flex:1;height:38px;line-height:38px;border:1px solid #d9dce1;border-radius:10px;padding:0 14px;color:#777;font-size:14px}
+#viewport{position:absolute;left:0;right:0;top:72px;bottom:0;overflow:hidden}
+#page{position:absolute;left:0;top:0;width:100%;background:#fff;color:#17191d;transform-origin:50% 0;will-change:transform}
+.capture{position:relative;width:100%;overflow:hidden}
+.capture img{display:block;width:100%;height:auto;max-width:none;max-height:none}
+#cursor{position:absolute;z-index:20;width:34px;height:42px;opacity:0;pointer-events:none;will-change:transform}
+#cursor:before{content:"";position:absolute;left:2px;top:0;border-left:15px solid #111;border-top:24px solid transparent;border-bottom:11px solid transparent;transform:rotate(-25deg)}
+#cursor:after{content:"";position:absolute;left:18px;top:23px;width:11px;height:4px;background:#111;transform:rotate(35deg);border-radius:4px}
+#click{position:absolute;z-index:19;width:58px;height:58px;border:3px solid #5274ff;border-radius:50%;opacity:0;transform:translate(-50%,-50%) scale(.25);pointer-events:none}
+.flash{animation:click .55s ease-out}
+@keyframes click{0%{opacity:.9;transform:translate(-50%,-50%) scale(.25)}100%{opacity:0;transform:translate(-50%,-50%) scale(1.5)}}
+#sourceTag{position:absolute;z-index:30;left:64px;bottom:42px;font-size:16px;font-weight:800;color:#8d94a0}
+#progress{position:absolute;z-index:31;left:64px;right:64px;bottom:26px;height:3px;background:#262a34}
+#progress i{display:block;width:0;height:100%;background:#6e8cff}
 </style>
 </head>
 <body>
-<div id="app">
-  <div class="top">
-    <div class="brand"><span class="brand-dot"></span>KIMI / AI MODELS</div>
-    <div class="clock" id="clock">00:00</div>
-  </div>
-
-  <section class="hero">
-    <div class="kicker">KIMI K3</div>
-    <h1>The open 3T-class model is here.</h1>
-    <div class="lead">2.8 trillion parameters, native vision and a 1-million-token context window. Here is what K3 changes in practice.</div>
-  </section>
-
-  <div class="browser">
-    <div class="bar">
-      <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-      <div class="url" id="url"></div>
+<div id="stage">
+<div id="top"><div class="brand"><i></i>KIMI K3</div><div class="clock" id="clock">00:00</div></div>
+<div id="browser">
+  <div id="chrome"><i class="dot"></i><i class="dot"></i><i class="dot"></i><div class="url" id="url">kimi.com/en/blog/kimi-k3</div></div>
+  <div id="viewport">
+    <div id="page">
+      <!-- spmotion://source/kimi-k3-overview -->
+      <div class="capture" id="cap0"><img id="img0" alt="Kimi K3 official overview"></div>
+      <!-- spmotion://source/kimi-k3-code -->
+      <div class="capture" id="cap1" style="display:none"><img id="img1" alt="Kimi Code official page"></div>
+      <!-- spmotion://source/kimi-k3-models -->
+      <div class="capture" id="cap2" style="display:none"><img id="img2" alt="Kimi Code official model configuration"></div>
     </div>
-
-    <div class="viewport" id="viewport">
-      <div class="source active" id="e0"><img src="spmotion://source/kimi-k3" alt=""></div>
-      <div class="source" id="e1"><img src="spmotion://source/moonshot-home" alt=""></div>
-      <div class="source" id="e2"><img src="spmotion://source/kimi-code-models" alt=""></div>
-      <div class="source" id="e3"><img src="spmotion://source/kimi-agent" alt=""></div>
-      <div class="scrim"></div>
-      <div class="chapter" id="chapter"></div>
-      <div class="cursor" id="cursor"></div>
-      <div class="click" id="click"></div>
-      <div class="scrollbar"><div class="scrollthumb" id="scrollthumb"></div></div>
-    </div>
+    <div id="cursor"></div><div id="click"></div>
   </div>
-
-  <div class="meta">
-    <div class="card">
-      <small id="cardLabel">THE MODEL</small>
-      <strong id="cardTitle">2.8T parameters</strong>
-      <p id="cardCopy">Kimi describes K3 as its most capable model, built for long-horizon coding, reasoning and knowledge work.</p>
-    </div>
-    <div class="card">
-      <small id="cardLabel2">WHY IT MATTERS</small>
-      <strong id="cardTitle2">1M-token context</strong>
-      <p id="cardCopy2">The long context and native vision are designed for large projects, documents and multimodal workflows.</p>
-    </div>
-  </div>
-
-  <div class="bottom">
-    <div class="step active" id="s0"><b>01</b><span>K3</span></div>
-    <div class="step" id="s1"><b>02</b><span>Why it matters</span></div>
-    <div class="step" id="s2"><b>03</b><span>Kimi Code</span></div>
-    <div class="step" id="s3"><b>04</b><span>Agents</span></div>
-  </div>
-
-  <div class="footer">
-    <span>KIMI K3 · JULY 2026</span>
-    <span id="state">01 / 04</span>
-  </div>
+</div>
+<div id="sourceTag">OFFICIAL KIMI SOURCES</div>
+<div id="progress"><i></i></div>
 </div>
 
 <script>
-window.SPMOTION={width:1080,height:1920,fps:30,duration:80};
-
-const $=id=>document.getElementById(id);
-const layers=[$("e0"),$("e1"),$("e2"),$("e3")];
-const steps=[$("s0"),$("s1"),$("s2"),$("s3")];
+window.SPMOTION={width:1080,height:1920,fps:30,duration:75};
 
 const sources=[
-  {
-    url:"kimi.com/en/blog/kimi-k3",
-    chapter:"KIMI K3 · LAUNCH",
-    label:"THE MODEL",
-    title:"2.8T parameters",
-    copy:"Kimi describes K3 as its most capable model, built for long-horizon coding, reasoning and knowledge work.",
-    label2:"CONTEXT",
-    title2:"1M tokens",
-    copy2:"Native vision and a million-token context window are core parts of the K3 architecture.",
-    click:[0.67,0.33]
-  },
-  {
-    url:"moonshot.ai",
-    chapter:"MOONSHOT AI · PRODUCT",
-    label:"POSITIONING",
-    title:"Open frontier intelligence",
-    copy:"Moonshot positions K3 as its latest flagship for complex work across coding, analysis and creation.",
-    label2:"MULTIMODAL",
-    title2:"Native vision",
-    copy2:"The flagship is designed to combine long-context reasoning with multimodal understanding.",
-    click:[0.74,0.48]
-  },
-  {
-    url:"kimi.com/code/docs/en/kimi-code/models.html",
-    chapter:"KIMI CODE · MODELS",
-    label:"FOR CODING",
-    title:"K3 + K2.8 Preview",
-    copy:"Kimi Code currently lists K3, K2.8 Preview and K2.7 Code HighSpeed for different coding workloads.",
-    label2:"1M CONTEXT",
-    title2:"K3",
-    copy2:"The K3 model ID supports up to 1M context on eligible plans; K2.8 Preview also supports up to 1M.",
-    click:[0.69,0.57]
-  },
-  {
-    url:"kimi.com/en/help/agent/agent-overview",
-    chapter:"KIMI · AGENTS",
-    label:"AGENT WORK",
-    title:"Long-horizon execution",
-    copy:"Kimi describes K3 as strengthening agentic coding and long-running task execution.",
-    label2:"AGENT SWARM",
-    title2:"Parallel work",
-    copy2:"K3-powered Agent Swarm is positioned for large-scale parallel search and batch processing.",
-    click:[0.63,0.44]
-  }
+ {id:"kimi-k3-overview",url:"kimi.com/en/blog/kimi-k3"},
+ {id:"kimi-k3-code",url:"kimi.com/code/en"},
+ {id:"kimi-k3-models",url:"kimi.com/code/docs/en/kimi-code/models.html"}
 ];
 
 function clamp(v,a=0,b=1){return Math.max(a,Math.min(b,v))}
 function ease(v){v=clamp(v);return v*v*(3-2*v)}
-function duration(){
-  return Math.max(.001,Number(window.SPMOTION&&window.SPMOTION.duration)||1)
+function seg(a,b,t){return ease(clamp((t-a)/(b-a)))}
+function setSource(n){
+ for(let i=0;i<3;i++) document.getElementById("cap"+i).style.display=i===n?"block":"none";
+ document.getElementById("url").textContent=sources[n].url;
 }
-function windows(i){
-  const starts=[0,.25,.50,.75], ends=[.25,.50,.75,1];
-  return [starts[i],ends[i]]
+function camera(img,viewport,t,from,to,zoomFrom,zoomTo){
+ const nw=img.naturalWidth||1920,nh=img.naturalHeight||1080;
+ const vw=viewport.clientWidth||1,vh=viewport.clientHeight||1;
+ const displayHeight=nh*(vw/nw);
+ const maxY=Math.max(0,displayHeight-vh);
+ const q=ease(clamp(t));
+ const y=from+(to-from)*q;
+ const z=zoomFrom+(zoomTo-zoomFrom)*q;
+ img.style.width="100%";img.style.height="auto";img.style.maxWidth="none";img.style.maxHeight="none";
+ img.style.transform=`translate3d(0,${-maxY*y}px,0) scale(${z})`;
+ img.style.transformOrigin="50% 0";
 }
-function activate(i){
-  layers.forEach((x,n)=>{
-    const on=n===i;
-    x.classList.toggle("active",on);
-    x.style.visibility=on?"visible":"hidden";
-    x.style.opacity=on?"1":"0";
-  });
-  steps.forEach((x,n)=>x.classList.toggle("active",n===i));
+let lastClick=-1;
+function clickAt(x,y,key){
+ const c=document.getElementById("click");
+ c.style.left=x+"px";c.style.top=y+"px";
+ c.classList.remove("flash");void c.offsetWidth;c.classList.add("flash");lastClick=key;
 }
 function render(time){
-  const D=duration(),t=clamp(Number(time)||0,0,D),p=t/D;
-  let i=3;
-  for(let n=0;n<4;n++){const [a,b]=windows(n);if(p<b||n===3){i=n;break}}
-  const [a,b]=windows(i),local=clamp((p-a)/(b-a));
-  const s=sources[i],img=layers[i].querySelector("img"),vp=$("viewport");
+ const t=clamp(time,0,75),vp=document.getElementById("viewport");
+ document.getElementById("clock").textContent="00:"+String(Math.floor(t)).padStart(2,"0");
+ document.querySelector("#progress i").style.width=(t/75*100)+"%";
 
-  activate(i);
-  $("clock").textContent=String(Math.floor(t/60)).padStart(2,"0")+":"+String(Math.floor(t%60)).padStart(2,"0");
-  $("state").textContent=String(i+1).padStart(2,"0")+" / 04";
-  $("url").textContent=s.url;
-  $("chapter").textContent=s.chapter;
-  $("cardLabel").textContent=s.label;
-  $("cardTitle").textContent=s.title;
-  $("cardCopy").textContent=s.copy;
-  $("cardLabel2").textContent=s.label2;
-  $("cardTitle2").textContent=s.title2;
-  $("cardCopy2").textContent=s.copy2;
+ let source=0,local=0;
+ if(t<28){source=0;local=t/28}
+ else if(t<52){source=1;local=(t-28)/24}
+ else {source=2;local=(t-52)/23}
+ setSource(source);
 
-  const nw=img.naturalWidth||1920,nh=img.naturalHeight||1080;
-  const vw=vp.clientWidth||992,vh=vp.clientHeight||1019;
-  const scaleToWidth=vw/nw;
-  const imageH=nh*scaleToWidth;
-  const maxY=Math.max(0,imageH-vh);
+ const img=document.getElementById("img"+source);
+ let y1=0,y2=1,z1=1,z2=1.05;
+ if(source===0){
+   if(local<.18){y1=0;y2=.08;z1=1;z2=1.035}
+   else if(local<.43){y1=.08;y2=.36;z1=1.035;z2=1.07}
+   else if(local<.60){y1=.36;y2=.49;z1=1.07;z2=1.09}
+   else if(local<.82){y1=.49;y2=.78;z1=1.09;z2=1.045}
+   else {y1=.78;y2=1;z1=1.045;z2=1}
+ } else if(source===1){
+   if(local<.20){y1=0;y2=.13;z1=1;z2=1.04}
+   else if(local<.48){y1=.13;y2=.43;z1=1.04;z2=1.08}
+   else if(local<.65){y1=.43;y2=.58;z1=1.08;z2=1.10}
+   else if(local<.86){y1=.58;y2=.84;z1=1.10;z2=1.04}
+   else {y1=.84;y2=1;z1=1.04;z2=1}
+ } else {
+   if(local<.18){y1=0;y2=.12;z1=1;z2=1.04}
+   else if(local<.44){y1=.12;y2=.38;z1=1.04;z2=1.08}
+   else if(local<.61){y1=.38;y2=.52;z1=1.08;z2=1.10}
+   else if(local<.84){y1=.52;y2=.82;z1=1.10;z2=1.04}
+   else {y1=.82;y2=1;z1=1.04;z2=1}
+ }
+ let a,b,q;
+ if(local<.18){a=0;b=.18;q=local/.18}
+ else if(local<.43){a=.18;b=.43;q=(local-.18)/.25}
+ else if(local<.60){a=.43;b=.60;q=(local-.43)/.17}
+ else if(local<.82){a=.60;b=.82;q=(local-.60)/.22}
+ else {a=.82;b=1;q=(local-.82)/.18}
+ camera(img,vp,q,y1,y2,z1,z2);
 
-  // Slow documentary-style page scroll: reveal, travel, settle.
-  const intro=ease(clamp(local/.12));
-  const travel=ease(clamp((local-.12)/.76));
-  const settle=ease(clamp((local-.88)/.12));
-
-  const startY=0;
-  const endY=maxY;
-  const y=startY+(endY-startY)*travel;
-
-  // Tiny scale keeps text readable while adding the same "live page" feel.
-  const zoom=1+0.025*ease(clamp((local-.12)/.70));
-  const x=(vw-vw*zoom)/2;
-
-  img.style.width="100%";
-  img.style.height="auto";
-  img.style.transform=`translate3d(${x}px,${-y+(1-intro)*18}px,0) scale(${zoom})`;
-  layers[i].style.transform="translate3d(0,0,0)";
-
-  $("chapter").style.opacity=ease(clamp((local-.02)/.12));
-
-  // Scroll thumb follows the actual full-page position.
-  const thumbTravel=Math.max(0,($("scrollbar")?.clientHeight||983)-115);
-  $("scrollthumb").style.transform=`translateY(${thumbTravel*travel}px)`;
-
-  // Cursor + click accent, kept subtle and deterministic.
-  const cp=s.click;
-  const cursorT=ease(clamp((local-.34)/.30));
-  $("cursor").style.opacity=cursorT*(1-settle*.65);
-  $("cursor").style.left=(cp[0]*vw-14)+"px";
-  $("cursor").style.top=(cp[1]*vh-14)+"px";
-
-  const clickT=local>.48&&local<.58;
-  if(clickT && !$("click").classList.contains("on")){
-    $("click").style.left=(cp[0]*vw)+"px";
-    $("click").style.top=(cp[1]*vh)+"px";
-    $("click").classList.remove("on");
-    void $("click").offsetWidth;
-    $("click").classList.add("on");
-  }
-  if(!clickT)$("click").classList.remove("on");
+ const cursor=document.getElementById("cursor");
+ let visible=false,cx=0,cy=0,ck=-1;
+ if(source===0 && local>.28 && local<.37){visible=true;cx=690;cy=340;ck=0}
+ if(source===0 && local>.57 && local<.66){visible=true;cx=430;cy=470;ck=1}
+ if(source===1 && local>.29 && local<.38){visible=true;cx=710;cy=390;ck=2}
+ if(source===1 && local>.62 && local<.70){visible=true;cx=470;cy=500;ck=3}
+ if(source===2 && local>.28 && local<.37){visible=true;cx=690;cy=360;ck=4}
+ if(source===2 && local>.63 && local<.72){visible=true;cx=440;cy=480;ck=5}
+ cursor.style.left=cx+"px";cursor.style.top=cy+"px";cursor.style.opacity=visible?1:0;
+ if(ck>=0 && ck!==lastClick) clickAt(cx,cy,ck);
 }
 window.SPMOTION_RENDER=render;
 render(0);
