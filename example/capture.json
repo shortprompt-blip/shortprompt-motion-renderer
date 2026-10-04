@@ -1,37 +1,24 @@
 {
-  "viewport": {"width": 1920, "height": 1080, "deviceScaleFactor": 1 },
   "sources": [
     {
-      "id": "sonnet-overview",
-      "url": "https://www.anthropic.com/claude-sonnet-5-5",
-      "waitUntil": "domcontentloaded",
-      "waitMs": 1800,
-      "fullPage": true,
-      "output": "assets/evidence/sonnet-overview.png"
+      "id": "kimi-k3",
+      "url": "https://www.kimi.com/en/blog/kimi-k3",
+      "output": "assets/evidence/kimi-k3.png"
     },
     {
-      "id": "sonnet-announcement",
-      "url": "https://www.anthropic.com/news/claude-sonnet-5-5",
-      "waitUntil": "domcontentloaded",
-      "waitMs": 1800,
-      "fullPage": true,
-      "output": "assets/evidence/sonnet-announcement.png"
+      "id": "kimi-models",
+      "url": "https://www.kimi.ai/ai-models/",
+      "output": "assets/evidence/kimi-models.png"
     },
     {
-      "id": "github-node",
-      "url": "https://docs.github.com/en/actions/tutorials/build-and-test-code/nodejs",
-      "waitUntil": "domcontentloaded",
-      "waitMs": 1200,
-      "fullPage": true,
-      "output": "assets/evidence/github-node.png"
+      "id": "kimi-code-models",
+      "url": "https://www.kimi.com/code/docs/en/kimi-code/models.html",
+      "output": "assets/evidence/kimi-code-models.png"
     },
     {
-      "id": "github-actions",
-      "url": "https://docs.github.com/en/actions/get-started/quickstart",
-      "waitUntil": "domcontentloaded",
-      "waitMs": 1200,
-      "fullPage": true,
-      "output": "assets/evidence/github-actions.png"
+      "id": "kimi-agent",
+      "url": "https://www.kimi.com/en/help/agent/agent-overview",
+      "output": "assets/evidence/kimi-agent.png"
     }
   ]
 }

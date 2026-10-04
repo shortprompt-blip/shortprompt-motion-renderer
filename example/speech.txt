@@ -1,21 +1,17 @@
-I gave GPT-6 Astra, Claude Opus 5.5, and Fable 5.1 the exact same prompt.
+Kimi just released its newest flagship model, Kimi K3 — and this one is hard to ignore.
 
-Build a landing page for an AI product — and make it look like a real product, not a demo.
+According to Moonshot AI, K3 is a 2.8 trillion parameter open model with native vision and a one-million-token context window.
 
-Same task. Same goal. No extra instructions.
+But the interesting part is not just the number.
 
-Now watch what happens.
+K3 is designed for long-horizon coding, knowledge work and reasoning, while Kimi is also pushing its agent capabilities and large-scale parallel workflows.
 
-Astra starts with the full product structure.
-Opus builds out the interface and copy.
-Fable takes a different route through the same challenge.
+And there is a practical distinction here.
 
-And while they're working, we're comparing the outputs — not just the model names.
+Kimi's lineup separates the flagship K3 from coding-focused options such as Kimi for Coding, which currently uses K2.8 Preview, plus the faster K2.7 Code HighSpeed edition.
 
-Because benchmarks can tell you what a model scores on a test.
+So if you're choosing a Kimi model, the question isn't simply which one is newest.
 
-But the real question is simple:
+It's which tool fits the job: frontier general reasoning, dedicated coding, or high-speed development.
 
-Which result would you actually use?
-
-This is round one.
+K3 is the flagship. The rest of the lineup is about choosing the right tool for the job.
