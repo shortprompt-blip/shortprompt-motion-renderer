@@ -1,11 +1,15 @@
-Kimi can now operate a real browser.
+Kimi versus Sonnet 5.5.
 
-In Kimi Work, the Agent browser can directly click, type, and navigate inside browser tabs tied to the conversation.
+Same prompt. Two very different approaches.
 
-That changes the workflow. Instead of only telling you what to do, Kimi can turn a goal into browser actions.
+Kimi pushes scale, context and agentic execution. Sonnet 5.5 is built around high-end coding, reasoning and reliable computer use.
 
-The interesting part is the loop: understand the task, act in the browser, inspect what happened, then continue.
+So who wins?
 
-And Kimi's latest Agent workflow is built around exactly this kind of long-running task execution.
+For massive context and open-model experimentation, Kimi has the edge.
 
-So Kimi is moving from answering inside a chat to actually operating the tools around it.
+For polished coding and computer-use workflows, Sonnet is the benchmark to beat.
+
+The real answer?
+
+It depends on the job.

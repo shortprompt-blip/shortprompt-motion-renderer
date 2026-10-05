@@ -1,140 +1,21 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=1080,height=1920,initial-scale=1">
-<title>Kimi Agent Browser</title>
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=1080,height=1920,initial-scale=1">
+<title>Kimi vs Sonnet 5.5</title>
 <style>
-#sp-kimi-browser{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;background:#070a0f;color:#f6f8fb;font-family:Inter,Arial,sans-serif}
-#sp-kimi-browser .bg{position:absolute;inset:0;background:radial-gradient(circle at 76% 12%,#1c3154 0,#0b111b 42%,#070a0f 78%)}
-#sp-kimi-browser .grid{position:absolute;inset:-15%;opacity:.11;background-image:linear-gradient(#9aa9bc22 1px,transparent 1px),linear-gradient(90deg,#9aa9bc22 1px,transparent 1px);background-size:58px 58px;transform:perspective(750px) rotateX(58deg) translateY(35%)}
-#sp-kimi-browser .top{position:absolute;z-index:20;left:62px;right:62px;top:56px;display:flex;justify-content:space-between;font-weight:850;letter-spacing:.08em}
-#sp-kimi-browser .brand{font-size:25px}.clock{color:#8793a4;font-variant-numeric:tabular-nums}
-#sp-kimi-browser .scene{position:absolute;inset:0;opacity:0;transform:translateY(24px) scale(.985);pointer-events:none}
-#sp-kimi-browser .scene.on{opacity:1;transform:none}
-#sp-kimi-browser .kicker{position:absolute;left:62px;top:225px;color:#7895ff;font-size:18px;font-weight:900;letter-spacing:.17em}
-#sp-kimi-browser .title{position:absolute;left:62px;right:62px;top:278px;font-size:78px;line-height:.93;letter-spacing:-.055em;font-weight:950}
-#sp-kimi-browser .lead{position:absolute;left:66px;right:90px;top:505px;color:#adb8c7;font-size:27px;line-height:1.28;max-width:870px}
-#sp-kimi-browser .source{position:absolute;left:62px;bottom:68px;color:#687586;font-size:13px;font-weight:800;letter-spacing:.035em}
-#sp-kimi-browser .browser{position:absolute;left:55px;right:55px;top:335px;height:1030px;border:1px solid #344153;border-radius:28px;background:#0b1018;box-shadow:0 35px 100px #000b;overflow:hidden}
-#sp-kimi-browser .bar{height:82px;border-bottom:1px solid #2b3544;display:flex;align-items:center;gap:9px;padding:0 23px}
-#sp-kimi-browser .dot{width:11px;height:11px;border-radius:50%;background:#596474}
-#sp-kimi-browser .url{height:43px;margin-left:18px;flex:1;max-width:650px;background:#151c27;border:1px solid #2e3949;border-radius:13px;display:flex;align-items:center;padding:0 17px;color:#8794a5;font-size:15px}
-#sp-kimi-browser .browser-body{position:absolute;inset:82px 0 0;background:#f5f7fa;color:#10151c}
-#sp-kimi-browser .site-head{height:82px;border-bottom:1px solid #dfe3e9;background:white;display:flex;align-items:center;padding:0 32px;justify-content:space-between;font-weight:900}
-#sp-kimi-browser .site-main{padding:42px 34px}
-#sp-kimi-browser .site-main h2{font-size:39px;letter-spacing:-.04em;margin:0 0 18px}
-#sp-kimi-browser .site-main p{color:#68717e;font-size:19px;line-height:1.4;max-width:650px}
-#sp-kimi-browser .input{margin-top:35px;background:white;border:2px solid #d9dee6;border-radius:18px;padding:22px;font-size:19px;box-shadow:0 10px 30px #15223812}
-#sp-kimi-browser .button{margin-top:16px;display:inline-block;background:#101722;color:white;border-radius:13px;padding:14px 20px;font-weight:850}
-#sp-kimi-browser .cursor{position:absolute;width:24px;height:24px;border:3px solid #315cff;border-radius:50%;background:#fff;box-shadow:0 5px 18px #0004;opacity:0}
-#sp-kimi-browser .agentbar{position:absolute;right:22px;top:102px;width:305px;border:1px solid #d7dce3;background:#fff;border-radius:18px;box-shadow:0 18px 50px #0003;padding:19px;transform:translateX(35px);opacity:0}
-#sp-kimi-browser .agentbar strong{font-size:18px}.agentbar small{display:block;color:#7a8490;margin-top:8px;line-height:1.35}
-#sp-kimi-browser .agentbar .task{margin-top:14px;background:#f2f5f9;border-radius:12px;padding:12px;color:#303947;font-size:14px}
-#sp-kimi-browser .step{position:absolute;left:62px;right:62px;top:360px;display:flex;align-items:center;justify-content:space-between}
-#sp-kimi-browser .node{width:210px;min-height:180px;border:1px solid #334052;background:#0d131d;border-radius:24px;padding:24px;opacity:.32;transform:translateY(18px)}
-#sp-kimi-browser .node.active{opacity:1;transform:none;border-color:#7895ff;box-shadow:0 18px 55px #526de622}
-#sp-kimi-browser .node strong{font-size:24px}.node span{display:block;color:#8e9aaa;line-height:1.35;margin-top:13px;font-size:16px}
-#sp-kimi-browser .arrow{font-size:36px;color:#65748a}
-#sp-kimi-browser .result{position:absolute;left:62px;right:62px;top:690px;border:1px solid #334052;background:#0c121a;border-radius:24px;padding:27px}
-#sp-kimi-browser .result .big{font-size:44px;font-weight:950;letter-spacing:-.04em}
-#sp-kimi-browser .result p{color:#8f9bab;font-size:18px;margin:10px 0 0}
-#sp-kimi-browser .loop{position:absolute;left:50%;top:500px;width:470px;height:470px;border:1px solid #7895ff33;border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 130px #7895ff10}
-#sp-kimi-browser .pulse{position:absolute;left:50%;top:500px;width:14px;height:14px;border-radius:50%;background:#7895ff;transform:translate(-50%,-50%);box-shadow:0 0 35px #7895ff}
-#sp-kimi-browser .final{text-align:center;position:absolute;left:62px;right:62px;top:330px}
-#sp-kimi-browser .final .title{position:static;font-size:73px}
-#sp-kimi-browser .final .lead{position:static;margin:35px auto 0}
-#sp-kimi-browser .chips{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:44px}
-#sp-kimi-browser .chip{border:1px solid #344153;background:#0d141e;border-radius:999px;padding:13px 17px;font-size:15px;font-weight:850}
-</style>
-</head>
-<body>
-<div id="sp-kimi-browser">
-<div class="bg"></div><div class="grid"></div>
-<div class="top"><div class="brand">KIMI / AGENT</div><div id="clock" class="clock">00:00</div></div>
-
-<section class="scene" data-s="0">
-<div class="kicker">A NEW KIMI WORKFLOW</div>
-<div class="title">Kimi can now<br>operate a browser.</div>
-<div class="lead">The important shift is from answering about a task to actually acting on it.</div>
-<div class="source">SOURCE: KIMI WORK RELEASE NOTES • AUGUST 19, 2026</div>
-</section>
-
-<section class="scene" data-s="1">
-<div class="kicker">BUILT-IN AGENT BROWSER</div>
-<div class="browser">
-<div class="bar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><div class="url">kimi.com/workbench/research</div></div>
-<div class="browser-body">
-<div class="site-head"><span>Research Workspace</span><span style="color:#6d7785">Kimi</span></div>
-<div class="site-main"><h2>Find the latest AI releases</h2><p>Search sources, compare findings and prepare a concise research brief.</p><div class="input" id="input">Find official sources about the latest AI models…</div><div class="button" id="button">Search sources</div></div>
-<div class="agentbar" id="agentbar"><strong>Kimi Agent</strong><small>Browser control active</small><div class="task">Clicking “Search sources”…</div></div>
-<div class="cursor" id="cursor"></div>
-</div></div>
-<div class="source">SOURCE: KIMI WORK RELEASE NOTES • VISUAL RECONSTRUCTION</div>
-</section>
-
-<section class="scene" data-s="2">
-<div class="kicker">THE LOOP</div>
-<div class="loop"></div><div class="pulse" id="pulse"></div>
-<div class="step">
-<div class="node" data-n="0"><strong>UNDERSTAND</strong><span>Interpret the goal and context.</span></div><div class="arrow">→</div>
-<div class="node" data-n="1"><strong>ACT</strong><span>Click, type and navigate.</span></div><div class="arrow">→</div>
-<div class="node" data-n="2"><strong>INSPECT</strong><span>Read what the browser returned.</span></div><div class="arrow">→</div>
-<div class="node" data-n="3"><strong>CONTINUE</strong><span>Adjust the next action.</span></div>
+*{box-sizing:border-box}html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#07090d;color:#f7f8fb;font-family:Arial,sans-serif}
+#app{position:absolute;inset:0;background:radial-gradient(circle at 50% 10%,#18243a,#090d14 45%,#07090d 80%);overflow:hidden}
+.grid{position:absolute;inset:-20%;opacity:.1;background-image:linear-gradient(#9aa9bc22 1px,transparent 1px),linear-gradient(90deg,#9aa9bc22 1px,transparent 1px);background-size:58px 58px;transform:perspective(800px) rotateX(60deg) translateY(36%)}
+.header{position:absolute;top:55px;left:62px;right:62px;display:flex;justify-content:space-between;font-weight:900;letter-spacing:.08em;z-index:5}.clock{color:#8995a6}
+.scene{position:absolute;inset:0;opacity:0;transform:translateY(22px) scale(.985)}.kicker{position:absolute;left:62px;top:215px;color:#7895ff;font-size:18px;font-weight:950;letter-spacing:.16em}.title{position:absolute;left:62px;right:62px;top:270px;font-size:82px;line-height:.91;letter-spacing:-.06em;font-weight:950}.lead{position:absolute;left:66px;right:80px;top:510px;color:#aeb8c6;font-size:27px;line-height:1.27}.source{position:absolute;bottom:65px;left:62px;color:#687586;font-size:12px;font-weight:800;letter-spacing:.04em}
+.duel{position:absolute;left:55px;right:55px;top:390px;height:900px;display:grid;grid-template-columns:1fr 1fr;gap:18px}.panel{border:1px solid #334052;border-radius:30px;background:#0c121b;overflow:hidden;box-shadow:0 28px 90px #0008;position:relative}.panel.kimi{border-color:#42598c}.panel.sonnet{border-color:#725b4c}.panelhead{height:86px;border-bottom:1px solid #2c3746;display:flex;align-items:center;padding:0 24px;justify-content:space-between}.name{font-size:27px;font-weight:950}.tag{font-size:12px;letter-spacing:.1em;color:#8c99aa}.content{padding:25px}.metric{font-size:62px;font-weight:950;letter-spacing:-.06em}.label{font-size:14px;color:#8794a5;letter-spacing:.1em;font-weight:850;margin-top:5px}.bar{height:13px;background:#1b2431;border-radius:20px;margin-top:22px;overflow:hidden}.fill{height:100%;width:0;border-radius:20px}.kimi .fill{background:#7895ff}.sonnet .fill{background:#d59b74}.task{margin-top:35px;border:1px solid #2d3949;border-radius:20px;padding:20px;background:#0a0f16;min-height:250px}.tasktitle{font-weight:900;font-size:16px}.line{height:11px;background:#1d2633;border-radius:20px;margin-top:16px;overflow:hidden}.line i{display:block;height:100%;width:0;background:#64758d;border-radius:20px}.badge{position:absolute;bottom:25px;left:25px;right:25px;border:1px solid #303c4d;border-radius:15px;padding:13px;color:#9aa6b5;text-align:center;font-size:13px;font-weight:850}.vs{position:absolute;z-index:4;left:50%;top:840px;transform:translate(-50%,-50%);width:95px;height:95px;border-radius:50%;border:2px solid #8b96a8;background:#090e16;display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:950;box-shadow:0 0 60px #7895ff22}.prompt{position:absolute;left:62px;right:62px;top:350px;height:145px;border:1px solid #344153;border-radius:24px;background:#0d131d;padding:25px;font-family:monospace;color:#dce3ec;font-size:21px;line-height:1.35}
+.compare{position:absolute;left:62px;right:62px;top:390px;display:grid;grid-template-columns:1fr 1fr;gap:18px}.verdict{border:1px solid #344153;border-radius:22px;background:#0c121a;padding:25px;opacity:.35;transform:translateY(14px)}.verdict.live{opacity:1;transform:none;border-color:#7895ff}.verdict h3{margin:0;font-size:25px}.verdict p{margin:12px 0 0;color:#909baa;line-height:1.35;font-size:18px}.final{text-align:center;position:absolute;left:62px;right:62px;top:330px}.final .title{position:static;font-size:73px}.final .lead{position:static;margin:35px auto 0}.chips{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:42px}.chip{padding:13px 17px;border:1px solid #344153;border-radius:999px;background:#0d141e;font-size:14px;font-weight:900}
+</style></head><body><div id="app"><div class="grid"></div>
+<div class="header"><span>KIMI × SONNET 5.5</span><span id="clock" class="clock">00:00</span></div>
+<section class="scene"><div class="kicker">THE AI DUEL</div><div class="title">Kimi vs<br>Sonnet 5.5.</div><div class="lead">Same prompt. Different strengths. Let's see where each model has the edge.</div><div class="source">CAPABILITY COMPARISON</div></section>
+<section class="scene"><div class="kicker">SAME TASK</div><div class="prompt" id="prompt"></div><div class="duel"><div class="panel kimi"><div class="panelhead"><span class="name">KIMI</span><span class="tag">OPEN MODEL</span></div><div class="content"><div class="metric">1M</div><div class="label">CONTEXT</div><div class="bar"><div class="fill" id="kf"></div></div><div class="task"><div class="tasktitle">LONG-HORIZON WORKFLOW</div><div class="line"><i id="kl1"></i></div><div class="line"><i id="kl2"></i></div><div class="line"><i id="kl3"></i></div></div></div><div class="badge">SCALE + CONTEXT + AGENTS</div></div><div class="panel sonnet"><div class="panelhead"><span class="name">SONNET 5.5</span><span class="tag">ANTHROPIC</span></div><div class="content"><div class="metric">CODE</div><div class="label">REASONING + COMPUTER USE</div><div class="bar"><div class="fill" id="sf"></div></div><div class="task"><div class="tasktitle">PRECISION WORKFLOW</div><div class="line"><i id="sl1"></i></div><div class="line"><i id="sl2"></i></div><div class="line"><i id="sl3"></i></div></div></div><div class="badge">CODING + COMPUTER USE</div></div></div><div class="vs">VS</div><div class="source">VISUAL RECONSTRUCTION — NOT A BENCHMARK SCORE</div></section>
+<section class="scene"><div class="kicker">WHERE EACH MODEL SHINES</div><div class="compare"><div class="verdict" id="v1"><h3>KIMI</h3><p>Massive context, open-model experimentation and agentic workflows.</p></div><div class="verdict" id="v2"><h3>SONNET 5.5</h3><p>High-end coding, reasoning and reliable computer-use workflows.</p></div></div><div class="title" style="top:720px;font-size:55px">Different strengths.<br>Same destination.</div><div class="source">CAPABILITY SUMMARY — NOT A HEAD-TO-HEAD BENCHMARK</div></section>
+<section class="scene"><div class="final"><div class="kicker" style="position:static">THE VERDICT</div><div class="title">There is no<br>universal winner.</div><div class="lead">Pick Kimi for scale and context. Pick Sonnet when polished coding and computer use are the priority.</div><div class="chips"><div class="chip">KIMI → SCALE</div><div class="chip">SONNET → PRECISION</div><div class="chip">YOU → THE TASK</div></div></div><div class="source">KIMI × SONNET 5.5</div></section>
 </div>
-<div class="source">DOCUMENTED BROWSER CONTROL • WORKFLOW RECONSTRUCTED FOR ILLUSTRATION</div>
-</section>
-
-<section class="scene" data-s="3">
-<div class="kicker">WHY IT MATTERS</div>
-<div class="title" style="font-size:67px">GOAL<br>→ ACTION<br>→ FEEDBACK<br>→ NEXT ACTION</div>
-<div class="result"><div class="big">A TASK, NOT JUST A REPLY.</div><p>Kimi's Agent workflow is designed for end-to-end work across tools and files.</p></div>
-<div class="source">SOURCE: KIMI AGENT HELP CENTER</div>
-</section>
-
-<section class="scene" data-s="4">
-<div class="final"><div class="kicker" style="position:static">THE TAKEAWAY</div><div class="title">Kimi is moving<br>outside the chat box.</div><div class="lead">When the agent can operate the browser, the interface becomes part of the task.</div><div class="chips"><div class="chip">BROWSER CONTROL</div><div class="chip">CLICK</div><div class="chip">TYPE</div><div class="chip">ITERATE</div></div></div>
-<div class="source">SOURCE: KIMI WORK RELEASE NOTES • KIMI AGENT HELP CENTER</div>
-</section>
-</div>
-
 <script>
-(function(){
-const root=document.getElementById("sp-kimi-browser");
-const scenes=[...root.querySelectorAll(".scene")];
-const ranges=[[0,5],[5,11],[11,18],[18,24],[24,29]];
-const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
-const ease=v=>{v=clamp(v);return v*v*(3-2*v)};
-window.SPMOTION={width:1080,height:1920,fps:30,duration:29};
-
-function render(t){
- t=clamp(t,0,29);
- root.querySelector("#clock").textContent="00:"+String(Math.floor(t)).padStart(2,"0");
- ranges.forEach((r,i)=>{
-  const el=scenes[i], active=t>=r[0]&&t<=r[1], p=ease((t-r[0])/.75), q=ease((r[1]-t)/.75);
-  el.classList.toggle("on",active);
-  if(active){el.style.opacity=String(Math.min(p,q));el.style.transform="translateY("+(24*(1-p))+"px) scale("+(0.985+.015*p)+")"}
- });
- const browser=scenes[1];
- if(browser.classList.contains("on")){
-  const p=ease((t-5)/6);
-  const c=root.querySelector("#cursor"),a=root.querySelector("#agentbar");
-  c.style.opacity=p;
-  c.style.left=(450+Math.sin(p*Math.PI)*180)+"px";
-  c.style.top=(610+Math.sin(p*Math.PI*1.3)*120)+"px";
-  a.style.opacity=ease(clamp((t-7)/1.2));
-  a.style.transform="translateX("+(35*(1-ease(clamp((t-7)/1.2))))+"px)";
- }
- const nodes=[...scenes[2].querySelectorAll(".node")];
- if(scenes[2].classList.contains("on")){
-  const p=clamp((t-11)/7);
-  nodes.forEach((n,i)=>n.classList.toggle("active",i===Math.min(3,Math.floor(p*4.01))));
-  root.querySelector("#pulse").style.transform="translate(-50%,-50%) rotate("+(p*360)+"deg) translateX(235px)";
- }
-}
-window.SPMOTION_RENDER=render;
-render(0);
-})();
-</script>
-</body>
-</html>
+(function(){const r=document.getElementById('app'),s=[...r.querySelectorAll('.scene')],ranges=[[0,5],[5,13],[13,20],[20,25]],clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v)),ease=v=>{v=clamp(v);return v*v*(3-2*v)};window.SPMOTION={width:1080,height:1920,fps:30,duration:25};
+function render(t){t=clamp(t,0,25);r.querySelector('#clock').textContent='00:'+String(Math.floor(t)).padStart(2,'0');s.forEach((e,i)=>{let[a,b]=ranges[i],p=ease((t-a)/.55),q=ease((b-t)/.55),on=t>=a&&t<=b;e.style.opacity=on?Math.min(p,q):0;e.style.transform=on?'translateY('+(24*(1-p))+'px) scale('+(0.985+.015*p)+')':'translateY(24px) scale(.985)'});let p=ease((t-5)/7);r.querySelector('#prompt').textContent='Compare the strongest approach for a complex coding task…';r.querySelector('#kf').style.width=p*96+'%';r.querySelector('#sf').style.width=p*91+'%';['kl1','kl2','kl3','sl1','sl2','sl3'].forEach((id,i)=>r.querySelector('#'+id).style.width=ease(clamp((t-6-i*.45)/4))*[94,82,88,92,86,90][i]+'%');if(s[2].style.opacity>0){let q=clamp((t-13)/7);r.querySelector('#v1').classList.toggle('live',q>.18);r.querySelector('#v2').classList.toggle('live',q>.55)}}window.SPMOTION_RENDER=render;render(0)})();
+</script></body></html>
