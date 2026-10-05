@@ -1,15 +1,11 @@
-Kimi versus Sonnet 5.5.
+Instagram doesn't distribute your Reel just because you have followers.
 
-Same prompt. Two very different approaches.
+The real game is what happens after someone sees it.
 
-Kimi pushes scale, context and agentic execution. Sonnet 5.5 is built around high-end coding, reasoning and reliable computer use.
+Do they keep watching? Rewatch? Share it?
 
-So who wins?
+Instagram's own Reels tools emphasize watch time and retention, while recommendations are personalized from how people interact with content.
 
-For massive context and open-model experimentation, Kimi has the edge.
+So stop optimizing only for follower count.
 
-For polished coding and computer-use workflows, Sonnet is the benchmark to beat.
-
-The real answer?
-
-It depends on the job.
+Build for the viewer: hook fast, earn watch time, and make the Reel worth sending to someone.
