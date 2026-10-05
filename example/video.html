@@ -1,5 +1,700 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=1080,height=1920,initial-scale=1"><title>Instagram Profile Tip</title><style>
-*{box-sizing:border-box}html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#fff;color:#111;font-family:Arial,Helvetica,sans-serif}body{position:relative}#app,.ig{position:absolute;inset:0;background:#fff;overflow:hidden}.status{height:58px;padding:13px 27px 0;display:flex;justify-content:space-between;font-size:17px;font-weight:600}.status .right{display:flex;gap:15px}.header{height:91px;border-bottom:1px solid #e9e9e9;display:flex;align-items:center;padding:0 27px;position:relative}.back{font-size:45px;width:55px}.handle{font-size:31px;font-weight:700;position:absolute;left:50%;transform:translateX(-50%)}.header-icons{margin-left:auto;display:flex;gap:27px;font-size:35px}.profile{padding:25px 25px 0}.profile-row{display:flex;align-items:center}.avatar{width:178px;height:178px;border-radius:50%;padding:5px;flex:none;background:linear-gradient(135deg,#ffd600,#ff7a00 25%,#ff0069 53%,#d300c5 75%,#7638fa)}.avatar-inner{width:100%;height:100%;border-radius:50%;border:5px solid #fff;background:radial-gradient(circle at 60% 35%,#f2d2b0 0 13%,transparent 14%),linear-gradient(145deg,#d5e2e8,#7f9aa8 55%,#e9c5a7)}.stats{flex:1;display:flex;justify-content:space-around;margin-left:34px}.stat{text-align:center}.stat b{display:block;font-size:31px}.stat span{display:block;font-size:19px;margin-top:5px}.name{font-size:25px;font-weight:700;margin-top:21px}.category{font-size:18px;color:#737373;margin-top:4px}.bio{font-size:20px;line-height:1.35;margin-top:9px}.link{font-size:19px;color:#00376b;font-weight:700;margin-top:6px}.actions{display:flex;gap:8px;margin-top:19px}.action{height:50px;border:1px solid #cfcfcf;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;background:#fff;flex:1}.action.small{width:112px;flex:none}.highlights{display:flex;gap:26px;padding:23px 3px 18px;height:169px;overflow:hidden}.hl{width:111px;flex:0 0 111px;text-align:center;font-size:16px}.hl-circle{width:104px;height:104px;border-radius:50%;margin:auto;padding:3px;background:#d6d6d6}.hl:first-child .hl-circle{background:linear-gradient(135deg,#ffd600,#ff0069,#7638fa)}.hl-inner{width:100%;height:100%;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:34px}.hl label{display:block;margin-top:8px}.tabs{height:74px;border-top:1px solid #ddd;border-bottom:1px solid #ddd;display:flex}.tab{flex:1;display:flex;align-items:center;justify-content:center;position:relative;color:#777;font-size:32px}.tab.active{color:#111}.tab.active:after{content:"";position:absolute;bottom:0;height:2px;left:27%;right:27%;background:#111}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}.tile{height:330px;position:relative;overflow:hidden}.tile:before{content:"";position:absolute;inset:0}.tile:nth-child(1):before{background:linear-gradient(140deg,#161b27,#6d9bb6 48%,#e2b18a)}.tile:nth-child(2):before{background:linear-gradient(140deg,#2c1e19,#d57a45 46%,#f4d5b0)}.tile:nth-child(3):before{background:linear-gradient(140deg,#0d2733,#3783a1 50%,#d9edf0)}.tile:nth-child(4):before{background:linear-gradient(140deg,#241b2d,#9d5cb8 52%,#e7c9ef)}.tile:nth-child(5):before{background:linear-gradient(140deg,#152b25,#36a87b 50%,#d5eadf)}.tile:nth-child(6):before{background:linear-gradient(140deg,#3b1d18,#c85e42 50%,#f0c0a7)}.post{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-size:23px;font-weight:800;letter-spacing:.05em}.caption{position:absolute;left:17px;bottom:15px;color:#fff;font-size:17px;font-weight:800;text-shadow:0 2px 6px #000}.bottom{position:absolute;left:0;right:0;bottom:0;height:98px;border-top:1px solid #ddd;background:#fff;display:flex;align-items:center;justify-content:space-around;z-index:10}.navicon{font-size:34px}.user-icon{width:37px;height:37px;border:3px solid #111;border-radius:50%;position:relative}.user-icon:before{content:"";position:absolute;width:10px;height:10px;border:2px solid #111;border-radius:50%;left:11px;top:5px}.user-icon:after{content:"";position:absolute;width:20px;height:10px;border:2px solid #111;border-bottom:0;border-radius:13px 13px 0 0;left:6px;bottom:4px}#focus{position:absolute;z-index:20;border:4px solid #0095f6;border-radius:13px;opacity:0}#tap{position:absolute;z-index:21;width:88px;height:88px;border:5px solid #0095f6;border-radius:50%;opacity:0}#tip{position:absolute;z-index:22;left:52px;right:52px;bottom:126px;padding:25px 28px;background:#111;color:#fff;border-radius:19px;opacity:0;transform:translateY(28px)}#tip strong{font-size:28px}#tip p{font-size:20px;line-height:1.32;color:#ddd;margin:8px 0 0}#scrollBar{position:absolute;right:18px;top:350px;width:7px;height:250px;border-radius:10px;background:#eee;opacity:0}#scrollThumb{position:absolute;right:18px;top:350px;width:7px;height:70px;border-radius:10px;background:#777;opacity:0}
-</style></head><body><div id="app"><div class="ig" id="ig"><div class="status"><span>9:41</span><div class="right"><span>●</span><span>◔</span><span>▮▮</span><span>100%</span></div></div><header class="header"><div class="back">‹</div><div class="handle">creator.tips</div><div class="header-icons"><span>＋</span><span>☰</span></div></header><main class="profile" id="profile"><div class="profile-row"><div class="avatar"><div class="avatar-inner"></div></div><div class="stats"><div class="stat"><b>156</b><span>posts</span></div><div class="stat"><b>12.8K</b><span>followers</span></div><div class="stat"><b>348</b><span>following</span></div></div></div><div class="name">Creator Tips</div><div class="category">Digital creator</div><div class="bio">Helping creators grow with better content<br>Reels • Hooks • Instagram tips</div><div class="link">shortprompt.altervista.org</div><div class="actions"><div class="action">Edit profile</div><div class="action">Share profile</div><div class="action small">Contact</div></div><div class="highlights"><div class="hl"><div class="hl-circle"><div class="hl-inner">＋</div></div><label>New</label></div><div class="hl"><div class="hl-circle"><div class="hl-inner">▶</div></div><label>Reels</label></div><div class="hl"><div class="hl-circle"><div class="hl-inner">★</div></div><label>Tips</label></div><div class="hl"><div class="hl-circle"><div class="hl-inner">↗</div></div><label>Growth</label></div><div class="hl"><div class="hl-circle"><div class="hl-inner">✦</div></div><label>More</label></div></div><div class="tabs"><div class="tab active">▦</div><div class="tab">▣</div><div class="tab">♙</div></div><div class="grid"><div class="tile"><div class="post">HOOK</div><div class="caption">Make them stop</div></div><div class="tile"><div class="post">REEL</div><div class="caption">3-second rule</div></div><div class="tile"><div class="post">GROWTH</div><div class="caption">More reach</div></div><div class="tile"><div class="post">EDIT</div><div class="caption">Cut faster</div></div><div class="tile"><div class="post">CREATOR</div><div class="caption">Build trust</div></div><div class="tile"><div class="post">TIP</div><div class="caption">Save this</div></div></div></main><nav class="bottom"><span class="navicon">⌂</span><span class="navicon">⌕</span><span class="navicon">＋</span><span class="navicon">▣</span><span class="user-icon"></span></nav></div><div id="focus"></div><div id="tap"></div><div id="scrollBar"></div><div id="scrollThumb"></div><div id="tip"><strong>Your bio is part of the conversion.</strong><p>A new visitor should understand what you do and why they should follow you in one glance.</p></div></div><script>
-window.SPMOTION={width:1080,height:1920,fps:30,duration:18};const $=id=>document.getElementById(id),clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v)),ease=v=>{v=clamp(v);return v*v*(3-2*v)};function render(time){const t=clamp(time,0,18),profile=$("profile"),focus=$("focus"),tap=$("tap"),tip=$("tip"),sb=$("scrollBar"),st=$("scrollThumb");$("ig").style.opacity=ease(t/1.4);focus.style.left="25px";focus.style.top="394px";focus.style.width="760px";focus.style.height="116px";focus.style.opacity=t>=2.4&&t<6.5?1:0;tap.style.left="690px";tap.style.top="420px";tap.style.opacity=t>=3.5&&t<6.5?1:0;tap.style.transform=`scale(${1+.18*Math.sin(Math.PI*ease((t-3.5)/.65))})`;const scroll=ease((t-6.5)/1.65);profile.style.transform=`translateY(${-235*scroll}px)`;sb.style.opacity=t>=6.4&&t<10.7?.55:0;st.style.opacity=t>=6.4&&t<10.7?.85:0;st.style.transform=`translateY(${145*scroll}px)`;const reveal=ease((t-10.4)/.9);tip.style.opacity=reveal;tip.style.transform=`translateY(${28*(1-reveal)}px)`}window.SPMOTION_RENDER=render;render(0);
-</script></body></html>
+<!DOCTYPE html>
+<html lang="it" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Instagram 2026 Mobile UI</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'ig-primary': '#0095f6',
+                        'ig-secondary-button': '#efefef',
+                        'ig-dark-bg': '#000000',
+                        'ig-dark-surface': '#121212',
+                        'ig-dark-border': '#262626',
+                        'ig-light-border': '#dbdbdb'
+                    },
+                    fontFamily: {
+                        sans: ['-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'Helvetica', 'Arial', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome & Lucide Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* Custom scrollbar hiding */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Instagram Story Ring Gradient */
+        .ig-story-ring {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        }
+
+        /* Double Tap Heart Animation */
+        @keyframes heartPop {
+            0% { transform: scale(0) rotate(-10deg); opacity: 0; }
+            50% { transform: scale(1.2) rotate(0deg); opacity: 0.9; }
+            100% { transform: scale(1) rotate(0deg); opacity: 0; }
+        }
+        .animate-heart-pop {
+            animation: heartPop 0.8s ease-in-out forwards;
+        }
+
+        /* Progress Bar Animation for Story Viewer */
+        @keyframes progress {
+            from { width: 0%; }
+            to { width: 100%; }
+        }
+        .animate-progress {
+            animation: progress 5s linear forwards;
+        }
+
+        /* iOS safe area spacing */
+        .safe-pb {
+            padding-bottom: env(safe-area-inset-bottom, 12px);
+        }
+        .safe-pt {
+            padding-top: env(safe-area-inset-top, 8px);
+        }
+    </style>
+</head>
+<body class="bg-black text-white selection:bg-neutral-800 font-sans antialiased overflow-hidden min-h-screen flex justify-center items-center">
+
+    <!-- Mobile Frame Simulation Wrapper for Desktop preview -->
+    <div id="app" class="w-full max-w-md h-screen md:h-[880px] bg-black md:rounded-[40px] md:border-[8px] md:border-neutral-800 overflow-hidden relative flex flex-col shadow-2xl transition-colors duration-200">
+
+        <!-- ================= PAGE 1: HOME FEED ================= -->
+        <div id="view-home" class="page-view flex-1 flex flex-col h-full overflow-hidden">
+            <!-- Header -->
+            <header class="safe-pt px-4 py-2 flex justify-between items-center bg-black dark:bg-black border-b border-neutral-900 z-10 shrink-0">
+                <div class="flex items-center gap-2 cursor-pointer">
+                    <span class="text-xl font-bold tracking-tight text-white font-serif italic">Instagram</span>
+                    <i class="fa-solid fa-chevron-down text-xs text-neutral-400"></i>
+                </div>
+                <div class="flex items-center gap-5 text-xl">
+                    <button id="toggle-create-btn" class="hover:opacity-70 transition active:scale-95">
+                        <i class="fa-regular fa-square-plus"></i>
+                    </button>
+                    <button class="hover:opacity-70 transition relative active:scale-95" onclick="showNotificationToast('Non hai nuove notifiche')">
+                        <i class="fa-regular fa-heart"></i>
+                        <span class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">3</span>
+                    </button>
+                    <button onclick="switchTab('dms')" class="hover:opacity-70 transition relative active:scale-95">
+                        <i class="fa-regular fa-paper-plane"></i>
+                        <span class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">2</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Scrollable Feed Content -->
+            <main class="flex-1 overflow-y-auto no-scrollbar pb-16">
+                <!-- Stories Tray -->
+                <section class="py-3 px-2 border-b border-neutral-900/60 overflow-x-auto no-scrollbar flex gap-4 items-center">
+                    <!-- Your Story -->
+                    <div class="flex flex-col items-center gap-1 cursor-pointer shrink-0" onclick="openStory(0)">
+                        <div class="relative w-16 h-16 rounded-full p-0.5">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150" class="w-full h-full object-cover rounded-full border border-neutral-800" alt="Avatar">
+                            <span class="absolute bottom-0 right-0 bg-ig-primary border-2 border-black text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">+</span>
+                        </div>
+                        <span class="text-xs text-neutral-400">La tua storia</span>
+                    </div>
+
+                    <!-- User Stories (Generated dynamically) -->
+                    <div id="stories-container" class="flex gap-4">
+                        <!-- Inserted by JS -->
+                    </div>
+                </section>
+
+                <!-- Posts List -->
+                <div id="posts-container" class="divide-y divide-neutral-900">
+                    <!-- Inserted dynamically by JS -->
+                </div>
+            </main>
+        </div>
+
+        <!-- ================= PAGE 2: REELS ================= -->
+        <div id="view-reels" class="page-view flex-1 flex flex-col h-full bg-black hidden relative">
+            <div class="absolute top-4 left-4 right-4 z-20 flex justify-between items-center text-white font-bold text-lg drop-shadow">
+                <span>Reels</span>
+                <i class="fa-solid fa-camera cursor-pointer"></i>
+            </div>
+
+            <!-- Vertical Scroll Reels Wrapper -->
+            <div id="reels-container" class="w-full h-full overflow-y-snap no-scrollbar snap-y snap-mandatory relative">
+                <!-- Reels items generated dynamically -->
+            </div>
+        </div>
+
+        <!-- ================= PAGE 3: MESSAGES / DMS ================= -->
+        <div id="view-dms" class="page-view flex-1 flex flex-col h-full bg-black hidden">
+            <!-- DM Header -->
+            <div class="px-4 py-3 flex items-center justify-between border-b border-neutral-900">
+                <div class="flex items-center gap-3">
+                    <button onclick="switchTab('home')" class="text-lg"><i class="fa-solid fa-arrow-left"></i></button>
+                    <span class="font-bold text-lg flex items-center gap-1">
+                        marco_dev <i class="fa-solid fa-chevron-down text-xs text-neutral-400"></i>
+                    </span>
+                </div>
+                <div class="flex items-center gap-4 text-xl">
+                    <i class="fa-solid fa-video"></i>
+                    <i class="fa-regular fa-pen-to-square"></i>
+                </div>
+            </div>
+
+            <!-- Notes Tray -->
+            <div class="p-3 border-b border-neutral-900 flex gap-4 overflow-x-auto no-scrollbar">
+                <div class="flex flex-col items-center gap-1 shrink-0 relative">
+                    <div class="absolute -top-2 bg-neutral-800 text-[10px] px-2 py-0.5 rounded-full text-neutral-300 border border-neutral-700 max-w-[70px] truncate">
+                        Condividi una...
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150" class="w-14 h-14 rounded-full object-cover mt-2">
+                    <span class="text-xs text-neutral-400">La tua nota</span>
+                </div>
+                <div class="flex flex-col items-center gap-1 shrink-0 relative">
+                    <div class="absolute -top-2 bg-neutral-800 text-[10px] px-2 py-0.5 rounded-full text-neutral-300 border border-neutral-700 max-w-[70px] truncate">
+                        Codificando UI 🚀
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150" class="w-14 h-14 rounded-full object-cover mt-2">
+                    <span class="text-xs text-neutral-300">sara.ui</span>
+                </div>
+            </div>
+
+            <!-- Messages List -->
+            <div class="flex-1 overflow-y-auto p-4 space-y-4">
+                <div class="text-sm font-semibold text-neutral-400 mb-2">Messaggi</div>
+                <div class="flex items-center justify-between cursor-pointer hover:bg-neutral-900/50 p-2 rounded-xl transition" onclick="openChat('sara.ui')">
+                    <div class="flex items-center gap-3">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150" class="w-14 h-14 rounded-full object-cover">
+                            <span class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-green-500 border-2 border-black rounded-full"></span>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-sm">sara.ui</p>
+                            <p class="text-xs text-neutral-400 font-medium">Inviato 10 min fa • <span class="text-white">Hai visto il nuovo design?</span></p>
+                        </div>
+                    </div>
+                    <i class="fa-regular fa-camera text-neutral-400 text-lg"></i>
+                </div>
+                <div class="flex items-center justify-between cursor-pointer hover:bg-neutral-900/50 p-2 rounded-xl transition" onclick="openChat('alex_tech')">
+                    <div class="flex items-center gap-3">
+                        <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150" class="w-14 h-14 rounded-full object-cover">
+                        <div>
+                            <p class="font-semibold text-sm">alex_tech</p>
+                            <p class="text-xs text-neutral-400">Attivo/a 2 ore fa</p>
+                        </div>
+                    </div>
+                    <i class="fa-regular fa-camera text-neutral-400 text-lg"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= PAGE 4: PROFILE ================= -->
+        <div id="view-profile" class="page-view flex-1 flex flex-col h-full bg-black hidden overflow-y-auto no-scrollbar">
+            <!-- Profile Header -->
+            <div class="px-4 py-3 flex justify-between items-center border-b border-neutral-900">
+                <div class="flex items-center gap-2 font-bold text-lg">
+                    <i class="fa-solid fa-lock text-sm"></i> marco_dev
+                </div>
+                <div class="flex items-center gap-5 text-xl">
+                    <button id="theme-toggle" class="hover:opacity-70 transition">
+                        <i class="fa-solid fa-moon"></i>
+                    </button>
+                    <i class="fa-solid fa-bars cursor-pointer"></i>
+                </div>
+            </div>
+
+            <!-- Profile Info -->
+            <div class="p-4 space-y-4">
+                <div class="flex items-center justify-between">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150" class="w-20 h-20 rounded-full object-cover p-0.5 border-2 border-neutral-700">
+                    </div>
+                    <div class="flex gap-6 text-center">
+                        <div>
+                            <p class="font-bold text-base">42</p>
+                            <p class="text-xs text-neutral-400">Post</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-base">1.284</p>
+                            <p class="text-xs text-neutral-400">Follower</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-base">450</p>
+                            <p class="text-xs text-neutral-400">Seguiti</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bio -->
+                <div>
+                    <h1 class="font-bold text-sm">Marco Rossi | Mobile & Web Dev</h1>
+                    <p class="text-xs text-neutral-300 mt-0.5">Creatore di UI moderne e responsive 💻✨</p>
+                    <p class="text-xs text-ig-primary hover:underline mt-1 cursor-pointer">github.com/marco-dev</p>
+                </div>
+
+                <!-- Actions -->
+                <div class="flex gap-2">
+                    <button class="flex-1 bg-neutral-800 hover:bg-neutral-700 text-xs font-semibold py-2 rounded-lg transition">Modifica profilo</button>
+                    <button class="flex-1 bg-neutral-800 hover:bg-neutral-700 text-xs font-semibold py-2 rounded-lg transition">Condividi profilo</button>
+                    <button class="bg-neutral-800 hover:bg-neutral-700 px-3 py-2 rounded-lg text-xs transition"><i class="fa-solid fa-user-plus"></i></button>
+                </div>
+            </div>
+
+            <!-- Grid Tabs -->
+            <div class="flex border-t border-neutral-900 mt-2 text-center">
+                <button class="flex-1 py-3 border-b-2 border-white text-lg"><i class="fa-solid fa-table-cells"></i></button>
+                <button class="flex-1 py-3 text-neutral-500 text-lg"><i class="fa-solid fa-clapperboard"></i></button>
+                <button class="flex-1 py-3 text-neutral-500 text-lg"><i class="fa-regular fa-id-badge"></i></button>
+            </div>
+
+            <!-- Photos Grid -->
+            <div class="grid grid-cols-3 gap-0.5 flex-1 bg-neutral-900">
+                <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=300" class="w-full h-32 object-cover">
+                <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=300" class="w-full h-32 object-cover">
+                <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=300" class="w-full h-32 object-cover">
+                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=300" class="w-full h-32 object-cover">
+                <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=300" class="w-full h-32 object-cover">
+                <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=300" class="w-full h-32 object-cover">
+            </div>
+        </div>
+
+        <!-- ================= BOTTOM NAVIGATION BAR ================= -->
+        <nav class="absolute bottom-0 left-0 right-0 bg-black/90 backdrop-blur-md border-t border-neutral-900 px-6 py-3 flex justify-between items-center z-30 safe-pb">
+            <button onclick="switchTab('home')" class="nav-btn text-xl text-white active:scale-90 transition" data-target="home">
+                <i class="fa-solid fa-house"></i>
+            </button>
+            <button onclick="switchTab('reels')" class="nav-btn text-xl text-neutral-500 hover:text-white active:scale-90 transition" data-target="reels">
+                <i class="fa-solid fa-clapperboard"></i>
+            </button>
+            <button onclick="triggerCreateAction()" class="text-xl text-neutral-500 hover:text-white active:scale-90 transition">
+                <i class="fa-regular fa-square-plus"></i>
+            </button>
+            <button onclick="showNotificationToast('Esplora sezione 2026')" class="text-xl text-neutral-500 hover:text-white active:scale-90 transition">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+            <button onclick="switchTab('profile')" class="nav-btn p-0.5 rounded-full active:scale-90 transition" data-target="profile">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150" class="w-6 h-6 rounded-full object-cover">
+            </button>
+        </nav>
+
+        <!-- ================= MODALS & OVERLAYS ================= -->
+        
+        <!-- Story Viewer Modal -->
+        <div id="story-modal" class="fixed inset-0 bg-black/95 z-50 hidden flex flex-col justify-between p-4">
+            <!-- Progress Bar -->
+            <div class="w-full flex gap-1 h-1 bg-neutral-800 rounded overflow-hidden">
+                <div id="story-progress" class="h-full bg-white w-0"></div>
+            </div>
+
+            <!-- Story Header -->
+            <div class="flex justify-between items-center mt-3 z-10">
+                <div class="flex items-center gap-2">
+                    <img id="story-user-img" class="w-8 h-8 rounded-full object-cover">
+                    <span id="story-username" class="font-bold text-sm text-white"></span>
+                    <span class="text-xs text-neutral-400">2h</span>
+                </div>
+                <button onclick="closeStory()" class="text-white text-lg"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <!-- Story Media Content -->
+            <div class="flex-1 my-auto flex items-center justify-center relative my-4 rounded-xl overflow-hidden bg-neutral-900">
+                <img id="story-img" class="w-full max-h-[70vh] object-cover">
+                <!-- Navigation Tap zones -->
+                <div class="absolute left-0 top-0 bottom-0 w-1/2" onclick="prevStory()"></div>
+                <div class="absolute right-0 top-0 bottom-0 w-1/2" onclick="nextStory()"></div>
+            </div>
+
+            <!-- Story Footer Input -->
+            <div class="flex items-center gap-3 z-10 pb-2">
+                <input type="text" placeholder="Invia un messaggio..." class="flex-1 bg-transparent border border-neutral-700 rounded-full px-4 py-2 text-sm text-white focus:outline-none">
+                <button class="text-xl text-white hover:text-red-500 transition"><i class="fa-regular fa-heart"></i></button>
+                <button class="text-xl text-white"><i class="fa-regular fa-paper-plane"></i></button>
+            </div>
+        </div>
+
+        <!-- Comments Modal Overlay -->
+        <div id="comments-modal" class="fixed inset-0 bg-black/80 z-50 hidden flex flex-col justify-end transition-opacity duration-300">
+            <div class="bg-neutral-900 w-full rounded-t-3xl p-4 max-h-[70vh] flex flex-col">
+                <div class="w-12 h-1 bg-neutral-700 rounded-full mx-auto mb-4"></div>
+                <h3 class="font-bold text-center text-sm border-b border-neutral-800 pb-3">Commenti</h3>
+                
+                <div id="comments-list" class="flex-1 overflow-y-auto py-4 space-y-4 no-scrollbar">
+                    <!-- Dynamic comments list -->
+                </div>
+
+                <!-- Comment Input -->
+                <div class="border-t border-neutral-800 pt-3 flex items-center gap-2">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150" class="w-8 h-8 rounded-full object-cover">
+                    <input id="comment-input" type="text" placeholder="Aggiungi un commento..." class="flex-1 bg-neutral-800 rounded-full px-4 py-2 text-xs text-white focus:outline-none">
+                    <button onclick="addComment()" class="text-ig-primary font-bold text-xs px-2">Pubblica</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Toast Notification -->
+        <div id="toast" class="absolute top-12 left-1/2 -translate-x-1/2 bg-neutral-800 text-white text-xs px-4 py-2 rounded-full shadow-lg opacity-0 transition-opacity duration-300 pointer-events-none z-50 border border-neutral-700">
+            Messaggio Toast
+        </div>
+
+    </div>
+
+    <script>
+        // Mock Data
+        const storiesData = [
+            { id: 1, name: 'sara.ui', avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150', image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600' },
+            { id: 2, name: 'alex_tech', avatar: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150', image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=600' },
+            { id: 3, name: 'elena_design', avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150', image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600' },
+            { id: 4, name: 'luca_dev', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150', image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600' }
+        ];
+
+        const postsData = [
+            {
+                id: 101,
+                username: 'sara.ui',
+                avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150',
+                location: 'Milano, Italia',
+                image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800',
+                likes: 1243,
+                liked: false,
+                caption: 'Esplorando nuove tendenze UI/UX per il 2026 🔥✨ #design #mobile #ui',
+                comments: [
+                    { username: 'alex_tech', text: 'Design fantastico!' },
+                    { username: 'marco_dev', text: 'Molto pulito e moderno 👌' }
+                ],
+                time: '2 ORE FA'
+            },
+            {
+                id: 102,
+                username: 'alex_tech',
+                avatar: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150',
+                location: 'Setup Studio',
+                image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800',
+                likes: 856,
+                liked: false,
+                caption: 'Nuova postazione da lavoro completata! Che ne pensate?',
+                comments: [
+                    { username: 'elena_design', text: 'Luci pazzesche 😍' }
+                ],
+                time: '5 ORE FA'
+            }
+        ];
+
+        const reelsData = [
+            {
+                id: 201,
+                username: 'creative_coder',
+                avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150',
+                videoBg: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800',
+                description: 'Costruendo il futuro del web con micro-animazioni! 🚀',
+                audio: 'Suono originale - creative_coder',
+                likes: '45.2K',
+                comments: '342'
+            }
+        ];
+
+        let activePostIdForComments = null;
+        let currentStoryIndex = 0;
+        let storyTimer = null;
+
+        // Initialize App
+        window.onload = function() {
+            renderStories();
+            renderPosts();
+            renderReels();
+            setupThemeToggle();
+        };
+
+        // Render Stories Tray
+        function renderStories() {
+            const container = document.getElementById('stories-container');
+            container.innerHTML = storiesData.map((story, index) => `
+                <div class="flex flex-col items-center gap-1 cursor-pointer shrink-0" onclick="openStory(${index})">
+                    <div class="ig-story-ring p-[2px] rounded-full">
+                        <img src="${story.avatar}" class="w-14 h-14 object-cover rounded-full border-2 border-black">
+                    </div>
+                    <span class="text-xs text-neutral-300 w-16 truncate text-center">${story.name}</span>
+                </div>
+            `).join('');
+        }
+
+        // Render Feed Posts
+        function renderPosts() {
+            const container = document.getElementById('posts-container');
+            container.innerHTML = postsData.map(post => `
+                <article class="py-3">
+                    <!-- Post Header -->
+                    <div class="flex items-center justify-between px-3 mb-2">
+                        <div class="flex items-center gap-2">
+                            <img src="${post.avatar}" class="w-8 h-8 rounded-full object-cover border border-neutral-800">
+                            <div>
+                                <h2 class="text-xs font-bold leading-none">${post.username}</h2>
+                                <span class="text-[10px] text-neutral-400">${post.location}</span>
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-ellipsis text-neutral-400 cursor-pointer"></i>
+                    </div>
+
+                    <!-- Post Image with Double Tap Container -->
+                    <div class="relative overflow-hidden cursor-pointer bg-neutral-900" ondblclick="handleDoubleTap(${post.id}, event)">
+                        <img src="${post.image}" class="w-full h-[400px] object-cover select-none">
+                        <!-- Pop Heart Overlay -->
+                        <div id="heart-pop-${post.id}" class="absolute inset-0 flex items-center justify-center opacity-0 pointer-events-none text-white text-7xl drop-shadow-lg">
+                            <i class="fa-solid fa-heart text-red-500"></i>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="px-3 pt-3 flex justify-between items-center text-xl">
+                        <div class="flex items-center gap-4">
+                            <button onclick="toggleLike(${post.id})" class="transition active:scale-125">
+                                <i id="like-icon-${post.id}" class="${post.liked ? 'fa-solid fa-heart text-red-500' : 'fa-regular fa-heart'}"></i>
+                            </button>
+                            <button onclick="openComments(${post.id})" class="hover:opacity-70 transition">
+                                <i class="fa-regular fa-comment"></i>
+                            </button>
+                            <button onclick="showNotificationToast('Condiviso!')" class="hover:opacity-70 transition">
+                                <i class="fa-regular fa-paper-plane"></i>
+                            </button>
+                        </div>
+                        <button onclick="showNotificationToast('Salvato nei preferiti')" class="hover:opacity-70 transition">
+                            <i class="fa-regular fa-bookmark"></i>
+                        </button>
+                    </div>
+
+                    <!-- Likes Count -->
+                    <div class="px-3 mt-2">
+                        <p class="text-xs font-bold"><span id="likes-count-${post.id}">${post.likes}</span> "Mi piace"</p>
+                    </div>
+
+                    <!-- Caption -->
+                    <div class="px-3 mt-1 text-xs">
+                        <span class="font-bold mr-1">${post.username}</span>
+                        <span class="text-neutral-200">${post.caption}</span>
+                    </div>
+
+                    <!-- Comments Trigger -->
+                    <div class="px-3 mt-1">
+                        <button onclick="openComments(${post.id})" class="text-xs text-neutral-400">
+                            Mostra tutti e ${post.comments.length} i commenti
+                        </button>
+                    </div>
+
+                    <!-- Timestamp -->
+                    <div class="px-3 mt-1">
+                        <span class="text-[10px] text-neutral-500 uppercase">${post.time}</span>
+                    </div>
+                </article>
+            `).join('');
+        }
+
+        // Double Tap Like Animation
+        function handleDoubleTap(postId, event) {
+            const post = postsData.find(p => p.id === postId);
+            if (!post.liked) {
+                toggleLike(postId);
+            }
+            
+            const heartPop = document.getElementById(`heart-pop-${postId}`);
+            heartPop.classList.remove('animate-heart-pop');
+            void heartPop.offsetWidth; // trigger reflow
+            heartPop.classList.add('animate-heart-pop');
+        }
+
+        // Toggle Like State
+        function toggleLike(postId) {
+            const post = postsData.find(p => p.id === postId);
+            post.liked = !post.liked;
+            post.likes += post.liked ? 1 : -1;
+
+            const icon = document.getElementById(`like-icon-${postId}`);
+            const count = document.getElementById(`likes-count-${postId}`);
+
+            if (post.liked) {
+                icon.className = 'fa-solid fa-heart text-red-500';
+            } else {
+                icon.className = 'fa-regular fa-heart';
+            }
+            count.innerText = post.likes;
+        }
+
+        // Comments Handling
+        function openComments(postId) {
+            activePostIdForComments = postId;
+            const post = postsData.find(p => p.id === postId);
+            const modal = document.getElementById('comments-modal');
+            const list = document.getElementById('comments-list');
+
+            list.innerHTML = post.comments.map(c => `
+                <div class="flex gap-3 text-xs">
+                    <span class="font-bold">${c.username}:</span>
+                    <span class="text-neutral-300">${c.text}</span>
+                </div>
+            `).join('');
+
+            modal.classList.remove('hidden');
+        }
+
+        function addComment() {
+            const input = document.getElementById('comment-input');
+            const text = input.value.trim();
+            if (!text || !activePostIdForComments) return;
+
+            const post = postsData.find(p => p.id === activePostIdForComments);
+            post.comments.push({ username: 'marco_dev', text: text });
+            
+            input.value = '';
+            openComments(activePostIdForComments); // Re-render
+            renderPosts(); // Update feed count
+        }
+
+        // Close comment modal on click outside
+        document.getElementById('comments-modal').addEventListener('click', (e) => {
+            if (e.target.id === 'comments-modal') {
+                document.getElementById('comments-modal').classList.add('hidden');
+            }
+        });
+
+        // Navigation Tabs Controller
+        function switchTab(tabName) {
+            document.querySelectorAll('.page-view').forEach(el => el.classList.add('hidden'));
+            document.getElementById(`view-${tabName}`).classList.remove('hidden');
+
+            // Update nav icons color
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                if (btn.dataset.target === tabName) {
+                    btn.classList.add('text-white');
+                    btn.classList.remove('text-neutral-500');
+                } else {
+                    btn.classList.remove('text-white');
+                    btn.classList.add('text-neutral-500');
+                }
+            });
+        }
+
+        // Story Viewer Logic
+        function openStory(index) {
+            currentStoryIndex = index;
+            const story = storiesData[index];
+            const modal = document.getElementById('story-modal');
+            
+            document.getElementById('story-user-img').src = story.avatar;
+            document.getElementById('story-username').innerText = story.name;
+            document.getElementById('story-img').src = story.image;
+
+            modal.classList.remove('hidden');
+
+            // Reset & start progress bar animation
+            const progress = document.getElementById('story-progress');
+            progress.classList.remove('animate-progress');
+            void progress.offsetWidth;
+            progress.classList.add('animate-progress');
+
+            clearTimeout(storyTimer);
+            storyTimer = setTimeout(() => {
+                nextStory();
+            }, 5000);
+        }
+
+        function closeStory() {
+            document.getElementById('story-modal').classList.add('hidden');
+            clearTimeout(storyTimer);
+        }
+
+        function nextStory() {
+            if (currentStoryIndex < storiesData.length - 1) {
+                openStory(currentStoryIndex + 1);
+            } else {
+                closeStory();
+            }
+        }
+
+        function prevStory() {
+            if (currentStoryIndex > 0) {
+                openStory(currentStoryIndex - 1);
+            } else {
+                openStory(0);
+            }
+        }
+
+        // Render Reels
+        function renderReels() {
+            const container = document.getElementById('reels-container');
+            container.innerHTML = reelsData.map(reel => `
+                <div class="w-full h-full snap-start relative flex-shrink-0 bg-neutral-900">
+                    <img src="${reel.videoBg}" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/80"></div>
+                    
+                    <!-- Reel Right Action Bar -->
+                    <div class="absolute right-4 bottom-20 flex flex-col items-center gap-6 text-white text-xl z-10">
+                        <button class="flex flex-col items-center gap-1"><i class="fa-regular fa-heart"></i><span class="text-xs font-semibold">${reel.likes}</span></button>
+                        <button class="flex flex-col items-center gap-1"><i class="fa-regular fa-comment"></i><span class="text-xs font-semibold">${reel.comments}</span></button>
+                        <button><i class="fa-regular fa-paper-plane"></i></button>
+                        <button><i class="fa-solid fa-ellipsis"></i></button>
+                    </div>
+
+                    <!-- Reel Bottom Info -->
+                    <div class="absolute left-4 bottom-20 right-16 text-white z-10 space-y-2">
+                        <div class="flex items-center gap-2">
+                            <img src="${reel.avatar}" class="w-8 h-8 rounded-full object-cover">
+                            <span class="font-bold text-xs">${reel.username}</span>
+                            <button class="border border-white/40 text-[10px] font-semibold px-2 py-0.5 rounded-lg">Segui</button>
+                        </div>
+                        <p class="text-xs text-neutral-200 line-clamp-2">${reel.description}</p>
+                        <div class="flex items-center gap-2 text-xs text-neutral-300">
+                            <i class="fa-solid fa-music text-[10px]"></i>
+                            <span class="truncate">${reel.audio}</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Dark/Light Theme Toggle
+        function setupThemeToggle() {
+            const btn = document.getElementById('theme-toggle');
+            btn.addEventListener('click', () => {
+                const html = document.documentElement;
+                if (html.classList.contains('dark')) {
+                    html.classList.remove('dark');
+                    btn.innerHTML = '<i class="fa-regular fa-moon"></i>';
+                    showNotificationToast('Tema Chiaro attivato');
+                } else {
+                    html.classList.add('dark');
+                    btn.innerHTML = '<i class="fa-solid fa-moon"></i>';
+                    showNotificationToast('Tema Scuro attivato');
+                }
+            });
+        }
+
+        // Notification Toast Helper
+        function showNotificationToast(msg) {
+            const toast = document.getElementById('toast');
+            toast.innerText = msg;
+            toast.classList.remove('opacity-0');
+            setTimeout(() => {
+                toast.classList.add('opacity-0');
+            }, 2000);
+        }
+
+        function triggerCreateAction() {
+            showNotificationToast('Apri fotocamera per nuovo post');
+        }
+    </script>
+<div id="sp-focus" style="position:absolute;left:16px;top:300px;width:390px;height:105px;border:3px solid #0095f6;border-radius:12px;opacity:0;pointer-events:none;z-index:80"></div>
+<div id="sp-tap" style="position:absolute;left:300px;top:330px;width:70px;height:70px;border:4px solid #0095f6;border-radius:50%;opacity:0;pointer-events:none;z-index:81"></div>
+<div id="sp-tip" style="position:absolute;left:22px;right:22px;bottom:105px;background:#fff;color:#111;border:1px solid #ddd;border-radius:16px;padding:18px 20px;box-shadow:0 8px 28px rgba(0,0,0,.18);opacity:0;pointer-events:none;z-index:82;font:600 18px/1.3 -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">Your bio is part of the conversion.<br><span style="font-weight:400;color:#666">Make the value obvious in one glance.</span></div>
+</body>
+</html>
