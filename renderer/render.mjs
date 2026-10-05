@@ -12,8 +12,8 @@ const htmlPath = path.join(projectDir, "video.html");
 await fs.access(htmlPath);
 await fs.access(audioPath);
 
-async function probeDuration(file) {
-  return await new Promise((resolve, reject) => {
+function probeDuration(file) {
+  return new Promise((resolve, reject) => {
     const ff = spawn("ffprobe", [
       "-v", "error",
       "-show_entries", "format=duration",
@@ -51,25 +51,35 @@ await page.waitForFunction(() => document.fonts?.status === "loaded");
 
 const meta = await page.evaluate((audioDuration) => {
   const m = window.SPMOTION || {};
+
   const fps = Number(m.fps || 30);
-  const designDuration = Number(m.duration || audioDuration);
+  const designDuration = Number(m.duration);
 
-  if (!Number.isFinite(fps) || fps <= 0)
-    throw new Error("Invalid fps");
+  if (!Number.isFinite(fps) || fps <= 0) {
+    throw new Error("SP-MOTION fps is missing or invalid");
+  }
 
-  if (!Number.isFinite(designDuration) || designDuration <= 0)
-    throw new Error("Invalid design duration");
+  if (!Number.isFinite(designDuration) || designDuration <= 0) {
+    throw new Error("SP-MOTION design duration is missing or invalid");
+  }
 
+  /*
+   * AUDIO IS THE MASTER CLOCK.
+   *
+   * The visual timeline may be shorter than the voiceover.
+   * In that case the visual timeline loops.
+   * The voiceover is NEVER stretched, shortened or repeated.
+   */
   window.__SPMOTION_AUDIO_DURATION__ = audioDuration;
   window.__SPMOTION_DESIGN_DURATION__ = designDuration;
+  window.__SPMOTION_RENDER_MODE__ = "html-autonomous";
 
   return {
     width: Number(m.width || 1080),
     height: Number(m.height || 1920),
     fps,
     designDuration,
-    duration: audioDuration,
-    mode: m.mode || "legacy"
+    duration: audioDuration
   };
 }, audioDuration);
 
@@ -78,141 +88,101 @@ await page.setViewportSize({
   height: meta.height
 });
 
-const autonomous =
-  meta.mode === "html-self-timed" ||
-  meta.mode === "html-autonomous";
-
 const frameCount = Math.ceil(meta.duration * meta.fps);
 
+console.log("SP-MOTION MODE: HTML-AUTONOMOUS");
+console.log(`AUDIO MASTER: ${meta.duration.toFixed(3)}s`);
+console.log(`VISUAL TIMELINE: ${meta.designDuration.toFixed(3)}s`);
+console.log(
+  `VISUAL LOOP: ${meta.designDuration < meta.duration ? "YES" : "NO"}`
+);
+
 /*
- * HTML-AUTONOMOUS MODE
+ * Every frame is deterministic.
  *
- * video.html owns:
- * - animation
- * - transitions
- * - interaction
- * - visual timing
+ * video.html owns the complete visual design and animation logic.
+ * The renderer does NOT invent or control visual states.
  *
- * The renderer only advances the browser clock and captures frames.
- * It NEVER calls SPMOTION_RENDER().
+ * The only renderer contract required from HTML is:
+ *
+ *   window.SPMOTION_FRAME(time)
+ *
+ * where time is local to the visual timeline.
+ *
+ * When the voiceover is longer than the visual timeline:
+ *
+ *   localTime = actualTime % designDuration
+ *
+ * Therefore the HTML repeats without changing the audio.
  */
-if (autonomous) {
-  console.log("SP-MOTION MODE: HTML-AUTONOMOUS");
+for (let i = 0; i < frameCount; i++) {
+  const actualTime = i / meta.fps;
 
-  await page.evaluate(() => {
-    window.__SPMOTION_RENDER_MODE__ = "autonomous";
+  const localTime =
+    meta.designDuration > 0
+      ? actualTime % meta.designDuration
+      : 0;
 
-    if (typeof window.SPMOTION_PLAY === "function") {
-      window.SPMOTION_PLAY();
-    }
-  });
-
-  /*
-   * Deterministic capture clock.
-   * The HTML can expose SPMOTION_FRAME(t) for exact frame positioning.
-   * If it doesn't, the page's own animation timeline remains untouched.
-   */
-  for (let i = 0; i < frameCount; i++) {
-    const actualTime = i / meta.fps;
-
-    await page.evaluate((actualTime) => {
+  await page.evaluate(
+    ({ actualTime, localTime, audioDuration, designDuration }) => {
       window.__SPMOTION_TIME__ = actualTime;
-      window.__SPMOTION_AUDIO_DURATION__ =
-        window.__SPMOTION_AUDIO_DURATION__ || undefined;
+      window.__SPMOTION_LOCAL_TIME__ = localTime;
+      window.__SPMOTION_AUDIO_DURATION__ = audioDuration;
+      window.__SPMOTION_DESIGN_DURATION__ = designDuration;
 
-      if (typeof window.SPMOTION_FRAME === "function") {
-        window.SPMOTION_FRAME(actualTime);
+      if (typeof window.SPMOTION_FRAME !== "function") {
+        throw new Error(
+          "video.html must expose SPMOTION_FRAME(time)"
+        );
       }
+
+      window.SPMOTION_FRAME(localTime);
 
       document.dispatchEvent(new CustomEvent("sp-motion-time", {
         detail: {
           time: actualTime,
-          audioDuration: window.__SPMOTION_AUDIO_DURATION__
+          localTime,
+          audioDuration,
+          designDuration
         }
       }));
-    }, actualTime);
-
-    await page.evaluate(() =>
-      new Promise(requestAnimationFrame)
-    );
-
-    await page.screenshot({
-      path: path.join(
-        outDir,
-        `frame-${String(i).padStart(6, "0")}.png`
-      ),
-      animations: "allow"
-    });
-
-    if (i % Math.max(1, Math.floor(meta.fps)) === 0) {
-      process.stdout.write(`FRAME ${i + 1}/${frameCount}\n`);
+    },
+    {
+      actualTime,
+      localTime,
+      audioDuration: meta.duration,
+      designDuration: meta.designDuration
     }
-  }
-} else {
-  /*
-   * LEGACY MODE
-   *
-   * Kept for existing SP-MOTION projects that still expose
-   * SPMOTION_RENDER(designTime).
-   */
-  console.log("SP-MOTION MODE: LEGACY");
+  );
 
-  const scale = meta.designDuration / meta.duration;
+  await page.evaluate(() => new Promise(requestAnimationFrame));
 
-  for (let i = 0; i < frameCount; i++) {
-    const actualTime = i / meta.fps;
-    const designTime = Math.min(
-      meta.designDuration,
-      actualTime * scale
-    );
+  await page.screenshot({
+    path: path.join(
+      outDir,
+      `frame-${String(i).padStart(6, "0")}.png`
+    ),
+    animations: "allow"
+  });
 
-    await page.evaluate(
-      ({ actualTime, designTime, audioDuration }) => {
-        window.__SPMOTION_TIME__ = actualTime;
-        window.__SPMOTION_AUDIO_DURATION__ = audioDuration;
-        window.__SPMOTION_DESIGN_TIME__ = designTime;
-
-        if (typeof window.SPMOTION_RENDER === "function") {
-          window.SPMOTION_RENDER(designTime);
-        }
-
-        document.dispatchEvent(new CustomEvent("sp-motion-time", {
-          detail: {
-            time: actualTime,
-            designTime,
-            audioDuration
-          }
-        }));
-      },
-      { actualTime, designTime, audioDuration }
-    );
-
-    await page.evaluate(() =>
-      new Promise(requestAnimationFrame)
-    );
-
-    await page.screenshot({
-      path: path.join(
-        outDir,
-        `frame-${String(i).padStart(6, "0")}.png`
-      ),
-      animations: "allow"
-    });
-
-    if (i % Math.max(1, Math.floor(meta.fps)) === 0) {
-      process.stdout.write(`FRAME ${i + 1}/${frameCount}\n`);
-    }
+  if (i % Math.max(1, Math.floor(meta.fps)) === 0) {
+    process.stdout.write(`FRAME ${i + 1}/${frameCount}\n`);
   }
 }
 
 await browser.close();
 
+/*
+ * The visual stream is generated for exactly the audio duration.
+ * Muxing therefore cannot shorten the voiceover because of a shorter
+ * visual timeline.
+ */
 await new Promise((resolve, reject) => {
   const ff = spawn("ffmpeg", [
     "-y",
     "-framerate", String(meta.fps),
     "-i", path.join(outDir, "frame-%06d.png"),
-    "-t", audioDuration.toFixed(3),
+    "-t", meta.duration.toFixed(3),
     "-c:v", "libvpx-vp9",
     "-pix_fmt", "yuv420p",
     "-b:v", "8M",
@@ -222,12 +192,11 @@ await new Promise((resolve, reject) => {
   ], { stdio: "inherit" });
 
   ff.on("error", reject);
-  ff.on("exit", code =>
-    code === 0
-      ? resolve()
-      : reject(new Error(`ffmpeg exited ${code}`))
-  );
+  ff.on("exit", code => {
+    if (code === 0) resolve();
+    else reject(new Error(`ffmpeg exited ${code}`));
+  });
 });
 
-console.log(`AUDIO MASTER DURATION: ${audioDuration.toFixed(3)}s`);
+console.log(`AUDIO MASTER DURATION: ${meta.duration.toFixed(3)}s`);
 console.log(`VISUAL OUTPUT: ${output}`);

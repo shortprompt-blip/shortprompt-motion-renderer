@@ -4,6 +4,11 @@ const video = process.argv[2];
 const audio = process.argv[3];
 const output = process.argv[4] || "final.webm";
 
+if (!video || !audio) {
+  console.error("Usage: node mux.mjs visual.webm speech.wav final.webm");
+  process.exit(1);
+}
+
 const args = [
   "-y",
   "-i", video,
@@ -18,5 +23,10 @@ const args = [
 ];
 
 const ff = spawn("ffmpeg", args, { stdio: "inherit" });
-ff.on("error", e => { console.error(e); process.exit(1); });
+
+ff.on("error", e => {
+  console.error(e);
+  process.exit(1);
+});
+
 ff.on("exit", code => process.exit(code ?? 1));
