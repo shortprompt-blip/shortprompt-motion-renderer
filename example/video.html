@@ -1,20 +1,127 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=1080,height=1920,initial-scale=1"><title>Instagram Algorithm — What Actually Drives Reach</title>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1080,height=1920,initial-scale=1">
+<title>Instagram Trial Reels</title>
 <style>
-#sp-instagram-root{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;background:#080a0f;color:#f6f7fb;font-family:Inter,Arial,sans-serif}
-#sp-instagram-root *{box-sizing:border-box}
-.spig-bg{position:absolute;inset:0;background:radial-gradient(circle at 50% 18%,#20283a 0,#0d1119 38%,#080a0f 78%)}
-.spig-grid{position:absolute;inset:-15%;opacity:.12;background-image:linear-gradient(#9aa7b71c 1px,transparent 1px),linear-gradient(90deg,#9aa7b71c 1px,transparent 1px);background-size:64px 64px;transform:perspective(900px) rotateX(62deg) translateY(38%)}
-.spig-top{position:absolute;top:54px;left:58px;right:58px;display:flex;justify-content:space-between;font-size:16px;font-weight:900;letter-spacing:.12em;z-index:5}.spig-time{color:#7e8a9b}
-.spig-scene{position:absolute;inset:0;opacity:0;transform:translateY(24px) scale(.985)}.spig-kicker{position:absolute;left:62px;top:210px;color:#ff6d9c;font-size:18px;font-weight:950;letter-spacing:.18em}.spig-title{position:absolute;left:62px;right:55px;top:265px;font-size:82px;line-height:.9;letter-spacing:-.065em;font-weight:950}.spig-sub{position:absolute;left:66px;right:75px;top:525px;font-size:27px;line-height:1.3;color:#aeb7c5}.spig-source{position:absolute;left:62px;bottom:62px;font-size:11px;letter-spacing:.08em;color:#657181;font-weight:800}
-.spig-profile{position:absolute;left:58px;right:58px;top:285px;height:350px;border:1px solid #303b4b;border-radius:30px;background:#0d131c;padding:30px;box-shadow:0 30px 100px #0008}.spig-avatar{width:86px;height:86px;border-radius:50%;background:linear-gradient(135deg,#ffcc70,#ff5f91,#8b5cff);display:flex;align-items:center;justify-content:center;font-weight:950;font-size:25px}.spig-name{position:absolute;left:145px;top:40px;font-size:28px;font-weight:950}.spig-handle{position:absolute;left:145px;top:80px;color:#8793a3;font-size:16px}.spig-stats{position:absolute;left:32px;right:32px;bottom:30px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.spig-stat{border:1px solid #293545;border-radius:18px;padding:17px;background:#0a0f16}.spig-stat strong{display:block;font-size:34px}.spig-stat span{display:block;color:#7d8999;font-size:12px;margin-top:5px;font-weight:800;letter-spacing:.08em}
-.spig-reach{position:absolute;left:58px;right:58px;top:690px;height:430px;border:1px solid #303b4b;border-radius:30px;background:#0d131c;padding:28px}.spig-reach-label{color:#8490a0;font-size:13px;font-weight:900;letter-spacing:.12em}.spig-big{font-size:76px;font-weight:950;letter-spacing:-.06em;margin-top:12px}.spig-bad{color:#ff6d7e}.spig-meter{height:18px;border-radius:20px;background:#1a2330;margin-top:22px;overflow:hidden}.spig-meter i{display:block;width:0;height:100%;border-radius:20px;background:#ff657f}.spig-note{margin-top:28px;font-size:20px;color:#9ba6b4;line-height:1.35}.spig-followers{position:absolute;right:82px;top:700px;font-size:14px;color:#788597;font-weight:850}
-.spig-signal-wrap{position:absolute;left:58px;right:58px;top:325px}.spig-signal-title{font-size:44px;font-weight:950;letter-spacing:-.04em;margin-bottom:35px}.spig-signal{height:105px;border:1px solid #303c4c;border-radius:22px;background:#0d131c;margin:16px 0;padding:20px 23px;display:flex;align-items:center;gap:20px;opacity:.25;transform:translateX(-30px)}.spig-icon{width:52px;height:52px;border-radius:15px;background:#182230;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:950;color:#ff789f}.spig-signal b{font-size:22px}.spig-signal span{display:block;color:#7f8b9b;font-size:14px;margin-top:4px}.spig-pulse{margin-left:auto;width:130px;height:12px;background:#202b39;border-radius:20px;overflow:hidden}.spig-pulse i{display:block;width:0;height:100%;background:#ff6d9c;border-radius:20px}
-.spig-final{text-align:center;position:absolute;left:58px;right:58px;top:300px}.spig-final .spig-kicker{position:static}.spig-final .spig-title{position:static;font-size:72px;margin-top:45px}.spig-final .spig-sub{position:static;margin-top:35px}.spig-chips{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:45px}.spig-chip{border:1px solid #354052;border-radius:999px;background:#0d141e;padding:14px 18px;font-size:14px;font-weight:900}
-.spig-hook{position:absolute;left:58px;right:58px;top:330px;height:500px;border:1px solid #303c4b;border-radius:30px;background:#0d131c;padding:30px;overflow:hidden}.spig-hook-head{display:flex;justify-content:space-between;color:#8b97a7;font-size:13px;font-weight:900;letter-spacing:.1em}.spig-reel{position:absolute;left:30px;right:30px;top:90px;height:270px;border-radius:22px;background:linear-gradient(145deg,#171e2a,#0b0f15);border:1px solid #2c3747;display:flex;align-items:center;justify-content:center;text-align:center;font-size:42px;line-height:1.05;font-weight:950;padding:30px}.spig-progress{position:absolute;left:30px;right:30px;bottom:72px;height:9px;border-radius:20px;background:#202936;overflow:hidden}.spig-progress i{display:block;height:100%;width:0;background:#ff6d9c}.spig-ret{position:absolute;left:30px;right:30px;bottom:30px;display:flex;justify-content:space-between;color:#778394;font-size:13px;font-weight:850}
-</style></head><body><div id="sp-instagram-root"><div class="spig-bg"></div><div class="spig-grid"></div><div class="spig-top"><span>CREATOR SIGNALS</span><span class="spig-time">00:00</span></div>
-<section class="spig-scene"><div class="spig-kicker">CREATOR MYTH</div><div class="spig-title">Followers<br>don't guarantee reach.</div><div class="spig-sub">A big audience can still produce a tiny Reel.</div><div class="spig-source">INSTAGRAM RECOMMENDATION SYSTEMS • EDITORIAL EXPLANATION</div></section>
-<section class="spig-scene"><div class="spig-profile"><div class="spig-avatar">CR</div><div class="spig-name">Creator</div><div class="spig-handle">@creator</div><div class="spig-stats"><div class="spig-stat"><strong>25K</strong><span>FOLLOWERS</span></div><div class="spig-stat"><strong>420</strong><span>LIKES</span></div><div class="spig-stat"><strong>1.8K</strong><span>REACH</span></div></div></div><div class="spig-reach"><div class="spig-reach-label">NEW REEL DISTRIBUTION</div><div class="spig-big spig-bad" id="spig-reach-number">1.8K</div><div class="spig-meter"><i id="spig-reach-meter"></i></div><div class="spig-note">Follower count is not the same thing as guaranteed distribution.</div></div><div class="spig-followers">25,000 followers ≠ 25,000 viewers</div></section>
-<section class="spig-scene"><div class="spig-signal-wrap"><div class="spig-kicker" style="position:static">WHAT MATTERS AFTER THE VIEW</div><div class="spig-signal-title">Viewer behavior becomes the story.</div><div class="spig-signal"><div class="spig-icon">▶</div><div><b>WATCH TIME</b><span>Do people stay?</span></div><div class="spig-pulse"><i></i></div></div><div class="spig-signal"><div class="spig-icon">↻</div><div><b>REWATCHES</b><span>Did it earn another play?</span></div><div class="spig-pulse"><i></i></div></div><div class="spig-signal"><div class="spig-icon">➤</div><div><b>SHARES / SENDS</b><span>Is it worth passing on?</span></div><div class="spig-pulse"><i></i></div></div></div></section>
-<section class="spig-scene"><div class="spig-kicker">THE CREATOR LOOP</div><div class="spig-hook"><div class="spig-hook-head"><span>REEL INSIGHTS</span><span>RETENTION</span></div><div class="spig-reel">THE FIRST<br>3 SECONDS<br>HAVE A JOB.</div><div class="spig-progress"><i id="spig-progress"></i></div><div class="spig-ret"><span>0s</span><span>HOOK</span><span>WATCH</span><span>SEND</span><span>END</span></div></div><div class="spig-sub" style="top:900px">Instagram exposes total and average watch time for Reels, helping creators identify where viewers stay or drop.</div></section>
-<section class="spig-scene"><div class="spig-final"><div class="spig-kicker">THE TAKEAWAY</div><div class="spig-title">Build for the viewer.<br>Not the follower count.</div><div class="spig-sub">Hook fast. Earn watch time. Make the Reel worth sending.</div><div class="spig-chips"><span class="spig-chip">HOOK</span><span class="spig-chip">WATCH TIME</span><span class="spig-chip">REWATCH</span><span class="spig-chip">SHARE</span></div></div><div class="spig-source">SOURCE: META / INSTAGRAM REELS INSIGHTS & RECOMMENDATION DOCUMENTATION</div></section></div>
-<script>(function(){const r=document.getElementById('sp-instagram-root'),s=[...r.querySelectorAll('.spig-scene')],ranges=[[0,4.2],[4.2,9],[9,15],[15,20],[20,25]],clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v)),ease=v=>{v=clamp(v);return v*v*(3-2*v)};window.SPMOTION={width:1080,height:1920,fps:30,duration:25};function render(t){t=clamp(Number(t)||0,0,25);r.querySelector('.spig-time').textContent='00:'+String(Math.floor(t)).padStart(2,'0');s.forEach((e,i)=>{let[a,b]=ranges[i],p=ease((t-a)/.55),q=ease((b-t)/.55),on=t>=a&&t<=b;e.style.opacity=on?Math.min(p,q):0;e.style.transform=on?'translateY('+(24*(1-p))+'px) scale('+(0.985+.015*p)+')':'translateY(24px) scale(.985)'});r.querySelector('#spig-reach-meter').style.width=clamp((t-4.2)/4.8)*31+'%';r.querySelectorAll('.spig-signal').forEach((e,i)=>{let p=ease(clamp((t-9-i*.65)/2.1));e.style.opacity=.25+.75*p;e.style.transform='translateX('+(-30+30*p)+'px)';e.querySelector('i').style.width=p*100+'%'});r.querySelector('#spig-progress').style.width=clamp((t-15)/5)*100+'%'}window.SPMOTION_RENDER=render;render(0)})();</script></body></html>
+#sp-instagram-trial{
+  position:absolute; inset:0; width:100%; height:100%;
+  overflow:hidden; background:#f7f7f7; color:#111;
+  font-family:Arial,Helvetica,sans-serif;
+}
+#sp-instagram-trial .top{position:absolute;left:54px;right:54px;top:55px;display:flex;justify-content:space-between;align-items:center}
+#sp-instagram-trial .brand{font-size:28px;font-weight:800;letter-spacing:-1.2px}
+#sp-instagram-trial .clock{font-size:20px;color:#777}
+#sp-instagram-trial .hero{position:absolute;left:58px;right:58px;top:165px}
+#sp-instagram-trial .kicker{font-size:18px;font-weight:800;letter-spacing:3px;color:#d62976}
+#sp-instagram-trial .headline{font-size:76px;line-height:.94;font-weight:900;letter-spacing:-4px;margin-top:18px}
+#sp-instagram-trial .sub{font-size:28px;line-height:1.25;color:#6d6d73;margin-top:28px;max-width:900px}
+#sp-instagram-trial .phone{position:absolute;left:58px;right:58px;top:650px;height:900px;border-radius:44px;background:#fff;border:2px solid #e6e6e9;box-shadow:0 24px 70px rgba(0,0,0,.12);overflow:hidden}
+#sp-instagram-trial .bar{height:82px;border-bottom:1px solid #ededf0;display:flex;align-items:center;justify-content:space-between;padding:0 30px}
+#sp-instagram-trial .bar b{font-size:23px}
+#sp-instagram-trial .back{font-size:38px}
+#sp-instagram-trial .content{padding:36px}
+#sp-instagram-trial .preview{height:300px;border-radius:28px;background:#171719;position:relative;overflow:hidden}
+#sp-instagram-trial .preview .reel{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:34px;font-weight:800;color:#fff}
+#sp-instagram-trial .preview .reel span{padding:16px 24px;border:2px solid #fff;border-radius:18px}
+#sp-instagram-trial .setting{margin-top:42px;font-size:27px;font-weight:800}
+#sp-instagram-trial .setting small{display:block;margin-top:10px;color:#777;font-size:18px;font-weight:400;line-height:1.3;max-width:680px}
+#sp-instagram-trial .toggle{position:absolute;right:38px;width:112px;height:64px;border-radius:40px;background:#c9c9ce;transition:none}
+#sp-instagram-trial .toggle i{position:absolute;top:7px;left:7px;width:50px;height:50px;border-radius:50%;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.2)}
+#sp-instagram-trial .toggle.on{background:#0095f6}
+#sp-instagram-trial .toggle.on i{left:55px}
+#sp-instagram-trial .audience{margin-top:55px;padding:24px 26px;border-radius:24px;background:#f5f5f7}
+#sp-instagram-trial .audience label{display:block;font-size:15px;font-weight:800;color:#888;letter-spacing:1px}
+#sp-instagram-trial .audience strong{display:block;font-size:25px;margin-top:10px}
+#sp-instagram-trial .result{position:absolute;left:58px;right:58px;top:1600px;border-radius:28px;background:#111;color:#fff;padding:28px 32px;opacity:0}
+#sp-instagram-trial .result strong{font-size:31px}
+#sp-instagram-trial .result p{margin:9px 0 0;color:#c8c8cc;font-size:20px;line-height:1.3}
+#sp-instagram-trial .source{position:absolute;left:58px;bottom:55px;color:#888;font-size:14px;font-weight:700;letter-spacing:1.2px}
+</style>
+</head>
+<body>
+<div id="sp-instagram-trial">
+  <div class="top"><div class="brand">instagram</div><div class="clock" id="sp-time">00:00</div></div>
+
+  <div class="hero" id="sp-hero">
+    <div class="kicker">CREATOR TIP</div>
+    <div class="headline">Test your Reel<br>before everyone sees it.</div>
+    <div class="sub">Instagram Trial Reels let eligible creators show a Reel to non-followers first.</div>
+  </div>
+
+  <div class="phone" id="sp-phone">
+    <div class="bar"><div class="back">‹</div><b>New Reel</b><div style="width:30px"></div></div>
+    <div class="content">
+      <div class="preview"><div class="reel"><span>YOUR REEL</span></div></div>
+
+      <div class="setting">Trial
+        <small>Share this Reel with non-followers first.</small>
+        <div class="toggle" id="sp-toggle"><i></i></div>
+      </div>
+
+      <div class="audience" id="sp-audience">
+        <label>AUDIENCE</label>
+        <strong id="sp-audience-text">FOLLOWERS + NON-FOLLOWERS</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="result" id="sp-result">
+    <strong>Then check the result.</strong>
+    <p>After about 24 hours, Instagram provides key engagement metrics such as views, likes, comments and shares.</p>
+  </div>
+
+  <div class="source">SOURCE: META / INSTAGRAM</div>
+</div>
+
+<script>
+(function(){
+  const root=document.getElementById("sp-instagram-trial");
+  const hero=document.getElementById("sp-hero");
+  const phone=document.getElementById("sp-phone");
+  const toggle=document.getElementById("sp-toggle");
+  const audience=document.getElementById("sp-audience");
+  const audienceText=document.getElementById("sp-audience-text");
+  const result=document.getElementById("sp-result");
+  const clock=document.getElementById("sp-time");
+  const clamp=v=>Math.max(0,Math.min(1,v));
+  const ease=v=>{v=clamp(v);return v*v*(3-2*v);};
+
+  window.SPMOTION={width:1080,height:1920,fps:30,duration:18};
+
+  window.SPMOTION_RENDER=function(time){
+    const t=clamp(Number(time)||0,0,18);
+
+    const hp=ease(t/1.0);
+    hero.style.opacity=hp;
+    hero.style.transform="translateY("+(1-hp)*24+"px)";
+
+    const pp=ease((t-.5)/1.0);
+    phone.style.opacity=pp;
+    phone.style.transform="translateY("+(1-pp)*34+"px)";
+
+    const on=ease((t-5.2)/.7);
+    toggle.classList.toggle("on",t>=5.2);
+    toggle.style.transform="scale("+(1+Math.sin(Math.PI*on)*.07)+")";
+
+    if(t>=5.2){
+      audienceText.textContent="NON-FOLLOWERS FIRST";
+      audience.style.background="#eef7ff";
+    }else{
+      audienceText.textContent="FOLLOWERS + NON-FOLLOWERS";
+      audience.style.background="#f5f5f7";
+    }
+
+    const rp=ease((t-11)/1.0);
+    result.style.opacity=rp;
+    result.style.transform="translateY("+(1-rp)*24+"px)";
+
+    clock.textContent="00:"+String(Math.floor(t)).padStart(2,"0");
+  };
+
+  window.SPMOTION_RENDER(0);
+})();
+</script>
+</body>
+</html>
