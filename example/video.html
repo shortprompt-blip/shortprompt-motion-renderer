@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>Instagram 2026 Mobile UI</title>
+    <title>Instagram 2026 - Mobile UI & Profile Experience</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -13,23 +13,26 @@
                 extend: {
                     colors: {
                         'ig-primary': '#0095f6',
-                        'ig-secondary-button': '#efefef',
+                        'ig-primary-hover': '#1877f2',
+                        'ig-badge': '#202020',
                         'ig-dark-bg': '#000000',
-                        'ig-dark-surface': '#121212',
+                        'ig-dark-card': '#121212',
                         'ig-dark-border': '#262626',
-                        'ig-light-border': '#dbdbdb'
+                        'ig-light-bg': '#ffffff',
+                        'ig-light-card': '#f8f9fa',
+                        'ig-light-border': '#e5e7eb'
                     },
                     fontFamily: {
-                        sans: ['-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'Helvetica', 'Arial', 'sans-serif']
+                        sans: ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Display"', '"SF Pro Text"', '"Segoe UI"', 'Roboto', 'Helvetica', 'Arial', 'sans-serif']
                     }
                 }
             }
         }
     </script>
-    <!-- FontAwesome & Lucide Icons -->
+    <!-- FontAwesome 6 Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        /* Custom scrollbar hiding */
+        /* Hide scrollbars completely for native app feel */
         .no-scrollbar::-webkit-scrollbar {
             display: none;
         }
@@ -38,162 +41,430 @@
             scrollbar-width: none;
         }
 
-        /* Instagram Story Ring Gradient */
+        /* Instagram Story & Highlight Ring Gradient */
         .ig-story-ring {
             background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        }
+        
+        .ig-ai-ring {
+            background: linear-gradient(135deg, #a855f7 0%, #6366f1 50%, #06b6d4 100%);
         }
 
         /* Double Tap Heart Animation */
         @keyframes heartPop {
-            0% { transform: scale(0) rotate(-10deg); opacity: 0; }
-            50% { transform: scale(1.2) rotate(0deg); opacity: 0.9; }
+            0% { transform: scale(0) rotate(-15deg); opacity: 0; }
+            50% { transform: scale(1.25) rotate(0deg); opacity: 0.95; }
             100% { transform: scale(1) rotate(0deg); opacity: 0; }
         }
         .animate-heart-pop {
-            animation: heartPop 0.8s ease-in-out forwards;
+            animation: heartPop 0.75s ease-in-out forwards;
         }
 
-        /* Progress Bar Animation for Story Viewer */
-        @keyframes progress {
+        /* Story Progress Bar */
+        @keyframes storyProgress {
             from { width: 0%; }
             to { width: 100%; }
         }
-        .animate-progress {
-            animation: progress 5s linear forwards;
+        .animate-story-bar {
+            animation: storyProgress 5s linear forwards;
         }
 
         /* iOS safe area spacing */
         .safe-pb {
-            padding-bottom: env(safe-area-inset-bottom, 12px);
+            padding-bottom: env(safe-area-inset-bottom, 14px);
         }
         .safe-pt {
-            padding-top: env(safe-area-inset-top, 8px);
+            padding-top: env(safe-area-inset-top, 10px);
+        }
+
+        /* Smooth UI transitions */
+        .page-transition {
+            transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+        }
+        
+        /* Glassmorphism Effect for 2026 Header and Nav */
+        .glass-nav {
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
         }
     </style>
+
+<style id="spmotion-bio-style">
+#spmotion-bio-editor{
+  position:absolute;inset:0;background:rgba(0,0,0,.78);backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);z-index:80;display:flex;align-items:flex-end;
+  opacity:0;pointer-events:none
+}
+#spmotion-bio-sheet{
+  width:100%;background:#121212;border-top:1px solid #2d2d2d;border-radius:24px 24px 0 0;
+  padding:14px 16px 20px;transform:translateY(100%);min-height:560px
+}
+.spb-grabber{width:42px;height:5px;background:#555;border-radius:8px;margin:0 auto 14px}
+.spb-head{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #252525;padding-bottom:15px}
+.spb-head b{font-size:16px}.spb-save{color:#0095f6;font-weight:800}
+.spb-field{margin-top:18px}
+.spb-label{font-size:11px;color:#929292;margin-bottom:7px;display:block;font-weight:700}
+.spb-input{width:100%;background:#0c0c0c;border:1px solid #303030;border-radius:11px;color:#fff;padding:12px 13px;font-size:14px}
+#spb-bio-field{min-height:116px;line-height:1.35;resize:none}
+#spmotion-bio-editor.spb-active{opacity:1;pointer-events:auto}
+#spb-bio-wrap{border-radius:12px}
+#spb-bio-wrap.spb-focus{box-shadow:0 0 0 2px #0095f6 inset}
+#spmotion-bio-cursor{display:inline-block;width:2px;height:17px;background:#0095f6;vertical-align:-3px;margin-left:2px;opacity:0}
+#spmotion-bio-copy{
+  position:absolute;left:14px;right:14px;top:128px;color:#f3f3f3;
+  font-size:13px;line-height:1.4;pointer-events:none;opacity:0
+}
+#spmotion-bio-copy b{color:#fff}
+#spmotion-bio-highlight{
+  position:absolute;left:14px;right:14px;top:286px;height:128px;border:2px solid #0095f6;
+  border-radius:12px;pointer-events:none;opacity:0
+}
+#spmotion-bio-pulse{
+  position:absolute;width:68px;height:68px;border:3px solid #0095f6;border-radius:50%;
+  pointer-events:none;opacity:0;z-index:90
+}
+</style>
 </head>
-<body class="bg-black text-white selection:bg-neutral-800 font-sans antialiased overflow-hidden min-h-screen flex justify-center items-center">
+<body class="bg-neutral-950 text-white selection:bg-neutral-800 font-sans antialiased overflow-hidden min-h-screen flex justify-center items-center">
 
-    <!-- Mobile Frame Simulation Wrapper for Desktop preview -->
-    <div id="app" class="w-full max-w-md h-screen md:h-[880px] bg-black md:rounded-[40px] md:border-[8px] md:border-neutral-800 overflow-hidden relative flex flex-col shadow-2xl transition-colors duration-200">
+    <!-- Mobile Screen Frame Container -->
+    <div id="app" class="w-full max-w-md h-screen md:h-[880px] bg-black md:rounded-[44px] md:border-[10px] md:border-neutral-800 overflow-hidden relative flex flex-col shadow-2xl transition-colors duration-200">
 
-        <!-- ================= PAGE 1: HOME FEED ================= -->
-        <div id="view-home" class="page-view flex-1 flex flex-col h-full overflow-hidden">
-            <!-- Header -->
-            <header class="safe-pt px-4 py-2 flex justify-between items-center bg-black dark:bg-black border-b border-neutral-900 z-10 shrink-0">
-                <div class="flex items-center gap-2 cursor-pointer">
-                    <span class="text-xl font-bold tracking-tight text-white font-serif italic">Instagram</span>
-                    <i class="fa-solid fa-chevron-down text-xs text-neutral-400"></i>
+        <!-- ================= TOP TOAST NOTIFICATION ================= -->
+        <div id="toast" class="absolute top-12 left-1/2 -translate-x-1/2 bg-neutral-800/90 backdrop-blur-md text-white text-xs px-4 py-2 rounded-full shadow-2xl opacity-0 transition-all duration-300 pointer-events-none z-50 border border-neutral-700/50 flex items-center gap-2">
+            <i class="fa-solid fa-circle-info text-ig-primary"></i>
+            <span id="toast-msg">Notifica Instagram</span>
+        </div>
+
+        <!-- ================= PAGE 1: FEED HOME VIEW ================= -->
+        <div id="view-home" class="page-view flex-1 flex flex-col h-full overflow-hidden page-transition">
+            <!-- Home Top Header -->
+            <header class="safe-pt px-4 py-2 flex justify-between items-center bg-black/80 glass-nav border-b border-neutral-900 z-20 shrink-0">
+                <div class="flex items-center gap-2 cursor-pointer" onclick="showNotificationToast('Instagram 2026 v5.2')">
+                    <span class="text-2xl font-bold tracking-tight font-serif italic text-neutral-100">Instagram</span>
+                    <span class="bg-gradient-to-r from-purple-500 to-pink-500 text-[9px] font-black uppercase tracking-wider px-1.5 py-0.5 rounded text-white">2026</span>
                 </div>
                 <div class="flex items-center gap-5 text-xl">
-                    <button id="toggle-create-btn" class="hover:opacity-70 transition active:scale-95">
+                    <button onclick="openCreateModal()" class="hover:opacity-70 transition active:scale-95">
                         <i class="fa-regular fa-square-plus"></i>
                     </button>
-                    <button class="hover:opacity-70 transition relative active:scale-95" onclick="showNotificationToast('Non hai nuove notifiche')">
+                    <button class="hover:opacity-70 transition relative active:scale-95" onclick="openActivityModal()">
                         <i class="fa-regular fa-heart"></i>
-                        <span class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">3</span>
+                        <span class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold border-2 border-black">3</span>
                     </button>
                     <button onclick="switchTab('dms')" class="hover:opacity-70 transition relative active:scale-95">
                         <i class="fa-regular fa-paper-plane"></i>
-                        <span class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">2</span>
+                        <span class="absolute -top-1 -right-1 bg-ig-primary text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold border-2 border-black">2</span>
                     </button>
                 </div>
             </header>
 
-            <!-- Scrollable Feed Content -->
-            <main class="flex-1 overflow-y-auto no-scrollbar pb-16">
-                <!-- Stories Tray -->
-                <section class="py-3 px-2 border-b border-neutral-900/60 overflow-x-auto no-scrollbar flex gap-4 items-center">
-                    <!-- Your Story -->
+            <!-- Scrollable Home Feed -->
+            <main class="flex-1 overflow-y-auto no-scrollbar pb-20">
+                <!-- Stories Bar -->
+                <section class="py-3 px-3 border-b border-neutral-900 overflow-x-auto no-scrollbar flex gap-4 items-center bg-black/40">
+                    <!-- Your Story Avatar -->
                     <div class="flex flex-col items-center gap-1 cursor-pointer shrink-0" onclick="openStory(0)">
                         <div class="relative w-16 h-16 rounded-full p-0.5">
-                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150" class="w-full h-full object-cover rounded-full border border-neutral-800" alt="Avatar">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300" class="w-full h-full object-cover rounded-full border-2 border-black" alt="Your Story">
                             <span class="absolute bottom-0 right-0 bg-ig-primary border-2 border-black text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">+</span>
                         </div>
-                        <span class="text-xs text-neutral-400">La tua storia</span>
+                        <span class="text-[11px] text-neutral-400 font-medium">La tua storia</span>
                     </div>
-
-                    <!-- User Stories (Generated dynamically) -->
-                    <div id="stories-container" class="flex gap-4">
-                        <!-- Inserted by JS -->
-                    </div>
+                    <!-- Dynamically populated stories -->
+                    <div id="home-stories-container" class="flex gap-4"></div>
                 </section>
 
-                <!-- Posts List -->
-                <div id="posts-container" class="divide-y divide-neutral-900">
-                    <!-- Inserted dynamically by JS -->
-                </div>
+                <!-- Posts List Container -->
+                <div id="home-posts-container" class="divide-y divide-neutral-900"></div>
             </main>
         </div>
 
-        <!-- ================= PAGE 2: REELS ================= -->
-        <div id="view-reels" class="page-view flex-1 flex flex-col h-full bg-black hidden relative">
-            <div class="absolute top-4 left-4 right-4 z-20 flex justify-between items-center text-white font-bold text-lg drop-shadow">
+        <!-- ================= PAGE 2: PROFILE VIEW (MAIN FOCUS) ================= -->
+        <div id="view-profile" class="page-view flex-1 flex flex-col h-full overflow-hidden page-transition">
+            <!-- Profile Top Bar Header -->
+            <header class="safe-pt px-4 py-2.5 flex justify-between items-center bg-black/90 glass-nav border-b border-neutral-900 z-20 shrink-0">
+                <div class="flex items-center gap-1.5 cursor-pointer" onclick="toggleAccountSwitcher()">
+                    <i class="fa-solid fa-lock text-xs text-neutral-400"></i>
+                    <span class="font-extrabold text-base tracking-tight">marco_dev</span>
+                    <i class="fa-solid fa-circle-check text-ig-primary text-xs ml-0.5" title="Verificato"></i>
+                    <i class="fa-solid fa-chevron-down text-xs text-neutral-400 ml-1"></i>
+                </div>
+                <div class="flex items-center gap-4 text-xl">
+                    <button onclick="openCreateModal()" class="hover:opacity-70 transition active:scale-95">
+                        <i class="fa-regular fa-square-plus"></i>
+                    </button>
+                    <button id="theme-toggle" class="hover:opacity-70 transition active:scale-95" title="Cambia Tema">
+                        <i class="fa-solid fa-moon"></i>
+                    </button>
+                    <button onclick="openSettingsMenu()" class="hover:opacity-70 transition active:scale-95">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Scrollable Profile Content -->
+            <main class="flex-1 overflow-y-auto no-scrollbar pb-20">
+                
+                <!-- Main Profile Header Section -->
+                <section class="p-4 space-y-4">
+                    <!-- Profile Picture & Statistics Grid -->
+                    <div class="flex items-center justify-between gap-4">
+                        <!-- Profile Image with Interactive Gradient Story Ring -->
+                        <div class="relative cursor-pointer group" onclick="openStory(0)">
+                            <div class="ig-story-ring p-[2.5px] rounded-full transition-transform group-active:scale-95">
+                                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300" class="w-20 h-20 rounded-full object-cover border-2 border-black" alt="Marco Dev Profile">
+                            </div>
+                            <span class="absolute bottom-0 right-0 bg-neutral-900 border border-neutral-700 text-neutral-300 text-[10px] px-1.5 py-0.5 rounded-full font-bold shadow">
+                                AI 2026
+                            </span>
+                        </div>
+
+                        <!-- Stats Counts -->
+                        <div class="flex-1 flex justify-around text-center">
+                            <div class="cursor-pointer hover:opacity-80" onclick="showNotificationToast('Visualizzando 128 Post')">
+                                <span class="block font-extrabold text-base text-neutral-100">128</span>
+                                <span class="text-xs text-neutral-400 font-medium">Post</span>
+                            </div>
+                            <div class="cursor-pointer hover:opacity-80" onclick="openFollowersModal('Follower')">
+                                <span class="block font-extrabold text-base text-neutral-100">24.5k</span>
+                                <span class="text-xs text-neutral-400 font-medium">Follower</span>
+                            </div>
+                            <div class="cursor-pointer hover:opacity-80" onclick="openFollowersModal('Seguiti')">
+                                <span class="block font-extrabold text-base text-neutral-100">890</span>
+                                <span class="text-xs text-neutral-400 font-medium">Seguiti</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Profile Bio & Details Section -->
+                    <div class="space-y-1.5">
+                        <div class="flex items-center gap-2">
+                            <h1 class="font-bold text-sm text-neutral-100">Marco Rossi</h1>
+                            <span class="text-[11px] bg-neutral-800/80 border border-neutral-700 text-neutral-300 px-2 py-0.5 rounded-md font-medium">lui/him</span>
+                        </div>
+
+                        <!-- Badge Pro / AI Creator 2026 -->
+                        <div class="inline-flex items-center gap-1.5 bg-gradient-to-r from-purple-900/40 to-blue-900/40 border border-purple-500/30 px-2.5 py-0.5 rounded-full">
+                            <i class="fa-solid fa-wand-magic-sparkles text-xs text-purple-400"></i>
+                            <span class="text-[11px] font-semibold text-purple-200">AI Creator & Mobile Engineer 2026</span>
+                        </div>
+
+                        <!-- Multiline Bio with Dynamic Links -->
+                        <p class="text-xs text-neutral-200 leading-relaxed font-normal">
+                            🚀 Progetto esperienze web futuristiche & App Native.<br>
+                            🤖 Creazione contenuti visivi con GenAI & WebGL.<br>
+                            📍 Milano, Italia • <a href="#" class="text-ig-primary hover:underline" onclick="event.preventDefault(); showNotificationToast('Apertura link esterno...');">#tech2026</a> <a href="#" class="text-ig-primary hover:underline" onclick="event.preventDefault(); showNotificationToast('Apertura hashtag...');">#webdev</a>
+                        </p>
+
+                        <!-- External Link -->
+                        <div class="flex items-center gap-1.5 text-xs font-semibold text-ig-primary pt-0.5">
+                            <i class="fa-solid fa-link text-[10px]"></i>
+                            <a href="https://github.com" target="_blank" onclick="event.preventDefault(); showNotificationToast('github.com/marco-dev-2026')" class="hover:underline truncate max-w-[280px]">github.com/marco-dev-2026</a>
+                        </div>
+                    </div>
+
+                    <!-- Profile Action Buttons -->
+                    <div class="grid grid-cols-12 gap-2 pt-1">
+                        <button onclick="showNotificationToast('Modifica Profilo aperta')" class="col-span-5 bg-neutral-800 hover:bg-neutral-700/80 active:scale-98 text-white font-semibold text-xs py-2 rounded-lg border border-neutral-700/50 transition">
+                            Modifica profilo
+                        </button>
+                        <button onclick="showNotificationToast('Link profilo copiato!')" class="col-span-5 bg-neutral-800 hover:bg-neutral-700/80 active:scale-98 text-white font-semibold text-xs py-2 rounded-lg border border-neutral-700/50 transition">
+                            Condividi profilo
+                        </button>
+                        <button onclick="showNotificationToast('Mostra suggerimenti contatti')" class="col-span-2 bg-neutral-800 hover:bg-neutral-700/80 active:scale-98 text-white text-xs py-2 rounded-lg border border-neutral-700/50 transition flex items-center justify-center">
+                            <i class="fa-solid fa-user-plus"></i>
+                        </button>
+                    </div>
+
+                    <!-- Stories Highlights (In Evidenza) Scrollable Tray -->
+                    <div class="pt-2 border-t border-neutral-900">
+                        <div class="flex gap-4 overflow-x-auto no-scrollbar py-1">
+                            <!-- Create New Highlight Button -->
+                            <div class="flex flex-col items-center gap-1.5 shrink-0 cursor-pointer" onclick="showNotificationToast('Crea nuovo elemento In Evidenza')">
+                                <div class="w-14 h-14 rounded-full border border-dashed border-neutral-600 flex items-center justify-center text-neutral-400 bg-neutral-900/50 hover:bg-neutral-800 transition">
+                                    <i class="fa-solid fa-plus text-base"></i>
+                                </div>
+                                <span class="text-[10px] text-neutral-400">Nuovo</span>
+                            </div>
+
+                            <!-- Highlight 1 -->
+                            <div class="flex flex-col items-center gap-1.5 shrink-0 cursor-pointer" onclick="openStoryHighlight('Progetti AI')">
+                                <div class="w-14 h-14 rounded-full p-[2px] bg-neutral-800 border border-neutral-700">
+                                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=150" class="w-full h-full object-cover rounded-full">
+                                </div>
+                                <span class="text-[10px] text-neutral-300 font-medium">Progetti AI</span>
+                            </div>
+
+                            <!-- Highlight 2 -->
+                            <div class="flex flex-col items-center gap-1.5 shrink-0 cursor-pointer" onclick="openStoryHighlight('Milano Tech')">
+                                <div class="w-14 h-14 rounded-full p-[2px] bg-neutral-800 border border-neutral-700">
+                                    <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?w=150" class="w-full h-full object-cover rounded-full">
+                                </div>
+                                <span class="text-[10px] text-neutral-300 font-medium">Milano Tech</span>
+                            </div>
+
+                            <!-- Highlight 3 -->
+                            <div class="flex flex-col items-center gap-1.5 shrink-0 cursor-pointer" onclick="openStoryHighlight('Setup 2026')">
+                                <div class="w-14 h-14 rounded-full p-[2px] bg-neutral-800 border border-neutral-700">
+                                    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=150" class="w-full h-full object-cover rounded-full">
+                                </div>
+                                <span class="text-[10px] text-neutral-300 font-medium">Setup 2026</span>
+                            </div>
+
+                            <!-- Highlight 4 -->
+                            <div class="flex flex-col items-center gap-1.5 shrink-0 cursor-pointer" onclick="openStoryHighlight('Viaggi')">
+                                <div class="w-14 h-14 rounded-full p-[2px] bg-neutral-800 border border-neutral-700">
+                                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=150" class="w-full h-full object-cover rounded-full">
+                                </div>
+                                <span class="text-[10px] text-neutral-300 font-medium">Viaggi</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Profile Content Tabs Header -->
+                <div class="sticky top-0 bg-black/95 glass-nav border-t border-b border-neutral-900 z-10 flex text-center">
+                    <button onclick="switchProfileTab('grid')" id="tab-btn-grid" class="profile-tab-btn flex-1 py-3 text-white border-b-2 border-white transition flex justify-center items-center">
+                        <i class="fa-solid fa-table-cells text-lg"></i>
+                    </button>
+                    <button onclick="switchProfileTab('reels')" id="tab-btn-reels" class="profile-tab-btn flex-1 py-3 text-neutral-500 border-b-2 border-transparent transition flex justify-center items-center">
+                        <i class="fa-solid fa-clapperboard text-lg"></i>
+                    </button>
+                    <button onclick="switchProfileTab('aistudio')" id="tab-btn-aistudio" class="profile-tab-btn flex-1 py-3 text-neutral-500 border-b-2 border-transparent transition flex justify-center items-center relative">
+                        <i class="fa-solid fa-wand-magic-sparkles text-lg text-purple-400"></i>
+                        <span class="absolute top-2 right-4 w-2 h-2 bg-purple-500 rounded-full animate-ping"></span>
+                    </button>
+                    <button onclick="switchProfileTab('tagged')" id="tab-btn-tagged" class="profile-tab-btn flex-1 py-3 text-neutral-500 border-b-2 border-transparent transition flex justify-center items-center">
+                        <i class="fa-regular fa-id-badge text-lg"></i>
+                    </button>
+                </div>
+
+                <!-- PROFILE TAB 1: MAIN POSTS GRID -->
+                <div id="profile-tab-grid" class="profile-tab-content grid grid-cols-3 gap-0.5 bg-black">
+                    <!-- Populated dynamically via JS -->
+                </div>
+
+                <!-- PROFILE TAB 2: REELS GRID -->
+                <div id="profile-tab-reels" class="profile-tab-content grid grid-cols-3 gap-0.5 bg-black hidden">
+                    <!-- Populated dynamically via JS -->
+                </div>
+
+                <!-- PROFILE TAB 3: AI STUDIO & CONTENT HUB 2026 -->
+                <div id="profile-tab-aistudio" class="profile-tab-content p-4 space-y-4 hidden">
+                    <div class="bg-gradient-to-r from-purple-900/30 via-indigo-900/20 to-neutral-900 border border-purple-500/30 rounded-2xl p-4 text-center space-y-3">
+                        <div class="w-12 h-12 rounded-full ig-ai-ring flex items-center justify-center mx-auto text-white text-xl shadow-lg">
+                            <i class="fa-solid fa-robot"></i>
+                        </div>
+                        <h3 class="font-bold text-sm text-white">AI Studio Personalizzato 2026</h3>
+                        <p class="text-xs text-neutral-400 leading-relaxed">
+                            Crea avatar 3D interattivi, cloni voce per i Reel ed genera grafiche sintetiche direttamente dal tuo profilo.
+                        </p>
+                        <button onclick="showNotificationToast('Generatore AI Studio avviato')" class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-semibold text-xs px-5 py-2 rounded-full shadow-lg transition">
+                            Crea con AI Studio
+                        </button>
+                    </div>
+
+                    <!-- Generated AI Creations Showcase -->
+                    <h4 class="font-bold text-xs text-neutral-400 uppercase tracking-wider">Creazioni Sintetiche Recenti</h4>
+                    <div class="grid grid-cols-2 gap-2">
+                        <div class="relative rounded-xl overflow-hidden group cursor-pointer" onclick="showNotificationToast('Avatar Generativo #1')">
+                            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=400" class="w-full h-36 object-cover">
+                            <div class="absolute inset-0 bg-black/40 flex items-end p-2">
+                                <span class="text-[10px] font-semibold text-purple-300">Avatar 3D Dynamic</span>
+                            </div>
+                        </div>
+                        <div class="relative rounded-xl overflow-hidden group cursor-pointer" onclick="showNotificationToast('Sfondo Generativo #2')">
+                            <img src="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?w=400" class="w-full h-36 object-cover">
+                            <div class="absolute inset-0 bg-black/40 flex items-end p-2">
+                                <span class="text-[10px] font-semibold text-cyan-300">Neural Art World</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PROFILE TAB 4: TAGGED POSTS -->
+                <div id="profile-tab-tagged" class="profile-tab-content grid grid-cols-3 gap-0.5 bg-black hidden">
+                    <!-- Populated dynamically via JS -->
+                </div>
+
+            </main>
+        </div>
+
+        <!-- ================= PAGE 3: FULLSCREEN REELS VIEW ================= -->
+        <div id="view-reels" class="page-view flex-1 flex flex-col h-full bg-black hidden relative page-transition">
+            <!-- Header Overlay -->
+            <div class="absolute top-4 left-4 right-4 z-20 flex justify-between items-center text-white font-extrabold text-xl drop-shadow-md">
                 <span>Reels</span>
-                <i class="fa-solid fa-camera cursor-pointer"></i>
+                <button onclick="showNotificationToast('Fotocamera Reels')" class="hover:opacity-80">
+                    <i class="fa-solid fa-camera"></i>
+                </button>
             </div>
 
-            <!-- Vertical Scroll Reels Wrapper -->
-            <div id="reels-container" class="w-full h-full overflow-y-snap no-scrollbar snap-y snap-mandatory relative">
-                <!-- Reels items generated dynamically -->
+            <!-- Vertical Snap Reels Scroll Container -->
+            <div id="reels-feed-container" class="w-full h-full overflow-y-snap no-scrollbar snap-y snap-mandatory relative">
+                <!-- Dynamically populated Reels -->
             </div>
         </div>
 
-        <!-- ================= PAGE 3: MESSAGES / DMS ================= -->
-        <div id="view-dms" class="page-view flex-1 flex flex-col h-full bg-black hidden">
+        <!-- ================= PAGE 4: DIRECT MESSAGES (DMs) VIEW ================= -->
+        <div id="view-dms" class="page-view flex-1 flex flex-col h-full bg-black hidden page-transition">
             <!-- DM Header -->
-            <div class="px-4 py-3 flex items-center justify-between border-b border-neutral-900">
+            <div class="safe-pt px-4 py-3 flex items-center justify-between border-b border-neutral-900 bg-black/90">
                 <div class="flex items-center gap-3">
-                    <button onclick="switchTab('home')" class="text-lg"><i class="fa-solid fa-arrow-left"></i></button>
-                    <span class="font-bold text-lg flex items-center gap-1">
+                    <button onclick="switchTab('home')" class="text-lg text-neutral-300 hover:text-white"><i class="fa-solid fa-arrow-left"></i></button>
+                    <span class="font-bold text-base flex items-center gap-1.5 cursor-pointer">
                         marco_dev <i class="fa-solid fa-chevron-down text-xs text-neutral-400"></i>
                     </span>
                 </div>
-                <div class="flex items-center gap-4 text-xl">
-                    <i class="fa-solid fa-video"></i>
-                    <i class="fa-regular fa-pen-to-square"></i>
+                <div class="flex items-center gap-5 text-lg">
+                    <button onclick="showNotificationToast('Chiama con AI Call')"><i class="fa-solid fa-video"></i></button>
+                    <button onclick="showNotificationToast('Nuovo messaggio')"><i class="fa-regular fa-pen-to-square"></i></button>
                 </div>
             </div>
 
-            <!-- Notes Tray -->
-            <div class="p-3 border-b border-neutral-900 flex gap-4 overflow-x-auto no-scrollbar">
-                <div class="flex flex-col items-center gap-1 shrink-0 relative">
+            <!-- DMs Notes Tray -->
+            <div class="p-3 border-b border-neutral-900 flex gap-4 overflow-x-auto no-scrollbar bg-neutral-950/40">
+                <div class="flex flex-col items-center gap-1 shrink-0 relative cursor-pointer" onclick="showNotificationToast('Aggiungi una nota')">
                     <div class="absolute -top-2 bg-neutral-800 text-[10px] px-2 py-0.5 rounded-full text-neutral-300 border border-neutral-700 max-w-[70px] truncate">
-                        Condividi una...
+                        La tua nota...
                     </div>
-                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150" class="w-14 h-14 rounded-full object-cover mt-2">
-                    <span class="text-xs text-neutral-400">La tua nota</span>
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150" class="w-14 h-14 rounded-full object-cover mt-2 border border-neutral-800">
+                    <span class="text-[11px] text-neutral-400">La tua nota</span>
                 </div>
-                <div class="flex flex-col items-center gap-1 shrink-0 relative">
-                    <div class="absolute -top-2 bg-neutral-800 text-[10px] px-2 py-0.5 rounded-full text-neutral-300 border border-neutral-700 max-w-[70px] truncate">
-                        Codificando UI 🚀
+                <div class="flex flex-col items-center gap-1 shrink-0 relative cursor-pointer" onclick="showNotificationToast('Nota di sara.ui: Coding Web UI 💻')">
+                    <div class="absolute -top-2 bg-neutral-800 text-[10px] px-2 py-0.5 rounded-full text-neutral-200 border border-neutral-700 max-w-[80px] truncate">
+                        Coding UI 💻
                     </div>
-                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150" class="w-14 h-14 rounded-full object-cover mt-2">
-                    <span class="text-xs text-neutral-300">sara.ui</span>
+                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150" class="w-14 h-14 rounded-full object-cover mt-2 border border-neutral-800">
+                    <span class="text-[11px] text-neutral-300">sara.ui</span>
                 </div>
             </div>
 
-            <!-- Messages List -->
-            <div class="flex-1 overflow-y-auto p-4 space-y-4">
-                <div class="text-sm font-semibold text-neutral-400 mb-2">Messaggi</div>
-                <div class="flex items-center justify-between cursor-pointer hover:bg-neutral-900/50 p-2 rounded-xl transition" onclick="openChat('sara.ui')">
+            <!-- Chat Conversations List -->
+            <div class="flex-1 overflow-y-auto p-3 space-y-1">
+                <div class="text-xs font-bold text-neutral-400 uppercase tracking-wider mb-2 px-1">Messaggi diretti</div>
+                
+                <div class="flex items-center justify-between cursor-pointer hover:bg-neutral-900 p-2 rounded-xl transition" onclick="showNotificationToast('Chat aperta con sara.ui')">
                     <div class="flex items-center gap-3">
                         <div class="relative">
-                            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150" class="w-14 h-14 rounded-full object-cover">
-                            <span class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-green-500 border-2 border-black rounded-full"></span>
+                            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150" class="w-12 h-12 rounded-full object-cover">
+                            <span class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-black rounded-full"></span>
                         </div>
                         <div>
-                            <p class="font-semibold text-sm">sara.ui</p>
-                            <p class="text-xs text-neutral-400 font-medium">Inviato 10 min fa • <span class="text-white">Hai visto il nuovo design?</span></p>
+                            <p class="font-bold text-xs text-neutral-100">sara.ui</p>
+                            <p class="text-xs text-neutral-400">Hai visto il nuovo layout 2026? • 12m</p>
                         </div>
                     </div>
                     <i class="fa-regular fa-camera text-neutral-400 text-lg"></i>
                 </div>
-                <div class="flex items-center justify-between cursor-pointer hover:bg-neutral-900/50 p-2 rounded-xl transition" onclick="openChat('alex_tech')">
+
+                <div class="flex items-center justify-between cursor-pointer hover:bg-neutral-900 p-2 rounded-xl transition" onclick="showNotificationToast('Chat aperta con alex_tech')">
                     <div class="flex items-center gap-3">
-                        <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150" class="w-14 h-14 rounded-full object-cover">
+                        <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150" class="w-12 h-12 rounded-full object-cover">
                         <div>
-                            <p class="font-semibold text-sm">alex_tech</p>
-                            <p class="text-xs text-neutral-400">Attivo/a 2 ore fa</p>
+                            <p class="font-bold text-xs text-neutral-100">alex_tech</p>
+                            <p class="text-xs text-neutral-400">Inviato un reel • 2h</p>
                         </div>
                     </div>
                     <i class="fa-regular fa-camera text-neutral-400 text-lg"></i>
@@ -201,500 +472,809 @@
             </div>
         </div>
 
-        <!-- ================= PAGE 4: PROFILE ================= -->
-        <div id="view-profile" class="page-view flex-1 flex flex-col h-full bg-black hidden overflow-y-auto no-scrollbar">
-            <!-- Profile Header -->
-            <div class="px-4 py-3 flex justify-between items-center border-b border-neutral-900">
-                <div class="flex items-center gap-2 font-bold text-lg">
-                    <i class="fa-solid fa-lock text-sm"></i> marco_dev
-                </div>
-                <div class="flex items-center gap-5 text-xl">
-                    <button id="theme-toggle" class="hover:opacity-70 transition">
-                        <i class="fa-solid fa-moon"></i>
-                    </button>
-                    <i class="fa-solid fa-bars cursor-pointer"></i>
-                </div>
-            </div>
-
-            <!-- Profile Info -->
-            <div class="p-4 space-y-4">
-                <div class="flex items-center justify-between">
-                    <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150" class="w-20 h-20 rounded-full object-cover p-0.5 border-2 border-neutral-700">
-                    </div>
-                    <div class="flex gap-6 text-center">
-                        <div>
-                            <p class="font-bold text-base">42</p>
-                            <p class="text-xs text-neutral-400">Post</p>
-                        </div>
-                        <div>
-                            <p class="font-bold text-base">1.284</p>
-                            <p class="text-xs text-neutral-400">Follower</p>
-                        </div>
-                        <div>
-                            <p class="font-bold text-base">450</p>
-                            <p class="text-xs text-neutral-400">Seguiti</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Bio -->
-                <div>
-                    <h1 class="font-bold text-sm">Marco Rossi | Mobile & Web Dev</h1>
-                    <p class="text-xs text-neutral-300 mt-0.5">Creatore di UI moderne e responsive 💻✨</p>
-                    <p class="text-xs text-ig-primary hover:underline mt-1 cursor-pointer">github.com/marco-dev</p>
-                </div>
-
-                <!-- Actions -->
-                <div class="flex gap-2">
-                    <button class="flex-1 bg-neutral-800 hover:bg-neutral-700 text-xs font-semibold py-2 rounded-lg transition">Modifica profilo</button>
-                    <button class="flex-1 bg-neutral-800 hover:bg-neutral-700 text-xs font-semibold py-2 rounded-lg transition">Condividi profilo</button>
-                    <button class="bg-neutral-800 hover:bg-neutral-700 px-3 py-2 rounded-lg text-xs transition"><i class="fa-solid fa-user-plus"></i></button>
-                </div>
-            </div>
-
-            <!-- Grid Tabs -->
-            <div class="flex border-t border-neutral-900 mt-2 text-center">
-                <button class="flex-1 py-3 border-b-2 border-white text-lg"><i class="fa-solid fa-table-cells"></i></button>
-                <button class="flex-1 py-3 text-neutral-500 text-lg"><i class="fa-solid fa-clapperboard"></i></button>
-                <button class="flex-1 py-3 text-neutral-500 text-lg"><i class="fa-regular fa-id-badge"></i></button>
-            </div>
-
-            <!-- Photos Grid -->
-            <div class="grid grid-cols-3 gap-0.5 flex-1 bg-neutral-900">
-                <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=300" class="w-full h-32 object-cover">
-                <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=300" class="w-full h-32 object-cover">
-                <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=300" class="w-full h-32 object-cover">
-                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=300" class="w-full h-32 object-cover">
-                <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=300" class="w-full h-32 object-cover">
-                <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=300" class="w-full h-32 object-cover">
-            </div>
-        </div>
-
-        <!-- ================= BOTTOM NAVIGATION BAR ================= -->
-        <nav class="absolute bottom-0 left-0 right-0 bg-black/90 backdrop-blur-md border-t border-neutral-900 px-6 py-3 flex justify-between items-center z-30 safe-pb">
-            <button onclick="switchTab('home')" class="nav-btn text-xl text-white active:scale-90 transition" data-target="home">
+        <!-- ================= BOTTOM NAVIGATION BAR (2026 STYLE) ================= -->
+        <nav class="absolute bottom-0 left-0 right-0 bg-black/90 glass-nav border-t border-neutral-900/80 px-6 py-2.5 flex justify-between items-center z-30 safe-pb">
+            <button onclick="switchTab('home')" class="nav-btn text-xl text-neutral-500 hover:text-white transition active:scale-90" data-target="home">
                 <i class="fa-solid fa-house"></i>
             </button>
-            <button onclick="switchTab('reels')" class="nav-btn text-xl text-neutral-500 hover:text-white active:scale-90 transition" data-target="reels">
+            <button onclick="switchTab('reels')" class="nav-btn text-xl text-neutral-500 hover:text-white transition active:scale-90" data-target="reels">
                 <i class="fa-solid fa-clapperboard"></i>
             </button>
-            <button onclick="triggerCreateAction()" class="text-xl text-neutral-500 hover:text-white active:scale-90 transition">
+            <button onclick="openCreateModal()" class="text-xl text-neutral-500 hover:text-white transition active:scale-90">
                 <i class="fa-regular fa-square-plus"></i>
             </button>
-            <button onclick="showNotificationToast('Esplora sezione 2026')" class="text-xl text-neutral-500 hover:text-white active:scale-90 transition">
+            <button onclick="showNotificationToast('Esplora & Search 2026')" class="text-xl text-neutral-500 hover:text-white transition active:scale-90">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </button>
-            <button onclick="switchTab('profile')" class="nav-btn p-0.5 rounded-full active:scale-90 transition" data-target="profile">
+            <button onclick="switchTab('profile')" class="nav-btn p-0.5 rounded-full transition active:scale-90 border-2 border-white" data-target="profile">
                 <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150" class="w-6 h-6 rounded-full object-cover">
             </button>
         </nav>
 
-        <!-- ================= MODALS & OVERLAYS ================= -->
-        
-        <!-- Story Viewer Modal -->
-        <div id="story-modal" class="fixed inset-0 bg-black/95 z-50 hidden flex flex-col justify-between p-4">
-            <!-- Progress Bar -->
-            <div class="w-full flex gap-1 h-1 bg-neutral-800 rounded overflow-hidden">
-                <div id="story-progress" class="h-full bg-white w-0"></div>
-            </div>
+        <!-- ================= OVERLAYS & MODALS ================= -->
 
-            <!-- Story Header -->
-            <div class="flex justify-between items-center mt-3 z-10">
-                <div class="flex items-center gap-2">
-                    <img id="story-user-img" class="w-8 h-8 rounded-full object-cover">
-                    <span id="story-username" class="font-bold text-sm text-white"></span>
-                    <span class="text-xs text-neutral-400">2h</span>
+        <!-- 1. FULL POST MODAL OVERLAY -->
+        <div id="post-modal" class="fixed inset-0 bg-black/95 z-50 hidden flex flex-col justify-between overflow-hidden">
+            <!-- Modal Top Header -->
+            <div class="px-4 py-3 flex justify-between items-center border-b border-neutral-900 bg-black/80 glass-nav">
+                <div class="flex items-center gap-3">
+                    <button onclick="closePostModal()" class="text-lg text-white"><i class="fa-solid fa-arrow-left"></i></button>
+                    <span class="font-bold text-sm text-neutral-200 uppercase tracking-wide">Post</span>
                 </div>
-                <button onclick="closeStory()" class="text-white text-lg"><i class="fa-solid fa-xmark"></i></button>
+                <i class="fa-solid fa-ellipsis text-neutral-400 cursor-pointer" onclick="showNotificationToast('Opzioni post')"></i>
             </div>
 
-            <!-- Story Media Content -->
-            <div class="flex-1 my-auto flex items-center justify-center relative my-4 rounded-xl overflow-hidden bg-neutral-900">
-                <img id="story-img" class="w-full max-h-[70vh] object-cover">
-                <!-- Navigation Tap zones -->
-                <div class="absolute left-0 top-0 bottom-0 w-1/2" onclick="prevStory()"></div>
-                <div class="absolute right-0 top-0 bottom-0 w-1/2" onclick="nextStory()"></div>
-            </div>
+            <!-- Modal Post Content Scroll -->
+            <div class="flex-1 overflow-y-auto no-scrollbar">
+                <!-- User Info Bar -->
+                <div class="flex items-center justify-between p-3">
+                    <div class="flex items-center gap-2.5">
+                        <img id="modal-post-avatar" class="w-8 h-8 rounded-full object-cover">
+                        <div>
+                            <div class="flex items-center gap-1">
+                                <span id="modal-post-username" class="font-bold text-xs"></span>
+                                <i class="fa-solid fa-circle-check text-ig-primary text-[10px]"></i>
+                            </div>
+                            <span id="modal-post-location" class="text-[10px] text-neutral-400"></span>
+                        </div>
+                    </div>
+                    <button class="bg-neutral-800 text-xs font-semibold px-3 py-1 rounded-md text-white hover:bg-neutral-700" onclick="showNotificationToast('Azione eseguita')">Segui già</button>
+                </div>
 
-            <!-- Story Footer Input -->
-            <div class="flex items-center gap-3 z-10 pb-2">
-                <input type="text" placeholder="Invia un messaggio..." class="flex-1 bg-transparent border border-neutral-700 rounded-full px-4 py-2 text-sm text-white focus:outline-none">
-                <button class="text-xl text-white hover:text-red-500 transition"><i class="fa-regular fa-heart"></i></button>
-                <button class="text-xl text-white"><i class="fa-regular fa-paper-plane"></i></button>
-            </div>
-        </div>
+                <!-- Post Image with Double Tap Gesture -->
+                <div class="relative overflow-hidden cursor-pointer bg-neutral-900" ondblclick="handleModalDoubleTap(event)">
+                    <img id="modal-post-img" class="w-full h-[400px] object-cover">
+                    <!-- Pop Heart Icon -->
+                    <div id="modal-heart-pop" class="absolute inset-0 flex items-center justify-center opacity-0 pointer-events-none text-white text-7xl drop-shadow-2xl">
+                        <i class="fa-solid fa-heart text-red-500"></i>
+                    </div>
+                </div>
 
-        <!-- Comments Modal Overlay -->
-        <div id="comments-modal" class="fixed inset-0 bg-black/80 z-50 hidden flex flex-col justify-end transition-opacity duration-300">
-            <div class="bg-neutral-900 w-full rounded-t-3xl p-4 max-h-[70vh] flex flex-col">
-                <div class="w-12 h-1 bg-neutral-700 rounded-full mx-auto mb-4"></div>
-                <h3 class="font-bold text-center text-sm border-b border-neutral-800 pb-3">Commenti</h3>
-                
-                <div id="comments-list" class="flex-1 overflow-y-auto py-4 space-y-4 no-scrollbar">
+                <!-- Action Bar -->
+                <div class="p-3 flex justify-between items-center text-xl">
+                    <div class="flex items-center gap-4">
+                        <button id="modal-like-btn" onclick="toggleModalLike()" class="transition active:scale-125">
+                            <i id="modal-like-icon" class="fa-regular fa-heart"></i>
+                        </button>
+                        <button onclick="focusCommentInput()" class="hover:opacity-70">
+                            <i class="fa-regular fa-comment"></i>
+                        </button>
+                        <button onclick="showNotificationToast('Invia a un amico')" class="hover:opacity-70">
+                            <i class="fa-regular fa-paper-plane"></i>
+                        </button>
+                    </div>
+                    <button onclick="showNotificationToast('Post Salvato')" class="hover:opacity-70">
+                        <i class="fa-regular fa-bookmark"></i>
+                    </button>
+                </div>
+
+                <!-- Likes & Caption -->
+                <div class="px-3 space-y-1">
+                    <p class="text-xs font-bold"><span id="modal-likes-count">0</span> "Mi piace"</p>
+                    <p class="text-xs text-neutral-200">
+                        <span id="modal-caption-username" class="font-bold mr-1"></span>
+                        <span id="modal-caption-text"></span>
+                    </p>
+                    <p class="text-[10px] text-neutral-500 uppercase pt-1" id="modal-time"></p>
+                </div>
+
+                <!-- Comments List -->
+                <div class="p-3 border-t border-neutral-900 mt-3 space-y-3" id="modal-comments-container">
                     <!-- Dynamic comments list -->
                 </div>
+            </div>
 
-                <!-- Comment Input -->
-                <div class="border-t border-neutral-800 pt-3 flex items-center gap-2">
-                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150" class="w-8 h-8 rounded-full object-cover">
-                    <input id="comment-input" type="text" placeholder="Aggiungi un commento..." class="flex-1 bg-neutral-800 rounded-full px-4 py-2 text-xs text-white focus:outline-none">
-                    <button onclick="addComment()" class="text-ig-primary font-bold text-xs px-2">Pubblica</button>
-                </div>
+            <!-- Bottom Add Comment Field -->
+            <div class="p-3 border-t border-neutral-900 bg-black/90 glass-nav flex items-center gap-3">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150" class="w-7 h-7 rounded-full object-cover">
+                <input id="modal-comment-input" type="text" placeholder="Aggiungi un commento..." class="flex-1 bg-neutral-900 border border-neutral-800 rounded-full px-4 py-2 text-xs text-white focus:outline-none focus:border-neutral-700">
+                <button onclick="submitModalComment()" class="text-ig-primary font-bold text-xs px-2">Pubblica</button>
             </div>
         </div>
 
-        <!-- Toast Notification -->
-        <div id="toast" class="absolute top-12 left-1/2 -translate-x-1/2 bg-neutral-800 text-white text-xs px-4 py-2 rounded-full shadow-lg opacity-0 transition-opacity duration-300 pointer-events-none z-50 border border-neutral-700">
-            Messaggio Toast
+        <!-- 2. STORY VIEWER OVERLAY MODAL -->
+        <div id="story-modal" class="fixed inset-0 bg-black/95 z-50 hidden flex flex-col justify-between p-4">
+            <!-- Story Progress Bars Container -->
+            <div class="w-full flex gap-1 h-1 bg-neutral-800/80 rounded overflow-hidden z-20">
+                <div id="story-progress-bar" class="h-full bg-white w-0"></div>
+            </div>
+
+            <!-- Story Top Bar -->
+            <div class="flex justify-between items-center mt-3 z-20">
+                <div class="flex items-center gap-2">
+                    <img id="story-user-avatar" class="w-8 h-8 rounded-full object-cover border border-black">
+                    <span id="story-user-name" class="font-bold text-xs text-white"></span>
+                    <span class="text-[10px] text-neutral-400">3h</span>
+                </div>
+                <button onclick="closeStory()" class="text-white text-lg hover:opacity-70"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <!-- Story Image Display Area -->
+            <div class="flex-1 my-auto flex items-center justify-center relative rounded-2xl overflow-hidden bg-neutral-900 my-3">
+                <img id="story-main-image" class="w-full max-h-[72vh] object-cover">
+                <!-- Navigation Tap Zones -->
+                <div class="absolute left-0 top-0 bottom-0 w-1/3" onclick="prevStory()"></div>
+                <div class="absolute right-0 top-0 bottom-0 w-1/3" onclick="nextStory()"></div>
+            </div>
+
+            <!-- Story Bottom Interactive Input -->
+            <div class="flex items-center gap-3 z-20 pb-2">
+                <input type="text" placeholder="Invia un messaggio..." class="flex-1 bg-neutral-900/80 border border-neutral-700 rounded-full px-4 py-2 text-xs text-white focus:outline-none">
+                <button onclick="showNotificationToast('Cuore inviato!')" class="text-xl text-white hover:text-red-500 transition"><i class="fa-regular fa-heart"></i></button>
+                <button onclick="showNotificationToast('Inviato!')" class="text-xl text-white"><i class="fa-regular fa-paper-plane"></i></button>
+            </div>
+        </div>
+
+        <!-- 3. FOLLOWERS / FOLLOWING LIST MODAL -->
+        <div id="followers-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex flex-col justify-end">
+            <div class="bg-neutral-900 w-full rounded-t-3xl p-4 max-h-[75vh] flex flex-col">
+                <div class="w-10 h-1 bg-neutral-700 rounded-full mx-auto mb-3"></div>
+                <h3 id="followers-modal-title" class="font-bold text-center text-sm border-b border-neutral-800 pb-3">Follower</h3>
+                
+                <div class="flex-1 overflow-y-auto py-2 divide-y divide-neutral-800/50 no-scrollbar">
+                    <div class="flex items-center justify-between py-2.5">
+                        <div class="flex items-center gap-3">
+                            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150" class="w-10 h-10 rounded-full object-cover">
+                            <div>
+                                <p class="font-bold text-xs">sara.ui</p>
+                                <p class="text-[10px] text-neutral-400">Sara Jenkins</p>
+                            </div>
+                        </div>
+                        <button class="bg-neutral-800 text-xs px-3 py-1 rounded-lg font-semibold text-white">Rimuovi</button>
+                    </div>
+
+                    <div class="flex items-center justify-between py-2.5">
+                        <div class="flex items-center gap-3">
+                            <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150" class="w-10 h-10 rounded-full object-cover">
+                            <div>
+                                <p class="font-bold text-xs">alex_tech</p>
+                                <p class="text-[10px] text-neutral-400">Alex Rivera</p>
+                            </div>
+                        </div>
+                        <button class="bg-neutral-800 text-xs px-3 py-1 rounded-lg font-semibold text-white">Rimuovi</button>
+                    </div>
+                </div>
+
+                <button onclick="closeFollowersModal()" class="w-full bg-neutral-800 hover:bg-neutral-700 text-white font-semibold text-xs py-2.5 rounded-xl mt-3">Chiudi</button>
+            </div>
         </div>
 
     </div>
 
     <script>
-        // Mock Data
-        const storiesData = [
-            { id: 1, name: 'sara.ui', avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150', image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600' },
-            { id: 2, name: 'alex_tech', avatar: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150', image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=600' },
-            { id: 3, name: 'elena_design', avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150', image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600' },
-            { id: 4, name: 'luca_dev', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150', image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600' }
-        ];
-
-        const postsData = [
+        /* ================= APP DATA STATE ================= */
+        const profilePostsData = [
             {
-                id: 101,
-                username: 'sara.ui',
-                avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150',
-                location: 'Milano, Italia',
+                id: 1,
+                type: 'image',
                 image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800',
-                likes: 1243,
+                likes: 3420,
                 liked: false,
-                caption: 'Esplorando nuove tendenze UI/UX per il 2026 🔥✨ #design #mobile #ui',
                 comments: [
-                    { username: 'alex_tech', text: 'Design fantastico!' },
-                    { username: 'marco_dev', text: 'Molto pulito e moderno 👌' }
+                    { username: 'sara.ui', text: 'Impostazione visiva incredibile! 🔥' },
+                    { username: 'alex_tech', text: 'Che stack hai usato per questo?' }
                 ],
+                caption: 'Esplorando le nuove frontiere dell\'interfaccia utente 2026. Design generativo e micro-interazioni avanzate.',
+                location: 'Milano Tech Hub',
                 time: '2 ORE FA'
             },
             {
-                id: 102,
-                username: 'alex_tech',
-                avatar: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150',
-                location: 'Setup Studio',
+                id: 2,
+                type: 'reel',
+                views: '45.8k',
                 image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800',
-                likes: 856,
-                liked: false,
-                caption: 'Nuova postazione da lavoro completata! Che ne pensate?',
-                comments: [
-                    { username: 'elena_design', text: 'Luci pazzesche 😍' }
-                ],
-                time: '5 ORE FA'
-            }
-        ];
-
-        const reelsData = [
+                likes: 8920,
+                liked: true,
+                comments: [{ username: 'elena_design', text: 'Video stupendo!!' }],
+                caption: 'Un giorno nel mio studio di sviluppo software nel 2026 💻✨ #developer #tech',
+                location: 'Studio Milano',
+                time: '1 GIORNO FA'
+            },
             {
-                id: 201,
-                username: 'creative_coder',
-                avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150',
-                videoBg: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800',
-                description: 'Costruendo il futuro del web con micro-animazioni! 🚀',
-                audio: 'Suono originale - creative_coder',
-                likes: '45.2K',
-                comments: '342'
+                id: 3,
+                type: 'image',
+                image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800',
+                likes: 1250,
+                liked: false,
+                comments: [],
+                caption: 'Matrice di codice e logica algoritmica.',
+                location: 'Cyber Labs',
+                time: '3 GIORNI FA'
+            },
+            {
+                id: 4,
+                type: 'image',
+                image: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=800',
+                likes: 2100,
+                liked: false,
+                comments: [{ username: 'luca_dev', text: 'Top!' }],
+                caption: 'Minimalismo digitale ed eleganza architetturale.',
+                location: 'Milano Center',
+                time: '5 GIORNI FA'
+            },
+            {
+                id: 5,
+                type: 'reel',
+                views: '12.3k',
+                image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800',
+                likes: 4300,
+                liked: false,
+                comments: [],
+                caption: 'Setup workstation con schermi OLED curvi!',
+                location: 'Home Office',
+                time: '1 SETTIMANA FA'
+            },
+            {
+                id: 6,
+                type: 'image',
+                image: 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=800',
+                likes: 5600,
+                liked: true,
+                caption: 'Nuovo laptop futuristico in test.',
+                comments: [],
+                location: 'Tech Conference',
+                time: '2 SETTIMANE FA'
             }
         ];
 
-        let activePostIdForComments = null;
-        let currentStoryIndex = 0;
-        let storyTimer = null;
+        const storiesList = [
+            { id: 1, name: 'sara.ui', avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150', image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800' },
+            { id: 2, name: 'alex_tech', avatar: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150', image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800' },
+            { id: 3, name: 'elena_design', avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150', image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800' }
+        ];
 
-        // Initialize App
+        let activePostInModal = null;
+        let currentStoryIdx = 0;
+        let storyTimerRef = null;
+
+        /* ================= INIT ON LOAD ================= */
         window.onload = function() {
-            renderStories();
-            renderPosts();
-            renderReels();
-            setupThemeToggle();
+            renderHomeStories();
+            renderHomePosts();
+            renderProfilePosts();
+            renderProfileReels();
+            renderProfileTagged();
+            renderReelsFeed();
+            setupThemeToggleLogic();
         };
 
-        // Render Stories Tray
-        function renderStories() {
-            const container = document.getElementById('stories-container');
-            container.innerHTML = storiesData.map((story, index) => `
-                <div class="flex flex-col items-center gap-1 cursor-pointer shrink-0" onclick="openStory(${index})">
+        /* ================= RENDERING LOGIC ================= */
+
+        // Render Home Stories Tray
+        function renderHomeStories() {
+            const container = document.getElementById('home-stories-container');
+            container.innerHTML = storiesList.map((story, idx) => `
+                <div class="flex flex-col items-center gap-1 cursor-pointer shrink-0" onclick="openStory(${idx})">
                     <div class="ig-story-ring p-[2px] rounded-full">
                         <img src="${story.avatar}" class="w-14 h-14 object-cover rounded-full border-2 border-black">
                     </div>
-                    <span class="text-xs text-neutral-300 w-16 truncate text-center">${story.name}</span>
+                    <span class="text-[11px] text-neutral-300 w-16 truncate text-center font-medium">${story.name}</span>
                 </div>
             `).join('');
         }
 
-        // Render Feed Posts
-        function renderPosts() {
-            const container = document.getElementById('posts-container');
-            container.innerHTML = postsData.map(post => `
+        // Render Feed Posts on Home
+        function renderHomePosts() {
+            const container = document.getElementById('home-posts-container');
+            container.innerHTML = profilePostsData.slice(0, 3).map(post => `
                 <article class="py-3">
-                    <!-- Post Header -->
                     <div class="flex items-center justify-between px-3 mb-2">
                         <div class="flex items-center gap-2">
-                            <img src="${post.avatar}" class="w-8 h-8 rounded-full object-cover border border-neutral-800">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150" class="w-8 h-8 rounded-full object-cover">
                             <div>
-                                <h2 class="text-xs font-bold leading-none">${post.username}</h2>
+                                <h2 class="text-xs font-bold leading-none">marco_dev</h2>
                                 <span class="text-[10px] text-neutral-400">${post.location}</span>
                             </div>
                         </div>
-                        <i class="fa-solid fa-ellipsis text-neutral-400 cursor-pointer"></i>
+                        <i class="fa-solid fa-ellipsis text-neutral-400 cursor-pointer" onclick="showNotificationToast('Opzioni post')"></i>
                     </div>
 
-                    <!-- Post Image with Double Tap Container -->
-                    <div class="relative overflow-hidden cursor-pointer bg-neutral-900" ondblclick="handleDoubleTap(${post.id}, event)">
-                        <img src="${post.image}" class="w-full h-[400px] object-cover select-none">
-                        <!-- Pop Heart Overlay -->
-                        <div id="heart-pop-${post.id}" class="absolute inset-0 flex items-center justify-center opacity-0 pointer-events-none text-white text-7xl drop-shadow-lg">
-                            <i class="fa-solid fa-heart text-red-500"></i>
-                        </div>
+                    <div class="relative overflow-hidden cursor-pointer bg-neutral-900" onclick="openPostModal(${post.id})">
+                        <img src="${post.image}" class="w-full h-[380px] object-cover">
                     </div>
 
-                    <!-- Action Buttons -->
                     <div class="px-3 pt-3 flex justify-between items-center text-xl">
                         <div class="flex items-center gap-4">
-                            <button onclick="toggleLike(${post.id})" class="transition active:scale-125">
-                                <i id="like-icon-${post.id}" class="${post.liked ? 'fa-solid fa-heart text-red-500' : 'fa-regular fa-heart'}"></i>
-                            </button>
-                            <button onclick="openComments(${post.id})" class="hover:opacity-70 transition">
-                                <i class="fa-regular fa-comment"></i>
-                            </button>
-                            <button onclick="showNotificationToast('Condiviso!')" class="hover:opacity-70 transition">
-                                <i class="fa-regular fa-paper-plane"></i>
-                            </button>
+                            <i class="${post.liked ? 'fa-solid fa-heart text-red-500' : 'fa-regular fa-heart'} cursor-pointer"></i>
+                            <i class="fa-regular fa-comment cursor-pointer" onclick="openPostModal(${post.id})"></i>
+                            <i class="fa-regular fa-paper-plane cursor-pointer" onclick="showNotificationToast('Condividi post')"></i>
                         </div>
-                        <button onclick="showNotificationToast('Salvato nei preferiti')" class="hover:opacity-70 transition">
-                            <i class="fa-regular fa-bookmark"></i>
-                        </button>
+                        <i class="fa-regular fa-bookmark cursor-pointer"></i>
                     </div>
 
-                    <!-- Likes Count -->
                     <div class="px-3 mt-2">
-                        <p class="text-xs font-bold"><span id="likes-count-${post.id}">${post.likes}</span> "Mi piace"</p>
-                    </div>
-
-                    <!-- Caption -->
-                    <div class="px-3 mt-1 text-xs">
-                        <span class="font-bold mr-1">${post.username}</span>
-                        <span class="text-neutral-200">${post.caption}</span>
-                    </div>
-
-                    <!-- Comments Trigger -->
-                    <div class="px-3 mt-1">
-                        <button onclick="openComments(${post.id})" class="text-xs text-neutral-400">
-                            Mostra tutti e ${post.comments.length} i commenti
-                        </button>
-                    </div>
-
-                    <!-- Timestamp -->
-                    <div class="px-3 mt-1">
-                        <span class="text-[10px] text-neutral-500 uppercase">${post.time}</span>
+                        <p class="text-xs font-bold">${post.likes} "Mi piace"</p>
+                        <p class="text-xs text-neutral-300 mt-0.5"><span class="font-bold mr-1">marco_dev</span>${post.caption}</p>
                     </div>
                 </article>
             `).join('');
         }
 
-        // Double Tap Like Animation
-        function handleDoubleTap(postId, event) {
-            const post = postsData.find(p => p.id === postId);
-            if (!post.liked) {
-                toggleLike(postId);
-            }
-            
-            const heartPop = document.getElementById(`heart-pop-${postId}`);
-            heartPop.classList.remove('animate-heart-pop');
-            void heartPop.offsetWidth; // trigger reflow
-            heartPop.classList.add('animate-heart-pop');
-        }
+        // Render Profile Posts 3-Column Grid
+        function renderProfilePosts() {
+            const container = document.getElementById('profile-tab-grid');
+            container.innerHTML = profilePostsData.map(post => `
+                <div class="relative aspect-square bg-neutral-900 group cursor-pointer overflow-hidden" onclick="openPostModal(${post.id})">
+                    <img src="${post.image}" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                    
+                    ${post.type === 'reel' ? `
+                        <div class="absolute top-2 right-2 text-white text-xs drop-shadow">
+                            <i class="fa-solid fa-play"></i>
+                        </div>
+                    ` : ''}
 
-        // Toggle Like State
-        function toggleLike(postId) {
-            const post = postsData.find(p => p.id === postId);
-            post.liked = !post.liked;
-            post.likes += post.liked ? 1 : -1;
-
-            const icon = document.getElementById(`like-icon-${postId}`);
-            const count = document.getElementById(`likes-count-${postId}`);
-
-            if (post.liked) {
-                icon.className = 'fa-solid fa-heart text-red-500';
-            } else {
-                icon.className = 'fa-regular fa-heart';
-            }
-            count.innerText = post.likes;
-        }
-
-        // Comments Handling
-        function openComments(postId) {
-            activePostIdForComments = postId;
-            const post = postsData.find(p => p.id === postId);
-            const modal = document.getElementById('comments-modal');
-            const list = document.getElementById('comments-list');
-
-            list.innerHTML = post.comments.map(c => `
-                <div class="flex gap-3 text-xs">
-                    <span class="font-bold">${c.username}:</span>
-                    <span class="text-neutral-300">${c.text}</span>
+                    <!-- Hover / Touch Overlay Count -->
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4 text-white text-xs font-bold">
+                        <span class="flex items-center gap-1"><i class="fa-solid fa-heart"></i> ${post.likes}</span>
+                        <span class="flex items-center gap-1"><i class="fa-solid fa-comment"></i> ${post.comments.length}</span>
+                    </div>
                 </div>
             `).join('');
-
-            modal.classList.remove('hidden');
         }
 
-        function addComment() {
-            const input = document.getElementById('comment-input');
-            const text = input.value.trim();
-            if (!text || !activePostIdForComments) return;
-
-            const post = postsData.find(p => p.id === activePostIdForComments);
-            post.comments.push({ username: 'marco_dev', text: text });
-            
-            input.value = '';
-            openComments(activePostIdForComments); // Re-render
-            renderPosts(); // Update feed count
+        // Render Profile Reels Grid Tab
+        function renderProfileReels() {
+            const container = document.getElementById('profile-tab-reels');
+            const reelsOnly = profilePostsData.filter(p => p.type === 'reel' || p.views);
+            container.innerHTML = reelsOnly.map(reel => `
+                <div class="relative aspect-[9/16] bg-neutral-900 group cursor-pointer overflow-hidden" onclick="openPostModal(${reel.id})">
+                    <img src="${reel.image}" class="w-full h-full object-cover">
+                    <div class="absolute bottom-2 left-2 flex items-center gap-1 text-white text-[11px] font-semibold drop-shadow">
+                        <i class="fa-solid fa-play text-[9px]"></i>
+                        <span>${reel.views || '15.4k'}</span>
+                    </div>
+                </div>
+            `).join('');
         }
 
-        // Close comment modal on click outside
-        document.getElementById('comments-modal').addEventListener('click', (e) => {
-            if (e.target.id === 'comments-modal') {
-                document.getElementById('comments-modal').classList.add('hidden');
-            }
-        });
+        // Render Profile Tagged Grid Tab
+        function renderProfileTagged() {
+            const container = document.getElementById('profile-tab-tagged');
+            container.innerHTML = `
+                <div class="col-span-3 py-12 text-center text-neutral-500 space-y-2">
+                    <div class="w-16 h-16 rounded-full border-2 border-neutral-700 flex items-center justify-center mx-auto text-2xl">
+                        <i class="fa-regular fa-id-badge"></i>
+                    </div>
+                    <p class="font-bold text-sm text-neutral-300">Foto e video in cui ci sei tu</p>
+                    <p class="text-xs max-w-xs mx-auto">Quando le persone ti taggano nelle foto, appariranno qui.</p>
+                </div>
+            `;
+        }
 
-        // Navigation Tabs Controller
+        // Render Reels View
+        function renderReelsFeed() {
+            const container = document.getElementById('reels-feed-container');
+            container.innerHTML = `
+                <div class="w-full h-full snap-start relative flex-shrink-0 bg-neutral-900">
+                    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/80"></div>
+                    
+                    <div class="absolute right-4 bottom-20 flex flex-col items-center gap-6 text-white text-xl z-10">
+                        <button onclick="showNotificationToast('Mi piace al Reel')" class="flex flex-col items-center gap-1"><i class="fa-regular fa-heart"></i><span class="text-xs font-semibold">45.2K</span></button>
+                        <button onclick="showNotificationToast('Commenti Reel')" class="flex flex-col items-center gap-1"><i class="fa-regular fa-comment"></i><span class="text-xs font-semibold">342</span></button>
+                        <button onclick="showNotificationToast('Condividi Reel')"><i class="fa-regular fa-paper-plane"></i></button>
+                        <button onclick="showNotificationToast('Altre opzioni')"><i class="fa-solid fa-ellipsis"></i></button>
+                    </div>
+
+                    <div class="absolute left-4 bottom-20 right-16 text-white z-10 space-y-2">
+                        <div class="flex items-center gap-2">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150" class="w-8 h-8 rounded-full object-cover">
+                            <span class="font-bold text-xs">marco_dev</span>
+                            <button class="border border-white/40 bg-white/10 text-[10px] font-semibold px-2 py-0.5 rounded-lg backdrop-blur">Segui già</button>
+                        </div>
+                        <p class="text-xs text-neutral-200">Anteprima dell'interfaccia mobile Instagram 2026! 🚀💻</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        /* ================= NAVIGATION LOGIC ================= */
         function switchTab(tabName) {
-            document.querySelectorAll('.page-view').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.page-view').forEach(page => page.classList.add('hidden'));
             document.getElementById(`view-${tabName}`).classList.remove('hidden');
 
-            // Update nav icons color
             document.querySelectorAll('.nav-btn').forEach(btn => {
                 if (btn.dataset.target === tabName) {
                     btn.classList.add('text-white');
                     btn.classList.remove('text-neutral-500');
+                    if (tabName === 'profile') {
+                        btn.classList.add('border-2', 'border-white');
+                    }
                 } else {
                     btn.classList.remove('text-white');
                     btn.classList.add('text-neutral-500');
+                    if (btn.dataset.target === 'profile') {
+                        btn.classList.remove('border-2', 'border-white');
+                    }
                 }
             });
         }
 
-        // Story Viewer Logic
-        function openStory(index) {
-            currentStoryIndex = index;
-            const story = storiesData[index];
-            const modal = document.getElementById('story-modal');
+        function switchProfileTab(tab) {
+            document.querySelectorAll('.profile-tab-content').forEach(c => c.classList.add('hidden'));
+            document.getElementById(`profile-tab-${tab}`).classList.remove('hidden');
+
+            document.querySelectorAll('.profile-tab-btn').forEach(b => {
+                b.classList.remove('text-white', 'border-white');
+                b.classList.add('text-neutral-500', 'border-transparent');
+            });
+
+            const activeBtn = document.getElementById(`tab-btn-${tab}`);
+            activeBtn.classList.add('text-white', 'border-white');
+            activeBtn.classList.remove('text-neutral-500', 'border-transparent');
+        }
+
+        /* ================= POST MODAL HANDLERS ================= */
+        function openPostModal(postId) {
+            const post = profilePostsData.find(p => p.id === postId);
+            if (!post) return;
+            activePostInModal = post;
+
+            document.getElementById('modal-post-avatar').src = 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150';
+            document.getElementById('modal-post-username').innerText = 'marco_dev';
+            document.getElementById('modal-post-location').innerText = post.location;
+            document.getElementById('modal-post-img').src = post.image;
+            document.getElementById('modal-likes-count').innerText = post.likes;
+            document.getElementById('modal-caption-username').innerText = 'marco_dev';
+            document.getElementById('modal-caption-text').innerText = post.caption;
+            document.getElementById('modal-time').innerText = post.time;
+
+            updateModalLikeIcon();
+            renderModalComments();
+
+            document.getElementById('post-modal').classList.remove('hidden');
+        }
+
+        function closePostModal() {
+            document.getElementById('post-modal').classList.add('hidden');
+        }
+
+        function updateModalLikeIcon() {
+            const icon = document.getElementById('modal-like-icon');
+            if (activePostInModal.liked) {
+                icon.className = 'fa-solid fa-heart text-red-500';
+            } else {
+                icon.className = 'fa-regular fa-heart';
+            }
+        }
+
+        function toggleModalLike() {
+            if (!activePostInModal) return;
+            activePostInModal.liked = !activePostInModal.liked;
+            activePostInModal.likes += activePostInModal.liked ? 1 : -1;
+            document.getElementById('modal-likes-count').innerText = activePostInModal.likes;
+            updateModalLikeIcon();
+            renderProfilePosts(); // refresh grid
+        }
+
+        function handleModalDoubleTap(e) {
+            if (!activePostInModal.liked) {
+                toggleModalLike();
+            }
+            const heartPop = document.getElementById('modal-heart-pop');
+            heartPop.classList.remove('animate-heart-pop');
+            void heartPop.offsetWidth;
+            heartPop.classList.add('animate-heart-pop');
+        }
+
+        function renderModalComments() {
+            const container = document.getElementById('modal-comments-container');
+            container.innerHTML = activePostInModal.comments.map(c => `
+                <div class="flex items-start gap-2.5 text-xs">
+                    <span class="font-bold">${c.username}:</span>
+                    <span class="text-neutral-300 flex-1">${c.text}</span>
+                </div>
+            `).join('');
+        }
+
+        function submitModalComment() {
+            const input = document.getElementById('modal-comment-input');
+            const val = input.value.trim();
+            if (!val || !activePostInModal) return;
+
+            activePostInModal.comments.push({ username: 'marco_dev', text: val });
+            input.value = '';
+            renderModalComments();
+            renderProfilePosts();
+        }
+
+        function focusCommentInput() {
+            document.getElementById('modal-comment-input').focus();
+        }
+
+        /* ================= STORY VIEWER HANDLERS ================= */
+        function openStory(idx) {
+            currentStoryIdx = idx;
+            const story = storiesList[idx] || { name: 'marco_dev', avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150', image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800' };
             
-            document.getElementById('story-user-img').src = story.avatar;
-            document.getElementById('story-username').innerText = story.name;
-            document.getElementById('story-img').src = story.image;
+            document.getElementById('story-user-avatar').src = story.avatar;
+            document.getElementById('story-user-name').innerText = story.name;
+            document.getElementById('story-main-image').src = story.image;
 
-            modal.classList.remove('hidden');
+            document.getElementById('story-modal').classList.remove('hidden');
 
-            // Reset & start progress bar animation
-            const progress = document.getElementById('story-progress');
-            progress.classList.remove('animate-progress');
-            void progress.offsetWidth;
-            progress.classList.add('animate-progress');
+            const bar = document.getElementById('story-progress-bar');
+            bar.classList.remove('animate-story-bar');
+            void bar.offsetWidth;
+            bar.classList.add('animate-story-bar');
 
-            clearTimeout(storyTimer);
-            storyTimer = setTimeout(() => {
+            clearTimeout(storyTimerRef);
+            storyTimerRef = setTimeout(() => {
                 nextStory();
             }, 5000);
         }
 
+        function openStoryHighlight(title) {
+            showNotificationToast(`In evidenza: ${title}`);
+            openStory(0);
+        }
+
         function closeStory() {
             document.getElementById('story-modal').classList.add('hidden');
-            clearTimeout(storyTimer);
+            clearTimeout(storyTimerRef);
         }
 
         function nextStory() {
-            if (currentStoryIndex < storiesData.length - 1) {
-                openStory(currentStoryIndex + 1);
+            if (currentStoryIdx < storiesList.length - 1) {
+                openStory(currentStoryIdx + 1);
             } else {
                 closeStory();
             }
         }
 
         function prevStory() {
-            if (currentStoryIndex > 0) {
-                openStory(currentStoryIndex - 1);
+            if (currentStoryIdx > 0) {
+                openStory(currentStoryIdx - 1);
             } else {
                 openStory(0);
             }
         }
 
-        // Render Reels
-        function renderReels() {
-            const container = document.getElementById('reels-container');
-            container.innerHTML = reelsData.map(reel => `
-                <div class="w-full h-full snap-start relative flex-shrink-0 bg-neutral-900">
-                    <img src="${reel.videoBg}" class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/80"></div>
-                    
-                    <!-- Reel Right Action Bar -->
-                    <div class="absolute right-4 bottom-20 flex flex-col items-center gap-6 text-white text-xl z-10">
-                        <button class="flex flex-col items-center gap-1"><i class="fa-regular fa-heart"></i><span class="text-xs font-semibold">${reel.likes}</span></button>
-                        <button class="flex flex-col items-center gap-1"><i class="fa-regular fa-comment"></i><span class="text-xs font-semibold">${reel.comments}</span></button>
-                        <button><i class="fa-regular fa-paper-plane"></i></button>
-                        <button><i class="fa-solid fa-ellipsis"></i></button>
-                    </div>
-
-                    <!-- Reel Bottom Info -->
-                    <div class="absolute left-4 bottom-20 right-16 text-white z-10 space-y-2">
-                        <div class="flex items-center gap-2">
-                            <img src="${reel.avatar}" class="w-8 h-8 rounded-full object-cover">
-                            <span class="font-bold text-xs">${reel.username}</span>
-                            <button class="border border-white/40 text-[10px] font-semibold px-2 py-0.5 rounded-lg">Segui</button>
-                        </div>
-                        <p class="text-xs text-neutral-200 line-clamp-2">${reel.description}</p>
-                        <div class="flex items-center gap-2 text-xs text-neutral-300">
-                            <i class="fa-solid fa-music text-[10px]"></i>
-                            <span class="truncate">${reel.audio}</span>
-                        </div>
-                    </div>
-                </div>
-            `).join('');
+        /* ================= FOLLOWERS MODAL ================= */
+        function openFollowersModal(title) {
+            document.getElementById('followers-modal-title').innerText = title;
+            document.getElementById('followers-modal').classList.remove('hidden');
         }
 
-        // Dark/Light Theme Toggle
-        function setupThemeToggle() {
+        function closeFollowersModal() {
+            document.getElementById('followers-modal').classList.add('hidden');
+        }
+
+        /* ================= HELPERS & THEME TOGGLE ================= */
+        function showNotificationToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-msg').innerText = msg;
+            toast.classList.remove('opacity-0');
+            setTimeout(() => {
+                toast.classList.add('opacity-0');
+            }, 2200);
+        }
+
+        function setupThemeToggleLogic() {
             const btn = document.getElementById('theme-toggle');
             btn.addEventListener('click', () => {
                 const html = document.documentElement;
                 if (html.classList.contains('dark')) {
                     html.classList.remove('dark');
-                    btn.innerHTML = '<i class="fa-regular fa-moon"></i>';
-                    showNotificationToast('Tema Chiaro attivato');
+                    btn.innerHTML = '<i class="fa-regular fa-sun text-yellow-500"></i>';
+                    showNotificationToast('Modalità Chiara 2026');
                 } else {
                     html.classList.add('dark');
                     btn.innerHTML = '<i class="fa-solid fa-moon"></i>';
-                    showNotificationToast('Tema Scuro attivato');
+                    showNotificationToast('Modalità Scura 2026');
                 }
             });
         }
 
-        // Notification Toast Helper
-        function showNotificationToast(msg) {
-            const toast = document.getElementById('toast');
-            toast.innerText = msg;
-            toast.classList.remove('opacity-0');
-            setTimeout(() => {
-                toast.classList.add('opacity-0');
-            }, 2000);
+        function openCreateModal() {
+            showNotificationToast('Seleziona foto o Reel per il caricamento');
         }
 
-        function triggerCreateAction() {
-            showNotificationToast('Apri fotocamera per nuovo post');
+        function openSettingsMenu() {
+            showNotificationToast('Impostazioni Profilo e Privacy 2026');
+        }
+
+        function openActivityModal() {
+            showNotificationToast('Notifiche e Attività recenti');
+        }
+
+        function toggleAccountSwitcher() {
+            showNotificationToast('Selettore Account: marco_dev (Attivo)');
         }
     </script>
-<div id="sp-focus" style="position:absolute;left:16px;top:300px;width:390px;height:105px;border:3px solid #0095f6;border-radius:12px;opacity:0;pointer-events:none;z-index:80"></div>
-<div id="sp-tap" style="position:absolute;left:300px;top:330px;width:70px;height:70px;border:4px solid #0095f6;border-radius:50%;opacity:0;pointer-events:none;z-index:81"></div>
-<div id="sp-tip" style="position:absolute;left:22px;right:22px;bottom:105px;background:#fff;color:#111;border:1px solid #ddd;border-radius:16px;padding:18px 20px;box-shadow:0 8px 28px rgba(0,0,0,.18);opacity:0;pointer-events:none;z-index:82;font:600 18px/1.3 -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">Your bio is part of the conversion.<br><span style="font-weight:400;color:#666">Make the value obvious in one glance.</span></div>
+
+<div id="spmotion-bio-pulse"></div>
+<div id="spmotion-bio-editor">
+  <div id="spmotion-bio-sheet">
+    <div class="spb-grabber"></div>
+    <div class="spb-head"><b>Modifica profilo</b><span class="spb-save">Fine</span></div>
+
+    <div class="spb-field">
+      <span class="spb-label">Nome</span>
+      <input class="spb-input" value="Marco Rossi" readonly>
+    </div>
+
+    <div class="spb-field" id="spb-bio-wrap">
+      <span class="spb-label">Biografia</span>
+      <div id="spb-bio-field" class="spb-input">
+        <span id="spb-bio-text">Creator | Reels | Content</span><span id="spmotion-bio-cursor"></span>
+      </div>
+    </div>
+
+    <div class="spb-field">
+      <span class="spb-label">Link</span>
+      <input class="spb-input" value="shortprompt.altervista.org" readonly>
+    </div>
+
+    <div id="spmotion-bio-copy">
+      <b>One glance test:</b> a new visitor should immediately know what you do and why following you is useful.
+    </div>
+    <div id="spmotion-bio-highlight"></div>
+  </div>
+</div>
+
+<script id="spmotion-bio-runtime">
+(function(){
+  /*
+    SP-MOTION HTML-first mode:
+    - The page owns its visual timeline and animations.
+    - The external pipe does not call a scene renderer.
+    - The only pipeline dependency is attaching generated speech/TTS.
+  */
+  window.SPMOTION={
+    width:1080,
+    height:1920,
+    fps:30,
+    duration:18,
+    mode:"html-self-timed",
+    visualAuthority:"video.html",
+    audioAuthority:"speech.txt"
+  };
+
+  const root=document.getElementById('app');
+  const profile=document.getElementById('view-profile');
+  const editor=document.getElementById('spmotion-bio-editor');
+  const sheet=document.getElementById('spmotion-bio-sheet');
+  const pulse=document.getElementById('spmotion-bio-pulse');
+  const bioWrap=document.getElementById('spb-bio-wrap');
+  const bioText=document.getElementById('spb-bio-text');
+  const cursor=document.getElementById('spmotion-bio-cursor');
+  const hi=document.getElementById('spmotion-bio-highlight');
+  const copy=document.getElementById('spmotion-bio-copy');
+  const save=editor.querySelector('.spb-save');
+
+  const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
+  const ease=v=>{v=clamp(v);return v*v*(3-2*v);};
+  const text1="Creator | Reels | Content";
+  const text2="I help creators grow with better Reels";
+
+  // Keep the supplied profile UI as the real base, not a replacement mockup.
+  if(typeof switchTab==="function") switchTab('profile');
+
+  // Remove live app behaviors from the export surface that could introduce timing drift.
+  const animateStart=performance.now();
+
+  function setTransform(el,y){
+    if(!el)return;
+    el.style.transform=`translateY(${y}px)`;
+  }
+
+  function reset(){
+    if(profile){
+      profile.scrollTop=0;
+      profile.style.transform="none";
+      profile.style.opacity="1";
+    }
+    editor.classList.remove('spb-active');
+    sheet.style.transform="translateY(100%)";
+    pulse.style.opacity="0";
+    hi.style.opacity="0";
+    copy.style.opacity="0";
+    bioWrap.classList.remove('spb-focus');
+    bioText.textContent=text1;
+    cursor.style.opacity="0";
+    save.style.opacity="1";
+  }
+
+  function frame(t){
+    const tt=clamp(t,0,18);
+
+    // Profile state
+    if(tt<2.6){
+      const p=ease(tt/0.9);
+      profile.style.opacity=p;
+      profile.style.transform=`translateY(${18*(1-p)}px)`;
+    }else{
+      profile.style.opacity="1";
+      profile.style.transform="none";
+    }
+
+    // Gentle native profile scroll toward bio/actions.
+    const scrollP=ease((tt-2.4)/1.1);
+    if(tt>=2.4 && tt<6.2) profile.scrollTop=38*scrollP;
+
+    // Cursor/tap around Edit profile button.
+    if(tt>=4.2 && tt<7.0){
+      const p=ease((tt-4.2)/0.7);
+      pulse.style.opacity="0.95";
+      pulse.style.left="420px";
+      pulse.style.top=(468-18*p)+"px";
+      pulse.style.transform=`scale(${1+0.14*Math.sin(Math.PI*p)})`;
+    }else{
+      pulse.style.opacity="0";
+    }
+
+    // Editor sheet appears.
+    if(tt>=6.4 && tt<15.0){
+      editor.classList.add('spb-active');
+      const p=ease((tt-6.4)/0.85);
+      sheet.style.transform=`translateY(${100*(1-p)}%)`;
+    }else if(tt<6.4){
+      editor.classList.remove('spb-active');
+      sheet.style.transform="translateY(100%)";
+    }else{
+      editor.classList.add('spb-active');
+      sheet.style.transform="translateY(0)";
+    }
+
+    // Focus the bio field.
+    const fp=ease((tt-8.0)/0.7);
+    bioWrap.classList.toggle('spb-focus',tt>=8.0 && tt<14.4);
+    hi.style.opacity=(tt>=8.0 && tt<14.4)?fp:0;
+    copy.style.opacity=(tt>=8.8 && tt<14.4)?ease((tt-8.8)/0.7):0;
+
+    // Deterministically type the improved bio.
+    if(tt>=10.0 && tt<14.4){
+      const p=ease((tt-10.0)/2.1);
+      const n=Math.floor(text2.length*p);
+      bioText.textContent=text2.slice(0,n);
+      cursor.style.opacity=(Math.floor(tt*4)%2===0)?"1":"0";
+    }else if(tt>=14.4){
+      bioText.textContent=text2;
+      cursor.style.opacity="0";
+    }
+
+    // Save/return to profile.
+    if(tt>=15.0){
+      const p=ease((tt-15.0)/0.8);
+      editor.style.opacity=1-p;
+      sheet.style.transform=`translateY(${(-6*p)}px)`;
+      if(profile) profile.scrollTop=38;
+    }else{
+      editor.style.opacity="1";
+    }
+
+    // Final confirmation pulse on the profile bio region.
+    if(tt>=16.0){
+      const p=(tt-16.0)/2.0;
+      profile.style.filter=`brightness(${1+0.03*Math.sin(Math.PI*p)})`;
+    }else{
+      profile.style.filter="";
+    }
+  }
+
+  // The HTML owns playback. The pipe only records the page and attaches TTS.
+  function play(){
+    reset();
+    const duration=window.SPMOTION.duration;
+    const start=performance.now();
+    function tick(now){
+      const t=(now-start)/1000;
+      frame(t);
+      if(t<duration) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  window.SPMOTION_PLAY=play;
+  window.SPMOTION_FRAME=frame;
+
+  window.addEventListener('load',()=>{
+    reset();
+    // Allow existing prototype initialization to finish, then play once.
+    setTimeout(play,120);
+  });
+})();
+</script>
 </body>
 </html>
