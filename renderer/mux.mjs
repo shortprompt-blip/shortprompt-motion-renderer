@@ -9,7 +9,7 @@ if (!video || !audio) {
   process.exit(1);
 }
 
-const args = [
+const ff = spawn("ffmpeg", [
   "-y",
   "-i", video,
   "-i", audio,
@@ -20,13 +20,10 @@ const args = [
   "-b:a", "160k",
   "-shortest",
   output
-];
-
-const ff = spawn("ffmpeg", args, { stdio: "inherit" });
+], { stdio: "inherit" });
 
 ff.on("error", e => {
   console.error(e);
   process.exit(1);
 });
-
 ff.on("exit", code => process.exit(code ?? 1));

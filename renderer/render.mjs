@@ -51,25 +51,21 @@ await page.waitForFunction(() => document.fonts?.status === "loaded");
 
 const meta = await page.evaluate((audioDuration) => {
   const m = window.SPMOTION || {};
-
   const fps = Number(m.fps || 30);
-  const designDuration = Number(m.duration);
+  const declaredDuration = Number(m.duration);
 
   if (!Number.isFinite(fps) || fps <= 0) {
     throw new Error("SP-MOTION fps is missing or invalid");
   }
 
-  if (!Number.isFinite(designDuration) || designDuration <= 0) {
-    throw new Error("SP-MOTION design duration is missing or invalid");
-  }
+  // AUDIO IS THE MASTER CLOCK.
+  // duration is optional metadata only.
+  // If omitted, SPMOTION_FRAME() receives the real audio time.
+  const designDuration =
+    Number.isFinite(declaredDuration) && declaredDuration > 0
+      ? declaredDuration
+      : null;
 
-  /*
-   * AUDIO IS THE MASTER CLOCK.
-   *
-   * The visual timeline may be shorter than the voiceover.
-   * In that case the visual timeline loops.
-   * The voiceover is NEVER stretched, shortened or repeated.
-   */
   window.__SPMOTION_AUDIO_DURATION__ = audioDuration;
   window.__SPMOTION_DESIGN_DURATION__ = designDuration;
   window.__SPMOTION_RENDER_MODE__ = "html-autonomous";
@@ -92,36 +88,20 @@ const frameCount = Math.ceil(meta.duration * meta.fps);
 
 console.log("SP-MOTION MODE: HTML-AUTONOMOUS");
 console.log(`AUDIO MASTER: ${meta.duration.toFixed(3)}s`);
-console.log(`VISUAL TIMELINE: ${meta.designDuration.toFixed(3)}s`);
 console.log(
-  `VISUAL LOOP: ${meta.designDuration < meta.duration ? "YES" : "NO"}`
+  `VISUAL TIMELINE: ${
+    meta.designDuration == null
+      ? "AUDIO-CLOCKED (no declared duration)"
+      : meta.designDuration.toFixed(3) + "s"
+  }`
 );
 
-/*
- * Every frame is deterministic.
- *
- * video.html owns the complete visual design and animation logic.
- * The renderer does NOT invent or control visual states.
- *
- * The only renderer contract required from HTML is:
- *
- *   window.SPMOTION_FRAME(time)
- *
- * where time is local to the visual timeline.
- *
- * When the voiceover is longer than the visual timeline:
- *
- *   localTime = actualTime % designDuration
- *
- * Therefore the HTML repeats without changing the audio.
- */
 for (let i = 0; i < frameCount; i++) {
   const actualTime = i / meta.fps;
-
   const localTime =
     meta.designDuration > 0
       ? actualTime % meta.designDuration
-      : 0;
+      : actualTime;
 
   await page.evaluate(
     ({ actualTime, localTime, audioDuration, designDuration }) => {
@@ -131,20 +111,13 @@ for (let i = 0; i < frameCount; i++) {
       window.__SPMOTION_DESIGN_DURATION__ = designDuration;
 
       if (typeof window.SPMOTION_FRAME !== "function") {
-        throw new Error(
-          "video.html must expose SPMOTION_FRAME(time)"
-        );
+        throw new Error("video.html must expose SPMOTION_FRAME(time)");
       }
 
       window.SPMOTION_FRAME(localTime);
 
       document.dispatchEvent(new CustomEvent("sp-motion-time", {
-        detail: {
-          time: actualTime,
-          localTime,
-          audioDuration,
-          designDuration
-        }
+        detail: { time: actualTime, localTime, audioDuration, designDuration }
       }));
     },
     {
@@ -158,25 +131,18 @@ for (let i = 0; i < frameCount; i++) {
   await page.evaluate(() => new Promise(requestAnimationFrame));
 
   await page.screenshot({
-    path: path.join(
-      outDir,
-      `frame-${String(i).padStart(6, "0")}.png`
-    ),
+    path: path.join(outDir, `frame-${String(i).padStart(6, "0")}.png`),
     animations: "allow"
   });
 
   if (i % Math.max(1, Math.floor(meta.fps)) === 0) {
-    process.stdout.write(`FRAME ${i + 1}/${frameCount}\n`);
+    process.stdout.write(`FRAME ${i + 1}/${frameCount}
+`);
   }
 }
 
 await browser.close();
 
-/*
- * The visual stream is generated for exactly the audio duration.
- * Muxing therefore cannot shorten the voiceover because of a shorter
- * visual timeline.
- */
 await new Promise((resolve, reject) => {
   const ff = spawn("ffmpeg", [
     "-y",
