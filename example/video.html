@@ -8,197 +8,81 @@
 .actions{display:flex;gap:10px;margin-top:18px}.actions div{flex:1;border:1px solid #d5d5d5;border-radius:8px;text-align:center;padding:10px;font-weight:700;font-size:18px}
 .tabs{margin-top:6px}.grid .tile{height:260px}
 .storybar{display:flex;gap:22px;padding:12px 10px 20px;overflow:hidden}.story{width:96px;flex:0 0 96px;text-align:center;font-size:14px}.story i{display:block;width:86px;height:86px;border-radius:50%;margin:auto;background:linear-gradient(135deg,#f9ce34,#ee2a7b,#6228d7);border:4px solid #fff;outline:2px solid #ddd}.story b{display:block;margin-top:6px;font-weight:500}
-</style></style></head><body><div id="app"><div class="top"><div class="logo">instagram</div><div class="topicons">♡　＋　☰</div></div><div class="phone"><div class="storybar"><div class="story"><i></i><b>Your story</b></div><div class="story"><i></i><b>Reels</b></div><div class="story"><i></i><b>Tips</b></div><div class="story"><i></i><b>Growth</b></div><div class="story"><i></i><b>More</b></div></div><div class="profile-head"><div class="row"><div class="avatar"><i></i></div><div class="stats"><div><b>156</b><span>Posts</span></div><div><b>12.8K</b><span>Followers</span></div><div><b>348</b><span>Following</span></div></div></div><div class="name">creator.tips</div><div class="bio">Helping creators grow with better content<br>Reels • Hooks • Instagram tips</div><div class="link">shortprompt.altervista.org</div><div class="actions"><div>Edit profile</div><div>Share profile</div></div></div><div class="tabs"><div class="tab active">▦</div><div class="tab">▣</div><div class="tab">♙</div></div><div class="grid"><div class="tile"><span>HOOKS</span></div><div class="tile"><span>REELS</span></div><div class="tile"><span>GROWTH</span></div><div class="tile"><span>EDITING</span></div><div class="tile"><span>CREATOR</span></div><div class="tile"><span>TIPS</span></div></div></div><div class="highlight" id="highlight"></div><div id="cursor"></div><div id="tap"></div><div class="tip" id="tip"><b>Quick profile check</b><p>Your bio should tell a new visitor what you do and why they should follow you. Make the value obvious in one glance.</p></div></div><script>
-window.SPMOTION={width:1080,height:1920,fps:30,duration:18};
-const $=id=>document.getElementById(id);
-const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
-const ease=v=>{v=clamp(v);return v*v*(3-2*v)};
-function render(t){
-  t=clamp(t,0,18);
-  const phone=document.querySelector('.phone'), h=$('highlight'), c=$('cursor'), tap=$('tap'), tip=$('tip');
-  const intro=ease(t/1.1);
-  phone.style.opacity=intro;
-  phone.style.transform='translateY('+(22*(1-intro))+'px)';
-  const focus=ease((t-3.0)/1.0);
-  h.style.opacity=t>=3&&t<9?1:0;
-  h.style.top=(450-15*focus)+'px';
-  c.style.opacity=t>=4&&t<9?.9:0;
-  c.style.left=(690-80*focus)+'px';
-  c.style.top=(520-35*focus)+'px';
-  const tapP=ease((t-5.0)/.7);
-  tap.style.opacity=t>=5&&t<9?1:0;
-  tap.style.left='640px';tap.style.top='500px';
-  tap.style.transform='scale('+(1+.22*Math.sin(Math.PI*tapP))+')';
-  const scroll=ease((t-8.4)/1.5);
-  phone.style.transform='translateY('+(-90*scroll)+'px)';
-  const tp=ease((t-11)/1.0);
-  tip.style.opacity=tp;
-  tip.style.transform='translateY('+(28*(1-tp))+'px)';
-}
-window.SPMOTION_RENDER=render;
-render(0);
-</script>
-<script id="spmotion-canonical-controller">
-(function(){
-  /*
-   * SP-MOTION HTML VISUAL CONTRACT
-   *
-   * video.html owns the complete visual design.
-   * The renderer owns the master clock and calls SPMOTION_FRAME(localTime).
-   *
-   * speech.wav is the final-duration master.
-   * If speech is longer than this visual timeline, render.mjs loops
-   * localTime with modulo. Speech is never changed.
-   */
-  const WIDTH = 1080;
-  const HEIGHT = 1920;
-  const FPS = 30;
-  const VISUAL_DURATION = 18;
+</style></style></head><body><div id="app"><div class="top"><div class="logo">instagram</div><div class="topicons">♡　＋　☰</div></div><div class="phone"><div class="storybar"><div class="story"><i></i><b>Your story</b></div><div class="story"><i></i><b>Reels</b></div><div class="story"><i></i><b>Tips</b></div><div class="story"><i></i><b>Growth</b></div><div class="story"><i></i><b>More</b></div></div><div class="profile-head"><div class="row"><div class="avatar"><i></i></div><div class="stats"><div><b>156</b><span>Posts</span></div><div><b>12.8K</b><span>Followers</span></div><div><b>348</b><span>Following</span></div></div></div><div class="name">creator.tips</div><div class="bio">Helping creators grow with better content<br>Reels • Hooks • Instagram tips</div><div class="link">shortprompt.altervista.org</div><div class="actions"><div>Edit profile</div><div>Share profile</div></div></div><div class="tabs"><div class="tab active">▦</div><div class="tab">▣</div><div class="tab">♙</div></div><div class="grid"><div class="tile"><span>HOOKS</span></div><div class="tile"><span>REELS</span></div><div class="tile"><span>GROWTH</span></div><div class="tile"><span>EDITING</span></div><div class="tile"><span>CREATOR</span></div><div class="tile"><span>TIPS</span></div></div></div><div class="highlight" id="highlight"></div><div id="cursor"></div><div id="tap"></div><div class="tip" id="tip"><b>Quick profile check</b><p>Your bio should tell a new visitor what you do and why they should follow you. Make the value obvious in one glance.</p></div></div>
 
-  window.SPMOTION = {
-    width: WIDTH,
-    height: HEIGHT,
-    fps: FPS,
-    duration: VISUAL_DURATION,
-    mode: "html-autonomous",
-    visualAuthority: "video.html",
-    audioAuthority: "speech.wav"
-  };
 
-  const profile = document.getElementById("view-profile");
-  const editor = document.getElementById("spmotion-bio-editor");
-  const sheet = document.getElementById("spmotion-bio-sheet");
-  const pulse = document.getElementById("spmotion-bio-pulse");
-  const bioWrap = document.getElementById("spb-bio-wrap");
-  const bioText = document.getElementById("spb-bio-text");
-  const cursor = document.getElementById("spb-cursor");
 
-  const BIO = "I help creators grow with better Reels";
+<script id="spmotion-controller">
+(() => {
+  const WIDTH=1080, HEIGHT=1920, FPS=30, VISUAL_DURATION=18;
+  window.SPMOTION={width:WIDTH,height:HEIGHT,fps:FPS,duration:VISUAL_DURATION,
+    mode:"html-autonomous",visualAuthority:"video.html",audioAuthority:"speech.wav"};
 
-  const clamp = n => Math.max(0, Math.min(1, n));
-  const ease = n => {
-    n = clamp(n);
-    return n*n*(3-2*n);
-  };
+  const phone=document.querySelector(".phone");
+  const highlight=document.getElementById("highlight");
+  const cursor=document.getElementById("cursor");
+  const tap=document.getElementById("tap");
+  const tip=document.getElementById("tip");
 
-  function baseState(){
-    if(profile){
-      profile.style.opacity = "1";
-      profile.style.transform = "none";
-      profile.scrollTop = 0;
-    }
-    if(editor){
-      editor.style.opacity = "0";
-      editor.style.pointerEvents = "none";
-    }
-    if(sheet) sheet.style.transform = "translateY(100%)";
-    if(pulse) pulse.style.opacity = "0";
-    if(bioWrap) bioWrap.classList.remove("spb-focus");
-    if(bioText) bioText.textContent = "";
-    if(cursor) cursor.style.opacity = "0";
+  const clamp=v=>Math.max(0,Math.min(1,v));
+  const ease=v=>{v=clamp(v);return v*v*(3-2*v)};
+
+  function reset(){
+    phone.style.opacity="1"; phone.style.transform="none";
+    highlight.style.opacity="0"; cursor.style.opacity="0"; tap.style.opacity="0";
+    tip.style.opacity="0"; tip.style.transform="translateY(28px)";
   }
 
-  /*
-   * ONLY deterministic visual entry point used by the renderer.
-   * No requestAnimationFrame is used here.
-   */
-  window.SPMOTION_FRAME = function(rawTime){
-    let t = Number(rawTime) || 0;
+  window.SPMOTION_FRAME=function(rawTime){
+    let t=Number(rawTime)||0;
+    t=((t%VISUAL_DURATION)+VISUAL_DURATION)%VISUAL_DURATION;
+    reset();
 
-    // Renderer normally supplies localTime already.
-    // Keep the function safe if called directly.
-    t = ((t % VISUAL_DURATION) + VISUAL_DURATION) % VISUAL_DURATION;
-
-    baseState();
-
-    // 0.0–2.0: profile enters.
-    if(t < 2){
-      const p = ease(t / .8);
-      profile.style.opacity = String(p);
-      profile.style.transform = `translateY(${18*(1-p)}px)`;
+    if(t<2){
+      const p=ease(t/1.1);
+      phone.style.opacity=String(p);
+      phone.style.transform=`translateY(${22*(1-p)}px)`;
     }
-
-    // 1.8–5.0: controlled profile scroll toward the bio.
-    if(t >= 1.8 && t < 5){
-      const p = ease((t-1.8)/1.2);
-      profile.style.scrollTop = Math.round(85*p);
+    if(t>=2&&t<5){
+      const p=ease((t-2)/1.5);
+      phone.style.transform=`translateY(${-45*p}px)`;
     }
-
-    // 3.8–6.0: tap/edit cue.
-    if(t >= 3.8 && t < 6){
-      const p = ease((t-3.8)/.5);
-      pulse.style.opacity = String(.95 * (1-p*.35));
-      pulse.style.left = "420px";
-      pulse.style.top = `${465 - 18*p}px`;
-      pulse.style.transform =
-        `scale(${1 + .12*Math.sin(Math.PI*p)})`;
+    if(t>=3&&t<7){
+      const p=ease((t-3)/.7);
+      highlight.style.opacity="1";
+      highlight.style.top=`${450-15*p}px`;
     }
-
-    // 5.2–15.5: editor sheet.
-    if(t >= 5.2){
-      editor.style.opacity = "1";
-      editor.style.pointerEvents = "auto";
-
-      if(t < 15.5){
-        const p = ease((t-5.2)/.75);
-        sheet.style.transform = `translateY(${100*(1-p)}%)`;
-      }else{
-        const p = ease((t-15.5)/.8);
-        editor.style.opacity = String(1-p);
-        sheet.style.transform = `translateY(${-8*p}px)`;
-      }
+    if(t>=4&&t<8){
+      const p=ease((t-4)/.7);
+      cursor.style.opacity=".9";
+      cursor.style.left=`${690-80*p}px`;
+      cursor.style.top=`${520-35*p}px`;
+      tap.style.opacity="1";
+      tap.style.left="640px"; tap.style.top="500px";
+      tap.style.transform=`scale(${1+.22*Math.sin(Math.PI*p)})`;
     }
-
-    // 7.0–14.8: focus bio field.
-    if(t >= 7 && t < 14.8){
-      bioWrap.classList.add("spb-focus");
+    if(t>=8.4&&t<10){
+      const p=ease((t-8.4)/1.5);
+      phone.style.transform=`translateY(${-90*p}px)`;
     }
-
-    // 8.0–12.0: deterministic typing.
-    if(t >= 8 && t < 12){
-      const p = ease((t-8)/2.2);
-      bioText.textContent = BIO.slice(
-        0,
-        Math.floor(BIO.length*p)
-      );
-      cursor.style.opacity =
-        (Math.floor(t*4)%2===0) ? "1" : "0";
-    }
-
-    if(t >= 12){
-      bioText.textContent = BIO;
-      cursor.style.opacity = "0";
-    }
-
-    // 15.5–18: return to profile.
-    if(t >= 15.5){
-      profile.style.opacity = "1";
-      profile.scrollTop = 85;
+    if(t>=11){
+      const p=ease((t-11)/1);
+      tip.style.opacity=String(p);
+      tip.style.transform=`translateY(${28*(1-p)}px)`;
     }
   };
 
-  /*
-   * Preview only. The production renderer does NOT use this clock.
-   */
-  window.SPMOTION_PLAY = function(){
-    const start = performance.now();
-
+  window.SPMOTION_PLAY=function(){
+    const start=performance.now();
     function preview(now){
-      const t = (now-start)/1000;
+      const t=(now-start)/1000;
       window.SPMOTION_FRAME(t);
-
-      if(t < VISUAL_DURATION){
-        requestAnimationFrame(preview);
-      }
+      if(t<VISUAL_DURATION) requestAnimationFrame(preview);
     }
-
     requestAnimationFrame(preview);
   };
 
-  window.addEventListener("load", function(){
-    baseState();
-    window.SPMOTION_FRAME(0);
-  });
+  window.SPMOTION_FRAME(0);
 })();
 </script>
 
