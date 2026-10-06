@@ -1073,110 +1073,81 @@
 
 
         /* ================= SP-MOTION AUTONOMOUS TIMELINE ================= */
-        const SPMOTION_DESIGN_DURATION = 28.0;
-        let spBioSaved = false;
-        let spEditorOpen = false;
-        let spProfileScroll = null;
-        const spBioBefore = 'I help creators grow with better Reels.\nStrategies, hooks, and content that convert.';
-        const spBioAfter = 'I create content for creators and help them grow with better Reels.';
+        const SPMOTION_DESIGN_DURATION = 26.0;
+        let spViralOverlay = null;
 
-        function spOpenEditor(){
-            spEditorOpen = true;
-            document.getElementById('sp-edit-sheet').classList.remove('hidden');
-        }
-        function spCloseEditor(){
-            spEditorOpen = false;
-            document.getElementById('sp-edit-sheet').classList.add('hidden');
-        }
-        function spSaveBio(){
-            spBioSaved = true;
-            const v = document.getElementById('sp-bio-field').value;
-            const bio = document.getElementById('sp-bio-block');
-            bio.innerHTML = v.replace(/\n/g,'<br>');
-            spCloseEditor();
+        function spEnsureViralOverlay(){
+            if(spViralOverlay) return spViralOverlay;
+            const app=document.getElementById('app');
+            spViralOverlay=document.createElement('div');
+            spViralOverlay.id='sp-viral-overlay';
+            spViralOverlay.innerHTML=`
+              <div id="sp-hook" class="absolute left-4 right-4 top-28 rounded-2xl bg-black/80 backdrop-blur-xl border border-white/10 p-4 opacity-0 transform scale-95">
+                <div class="text-[10px] uppercase tracking-[.18em] text-neutral-400">Reels strategy</div>
+                <div class="text-xl font-extrabold mt-1">STOP SCROLLING.</div>
+                <div class="text-sm text-neutral-300 mt-1">Your first seconds decide whether people stay.</div>
+              </div>
+              <div id="sp-tip" class="absolute left-4 right-4 bottom-28 rounded-2xl bg-neutral-950/90 backdrop-blur-xl border border-neutral-700 p-4 opacity-0 transform translate-y-3">
+                <div class="flex items-center justify-between"><span id="sp-tip-kicker" class="text-[10px] uppercase tracking-[.18em] text-neutral-400">Tip 1</span><span id="sp-tip-num" class="text-xs text-neutral-500">1/5</span></div>
+                <div id="sp-tip-title" class="text-lg font-bold mt-1"></div>
+                <div id="sp-tip-body" class="text-xs text-neutral-400 mt-1"></div>
+              </div>
+              <div id="sp-retention" class="absolute left-4 right-4 top-24 opacity-0">
+                <div class="flex justify-between text-[10px] text-neutral-400 mb-1"><span>Viewer retention</span><span id="sp-retention-value">82%</span></div>
+                <div class="h-1.5 bg-neutral-800 rounded-full overflow-hidden"><div id="sp-retention-bar" class="h-full bg-white rounded-full" style="width:82%"></div></div>
+              </div>`;
+            app.appendChild(spViralOverlay);
+            return spViralOverlay;
         }
         function spSetProfile(){
             document.querySelectorAll('.page-view').forEach(p=>p.classList.add('hidden'));
-            document.getElementById('view-profile').classList.remove('hidden');
-        }
-        function spResetScene(){
-            spSetProfile(); spBioSaved=false; spEditorOpen=false;
-            document.getElementById('sp-edit-sheet').classList.add('hidden');
-            document.getElementById('sp-bio-block').innerHTML='I help creators grow with better Reels.<br>Strategies, hooks, and content that convert.';
-            document.getElementById('sp-bio-field').value=spBioAfter;
+            document.getElementById('view-reels').classList.remove('hidden');
         }
         function spEase(x){ return x<.5 ? 2*x*x : 1-Math.pow(-2*x+2,2)/2; }
         function spAnimate(t){
-            spResetScene();
-            const profile=document.getElementById('view-profile');
-            const bio=document.getElementById('sp-bio-block');
-            const name=profile.querySelector('h1');
-            const avatar=profile.querySelector('.ig-story-ring');
-            const link=profile.querySelector('a[href="https://github.com"]');
-            const btn=document.getElementById('sp-edit-profile-btn');
-            const sheet=document.getElementById('sp-edit-sheet');
-            const panel=document.getElementById('sp-edit-panel');
-            const field=document.getElementById('sp-bio-field');
-            const wrap=document.getElementById('sp-bio-field-wrap');
-            const grid=document.getElementById('profile-tab-grid');
-            bio.style.transition='none'; btn.style.transition='none'; sheet.style.transition='none'; panel.style.transition='none'; wrap.style.transition='none';
-            [name,avatar,link].forEach(el=>{ if(el){el.style.transition='none'; el.style.boxShadow=''; el.style.background=''; el.style.transform='';} });
-            sheet.classList.add('hidden'); panel.style.transform='translateY(100%)';
-            field.style.borderColor=''; wrap.style.boxShadow='';
+            spSetProfile();
+            const o=spEnsureViralOverlay();
+            const hook=document.getElementById('sp-hook'), tip=document.getElementById('sp-tip');
+            const kicker=document.getElementById('sp-tip-kicker'), num=document.getElementById('sp-tip-num');
+            const title=document.getElementById('sp-tip-title'), body=document.getElementById('sp-tip-body');
+            const retention=document.getElementById('sp-retention'), bar=document.getElementById('sp-retention-bar'), rv=document.getElementById('sp-retention-value');
+            [hook,tip,retention].forEach(e=>{e.style.transition='none';e.style.opacity='0';});
+            hook.style.transform='scale(.95)'; tip.style.transform='translateY(12px)';
 
-            // 0–4s: searchable name
-            if(t>=1 && t<4){
-                const p=spEase(Math.min(1,(t-1)/.55));
-                name.style.background='rgba(0,149,246,'+(0.08+0.12*p)+')';
-                name.style.boxShadow='0 0 0 2px rgba(0,149,246,'+(0.35+0.35*p)+'), 0 0 24px rgba(0,149,246,.20)';
-                name.style.transform='scale('+(1+.025*p)+')';
+            if(t<3){
+                const p=spEase(Math.min(1,t/.45));
+                hook.style.opacity=String(p); hook.style.transform=`scale(${.95+.05*p})`;
             }
-
-            // 4–9s: specific bio promise
-            if(t>=4 && t<9){
-                const p=spEase(Math.min(1,(t-4)/.55));
-                bio.style.background='rgba(0,149,246,'+(0.08+0.14*p)+')';
-                bio.style.boxShadow='0 0 0 2px rgba(0,149,246,'+(0.30+0.40*p)+'), 0 0 28px rgba(0,149,246,.20)';
+            const tips=[
+              ['Tip 1','Hook immediately','Skip the intro. Give viewers a reason to keep watching.'],
+              ['Tip 2','One idea per Reel','Make the promise simple enough to understand instantly.'],
+              ['Tip 3','Use pattern interrupts','Change text, movement, framing, or pacing before it feels static.'],
+              ['Tip 4','Deliver the payoff','Answer the promise before the viewer reaches the end.'],
+              ['Tip 5','Build a natural loop','Let the ending flow back into the opening when it makes sense.']
+            ];
+            let idx=-1;
+            if(t>=3&&t<7) idx=0;
+            else if(t>=7&&t<11) idx=1;
+            else if(t>=11&&t<15) idx=2;
+            else if(t>=15&&t<19) idx=3;
+            else if(t>=19&&t<23) idx=4;
+            if(idx>=0){
+                const p=spEase(Math.min(1,(t-(3+idx*4))/.35));
+                kicker.textContent=tips[idx][0]; num.textContent=`${idx+1}/5`; title.textContent=tips[idx][1]; body.textContent=tips[idx][2];
+                tip.style.opacity=String(p); tip.style.transform=`translateY(${12-12*p}px)`;
+                retention.style.opacity=idx===0?'0':'.9';
+                const values=[82,76,68,61,57];
+                bar.style.width=values[idx]+'%'; rv.textContent=values[idx]+'%';
             }
-
-            // 9–14s: pin the three strongest posts
-            if(t>=9 && t<14){
-                const tab=document.getElementById('tab-btn-grid');
-                if(tab) tab.style.boxShadow='inset 0 -2px 0 rgba(255,255,255,.9)';
-                const tiles=grid ? Array.from(grid.children).slice(0,3) : [];
-                tiles.forEach((el,i)=>{
-                    el.style.transition='none';
-                    el.style.boxShadow='inset 0 0 0 3px rgba(255,255,255,'+(0.55+0.15*Math.min(1,(t-9)/1))+'), 0 0 16px rgba(0,149,246,.18)';
-                    el.style.transform='scale(1.01)';
-                });
-            }
-
-            // 14–18s: recognizable profile picture
-            if(t>=14 && t<18){
-                const p=spEase(Math.min(1,(t-14)/.5));
-                avatar.style.boxShadow='0 0 0 3px rgba(255,255,255,'+(0.35+0.45*p)+'), 0 0 26px rgba(0,149,246,.22)';
-                avatar.style.transform='scale('+(1+.035*p)+')';
-            }
-
-            // 18–23s: one clear link / next step
-            if(t>=18 && t<23){
-                const p=spEase(Math.min(1,(t-18)/.5));
-                link.style.background='rgba(0,149,246,'+(0.08+0.12*p)+')';
-                link.style.boxShadow='0 0 0 2px rgba(0,149,246,'+(0.30+0.35*p)+'), 0 0 22px rgba(0,149,246,.18)';
-            }
-
-            // 23–28s: final optimized profile + bio edit demonstration
-            if(t>=23 && t<28){
+            if(t>=23){
                 const p=spEase(Math.min(1,(t-23)/.5));
-                bio.style.background='rgba(0,149,246,'+(0.06+0.10*p)+')';
-                bio.style.boxShadow='0 0 0 2px rgba(0,149,246,'+(0.30+0.30*p)+'), 0 0 24px rgba(0,149,246,.16)';
-                btn.style.transform='scale('+(1+.025*p)+')';
-                btn.style.boxShadow='0 0 0 2px rgba(255,255,255,'+(0.35+0.35*p)+'), 0 0 20px rgba(255,255,255,.12)';
+                tip.style.opacity=String(p); tip.style.transform=`translateY(${12-12*p}px)`;
+                kicker.textContent='FINAL CHECK'; num.textContent='5/5'; title.textContent='Make the Reel easy to watch'; body.textContent='No guaranteed viral formula. Better hooks, pacing, payoff, and loops can help.';
+                retention.style.opacity='.9'; bar.style.width='74%'; rv.textContent='74%';
             }
         }
-
-        window.SPMOTION_FRAME = function(time){
-            const t = ((Number(time)||0) % SPMOTION_DESIGN_DURATION + SPMOTION_DESIGN_DURATION) % SPMOTION_DESIGN_DURATION;
+        window.SPMOTION_FRAME=function(time){
+            const t=((Number(time)||0)%SPMOTION_DESIGN_DURATION+SPMOTION_DESIGN_DURATION)%SPMOTION_DESIGN_DURATION;
             spAnimate(t);
         };
 
