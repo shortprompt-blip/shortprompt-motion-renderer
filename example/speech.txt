@@ -1,4 +1,231 @@
-Most creators guess what to post next. TikTok can help you start with what people are already searching for.
-Open Creator Search Insights and search for a topic you want to create about. Then look through the search results and check for a Content Gap.
-A content gap can point you toward topics with search interest where there may be an opportunity for more relevant content.
-Pick one specific angle, turn it into a clear video idea, and create around the search instead of guessing.
+If you keep asking yourself, “What should I make next?”, you may be looking in the wrong place.
+
+Instead of starting with a random idea, start with what viewers are already searching for.
+
+YouTube Studio has a Trends tab inside Analytics that is designed to help creators explore what their audience and viewers across YouTube are searching for, discover ideas, and find content gaps.
+
+In this video, I’ll show you a practical workflow for using it to turn a broad topic into a specific video idea.
+
+And there is one important distinction before we start: this is not a magic “viral video” button. The Trends tab gives you signals. Your job is to turn those signals into a useful video with a clear angle.
+
+Let’s start from YouTube Studio.
+
+From the left-hand menu, open Analytics.
+
+Then look across the Analytics navigation and select Trends.
+
+YouTube has been rolling out an updated Studio experience during 2026, so the exact layout can vary depending on your account, country, language, or device. Some insights may also not be available to every creator.
+
+Once you open Trends, the first thing you want to understand is that this page is not just a list of random trends.
+
+It can surface several useful types of information.
+
+You may see Top searches, Breakout videos, Recent videos, and Content gaps for Shorts.
+
+The important part is that these signals are connected to what your audience has been watching, searching for, or what you have saved as a search topic.
+
+So instead of asking, “What is trending on the internet?”, you can start asking a much better question:
+
+“What topics are relevant to the people I actually want to reach?”
+
+Let’s use a practical example.
+
+Suppose our channel is about AI tools for creators.
+
+We could search for a broad topic like “AI video generator”.
+
+The first thing I would look at is Audience interest.
+
+This gives you an indication of how much interest your audience has in a search or idea.
+
+YouTube says these audience-interest insights are based on videos watched more than 1,000 times per week and activity from the last 28 days.
+
+The exact information you see can vary, but the important point is that we are no longer choosing a topic completely at random.
+
+We now have a signal that the topic is relevant to an audience.
+
+But audience interest alone is not enough.
+
+A popular topic can also be extremely competitive.
+
+So the next question is:
+
+“What are people actually watching?”
+
+That is where the Watched on YouTube section becomes useful.
+
+Here you can look at popular videos related to the topic.
+
+And this is where you should resist the temptation to simply copy the biggest video.
+
+Instead, study the structure.
+
+What problem does the video solve?
+
+What angle does it use?
+
+Is it a comparison, a tutorial, a list, a review, or a demonstration?
+
+Who is it clearly made for?
+
+And most importantly, what is still missing?
+
+Now we move to one of the most interesting parts of the workflow: Searched on YouTube.
+
+This section can show top searches connected to your audience and saved searches over the recent period.
+
+This is useful because a broad topic like “AI video generator” can contain many different viewer intentions.
+
+Someone might want the best free tool.
+
+Someone else might want a tool for mobile.
+
+Another viewer might want to create realistic videos.
+
+Another might simply want to know which tools are actually worth using.
+
+These are not the same video.
+
+They are different search intents hiding inside one broad topic.
+
+And this is where content gaps become especially interesting.
+
+YouTube defines a content gap as a situation where viewers cannot find enough quality search results for a specific search.
+
+A gap can happen because there are no results, no exact matches, or because the available videos are not relevant, current, or high quality enough.
+
+For Shorts, YouTube's current Trends experience can surface content gaps where viewers may be looking for more relevant or higher-quality Shorts.
+
+If we find a content gap around our topic, we should not interpret that as “YouTube guarantees this video will perform.”
+
+It means there may be an opportunity to create something that better matches the search.
+
+That difference matters.
+
+A content gap is an opportunity signal, not a promise of views.
+
+So now let's turn the signal into an actual video.
+
+Our broad topic is:
+
+“AI video generator.”
+
+That is still too broad.
+
+Instead of making another generic video called “Everything About AI Video Generators”, we could choose a much narrower angle.
+
+For example:
+
+“3 AI Video Generators You Can Actually Use for Free.”
+
+Now the viewer knows exactly what they are getting.
+
+Three tools.
+
+AI video generation.
+
+A clear constraint: free to use.
+
+And a specific audience: someone looking for practical tools rather than theory.
+
+This is the step most people skip.
+
+They find a trend and immediately make a video about the trend.
+
+But the real skill is converting the trend into a useful promise.
+
+You can think of the workflow like this:
+
+Search signal.
+
+Then audience interest.
+
+Then competing or related videos.
+
+Then search intent.
+
+Then content gap.
+
+Then a specific angle.
+
+And only after that, the video.
+
+There is another useful section worth checking: Breakout videos.
+
+These highlight strong-performing content from other creators whose channels are similar to yours.
+
+Again, do not treat this as a list of videos to copy.
+
+Use it as a source of patterns.
+
+Maybe several channels are covering the same topic, but one format is getting much more attention.
+
+Maybe tutorials are common, but comparisons are less common.
+
+Maybe the topic is popular, but most videos are several months old.
+
+These observations can help you decide how to package your own version.
+
+And finally, look at Recent videos.
+
+Recent content can help you understand what is currently being published around the topic, rather than relying only on older examples.
+
+This matters especially for fast-moving subjects like AI tools, software, and creator platforms.
+
+Now let's put the entire process together.
+
+Step one: open YouTube Studio.
+
+Step two: go to Analytics and open Trends.
+
+Step three: start with a broad topic relevant to your channel.
+
+Step four: check Audience interest.
+
+Step five: inspect what viewers are watching.
+
+Step six: look at the searches connected to the topic.
+
+Step seven: check whether YouTube identifies a content gap.
+
+Step eight: study breakout and recent videos.
+
+And step nine: turn all of that information into one specific viewer promise.
+
+Notice what we did not do.
+
+We did not blindly chase a random trend.
+
+We did not copy another creator's video.
+
+And we did not assume that a content gap guarantees views.
+
+We used YouTube's own discovery signals to reduce guesswork.
+
+That is the real value of the Trends tab.
+
+It can help you move from:
+
+“I need an idea”
+
+to:
+
+“People are already interested in this topic, here is what they are searching for, here is what already exists, here is what may be missing, and here is the specific angle I can create.”
+
+That is a much stronger starting point for your next video.
+
+So the next time you have no idea what to post, don't open a blank document and start guessing.
+
+Open YouTube Studio.
+
+Go to Analytics.
+
+Open Trends.
+
+Find the signal.
+
+Then build the idea around the viewer, not around the trend itself.
+
+Because the goal isn't simply to find something popular.
+
+The goal is to find a topic where you can make something genuinely useful.

@@ -1,45 +1,204 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>TikTok Creator Search Insights</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YouTube Studio 2026 — Trends Workflow</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#000;font-family:Inter,Arial,sans-serif;color:#fff}.app{width:100%;height:100%;max-width:none;margin:auto;background:#000;overflow:hidden;position:relative}.screen{position:absolute;inset:0;opacity:0;transform:translateY(12px) scale(.985);transition:opacity .45s ease,transform .45s ease;pointer-events:none}.screen.active{opacity:1;transform:none}.top{padding:10px 16px 0;background:#080808;border-bottom:1px solid #202020}.status{height:22px;display:flex;justify-content:space-between;align-items:center;font-size:10px;font-weight:700;color:#999}.head{height:48px;display:flex;align-items:center;justify-content:space-between}.brand{display:flex;align-items:center;gap:9px;font-weight:900;font-size:16px}.brand i{color:#00f2fe;font-size:19px}.badge{font-size:8px;background:#ff0050;padding:4px 6px;border-radius:5px;margin-left:3px}.icons{display:flex;gap:16px;color:#bbb}.search{margin:2px 0 12px;height:clamp(38px,6vh,64px);border-radius:22px;background:#171717;border:1px solid #282828;display:flex;align-items:center;padding:0 13px;color:#777;font-size:clamp(11px,2vw,21px)}.search b{color:#fff;font-weight:600;margin-left:7px}.chips{display:flex;gap:7px;overflow:hidden;padding-bottom:12px}.chip{white-space:nowrap;border-radius:16px;padding:6px 11px;background:#171717;border:1px solid #292929;color:#bbb;font-size:10px;font-weight:700}.chip.on{background:#fff;color:#000;border-color:#fff}.tabs{height:42px;display:flex;border-bottom:1px solid #252525;background:#080808}.tab{flex:1;display:flex;align-items:center;justify-content:center;font-size:clamp(10px,2vw,21px);font-weight:800;color:#777;position:relative}.tab.on{color:#fff}.tab.on:after{content:"";position:absolute;bottom:0;height:2px;width:65%;background:#00f2fe}.content{padding:14px;height:calc(100% - 170px);overflow:hidden}.card{background:#151515;border:1px solid #282828;border-radius:17px;padding:clamp(13px,3vw,32px);margin-bottom:14px}.row{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}.title{font-size:clamp(12px,2.5vw,27px);font-weight:850;line-height:1.25}.muted{font-size:clamp(9px,1.7vw,18px);color:#888}.cyan{color:#00f2fe}.pink{color:#ff0050}.green{color:#31e981}.metric{font-size:clamp(14px,2.8vw,30px);font-weight:900}.barbox{height:70px;background:#0c0c0c;border:1px solid #222;border-radius:14px;margin-top:10px;padding:9px;display:flex;align-items:flex-end;gap:5px}.bar{flex:1;background:#222;border-radius:4px 4px 2px 2px}.bar.hot{background:#00dce8}.gapline{display:flex;align-items:center;gap:8px;margin-top:10px;padding:9px;border-radius:11px;background:#1a0d13;border:1px solid #4a1826}.gapdot{width:7px;height:7px;border-radius:50%;background:#ff0050;box-shadow:0 0 8px #ff0050}.cta{position:absolute;left:clamp(14px,5vw,60px);right:clamp(14px,5vw,60px);bottom:clamp(18px,4vh,55px);height:clamp(44px,7vh,78px);border-radius:14px;background:linear-gradient(90deg,#00f2fe,#3aa7ff);color:#000;font-size:clamp(11px,2.2vw,24px);font-weight:900;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 10px 30px rgba(0,242,254,.14)}.pointer{position:absolute;width:23px;height:23px;border-radius:50%;background:#fff;border:3px solid #111;box-shadow:0 3px 14px #000;z-index:20;opacity:0;transition:opacity .25s,left .5s ease,top .5s ease}.pointer.show{opacity:1}.toast{position:absolute;top:62px;left:50%;transform:translateX(-50%);background:#222;color:#fff;border:1px solid #383838;border-radius:20px;padding:8px 13px;font-size:10px;font-weight:700;opacity:0;transition:opacity .3s;z-index:30;white-space:nowrap}.toast.show{opacity:1}.bottom{position:absolute;left:0;right:0;bottom:0;height:clamp(62px,9vh,100px);background:rgba(8,8,8,.96);border-top:1px solid #222;display:flex;align-items:center;justify-content:space-around;color:#aaa;font-size:8px}.bottom div{text-align:center}.bottom i{display:block;font-size:clamp(17px,3.8vw,40px);margin-bottom:4px}.bottom .active{color:#fff}.phone-title{font-size:clamp(18px,4.2vw,45px);font-weight:900}.hero{padding:clamp(32px,7vh,110px) clamp(18px,6vw,70px) 18px}.hero small{font-size:clamp(9px,1.4vw,18px);color:#00f2fe;font-weight:800;letter-spacing:.08em;text-transform:uppercase}.hero h2{font-size:clamp(25px,5.8vw,62px);line-height:1.05;margin:8px 0 8px;font-weight:900}.hero p{font-size:clamp(11px,2.2vw,24px);line-height:1.5;color:#aaa}.result{margin-top:18px}.check{width:27px;height:27px;border-radius:50%;background:#062b2c;color:#00f2fe;display:flex;align-items:center;justify-content:center}.slide{padding:clamp(20px,5vw,55px) clamp(18px,6vw,70px)}.mock-gap{background:#151515;border:1px solid #2b2b2b;border-radius:18px;padding:15px}.mock-gap h3{font-size:clamp(13px,2.7vw,29px);margin:0 0 10px}.tag{display:inline-flex;padding:clamp(6px,1.2vw,13px) clamp(8px,1.6vw,18px);border-radius:9px;background:#0d2528;color:#7ffcff;font-size:clamp(9px,1.7vw,18px);font-weight:800;margin:4px}.dim{color:#777}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;background:#0f0f0f;color:#f1f1f1;font-family:Inter,Roboto,sans-serif;overflow:hidden}
+:root{--bg:#0f0f0f;--card:#1f1f1f;--hover:#272727;--border:#333;--blue:#3ea6ff;--red:#ff0000;--purple:#a855f7;--green:#2ba640}
+#app{width:100vw;height:100vh;position:relative;overflow:hidden;background:var(--bg)}
+.header{height:64px;border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 24px;gap:24px;background:#0f0f0f}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:20px;white-space:nowrap}
+.logo-icon{width:34px;height:25px;background:#ff0000;border-radius:7px;display:grid;place-items:center;color:white;font-size:12px}
+.ai-badge{font-size:9px;padding:4px 7px;border-radius:5px;background:linear-gradient(90deg,#7c3aed,#2563eb);font-weight:800;letter-spacing:.04em}
+.searchbar{height:40px;border:1px solid var(--border);background:#121212;border-radius:22px;flex:1;max-width:680px;margin:auto;display:flex;align-items:center;padding:0 16px;color:#888;font-size:13px}
+.searchbar i{margin-right:10px}.searchbar .spark{margin-left:auto;color:#b06cff}
+.header-actions{display:flex;gap:12px;align-items:center}.pill{border:1px solid var(--border);background:#1f1f1f;border-radius:22px;padding:9px 15px;font-size:12px;font-weight:700}.avatar{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#7c3aed,#ff0000);display:grid;place-items:center}
+.body{display:flex;height:calc(100vh - 64px)}
+.sidebar{width:245px;border-right:1px solid var(--border);padding:16px 10px;background:#0f0f0f;flex:none}
+.channel{padding:12px;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:center;margin-bottom:10px}.channel-avatar{width:42px;height:42px;border-radius:50%;background:#242424;display:grid;place-items:center;color:#aaa}.channel b{font-size:12px}.channel span{display:block;color:#888;font-size:10px;margin-top:3px}
+.nav{display:flex;align-items:center;gap:14px;padding:12px 14px;border-radius:9px;color:#aaa;font-size:12px;margin:3px 0}.nav.active{background:#272727;color:#fff}.nav.trends-active{color:#d69cff;background:rgba(168,85,247,.12);border:1px solid rgba(168,85,247,.22)}.nav i{width:20px;text-align:center;font-size:15px}
+.main{flex:1;overflow:hidden;padding:28px 34px;background:#0f0f0f}
+.view{height:100%;display:none}.view.active{display:block}
+.page-title{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px}.page-title h1{font-size:26px;margin:0;font-weight:800}.page-title p{font-size:12px;color:#999;margin:7px 0 0}
+.analytics-tabs{display:flex;gap:26px;border-bottom:1px solid var(--border);margin-bottom:20px}.analytics-tab{padding:12px 2px 13px;color:#999;font-size:12px;font-weight:700}.analytics-tab.active{color:#fff;border-bottom:3px solid #fff}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}.card{background:#1b1b1b;border:1px solid #2d2d2d;border-radius:12px;padding:18px}.card h3{font-size:13px;margin:0 0 7px;font-weight:800}.muted{font-size:11px;color:#8e8e8e;line-height:1.45}.span-4{grid-column:span 4}.span-5{grid-column:span 5}.span-7{grid-column:span 7}.span-8{grid-column:span 8}.span-12{grid-column:span 12}
+.trend-search{height:44px;border:1px solid #444;border-radius:8px;background:#121212;display:flex;align-items:center;padding:0 13px;gap:10px;font-size:13px}.trend-search i{color:#777}.save{margin-left:auto;color:#aaa;font-size:11px}
+.metric-row{display:flex;gap:8px;align-items:end;height:100px}.bar{width:13%;background:linear-gradient(180deg,#3ea6ff,#24557c);border-radius:4px 4px 0 0}.bar.hot{background:linear-gradient(180deg,#a855f7,#4c1d95)}.chart-line{height:115px;position:relative;margin-top:10px}.chart-line svg{width:100%;height:100%}
+.badge{display:inline-flex;align-items:center;gap:5px;border-radius:5px;padding:5px 8px;font-size:10px;font-weight:700}.green{background:rgba(43,166,64,.16);color:#5ddd78}.purple{background:rgba(168,85,247,.14);color:#d29cff}.blue{background:rgba(62,166,255,.14);color:#6bbdff}
+.search-result{display:flex;justify-content:space-between;align-items:center;padding:13px 0;border-bottom:1px solid #303030}.search-result:last-child{border-bottom:0}.result-left{display:flex;gap:12px;align-items:center}.result-icon{width:34px;height:34px;border-radius:8px;background:#242424;display:grid;place-items:center;color:#aaa}.result-name{font-size:12px;font-weight:700}.result-sub{font-size:10px;color:#777;margin-top:3px}
+.gap-card{border:1px solid rgba(168,85,247,.45);background:linear-gradient(135deg,rgba(168,85,247,.10),rgba(255,255,255,.02));box-shadow:0 0 35px rgba(168,85,247,.08)}.gap-title{display:flex;align-items:center;gap:8px;color:#e2baff;font-weight:800;font-size:12px}.gap-title i{color:#ff4f9a}.idea{font-size:20px;font-weight:800;line-height:1.2;margin:14px 0}.idea span{color:#b879ff}.step{display:flex;gap:13px;padding:12px 0;border-bottom:1px solid #303030}.step:last-child{border:0}.num{width:26px;height:26px;border-radius:50%;background:#292929;display:grid;place-items:center;font-size:11px;font-weight:800;color:#bbb;flex:none}.step b{font-size:12px}.step p{font-size:10px;color:#858585;margin:4px 0 0;line-height:1.45}
+.video-row{display:flex;gap:14px;padding:12px 0;border-bottom:1px solid #303030}.thumb{width:130px;height:74px;background:linear-gradient(135deg,#202020,#3a3a3a);border-radius:7px;position:relative;overflow:hidden}.thumb:after{content:"";position:absolute;left:48%;top:40%;width:0;height:0;border-left:18px solid #fff;border-top:11px solid transparent;border-bottom:11px solid transparent;opacity:.8}.video-meta{flex:1}.video-meta b{font-size:12px}.video-meta span{display:block;font-size:10px;color:#777;margin-top:5px}
+.cursor{position:absolute;width:18px;height:18px;border-radius:50%;background:white;box-shadow:0 1px 7px #0008;z-index:20;pointer-events:none;transform:translate(-50%,-50%)}.cursor:after{content:"";position:absolute;left:6px;top:6px;width:5px;height:5px;border-radius:50%;background:#555}
+.callout{position:absolute;z-index:19;border:1px solid #a855f7;background:rgba(19,10,28,.96);padding:10px 13px;border-radius:9px;box-shadow:0 12px 40px #0008;font-size:11px;max-width:260px;opacity:0;transform:translateY(6px);transition:.25s}.callout.show{opacity:1;transform:translateY(0)}.callout strong{display:block;color:#e0b5ff;margin-bottom:3px}.pulse{animation:pulse 1.4s infinite}@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(168,85,247,.25)}50%{box-shadow:0 0 0 8px rgba(168,85,247,0)}}
+.bottom-note{position:absolute;left:34px;bottom:24px;color:#666;font-size:10px}
+@media(max-width:1100px){.sidebar{width:190px}.main{padding:20px}.header{padding:0 14px}.span-4{grid-column:span 6}.span-5,.span-7,.span-8{grid-column:span 12}}
 </style>
 </head>
 <body>
-<div class="app">
-  <div id="s0" class="screen active">
-    <div class="top"><div class="status"><span>10:58</span><span><i class="fa-solid fa-signal"></i> <i class="fa-solid fa-wifi"></i> 5G&nbsp; <i class="fa-solid fa-battery-three-quarters"></i></span></div><div class="head"><div class="brand"><i class="fa-solid fa-magnifying-glass-chart"></i><span>Search Insights</span><span class="badge">2026</span></div><div class="icons"><i class="fa-regular fa-bookmark"></i><i class="fa-regular fa-bell"></i></div></div><div class="search"><i class="fa-solid fa-magnifying-glass"></i><b>AI video ideas</b></div><div class="chips"><span class="chip on">All</span><span class="chip">Tech & AI</span><span class="chip">Gaming</span><span class="chip">Marketing</span></div></div>
-    <div class="tabs"><div class="tab on">For You</div><div id="gapTab" class="tab">Content Gap</div><div class="tab">Trending</div><div class="tab">Followers</div></div>
-    <div class="content"><div class="card"><div class="row"><div><div class="muted">SEARCH TOPIC</div><div class="title" style="margin-top:5px">AI video generator</div></div><span class="cyan metric">↑</span></div><div class="barbox"><div class="bar" style="height:22%"></div><div class="bar" style="height:31%"></div><div class="bar" style="height:38%"></div><div class="bar" style="height:46%"></div><div class="bar" style="height:58%"></div><div class="bar hot" style="height:78%"></div><div class="bar hot" style="height:94%"></div></div><div class="gapline"><span class="gapdot"></span><div><div style="font-size:clamp(10px,2vw,21px);font-weight:800">Content gap available</div><div class="muted">High search interest • fewer relevant videos</div></div></div></div><div class="card"><div class="row"><div><div class="muted">SEARCH TOPIC</div><div class="title" style="margin-top:5px">AI video editing</div></div><span class="green metric">↗</span></div><div style="margin-top:10px;font-size:9px;color:#999">Explore related searches and identify a specific angle before creating.</div></div></div>
-    <div class="bottom"><div class="active"><i class="fa-solid fa-house"></i>Home</div><div><i class="fa-solid fa-compass"></i>Discover</div><div><i class="fa-solid fa-plus"></i>Create</div><div><i class="fa-solid fa-user"></i>Profile</div></div>
+<div id="app">
+  <header class="header">
+    <div class="logo"><div class="logo-icon"><i class="fa-solid fa-play"></i></div><span>Studio</span><span class="ai-badge">2026 AI</span></div>
+    <div class="searchbar"><i class="fa-solid fa-magnifying-glass"></i><span>Search your channel, ask the AI assistant, or explore resources...</span><i class="fa-solid fa-wand-magic-sparkles spark"></i></div>
+    <div class="header-actions"><div class="pill"><i class="fa-solid fa-plus"></i> Create</div><i class="fa-regular fa-bell" style="color:#aaa"></i><div class="avatar"><i class="fa-solid fa-user text-xs"></i></div></div>
+  </header>
+  <div class="body">
+    <aside class="sidebar">
+      <div class="channel"><div class="channel-avatar"><i class="fa-solid fa-user-gear"></i></div><div><b>Creator Lab</b><span>Your channel • 128K subscribers</span></div></div>
+      <div class="nav"><i class="fa-solid fa-border-all"></i>Dashboard</div>
+      <div class="nav"><i class="fa-solid fa-photo-film"></i>Content</div>
+      <div class="nav active"><i class="fa-solid fa-chart-line"></i>Analytics</div>
+      <div class="nav trends-active"><i class="fa-solid fa-wand-magic-sparkles"></i>Trends</div>
+      <div class="nav"><i class="fa-regular fa-comments"></i>Comments & Community</div>
+      <div class="nav"><i class="fa-solid fa-dollar-sign"></i>Earn</div>
+      <div class="nav"><i class="fa-solid fa-palette"></i>Customization</div>
+      <div class="nav"><i class="fa-solid fa-music"></i>Audio library</div>
+      <div style="height:1px;background:#333;margin:12px 0"></div>
+      <div class="nav"><i class="fa-solid fa-gear"></i>Settings</div>
+      <div class="nav"><i class="fa-regular fa-comment-dots"></i>Send feedback</div>
+    </aside>
+
+    <main class="main">
+      <section id="s0" class="view active">
+        <div class="page-title"><div><h1>Analytics</h1><p>Understand your channel and find better ideas for what to make next.</p></div><div class="badge purple"><i class="fa-solid fa-wand-magic-sparkles"></i> Trends</div></div>
+        <div class="analytics-tabs"><div class="analytics-tab">Overview</div><div class="analytics-tab">Reach</div><div class="analytics-tab">Engagement</div><div class="analytics-tab">Audience</div><div class="analytics-tab active">Trends</div></div>
+        <div class="card" style="margin-bottom:16px"><h3>Find your next video idea</h3><p class="muted" style="margin-bottom:13px">Explore what your audience and viewers across YouTube are searching for.</p><div class="trend-search"><i class="fa-solid fa-magnifying-glass"></i><span id="searchText">Search a topic...</span><span class="save">Save</span></div></div>
+        <div class="grid">
+          <div class="card span-4"><h3>Top searches</h3><p class="muted">Based on your audience and saved searches.</p><div style="margin-top:12px"><span class="badge blue">Last 28 days</span></div></div>
+          <div class="card span-4"><h3>Breakout videos</h3><p class="muted">High-performing videos from similar creators.</p><div style="margin-top:12px"><span class="badge green">Inspiration</span></div></div>
+          <div class="card span-4"><h3>Content gaps for Shorts</h3><p class="muted">Searches where viewers may want more relevant or higher-quality Shorts.</p><div style="margin-top:12px"><span class="badge purple">Opportunity</span></div></div>
+        </div>
+      </section>
+
+      <section id="s1" class="view">
+        <div class="page-title"><div><h1>Trends</h1><p>Start broad. Then use search signals to narrow the idea.</p></div><div class="badge blue">Audience insights</div></div>
+        <div class="card" style="margin-bottom:16px"><div class="trend-search"><i class="fa-solid fa-magnifying-glass"></i><span>AI video generator</span><span class="save"><i class="fa-regular fa-bookmark"></i> Save</span></div></div>
+        <div class="grid">
+          <div class="card span-5"><h3>Audience interest</h3><p class="muted">Interest for this search topic.</p><div style="font-size:25px;font-weight:800;margin-top:12px">High</div><div class="metric-row" style="height:78px"><div class="bar" style="height:30%"></div><div class="bar" style="height:43%"></div><div class="bar" style="height:52%"></div><div class="bar" style="height:66%"></div><div class="bar hot" style="height:88%"></div><div class="bar hot" style="height:100%"></div><div class="bar" style="height:78%"></div></div></div>
+          <div class="card span-7"><h3>Searched on YouTube</h3><p class="muted">Top searches related to this topic.</p>
+            <div class="search-result"><div class="result-left"><div class="result-icon"><i class="fa-solid fa-magnifying-glass"></i></div><div><div class="result-name">best AI video generator</div><div class="result-sub">Specific tool intent</div></div></div><span class="badge blue">High</span></div>
+            <div class="search-result"><div class="result-left"><div class="result-icon"><i class="fa-solid fa-magnifying-glass"></i></div><div><div class="result-name">free AI video generator</div><div class="result-sub">Free-tool intent</div></div></div><span class="badge green">High</span></div>
+            <div class="search-result"><div class="result-left"><div class="result-icon"><i class="fa-solid fa-magnifying-glass"></i></div><div><div class="result-name">AI video generator for creators</div><div class="result-sub">Audience-specific intent</div></div></div><span class="badge purple">High</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="s2" class="view">
+        <div class="page-title"><div><h1>AI video generator</h1><p>Search topic overview</p></div><div class="badge green"><i class="fa-solid fa-arrow-trend-up"></i> Strong interest</div></div>
+        <div class="grid">
+          <div class="card span-7"><h3>Watched on YouTube</h3><p class="muted">Popular videos watched by viewers for this topic.</p>
+            <div class="video-row"><div class="thumb"></div><div class="video-meta"><b>Best AI Video Generators for Creators</b><span>Creator Tools • 12:48 • Practical comparison</span></div><span class="badge blue">Comparison</span></div>
+            <div class="video-row"><div class="thumb"></div><div class="video-meta"><b>How to Make AI Videos Step by Step</b><span>AI Workflow • 08:21 • Tutorial</span></div><span class="badge green">Tutorial</span></div>
+            <div class="video-row"><div class="thumb"></div><div class="video-meta"><b>Free AI Video Tools You Should Try</b><span>AI Tools • 06:34 • List</span></div><span class="badge purple">List</span></div>
+          </div>
+          <div class="card span-5"><h3>What the existing videos tell us</h3><div class="step"><div class="num">1</div><div><b>Comparisons are common</b><p>Viewers want practical choices, not just tool names.</p></div></div><div class="step"><div class="num">2</div><div><b>Tutorials are common</b><p>Step-by-step content is already established.</p></div></div><div class="step"><div class="num">3</div><div><b>Specific constraints stand out</b><p>Free, mobile, fast, or creator-focused angles narrow the promise.</p></div></div></div>
+        </div>
+      </section>
+
+      <section id="s3" class="view">
+        <div class="page-title"><div><h1>Content gap</h1><p>A possible opportunity — not a guarantee of views.</p></div><div class="badge purple pulse">Opportunity signal</div></div>
+        <div class="grid">
+          <div class="card gap-card span-7"><div class="gap-title"><i class="fa-solid fa-circle-exclamation"></i> Content gap for Shorts</div><div class="idea">Searchers may want a clearer answer to:<br><span>“Which AI video generator is actually free?”</span></div><p class="muted">A content gap can occur when viewers cannot find enough quality results, an exact match, or relevant/current videos for a search.</p><div style="display:flex;gap:8px;margin-top:18px"><span class="badge purple">Free tools</span><span class="badge blue">AI video</span><span class="badge green">Creator workflow</span></div></div>
+          <div class="card span-5"><h3>How to use the signal</h3><div class="step"><div class="num">1</div><div><b>Do not copy the gap</b><p>The gap tells you what may be missing. You still need your own useful angle.</p></div></div><div class="step"><div class="num">2</div><div><b>Make the promise specific</b><p>Turn a broad topic into one answer the viewer can understand immediately.</p></div></div><div class="step"><div class="num">3</div><div><b>Check the competition</b><p>Look at recent and breakout videos before deciding.</p></div></div></div>
+        </div>
+      </section>
+
+      <section id="s4" class="view">
+        <div class="page-title"><div><h1>Breakout videos</h1><p>Study patterns from creators similar to your channel.</p></div><div class="badge green">Research</div></div>
+        <div class="grid">
+          <div class="card span-8"><div class="video-row"><div class="thumb"></div><div class="video-meta"><b>3 Free AI Video Generators That Are Actually Useful</b><span>Similar creator • strong recent performance • list format</span></div><span class="badge green">Breakout</span></div><div class="video-row"><div class="thumb"></div><div class="video-meta"><b>I Tested 5 AI Video Tools for Creators</b><span>Similar creator • comparison • hands-on angle</span></div><span class="badge green">Breakout</span></div><div class="video-row"><div class="thumb"></div><div class="video-meta"><b>AI Video Generator: Free vs Paid</b><span>Similar creator • decision-focused angle</span></div><span class="badge blue">Pattern</span></div></div>
+          <div class="card span-4"><h3>What to extract</h3><div class="step"><div class="num">A</div><div><b>Topic</b><p>What are they talking about?</p></div></div><div class="step"><div class="num">B</div><div><b>Angle</b><p>What makes their promise specific?</p></div></div><div class="step"><div class="num">C</div><div><b>Format</b><p>Comparison, tutorial, list, or test?</p></div></div></div>
+        </div>
+      </section>
+
+      <section id="s5" class="view">
+        <div class="page-title"><div><h1>Turn the signal into a video</h1><p>The final step is not “follow the trend.” It is “solve the search.”</p></div></div>
+        <div class="grid">
+          <div class="card span-4"><span class="badge blue">SEARCH SIGNAL</span><div style="font-size:19px;font-weight:800;margin-top:14px">AI video generator</div><p class="muted" style="margin-top:8px">Broad topic with active viewer intent.</p></div>
+          <div class="card span-4"><span class="badge purple">CONTENT GAP</span><div style="font-size:19px;font-weight:800;margin-top:14px">Free options</div><p class="muted" style="margin-top:8px">A narrower question worth answering.</p></div>
+          <div class="card span-4"><span class="badge green">VIEWER PROMISE</span><div style="font-size:19px;font-weight:800;margin-top:14px">3 useful tools</div><p class="muted" style="margin-top:8px">Specific, understandable, actionable.</p></div>
+          <div class="card span-12 gap-card"><div class="gap-title"><i class="fa-solid fa-lightbulb"></i> FINAL VIDEO CONCEPT</div><div class="idea">“3 AI Video Generators You Can Actually Use for Free”</div><div style="display:flex;gap:10px;align-items:center"><span class="badge blue">AI tools</span><span class="badge purple">Comparison</span><span class="badge green">Creator-focused</span><span class="muted">Build the video around the search — not around the trend.</span></div></div>
+        </div>
+      </section>
+    </main>
   </div>
-  <div id="s1" class="screen"><div class="hero"><small>CREATOR TOOL</small><div class="phone-title">Creator Search Insights</div><p>Find what people are searching for and turn those searches into content ideas.</p><div class="search" style="margin-top:16px"><i class="fa-solid fa-magnifying-glass"></i><b>AI video generator</b></div></div><div class="slide" style="display:flex;flex-direction:column;justify-content:center;min-height:48vh"><div class="mock-gap"><div class="row"><div><div class="muted">SEARCH RESULTS</div><h3>AI video generator</h3></div><div class="check"><i class="fa-solid fa-check"></i></div></div><div class="gapline"><span class="gapdot"></span><div><div style="font-size:11px;font-weight:900">Content gap</div><div class="muted">A topic with search interest and an opportunity for creators</div></div></div><div style="margin-top:14px"><span class="tag">AI video</span><span class="tag">video generator</span><span class="tag">AI tools</span><span class="tag">creator tools</span></div></div></div><div class="cta"><i class="fa-solid fa-lightbulb"></i>Turn this search into a video</div></div>
-  <div id="s2" class="screen"><div class="hero"><small>THE IDEA</small><h2>Don't guess your next topic.</h2><p>Start with a search people are already making, then choose a specific angle you can explain clearly.</p></div><div class="slide" style="display:flex;flex-direction:column;justify-content:center;min-height:52vh"><div class="card"><div class="row"><div><div class="muted">SEARCH</div><div class="title" style="margin-top:5px">AI video generator</div></div><span class="cyan metric">↗</span></div><div style="height:8px"></div><div class="row"><span class="muted">Angle</span><strong style="font-size:11px">3 free AI video tools</strong></div><div class="row" style="margin-top:8px"><span class="muted">Format</span><strong style="font-size:11px">30-second tutorial</strong></div></div><div class="card"><div class="muted">NEXT STEP</div><div style="font-size:12px;font-weight:900;margin-top:6px">Create the video around the search.</div></div></div></div>
-  <div id="toast" class="toast">Search topic selected</div><div id="pointer" class="pointer"></div>
+  <div id="cursor" class="cursor"></div>
+  <div id="callout" class="callout"><strong id="calloutTitle"></strong><span id="calloutText"></span></div>
+  
 </div>
 <script>
-const screens=[document.getElementById('s0'),document.getElementById('s1'),document.getElementById('s2')];
-const pointer=document.getElementById('pointer'),toast=document.getElementById('toast');
-function show(i){screens.forEach((s,n)=>s.classList.toggle('active',n===i));}
-function cursor(x,y,on=true){pointer.style.left=x+'px';pointer.style.top=y+'px';pointer.classList.toggle('show',on)}
-function pop(t){toast.textContent=t;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),900)}
-function SPMOTION_FRAME(time){
-  const t=((time%30)+30)%30;
-  if(t<3.2){show(0);cursor(305,113,true);}
-  else if(t<7.4){show(0);cursor(285,113,true);pop('Search topic selected');}
-  else if(t<12.2){show(1);cursor(288,245,true);}
-  else if(t<17.4){show(1);cursor(300,330,true);}
-  else if(t<22.5){show(2);cursor(300,300,true);}
-  else {show(2);cursor(300,300,false)}
+const scenes = [
+  {id:"s0",start:0,end:45},
+  {id:"s1",start:45,end:115},
+  {id:"s2",start:115,end:185},
+  {id:"s3",start:185,end:260},
+  {id:"s4",start:260,end:325},
+  {id:"s5",start:325,end:420}
+];
+const cursor = document.getElementById('cursor');
+const callout = document.getElementById('callout');
+const calloutTitle = document.getElementById('calloutTitle');
+const calloutText = document.getElementById('calloutText');
+const searchText = document.getElementById('searchText');
+
+function showCallout(title,text,x,y){
+  calloutTitle.textContent=title; calloutText.textContent=text;
+  callout.style.left=x+'px'; callout.style.top=y+'px'; callout.classList.add('show');
+}
+function hideCallout(){callout.classList.remove('show')}
+function setScene(id){
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+function moveCursor(x,y){cursor.style.left=x+'px';cursor.style.top=y+'px';cursor.style.opacity='1'}
+function hideCursor(){cursor.style.opacity='0'}
+function SPMOTION_FRAME(t){
+  const time = Math.max(0,Math.min(420,t));
+  let scene=scenes.find(s=>time>=s.start && time<s.end) || scenes[scenes.length-1];
+  setScene(scene.id); hideCallout(); hideCursor();
+
+  if(scene.id==='s0'){
+    const p=Math.min(1,Math.max(0,(time-8)/20));
+    if(p<0.7) moveCursor(355+430*p,430);
+    if(time>12){showCallout('START HERE','Open Analytics, then select Trends.',650,185);}
+    if(time>32){hideCallout();moveCursor(760,72);}
+  }
+  if(scene.id==='s1'){
+    searchText.textContent='AI video generator';
+    if(time<65){moveCursor(760,185);showCallout('SEARCH A TOPIC','Start broad, then narrow the idea.',900,180)}
+    else if(time<92){hideCallout();moveCursor(530,430)}
+    else if(time<112){moveCursor(1100,430);showCallout('AUDIENCE INTEREST','Use this as a signal, not a guarantee.',1180,350)}
+  }
+  if(scene.id==='s2'){
+    if(time<145){moveCursor(700,230);showCallout('WATCHED ON YOUTUBE','Study what viewers are already watching.',960,210)}
+    else if(time<168){hideCallout();moveCursor(1160,455)}
+    else {moveCursor(950,600);showCallout('LOOK FOR THE MISSING ANGLE','Do not copy the biggest video. Find what is still useful to explain.',1120,610)}
+  }
+  if(scene.id==='s3'){
+    if(time<215){moveCursor(650,270);showCallout('CONTENT GAP','This is an opportunity signal — not a promise of views.',960,240)}
+    else if(time<240){hideCallout();moveCursor(1050,420)}
+    else {moveCursor(540,650);showCallout('MAKE THE PROMISE SPECIFIC','Turn the gap into one clear viewer question.',820,650)}
+  }
+  if(scene.id==='s4'){
+    if(time<285){moveCursor(700,245);showCallout('BREAKOUT VIDEOS','Look for patterns from similar creators.',970,210)}
+    else if(time<305){hideCallout();moveCursor(650,430)}
+    else {moveCursor(1150,500);showCallout('EXTRACT THE PATTERN','Topic + angle + format. Then make your own version.',1200,520)}
+  }
+  if(scene.id==='s5'){
+    if(time<350){moveCursor(520,250);showCallout('SEARCH SIGNAL','Start with the broad topic.',780,215)}
+    else if(time<375){moveCursor(940,250);showCallout('NARROW THE QUESTION','Use the content gap to create a more specific promise.',1080,210)}
+    else if(time<398){moveCursor(1330,250);showCallout('VIEWER PROMISE','Make the outcome obvious.',1320,320)}
+    else {moveCursor(900,535);showCallout('FINAL IDEA','Now the trend has become a useful video concept.',1080,530)}
+  }
 }
 window.SPMOTION_FRAME=SPMOTION_FRAME;
-window.duration=30;
-SPMOTION_FRAME(0);
+window.duration=420;
+window.__SPMOTION_DESIGN_DURATION__=420;
 </script>
-</body></html>
+</body>
+</html>
