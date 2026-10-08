@@ -1,166 +1,51 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=1080,initial-scale=1">
-<title>How to Find Content Gaps on YouTube</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080,height=1920,initial-scale=1.0">
+<title>YouTube Thumbnail CTR</title>
 <style>
-*{box-sizing:border-box}
-html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#0f0f0f;color:#f1f1f1;font-family:Inter,Roboto,Arial,sans-serif}
-body{user-select:none}
-#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:#0f0f0f}
-.header{height:108px;border-bottom:1px solid #333;background:#0f0f0f;display:flex;align-items:center;padding:0 38px;gap:22px}
-.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:27px}
-.play{width:40px;height:28px;border-radius:8px;background:#ff0000;position:relative}
-.play:after{content:"";position:absolute;left:16px;top:7px;border-left:11px solid #fff;border-top:7px solid transparent;border-bottom:7px solid transparent}
-.headerSearch{margin-left:70px;width:450px;height:48px;border:1px solid #333;border-radius:24px;background:#181818;color:#888;padding:13px 20px;font-size:18px}
-.account{margin-left:auto;width:42px;height:42px;border-radius:50%;background:#a855f7;display:flex;align-items:center;justify-content:center;font-weight:800}
-.sidebar{position:absolute;top:108px;bottom:0;left:0;width:190px;border-right:1px solid #333;background:#0f0f0f;padding:26px 14px}
-.nav{height:55px;border-radius:10px;padding:0 16px;display:flex;align-items:center;gap:14px;color:#aaa;font-size:18px;margin-bottom:7px}
-.nav.active{background:#272727;color:#fff}
-.nav.active .ico{color:#ff0000}
-.ico{width:22px;text-align:center;color:#888}
-.content{position:absolute;left:190px;right:0;top:108px;bottom:0;padding:36px 40px}
-.h1{font-size:34px;font-weight:800;margin-bottom:24px}
-.tabs{height:54px;border-bottom:1px solid #333;display:flex;gap:34px;margin-bottom:26px}
-.tab{font-size:17px;color:#999;padding:12px 2px}
-.tab.active{color:#fff;border-bottom:3px solid #fff}
-.search{height:58px;background:#1f1f1f;border:1px solid #333;border-radius:10px;display:flex;align-items:center;padding:0 18px;font-size:20px}
-.searchIcon{color:#888;margin-right:12px}
-.card{background:#1f1f1f;border:1px solid #333;border-radius:12px;padding:22px;margin-top:22px}
-.cardTitle{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:#aaa;font-weight:700}
-.topic{font-size:25px;font-weight:800;margin-top:8px}
-.chart{height:115px;margin-top:15px;display:flex;align-items:flex-end;gap:10px}
-.bar{flex:1;background:#3ea6ff;border-radius:5px 5px 0 0;opacity:.82}
-.gapCard{position:relative;border:2px solid #ff0000;background:#211416}
-.gapBadge{display:inline-block;background:#ff0000;color:#fff;border-radius:18px;padding:6px 11px;font-size:12px;font-weight:800;margin-top:13px}
-.gapTitle{font-size:25px;font-weight:800;margin-top:13px}
-.gapText{font-size:16px;color:#c5c5c5;line-height:1.45;margin-top:9px;max-width:680px}
-.callout{position:absolute;right:28px;top:18px;border:1px solid #a855f7;background:#241a31;color:#d8b4fe;border-radius:10px;padding:10px 13px;font-size:13px;font-weight:700}
-.bottom{position:absolute;left:44px;right:44px;bottom:54px;text-align:center}
-.kicker{font-size:19px;color:#aaa;margin-bottom:10px;letter-spacing:.06em;text-transform:uppercase}
-.headline{font-size:59px;line-height:.98;font-weight:900;letter-spacing:-2px}
-.headline span{color:#ff0000}
-.sub{font-size:22px;color:#b5b5b5;margin-top:15px}
-.pointer{position:absolute;width:34px;height:34px;border:4px solid white;border-radius:50%;box-shadow:0 0 0 8px #fff2;display:none;z-index:10}
-.zoom{transition:transform .35s ease}
-</style>
-</head>
-<body>
-<div id="stage">
-  <div class="header">
-    <div class="logo"><div class="play"></div><span>YouTube Studio</span></div>
-    <div class="headerSearch">Search across your channel</div>
-    <div class="account">SP</div>
-  </div>
-
-  <aside class="sidebar">
-    <div class="nav"><div class="ico">▦</div>Dashboard</div>
-    <div class="nav"><div class="ico">▣</div>Content</div>
-    <div class="nav active"><div class="ico">◒</div>Analytics</div>
-    <div class="nav"><div class="ico">✦</div>AI Studio</div>
-    <div class="nav"><div class="ico">◌</div>Comments</div>
-    <div class="nav"><div class="ico">$</div>Earn</div>
-    <div class="nav"><div class="ico">⚙</div>Settings</div>
-  </aside>
-
-  <main class="content">
-    <div class="h1">Analytics</div>
-    <div class="tabs">
-      <div class="tab">Overview</div>
-      <div class="tab">Reach</div>
-      <div class="tab">Engagement</div>
-      <div class="tab">Audience</div>
-      <div class="tab active">Trends</div>
-    </div>
-
-    <div class="search"><span class="searchIcon">⌕</span><strong>AI video generator</strong></div>
-
-    <section class="card zoom" id="interest">
-      <div class="cardTitle">Audience interest</div>
-      <div class="topic">AI video generator</div>
-      <div class="chart">
-        <div class="bar" style="height:43%"></div><div class="bar" style="height:58%"></div>
-        <div class="bar" style="height:49%"></div><div class="bar" style="height:76%"></div>
-        <div class="bar" style="height:64%"></div><div class="bar" style="height:86%"></div>
-        <div class="bar" style="height:72%"></div><div class="bar" style="height:94%"></div>
-      </div>
-    </section>
-
-    <section class="card gapCard zoom" id="gap">
-      <div class="cardTitle">Content gaps for Shorts</div>
-      <div class="gapTitle">AI video generator — free</div>
-      <div class="gapBadge">CONTENT GAP</div>
-      <div class="gapText">Viewers may not be finding enough quality search results for this topic.</div>
-      <div class="callout">Opportunity</div>
-    </section>
-
-    <section class="card">
-      <div class="cardTitle">Searched on YouTube</div>
-      <div class="topic">Specific viewer needs</div>
-      <div class="gapText">Free tools · mobile tools · realistic video · best AI video generator</div>
-    </section>
-  </main>
-
-  <div class="pointer" id="pointer"></div>
-
-  <div class="bottom">
-    <div class="kicker" id="kicker">YouTube Studio Trends</div>
-    <div class="headline" id="headline">FIND <span>CONTENT GAPS</span></div>
-    <div class="sub" id="sub">Don't chase the trend. Find what viewers still can't find.</div>
-  </div>
-</div>
-
+*{box-sizing:border-box}html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#070707;color:#f1f1f1;font-family:Inter,Roboto,Arial,sans-serif}body{user-select:none}
+#stage{position:relative;width:1080px;height:1920px;background:#070707;overflow:hidden}.top{height:82px;background:#0f0f0f;border-bottom:1px solid #292929;display:flex;align-items:center;padding:0 30px;gap:22px}.yt{width:48px;height:34px;border-radius:9px;background:#ff0000;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:18px}.studio{font-size:25px;font-weight:800}.badge{font-size:13px;font-weight:800;background:#262626;border:1px solid #3b3b3b;border-radius:7px;padding:6px 9px;color:#bbb}.search{margin-left:40px;width:390px;height:43px;border:1px solid #383838;background:#121212;border-radius:24px;color:#777;display:flex;align-items:center;padding:0 17px;font-size:14px}.actions{margin-left:auto;display:flex;gap:18px;align-items:center;color:#aaa;font-size:20px}.avatar{width:34px;height:34px;border-radius:50%;background:#353535;display:flex;align-items:center;justify-content:center;color:#ddd}
+.body{display:flex;height:1838px}.side{width:245px;background:#0f0f0f;border-right:1px solid #292929;padding:20px 12px}.channel{padding:12px 12px 20px;border-bottom:1px solid #292929;margin-bottom:14px;display:flex;gap:12px;align-items:center}.chav{width:42px;height:42px;border-radius:50%;background:#282828;display:flex;align-items:center;justify-content:center;color:#aaa}.channel b{display:block;font-size:14px}.channel span{display:block;font-size:10px;color:#777;margin-top:4px}.nav{height:45px;border-radius:8px;display:flex;align-items:center;gap:14px;padding:0 14px;color:#aaa;font-size:13px;margin:3px 0}.nav.active{background:#272727;color:#fff}
+.main{flex:1;background:#0f0f0f;padding:34px 34px;position:relative}h1{font-size:27px;margin:0;font-weight:800}.sub{color:#8d8d8d;font-size:12px;margin-top:7px}.tabs{display:flex;gap:30px;margin-top:25px;border-bottom:1px solid #303030;height:45px}.tab{font-size:12px;color:#8a8a8a;padding:0 4px}.tab.active{color:#fff;border-bottom:3px solid #fff}
+.card{background:#1b1b1b;border:1px solid #2d2d2d;border-radius:12px;padding:20px}.video{display:flex;gap:15px;align-items:center;margin-bottom:20px}.thumb{width:180px;height:102px;border-radius:8px;background:linear-gradient(135deg,#302047,#171717);border:1px solid #454545;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}.thumb:before{content:"MORE CLICKS?";font-size:12px;font-weight:900;color:#fff;letter-spacing:.5px}.thumb:after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,transparent 35%,rgba(168,85,247,.4))}.vtitle{font-size:14px;font-weight:800;line-height:1.35}.muted{font-size:11px;color:#777;margin-top:6px}
+.metricgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.metric{background:#121212;border:1px solid #303030;border-radius:9px;padding:15px}.metric .label{font-size:10px;color:#888}.metric .value{font-size:22px;font-weight:900;margin-top:7px}.metric .delta{font-size:10px;color:#e56b6f;margin-top:5px}
+.chart{height:175px;margin-top:17px;border-top:1px solid #292929;position:relative;overflow:hidden}.gridline{position:absolute;left:0;right:0;border-top:1px solid #252525}.g1{top:40px}.g2{top:85px}.g3{top:130px}.chart svg{position:absolute;inset:0;width:100%;height:100%}.legend{display:flex;gap:20px;margin-top:10px;font-size:10px;color:#888}.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px;background:#3ea6ff}.dot2{background:#a855f7}
+.signal{margin-top:16px;border:1px solid rgba(168,85,247,.45);background:linear-gradient(135deg,rgba(168,85,247,.12),rgba(255,255,255,.02));border-radius:11px;padding:17px}.signal h3{font-size:13px;margin:0;color:#d8b2ff}.signal p{font-size:11px;color:#aaa;line-height:1.5;margin:8px 0 0}
+.sources{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:15px}.source{background:#121212;border:1px solid #303030;border-radius:9px;padding:13px}.source b{font-size:11px}.source span{display:block;font-size:10px;color:#777;margin-top:6px}.source strong{display:block;font-size:17px;margin-top:9px}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:15px}.check{background:#121212;border:1px solid #303030;border-radius:9px;padding:14px}.check b{font-size:11px}.check p{font-size:10px;color:#888;line-height:1.45;margin:7px 0 0}
+.test{margin-top:15px;background:#121212;border:1px solid #343434;border-radius:10px;padding:15px;display:flex;align-items:center;gap:14px}.test .mini{width:92px;height:52px;border-radius:6px;background:#262626;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:900}.test button{margin-left:auto;background:#3ea6ff;border:0;color:#071018;font-weight:900;border-radius:7px;padding:9px 13px;font-size:10px}
+.callout{position:absolute;z-index:10;background:#170f20;border:1px solid #a855f7;border-radius:10px;padding:12px 14px;width:280px;box-shadow:0 14px 40px #0009;opacity:0;transform:translateY(6px);transition:.18s}.callout.show{opacity:1;transform:translateY(0)}.callout b{display:block;color:#ddbaff;font-size:11px;margin-bottom:4px}.callout span{font-size:10px;color:#ddd;line-height:1.4}.cursor{position:absolute;z-index:11;width:18px;height:18px;border-radius:50%;background:#fff;box-shadow:0 1px 8px #000;opacity:0;transform:translate(-50%,-50%)}.cursor:after{content:"";position:absolute;left:6px;top:6px;width:5px;height:5px;border-radius:50%;background:#555}
+.footer{position:absolute;left:278px;bottom:18px;color:#555;font-size:9px}.bigmsg{position:absolute;left:34px;right:34px;bottom:50px;background:rgba(20,20,20,.96);border:1px solid #333;border-radius:12px;padding:16px 18px;font-size:14px;font-weight:800;opacity:0;transform:translateY(8px);transition:.2s}.bigmsg.show{opacity:1;transform:translateY(0)}
+</style></head>
+<body><div id="stage">
+<header class="top"><div class="yt">▶</div><div class="studio">Studio</div><div class="badge">2026</div><div class="search">⌕&nbsp;&nbsp;Search your channel or explore resources...</div><div class="actions"><span>＋</span><span>◔</span><div class="avatar">C</div></div></header>
+<div class="body"><aside class="side"><div class="channel"><div class="chav">C</div><div><b>Creator Lab</b><span>Your channel • 128K subscribers</span></div></div>
+<div class="nav">▦&nbsp;&nbsp;Dashboard</div><div class="nav">▣&nbsp;&nbsp;Content</div><div class="nav active">▥&nbsp;&nbsp;Analytics</div><div class="nav">✦&nbsp;&nbsp;Trends</div><div class="nav">◌&nbsp;&nbsp;Comments & Community</div><div class="nav">＄&nbsp;&nbsp;Earn</div><div class="nav">◈&nbsp;&nbsp;Customization</div><div class="nav">♫&nbsp;&nbsp;Audio library</div><div style="height:1px;background:#333;margin:14px 0"></div><div class="nav">⚙&nbsp;&nbsp;Settings</div></aside>
+<main class="main"><div><h1>Video analytics</h1><div class="sub">Understand how viewers respond to your video packaging.</div></div><div class="tabs"><div class="tab">Overview</div><div class="tab active">Reach</div><div class="tab">Engagement</div><div class="tab">Audience</div></div>
+<div class="card" style="margin-top:18px"><div class="video"><div class="thumb"></div><div><div class="vtitle">How to Grow Your YouTube Channel in 2026</div><div class="muted">Published 3 days ago • Public</div></div></div>
+<div class="metricgrid"><div class="metric"><div class="label">Impressions</div><div class="value">42.6K</div><div class="delta">↑ 38% vs typical</div></div><div class="metric"><div class="label">Impressions CTR</div><div class="value">2.8%</div><div class="delta">Check context</div></div><div class="metric"><div class="label">Views from impressions</div><div class="value">1.2K</div><div class="delta">Packaging signal</div></div></div>
+<div class="chart"><div class="gridline g1"></div><div class="gridline g2"></div><div class="gridline g3"></div><svg viewBox="0 0 700 175" preserveAspectRatio="none"><polyline points="0,140 70,133 140,125 210,113 280,96 350,88 420,72 490,60 560,43 630,28 700,18" fill="none" stroke="#3ea6ff" stroke-width="3"/><polyline points="0,115 70,108 140,111 210,104 280,108 350,106 420,109 490,112 560,114 630,117 700,119" fill="none" stroke="#a855f7" stroke-width="3"/></svg></div>
+<div class="legend"><span><i class="dot"></i>Impressions</span><span><i class="dot dot2"></i>CTR trend</span></div></div>
+<div class="signal"><h3>What this can mean</h3><p>Impressions are rising, but clicks are relatively weak. That can be a packaging issue — but CTR must be read with traffic source and audience context.</p></div>
+<div class="sources"><div class="source"><b>Home</b><span>Discovery traffic</span><strong>2.8%</strong></div><div class="source"><b>Search</b><span>High-intent traffic</span><strong>5.9%</strong></div><div class="source"><b>Suggested</b><span>Related videos</span><strong>3.1%</strong></div></div>
+<div class="checks"><div class="check"><b>Thumbnail</b><p>Can the main idea be understood in about one second?</p></div><div class="check"><b>Title</b><p>Does the title make the same promise as the thumbnail?</p></div><div class="check"><b>Visual hierarchy</b><p>One focal point, readable text, clear contrast.</p></div><div class="check"><b>Audience fit</b><p>Would the intended viewer understand why this is for them?</p></div></div>
+<div class="test"><div class="mini">VERSION A</div><div class="mini" style="background:#3b254b">VERSION B</div><div><b style="font-size:11px">Test & Compare</b><div class="muted">Try distinct thumbnail variations when the feature is available.</div></div><button>COMPARE</button></div>
+</main></div>
+<div id="cursor" class="cursor"></div><div id="callout" class="callout"><b id="ct"></b><span id="cx"></span></div><div id="bigmsg" class="bigmsg"></div><div class="footer">Analytics shown as a visual example for the tutorial.</div></div>
 <script>
-function setStage(n){
-  const h=document.getElementById('headline'),s=document.getElementById('sub'),k=document.getElementById('kicker');
-  const p=document.getElementById('pointer'),g=document.getElementById('gap'),i=document.getElementById('interest');
-  p.style.display='none'; g.style.transform='scale(1)'; i.style.transform='scale(1)';
-  if(n===0){
-    k.textContent='YouTube Studio Trends';
-    h.innerHTML='FIND <span>CONTENT GAPS</span>';
-    s.textContent="YouTube can show you where content is missing.";
-  }
-  if(n===1){
-    k.textContent='Step 1';
-    h.innerHTML='OPEN <span>TRENDS</span>';
-    s.textContent='Go to Analytics → Trends.';
-    p.style.display='block'; p.style.left='726px'; p.style.top='462px';
-  }
-  if(n===2){
-    k.textContent='Step 2';
-    h.innerHTML='SEARCH YOUR <span>TOPIC</span>';
-    s.textContent='Start with something your audience cares about.';
-    i.style.transform='scale(1.015)';
-  }
-  if(n===3){
-    k.textContent='Step 3';
-    h.innerHTML='CHECK <span>CONTENT GAPS</span>';
-    s.textContent='Look for searches where quality results may be missing.';
-    g.style.transform='scale(1.025)';
-  }
-  if(n===4){
-    k.textContent='What the gap can mean';
-    h.innerHTML='<span>WHAT IS MISSING?</span>';
-    s.textContent='No results, no exact match, or outdated, irrelevant, or low-quality results.';
-  }
-  if(n===5){
-    k.textContent='Final step';
-    h.innerHTML='TURN THE GAP INTO A <span>VIDEO</span>';
-    s.textContent='An opportunity signal — not a guarantee of views.';
-  }
-}
-function SPMOTION_FRAME(t){
-  const x=t%31.5;
-  if(x<4.2)setStage(0);
-  else if(x<8.2)setStage(1);
-  else if(x<13.0)setStage(2);
-  else if(x<18.0)setStage(3);
-  else if(x<24.0)setStage(4);
-  else setStage(5);
-}
-window.SPMOTION_FRAME=SPMOTION_FRAME;
-window.SPMOTION={width:1080,height:1920,fps:30,format:"9:16",mode:"html-autonomous"};
-</script>
-</body>
-</html>
+const cursor=document.getElementById('cursor'),callout=document.getElementById('callout'),ct=document.getElementById('ct'),cx=document.getElementById('cx'),big=document.getElementById('bigmsg');
+function cur(x,y){cursor.style.left=x+'px';cursor.style.top=y+'px';cursor.style.opacity=1}function nocur(){cursor.style.opacity=0}
+function co(t,x,y){ct.textContent=t;cx.textContent=x;callout.style.left='665px';callout.style.top=y+'px';callout.classList.add('show')}function noco(){callout.classList.remove('show')}
+function msg(t){big.textContent=t;big.classList.add('show')}function nomsg(){big.classList.remove('show')}
+function SPMOTION_FRAME(t){t=Math.max(0,Math.min(36,t));noco();nomsg();nocur();
+if(t<4){msg('Your thumbnail might be hurting your CTR.')}
+else if(t<9){cur(640,570);co('START WITH CTR','Open video analytics and look at impressions and CTR together.',470)}
+else if(t<15){cur(730,690);co('CTR IS NOT A VERDICT','A lower CTR can happen as YouTube reaches broader audiences.',600)}
+else if(t<21){cur(760,930);co('CHECK TRAFFIC SOURCE','Compare Home, Search and Suggested before judging the thumbnail.',850)}
+else if(t<28){cur(735,1120);co('CHECK THE PACKAGING','One clear idea. Readable text. Strong contrast. Title and thumbnail should match.',1030)}
+else if(t<33){cur(835,1480);co('TEST DIFFERENT VERSIONS','If Test & Compare is available, use distinct thumbnail variations.',1370)}
+else{msg('Fix the packaging — then measure again.')}}
+window.SPMOTION_FRAME=SPMOTION_FRAME;window.duration=36;window.SPMOTION={width:1080,height:1920,fps:30,format:"9:16",mode:"html-autonomous"};window.__SPMOTION_DESIGN_DURATION__=36;
+</script></body></html>

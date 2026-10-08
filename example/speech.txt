@@ -1,17 +1,11 @@
-YouTube can show you where content is missing.
+If your YouTube video gets impressions but not enough clicks, your thumbnail could be part of the problem.
 
-Open YouTube Studio, go to Analytics, and select Trends.
+Open YouTube Studio and check your video analytics. Look at impressions and click-through rate together.
 
-Search for a topic your audience cares about.
+A low CTR does not automatically mean your thumbnail is bad. CTR changes with traffic source and audience, and it can fall as YouTube shows your video to a broader audience.
 
-Then look for a Content Gap.
+But if impressions are growing while clicks stay weak, check your packaging: thumbnail and title.
 
-A content gap means viewers may not be finding enough quality results for a specific search.
+Make the thumbnail easier to understand in one second: one clear idea, readable text, strong contrast, and a promise that matches the video.
 
-You might see a gap because there are no results, no exact matches, or the available videos are outdated, irrelevant, or low quality.
-
-But don't treat a content gap as a guarantee of views.
-
-Use it as an opportunity signal.
-
-Find the search, understand what viewers need, then create a specific video that answers that need better.
+And if Test & Compare is available, test different thumbnail versions and let the data decide.
