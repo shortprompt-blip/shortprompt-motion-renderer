@@ -1,11 +1,15 @@
-If your YouTube video gets impressions but not enough clicks, your thumbnail could be part of the problem.
+Getting views but losing people too quickly? Your video may have a retention problem.
 
-Open YouTube Studio and check your video analytics. Look at impressions and click-through rate together.
+Open YouTube Studio, select your video, open Analytics, and check Engagement.
 
-A low CTR does not automatically mean your thumbnail is bad. CTR changes with traffic source and audience, and it can fall as YouTube shows your video to a broader audience.
+Look at the audience retention graph. A gradual decline is normal, but sharp dips show moments where viewers skipped or stopped watching.
 
-But if impressions are growing while clicks stay weak, check your packaging: thumbnail and title.
+Now find where the biggest drop happens.
 
-Make the thumbnail easier to understand in one second: one clear idea, readable text, strong contrast, and a promise that matches the video.
+If it happens at the beginning, your hook may not match the promise of the title and thumbnail.
 
-And if Test & Compare is available, test different thumbnail versions and let the data decide.
+If viewers leave later, look at what changed in that section: the pacing, the explanation, or the payoff.
+
+Don't just look at average view duration. Find where viewers leave, then fix that moment in your next video.
+
+Follow for more YouTube growth fixes.
