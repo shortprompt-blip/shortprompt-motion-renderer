@@ -1,1 +1,17 @@
-If your TikTok videos die in the first few seconds, try this hook prompt. Copy this: “Give me 10 scroll-stopping TikTok hooks for your topic. Each hook must create curiosity immediately, avoid clickbait, sound natural, and make the viewer want to know what happens next. Keep each under twelve words.” Want the full prompt? Subscribe and comment HOOK. I’ll pin the full prompt below.
+YouTube can show you where content is missing.
+
+Open YouTube Studio, go to Analytics, and select Trends.
+
+Search for a topic your audience cares about.
+
+Then look for a Content Gap.
+
+A content gap means viewers may not be finding enough quality results for a specific search.
+
+You might see a gap because there are no results, no exact matches, or the available videos are outdated, irrelevant, or low quality.
+
+But don't treat a content gap as a guarantee of views.
+
+Use it as an opportunity signal.
+
+Find the search, understand what viewers need, then create a specific video that answers that need better.

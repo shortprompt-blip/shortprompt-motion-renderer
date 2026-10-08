@@ -1,16 +1,166 @@
 <!doctype html>
-<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TikTok Hook Prompt</title>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1080,initial-scale=1">
+<title>How to Find Content Gaps on YouTube</title>
 <style>
-*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#050505;font-family:Inter,Arial,sans-serif;color:#fff}.stage{position:relative;width:1080px;height:1920px;transform-origin:top left;background:radial-gradient(circle at 70% 15%,#24102b 0,#09090d 38%,#030303 100%);overflow:hidden}.glow{position:absolute;border-radius:50%;filter:blur(90px);opacity:.45}.g1{width:520px;height:520px;background:#fe2c55;right:-150px;top:50px}.g2{width:430px;height:430px;background:#25f4ee;left:-170px;bottom:250px}.top{position:absolute;left:55px;right:55px;top:55px;display:flex;justify-content:space-between;align-items:center}.brand{font-weight:900;font-size:34px;letter-spacing:-1px}.badge{padding:12px 20px;border:1px solid #3a3a40;border-radius:99px;background:#111118;font-size:22px;color:#aaa}.screen{position:absolute;left:70px;right:70px;top:170px;bottom:210px;border:1px solid #2d2d34;border-radius:42px;background:#0b0b10;box-shadow:0 30px 100px #000;overflow:hidden}.search{height:110px;border-bottom:1px solid #25252b;display:flex;align-items:center;padding:0 30px;font-size:28px;color:#aaa}.search b{color:#fff;margin-left:14px}.hero{padding:42px 42px 0}.eyebrow{font-size:22px;color:#25f4ee;font-weight:800;letter-spacing:2px}.title{font-size:67px;line-height:.98;font-weight:950;letter-spacing:-3px;margin-top:16px}.title span{color:#fe2c55}.prompt{margin-top:35px;padding:28px;border-radius:28px;background:linear-gradient(145deg,#17171e,#0d0d12);border:1px solid #34343c;box-shadow:0 15px 40px #0008}.prompt h3{margin:0 0 18px;font-size:23px;color:#aaa}.prompt p{margin:0;font-family:ui-monospace,SFMono-Regular,monospace;font-size:25px;line-height:1.42}.cursor{display:inline-block;width:3px;height:28px;background:#25f4ee;vertical-align:-4px;animation:blink 1s infinite}@keyframes blink{50%{opacity:0}}.outputs{display:grid;gap:14px;margin-top:28px}.out{padding:18px 22px;border-radius:18px;background:#14141a;border:1px solid #292930;font-size:25px}.out strong{color:#25f4ee}.cta{position:absolute;left:0;right:0;bottom:0;padding:34px 42px;background:linear-gradient(180deg,#0b0b10cc,#050507);border-top:1px solid #2a2a31;text-align:center}.cta .big{font-size:38px;font-weight:950}.cta .small{margin-top:10px;font-size:24px;color:#aaa}.comment{display:inline-block;margin-top:18px;padding:14px 25px;border-radius:999px;background:#fff;color:#050505;font-size:24px;font-weight:900}.progress{position:absolute;left:70px;right:70px;bottom:105px;height:5px;background:#28282e;border-radius:5px}.bar{height:100%;width:0;background:#fff;border-radius:5px}.scene{opacity:0;transition:opacity .25s}.scene.on{opacity:1}.watermark{position:absolute;right:42px;top:1060px;color:#ffffff22;font-size:22px;font-weight:900;letter-spacing:2px}
-</style></head><body><div class="stage" id="stage"><div class="glow g1"></div><div class="glow g2"></div><div class="top"><div class="brand">SHORTPROMPT</div><div class="badge">FREE PROMPT</div></div><div class="screen">
-<div class="search">TikTok <b>Creator</b> · Hook ideas</div>
-<div class="hero scene" id="s0"><div class="eyebrow">YOUR VIDEOS DIE TOO FAST?</div><div class="title">Use this <span>TikTok hook prompt.</span></div><div class="prompt"><h3>COPY THIS</h3><p>Give me 10 scroll-stopping TikTok hooks for [TOPIC]. Each hook must create curiosity immediately, avoid clickbait, sound natural, and make the viewer want to know what happens next. Keep each under 12 words.<span class="cursor"></span></p></div></div>
-<div class="hero scene" id="s1"><div class="eyebrow">THE OUTPUT</div><div class="title">Hooks that give people a reason to <span>keep watching.</span></div><div class="outputs"><div class="out"><strong>01</strong> Stop doing this if you want more views.</div><div class="out"><strong>02</strong> Most creators get this part wrong.</div><div class="out"><strong>03</strong> Here's the fastest way to fix it.</div></div></div>
-<div class="hero scene" id="s2"><div class="eyebrow">WANT THE FULL PROMPT?</div><div class="title">Subscribe + comment <span>HOOK.</span></div><div class="prompt"><h3>THE DEAL</h3><p>Comment <b>HOOK</b> and use the full prompt from the pinned comment.</p></div></div>
-<div class="cta"><div class="big">Subscribe for practical AI prompts</div><div class="small">No fluff. Copy → paste → create.</div><div class="comment">COMMENT: HOOK</div></div></div><div class="watermark">AI PROMPTS FOR CREATORS</div><div class="progress"><div class="bar" id="bar"></div></div></div>
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#0f0f0f;color:#f1f1f1;font-family:Inter,Roboto,Arial,sans-serif}
+body{user-select:none}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:#0f0f0f}
+.header{height:108px;border-bottom:1px solid #333;background:#0f0f0f;display:flex;align-items:center;padding:0 38px;gap:22px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:27px}
+.play{width:40px;height:28px;border-radius:8px;background:#ff0000;position:relative}
+.play:after{content:"";position:absolute;left:16px;top:7px;border-left:11px solid #fff;border-top:7px solid transparent;border-bottom:7px solid transparent}
+.headerSearch{margin-left:70px;width:450px;height:48px;border:1px solid #333;border-radius:24px;background:#181818;color:#888;padding:13px 20px;font-size:18px}
+.account{margin-left:auto;width:42px;height:42px;border-radius:50%;background:#a855f7;display:flex;align-items:center;justify-content:center;font-weight:800}
+.sidebar{position:absolute;top:108px;bottom:0;left:0;width:190px;border-right:1px solid #333;background:#0f0f0f;padding:26px 14px}
+.nav{height:55px;border-radius:10px;padding:0 16px;display:flex;align-items:center;gap:14px;color:#aaa;font-size:18px;margin-bottom:7px}
+.nav.active{background:#272727;color:#fff}
+.nav.active .ico{color:#ff0000}
+.ico{width:22px;text-align:center;color:#888}
+.content{position:absolute;left:190px;right:0;top:108px;bottom:0;padding:36px 40px}
+.h1{font-size:34px;font-weight:800;margin-bottom:24px}
+.tabs{height:54px;border-bottom:1px solid #333;display:flex;gap:34px;margin-bottom:26px}
+.tab{font-size:17px;color:#999;padding:12px 2px}
+.tab.active{color:#fff;border-bottom:3px solid #fff}
+.search{height:58px;background:#1f1f1f;border:1px solid #333;border-radius:10px;display:flex;align-items:center;padding:0 18px;font-size:20px}
+.searchIcon{color:#888;margin-right:12px}
+.card{background:#1f1f1f;border:1px solid #333;border-radius:12px;padding:22px;margin-top:22px}
+.cardTitle{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:#aaa;font-weight:700}
+.topic{font-size:25px;font-weight:800;margin-top:8px}
+.chart{height:115px;margin-top:15px;display:flex;align-items:flex-end;gap:10px}
+.bar{flex:1;background:#3ea6ff;border-radius:5px 5px 0 0;opacity:.82}
+.gapCard{position:relative;border:2px solid #ff0000;background:#211416}
+.gapBadge{display:inline-block;background:#ff0000;color:#fff;border-radius:18px;padding:6px 11px;font-size:12px;font-weight:800;margin-top:13px}
+.gapTitle{font-size:25px;font-weight:800;margin-top:13px}
+.gapText{font-size:16px;color:#c5c5c5;line-height:1.45;margin-top:9px;max-width:680px}
+.callout{position:absolute;right:28px;top:18px;border:1px solid #a855f7;background:#241a31;color:#d8b4fe;border-radius:10px;padding:10px 13px;font-size:13px;font-weight:700}
+.bottom{position:absolute;left:44px;right:44px;bottom:54px;text-align:center}
+.kicker{font-size:19px;color:#aaa;margin-bottom:10px;letter-spacing:.06em;text-transform:uppercase}
+.headline{font-size:59px;line-height:.98;font-weight:900;letter-spacing:-2px}
+.headline span{color:#ff0000}
+.sub{font-size:22px;color:#b5b5b5;margin-top:15px}
+.pointer{position:absolute;width:34px;height:34px;border:4px solid white;border-radius:50%;box-shadow:0 0 0 8px #fff2;display:none;z-index:10}
+.zoom{transition:transform .35s ease}
+</style>
+</head>
+<body>
+<div id="stage">
+  <div class="header">
+    <div class="logo"><div class="play"></div><span>YouTube Studio</span></div>
+    <div class="headerSearch">Search across your channel</div>
+    <div class="account">SP</div>
+  </div>
+
+  <aside class="sidebar">
+    <div class="nav"><div class="ico">▦</div>Dashboard</div>
+    <div class="nav"><div class="ico">▣</div>Content</div>
+    <div class="nav active"><div class="ico">◒</div>Analytics</div>
+    <div class="nav"><div class="ico">✦</div>AI Studio</div>
+    <div class="nav"><div class="ico">◌</div>Comments</div>
+    <div class="nav"><div class="ico">$</div>Earn</div>
+    <div class="nav"><div class="ico">⚙</div>Settings</div>
+  </aside>
+
+  <main class="content">
+    <div class="h1">Analytics</div>
+    <div class="tabs">
+      <div class="tab">Overview</div>
+      <div class="tab">Reach</div>
+      <div class="tab">Engagement</div>
+      <div class="tab">Audience</div>
+      <div class="tab active">Trends</div>
+    </div>
+
+    <div class="search"><span class="searchIcon">⌕</span><strong>AI video generator</strong></div>
+
+    <section class="card zoom" id="interest">
+      <div class="cardTitle">Audience interest</div>
+      <div class="topic">AI video generator</div>
+      <div class="chart">
+        <div class="bar" style="height:43%"></div><div class="bar" style="height:58%"></div>
+        <div class="bar" style="height:49%"></div><div class="bar" style="height:76%"></div>
+        <div class="bar" style="height:64%"></div><div class="bar" style="height:86%"></div>
+        <div class="bar" style="height:72%"></div><div class="bar" style="height:94%"></div>
+      </div>
+    </section>
+
+    <section class="card gapCard zoom" id="gap">
+      <div class="cardTitle">Content gaps for Shorts</div>
+      <div class="gapTitle">AI video generator — free</div>
+      <div class="gapBadge">CONTENT GAP</div>
+      <div class="gapText">Viewers may not be finding enough quality search results for this topic.</div>
+      <div class="callout">Opportunity</div>
+    </section>
+
+    <section class="card">
+      <div class="cardTitle">Searched on YouTube</div>
+      <div class="topic">Specific viewer needs</div>
+      <div class="gapText">Free tools · mobile tools · realistic video · best AI video generator</div>
+    </section>
+  </main>
+
+  <div class="pointer" id="pointer"></div>
+
+  <div class="bottom">
+    <div class="kicker" id="kicker">YouTube Studio Trends</div>
+    <div class="headline" id="headline">FIND <span>CONTENT GAPS</span></div>
+    <div class="sub" id="sub">Don't chase the trend. Find what viewers still can't find.</div>
+  </div>
+</div>
+
 <script>
-const D=24; const scenes=[[0,6.5,'s0'],[6.5,14.5,'s1'],[14.5,24,'s2']];
-function fit(){const st=document.getElementById('stage');const sc=Math.min(innerWidth/1080,innerHeight/1920);st.style.transform=`scale(${sc})`;document.body.style.background='#000'}addEventListener('resize',fit);fit();
-window.SPMOTION_FRAME=function(time){time=((time%D)+D)%D;for(const [a,b,id] of scenes){document.getElementById(id).classList.toggle('on',time>=a&&time<b)}document.getElementById('bar').style.width=(time/D*100)+'%'};
-window.duration=D;window.SPMOTION={width:1080,height:1920,fps:30,format:'9:16',mode:'html-autonomous'};
-</script></body></html>
+function setStage(n){
+  const h=document.getElementById('headline'),s=document.getElementById('sub'),k=document.getElementById('kicker');
+  const p=document.getElementById('pointer'),g=document.getElementById('gap'),i=document.getElementById('interest');
+  p.style.display='none'; g.style.transform='scale(1)'; i.style.transform='scale(1)';
+  if(n===0){
+    k.textContent='YouTube Studio Trends';
+    h.innerHTML='FIND <span>CONTENT GAPS</span>';
+    s.textContent="YouTube can show you where content is missing.";
+  }
+  if(n===1){
+    k.textContent='Step 1';
+    h.innerHTML='OPEN <span>TRENDS</span>';
+    s.textContent='Go to Analytics → Trends.';
+    p.style.display='block'; p.style.left='726px'; p.style.top='462px';
+  }
+  if(n===2){
+    k.textContent='Step 2';
+    h.innerHTML='SEARCH YOUR <span>TOPIC</span>';
+    s.textContent='Start with something your audience cares about.';
+    i.style.transform='scale(1.015)';
+  }
+  if(n===3){
+    k.textContent='Step 3';
+    h.innerHTML='CHECK <span>CONTENT GAPS</span>';
+    s.textContent='Look for searches where quality results may be missing.';
+    g.style.transform='scale(1.025)';
+  }
+  if(n===4){
+    k.textContent='What the gap can mean';
+    h.innerHTML='<span>WHAT IS MISSING?</span>';
+    s.textContent='No results, no exact match, or outdated, irrelevant, or low-quality results.';
+  }
+  if(n===5){
+    k.textContent='Final step';
+    h.innerHTML='TURN THE GAP INTO A <span>VIDEO</span>';
+    s.textContent='An opportunity signal — not a guarantee of views.';
+  }
+}
+function SPMOTION_FRAME(t){
+  const x=t%31.5;
+  if(x<4.2)setStage(0);
+  else if(x<8.2)setStage(1);
+  else if(x<13.0)setStage(2);
+  else if(x<18.0)setStage(3);
+  else if(x<24.0)setStage(4);
+  else setStage(5);
+}
+window.SPMOTION_FRAME=SPMOTION_FRAME;
+window.SPMOTION={width:1080,height:1920,fps:30,format:"9:16",mode:"html-autonomous"};
+</script>
+</body>
+</html>
