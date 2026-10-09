@@ -1,13 +1,33 @@
-How much does YouTube pay for one hundred thousand views? It depends on your niche.
+Getting views but not subscribers? The problem may not be your content quality. It may be that viewers enjoy one video, but they still don't understand why they should come back for the next one.
 
-YouTube has no fixed rate. For long-form videos, RPM means estimated creator revenue per thousand views.
+In this video, we'll use YouTube Studio to diagnose that gap, then build a simple system to turn more first-time viewers into returning viewers and subscribers. The dashboard shown here is a reconstructed example, so the numbers are illustrative, not real channel data.
 
-A 2026 third-party sample of 300 channels reported median RPMs of ten dollars and twenty-two cents for education and science, two dollars and ninety-eight cents for lifestyle, two dollars and thirty-three cents for tech, and two dollars and five cents for gaming.
+First, open YouTube Studio and select Analytics. Start with the Audience tab. Don't look only at your total subscriber count. Compare new viewers with casual and regular viewers, and check how your monthly audience changes over time.
 
-Using those sample medians, one hundred thousand views works out to about one thousand and twenty-two dollars for education, two hundred and ninety-eight for lifestyle, two hundred and thirty-three for tech, and two hundred and five for gaming.
+New viewers are people watching your channel for the first time in the selected period. Casual viewers have watched at least once per month for one to five months in the past year. Regular viewers have watched at least once per month for more than six months in the past year. That regular-viewer definition is deliberately strict, so a low percentage is common for newer channels and channels that mostly publish Shorts.
 
-Same views, very different estimates.
+Here's the first diagnostic. If new viewers are rising but casual and regular viewers stay flat, your videos may be attracting attention without giving people a clear reason to return. That doesn't prove your videos are bad. It tells you to investigate the connection between one upload and the next.
 
-But these are not official YouTube rates or guaranteed payouts. Audience location, season, video length and monetized views can change the result. Some niche samples are small. And Shorts use a different RPM calculation, so don't compare them directly with long-form.
+Now open Content and compare individual videos. Look for which uploads bring in subscribers and which bring views without much subscriber growth. A high-view video is not automatically your best channel-building video. A tutorial that attracts fewer viewers but repeatedly brings the right audience may be more valuable for your long-term direction.
 
-Follow for more YouTube growth fixes.
+For a fair comparison, avoid judging one video after a few hours against another that has been live for weeks. Compare similar time windows, similar formats, and similar topics. If the reports offer different date ranges, use the same range for every video. Treat the pattern as a clue, not a verdict: topic, traffic source, audience fit, and video age can all affect the result.
+
+Next, look at the promise your channel makes. Imagine a viewer finds a video about fixing a YouTube thumbnail. They watch, get the answer, and leave. If your channel also publishes unrelated gaming clips, recipes, and AI news, the next step may be unclear.
+
+Now imagine the same tutorial ends by showing the next useful step: how to diagnose a low click-through rate in Analytics, then how to improve the opening when people click but leave. The viewer can understand the series, the audience, and the benefit of returning. Consistency does not mean every video must be identical. It means the right viewer can predict the kind of value they will get from you.
+
+Try this simple channel-promise test. Complete the sentence: “Subscribe if you want help with…” Make it specific enough that a viewer can decide whether it fits them. “Subscribe for more videos” gives little information. “Subscribe for practical YouTube growth fixes, with Analytics walkthroughs and examples” communicates a clear reason to return. Make sure your actual uploads consistently deliver that promise.
+
+Then improve the call to action. Don't ask for a subscription before you've delivered value. Give the useful answer first. When you reach a natural moment, explain what future problem your channel helps solve and invite the viewer to subscribe if that is relevant to them. A specific reason is stronger than repeating the word subscribe several times.
+
+The next step is to connect videos together. In YouTube Studio, open the Editor for an eligible long-form video and add an end screen during the final five to twenty seconds. You can include a relevant video or playlist and a subscribe element. Don't simply point to your newest upload because it is new. Choose the next video that logically continues the viewer's journey.
+
+For example, a viewer watching a CTR tutorial could be sent to a retention diagnosis video. A viewer learning about retention could be sent to a video about why impressions don't become views. Keep the end screen clear, and don't cover the key information the viewer is still trying to see. YouTube lets viewers hide end screens, so make the recommendation useful rather than intrusive.
+
+After publishing, measure the result. Check end-screen performance in Analytics where available, and compare subscriber gains alongside views and audience trends. A simple illustrative comparison might show Video A with more views but fewer subscribers, and Video B with fewer views but a higher subscriber conversion rate. Those example numbers are not a universal benchmark. Calculate your own rate by dividing subscribers gained by views for the same video and time window, then multiplying by one hundred. Use it to compare your own uploads, not to chase an industry-wide target.
+
+Finally, look at what new viewers watch next and whether they return. YouTube's audience reports can help you understand viewing patterns, but no single metric tells the whole story. Subscriber count is not the same as active audience: people can subscribe to many channels and still not watch every upload. Monthly audience and returning-viewer trends can provide useful context.
+
+Here is the action plan. First, identify two videos that attract new viewers. Second, find the next video that naturally solves the next problem. Third, connect them with a clear spoken recommendation and an end screen. Fourth, make your channel promise obvious in your content and branding. Fifth, compare results using the same time window, then repeat what works for your intended audience.
+
+The goal isn't to force every viewer to subscribe. It's to help the right viewers recognize that your channel has more useful answers for them. Follow for more YouTube growth fixes.
