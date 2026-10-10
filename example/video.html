@@ -3,103 +3,59 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Claude Haiku 5.5 — Short Explainer</title>
+<title>Claude Haiku 5.5 — ShortPrompt Motion</title>
 <style>
-:root{color-scheme:dark}
-*{box-sizing:border-box}
-html,body{margin:0;width:100%;height:100%;background:#090d18;color:#f5f7ff;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif}
-#sp-motion-root{position:relative;width:100%;height:100%;overflow:hidden;background:radial-gradient(ellipse at 75% 12%,#26345b 0%,#10172b 35%,#080b13 78%)}
-.grid{position:absolute;inset:0;background-image:linear-gradient(#ffffff09 1px,transparent 1px),linear-gradient(90deg,#ffffff09 1px,transparent 1px);background-size:5% 8%;mask-image:linear-gradient(to bottom,#000,transparent 90%)}
-.top{position:absolute;left:6%;right:6%;top:6%;display:flex;justify-content:space-between;align-items:center;color:#aab8d7;font-size:clamp(10px,1.3vw,18px);letter-spacing:.14em;text-transform:uppercase}
-.pill{border:1px solid #6f83b8;border-radius:99px;padding:.55em 1em;background:#101a32}
-.scene{position:absolute;inset:16% 7% 12%;opacity:0;transform:translateY(18px);transition:none}
-.scene.active{opacity:1;transform:translateY(0)}
-.kicker{color:#9db7ff;font-size:clamp(12px,1.8vw,24px);letter-spacing:.12em;text-transform:uppercase;font-weight:750}
-h1{font-size:clamp(36px,7.5vw,100px);line-height:.98;letter-spacing:-.055em;margin:.18em 0 .28em;max-width:900px}
-h2{font-size:clamp(29px,5.5vw,72px);line-height:1.02;letter-spacing:-.04em;margin:.2em 0 .45em}
-p{font-size:clamp(16px,2.4vw,30px);line-height:1.35;color:#cbd5ed;max-width:900px}
-.accent{color:#9cb5ff}
-.hero-orb{position:absolute;width:34vw;height:34vw;max-width:420px;max-height:420px;right:6%;top:13%;border-radius:50%;background:radial-gradient(circle at 32% 28%,#d9e3ff,#7896f5 20%,#344b91 48%,#17203d 70%);box-shadow:0 0 100px #6688ff55;opacity:.9}
-.statrow{display:flex;gap:3%;margin-top:4%;max-width:1000px}
-.stat{flex:1;min-width:0;padding:clamp(12px,2.4vw,28px);border:1px solid #364567;background:#111a2e;border-radius:18px}
-.stat small{display:block;color:#a7b4d3;font-size:clamp(10px,1.5vw,18px);text-transform:uppercase;letter-spacing:.1em}
-.stat strong{display:block;font-size:clamp(25px,5.4vw,70px);margin-top:.2em;letter-spacing:-.05em}
-.good{color:#8ee8c2}.warn{color:#ffce8c}
-.chart{display:flex;align-items:end;gap:7%;height:24vh;max-height:250px;margin:3% 0 0;border-bottom:1px solid #56617b;padding:0 5%}
-.barwrap{flex:1;height:100%;display:flex;flex-direction:column;justify-content:end;align-items:center;gap:10px}
-.bar{width:min(100%,140px);height:0;background:linear-gradient(#9db6ff,#526fce);border-radius:12px 12px 0 0;transition:none}
-.bar.old{background:linear-gradient(#5c6884,#333e58)}
-.barlabel{font-size:clamp(11px,1.7vw,20px);color:#dbe3fa;text-align:center}
-.value{font-size:clamp(18px,3vw,34px);font-weight:800}
-.footer{position:absolute;left:6%;right:6%;bottom:5%;display:flex;align-items:center;gap:14px;color:#7f8eaf;font-size:clamp(10px,1.2vw,16px)}
-.track{height:4px;background:#2b3550;flex:1;border-radius:99px;overflow:hidden}
-.trackfill{height:100%;width:0;background:#9db6ff}
-.cta{display:inline-block;margin-top:1.2em;background:#a9bbff;color:#0b1120;border-radius:12px;padding:.7em 1.1em;font-weight:850;font-size:clamp(15px,2vw,25px)}
-@media (max-aspect-ratio:4/5){.hero-orb{width:28vw;height:28vw;right:3%;top:2%;opacity:.45}.scene{inset:18% 6% 12%}.statrow{gap:2%}.stat{padding:12px}.chart{height:20vh}}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#070a12;color:#f5f7ff;font-family:Inter,system-ui,sans-serif}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;transform-origin:top left;background:radial-gradient(ellipse at 18% 12%,#4d69ff38,transparent 34%),radial-gradient(ellipse at 84% 82%,#00dcb422,transparent 32%),linear-gradient(145deg,#0a0e1b,#101629 48%,#080b13)}
+.topline{position:absolute;left:76px;right:76px;top:70px;display:flex;justify-content:space-between;align-items:center;color:#a8b4d2;font-size:25px;letter-spacing:3px}.brand{font-weight:800;color:#f3f5ff}.pill{border:1px solid #394563;background:#111a2d;padding:12px 18px;border-radius:999px;font-size:20px;letter-spacing:1px}
+.footer{position:absolute;left:76px;right:76px;bottom:62px;display:flex;justify-content:space-between;color:#8290b1;font-size:21px;letter-spacing:2px;text-transform:uppercase}.progress-track{position:absolute;left:76px;right:76px;bottom:118px;height:5px;border-radius:9px;background:#27314a;overflow:hidden}#progress{height:100%;width:0;background:linear-gradient(90deg,#7ea4ff,#5cf0cf)}
+.scene{position:absolute;inset:0;opacity:0;visibility:hidden}.scene-content{position:absolute;left:76px;right:76px;top:250px;bottom:210px}
+.eyebrow{color:#7cf0d0;font-size:24px;font-weight:800;letter-spacing:4px;text-transform:uppercase}h1,h2,p{margin:0}h1{font-size:90px;line-height:1.02;letter-spacing:-4px;font-weight:850}h2{font-size:64px;line-height:1.05;letter-spacing:-2px;font-weight:820}.sub{color:#aeb9d4;font-size:32px;line-height:1.38;margin-top:25px}
+.panel{border:1px solid #34415f;background:linear-gradient(145deg,#18223aee,#0d1322ee);border-radius:32px;box-shadow:0 30px 90px #0005}
+.hero-title{position:absolute;top:0;left:0;right:0}.hero-title h1{margin-top:28px}.hero-title .sub{max-width:800px}
+.model-orb{position:absolute;width:410px;height:410px;border-radius:50%;right:45px;top:570px;background:radial-gradient(circle at 30% 25%,#d4e5ff,#8caeff 12%,#506ee9 36%,#171d56 67%,#10162c);box-shadow:0 0 70px #5478ff66,inset -25px -35px 65px #030716aa}
+.orb-ring{position:absolute;inset:-34px;border:2px solid #91b2ff77;border-radius:50%}.orb-ring.two{inset:-72px;border-color:#5eeed144}.orb-label{position:absolute;right:10px;top:1030px;padding:24px 30px;font-size:26px;color:#cbd7f5}.orb-label strong{color:#fff;display:block;font-size:36px;margin-bottom:7px}
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:48px;padding:22px}.stat{padding:30px;min-height:185px}.number{font-size:68px;font-weight:850;letter-spacing:-3px;color:#7cf0d0}.label{margin-top:8px;color:#b7c3df;font-size:25px;line-height:1.25}
+.bar-row{margin-top:34px}.bar-head{display:flex;justify-content:space-between;align-items:center;font-size:27px;margin-bottom:14px}.bar-head span:first-child{color:#dfe7ff;font-weight:700}.bar-head span:last-child{color:#7cf0d0;font-weight:800}.bar-track{height:30px;background:#202b45;border-radius:10px;overflow:hidden}.bar-fill{height:100%;width:0;border-radius:10px;background:linear-gradient(90deg,#6b8fff,#64f0d1)}
+.chart-card{padding:38px;margin-top:40px}.chart-title{font-size:28px;color:#dbe4ff;margin-bottom:32px}.chart-note{font-size:22px;color:#8694b4;margin-top:25px;line-height:1.35}
+.checklist{margin-top:45px;display:grid;gap:20px}.check{padding:25px 28px;display:flex;gap:22px;align-items:center;font-size:29px;color:#dce5ff;min-height:95px}.check-icon{flex:0 0 40px;width:40px;height:40px;display:grid;place-items:center;border-radius:12px;background:#173b3b;color:#73f0d0;font-weight:900}
+.code-card{margin-top:42px;padding:30px;font-family:ui-monospace,monospace;font-size:23px;line-height:1.7;color:#c9d7fa}.code-top{display:flex;align-items:center;gap:9px;padding-bottom:22px;border-bottom:1px solid #2e3a57;margin-bottom:18px;color:#8d9cbc;font-size:20px}.dot{width:11px;height:11px;border-radius:50%;background:#7586aa}.code-line{opacity:.18;white-space:pre}.green{color:#71f0c9}.blue{color:#8db0ff}.cta{margin-top:42px;padding:34px;border-radius:28px;border:1px solid #4d6889;background:linear-gradient(120deg,#182b45,#152d38);text-align:center;font-size:30px;font-weight:800;color:#efffff}.small-source{margin-top:22px;font-size:20px;color:#8190b0;line-height:1.35}
 </style>
 </head>
 <body>
-<div id="sp-motion-root">
-<div class="grid"></div>
-<div class="top"><span>SHORTPROMPT / MODEL WATCH</span><span class="pill">AI • 2026</span></div>
-<div class="hero-orb" id="orb"></div>
-<section class="scene" data-start="0" data-end="5">
-<div class="kicker">New model alert</div><h1>Claude<br><span class="accent">Haiku 5.5</span></h1><p>Built for fast, high-volume AI work.</p>
-</section>
-<section class="scene" data-start="5" data-end="10">
-<div class="kicker">The price claim</div><h2>About <span class="accent">75% less</span></h2><p>Anthropic says Haiku 5.5 costs around 75% less to run than Haiku 4.5.</p>
-<div class="statrow"><div class="stat"><small>Compared with</small><strong>Haiku 4.5</strong></div><div class="stat"><small>Reported cost</small><strong class="good">−75%</strong></div></div>
-</section>
-<section class="scene" data-start="10" data-end="19">
-<div class="kicker">Coding benchmark</div><h2>One test. A big jump.</h2><p>Anthropic’s published Terminal-Bench 4.0 results:</p>
-<div class="chart"><div class="barwrap"><div class="value" id="oldval">0.0%</div><div class="bar old" id="oldbar"></div><div class="barlabel">Haiku 4.5</div></div><div class="barwrap"><div class="value accent" id="newval">39.2%</div><div class="bar" id="newbar"></div><div class="barlabel">Haiku 5.5</div></div></div>
-</section>
-<section class="scene" data-start="19" data-end="25">
-<div class="kicker">Keep the result in context</div><h2>Benchmark ≠ guarantee</h2><p>39.2% is a result on one test. It does not prove Haiku 5.5 wins every coding task.</p>
-<div class="statrow"><div class="stat"><small>Check</small><strong>Correctness</strong></div><div class="stat"><small>Measure</small><strong>Latency</strong></div><div class="stat"><small>Track</small><strong>Cost</strong></div></div>
-</section>
-<section class="scene" data-start="25" data-end="30">
-<div class="kicker">Your real-world test</div><h2>Try it on <span class="accent">your code.</span></h2><p>Compare quality, speed, and cost on the tasks you actually run.</p><div class="cta">Follow for practical AI tests →</div>
-</section>
-<div class="footer"><span id="time">00:00 / 00:30</span><div class="track"><div class="trackfill" id="trackfill"></div></div><span>30 SEC</span></div>
+<div id="stage">
+<div class="topline"><div class="brand">◆ SHORTPROMPT</div><span class="pill">AI MODEL TEST</span></div>
+<section class="scene" id="s0"><div class="scene-content"><div class="hero-title"><div class="eyebrow">Speed meets coding</div><h1>Claude<br>Haiku 5.5</h1><p class="sub">A small model built for fast, lower-cost AI work.</p></div><div class="model-orb" id="orb"><div class="orb-ring" id="ring1"></div><div class="orb-ring two" id="ring2"></div></div><div class="panel orb-label" id="orb-label"><strong>FAST BY DESIGN</strong>Small model. Real-world tasks.</div></div></section>
+<section class="scene" id="s1"><div class="scene-content"><div class="eyebrow">01 / Cost</div><h2 style="margin-top:26px">Lower cost.<br>More room to iterate.</h2><p class="sub">Anthropic says Haiku 5.5 costs around 75% less to run than Haiku 4.5.</p><div class="panel stat-grid"><div class="stat"><div class="number" id="cost-number">0%</div><div class="label">reported lower cost<br>vs. Haiku 4.5</div></div><div class="stat"><div class="number" style="color:#9bb7ff">4.5 → 5.5</div><div class="label">model generation comparison</div></div></div><div class="bar-row" style="margin-top:55px"><div class="bar-head"><span>Relative cost reduction</span><span>75%</span></div><div class="bar-track"><div class="bar-fill" id="cost-bar"></div></div></div><p class="chart-note">Lower cost matters when a workflow needs repeated attempts, evaluations, or agent steps.</p></div></section>
+<section class="scene" id="s2"><div class="scene-content"><div class="eyebrow">02 / Coding benchmark</div><h2 style="margin-top:26px">A big jump<br>on this test.</h2><p class="sub">Anthropic’s published Terminal-Bench 4.0 results show a sharp difference.</p><div class="panel chart-card"><div class="chart-title">Terminal-Bench 4.0 · reported score</div><div class="bar-row"><div class="bar-head"><span>Claude Haiku 5.5</span><span>39.2%</span></div><div class="bar-track"><div class="bar-fill" id="bench-new"></div></div></div><div class="bar-row" style="margin-top:42px"><div class="bar-head"><span>Claude Haiku 4.5</span><span>0.0%</span></div><div class="bar-track"><div class="bar-fill" id="bench-old" style="background:linear-gradient(90deg,#65718e,#9aa6c1)"></div></div></div><p class="chart-note">One benchmark is evidence, not a guarantee that a model wins every coding task.</p></div><div class="pill" style="position:absolute;bottom:20px;left:0">COMPARE THE TASK, NOT JUST THE SCORE</div></div></section>
+<section class="scene" id="s3"><div class="scene-content"><div class="eyebrow">03 / What it means</div><h2 style="margin-top:26px">Test reliability,<br>not just speed.</h2><p class="sub">Before choosing a model, check the parts that affect your actual workflow.</p><div class="checklist"><div class="panel check" id="check0"><span class="check-icon">✓</span><span>Does it solve your real task?</span></div><div class="panel check" id="check1"><span class="check-icon">✓</span><span>Is the answer correct and repeatable?</span></div><div class="panel check" id="check2"><span class="check-icon">✓</span><span>Does latency fit your workflow?</span></div><div class="panel check" id="check3"><span class="check-icon">✓</span><span>Is the total cost actually lower?</span></div></div><p class="small-source">Benchmark figures are attributed to Anthropic’s published model information.</p></div></section>
+<section class="scene" id="s4"><div class="scene-content"><div class="eyebrow">The practical takeaway</div><h2 style="margin-top:26px">Run your own<br>coding test.</h2><p class="sub">Use the same prompt, the same task, and a clear pass/fail check.</p><div class="panel code-card"><div class="code-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span style="margin-left:10px">evaluation checklist</span></div><div class="code-line" id="code0"><span class="green">TASK</span> = your real coding problem</div><div class="code-line" id="code1"><span class="blue">PROMPT</span> = identical for each model</div><div class="code-line" id="code2">check correctness, latency, cost</div><div class="code-line" id="code3"><span class="green">DECIDE</span> from measured results</div></div><div class="cta" id="cta">Follow ShortPrompt for practical AI tests</div><p class="small-source">Source: Anthropic model page and documentation. Results can vary by task and setup.</p></div></section>
+<div class="progress-track"><div id="progress"></div></div><div class="footer"><span>AI, tested in practice</span><span id="timecode">00:00 / 00:30</span></div>
 </div>
 <script>
 (function(){
-const root=document.getElementById('sp-motion-root');
-const scenes=[...root.querySelectorAll('.scene')];
-const DURATION=30;
-window.SPMOTION={width:1080,height:1920,fps:30,duration:DURATION};
-function clamp(x,a,b){return Math.max(a,Math.min(b,x))}
-function ease(x){x=clamp(x,0,1);return x*x*(3-2*x)}
+"use strict";
+const DURATION=30,FPS=30,scenes=[...document.querySelectorAll(".scene")],progress=document.getElementById("progress"),timecode=document.getElementById("timecode");
+window.SPMOTION={width:1080,height:1920,fps:FPS,duration:DURATION};
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,v)),smooth=v=>{v=clamp(v,0,1);return v*v*(3-2*v)},fmt=t=>{t=Math.max(0,Math.floor(t));return String(Math.floor(t/60)).padStart(2,"0")+":"+String(t%60).padStart(2,"0")};
+function opacity(el,v){el.style.opacity=String(clamp(v,0,1))}
+function transform(el,v){el.style.transform=v}
 window.SPMOTION_FRAME=function(time){
- const t=clamp(Number(time)||0,0,DURATION);
- scenes.forEach(s=>{
-   const start=Number(s.dataset.start),end=Number(s.dataset.end);
-   const active=t>=start&&t<end;
-   s.classList.toggle('active',active);
-   const local=clamp((t-start)/Math.max(.01,end-start),0,1);
-   s.style.opacity=active?String(Math.min(1,local*2.5+0.03)): '0';
-   s.style.transform='translateY('+(active?((1-ease(local))*22 + Math.sin(t*0.7)*1.5):18)+'px)';
- });
- const local=clamp((t-10)/8.5,0,1);
- document.getElementById('oldbar').style.height=(ease(local)*1.5)+'%';
- document.getElementById('newbar').style.height=(ease(local)*78)+'%';
- document.getElementById('newbar').style.filter='brightness('+(1+0.06*(0.5+0.5*Math.sin(t*1.2)))+')';
- document.getElementById('orb').style.transform='translateY('+(Math.sin(t*.22)*9)+'px) scale('+(1+Math.sin(t*.18)*.018)+')';
- document.getElementById('trackfill').style.width=(t/DURATION*100)+'%';
- document.getElementById('time').textContent='00:'+String(Math.floor(t)).padStart(2,'0')+' / 00:30';
+const t=clamp(Number(time)||0,0,DURATION),ranges=[[0,5],[5,10],[10,19],[19,25],[25,30]];
+scenes.forEach((el,i)=>{const [a,b]=ranges[i],active=t>=a&&(t<b||(i===4&&t<=b)),enter=smooth((t-a)/.7),leave=1-smooth((t-(b-.55))/.55);el.style.visibility=active?"visible":"hidden";opacity(el,active?enter*leave:0);});
+transform(document.getElementById("orb"),`translate(${Math.sin(t*1.2)*12}px,${Math.sin(t*1.6)*20}px) scale(${1+Math.sin(t*1.8)*.018})`);
+transform(document.getElementById("ring1"),`rotate(${t*18}deg) scale(${1+Math.sin(t*1.1)*.025})`);
+transform(document.getElementById("ring2"),`rotate(${-t*12}deg) scale(${1+Math.cos(t*.9)*.02})`);
+transform(document.getElementById("orb-label"),`translateY(${Math.sin(t*1.1)*8}px)`);opacity(document.getElementById("orb-label"),smooth((t-1.1)/.8));
+const c=smooth((t-5.4)/4.2);document.getElementById("cost-number").textContent=Math.round(75*c)+"%";document.getElementById("cost-bar").style.width=(75*c)+"%";
+const b=smooth((t-10.7)/7.2);document.getElementById("bench-new").style.width=(39.2*b)+"%";document.getElementById("bench-old").style.width="0%";
+[0,1,2,3].forEach(i=>{const el=document.getElementById("check"+i),v=smooth((t-(19+i*1.05))/.65);opacity(el,v);transform(el,`translateX(${(1-v)*38}px)`);});
+[0,1,2,3].forEach(i=>{const el=document.getElementById("code"+i),v=smooth((t-(25+i*.75))/.65);opacity(el,v);transform(el,`translateX(${(1-v)*20}px)`);});
+const q=smooth((t-27.1)/.8);opacity(document.getElementById("cta"),q*(.92+Math.sin(t*3.1)*.08));transform(document.getElementById("cta"),`scale(${.97+q*.03+Math.sin(t*3.1)*.006})`);
+progress.style.width=(t/DURATION*100)+"%";timecode.textContent=fmt(t)+" / "+fmt(DURATION);return true;
 };
 window.SPMOTION_RENDER=window.SPMOTION_FRAME;
-if(!window.__SPMOTION_EXPORT){
- let last=-1;
- function preview(){
-  if(window.__SPMOTION_EXPORT)return;
-  const t=(performance.now()/1000)%DURATION;
-  if(Math.floor(t*30)!==last){window.SPMOTION_FRAME(t);last=Math.floor(t*30)}
-  requestAnimationFrame(preview);
- }
- window.SPMOTION_FRAME(0);requestAnimationFrame(preview);
-}
+window.SPMOTION_FRAME(0);
 })();
 </script>
 </body>
