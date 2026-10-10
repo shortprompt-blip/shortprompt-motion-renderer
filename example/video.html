@@ -78,13 +78,14 @@ window.SPMOTION_FRAME=function(time){
    const active=t>=start&&t<end;
    s.classList.toggle('active',active);
    const local=clamp((t-start)/Math.max(.01,end-start),0,1);
-   s.style.opacity=active?String(Math.min(1,local*5+0.08)): '0';
-   s.style.transform='translateY('+(active?(1-ease(local))*18:18)+'px)';
+   s.style.opacity=active?String(Math.min(1,local*2.5+0.03)): '0';
+   s.style.transform='translateY('+(active?((1-ease(local))*22 + Math.sin(t*0.7)*1.5):18)+'px)';
  });
- const local=clamp((t-10)/9,0,1);
+ const local=clamp((t-10)/8.5,0,1);
  document.getElementById('oldbar').style.height=(ease(local)*1.5)+'%';
  document.getElementById('newbar').style.height=(ease(local)*78)+'%';
- document.getElementById('orb').style.transform='translateY('+(Math.sin(t*.6)*12)+'px) scale('+(1+Math.sin(t*.45)*.025)+')';
+ document.getElementById('newbar').style.filter='brightness('+(1+0.06*(0.5+0.5*Math.sin(t*1.2)))+')';
+ document.getElementById('orb').style.transform='translateY('+(Math.sin(t*.22)*9)+'px) scale('+(1+Math.sin(t*.18)*.018)+')';
  document.getElementById('trackfill').style.width=(t/DURATION*100)+'%';
  document.getElementById('time').textContent='00:'+String(Math.floor(t)).padStart(2,'0')+' / 00:30';
 };
