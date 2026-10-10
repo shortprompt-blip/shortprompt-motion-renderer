@@ -1,15 +1,1 @@
-Want more YouTube subscribers from the views you already get? Stop judging every video by views alone.
-
-Open YouTube Studio and check which videos gained subscribers. Look at subscriber gains alongside views, not instead of them.
-
-Here’s an illustrative comparison. Video A gets forty-two thousand views and eighty-four subscribers. Video B gets eight thousand four hundred views and one hundred twenty-six subscribers.
-
-That works out to two subscribers per thousand views for Video A, versus fifteen for Video B. These are simulated numbers, not official channel data or a YouTube benchmark. The ratio is a simple comparison you can calculate yourself.
-
-Next, inspect audience retention. Find the moments viewers stay for, then identify the problem or payoff that made the video useful.
-
-Turn that insight into a related follow-up video. Connect the videos with a relevant end screen or playlist, and make your call to action specific: tell viewers what useful content they can expect next.
-
-Each week, find the videos that attract subscribers, compare them fairly, study retention, and make the next video that serves the same audience.
-
-Follow for more YouTube growth fixes.
+Claude Haiku 5.5 is Anthropic’s new small model, built for speed and lower-cost AI work. Anthropic says it costs around seventy-five percent less to run than Haiku 4.5. But what about coding? Its own benchmark table reports thirty-nine point two percent on Terminal-Bench 4.0, compared with zero percent for Haiku 4.5. That is a major jump on this test, not proof it wins every coding task. The real question is whether it solves your task reliably, fast, and cheaply. Test it on your own code before choosing.

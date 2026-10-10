@@ -2,248 +2,103 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>How to Turn YouTube Viewers Into Subscribers (Using Analytics)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claude Haiku 5.5 — Short Explainer</title>
 <style>
-:root{color-scheme:dark;--bg:#0b1017;--panel:#121a24;--panel2:#172230;--line:#2a3748;--muted:#91a1b5;--text:#f4f7fb;--red:#ff4d5a;--cyan:#50d9ef;--green:#65e2a5;--yellow:#ffd166}
+:root{color-scheme:dark}
 *{box-sizing:border-box}
-html,body{margin:0;width:100%;height:100%;overflow:hidden;background:transparent;font-family:Inter,Arial,Helvetica,sans-serif}
-#sp-subscriber-analytics-root{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;background:radial-gradient(ellipse at 75% 0%,#18283a 0%,#0b1017 54%);color:var(--text);font-size:clamp(12px,1.05vw,20px)}
-#sp-subscriber-analytics-root .top{height:8%;display:flex;align-items:center;justify-content:space-between;padding:0 4%;border-bottom:1px solid #ffffff12;background:#080c12aa}
-#sp-subscriber-analytics-root .brand{display:flex;align-items:center;gap:.7em;font-weight:800;letter-spacing:-.03em}
-#sp-subscriber-analytics-root .ytmark{width:1.7em;height:1.15em;background:var(--red);border-radius:.35em;display:inline-grid;place-items:center;color:white;font-size:.7em}
-#sp-subscriber-analytics-root .crumb{color:var(--muted);font-size:.78em}
-#sp-subscriber-analytics-root .stage{position:absolute;inset:8% 0 0;padding:3.4% 5% 4%;display:none;opacity:0;transform:translateY(12px);transition:opacity .28s ease,transform .28s ease}
-#sp-subscriber-analytics-root .stage.active{display:block;opacity:1;transform:translateY(0)}
-#sp-subscriber-analytics-root .eyebrow{font-size:.72em;text-transform:uppercase;letter-spacing:.16em;color:var(--cyan);font-weight:800;margin-bottom:1.2em}
-#sp-subscriber-analytics-root h1{font-size:clamp(32px,4.3vw,82px);line-height:1.02;letter-spacing:-.055em;margin:0 0 .32em;max-width:14em}
-#sp-subscriber-analytics-root h2{font-size:clamp(26px,3vw,56px);line-height:1.04;letter-spacing:-.045em;margin:0 0 .45em}
-#sp-subscriber-analytics-root p{color:#c1ccda;line-height:1.45;margin:.3em 0;max-width:45em}
-#sp-subscriber-analytics-root .accent{color:var(--red)}
-#sp-subscriber-analytics-root .cyan{color:var(--cyan)}
-#sp-subscriber-analytics-root .muted{color:var(--muted)}
-#sp-subscriber-analytics-root .pill{display:inline-flex;align-items:center;gap:.45em;border:1px solid var(--line);background:#121b27;border-radius:999px;padding:.5em .85em;color:#c8d4e2;font-size:.72em}
-#sp-subscriber-analytics-root .dot{width:.55em;height:.55em;border-radius:50%;background:var(--green);display:inline-block}
-#sp-subscriber-analytics-root .grid{display:grid;gap:1.1em}
-#sp-subscriber-analytics-root .two{grid-template-columns:1fr 1fr}
-#sp-subscriber-analytics-root .three{grid-template-columns:repeat(3,1fr)}
-#sp-subscriber-analytics-root .four{grid-template-columns:repeat(4,1fr)}
-#sp-subscriber-analytics-root .card{background:linear-gradient(145deg,#172230,#101720);border:1px solid var(--line);border-radius:16px;padding:1.15em;min-width:0}
-#sp-subscriber-analytics-root .label{color:var(--muted);font-size:.72em;margin-bottom:.55em}
-#sp-subscriber-analytics-root .metric{font-size:clamp(24px,3vw,54px);font-weight:850;letter-spacing:-.06em;line-height:1}
-#sp-subscriber-analytics-root .sub{font-size:.72em;color:var(--muted);margin-top:.6em}
-#sp-subscriber-analytics-root .sectiontitle{font-size:.8em;color:#dce5ef;font-weight:750;margin-bottom:1em}
-#sp-subscriber-analytics-root .barrow{display:grid;grid-template-columns:8.5em 1fr 4.6em;align-items:center;gap:.7em;margin:.9em 0;font-size:.8em}
-#sp-subscriber-analytics-root .track{height:1.05em;background:#263343;border-radius:4px;overflow:hidden}
-#sp-subscriber-analytics-root .fill{height:100%;width:0;border-radius:4px;background:linear-gradient(90deg,#ff4d5a,#ff8a7d);transition:width .7s cubic-bezier(.2,.7,.2,1)}
-#sp-subscriber-analytics-root .fill.cyanfill{background:linear-gradient(90deg,#37a8ce,#50d9ef)}
-#sp-subscriber-analytics-root .fill.greenfill{background:linear-gradient(90deg,#36b77d,#65e2a5)}
-#sp-subscriber-analytics-root .barval{text-align:right;font-weight:800;font-variant-numeric:tabular-nums}
-#sp-subscriber-analytics-root .chart{height:15em;display:flex;align-items:end;gap:1.2em;padding:1em 1em .4em;border-bottom:1px solid #455466}
-#sp-subscriber-analytics-root .col{flex:1;display:flex;align-items:center;justify-content:end;flex-direction:column;gap:.55em;height:100%;min-width:0}
-#sp-subscriber-analytics-root .colbar{width:min(70%,5em);height:0;min-height:2px;border-radius:7px 7px 2px 2px;background:linear-gradient(180deg,#ff7780,#ff4d5a);transition:height .7s cubic-bezier(.2,.7,.2,1)}
-#sp-subscriber-analytics-root .colval{font-weight:800;font-size:.8em}
-#sp-subscriber-analytics-root .collabel{font-size:.7em;color:var(--muted);text-align:center;white-space:nowrap}
-#sp-subscriber-analytics-root .note{border-left:3px solid var(--cyan);padding:.75em 1em;background:#12212b;border-radius:0 10px 10px 0;color:#d3e1ed;font-size:.8em;line-height:1.4}
-#sp-subscriber-analytics-root .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:.8em;margin-top:1.5em}
-#sp-subscriber-analytics-root .step{padding:1em;border:1px solid var(--line);border-radius:12px;background:#111a25;min-height:7em}
-#sp-subscriber-analytics-root .num{color:var(--red);font-size:.75em;font-weight:900;letter-spacing:.1em;margin-bottom:.8em}
-#sp-subscriber-analytics-root .step strong{display:block;font-size:.9em;margin-bottom:.4em}
-#sp-subscriber-analytics-root .step span{font-size:.72em;color:var(--muted);line-height:1.35;display:block}
-#sp-subscriber-analytics-root .browser{border:1px solid #3b4858;border-radius:12px;overflow:hidden;background:#0d141d;box-shadow:0 18px 50px #0005}
-#sp-subscriber-analytics-root .browserbar{height:2.4em;display:flex;align-items:center;gap:.4em;padding:0 .9em;background:#202a37;border-bottom:1px solid #394555;font-size:.7em;color:#aebbc9}
-#sp-subscriber-analytics-root .trafficlight{width:.55em;height:.55em;border-radius:50%;background:#627184}
-#sp-subscriber-analytics-root .browserbody{padding:1em}
-#sp-subscriber-analytics-root .navrow{display:flex;gap:1.2em;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:.8em;margin-bottom:1em;font-size:.72em;color:var(--muted)}
-#sp-subscriber-analytics-root .navrow .selected{color:white;border-bottom:2px solid var(--red);padding-bottom:.7em;margin-bottom:-.85em}
-#sp-subscriber-analytics-root .listrow{display:grid;grid-template-columns:1.5em 1fr 5em;gap:.7em;align-items:center;padding:.75em 0;border-bottom:1px solid #273343;font-size:.78em}
-#sp-subscriber-analytics-root .rank{color:var(--muted)}
-#sp-subscriber-analytics-root .badge{font-size:.68em;border-radius:6px;padding:.3em .5em;background:#18392f;color:var(--green);text-align:center}
-#sp-subscriber-analytics-root .timeline{height:3.4em;position:relative;border:1px solid var(--line);background:#121b27;border-radius:8px;overflow:hidden;margin-top:1em}
-#sp-subscriber-analytics-root .retline{position:absolute;inset:0;background:linear-gradient(180deg,transparent 15%,#50d9ef0c 16%,transparent 17%),linear-gradient(0deg,#50d9ef1d,#50d9ef00);clip-path:polygon(0 25%,8% 31%,18% 38%,25% 45%,35% 53%,45% 58%,55% 63%,65% 67%,75% 70%,85% 73%,100% 78%,100% 100%,0 100%)}
-#sp-subscriber-analytics-root .retline:after{content:"";position:absolute;inset:0;background:#50d9ef;clip-path:polygon(0 24%,8% 30%,18% 37%,25% 44%,35% 52%,45% 57%,55% 62%,65% 66%,75% 69%,85% 72%,100% 77%,100% 80%,85% 75%,75% 72%,65% 69%,55% 65%,45% 60%,35% 55%,25% 47%,18% 40%,8% 33%,0 27%)}
-#sp-subscriber-analytics-root .footer{position:absolute;bottom:2.5%;left:5%;right:5%;display:flex;align-items:center;justify-content:space-between;color:#66778b;font-size:.62em;letter-spacing:.05em}
-#sp-subscriber-analytics-root .progress{height:3px;position:absolute;bottom:0;left:0;width:100%;background:#263343}
-#sp-subscriber-analytics-root .progress span{display:block;height:100%;width:0;background:var(--red)}
-#sp-subscriber-analytics-root .bigquote{font-size:clamp(24px,3.2vw,60px);line-height:1.12;letter-spacing:-.04em;font-weight:800;max-width:17em}
-#sp-subscriber-analytics-root .check{display:flex;gap:.7em;align-items:flex-start;margin:.8em 0;font-size:.84em;color:#d9e3ed}
-#sp-subscriber-analytics-root .check i{font-style:normal;color:var(--green);font-weight:900}
-#sp-subscriber-analytics-root .footnote{font-size:.62em;color:#7f91a5;margin-top:1em;line-height:1.35}
-@media(max-aspect-ratio:4/3){#sp-subscriber-analytics-root .stage{padding:3% 4%}#sp-subscriber-analytics-root .steps{gap:.45em}#sp-subscriber-analytics-root .step{padding:.7em}}
+html,body{margin:0;width:100%;height:100%;background:#090d18;color:#f5f7ff;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif}
+#sp-motion-root{position:relative;width:100%;height:100%;overflow:hidden;background:radial-gradient(ellipse at 75% 12%,#26345b 0%,#10172b 35%,#080b13 78%)}
+.grid{position:absolute;inset:0;background-image:linear-gradient(#ffffff09 1px,transparent 1px),linear-gradient(90deg,#ffffff09 1px,transparent 1px);background-size:5% 8%;mask-image:linear-gradient(to bottom,#000,transparent 90%)}
+.top{position:absolute;left:6%;right:6%;top:6%;display:flex;justify-content:space-between;align-items:center;color:#aab8d7;font-size:clamp(10px,1.3vw,18px);letter-spacing:.14em;text-transform:uppercase}
+.pill{border:1px solid #6f83b8;border-radius:99px;padding:.55em 1em;background:#101a32}
+.scene{position:absolute;inset:16% 7% 12%;opacity:0;transform:translateY(18px);transition:none}
+.scene.active{opacity:1;transform:translateY(0)}
+.kicker{color:#9db7ff;font-size:clamp(12px,1.8vw,24px);letter-spacing:.12em;text-transform:uppercase;font-weight:750}
+h1{font-size:clamp(36px,7.5vw,100px);line-height:.98;letter-spacing:-.055em;margin:.18em 0 .28em;max-width:900px}
+h2{font-size:clamp(29px,5.5vw,72px);line-height:1.02;letter-spacing:-.04em;margin:.2em 0 .45em}
+p{font-size:clamp(16px,2.4vw,30px);line-height:1.35;color:#cbd5ed;max-width:900px}
+.accent{color:#9cb5ff}
+.hero-orb{position:absolute;width:34vw;height:34vw;max-width:420px;max-height:420px;right:6%;top:13%;border-radius:50%;background:radial-gradient(circle at 32% 28%,#d9e3ff,#7896f5 20%,#344b91 48%,#17203d 70%);box-shadow:0 0 100px #6688ff55;opacity:.9}
+.statrow{display:flex;gap:3%;margin-top:4%;max-width:1000px}
+.stat{flex:1;min-width:0;padding:clamp(12px,2.4vw,28px);border:1px solid #364567;background:#111a2e;border-radius:18px}
+.stat small{display:block;color:#a7b4d3;font-size:clamp(10px,1.5vw,18px);text-transform:uppercase;letter-spacing:.1em}
+.stat strong{display:block;font-size:clamp(25px,5.4vw,70px);margin-top:.2em;letter-spacing:-.05em}
+.good{color:#8ee8c2}.warn{color:#ffce8c}
+.chart{display:flex;align-items:end;gap:7%;height:24vh;max-height:250px;margin:3% 0 0;border-bottom:1px solid #56617b;padding:0 5%}
+.barwrap{flex:1;height:100%;display:flex;flex-direction:column;justify-content:end;align-items:center;gap:10px}
+.bar{width:min(100%,140px);height:0;background:linear-gradient(#9db6ff,#526fce);border-radius:12px 12px 0 0;transition:none}
+.bar.old{background:linear-gradient(#5c6884,#333e58)}
+.barlabel{font-size:clamp(11px,1.7vw,20px);color:#dbe3fa;text-align:center}
+.value{font-size:clamp(18px,3vw,34px);font-weight:800}
+.footer{position:absolute;left:6%;right:6%;bottom:5%;display:flex;align-items:center;gap:14px;color:#7f8eaf;font-size:clamp(10px,1.2vw,16px)}
+.track{height:4px;background:#2b3550;flex:1;border-radius:99px;overflow:hidden}
+.trackfill{height:100%;width:0;background:#9db6ff}
+.cta{display:inline-block;margin-top:1.2em;background:#a9bbff;color:#0b1120;border-radius:12px;padding:.7em 1.1em;font-weight:850;font-size:clamp(15px,2vw,25px)}
+@media (max-aspect-ratio:4/5){.hero-orb{width:28vw;height:28vw;right:3%;top:2%;opacity:.45}.scene{inset:18% 6% 12%}.statrow{gap:2%}.stat{padding:12px}.chart{height:20vh}}
 </style>
 </head>
 <body>
-<div id="sp-subscriber-analytics-root" aria-label="Reconstructed YouTube Analytics explainer">
-  <div class="top">
-    <div class="brand"><span class="ytmark">▶</span> Creator Growth Lab</div>
-    <div class="crumb">YOUTUBE ANALYTICS <span style="color:#536477">/</span> SUBSCRIBER CONVERSION</div>
-  </div>
-
-  <section class="stage active" data-start="0" data-end="7">
-    <div class="eyebrow">The growth problem</div>
-    <h1>Views are not the goal.<br><span class="accent">Returning viewers are.</span></h1>
-    <p>Use YouTube Analytics to find which videos make people want the next one.</p>
-    <div class="grid three" style="margin-top:2.2em;max-width:58em">
-      <div class="card"><div class="label">VIDEO A</div><div class="metric">42K</div><div class="sub">views · illustrative</div></div>
-      <div class="card"><div class="label">VIDEO B</div><div class="metric cyan">8.4K</div><div class="sub">views · illustrative</div></div>
-      <div class="card"><div class="label">THE QUESTION</div><div class="metric accent">?</div><div class="sub">Which one gained more subscribers?</div></div>
-    </div>
-    <div class="pill" style="margin-top:1.5em"><span class="dot"></span> The figures in this visual are simulated examples</div>
-  </section>
-
-  <section class="stage" data-start="7" data-end="15">
-    <div class="eyebrow">Step 1 · Find the videos that convert</div>
-    <h2>Start with <span class="accent">Subscribers gained</span></h2>
-    <div class="grid two" style="align-items:center;margin-top:1.1em">
-      <div class="browser">
-        <div class="browserbar"><span class="trafficlight"></span><span class="trafficlight"></span><span class="trafficlight"></span><span style="margin-left:.7em">studio.youtube.com · Analytics</span></div>
-        <div class="browserbody">
-          <div class="navrow"><span>Overview</span><span class="selected">Content</span><span>Audience</span><span>Research</span></div>
-          <div class="sectiontitle">Top content by subscribers gained</div>
-          <div class="listrow"><span class="rank">1</span><span>Fix your thumbnail CTR</span><span class="badge">+184</span></div>
-          <div class="listrow"><span class="rank">2</span><span>Find your retention problem</span><span class="badge">+121</span></div>
-          <div class="listrow"><span class="rank">3</span><span>Beginner setup guide</span><span class="badge">+37</span></div>
-        </div>
-      </div>
-      <div>
-        <div class="card" style="margin-bottom:1em"><div class="label">DON'T SORT ONLY BY</div><div class="metric muted">Views</div><div class="sub">Reach does not tell you who chose to follow.</div></div>
-        <div class="card"><div class="label">COMPARE WITH</div><div class="metric cyan">Subscribers</div><div class="sub">Use the Content tab and the relevant video-level analytics to identify subscriber gains.</div></div>
-      </div>
-    </div>
-    <div class="footnote">Illustrative reconstructed interface. Menu labels may vary by Studio view and report.</div>
-  </section>
-
-  <section class="stage" data-start="15" data-end="23">
-    <div class="eyebrow">Step 2 · Compare fairly</div>
-    <h2>High views can hide <span class="cyan">low conversion</span></h2>
-    <div class="grid two" style="margin-top:1.3em">
-      <div class="card">
-        <div class="sectiontitle">VIDEO A · BROAD REACH</div>
-        <div class="grid two">
-          <div><div class="label">Views</div><div class="metric">42K</div></div>
-          <div><div class="label">Subscribers gained</div><div class="metric">84</div></div>
-        </div>
-        <div class="barrow"><span>Subs per 1K views</span><div class="track"><div class="fill" data-width="42%"></div></div><span class="barval">2.0</span></div>
-      </div>
-      <div class="card" style="border-color:#50d9ef66">
-        <div class="sectiontitle">VIDEO B · STRONGER FIT</div>
-        <div class="grid two">
-          <div><div class="label">Views</div><div class="metric">8.4K</div></div>
-          <div><div class="label">Subscribers gained</div><div class="metric cyan">126</div></div>
-        </div>
-        <div class="barrow"><span>Subs per 1K views</span><div class="track"><div class="fill cyanfill" data-width="100%"></div></div><span class="barval cyan">15.0</span></div>
-      </div>
-    </div>
-    <div class="note" style="margin-top:1.2em">Diagnostic ratio for this example: subscribers gained ÷ views × 1,000. This is a calculated comparison, not an official YouTube metric or universal benchmark.</div>
-  </section>
-
-  <section class="stage" data-start="23" data-end="31">
-    <div class="eyebrow">Step 3 · Understand why</div>
-    <h2>Follow the <span class="cyan">retention curve</span></h2>
-    <div class="grid two" style="align-items:center;margin-top:1.2em">
-      <div class="card">
-        <div class="label">AUDIENCE RETENTION · ILLUSTRATIVE</div>
-        <div class="timeline"><div class="retline"></div></div>
-        <div style="display:flex;justify-content:space-between;color:var(--muted);font-size:.7em;margin-top:.5em"><span>0:00</span><span>25%</span><span>50%</span><span>75%</span><span>End</span></div>
-        <div class="pill" style="margin-top:1em"><span class="dot"></span> Find the moments people stay for</div>
-      </div>
-      <div>
-        <div class="check"><i>✓</i><span>Look for the sections that keep attention, not just the opening spike.</span></div>
-        <div class="check"><i>✓</i><span>Ask what specific problem is being solved at those moments.</span></div>
-        <div class="check"><i>✓</i><span>Make the next video a natural continuation of that problem.</span></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="stage" data-start="31" data-end="39">
-    <div class="eyebrow">Step 4 · Build the next click</div>
-    <h2>Turn one useful video into a <span class="accent">series</span></h2>
-    <div class="grid three" style="margin-top:1.4em">
-      <div class="card"><div class="label">VIDEO 01</div><div class="metric">CTR</div><p>Diagnose the thumbnail problem.</p><div class="sub">Current viewer need</div></div>
-      <div class="card" style="border-color:#50d9ef66"><div class="label">VIDEO 02</div><div class="metric cyan">Retention</div><p>Find where attention drops.</p><div class="sub">Logical next step</div></div>
-      <div class="card"><div class="label">VIDEO 03</div><div class="metric">Ideas</div><p>Choose the next topic using search and audience signals.</p><div class="sub">Keep the promise coherent</div></div>
-    </div>
-    <div class="note" style="margin-top:1.2em">Use a relevant end screen or playlist to connect the videos. Recommend the next step, not an unrelated upload.</div>
-  </section>
-
-  <section class="stage" data-start="39" data-end="47">
-    <div class="eyebrow">Step 5 · Improve the subscription moment</div>
-    <h2>Ask after you have <span class="green">delivered value</span></h2>
-    <div class="grid two" style="margin-top:1.2em;align-items:center">
-      <div class="card">
-        <div class="label">WEAK CTA</div>
-        <div class="bigquote muted">“Subscribe for more.”</div>
-        <p style="margin-top:1em">Generic. No clear reason to return.</p>
-      </div>
-      <div class="card" style="border-color:#65e2a566">
-        <div class="label">SPECIFIC CTA</div>
-        <div class="bigquote">“Follow for more <span class="green">YouTube growth fixes.</span>”</div>
-        <p style="margin-top:1em">Connect the subscription to a repeatable benefit.</p>
-      </div>
-    </div>
-    <div class="footnote">A CTA is a hypothesis to test against your audience—not a guaranteed conversion lift.</div>
-  </section>
-
-  <section class="stage" data-start="47" data-end="55">
-    <div class="eyebrow">Your weekly analytics loop</div>
-    <h2>Measure → learn → make the next video</h2>
-    <div class="steps">
-      <div class="step"><div class="num">01 / FIND</div><strong>Subscriber gains</strong><span>Which videos attract subscribers?</span></div>
-      <div class="step"><div class="num">02 / COMPARE</div><strong>Normalize</strong><span>Compare subscribers per 1,000 views.</span></div>
-      <div class="step"><div class="num">03 / EXPLAIN</div><strong>Inspect retention</strong><span>Find the value viewers stayed for.</span></div>
-      <div class="step"><div class="num">04 / REPEAT</div><strong>Build a sequel</strong><span>Connect the next useful video.</span></div>
-    </div>
-    <div class="note" style="margin-top:1.5em">Use consistent date ranges and compare videos with similar age and traffic context where possible.</div>
-  </section>
-
-  <section class="stage" data-start="55" data-end="62">
-    <div class="eyebrow">The takeaway</div>
-    <div class="bigquote">Don't chase the video with the most views.<br><span class="accent">Find the video that earns the next visit.</span></div>
-    <div class="grid two" style="margin-top:1.5em;max-width:52em">
-      <div class="card"><div class="label">YOUR SIGNAL</div><div class="metric cyan">Subscribers gained</div><div class="sub">Which videos turn attention into intent?</div></div>
-      <div class="card"><div class="label">YOUR ACTION</div><div class="metric green">Make the sequel</div><div class="sub">Deliver the next step your audience needs.</div></div>
-    </div>
-    <p style="margin-top:1.4em;font-weight:800;color:white">Follow for more YouTube growth fixes.</p>
-  </section>
-
-  <div class="footer"><span>CREATOR GROWTH LAB · ANALYTICS WORKFLOW</span><span id="clock">00:00 / 01:02</span></div>
-  <div class="progress"><span id="progressbar"></span></div>
+<div id="sp-motion-root">
+<div class="grid"></div>
+<div class="top"><span>SHORTPROMPT / MODEL WATCH</span><span class="pill">AI • 2026</span></div>
+<div class="hero-orb" id="orb"></div>
+<section class="scene" data-start="0" data-end="5">
+<div class="kicker">New model alert</div><h1>Claude<br><span class="accent">Haiku 5.5</span></h1><p>Built for fast, high-volume AI work.</p>
+</section>
+<section class="scene" data-start="5" data-end="10">
+<div class="kicker">The price claim</div><h2>About <span class="accent">75% less</span></h2><p>Anthropic says Haiku 5.5 costs around 75% less to run than Haiku 4.5.</p>
+<div class="statrow"><div class="stat"><small>Compared with</small><strong>Haiku 4.5</strong></div><div class="stat"><small>Reported cost</small><strong class="good">−75%</strong></div></div>
+</section>
+<section class="scene" data-start="10" data-end="19">
+<div class="kicker">Coding benchmark</div><h2>One test. A big jump.</h2><p>Anthropic’s published Terminal-Bench 4.0 results:</p>
+<div class="chart"><div class="barwrap"><div class="value" id="oldval">0.0%</div><div class="bar old" id="oldbar"></div><div class="barlabel">Haiku 4.5</div></div><div class="barwrap"><div class="value accent" id="newval">39.2%</div><div class="bar" id="newbar"></div><div class="barlabel">Haiku 5.5</div></div></div>
+</section>
+<section class="scene" data-start="19" data-end="25">
+<div class="kicker">Keep the result in context</div><h2>Benchmark ≠ guarantee</h2><p>39.2% is a result on one test. It does not prove Haiku 5.5 wins every coding task.</p>
+<div class="statrow"><div class="stat"><small>Check</small><strong>Correctness</strong></div><div class="stat"><small>Measure</small><strong>Latency</strong></div><div class="stat"><small>Track</small><strong>Cost</strong></div></div>
+</section>
+<section class="scene" data-start="25" data-end="30">
+<div class="kicker">Your real-world test</div><h2>Try it on <span class="accent">your code.</span></h2><p>Compare quality, speed, and cost on the tasks you actually run.</p><div class="cta">Follow for practical AI tests →</div>
+</section>
+<div class="footer"><span id="time">00:00 / 00:30</span><div class="track"><div class="trackfill" id="trackfill"></div></div><span>30 SEC</span></div>
 </div>
 <script>
 (function(){
-  const root=document.getElementById('sp-subscriber-analytics-root');
-  const stages=Array.from(root.querySelectorAll('.stage'));
-  const DESIGN_DURATION=62;
-  let current=-1;
-  function render(time){
-    const t=Math.max(0,Math.min(DESIGN_DURATION,Number(time)||0));
-    let idx=stages.findIndex((s,i)=>t>=Number(s.dataset.start)&&t<Number(s.dataset.end));
-    if(t>=DESIGN_DURATION)idx=stages.length-1;
-    if(idx<0)idx=0;
-    if(idx!==current){
-      stages.forEach((s,i)=>{s.classList.toggle('active',i===idx)});
-      current=idx;
-      stages[idx].querySelectorAll('[data-width]').forEach(el=>{el.style.width=el.dataset.width});
-      stages[idx].querySelectorAll('.colbar[data-height]').forEach(el=>{el.style.height=el.dataset.height});
-    }
-    const p=(t/DESIGN_DURATION)*100;
-    root.querySelector('#progressbar').style.width=p+'%';
-    const mm=String(Math.floor(t/60)).padStart(2,'0'),ss=String(Math.floor(t%60)).padStart(2,'0');
-    root.querySelector('#clock').textContent=mm+':'+ss+' / 01:02';
-    return true;
-  }
-  window.SPMOTION={width:1920,height:1080,fps:30,duration:DESIGN_DURATION};
-  window.SPMOTION_FRAME=render;
-  window.SPMOTION_RENDER=render;
-  render(0);
-  function preview(){
-    if(!window.__SPMOTION_EXPORT){
-      const t=(performance.now()/1000)%DESIGN_DURATION;
-      render(t);
-    }
-    requestAnimationFrame(preview);
-  }
+const root=document.getElementById('sp-motion-root');
+const scenes=[...root.querySelectorAll('.scene')];
+const DURATION=30;
+window.SPMOTION={width:1080,height:1920,fps:30,duration:DURATION};
+function clamp(x,a,b){return Math.max(a,Math.min(b,x))}
+function ease(x){x=clamp(x,0,1);return x*x*(3-2*x)}
+window.SPMOTION_FRAME=function(time){
+ const t=clamp(Number(time)||0,0,DURATION);
+ scenes.forEach(s=>{
+   const start=Number(s.dataset.start),end=Number(s.dataset.end);
+   const active=t>=start&&t<end;
+   s.classList.toggle('active',active);
+   const local=clamp((t-start)/Math.max(.01,end-start),0,1);
+   s.style.opacity=active?String(Math.min(1,local*5+0.08)): '0';
+   s.style.transform='translateY('+(active?(1-ease(local))*18:18)+'px)';
+ });
+ const local=clamp((t-10)/9,0,1);
+ document.getElementById('oldbar').style.height=(ease(local)*1.5)+'%';
+ document.getElementById('newbar').style.height=(ease(local)*78)+'%';
+ document.getElementById('orb').style.transform='translateY('+(Math.sin(t*.6)*12)+'px) scale('+(1+Math.sin(t*.45)*.025)+')';
+ document.getElementById('trackfill').style.width=(t/DURATION*100)+'%';
+ document.getElementById('time').textContent='00:'+String(Math.floor(t)).padStart(2,'0')+' / 00:30';
+};
+window.SPMOTION_RENDER=window.SPMOTION_FRAME;
+if(!window.__SPMOTION_EXPORT){
+ let last=-1;
+ function preview(){
+  if(window.__SPMOTION_EXPORT)return;
+  const t=(performance.now()/1000)%DURATION;
+  if(Math.floor(t*30)!==last){window.SPMOTION_FRAME(t);last=Math.floor(t*30)}
   requestAnimationFrame(preview);
+ }
+ window.SPMOTION_FRAME(0);requestAnimationFrame(preview);
+}
 })();
 </script>
 </body>
