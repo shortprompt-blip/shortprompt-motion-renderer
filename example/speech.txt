@@ -1,17 +1,13 @@
-If you work with AI prompts, API responses, or structured notes, messy data can make your workflow harder to manage. In this video, I’ll show you how to clean up a JSON-style payload with the ShortPrompt LLM Data and JSON Formatter.
+Messy JSON in your AI prompt? Clean it up in seconds.
 
-First, here’s the kind of input you might receive: a list of project details mixed with extra spaces and inconsistent formatting. Before sending data to an AI model, the goal is to make the structure clear and easy to reuse.
+Paste your data into the free LLM JSON Formatter.
 
-Open the LLM Data and JSON Formatter on ShortPrompt. The page gives you an input area for raw text or data, an output area, and a format selector. We’ll use a small example so you can follow every step.
+Click Format to make the structure readable, or Minify to remove extra whitespace.
 
-Paste the sample notes into the input field. We have a project called Creator Dashboard, an example owner field, a status of in progress, and three tasks: fix the mobile layout, validate the JSON response, and update the documentation. The input counter shows how much text you’ve entered.
+Then copy the result and use it in your prompt.
 
-Now choose the output format. For this example, we want JSON. The structured result separates the project name, owner, status, and task list into clear key-value fields. That makes the information easier to inspect and easier to copy into a prompt or development workflow.
+One important detail: fewer characters do not always mean fewer tokens. Token counts depend on the model and its tokenizer.
 
-The important part is checking the result, not just clicking a button. Confirm that every task is present, the status is correct, and the output still represents the original information. Formatting can improve consistency, but it cannot decide whether your data is factually correct.
+Try the free tool at ShortPrompt. Link in the description.
 
-Next, compare the readable version with a compact version. Removing indentation and unnecessary whitespace can reduce the number of characters in the serialized text. That can be useful when you need a compact payload. But don’t assume fewer characters always means a dramatic reduction in model tokens. Tokenization differs by model, and whitespace changes can have a modest or variable effect. For reliable cost estimates, use the tokenizer or usage data for your actual model.
-
-Once the output looks right, use Copy Formatted Data and paste it into your prompt, editor, or documentation. Always review sensitive or production data before sending it to any external AI service. The formatter is a preparation step, not a substitute for validation or security review.
-
-You can try the tool for free at shortprompt dot altervista dot org slash llm-json-formatter. The link is in the description. If this walkthrough helped, follow for more practical AI and creator workflow fixes.
+Follow for more creator tools.
