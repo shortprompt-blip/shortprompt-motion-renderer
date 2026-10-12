@@ -1,23 +1,17 @@
-Want to make YouTube thumbnails that get more clicks? Start by making the video’s value clear. A thumbnail is a promise, not a trick. We’ll turn a cluttered design into a clearer one and build a process you can reuse.
+If you work with AI prompts, API responses, or structured notes, messy data can make your workflow harder to manage. In this video, I’ll show you how to clean up a JSON-style payload with the ShortPrompt LLM Data and JSON Formatter.
 
-First, define the video idea before opening your design tool. Who is the video for, what problem does it solve, and what result will viewers get? For our example, the promise is simple: edit videos faster. You don’t need to put the whole explanation on the thumbnail. Choose one visual idea that communicates the benefit.
+First, here’s the kind of input you might receive: a list of project details mixed with extra spaces and inconsistent formatting. Before sending data to an AI model, the goal is to make the structure clear and easy to reuse.
 
-Now look at the first draft: “Best video ever,” “Don’t miss this,” and “Ten tips.” There are too many competing messages. Remove anything that doesn’t support the main idea. Delete the extra text, reduce decorative shapes, and keep one focal point. Simple doesn’t mean empty; it means every element has a job.
+Open the LLM Data and JSON Formatter on ShortPrompt. The page gives you an input area for raw text or data, an output area, and a format selector. We’ll use a small example so you can follow every step.
 
-Next, build visual hierarchy. Viewers should notice the main subject first, the short text second, and supporting details last. Use size, position, contrast, and empty space to guide the eye. If every element is bright and oversized, nothing feels important. Choose one dominant element and let everything else support it.
+Paste the sample notes into the input field. We have a project called Creator Dashboard, an example owner field, a status of in progress, and three tasks: fix the mobile layout, validate the JSON response, and update the documentation. The input counter shows how much text you’ve entered.
 
-Color can help separate the subject from the background, but no color combination guarantees clicks. Check whether the text and subject remain clear in grayscale. A subtle outline or shadow can improve separation, while too many effects can make the design harder to read. Aim for clarity, not decoration.
+Now choose the output format. For this example, we want JSON. The structured result separates the project name, owner, status, and task list into clear key-value fields. That makes the information easier to inspect and easier to copy into a prompt or development workflow.
 
-Treat the title and thumbnail as a pair. The title can explain the topic; the thumbnail adds a compact visual hook. For a video titled “How to Edit Videos Faster,” the thumbnail could say “EDIT FASTER” beside a recognizable editing timeline. Remove filler words. If the thumbnail needs a paragraph to make sense, simplify it. And never promise something the video doesn’t deliver.
+The important part is checking the result, not just clicking a button. Confirm that every task is present, the status is correct, and the output still represents the original information. Formatting can improve consistency, but it cannot decide whether your data is factually correct.
 
-Now check the design at mobile size. Zoom out until the thumbnail looks roughly like it would in a feed. Can you recognize the subject? Can you read the key words? Is there one clear focal point? If not, enlarge the subject, shorten the text, or remove a secondary element. Simplify before adding heavier fonts or more effects.
+Next, compare the readable version with a compact version. Removing indentation and unnecessary whitespace can reduce the number of characters in the serialized text. That can be useful when you need a compact payload. But don’t assume fewer characters always means a dramatic reduction in model tokens. Tokenization differs by model, and whitespace changes can have a modest or variable effect. For reliable cost estimates, use the tokenizer or usage data for your actual model.
 
-Check the composition too. Leave breathing room around the main subject and keep important details away from the edges. Arrows, circles, and badges should explain something; if they point at nothing meaningful, remove them. Screenshots and interface elements only help when they’re large enough to recognize. Tiny unreadable details add clutter, not evidence.
+Once the output looks right, use Copy Formatted Data and paste it into your prompt, editor, or documentation. Always review sensitive or production data before sending it to any external AI service. The formatter is a preparation step, not a substitute for validation or security review.
 
-Compare the two versions. The first has several claims and competing elements. The redesign uses one short message, one dominant visual, stronger separation, and more empty space. That makes the idea easier to scan, but it is still a design hypothesis—not proof that the new thumbnail will perform better. Results also depend on the topic, title, audience, and traffic source.
-
-Before publishing, ask five questions. Does the thumbnail accurately represent the video? Is the main idea clear at small size? Is there one dominant element? Do the title and thumbnail complement each other? Have you removed anything that doesn’t help communicate the promise? If one answer is no, make one focused revision.
-
-After publishing, evaluate results in context. Click-through rate can vary by audience and traffic source, so don’t judge a thumbnail from one number alone. Compare similar videos and look for patterns. For eligible long-form videos, YouTube Studio’s Test & Compare feature can compare thumbnail options when available. Use evidence rather than personal preference alone.
-
-The repeatable process is simple: define the promise, choose one visual idea, build hierarchy, keep text short, check it on mobile, and learn from evidence. The best thumbnail isn’t the one with the most effects. It’s the one that communicates the right idea clearly and honestly. Follow for more YouTube growth fixes.
+You can try the tool for free at shortprompt dot altervista dot org slash llm-json-formatter. The link is in the description. If this walkthrough helped, follow for more practical AI and creator workflow fixes.
