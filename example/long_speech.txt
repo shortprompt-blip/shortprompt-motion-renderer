@@ -1,0 +1,17 @@
+Gemini 4 Argon is here, but is it actually better than Claude Opus?
+
+The useful question isn't which model wins every benchmark. It's which one fits the job.
+
+First, coding. Argon is not a no-coding model. Google positions it for complex software engineering, multi-step tasks, and long-running work. Its official documentation also lists code execution and computer use in preview. Claude Opus is also built for serious coding and agent workflows. So don't assume Argon loses at coding just because it's new. A fair head-to-head needs the same task, the same tools, and the same success criteria.
+
+Second, research and long documents. Argon accepts text, images, audio, video, and PDFs, with a context window of up to one million tokens. That makes it worth testing on a large brief, a long report, or a video that needs analysis. But a large context window doesn't automatically mean perfect recall or accurate conclusions. Ask both models to cite the evidence and check the result.
+
+Third, images and video. Here's an important distinction: Argon can analyze visual inputs, including video, but the model's API output is text. Google's model documentation says image generation and audio generation are not supported by Argon itself. So if you want it to create a finished image or generate a video clip directly, Argon alone isn't the right tool. You'd need a separate image or video generation model or product. Understanding a video is not the same as generating one.
+
+Fourth, structured work. Argon supports tools such as function calling, file search, search grounding, and structured outputs. That can help with research workflows and turning information into organized results. Claude Opus also supports agentic workflows, so the winner depends on the exact task and setup, not the brand name alone.
+
+What about price? Google's launch pricing for Argon is two dollars per million input tokens and ten dollars per million output tokens through November thirtieth, 2026, then it is scheduled to rise to four and twenty dollars. Compare that with the exact Opus model and plan you're using before deciding; consumer subscriptions and API prices aren't directly interchangeable.
+
+My practical verdict: test Argon for complex reasoning, code, long-context analysis, and multi-step workflows. Don't choose it expecting native image or video generation. For coding, don't declare a winner from a benchmark headline—run the same real task in both models and verify the output.
+
+If you'd like, the next test should be one shared prompt, one real coding task, and a side-by-side scorecard. Follow for more practical AI tools and creator workflows.
