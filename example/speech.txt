@@ -1,15 +1,19 @@
-Which photo styles are worth trying with AI right now? Instead of guessing what is viral, I checked Pinterest's official Predicts report for 2026 and picked four visual directions we can actually test without using human faces.
+In this tutorial, we’ll install NVIDIA Nemotron 3 Nano locally on Windows, using llama dot cpp, with no dedicated GPU required for the CPU-only route.
 
-First: Cool Blue. Think icy blues, glass, reflective surfaces, and crisp product photography. Pinterest reported growing searches for glacier aesthetics, so let's try that look on a simple drink still life.
+We’ll use NVIDIA’s official Nemotron 3 Nano 4B GGUF repository and the Q4 K M quantization. This is the Nano model, not Nemotron Super or Ultra. Performance depends on your CPU, available RAM, and context size, so don’t expect every computer to run it at the same speed.
 
-Second: Mystic Outlands. This is the landscape direction: remote mountains, mist, dramatic skies, and destinations that feel almost unreal. Pinterest highlighted strong interest in places such as the Scottish Highlands. Our test is to push a landscape toward a cinematic, mysterious travel image.
+First, open Windows Terminal or PowerShell. Install the packaged llama dot cpp build with this command: winget install llama dot cpp. If Windows asks you to accept source terms, review and confirm them. When installation finishes, close the terminal and open a new PowerShell window so the updated command path is loaded.
 
-Third: Neo Deco. Art Deco returns with geometric shapes, rich materials, brass, chrome, and bold interiors. This works especially well for room photography and home decor posts.
+Now start the model directly from its official Hugging Face repository. Run: llama serve, then the Hugging Face option, followed by nvidia slash NVIDIA Nemotron 3 Nano 4B GGUF, colon Q4 underscore K underscore M. The complete command is shown on screen, so you can pause and copy it.
 
-Fourth: Gimme Gummy. Bright, translucent, playful colors make food and product images feel tactile and eye-catching. We'll test it on candy and fruit, with glossy highlights and saturated color.
+On first launch, llama dot cpp downloads the model files and stores them in its own cache. You do not need to invent a local model path for this method. Allow the download to finish before testing. The model file can be several gigabytes, so make sure you have enough free disk space and a stable connection.
 
-Important: these are documented 2026 Pinterest trend signals, not proof that every style is currently viral on Instagram or TikTok. Treat them as ideas to test, then check how your own audience responds.
+When the server reports that it is listening, open your browser and go to localhost colon 8080. The local web interface should load. Enter a simple prompt and submit it. The first response may take longer while the model loads into memory.
 
-Here is a starter prompt: “Restyle this photo using [TREND], preserve the main subject, improve lighting and composition, and create a polished social-media image.” Replace the bracket with the style you want.
+If you prefer to keep a GGUF file in a folder you choose, download a compatible file from the official model repository and use the local server executable with the full path to that file. For example, a file saved in C colon backslash AI backslash Models would be referenced as C colon backslash AI backslash Models backslash your-model-file dot gguf. Replace that example with the exact filename you downloaded; do not copy the placeholder literally.
 
-I'm keeping the exact prompts for a follow-up milestone at one thousand subscribers. Subscribe if you want the full prompt pack and more tested visual trends.
+If the command is not recognized, reopen PowerShell and check that llama dot cpp installed successfully. If the model fails to load, check the repository name, quantization label, disk space, and available RAM. If localhost colon 8080 does not open, check the terminal for a startup error and make sure the server is still running.
+
+That’s the basic setup: an official Nemotron 3 Nano GGUF model, launched locally through llama dot cpp, with a browser interface and no dedicated GPU required for the CPU route. Your actual speed and memory use will depend on your machine.
+
+Follow for more practical AI and creator-tool tutorials.
