@@ -1,11 +1,15 @@
-Gemini 4 Argon versus Claude Opus: which should you use?
+Which photo styles are worth trying with AI right now? Instead of guessing what is viral, I checked Pinterest's official Predicts report for 2026 and picked four visual directions we can actually test without using human faces.
 
-Argon is built for complex reasoning, coding, and multi-step work. It can also analyze images, audio, PDFs, and video.
+First: Cool Blue. Think icy blues, glass, reflective surfaces, and crisp product photography. Pinterest reported growing searches for glacier aesthetics, so let's try that look on a simple drink still life.
 
-But here's the catch: analyzing video is not generating video. Argon's model API outputs text, and its official capability list says image and audio generation aren't supported directly.
+Second: Mystic Outlands. This is the landscape direction: remote mountains, mist, dramatic skies, and destinations that feel almost unreal. Pinterest highlighted strong interest in places such as the Scottish Highlands. Our test is to push a landscape toward a cinematic, mysterious travel image.
 
-So use it for reasoning, code, research, and long documents—not as a standalone video generator.
+Third: Neo Deco. Art Deco returns with geometric shapes, rich materials, brass, chrome, and bold interiors. This works especially well for room photography and home decor posts.
 
-And don't assume it loses at coding: Google specifically positions it for complex software engineering. Compare it with the exact Opus model using the same task and verify the results.
+Fourth: Gimme Gummy. Bright, translucent, playful colors make food and product images feel tactile and eye-catching. We'll test it on candy and fruit, with glossy highlights and saturated color.
 
-Watch the full comparison for the practical breakdown.
+Important: these are documented 2026 Pinterest trend signals, not proof that every style is currently viral on Instagram or TikTok. Treat them as ideas to test, then check how your own audience responds.
+
+Here is a starter prompt: “Restyle this photo using [TREND], preserve the main subject, improve lighting and composition, and create a polished social-media image.” Replace the bracket with the style you want.
+
+I'm keeping the exact prompts for a follow-up milestone at one thousand subscribers. Subscribe if you want the full prompt pack and more tested visual trends.
