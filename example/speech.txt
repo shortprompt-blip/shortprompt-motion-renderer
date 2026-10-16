@@ -1,19 +1,17 @@
-In this tutorial, we’ll install NVIDIA Nemotron 3 Nano locally on Windows, using llama dot cpp, with no dedicated GPU required for the CPU-only route.
+Want to make an AI video without paying for three different tools? Here is a practical pipeline: prompt, video, then voice.
 
-We’ll use NVIDIA’s official Nemotron 3 Nano 4B GGUF repository and the Q4 K M quantization. This is the Nano model, not Nemotron Super or Ultra. Performance depends on your CPU, available RAM, and context size, so don’t expect every computer to run it at the same speed.
+First, write the idea in Google AI Studio. Ask for a short script and one clear visual prompt. Be specific: subject, action, setting, camera movement, lighting, and aspect ratio. Keep the clip simple. One shot is easier to generate than a whole movie.
 
-First, open Windows Terminal or PowerShell. Install the packaged llama dot cpp build with this command: winget install llama dot cpp. If Windows asks you to accept source terms, review and confirm them. When installation finishes, close the terminal and open a new PowerShell window so the updated command path is loaded.
+Here is a reusable prompt: “Create a five-second cinematic shot of a tiny robot walking through a rainy neon city at night. Slow tracking camera, reflections on the pavement, blue and magenta lighting, no text, sixteen-by-nine landscape.” Copy the final prompt before moving to the video tool.
 
-Now start the model directly from its official Hugging Face repository. Run: llama serve, then the Hugging Face option, followed by nvidia slash NVIDIA Nemotron 3 Nano 4B GGUF, colon Q4 underscore K underscore M. The complete command is shown on screen, so you can pause and copy it.
+For the video step, Luma Dream Machine has a free tier, but read the catch: its official plan guide describes watermarked draft output and personal-use limits. That means it is useful for learning and testing, but do not assume the free result is cleared for a monetized or commercial video. Check the current plan before you generate; quotas and model access can change.
 
-On first launch, llama dot cpp downloads the model files and stores them in its own cache. You do not need to invent a local model path for this method. Allow the download to finish before testing. The model file can be several gigabytes, so make sure you have enough free disk space and a stable connection.
+Generate a short clip, review it, and save the result. If the free tier does not fit your publishing rights, use footage you own or assets with a license that covers your project instead. A free button does not automatically mean commercial permission.
 
-When the server reports that it is listening, open your browser and go to localhost colon 8080. The local web interface should load. Enter a simple prompt and submit it. The first response may take longer while the model loads into memory.
+Now create the voiceover. Paste your approved script into TTSMaker, choose a voice and language, preview it, then download the audio. Its current site lists a twenty-thousand-character weekly quota, with some voices excluded from the quota, and its licensing page says generated audio can be used commercially. Check the terms again before publishing.
 
-If you prefer to keep a GGUF file in a folder you choose, download a compatible file from the official model repository and use the local server executable with the full path to that file. For example, a file saved in C colon backslash AI backslash Models would be referenced as C colon backslash AI backslash Models backslash your-model-file dot gguf. Replace that example with the exact filename you downloaded; do not copy the placeholder literally.
+Finally, assemble the clip and voice in a free editor. Match the voice to the visuals, add captions, and keep music low enough that every word stays clear.
 
-If the command is not recognized, reopen PowerShell and check that llama dot cpp installed successfully. If the model fails to load, check the repository name, quantization label, disk space, and available RAM. If localhost colon 8080 does not open, check the terminal for a startup error and make sure the server is still running.
+The workflow is simple: AI Studio for the script, a video generator for the shot, TTSMaker for narration, and an editor for the final cut. Free tiers have limits, so verify credits and usage rights first.
 
-That’s the basic setup: an official Nemotron 3 Nano GGUF model, launched locally through llama dot cpp, with a browser interface and no dedicated GPU required for the CPU route. Your actual speed and memory use will depend on your machine.
-
-Follow for more practical AI and creator-tool tutorials.
+Follow for more AI tools for creators.
