@@ -1,17 +1,15 @@
-Want to make an AI video without paying for three different tools? Here is a practical pipeline: prompt, video, then voice.
+Can you make an AI video without paying a single dollar?
 
-First, write the idea in Google AI Studio. Ask for a short script and one clear visual prompt. Be specific: subject, action, setting, camera movement, lighting, and aspect ratio. Keep the clip simple. One shot is easier to generate than a whole movie.
+Here’s the three-step workflow.
 
-Here is a reusable prompt: “Create a five-second cinematic shot of a tiny robot walking through a rainy neon city at night. Slow tracking camera, reflections on the pavement, blue and magenta lighting, no text, sixteen-by-nine landscape.” Copy the final prompt before moving to the video tool.
+First, use Google AI Studio to turn one idea into a short script and a clear visual prompt.
 
-For the video step, Luma Dream Machine has a free tier, but read the catch: its official plan guide describes watermarked draft output and personal-use limits. That means it is useful for learning and testing, but do not assume the free result is cleared for a monetized or commercial video. Check the current plan before you generate; quotas and model access can change.
+Next, try Luma Dream Machine’s free plan to generate a short video clip. Check the current limits before you start.
 
-Generate a short clip, review it, and save the result. If the free tier does not fit your publishing rights, use footage you own or assets with a license that covers your project instead. A free button does not automatically mean commercial permission.
+Then, use TTSMaker to create the voiceover and download the audio.
 
-Now create the voiceover. Paste your approved script into TTSMaker, choose a voice and language, preview it, then download the audio. Its current site lists a twenty-thousand-character weekly quota, with some voices excluded from the quota, and its licensing page says generated audio can be used commercially. Check the terms again before publishing.
+That’s the pipeline: prompt, video, voice.
 
-Finally, assemble the clip and voice in a free editor. Match the voice to the visuals, add captions, and keep music low enough that every word stays clear.
+But remember: free doesn’t mean unlimited, and Luma’s free plan has personal-use restrictions and a watermark. Don’t assume you can monetize every output.
 
-The workflow is simple: AI Studio for the script, a video generator for the shot, TTSMaker for narration, and an editor for the final cut. Free tiers have limits, so verify credits and usage rights first.
-
-Follow for more AI tools for creators.
+Want to see every step? Watch the full tutorial.
