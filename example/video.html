@@ -33,14 +33,68 @@
 <div class="warning">FREE ≠ UNLIMITED<br><span style="color:#fff">Luma free: watermark + personal-use restrictions.</span></div>
 <div class="cta">WATCH THE FULL <span>TUTORIAL →</span></div></div>
 <script>
-(function(){const D=34;const scenes=[
-{s:0,e:4,n:0,h:'MAKE AN AI VIDEO<br><span class="free">FOR $0?</span>',sub:'ONE IDEA. THREE SIMPLE STEPS.'},
-{s:4,e:10,n:1,h:'START WITH A<br><span class="free">CLEAR PROMPT</span>',sub:'STEP 1 — SCRIPT + VISUAL IDEA'},
-{s:10,e:19,n:2,h:'TURN WORDS INTO<br><span class="free">VIDEO</span>',sub:'STEP 2 — GENERATE A SHORT CLIP'},
-{s:19,e:25,n:3,h:'GIVE IT A<br><span class="free">VOICE</span>',sub:'STEP 3 — TEXT TO SPEECH'},
-{s:25,e:30,n:4,h:'THE PIPELINE<br><span class="free">WORKS — WITH LIMITS</span>',sub:'PROMPT → VIDEO → VOICE'},
-{s:30,e:34,n:5,h:'WATCH THE FULL<br><span class="free">TUTORIAL</span>',sub:'GET THE COMPLETE WORKFLOW'}];
-function frame(t){t=Math.max(0,Math.min(D,Number(t)||0));let sc=scenes.find(x=>t>=x.s&&t<x.e)||scenes[5];let st=document.getElementById('stage');st.dataset.scene=sc.n;document.getElementById('headline').innerHTML=sc.h;document.getElementById('sub').textContent=sc.sub;document.getElementById('counter').textContent='00:'+String(Math.floor(t)).padStart(2,'0');st.style.setProperty('--drift',(-t*2.5)+'px');document.querySelectorAll('.step').forEach(el=>{let show=sc.n>=1;el.style.opacity=show?'1':'0';el.style.transform=show?'translateX(0)':'translateX(-28px)'});document.querySelectorAll('.arrow').forEach(el=>el.style.opacity=sc.n>=1&&sc.n<=3?'.8':'0');let r=document.querySelector('.result');r.style.opacity=sc.n>=3?'1':'0';r.style.transform=sc.n>=3?'scale(1)':'scale(.94)';document.querySelector('.warning').style.opacity=sc.n>=4?'1':'0';document.querySelector('.cta').style.opacity=sc.n>=5?'1':'0';}
-window.SPMOTION={width:1080,height:1920,fps:30,duration:D};window.SPMOTION_FRAME=frame;window.SPMOTION_RENDER=frame;frame(0);const start=performance.now();function preview(){if(!window.__SPMOTION_EXPORT){let t=(performance.now()-start)/1000;frame(Math.min(D,t));}requestAnimationFrame(preview)}if(!window.__SPMOTION_EXPORT)requestAnimationFrame(preview);
+(function(){
+ const D=34;
+ const scenes=[
+  {s:0,e:4,n:0,h:'MAKE AN AI VIDEO<br><span class="free">FOR $0?</span>',sub:'ONE IDEA. THREE SIMPLE STEPS.'},
+  {s:4,e:10,n:1,h:'START WITH A<br><span class="free">CLEAR PROMPT</span>',sub:'STEP 1 — SCRIPT + VISUAL IDEA'},
+  {s:10,e:19,n:2,h:'TURN WORDS INTO<br><span class="free">VIDEO</span>',sub:'STEP 2 — GENERATE A SHORT CLIP'},
+  {s:19,e:25,n:3,h:'GIVE IT A<br><span class="free">VOICE</span>',sub:'STEP 3 — TEXT TO SPEECH'},
+  {s:25,e:30,n:4,h:'THE PIPELINE<br><span class="free">WORKS — WITH LIMITS</span>',sub:'PROMPT → VIDEO → VOICE'},
+  {s:30,e:34,n:5,h:'WATCH THE FULL<br><span class="free">TUTORIAL</span>',sub:'GET THE COMPLETE WORKFLOW'}
+ ];
+ const stage=document.getElementById('stage');
+ const headline=document.getElementById('headline'), sub=document.getElementById('sub'), counter=document.getElementById('counter');
+ const steps=[...document.querySelectorAll('.step')], arrows=[...document.querySelectorAll('.arrow')];
+ const result=document.querySelector('.result'), warning=document.querySelector('.warning'), cta=document.querySelector('.cta');
+ const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
+ const ease=v=>{v=clamp(v);return v*v*(3-2*v)};
+ function frame(time){
+  const t=clamp(Number(time)||0,0,D);
+  const sc=scenes.find(x=>t>=x.s&&t<x.e)||scenes[scenes.length-1];
+  stage.dataset.scene=sc.n;
+  headline.innerHTML=sc.h; sub.textContent=sc.sub;
+  counter.textContent='00:'+String(Math.floor(t)).padStart(2,'0');
+  stage.style.setProperty('--drift',(-t*3.1)+'px');
+  // Stagger each card by its own scene-relative time. No CSS animation or wall-clock dependency.
+  steps.forEach((el,i)=>{
+   const begin=[4.15,5.05,5.95][i];
+   const progress=ease((t-begin)/0.75);
+   const visible= t>=begin;
+   el.style.opacity=String(progress);
+   el.style.transform='translateX('+((1-progress)*42)+'px) scale('+(0.97+0.03*progress)+')';
+   el.style.borderColor=i===0?'#35d7ff':i===1?'#a47aff':'#8bff52';
+  });
+  // Arrows pulse independently throughout the workflow section.
+  arrows.forEach((el,i)=>{
+   const center=i===0?8.1:14.7;
+   const pulse=(Math.sin((t-center)*Math.PI*1.35)+1)/2;
+   const active=t>=6.4&&t<19.0;
+   el.style.opacity=active?String(0.35+0.65*pulse):'0';
+   el.style.transform='translateX(-50%) translateY('+((1-pulse)*7)+'px)';
+  });
+  const rp=ease((t-18.7)/0.8);
+  result.style.opacity=String(rp);
+  result.style.transform='scale('+(0.88+0.12*rp)+') translateY('+((1-rp)*18)+'px)';
+  const wp=ease((t-24.9)/0.65);
+  warning.style.opacity=String(wp);
+  warning.style.transform='translateY('+((1-wp)*12)+'px)';
+  const cp=ease((t-29.7)/0.7);
+  cta.style.opacity=String(cp);
+  cta.style.transform='translateY('+((1-cp)*12)+'px)';
+ }
+ window.SPMOTION={width:1080,height:1920,fps:30,duration:D};
+ window.SPMOTION_FRAME=frame;
+ window.SPMOTION_RENDER=frame;
+ frame(0);
+ // Live preview uses requestAnimationFrame only when the renderer is not driving frames.
+ let previewStart=null, rafId=null;
+ function preview(now){
+  if(window.__SPMOTION_EXPORT){rafId=null;return;}
+  if(previewStart===null) previewStart=now;
+  frame(Math.min(D,(now-previewStart)/1000));
+  if((now-previewStart)/1000<D) rafId=requestAnimationFrame(preview);
+ }
+ if(!window.__SPMOTION_EXPORT && new URLSearchParams(location.search).get('preview')==='1') rafId=requestAnimationFrame(preview);
 })();
 </script></body></html>
