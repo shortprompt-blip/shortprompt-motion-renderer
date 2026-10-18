@@ -1,17 +1,27 @@
-Still using ChatGPT with one-line prompts?
+Most ChatGPT tutorials teach you a list of prompts. But the better skill in 2026 is knowing how to work with the answer.
 
-Try this instead.
+Here is a simple method you can use for almost any task.
 
-Give it context: who you are and what you’re trying to do.
+First, give it context. Don’t just say, “Write me a plan.” Explain what the plan is for, who it is for, and what information it should use. Share only details that actually affect the result.
 
-Define the result: a checklist, table, draft, or step-by-step plan.
+Second, define the output. Ask for a checklist, a table, a short email, or a step-by-step explanation. Include constraints like length, tone, budget, audience, or deadline.
 
-Add constraints: audience, length, tone, deadline, or budget.
+Third, work in stages. For a complex task, ask ChatGPT to analyse the problem first, then propose an approach, and only then create the final result. Review the result and ask for specific changes instead of starting over.
 
-Then iterate. Don’t just say “try again.” Tell ChatGPT exactly what to change.
+Fourth, use the right capability. If you need current information, ask ChatGPT to search the web and inspect its sources. If you have a document, spreadsheet, screenshot, or code sample, attach it and explain what you want checked. Available tools and limits depend on your plan and settings.
 
-For current facts, check the sources. AI answers can be wrong.
+Fifth, verify important claims. Search results and AI answers can be incomplete or wrong. Open the cited source, check the date, and make sure it actually supports the claim. For important decisions, compare more than one reliable source.
 
-Context. Clear task. Constraints. Format. Verify.
+Here’s the difference.
 
-Watch the full tutorial for the complete 2026 workflow.
+Weak prompt: “Help me grow my channel.”
+
+Better prompt: “I run a small YouTube channel about practical AI tools. Give me three video ideas for beginners. For each, include the viewer problem, a searchable title, a demonstration I can show on screen, and one metric to evaluate after publishing. Don’t invent search volumes.”
+
+And one more rule: don’t paste sensitive information unless you understand how your data is handled.
+
+The formula is simple: context, task, constraints, output format, then verification and iteration.
+
+You don’t need a magic prompt. You need a clear goal and a process for improving the answer.
+
+Follow for more practical AI and creator tutorials.
