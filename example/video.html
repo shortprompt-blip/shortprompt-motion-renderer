@@ -23,15 +23,15 @@
 <div class="footer"><span>CHATGPT WORKFLOW / 2026</span><span id="timecode">00:00</span></div></div>
 <script>
 (function(){
-const D=36;
-const scenes=[{"start":0,"end":4},{"start":4,"end":10},{"start":10,"end":17},{"start":17,"end":24},{"start":24,"end":32},{"start":32,"end":36}];
+// Timeline derived from short_speech.txt: 78 words at 120 wpm = 39 seconds.
+const D=39;
+const scenes=[{"start":0,"end":5},{"start":5,"end":11},{"start":11,"end":18},{"start":18,"end":25},{"start":25,"end":32},{"start":32,"end":39}];
 const els=[...document.querySelectorAll('.scene')];
 const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
 const ease=v=>{v=clamp(v);return v*v*(3-2*v)};
 function frame(time){
- // The estimated TTS duration D is one complete visual cycle.
- // If the synthesized WAV runs slightly longer, restart the visual sequence
- // from frame zero; never clamp at D (which would freeze the final frame).
+ // D is the planned visual cycle matching the estimated voiceover duration.
+ // If the WAV runs slightly longer, only the visuals may restart; audio is untouched.
  const raw=Math.max(0,Number(time)||0);
  const t=((raw % D) + D) % D;
  let idx=scenes.findIndex((s,i)=>t>=s.start&&(t<s.end||(i===scenes.length-1&&t<=s.end)));
@@ -70,9 +70,11 @@ function frame(time){
 }
 window.SPMOTION={width:1080,height:1920,fps:30,duration:D};
 window.SPMOTION_FRAME=frame;window.SPMOTION_RENDER=frame;frame(0);
-let lastPreview=0;
-function preview(now){if(!window.__SPMOTION_EXPORT){const elapsed=(now-lastPreview)/1000; if(lastPreview===0)lastPreview=now; frame((now-window.__SPMOTION_PREVIEW_START)/1000);}requestAnimationFrame(preview);}
-window.__SPMOTION_PREVIEW_START=performance.now();
-if(!window.__SPMOTION_EXPORT)requestAnimationFrame(preview);
+// Optional preview clock is opt-in (?preview=1). Plain file load stays deterministic for export.
+if(new URLSearchParams(location.search).get('preview')==='1'){
+ const previewStart=performance.now();
+ function preview(now){frame((now-previewStart)/1000);requestAnimationFrame(preview)}
+ requestAnimationFrame(preview);
+}
 })();
 </script></body></html>
