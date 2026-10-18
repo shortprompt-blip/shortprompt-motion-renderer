@@ -24,12 +24,53 @@
 <section class="scene"><div class="eyebrow">THE TAKEAWAY</div><h1>Use this formula<br>every time.</h1><p class="subtitle">Especially when the task matters.</p><div class="content"><div class="bigcta"><div class="bigword">CONTEXT</div><div class="bigword">TASK + CONSTRAINTS</div><div class="bigword">FORMAT</div><div class="bigword">VERIFY + ITERATE</div></div><div class="pill">Protect sensitive information. Check important facts.</div></div><div class="takeaway">Follow for more practical AI and creator tutorials.</div></section>
 <div class="footer"><span>CHATGPT WORKFLOW / 2026</span><span id="timecode">00:00</span></div></div>
 <script>
-(function(){const D=160;const scenes=[{"start":0.0,"end":14.34},{"start":14.34,"end":32.0},{"start":32.0,"end":50.76},{"start":50.76,"end":70.62},{"start":70.62,"end":90.48},{"start":90.48,"end":111.45},{"start":111.45,"end":135.72},{"start":135.72,"end":160}];const els=[...document.querySelectorAll('.scene')];
-function frame(t){t=Math.max(0,Math.min(D,Number(t)||0));let idx=scenes.findIndex((s,i)=>t>=s.start&&(t<s.end||(i===scenes.length-1&&t<=s.end)));if(idx<0)idx=scenes.length-1;
-els.forEach((el,i)=>{el.classList.toggle('active',i===idx);el.style.opacity=i===idx?'1':'0';el.style.transform=i===idx?'translateY(0)':'translateY(18px)';});
-document.getElementById('progressFill').style.width=(t/D*100)+'%';document.getElementById('timecode').textContent='00:'+String(Math.floor(t)).padStart(2,'0');
-const active=els[idx];if(active){active.querySelectorAll('[data-reveal]').forEach(el=>{let delay=Number(el.dataset.reveal||0);let p=Math.max(0,Math.min(1,(t-scenes[idx].start-delay)/.35));el.style.opacity=p;el.style.transform='translateY('+(12*(1-p))+'px)';});}}
-window.SPMOTION={width:1920,height:1080,fps:30,duration:D};window.SPMOTION_FRAME=frame;window.SPMOTION_RENDER=frame;frame(0);
-const start=performance.now();function preview(){if(!window.__SPMOTION_EXPORT)frame((performance.now()-start)/1000);requestAnimationFrame(preview);}if(!window.__SPMOTION_EXPORT)requestAnimationFrame(preview);
+(function(){
+const D=160;
+const scenes=[{"start":0,"end":14.34},{"start":14.34,"end":32},{"start":32,"end":50.76},{"start":50.76,"end":70.62},{"start":70.62,"end":90.48},{"start":90.48,"end":111.45},{"start":111.45,"end":135.72},{"start":135.72,"end":160}];
+const els=[...document.querySelectorAll('.scene')];
+const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
+const ease=v=>{v=clamp(v);return v*v*(3-2*v)};
+function frame(time){
+ const t=clamp(Number(time)||0,0,D);
+ let idx=scenes.findIndex((s,i)=>t>=s.start&&(t<s.end||(i===scenes.length-1&&t<=s.end)));
+ if(idx<0)idx=scenes.length-1;
+ els.forEach((el,i)=>{
+  const active=i===idx; const sc=scenes[i];
+  el.classList.toggle('active',active);
+  el.style.opacity=active?'1':'0';
+  el.style.pointerEvents=active?'auto':'none';
+  if(!active){el.style.transform='translate3d(0,18px,0)';return;}
+  const span=Math.max(.01,sc.end-sc.start), p=clamp((t-sc.start)/span);
+  // Every scene has timeline-driven motion from entrance to exit, not a one-time CSS animation.
+  el.style.transform=`translate3d(${Math.sin(p*Math.PI*2)*5}px,${(1-ease(Math.min(1,p*7)))*10}px,0)`;
+  const heading=el.querySelector('h1');
+  if(heading) heading.style.transform=`translate3d(${Math.sin(p*Math.PI*2)*3}px,0,0)`;
+  const visual=el.querySelector('.content');
+  if(visual){
+   const cycle=(p*span)%5.5;
+   visual.style.transform=`translate3d(0,${Math.sin(p*Math.PI*2)*5}px,0) scale(${1+Math.sin(p*Math.PI*2)*.003})`;
+   const panels=[...visual.querySelectorAll('.panel,.bigcta,.pill')];
+   panels.forEach((node,j)=>{
+    const phase=clamp((cycle-j*.55)/.7);
+    node.style.outline=phase>.05&&phase<.9?'2px solid #1463f344':'none';
+    node.style.boxShadow=phase>.05&&phase<.9?'0 12px 30px #1463f322':'';
+   });
+  }
+  el.querySelectorAll('[data-reveal]').forEach(node=>{
+   const delay=Number(node.dataset.reveal||0);
+   const rp=ease(clamp((t-sc.start-delay)/Math.max(.45,span*.12)));
+   node.style.opacity=rp;
+   node.style.transform=`translate3d(0,${(1-rp)*12}px,0)`;
+  });
+ });
+ const progress=document.getElementById('progressFill');if(progress)progress.style.width=(t/D*100)+'%';
+ const tc=document.getElementById('timecode');if(tc)tc.textContent=String(Math.floor(t/60)).padStart(2,'0')+':'+String(Math.floor(t%60)).padStart(2,'0');
+}
+window.SPMOTION={width:1920,height:1080,fps:30,duration:D};
+window.SPMOTION_FRAME=frame;window.SPMOTION_RENDER=frame;frame(0);
+let lastPreview=0;
+function preview(now){if(!window.__SPMOTION_EXPORT){const elapsed=(now-lastPreview)/1000; if(lastPreview===0)lastPreview=now; frame((now-window.__SPMOTION_PREVIEW_START)/1000);}requestAnimationFrame(preview);}
+window.__SPMOTION_PREVIEW_START=performance.now();
+if(!window.__SPMOTION_EXPORT)requestAnimationFrame(preview);
 })();
 </script></body></html>
