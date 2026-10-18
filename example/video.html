@@ -1,100 +1,35 @@
-<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Can You Make an AI Video for $0?</title>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>How to Use ChatGPT Properly in 2026</title>
 <style>
-*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#03050c;color:#f5f7ff;font-family:Arial,Helvetica,sans-serif}body{display:grid;place-items:center}
-#stage{width:min(100vw,56.25vh);height:min(100vh,177.7778vw);aspect-ratio:9/16;position:relative;overflow:hidden;background:radial-gradient(ellipse at 50% 20%,#172d56 0%,#080e20 45%,#04060d 100%);isolation:isolate}
-#stage:before{content:"";position:absolute;inset:-20%;background:repeating-linear-gradient(115deg,transparent 0 54px,#ffffff09 55px 57px,transparent 58px 100px);transform:translateY(var(--drift,0px))}
-.glow{position:absolute;width:70%;height:25%;filter:blur(60px);opacity:.25;border-radius:50%;pointer-events:none}.g1{background:#007aff;top:18%;left:-20%}.g2{background:#7c3dff;bottom:8%;right:-25%}
-.topline{position:absolute;left:7%;top:4.3%;font-size:clamp(11px,2.4vh,24px);letter-spacing:.18em;color:#35d7ff;font-weight:900}.counter{position:absolute;right:7%;top:4%;font-size:clamp(11px,2.3vh,22px);color:#c8d4f2;font-weight:800}
-.headline{position:absolute;top:10%;left:5%;right:5%;text-align:center;font-size:clamp(30px,7.1vh,75px);font-weight:1000;line-height:.96;letter-spacing:-.04em;text-shadow:0 5px 0 #091020,0 0 30px #168bff55}.free{color:#8bff52;display:block}
-.sub{position:absolute;top:25%;left:7%;right:7%;text-align:center;font-size:clamp(12px,2.7vh,28px);color:#a9b4ce;font-weight:800}
-.workflow{position:absolute;top:34%;left:6%;right:6%;height:39%;display:flex;flex-direction:column;gap:1.5%}
-.step{height:31.5%;border:2px solid #283d66;border-radius:22px;background:linear-gradient(110deg,#121d35ed,#0a1020f2);display:flex;align-items:center;padding:0 4%;gap:4%;position:relative;overflow:hidden;box-shadow:0 8px 30px #0005;opacity:0;transform:translateX(-28px)}
-.step:after{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--accent)}
-.num{flex:0 0 13%;aspect-ratio:1;border-radius:50%;display:grid;place-items:center;background:#18253d;border:2px solid var(--accent);color:var(--accent);font-size:clamp(20px,4.6vh,45px);font-weight:1000}
-.stepbody{flex:1;min-width:0}.stepname{font-size:clamp(18px,3.8vh,38px);font-weight:1000;line-height:1.05}.tool{font-size:clamp(11px,2.2vh,22px);color:var(--accent);font-weight:900;margin-top:6px}.detail{font-size:clamp(10px,1.9vh,18px);color:#bdc9e4;margin-top:4px}
-.iconbox{width:17%;aspect-ratio:1;border-radius:15px;display:grid;place-items:center;background:#080d1b;border:1px solid #ffffff25;color:var(--accent);font-size:clamp(23px,5vh,50px);font-weight:900}
-.arrow{position:absolute;left:50%;transform:translateX(-50%);font-size:clamp(17px,3vh,28px);color:#9eafff;z-index:2;opacity:0}.a1{top:30.2%}.a2{top:63.7%}
-.result{position:absolute;top:76%;left:7%;right:7%;height:10%;border-radius:18px;background:linear-gradient(90deg,#122c42,#171332);border:1px solid #4c719d;display:flex;align-items:center;justify-content:center;gap:4%;opacity:0;transform:scale(.94)}
-.play{width:clamp(34px,7vh,68px);aspect-ratio:1;border:2px solid #8bff52;border-radius:50%;display:grid;place-items:center;color:#8bff52;font-size:clamp(18px,3.7vh,36px)}
-.resulttext{font-size:clamp(16px,3.2vh,32px);font-weight:1000}.resulttext small{display:block;color:#a9b4ce;font-size:.52em;letter-spacing:.12em;margin-top:4px}
-.warning{position:absolute;top:88%;left:7%;right:7%;font-size:clamp(10px,1.8vh,17px);line-height:1.25;color:#ffdf9d;text-align:center;opacity:0}.cta{position:absolute;bottom:3.5%;left:6%;right:6%;text-align:center;font-size:clamp(12px,2.4vh,23px);font-weight:900;opacity:0}.cta span{color:#8bff52}
-@keyframes slide{to{opacity:1;transform:translateX(0)}}@keyframes pop{0%{opacity:0;transform:scale(.88)}100%{opacity:1;transform:scale(1)}}@keyframes fade{to{opacity:1}}
-</style></head><body><div id="stage" data-scene="0">
-<div class="glow g1"></div><div class="glow g2"></div><div class="topline">CREATOR TOOLKIT / AI</div><div class="counter" id="counter">00:00</div>
-<div class="headline" id="headline">MAKE AN AI VIDEO<br><span class="free">FOR $0?</span></div><div class="sub" id="sub">ONE IDEA. THREE SIMPLE STEPS.</div>
-<div class="workflow">
-<div class="step" style="--accent:#35d7ff"><div class="num">1</div><div class="stepbody"><div class="stepname">WRITE THE PROMPT</div><div class="tool">Google AI Studio</div><div class="detail">Script + visual instructions</div></div><div class="iconbox">✳</div></div>
-<div class="step" style="--accent:#a47aff"><div class="num">2</div><div class="stepbody"><div class="stepname">GENERATE VIDEO</div><div class="tool">Luma Dream Machine</div><div class="detail">Try a short clip on the free plan</div></div><div class="iconbox">▶</div></div>
-<div class="step" style="--accent:#8bff52"><div class="num">3</div><div class="stepbody"><div class="stepname">ADD THE VOICE</div><div class="tool">TTSMaker</div><div class="detail">Generate and download narration</div></div><div class="iconbox">〰</div></div></div>
-<div class="arrow a1">↓</div><div class="arrow a2">↓</div>
-<div class="result"><div class="play">▶</div><div class="resulttext">YOUR AI VIDEO<small>PROMPT → VIDEO → VOICE</small></div></div>
-<div class="warning">FREE ≠ UNLIMITED<br><span style="color:#fff">Luma free: watermark + personal-use restrictions.</span></div>
-<div class="cta">WATCH THE FULL <span>TUTORIAL →</span></div></div>
+:root{--ink:#111827;--muted:#536179;--blue:#1463f3;--cyan:#19b9d5;--green:#1c9d71;--line:#dce3ef;--white:#fff}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#0b1020;font-family:Inter,Arial,sans-serif;color:var(--ink)}body{display:grid;place-items:center}
+#stage{width:min(100vw,177.77777777777777vh);height:min(100vh,56.25vw);aspect-ratio:1920/1080;position:relative;overflow:hidden;background:linear-gradient(145deg,#f7f9fd,#edf2fa);isolation:isolate}
+#stage:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 95% 0%,#b7d9ff88,transparent 36%),radial-gradient(circle at 0% 100%,#d9d1ff66,transparent 40%);pointer-events:none}
+.chrome{height:6.5%;min-height:30px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 3%;gap:1.2%;position:relative;z-index:2}.dot{width:9px;height:9px;border-radius:50%;background:#c5ccda}.address{margin-left:2%;background:#f1f4f9;border:1px solid #e2e7ef;border-radius:9px;padding:7px 14px;font-size:clamp(9px,1.3vh,15px);color:#6c7890;flex:1;max-width:70%}.brand{font-size:clamp(9px,1.3vh,15px);font-weight:900;color:#28344d;white-space:nowrap}
+.progress{height:4px;background:#e2e8f4;position:relative;z-index:3}#progressFill{height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--cyan))}
+#stage:after{content:"";position:absolute;inset:6.7% 0 0;background-image:linear-gradient(#e7ecf5 1px,transparent 1px),linear-gradient(90deg,#e7ecf5 1px,transparent 1px);background-size:42px 42px;opacity:.22;pointer-events:none}
+.scene{position:absolute;inset:10% 5% 5%;z-index:1;opacity:0;transform:translateY(18px);pointer-events:none;display:flex;flex-direction:column;gap:1.6%}.scene.active{opacity:1;transform:translateY(0);pointer-events:auto}
+.eyebrow{color:var(--blue);font-size:clamp(10px,1.5vh,16px);letter-spacing:.16em;font-weight:900;text-transform:uppercase}h1{font-size:clamp(27px,5.5vh,64px);line-height:.98;letter-spacing:-.04em;margin:0;font-weight:950;max-width:95%}.subtitle{font-size:clamp(12px,2vh,23px);line-height:1.25;color:var(--muted);font-weight:650;margin:0;max-width:95%}.content{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center;gap:2%}.takeaway{font-size:clamp(12px,1.8vh,20px);font-weight:850;color:#173c7b;background:#e4efff;border-left:5px solid var(--blue);border-radius:8px;padding:1.8% 2.4%;line-height:1.2}
+.panel{background:#fff;border:1px solid var(--line);border-radius:18px;padding:3%;box-shadow:0 12px 30px #23385b12}.label{font-size:clamp(9px,1.3vh,14px);text-transform:uppercase;letter-spacing:.12em;color:#74819a;font-weight:900;margin-bottom:8px}.prompt{font-size:clamp(13px,2.1vh,24px);font-weight:750;line-height:1.25}.bad{border-left:5px solid #e45b68;background:#fff0f1}.good{border-left:5px solid var(--green);background:#effbf6}
+.row{display:flex;gap:2.2%;align-items:stretch}.row>*{flex:1;min-width:0}.pill{display:inline-flex;align-items:center;gap:7px;border:1px solid #d8e2f3;border-radius:999px;padding:8px 13px;background:#fff;font-size:clamp(10px,1.5vh,17px);font-weight:800;color:#34445f}.pill b{color:var(--blue)}.bigword{font-size:clamp(22px,4vh,46px);font-weight:950;letter-spacing:-.03em}
+.step{display:flex;gap:3%;align-items:flex-start;padding:2.2% 0;border-bottom:1px solid var(--line)}.step:last-child{border-bottom:0}.num{width:clamp(30px,5vh,54px);aspect-ratio:1;flex:0 0 auto;border-radius:14px;background:#e7efff;color:var(--blue);display:grid;place-items:center;font-size:clamp(15px,2.5vh,27px);font-weight:950}.step h3{margin:0 0 5px;font-size:clamp(15px,2.5vh,27px)}.step p{margin:0;color:var(--muted);font-size:clamp(11px,1.7vh,19px);line-height:1.25}
+.mocktop{display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:12px;font-weight:900;font-size:clamp(12px,1.8vh,20px)}.logo{width:28px;height:28px;border-radius:9px;background:linear-gradient(145deg,#2b70ff,#19bed2);color:white;display:grid;place-items:center;font-weight:950}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:2.2%}.bigcta{background:#101a31;color:white;border-radius:20px;padding:4%;display:flex;flex-direction:column;gap:12px}.bigcta .bigword{color:#8ce6ff}.footer{position:absolute;bottom:1.5%;left:5%;right:5%;display:flex;justify-content:space-between;color:#75829a;font-size:clamp(8px,1.2vh,13px);font-weight:800;z-index:4}
+</style></head><body><div id="stage"><div class="chrome"><span class="dot"></span><span class="dot"></span><span class="dot"></span><div class="address">chatgpt.com</div><div class="brand">CHATGPT / 2026 GUIDE</div></div><div class="progress"><div id="progressFill"></div></div>
+<section class="scene"><div class="eyebrow">THE 2026 CHATGPT GUIDE</div><h1>Stop collecting prompts.<br>Learn the workflow.</h1><p class="subtitle">Better results come from clear goals, useful context and verification.</p><div class="content"><div class="bigcta"><div class="bigword">CONTEXT → TASK → FORMAT</div><div style="font-size:clamp(13px,2vh,22px);color:#d3ddf1">A practical method for work, study, coding and content.</div><div class="row"><span class="pill">01 Context</span><span class="pill">02 Constraints</span><span class="pill">03 Verify</span></div></div></div><div class="takeaway">No magic prompt required — just a repeatable process.</div></section>
+<section class="scene"><div class="eyebrow">STEP 1 / CONTEXT</div><h1>Tell ChatGPT what<br>it needs to know.</h1><p class="subtitle">A vague request leaves too many decisions open.</p><div class="content"><div class="row"><div class="panel bad"><div class="label">WEAK PROMPT</div><div class="prompt">Write me a plan.</div></div><div class="panel good"><div class="label">BETTER PROMPT</div><div class="prompt">I run a small YouTube channel about practical AI tools. Help me plan three beginner videos.</div></div></div><div class="pill">Audience <b>+</b> goal <b>+</b> relevant background</div></div><div class="takeaway">Share only the context that actually affects the answer.</div></section>
+<section class="scene"><div class="eyebrow">STEP 2 / OUTPUT</div><h1>Define the result<br>before it answers.</h1><p class="subtitle">Specify format, tone, length and constraints.</p><div class="content"><div class="panel"><div class="mocktop"><div class="logo">✦</div>Output requirements</div><div class="step" data-reveal="0.0"><div class="num">1</div><div><h3>Format</h3><p>Give me a table with one row per idea.</p></div></div><div class="step" data-reveal="0.25"><div class="num">2</div><div><h3>Constraints</h3><p>Beginner audience; no invented search volumes.</p></div></div><div class="step" data-reveal="0.5"><div class="num">3</div><div><h3>Success criteria</h3><p>Each idea must include a demo and one metric.</p></div></div></div></div><div class="takeaway">A clear deliverable is more useful than “make it better.”</div></section>
+<section class="scene"><div class="eyebrow">STEP 3 / ITERATE</div><h1>Break big tasks<br>into smaller steps.</h1><p class="subtitle">Review the answer, then request a precise change.</p><div class="content"><div class="panel"><div class="mocktop"><div class="logo">✦</div>Conversation workflow</div><div class="step" data-reveal="0.0"><div class="num">1</div><div><h3>Analyse</h3><p>List the key issues and missing information.</p></div></div><div class="step" data-reveal="0.25"><div class="num">2</div><div><h3>Plan</h3><p>Suggest an approach before writing the final version.</p></div></div><div class="step" data-reveal="0.5"><div class="num">3</div><div><h3>Revise</h3><p>Shorten section two and add a concrete example.</p></div></div></div></div><div class="takeaway">Iterate with specific feedback instead of restarting from zero.</div></section>
+<section class="scene"><div class="eyebrow">STEP 4 / USE THE RIGHT TOOL</div><h1>Give it the right<br>material to work with.</h1><p class="subtitle">Use files, images, data analysis or web search when they fit the task.</p><div class="content"><div class="grid2"><div class="panel "><div class="label">DOCUMENT</div><div class="prompt">Upload the file and ask for a summary, missing points or a comparison.</div></div><div class="panel "><div class="label">SPREADSHEET</div><div class="prompt">Ask for patterns, anomalies and a chart based on the data.</div></div><div class="panel "><div class="label">SCREENSHOT</div><div class="prompt">Ask what is visible, then specify what you need diagnosed.</div></div><div class="panel "><div class="label">CURRENT FACTS</div><div class="prompt">Ask for web research and links to supporting sources.</div></div></div></div><div class="takeaway">Tools and usage limits vary by plan, settings and availability.</div></section>
+<section class="scene"><div class="eyebrow">STEP 5 / VERIFY</div><h1>Treat answers as<br>a draft, not proof.</h1><p class="subtitle">For important claims, inspect the evidence yourself.</p><div class="content"><div class="panel"><div class="mocktop"><div class="logo">↗</div>Source check</div><div class="step" data-reveal="0.0"><div class="num">1</div><div><h3>Open the citation</h3><p>Does the source actually support the claim?</p></div></div><div class="step" data-reveal="0.25"><div class="num">2</div><div><h3>Check the date</h3><p>Is the information current for your question?</p></div></div><div class="step" data-reveal="0.5"><div class="num">3</div><div><h3>Compare reliable sources</h3><p>Search snippets and AI summaries can be incomplete or wrong.</p></div></div></div></div><div class="takeaway">Never confuse a confident answer with a verified answer.</div></section>
+<section class="scene"><div class="eyebrow">BEFORE / AFTER</div><h1>One request.<br>A much better brief.</h1><p class="subtitle">See how the method changes the output.</p><div class="content"><div class="row"><div class="panel bad"><div class="label">BEFORE</div><div class="prompt">Help me grow my channel.</div></div><div class="panel good"><div class="label">AFTER</div><div class="prompt">Give me three beginner AI-video ideas. For each: viewer problem, searchable title, on-screen demo and one metric to review. Don’t invent search volumes.</div></div></div><div class="pill">Specific task <b>+</b> constraints <b>+</b> format</div></div><div class="takeaway">You are not searching for magic words. You are designing a useful brief.</div></section>
+<section class="scene"><div class="eyebrow">THE TAKEAWAY</div><h1>Use this formula<br>every time.</h1><p class="subtitle">Especially when the task matters.</p><div class="content"><div class="bigcta"><div class="bigword">CONTEXT</div><div class="bigword">TASK + CONSTRAINTS</div><div class="bigword">FORMAT</div><div class="bigword">VERIFY + ITERATE</div></div><div class="pill">Protect sensitive information. Check important facts.</div></div><div class="takeaway">Follow for more practical AI and creator tutorials.</div></section>
+<div class="footer"><span>CHATGPT WORKFLOW / 2026</span><span id="timecode">00:00</span></div></div>
 <script>
-(function(){
- const D=34;
- const scenes=[
-  {s:0,e:4,n:0,h:'MAKE AN AI VIDEO<br><span class="free">FOR $0?</span>',sub:'ONE IDEA. THREE SIMPLE STEPS.'},
-  {s:4,e:10,n:1,h:'START WITH A<br><span class="free">CLEAR PROMPT</span>',sub:'STEP 1 — SCRIPT + VISUAL IDEA'},
-  {s:10,e:19,n:2,h:'TURN WORDS INTO<br><span class="free">VIDEO</span>',sub:'STEP 2 — GENERATE A SHORT CLIP'},
-  {s:19,e:25,n:3,h:'GIVE IT A<br><span class="free">VOICE</span>',sub:'STEP 3 — TEXT TO SPEECH'},
-  {s:25,e:30,n:4,h:'THE PIPELINE<br><span class="free">WORKS — WITH LIMITS</span>',sub:'PROMPT → VIDEO → VOICE'},
-  {s:30,e:34,n:5,h:'WATCH THE FULL<br><span class="free">TUTORIAL</span>',sub:'GET THE COMPLETE WORKFLOW'}
- ];
- const stage=document.getElementById('stage');
- const headline=document.getElementById('headline'), sub=document.getElementById('sub'), counter=document.getElementById('counter');
- const steps=[...document.querySelectorAll('.step')], arrows=[...document.querySelectorAll('.arrow')];
- const result=document.querySelector('.result'), warning=document.querySelector('.warning'), cta=document.querySelector('.cta');
- const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
- const ease=v=>{v=clamp(v);return v*v*(3-2*v)};
- function frame(time){
-  const t=clamp(Number(time)||0,0,D);
-  const sc=scenes.find(x=>t>=x.s&&t<x.e)||scenes[scenes.length-1];
-  stage.dataset.scene=sc.n;
-  headline.innerHTML=sc.h; sub.textContent=sc.sub;
-  counter.textContent='00:'+String(Math.floor(t)).padStart(2,'0');
-  stage.style.setProperty('--drift',(-t*3.1)+'px');
-  // Stagger each card by its own scene-relative time. No CSS animation or wall-clock dependency.
-  steps.forEach((el,i)=>{
-   const begin=[4.15,5.05,5.95][i];
-   const progress=ease((t-begin)/0.75);
-   const visible= t>=begin;
-   el.style.opacity=String(progress);
-   el.style.transform='translateX('+((1-progress)*42)+'px) scale('+(0.97+0.03*progress)+')';
-   el.style.borderColor=i===0?'#35d7ff':i===1?'#a47aff':'#8bff52';
-  });
-  // Arrows pulse independently throughout the workflow section.
-  arrows.forEach((el,i)=>{
-   const center=i===0?8.1:14.7;
-   const pulse=(Math.sin((t-center)*Math.PI*1.35)+1)/2;
-   const active=t>=6.4&&t<19.0;
-   el.style.opacity=active?String(0.35+0.65*pulse):'0';
-   el.style.transform='translateX(-50%) translateY('+((1-pulse)*7)+'px)';
-  });
-  const rp=ease((t-18.7)/0.8);
-  result.style.opacity=String(rp);
-  result.style.transform='scale('+(0.88+0.12*rp)+') translateY('+((1-rp)*18)+'px)';
-  const wp=ease((t-24.9)/0.65);
-  warning.style.opacity=String(wp);
-  warning.style.transform='translateY('+((1-wp)*12)+'px)';
-  const cp=ease((t-29.7)/0.7);
-  cta.style.opacity=String(cp);
-  cta.style.transform='translateY('+((1-cp)*12)+'px)';
- }
- window.SPMOTION={width:1080,height:1920,fps:30,duration:D};
- window.SPMOTION_FRAME=frame;
- window.SPMOTION_RENDER=frame;
- frame(0);
- // Live preview uses requestAnimationFrame only when the renderer is not driving frames.
- let previewStart=null, rafId=null;
- function preview(now){
-  if(window.__SPMOTION_EXPORT){rafId=null;return;}
-  if(previewStart===null) previewStart=now;
-  frame(Math.min(D,(now-previewStart)/1000));
-  if((now-previewStart)/1000<D) rafId=requestAnimationFrame(preview);
- }
- if(!window.__SPMOTION_EXPORT && new URLSearchParams(location.search).get('preview')==='1') rafId=requestAnimationFrame(preview);
+(function(){const D=160;const scenes=[{"start":0.0,"end":14.34},{"start":14.34,"end":32.0},{"start":32.0,"end":50.76},{"start":50.76,"end":70.62},{"start":70.62,"end":90.48},{"start":90.48,"end":111.45},{"start":111.45,"end":135.72},{"start":135.72,"end":160}];const els=[...document.querySelectorAll('.scene')];
+function frame(t){t=Math.max(0,Math.min(D,Number(t)||0));let idx=scenes.findIndex((s,i)=>t>=s.start&&(t<s.end||(i===scenes.length-1&&t<=s.end)));if(idx<0)idx=scenes.length-1;
+els.forEach((el,i)=>{el.classList.toggle('active',i===idx);el.style.opacity=i===idx?'1':'0';el.style.transform=i===idx?'translateY(0)':'translateY(18px)';});
+document.getElementById('progressFill').style.width=(t/D*100)+'%';document.getElementById('timecode').textContent='00:'+String(Math.floor(t)).padStart(2,'0');
+const active=els[idx];if(active){active.querySelectorAll('[data-reveal]').forEach(el=>{let delay=Number(el.dataset.reveal||0);let p=Math.max(0,Math.min(1,(t-scenes[idx].start-delay)/.35));el.style.opacity=p;el.style.transform='translateY('+(12*(1-p))+'px)';});}}
+window.SPMOTION={width:1920,height:1080,fps:30,duration:D};window.SPMOTION_FRAME=frame;window.SPMOTION_RENDER=frame;frame(0);
+const start=performance.now();function preview(){if(!window.__SPMOTION_EXPORT)frame((performance.now()-start)/1000);requestAnimationFrame(preview);}if(!window.__SPMOTION_EXPORT)requestAnimationFrame(preview);
 })();
 </script></body></html>

@@ -1,15 +1,27 @@
-Can you make an AI video without paying a single dollar?
+Most ChatGPT tutorials teach you a list of prompts. But the better skill in 2026 is knowing how to work with the answer.
 
-Here’s the three-step workflow.
+Here is a simple method you can use for almost any task.
 
-First, use Google AI Studio to turn one idea into a short script and a clear visual prompt.
+First, give it context. Don’t just say, “Write me a plan.” Explain what the plan is for, who it is for, and what information it should use. Share only details that actually affect the result.
 
-Next, try Luma Dream Machine’s free plan to generate a short video clip. Check the current limits before you start.
+Second, define the output. Ask for a checklist, a table, a short email, or a step-by-step explanation. Include constraints like length, tone, budget, audience, or deadline.
 
-Then, use TTSMaker to create the voiceover and download the audio.
+Third, work in stages. For a complex task, ask ChatGPT to analyse the problem first, then propose an approach, and only then create the final result. Review the result and ask for specific changes instead of starting over.
 
-That’s the pipeline: prompt, video, voice.
+Fourth, use the right capability. If you need current information, ask ChatGPT to search the web and inspect its sources. If you have a document, spreadsheet, screenshot, or code sample, attach it and explain what you want checked. Available tools and limits depend on your plan and settings.
 
-But remember: free doesn’t mean unlimited, and Luma’s free plan has personal-use restrictions and a watermark. Don’t assume you can monetize every output.
+Fifth, verify important claims. Search results and AI answers can be incomplete or wrong. Open the cited source, check the date, and make sure it actually supports the claim. For important decisions, compare more than one reliable source.
 
-Want to see every step? Watch the full tutorial.
+Here’s the difference.
+
+Weak prompt: “Help me grow my channel.”
+
+Better prompt: “I run a small YouTube channel about practical AI tools. Give me three video ideas for beginners. For each, include the viewer problem, a searchable title, a demonstration I can show on screen, and one metric to evaluate after publishing. Don’t invent search volumes.”
+
+And one more rule: don’t paste sensitive information unless you understand how your data is handled.
+
+The formula is simple: context, task, constraints, output format, then verification and iteration.
+
+You don’t need a magic prompt. You need a clear goal and a process for improving the answer.
+
+Follow for more practical AI and creator tutorials.
