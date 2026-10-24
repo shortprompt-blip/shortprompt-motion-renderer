@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Run NVIDIA Nemotron Locally With a Browser UI</title>
 <style>
-:root{color-scheme:dark;--bg:#070b13;--panel:#101a29;--line:#26394c;--cyan:#76f2ce;--green:#b4f56a;--muted:#94a9bc;--white:#f4f8fb}*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--bg);font-family:Inter,Arial,sans-serif;color:var(--white)}body{display:grid;place-items:center}.stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:radial-gradient(ellipse at 80% 15%,#13352f 0,transparent 36%),radial-gradient(ellipse at 10% 90%,#142340 0,transparent 42%),#070b13;transform-origin:top left}.grain{position:absolute;inset:0;opacity:.13;background-image:linear-gradient(#8ad9c40d 1px,transparent 1px),linear-gradient(90deg,#8ad9c40d 1px,transparent 1px);background-size:64px 64px}.top{position:absolute;left:76px;right:76px;top:62px;display:flex;justify-content:space-between;align-items:center;font-size:25px;letter-spacing:3px;color:var(--muted)}.brand{color:var(--cyan);font-weight:800}.progress{position:absolute;top:118px;left:76px;right:76px;height:5px;background:#24303d;border-radius:5px}.progress i{display:block;height:100%;width:0;background:var(--cyan)}.scene{position:absolute;inset:0;padding:190px 76px 140px;opacity:0;transform:translateY(0);pointer-events:none;will-change:opacity,transform}.scene.active{pointer-events:auto}.eyebrow{font-size:24px;letter-spacing:4px;color:var(--cyan);font-weight:800;margin-bottom:28px}.headline{font-size:76px;line-height:1.02;letter-spacing:-2px;font-weight:850;max-width:920px;margin:0 0 30px}.sub{font-size:31px;line-height:1.35;color:#bdcad7;max-width:880px}.chip{display:inline-block;border:1px solid #386456;color:var(--cyan);border-radius:999px;padding:13px 20px;font-size:24px;margin:14px 10px 0 0}.terminal,.browser,.download{margin-top:58px;background:#0b111b;border:2px solid var(--line);border-radius:28px;overflow:hidden;box-shadow:0 26px 80px #0007}.bar{height:65px;background:#111c2a;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:12px;padding:0 24px;color:var(--muted);font-size:22px}.dot{width:12px;height:12px;border-radius:50%;background:#496070}.body{padding:32px;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:25px;line-height:1.5;overflow-wrap:anywhere;color:#dce8f2}.green{color:var(--green)}.muted{color:var(--muted)}.caret{display:inline-block;width:12px;height:27px;background:var(--cyan);vertical-align:middle}@keyframes blink{50%{opacity:0}}.stepnum{font-size:23px;color:var(--muted);letter-spacing:3px}.browser .bar{justify-content:space-between}.url{border:1px solid #304457;background:#08101a;border-radius:12px;padding:10px 18px;font-size:21px;color:var(--cyan)}.chat{padding:26px;display:flex;flex-direction:column;gap:22px}.bubble{padding:20px 23px;border-radius:20px;font-size:25px;line-height:1.35;max-width:95%}.user{align-self:flex-end;background:#173c37;border:1px solid #2c7060}.assistant{align-self:flex-start;background:#172331;border:1px solid #2b3e50}.status{color:var(--green);font-size:20px;margin-top:8px}.cards{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:45px}.mini{background:#101a29;border:1px solid var(--line);border-radius:22px;padding:25px}.mini b{display:block;font-size:25px;margin-bottom:12px}.mini span{font-size:21px;line-height:1.35;color:var(--muted)}.footer{position:absolute;left:76px;right:76px;bottom:62px;display:flex;justify-content:space-between;color:#708699;font-size:20px;letter-spacing:2px}@media(max-width:700px){.stage{transform:scale(.5);transform-origin:top left}}
+:root{color-scheme:dark;--bg:#070b13;--panel:#101a29;--line:#26394c;--cyan:#76f2ce;--green:#b4f56a;--muted:#94a9bc;--white:#f4f8fb}*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--bg);font-family:Inter,Arial,sans-serif;color:var(--white)}body{display:grid;place-items:center}.stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:radial-gradient(ellipse at 80% 15%,#13352f 0,transparent 36%),radial-gradient(ellipse at 10% 90%,#142340 0,transparent 42%),#070b13;transform-origin:top left}.grain{position:absolute;inset:0;opacity:.13;background-image:linear-gradient(#8ad9c40d 1px,transparent 1px),linear-gradient(90deg,#8ad9c40d 1px,transparent 1px);background-size:64px 64px}.top{position:absolute;left:76px;right:76px;top:62px;display:flex;justify-content:space-between;align-items:center;font-size:25px;letter-spacing:3px;color:var(--muted)}.brand{color:var(--cyan);font-weight:800}.progress{position:absolute;top:118px;left:76px;right:76px;height:5px;background:#24303d;border-radius:5px}.progress i{display:block;height:100%;width:0;background:var(--cyan);transform-origin:left center}.progress i{will-change:width}.scene{position:absolute;inset:0;padding:190px 76px 140px;opacity:0;transform:translateY(0);pointer-events:none;will-change:opacity,transform}.scene.active{pointer-events:auto}.eyebrow{font-size:24px;letter-spacing:4px;color:var(--cyan);font-weight:800;margin-bottom:28px}.headline{font-size:76px;line-height:1.02;letter-spacing:-2px;font-weight:850;max-width:920px;margin:0 0 30px}.sub{font-size:31px;line-height:1.35;color:#bdcad7;max-width:880px}.chip{display:inline-block;border:1px solid #386456;color:var(--cyan);border-radius:999px;padding:13px 20px;font-size:24px;margin:14px 10px 0 0}.terminal,.browser,.download{margin-top:58px;background:#0b111b;border:2px solid var(--line);border-radius:28px;overflow:hidden;box-shadow:0 26px 80px #0007}.bar{height:65px;background:#111c2a;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:12px;padding:0 24px;color:var(--muted);font-size:22px}.dot{width:12px;height:12px;border-radius:50%;background:#496070}.body{padding:32px;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:25px;line-height:1.5;overflow-wrap:anywhere;color:#dce8f2}.green{color:var(--green)}.muted{color:var(--muted)}.caret{display:inline-block;width:12px;height:27px;background:var(--cyan);vertical-align:middle}.mini{will-change:transform}.terminal,.browser{will-change:transform,box-shadow,border-color}.body{min-height:180px}.stepnum{font-size:23px;color:var(--muted);letter-spacing:3px}.browser .bar{justify-content:space-between}.url{border:1px solid #304457;background:#08101a;border-radius:12px;padding:10px 18px;font-size:21px;color:var(--cyan)}.chat{padding:26px;display:flex;flex-direction:column;gap:22px}.bubble{padding:20px 23px;border-radius:20px;font-size:25px;line-height:1.35;max-width:95%}.user{align-self:flex-end;background:#173c37;border:1px solid #2c7060}.assistant{align-self:flex-start;background:#172331;border:1px solid #2b3e50}.status{color:var(--green);font-size:20px;margin-top:8px}.cards{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:45px}.mini{background:#101a29;border:1px solid var(--line);border-radius:22px;padding:25px}.mini b{display:block;font-size:25px;margin-bottom:12px}.mini span{font-size:21px;line-height:1.35;color:var(--muted)}.footer{position:absolute;left:76px;right:76px;bottom:62px;display:flex;justify-content:space-between;color:#708699;font-size:20px;letter-spacing:2px}@media(max-width:700px){.stage{transform:scale(.5);transform-origin:top left}}
 </style></head><body><main class="stage" id="stage"><div class="grain"></div><div class="top"><span class="brand">SHORTPROMPT / LOCAL AI</span><span>FIELD GUIDE 01</span></div><div class="progress"><i id="bar"></i></div>
 <section class="scene" data-start="0" data-end="6.86"><div class="eyebrow">LOCAL AI · QUICK TUTORIAL</div><h1 class="headline">Run NVIDIA Nemotron <span style="color:var(--cyan)">in your browser.</span></h1><p class="sub">No hosted chatbot. Start a local model server, then chat through a web interface.</p><div class="cards"><div class="mini"><b>01 / DOWNLOAD</b><span>Get llama.cpp and the model weights.</span></div><div class="mini"><b>02 / CHAT</b><span>Open the local interface in your browser.</span></div></div><div class="chip">Windows · PowerShell</div><div class="chip">Nemotron 3 Nano 4B</div></section>
 <section class="scene" data-start="6.86" data-end="15.69"><div class="eyebrow">STEP 01 / INSTALL</div><h2 class="headline">Install <span style="color:var(--cyan)">llama.cpp</span></h2><p class="sub">On Windows, open PowerShell and run the official WinGet install command.</p><div class="terminal"><div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span style="margin-left:12px">PowerShell</span></div><div class="body"><span class="muted">PS C:\Users\You&gt;</span><br><span id="install" class="green"></span><span class="caret"></span><br><br><span class="muted">Package manager installs llama.cpp</span><br><span class="muted">Wait for installation to finish.</span></div></div><div class="chip">winget install llama.cpp</div></section>
@@ -9,7 +9,7 @@
 <section class="scene" data-start="26.48" data-end="35.32"><div class="eyebrow">STEP 03 / OPEN THE WEB UI</div><h2 class="headline">Your browser becomes the chat window.</h2><p class="sub">Once the server reports that it is ready, open the local Web UI address shown by your installed version.</p><div class="browser"><div class="bar"><span>● ● ●</span><span class="url">localhost · local server</span><span>↻</span></div><div class="chat"><div class="bubble user">Explain local AI in one sentence.</div><div class="bubble assistant"><span id="answer"></span><span class="caret"></span><div class="status">● Generating locally</div></div></div></div><p class="sub" style="font-size:24px;margin-top:24px">The interface address and port can depend on the llama.cpp version. Use the address shown in its terminal output.</p></section>
 <section class="scene" data-start="35.32" data-end="43.17"><div class="eyebrow">STEP 04 / TEST IT</div><h2 class="headline">Send a prompt. Watch it respond.</h2><p class="sub">Try a small task first, then experiment with coding, summaries or explanations.</p><div class="browser"><div class="bar"><span>Local chat</span><span class="url">Model loaded ✓</span></div><div class="chat"><div class="bubble user">Give me 3 ideas for a short AI tutorial.</div><div class="bubble assistant"><span id="ideas"></span><span class="caret"></span></div></div></div><div class="chip">Prompt → inference → response</div></section>
 <section class="scene" data-start="43.17" data-end="51"><div class="eyebrow">WHAT TO REMEMBER</div><h2 class="headline">Local means more control — not infinite speed.</h2><div class="cards"><div class="mini"><b style="color:var(--green)">ON YOUR PC</b><span>After download, inference can run locally.</span></div><div class="mini"><b style="color:var(--cyan)">HARDWARE MATTERS</b><span>Speed and memory use depend on your system.</span></div></div><p class="sub" style="margin-top:42px">Save the command. Check the model requirements. Then try Nemotron locally.</p><div class="chip">Follow ShortPrompt for practical AI tutorials</div></section>
-<div class="footer"><span>SHORTPROMPT · AI TOOLS</span><span id="time">00:00 / 00:52</span></div></main>
+<div class="footer"><span>SHORTPROMPT · AI TOOLS</span><span id="time">00:00 / 00:51</span></div></main>
 <script>
 (()=>{'use strict';
 const DURATION=51,FPS=30,stage=document.getElementById('stage'),scenes=[...document.querySelectorAll('.scene')],bar=document.getElementById('bar');
@@ -20,41 +20,47 @@ const ideas='1. Install a local model.\n2. Compare two prompts.\n3. Build a priv
 const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
 function type(el,text,t,from,to){const p=clamp((t-from)/(to-from));el.textContent=text.slice(0,Math.floor(text.length*p))}
 function render(time){
- // Deterministic timeline only. Each scene has a sustained action, not a sub-second reveal burst.
+ // All motion is derived from the renderer timestamp. No CSS animation clock controls the exported state.
  const raw=Math.max(0,Number(time)||0),t=raw%DURATION;
  scenes.forEach((s,i)=>{
    const a=Number(s.dataset.start),b=Number(s.dataset.end),len=b-a,active=t>=a&&(t<b||(i===scenes.length-1&&t<=DURATION));
-   const local=Math.max(0,Math.min(len,t-a));
+   const local=Math.max(0,Math.min(len,t-a)),p=clamp(local/len);
    s.classList.toggle('active',active); s.style.opacity=active?'1':'0';
-   s.style.transform=active?`translateY(${Math.round((1-clamp(local/1.05))*26)}px)`:'translateY(0)';
+   s.style.transform=active?`translateY(${(1-clamp(local/1.2))*18}px)`:'translateY(0)';
+   // Stage content across the whole scene instead of revealing everything in its opening seconds.
    const nodes=[...s.querySelectorAll('.eyebrow,.headline,.sub,.terminal,.browser,.download,.cards,.chip')];
+   const revealWindow=Math.max(1.5,len*.72),slot=revealWindow/Math.max(1,nodes.length);
    nodes.forEach((node,j)=>{
-     const delay=Math.min(.28+j*.24,len*.42),q=clamp((local-delay)/.9);
+     const from=Math.min(len*.78,j*slot),to=Math.min(len,from+Math.max(1.25,len*.13));
+     const q=clamp((local-from)/(to-from));
      node.style.opacity=active?String(q):'0';
-     node.style.transform=active?`translateY(${Math.round((1-q)*20)}px)`:'translateY(0)';
+     node.style.transform=active?`translateY(${(1-q)*14}px)`:'translateY(0)';
    });
-   // Slow, continuous movement throughout the whole scene: UI cards drift gently and focused panels breathe slowly.
+   // Persistent, restrained motion gives the viewer time to read while the demonstration continues.
    const panel=s.querySelector('.terminal,.browser');
    if(panel){
-     const phase=local/len;
-     panel.style.transform=`translateY(${Math.sin(phase*Math.PI*2)*5}px)`;
+     const breathe=Math.sin(local*Math.PI*2/Math.max(5,len));
+     panel.style.transform=`translateY(${breathe*3}px)`;
      panel.style.borderColor=active?'#76f2ce':'#26394c';
-     panel.style.boxShadow=active?`0 0 ${12+Math.round(8*(.5+.5*Math.sin(local*0.65)))}px #76f2ce20,0 26px 80px #0007`:'0 26px 80px #0007';
+     panel.style.boxShadow=active?`0 0 ${10+4*(.5+.5*Math.sin(local*1.15))}px #76f2ce18,0 26px 80px #0007`:'0 26px 80px #0007';
    }
-   const cards=s.querySelectorAll('.mini'); cards.forEach((card,j)=>{card.style.transform=active?`translateY(${Math.sin(local*.72+j*.9)*4}px)`:'translateY(0)'});
+   s.querySelectorAll('.mini').forEach((card,j)=>{
+     card.style.transform=active?`translateY(${Math.sin(local*Math.PI*2/Math.max(6,len)+j*.7)*2}px)`:'translateY(0)';
+   });
  });
- // Long typing windows deliberately span most of their spoken scene instead of completing in a blink.
- type(document.getElementById('install'),install,t,7.45,13.7);
- type(document.getElementById('cmd'),cmd,t,16.25,23.6);
- type(document.getElementById('answer'),answer,t,28.0,34.7);
- type(document.getElementById('ideas'),ideas,t,36.8,42.6);
+ // Typing and terminal progress use long, scene-specific windows paced to narration.
+ type(document.getElementById('install'),install,t,7.7,14.8);
+ type(document.getElementById('cmd'),cmd,t,16.6,25.2);
+ type(document.getElementById('answer'),answer,t,28.1,34.9);
+ type(document.getElementById('ideas'),ideas,t,36.5,42.8);
  const status=document.getElementById('downloadstatus');
- status.textContent=t<19?'Preparing model download':t<22?'Downloading model weights':t<24?'Verifying model files':'Server starts after model load';
- const dots=['● ○ ○ ○','● ● ○ ○','● ● ● ○','● ● ● ●'];
- document.getElementById('dots').textContent=dots[Math.max(0,Math.min(3,Math.floor((t-16.5)/1.9)))];
+ if(status) status.textContent=t<18.2?'Preparing model download':t<21.2?'Downloading model weights':t<24.0?'Verifying model files':'Server starts after model load';
+ const dots=['○ ○ ○ ○','● ○ ○ ○','● ● ○ ○','● ● ● ○','● ● ● ●'];
+ const dotPhase=Math.floor(Math.max(0,t-16.5)/2.2)%dots.length;
+ const dotEl=document.getElementById('dots'); if(dotEl) dotEl.textContent=dots[dotPhase];
  bar.style.width=(t/DURATION*100)+'%';
- document.getElementById('time').textContent='00:'+String(Math.floor(t)).padStart(2,'0')+' / 00:51';
- document.querySelectorAll('.caret').forEach(el=>el.style.opacity=(Math.floor(t*1.35)%2)?'0':'1');
+ const timeEl=document.getElementById('time'); if(timeEl) timeEl.textContent='00:'+String(Math.floor(t)).padStart(2,'0')+' / 00:51';
+ document.querySelectorAll('.caret').forEach(el=>el.style.opacity=(Math.floor(t*1.1)%2)?'0':'1');
  return t;
 }
 window.SPMOTION={width:1080,height:1920,fps:FPS,duration:DURATION};
