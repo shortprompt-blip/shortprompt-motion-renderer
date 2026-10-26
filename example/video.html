@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -5,62 +6,429 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>How to Find Where Your YouTube Views Actually Come From</title>
 <style>
-:root{color-scheme:dark;--bg:#090b10;--panel:#151820;--panel2:#20242d;--line:#343b47;--text:#f5f7fb;--muted:#aab1bd;--red:#ff3448;--blue:#78bdff;--green:#70dfb0;--gold:#ffd17b}
-#sp-traffic-root{position:relative;width:100%;height:100%;overflow:hidden;background:radial-gradient(ellipse at 82% 12%,#29202a 0,transparent 34%),linear-gradient(145deg,#090b10,#11151d 68%,#08090d);color:var(--text);font-family:Arial,Helvetica,sans-serif;box-sizing:border-box}
-#sp-traffic-root *,#sp-traffic-root *::before,#sp-traffic-root *::after{box-sizing:border-box}
-#sp-traffic-root .stage{position:absolute;left:50%;top:50%;width:1080px;height:1920px;overflow:hidden;transform:translate(-50%,-50%) scale(var(--sp-scale,1));transform-origin:center center}
-#sp-traffic-root .grain{position:absolute;inset:0;opacity:.11;background-image:linear-gradient(#ffffff08 1px,transparent 1px),linear-gradient(90deg,#ffffff08 1px,transparent 1px);background-size:48px 48px;pointer-events:none}
-#sp-traffic-root .top{position:absolute;left:62px;right:62px;top:48px;display:flex;justify-content:space-between;align-items:center;font-size:21px;letter-spacing:2px;color:var(--muted)}
-#sp-traffic-root .brand{font-weight:800;color:#fff}#sp-traffic-root .brand-mark{color:var(--red)}
-#sp-traffic-root .progress{position:absolute;top:96px;left:62px;right:62px;height:5px;border-radius:5px;background:#333843;overflow:hidden}
-#sp-traffic-root .progress-fill{display:block;width:0;height:100%;background:var(--red)}
-#sp-traffic-root .scene{position:absolute;inset:0;padding:155px 62px 108px;display:flex;flex-direction:column;justify-content:center;visibility:hidden;opacity:0;overflow:hidden}
-#sp-traffic-root .eyebrow{font-size:21px;font-weight:800;letter-spacing:3px;color:var(--blue);margin:0 0 24px}
-#sp-traffic-root .headline{font-size:65px;line-height:1.04;letter-spacing:-1.5px;margin:0 0 24px;font-weight:850}
-#sp-traffic-root .sub{font-size:28px;line-height:1.34;color:#c1c7d1;margin:0 0 25px}
-#sp-traffic-root .window{border:2px solid #383e49;border-radius:25px;overflow:hidden;background:#f7f8fa;color:#20232a;box-shadow:0 25px 65px #0008;margin-top:22px}
-#sp-traffic-root .winbar{height:58px;background:#fff;border-bottom:1px solid #e1e3e8;display:flex;align-items:center;padding:0 20px;gap:10px;font-size:18px;color:#515763}
-#sp-traffic-root .dot{width:10px;height:10px;border-radius:50%;background:#c9ccd2;flex:none}
-#sp-traffic-root .yt-mark{width:29px;height:21px;border-radius:6px;background:#ff3344;position:relative;flex:none}
-#sp-traffic-root .yt-mark::after{content:"";position:absolute;left:11px;top:5px;border-left:9px solid #fff;border-top:5px solid transparent;border-bottom:5px solid transparent}
-#sp-traffic-root .win-title{font-weight:800;color:#252832}
-#sp-traffic-root .bodyui{display:grid;grid-template-columns:210px 1fr;min-height:510px}
-#sp-traffic-root .sidebar{padding:19px 12px;background:#f0f1f4;border-right:1px solid #dddfe5;font-size:17px;line-height:2.4;color:#6a6e78}
-#sp-traffic-root .nav{padding:3px 9px;border-radius:8px}
-#sp-traffic-root .nav.selected{background:#dedfe4;color:#181a20;font-weight:800}
-#sp-traffic-root .mainui{padding:23px 18px}
-#sp-traffic-root .mainui h3{font-size:26px;margin:0 0 8px}
-#sp-traffic-root .muted{color:#777d88;font-size:16px}
-#sp-traffic-root .tabs{display:flex;gap:17px;border-bottom:1px solid #d8dbe1;padding:17px 0 13px;font-size:16px;color:#707681}
-#sp-traffic-root .tabs .selected{font-weight:800;color:#252832;border-bottom:3px solid #272a31;padding-bottom:12px;margin-bottom:-15px}
-#sp-traffic-root .report{margin-top:18px;border:1px solid #d8dbe1;border-radius:12px;padding:17px;background:#fff}
-#sp-traffic-root .report h4{font-size:19px;margin:0 0 13px}
-#sp-traffic-root .source-row{display:grid;grid-template-columns:1fr 100px;gap:8px;align-items:center;font-size:16px;margin:14px 0}
-#sp-traffic-root .track{height:13px;border-radius:5px;background:#e9ebef;overflow:hidden;margin-top:6px}
-#sp-traffic-root .fill{height:100%;width:0;background:var(--red)}
-#sp-traffic-root .num{text-align:right;font-weight:800}
-#sp-traffic-root .detail{font-size:16px;color:#5e6470;line-height:1.45;margin-top:12px}
-#sp-traffic-root .callout{border-left:5px solid var(--red);background:#191d25;padding:18px 20px;border-radius:0 12px 12px 0;font-size:24px;line-height:1.35;margin-top:24px}
-#sp-traffic-root .chip{display:inline-block;border:1px solid #4b5260;border-radius:999px;padding:10px 16px;font-size:19px;color:#e2e5eb;margin:8px 8px 0 0}
-#sp-traffic-root .source-card{border:2px solid #3a404b;border-radius:18px;padding:22px;background:#171a21;margin-top:15px}
-#sp-traffic-root .source-card h3{font-size:28px;margin:0 0 10px}
-#sp-traffic-root .source-card p{font-size:21px;line-height:1.35;color:#c0c5ce;margin:0}
-#sp-traffic-root .source-card .accent-blue{color:var(--blue)}#sp-traffic-root .source-card .accent-green{color:var(--green)}#sp-traffic-root .source-card .accent-gold{color:var(--gold)}
-#sp-traffic-root .source-card.focus{border-color:var(--red);background:#24171b}
-#sp-traffic-root .arrow{font-size:40px;color:var(--red);text-align:center;margin:4px 0}
-#sp-traffic-root .footer{position:absolute;left:62px;right:62px;bottom:43px;display:flex;justify-content:space-between;gap:16px;font-size:16px;letter-spacing:1px;color:#7d8490}
-#sp-traffic-root .mini-stat{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px}
-#sp-traffic-root .stat{border:1px solid #3b414d;border-radius:17px;background:#171a21;padding:19px}
-#sp-traffic-root .stat strong{display:block;font-size:29px;margin-bottom:8px}
-#sp-traffic-root .stat span{font-size:17px;color:#b3bac5;line-height:1.3;display:block}
-#sp-traffic-root .focus-ring{outline:4px solid var(--red);outline-offset:3px;background:#fff5f5!important}
+:root {
+  color-scheme: dark;
+  --bg: #090b10;
+  --panel: #151820;
+  --panel2: #20242d;
+  --line: #343b47;
+  --text: #f5f7fb;
+  --muted: #aab1bd;
+  --red: #ff3448;
+  --blue: #78bdff;
+  --green: #70dfb0;
+  --gold: #ffd17b;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #090b10;
+}
+
+body {
+  min-width: 0;
+  min-height: 0;
+}
+
+#sp-traffic-root {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  min-height: 100%;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 82% 12%, #29202a 0, transparent 34%),
+    linear-gradient(145deg, #090b10, #11151d 68%, #08090d);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+}
+
+#sp-traffic-root *,
+#sp-traffic-root *::before,
+#sp-traffic-root *::after {
+  box-sizing: border-box;
+}
+
+#sp-traffic-root .stage {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1080px;
+  height: 1920px;
+  overflow: hidden;
+  transform: translate(-50%, -50%) scale(var(--sp-scale, 1));
+  transform-origin: center center;
+}
+
+#sp-traffic-root .grain {
+  position: absolute;
+  inset: 0;
+  opacity: .11;
+  background-image:
+    linear-gradient(#ffffff08 1px, transparent 1px),
+    linear-gradient(90deg, #ffffff08 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+}
+
+#sp-traffic-root .top {
+  position: absolute;
+  left: 62px;
+  right: 62px;
+  top: 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 21px;
+  letter-spacing: 2px;
+  color: var(--muted);
+}
+
+#sp-traffic-root .brand {
+  font-weight: 800;
+  color: #fff;
+}
+
+#sp-traffic-root .brand-mark {
+  color: var(--red);
+}
+
+#sp-traffic-root .progress {
+  position: absolute;
+  top: 96px;
+  left: 62px;
+  right: 62px;
+  height: 5px;
+  border-radius: 5px;
+  background: #333843;
+  overflow: hidden;
+}
+
+#sp-traffic-root .progress-fill {
+  display: block;
+  width: 0;
+  height: 100%;
+  background: var(--red);
+}
+
+#sp-traffic-root .scene {
+  position: absolute;
+  inset: 0;
+  padding: 155px 62px 108px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  visibility: hidden;
+  opacity: 0;
+  overflow: hidden;
+}
+
+#sp-traffic-root .eyebrow {
+  font-size: 21px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  color: var(--blue);
+  margin: 0 0 24px;
+}
+
+#sp-traffic-root .headline {
+  font-size: 65px;
+  line-height: 1.04;
+  letter-spacing: -1.5px;
+  margin: 0 0 24px;
+  font-weight: 850;
+}
+
+#sp-traffic-root .sub {
+  font-size: 28px;
+  line-height: 1.34;
+  color: #c1c7d1;
+  margin: 0 0 25px;
+}
+
+#sp-traffic-root .window {
+  border: 2px solid #383e49;
+  border-radius: 25px;
+  overflow: hidden;
+  background: #f7f8fa;
+  color: #20232a;
+  box-shadow: 0 25px 65px #0008;
+  margin-top: 22px;
+}
+
+#sp-traffic-root .winbar {
+  height: 58px;
+  background: #fff;
+  border-bottom: 1px solid #e1e3e8;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  gap: 10px;
+  font-size: 18px;
+  color: #515763;
+}
+
+#sp-traffic-root .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #c9ccd2;
+  flex: none;
+}
+
+#sp-traffic-root .yt-mark {
+  width: 29px;
+  height: 21px;
+  border-radius: 6px;
+  background: #ff3344;
+  position: relative;
+  flex: none;
+}
+
+#sp-traffic-root .yt-mark::after {
+  content: "";
+  position: absolute;
+  left: 11px;
+  top: 5px;
+  border-left: 9px solid #fff;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+}
+
+#sp-traffic-root .win-title {
+  font-weight: 800;
+  color: #252832;
+}
+
+#sp-traffic-root .bodyui {
+  display: grid;
+  grid-template-columns: 210px 1fr;
+  min-height: 510px;
+}
+
+#sp-traffic-root .sidebar {
+  padding: 19px 12px;
+  background: #f0f1f4;
+  border-right: 1px solid #dddfe5;
+  font-size: 17px;
+  line-height: 2.4;
+  color: #6a6e78;
+}
+
+#sp-traffic-root .nav {
+  padding: 3px 9px;
+  border-radius: 8px;
+}
+
+#sp-traffic-root .nav.selected {
+  background: #dedfe4;
+  color: #181a20;
+  font-weight: 800;
+}
+
+#sp-traffic-root .mainui {
+  padding: 23px 18px;
+}
+
+#sp-traffic-root .mainui h3 {
+  font-size: 26px;
+  margin: 0 0 8px;
+}
+
+#sp-traffic-root .muted {
+  color: #777d88;
+  font-size: 16px;
+}
+
+#sp-traffic-root .tabs {
+  display: flex;
+  gap: 17px;
+  border-bottom: 1px solid #d8dbe1;
+  padding: 17px 0 13px;
+  font-size: 16px;
+  color: #707681;
+}
+
+#sp-traffic-root .tabs .selected {
+  font-weight: 800;
+  color: #252832;
+  border-bottom: 3px solid #272a31;
+  padding-bottom: 12px;
+  margin-bottom: -15px;
+}
+
+#sp-traffic-root .report {
+  margin-top: 18px;
+  border: 1px solid #d8dbe1;
+  border-radius: 12px;
+  padding: 17px;
+  background: #fff;
+}
+
+#sp-traffic-root .report h4 {
+  font-size: 19px;
+  margin: 0 0 13px;
+}
+
+#sp-traffic-root .source-row {
+  display: grid;
+  grid-template-columns: 1fr 100px;
+  gap: 8px;
+  align-items: center;
+  font-size: 16px;
+  margin: 14px 0;
+}
+
+#sp-traffic-root .track {
+  height: 13px;
+  border-radius: 5px;
+  background: #e9ebef;
+  overflow: hidden;
+  margin-top: 6px;
+}
+
+#sp-traffic-root .fill {
+  height: 100%;
+  width: 0;
+  background: var(--red);
+}
+
+#sp-traffic-root .num {
+  text-align: right;
+  font-weight: 800;
+}
+
+#sp-traffic-root .detail {
+  font-size: 16px;
+  color: #5e6470;
+  line-height: 1.45;
+  margin-top: 12px;
+}
+
+#sp-traffic-root .callout {
+  border-left: 5px solid var(--red);
+  background: #191d25;
+  padding: 18px 20px;
+  border-radius: 0 12px 12px 0;
+  font-size: 24px;
+  line-height: 1.35;
+  margin-top: 24px;
+}
+
+#sp-traffic-root .chip {
+  display: inline-block;
+  border: 1px solid #4b5260;
+  border-radius: 999px;
+  padding: 10px 16px;
+  font-size: 19px;
+  color: #e2e5eb;
+  margin: 8px 8px 0 0;
+}
+
+#sp-traffic-root .source-card {
+  border: 2px solid #3a404b;
+  border-radius: 18px;
+  padding: 22px;
+  background: #171a21;
+  margin-top: 15px;
+}
+
+#sp-traffic-root .source-card h3 {
+  font-size: 28px;
+  margin: 0 0 10px;
+}
+
+#sp-traffic-root .source-card p {
+  font-size: 21px;
+  line-height: 1.35;
+  color: #c0c5ce;
+  margin: 0;
+}
+
+#sp-traffic-root .source-card .accent-blue {
+  color: var(--blue);
+}
+
+#sp-traffic-root .source-card .accent-green {
+  color: var(--green);
+}
+
+#sp-traffic-root .source-card .accent-gold {
+  color: var(--gold);
+}
+
+#sp-traffic-root .source-card.focus {
+  border-color: var(--red);
+  background: #24171b;
+}
+
+#sp-traffic-root .arrow {
+  font-size: 40px;
+  color: var(--red);
+  text-align: center;
+  margin: 4px 0;
+}
+
+#sp-traffic-root .footer {
+  position: absolute;
+  left: 62px;
+  right: 62px;
+  bottom: 43px;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 16px;
+  letter-spacing: 1px;
+  color: #7d8490;
+}
+
+#sp-traffic-root .mini-stat {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+#sp-traffic-root .stat {
+  border: 1px solid #3b414d;
+  border-radius: 17px;
+  background: #171a21;
+  padding: 19px;
+}
+
+#sp-traffic-root .stat strong {
+  display: block;
+  font-size: 29px;
+  margin-bottom: 8px;
+}
+
+#sp-traffic-root .stat span {
+  font-size: 17px;
+  color: #b3bac5;
+  line-height: 1.3;
+  display: block;
+}
+
+#sp-traffic-root .focus-ring {
+  outline: 4px solid var(--red);
+  outline-offset: 3px;
+  background: #fff5f5 !important;
+}
 </style>
 </head>
 <body>
 <main id="sp-traffic-root">
   <div class="stage" id="sp-traffic-stage">
     <div class="grain"></div>
-    <div class="top"><span class="brand"><span class="brand-mark">▶</span> CREATOR GROWTH FIXES</span><span>YOUTUBE ANALYTICS</span></div>
+    <div class="top">
+      <span class="brand"><span class="brand-mark">▶</span> CREATOR GROWTH FIXES</span>
+      <span>YOUTUBE ANALYTICS</span>
+    </div>
     <div class="progress"><span class="progress-fill" id="sp-traffic-progress"></span></div>
 
     <section class="scene" data-start="0" data-end="6.1">
@@ -69,142 +437,268 @@
       <p class="sub">Use Analytics to see how viewers discover each video.</p>
       <div class="window">
         <div class="winbar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="yt-mark"></span><span class="win-title">YouTube Studio</span></div>
-        <div class="bodyui"><aside class="sidebar"><div class="nav">Dashboard</div><div class="nav">Content</div><div class="nav selected">Analytics</div><div class="nav">Community</div><div class="nav">Subtitles</div></aside>
-          <div class="mainui"><h3>Analytics</h3><div class="muted">Understand how viewers find your content</div><div class="tabs"><span>Overview</span><span class="selected">Content</span><span>Audience</span></div>
-            <div class="report"><h4>How viewers find your videos</h4>
+        <div class="bodyui">
+          <aside class="sidebar">
+            <div class="nav">Dashboard</div><div class="nav">Content</div><div class="nav selected">Analytics</div><div class="nav">Community</div><div class="nav">Subtitles</div>
+          </aside>
+          <div class="mainui">
+            <h3>Analytics</h3><div class="muted">Understand how viewers find your content</div>
+            <div class="tabs"><span>Overview</span><span class="selected">Content</span><span>Audience</span></div>
+            <div class="report">
+              <h4>How viewers find your videos</h4>
               <div class="source-row"><div>YouTube Search<div class="track"><div class="fill" data-width="68"></div></div></div><div class="num">—</div></div>
               <div class="source-row"><div>Browse features<div class="track"><div class="fill" data-width="49"></div></div></div><div class="num">—</div></div>
               <div class="source-row"><div>Suggested videos<div class="track"><div class="fill" data-width="37"></div></div></div><div class="num">—</div></div>
             </div>
           </div>
         </div>
-      </div><div class="chip">Reconstructed interface · illustrative layout</div>
+      </div>
+      <div class="chip">Reconstructed interface · illustrative layout</div>
     </section>
 
     <section class="scene" data-start="6.1" data-end="12.8">
-      <p class="eyebrow">STEP 01 / OPEN ANALYTICS</p><h2 class="headline">Start with the video you want to diagnose.</h2><p class="sub">Open Studio, choose Content, select a video, then open its Analytics.</p>
-      <div class="window"><div class="winbar"><span class="yt-mark"></span><span class="win-title">YouTube Studio</span><span style="margin-left:auto">Content / Videos</span></div>
-        <div class="bodyui"><aside class="sidebar"><div class="nav">Dashboard</div><div class="nav selected">Content</div><div class="nav">Analytics</div><div class="nav">Comments</div></aside>
-          <div class="mainui"><h3>Channel content</h3><div class="report" id="sp-traffic-video-row"><strong>How to Fix a Low CTR</strong><div class="detail">Video · Published · Example row</div><div class="chip" style="color:#20232a;border-color:#bfc4ce">Select video</div></div><div class="arrow" id="sp-traffic-arrow-one">↓</div><div class="report" id="sp-traffic-analytics-row"><strong>Analytics</strong><div class="detail">Overview · Reach · Engagement · Audience</div></div></div>
+      <p class="eyebrow">STEP 01 / OPEN ANALYTICS</p>
+      <h2 class="headline">Start with the video you want to diagnose.</h2>
+      <p class="sub">Open Studio, choose Content, select a video, then open its Analytics.</p>
+      <div class="window">
+        <div class="winbar"><span class="yt-mark"></span><span class="win-title">YouTube Studio</span><span style="margin-left:auto">Content / Videos</span></div>
+        <div class="bodyui">
+          <aside class="sidebar"><div class="nav">Dashboard</div><div class="nav selected">Content</div><div class="nav">Analytics</div><div class="nav">Comments</div></aside>
+          <div class="mainui">
+            <h3>Channel content</h3>
+            <div class="report" id="sp-traffic-video-row"><strong>How to Fix a Low CTR</strong><div class="detail">Video · Published · Example row</div><div class="chip" style="color:#20232a;border-color:#bfc4ce">Select video</div></div>
+            <div class="arrow" id="sp-traffic-arrow-one">↓</div>
+            <div class="report" id="sp-traffic-analytics-row"><strong>Analytics</strong><div class="detail">Overview · Reach · Engagement · Audience</div></div>
+          </div>
         </div>
-      </div><div class="callout">Start with one video. Don't mix channel-wide and video-level data.</div>
+      </div>
+      <div class="callout">Start with one video. Don't mix channel-wide and video-level data.</div>
     </section>
 
     <section class="scene" data-start="12.8" data-end="19.7">
-      <p class="eyebrow">STEP 02 / FIND TRAFFIC SOURCES</p><h2 class="headline">Open the report that explains discovery.</h2><p class="sub">Look for “How viewers find this video” or the traffic source report.</p>
-      <div class="window"><div class="winbar"><span class="yt-mark"></span><span class="win-title">Video analytics</span><span style="margin-left:auto">Reach</span></div>
-        <div class="bodyui"><aside class="sidebar"><div class="nav">Overview</div><div class="nav selected">Reach</div><div class="nav">Engagement</div><div class="nav">Audience</div></aside>
-          <div class="mainui"><h3>Reach</h3><div class="tabs"><span>Overview</span><span class="selected">Reach</span></div><div class="report" id="sp-traffic-report"><h4>How viewers find this video</h4><div class="detail">Traffic source types</div>
-            <div class="source-row"><div>YouTube Search</div><div class="num">Open</div></div><div class="source-row"><div>Browse features</div><div class="num">Open</div></div><div class="source-row"><div>Suggested videos</div><div class="num">Open</div></div><div class="source-row"><div>External</div><div class="num">Open</div></div>
-          </div></div>
+      <p class="eyebrow">STEP 02 / FIND TRAFFIC SOURCES</p>
+      <h2 class="headline">Open the report that explains discovery.</h2>
+      <p class="sub">Look for “How viewers find this video” or the traffic source report.</p>
+      <div class="window">
+        <div class="winbar"><span class="yt-mark"></span><span class="win-title">Video analytics</span><span style="margin-left:auto">Reach</span></div>
+        <div class="bodyui">
+          <aside class="sidebar"><div class="nav">Overview</div><div class="nav selected">Reach</div><div class="nav">Engagement</div><div class="nav">Audience</div></aside>
+          <div class="mainui">
+            <h3>Reach</h3>
+            <div class="tabs"><span>Overview</span><span class="selected">Reach</span></div>
+            <div class="report" id="sp-traffic-report">
+              <h4>How viewers find this video</h4><div class="detail">Traffic source types</div>
+              <div class="source-row"><div>YouTube Search</div><div class="num">Open</div></div>
+              <div class="source-row"><div>Browse features</div><div class="num">Open</div></div>
+              <div class="source-row"><div>Suggested videos</div><div class="num">Open</div></div>
+              <div class="source-row"><div>External</div><div class="num">Open</div></div>
+            </div>
+          </div>
         </div>
-      </div><div class="chip">Report availability can vary by content and date range.</div>
+      </div>
+      <div class="chip">Report availability can vary by content and date range.</div>
     </section>
 
     <section class="scene" data-start="19.7" data-end="27.0">
-      <p class="eyebrow">STEP 03 / READ THE SOURCES</p><h2 class="headline">Each source answers a different question.</h2>
+      <p class="eyebrow">STEP 03 / READ THE SOURCES</p>
+      <h2 class="headline">Each source answers a different question.</h2>
       <article class="source-card" id="sp-traffic-search-card"><h3 class="accent-blue">YouTube Search</h3><p>Viewers found the video through YouTube search results. Inspect search terms when available.</p></article>
       <article class="source-card" id="sp-traffic-browse-card"><h3 class="accent-green">Browse Features</h3><p>Includes surfaces such as Home, subscriptions, Watch Later, and Explore.</p></article>
       <div class="callout">Search shows discovery through search results. Browse shows discovery through browsing surfaces.</div>
     </section>
 
     <section class="scene" data-start="27.0" data-end="34.2">
-      <p class="eyebrow">STEP 04 / EXPAND THE REPORT</p><h2 class="headline">Check recommendations and external links.</h2>
+      <p class="eyebrow">STEP 04 / EXPAND THE REPORT</p>
+      <h2 class="headline">Check recommendations and external links.</h2>
       <article class="source-card" id="sp-traffic-suggested-card"><h3 class="accent-gold">Suggested Videos</h3><p>Traffic from recommendations beside or after other videos. Check the report for details when available.</p></article>
       <article class="source-card" id="sp-traffic-external-card"><h3 class="accent-blue">External</h3><p>Websites and apps that linked to or embedded the video.</p></article>
-      <div class="mini-stat"><div class="stat"><strong>Which video?</strong><span>Inspect suggested-video details when the report provides them.</span></div><div class="stat"><strong>Which site?</strong><span>Inspect external sites and apps when details are available.</span></div></div>
+      <div class="mini-stat">
+        <div class="stat"><strong>Which video?</strong><span>Inspect suggested-video details when the report provides them.</span></div>
+        <div class="stat"><strong>Which site?</strong><span>Inspect external sites and apps when details are available.</span></div>
+      </div>
     </section>
 
     <section class="scene" data-start="34.2" data-end="41.0">
-      <p class="eyebrow">STEP 05 / TURN DATA INTO A DECISION</p><h2 class="headline">Don't judge a source by views alone.</h2><p class="sub">Compare discovery with watch time and retention to understand what happens after the click.</p>
-      <div class="window"><div class="winbar"><span class="yt-mark"></span><span class="win-title">Traffic source detail</span><span style="margin-left:auto">Illustrative workflow</span></div>
-        <div class="bodyui"><aside class="sidebar"><div class="nav selected">Traffic source</div><div class="nav">Watch time</div><div class="nav">Retention</div></aside>
-          <div class="mainui"><h3>Compare the journey</h3><div class="report"><div class="source-row"><div>Source brings views</div><div class="num">01</div></div><div class="source-row"><div>Viewer keeps watching</div><div class="num">02</div></div><div class="source-row"><div>Viewer finds value</div><div class="num">03</div></div><div class="detail">Conceptual sequence, not channel analytics data.</div></div></div>
+      <p class="eyebrow">STEP 05 / TURN DATA INTO A DECISION</p>
+      <h2 class="headline">Don't judge a source by views alone.</h2>
+      <p class="sub">Compare discovery with watch time and retention to understand what happens after the click.</p>
+      <div class="window">
+        <div class="winbar"><span class="yt-mark"></span><span class="win-title">Traffic source detail</span><span style="margin-left:auto">Illustrative workflow</span></div>
+        <div class="bodyui">
+          <aside class="sidebar"><div class="nav selected">Traffic source</div><div class="nav">Watch time</div><div class="nav">Retention</div></aside>
+          <div class="mainui">
+            <h3>Compare the journey</h3>
+            <div class="report">
+              <div class="source-row"><div>Source brings views</div><div class="num">01</div></div>
+              <div class="source-row"><div>Viewer keeps watching</div><div class="num">02</div></div>
+              <div class="source-row"><div>Viewer finds value</div><div class="num">03</div></div>
+              <div class="detail">Conceptual sequence, not channel analytics data.</div>
+            </div>
+          </div>
         </div>
-      </div><div class="callout">Traffic source is context, not a quality score or a guarantee of future views.</div>
+      </div>
+      <div class="callout">Traffic source is context, not a quality score or a guarantee of future views.</div>
     </section>
 
     <section class="scene" data-start="41.0" data-end="48.43">
-      <p class="eyebrow">YOUR NEXT ACTION</p><h2 class="headline">Find the source. Open its details. Compare the outcome.</h2><p class="sub">Use the same video and date range, then decide what to improve next.</p>
-      <article class="source-card"><h3>01 · Discovery</h3><p>Search, Browse, Suggested, or External?</p></article><div class="arrow">↓</div>
-      <article class="source-card"><h3>02 · Viewer response</h3><p>Watch time and retention after the view.</p></article><div class="arrow">↓</div>
+      <p class="eyebrow">YOUR NEXT ACTION</p>
+      <h2 class="headline">Find the source. Open its details. Compare the outcome.</h2>
+      <p class="sub">Use the same video and date range, then decide what to improve next.</p>
+      <article class="source-card"><h3>01 · Discovery</h3><p>Search, Browse, Suggested, or External?</p></article>
+      <div class="arrow">↓</div>
+      <article class="source-card"><h3>02 · Viewer response</h3><p>Watch time and retention after the view.</p></article>
+      <div class="arrow">↓</div>
       <article class="source-card"><h3>03 · Next experiment</h3><p>Improve the title, opening, topic fit, or distribution based on evidence.</p></article>
       <div class="callout"><strong>Follow for more YouTube growth fixes.</strong></div>
     </section>
 
-    <div class="footer"><span>RECONSTRUCTED UI · NOT LIVE CHANNEL DATA</span><span id="sp-traffic-time">00:00 / 00:48</span></div>
+    <div class="footer">
+      <span>RECONSTRUCTED UI · NOT LIVE CHANNEL DATA</span>
+      <span id="sp-traffic-time">00:00 / 00:48</span>
+    </div>
   </div>
 </main>
-<script>
-(()=>{
-  'use strict';
-  const DURATION=48.43, FPS=30;
-  const root=document.getElementById('sp-traffic-root');
-  const stage=document.getElementById('sp-traffic-stage');
-  const scenes=Array.from(root.querySelectorAll('.scene'));
-  const progress=root.querySelector('#sp-traffic-progress');
-  const timeLabel=root.querySelector('#sp-traffic-time');
-  const clamp=(v,min=0,max=1)=>Math.max(min,Math.min(max,v));
-  const setStyles=(el,styles)=>{if(el)Object.assign(el.style,styles)};
 
-  function fitPreview(){
-    const bounds=root.getBoundingClientRect();
-    const scale=Math.min(bounds.width/1080,bounds.height/1920);
-    stage.style.setProperty('--sp-scale',String(Number.isFinite(scale)&&scale>0?scale:1));
+<script>
+(() => {
+  'use strict';
+
+  const DURATION = 48.43;
+  const FPS = 30;
+
+  const root = document.getElementById('sp-traffic-root');
+  const stage = document.getElementById('sp-traffic-stage');
+  const scenes = Array.from(root.querySelectorAll('.scene'));
+  const progress = root.querySelector('#sp-traffic-progress');
+  const timeLabel = root.querySelector('#sp-traffic-time');
+
+  const clamp = (v, min = 0, max = 1) =>
+    Math.max(min, Math.min(max, v));
+
+  const setStyles = (el, styles) => {
+    if (el) Object.assign(el.style, styles);
+  };
+
+  function fitPreview() {
+    const bounds = root.getBoundingClientRect();
+    const scale = Math.min(bounds.width / 1080, bounds.height / 1920);
+
+    stage.style.setProperty(
+      '--sp-scale',
+      String(Number.isFinite(scale) && scale > 0 ? scale : 1)
+    );
   }
 
-  function renderFrame(inputTime){
-    const raw=Math.max(0,Number(inputTime)||0);
-    const t=((raw%DURATION)+DURATION)%DURATION;
-    let activeIndex=scenes.length-1;
-    for(let i=0;i<scenes.length;i++){
-      const start=Number(scenes[i].dataset.start),end=Number(scenes[i].dataset.end);
-      if(t>=start&&t<end){activeIndex=i;break;}
+  function renderFrame(inputTime) {
+    const raw = Math.max(0, Number(inputTime) || 0);
+    const t = ((raw % DURATION) + DURATION) % DURATION;
+
+    let activeIndex = scenes.length - 1;
+
+    for (let i = 0; i < scenes.length; i++) {
+      const start = Number(scenes[i].dataset.start);
+      const end = Number(scenes[i].dataset.end);
+
+      if (t >= start && t < end) {
+        activeIndex = i;
+        break;
+      }
     }
-    scenes.forEach((scene,index)=>setStyles(scene,{visibility:index===activeIndex?'visible':'hidden',opacity:index===activeIndex?'1':'0'}));
-    const scene=scenes[activeIndex];
-    const start=Number(scene.dataset.start),end=Number(scene.dataset.end);
-    const p=clamp((t-start)/(end-start));
-    setStyles(progress,{width:(t/DURATION*100)+'%'});
 
-    scene.querySelectorAll('[data-width]').forEach((el,index)=>{
-      const delay=index*.13;
-      setStyles(el,{width:(Number(el.dataset.width)*clamp((p-delay)/.52))+'%'});
+    scenes.forEach((scene, index) => {
+      setStyles(scene, {
+        visibility: index === activeIndex ? 'visible' : 'hidden',
+        opacity: index === activeIndex ? '1' : '0'
+      });
     });
 
-    const focusTargets=[
-      '#sp-traffic-video-row','#sp-traffic-analytics-row','#sp-traffic-report',
-      '#sp-traffic-search-card','#sp-traffic-browse-card',
-      '#sp-traffic-suggested-card','#sp-traffic-external-card'
+    const scene = scenes[activeIndex];
+    const start = Number(scene.dataset.start);
+    const end = Number(scene.dataset.end);
+    const p = clamp((t - start) / (end - start));
+
+    setStyles(progress, {
+      width: (t / DURATION * 100) + '%'
+    });
+
+    scene.querySelectorAll('[data-width]').forEach((el, index) => {
+      const delay = index * 0.13;
+
+      setStyles(el, {
+        width: (
+          Number(el.dataset.width) * clamp((p - delay) / 0.52)
+        ) + '%'
+      });
+    });
+
+    const focusTargets = [
+      '#sp-traffic-video-row',
+      '#sp-traffic-analytics-row',
+      '#sp-traffic-report',
+      '#sp-traffic-search-card',
+      '#sp-traffic-browse-card',
+      '#sp-traffic-suggested-card',
+      '#sp-traffic-external-card'
     ];
-    focusTargets.forEach((selector,index)=>{
-      const el=scene.querySelector(selector);
-      if(el)el.classList.toggle(selector.includes('card')?'focus':'focus-ring',p>clamp(.2+index*.075,.2,.68));
+
+    focusTargets.forEach((selector, index) => {
+      const el = scene.querySelector(selector);
+
+      if (el) {
+        el.classList.toggle(
+          selector.includes('card') ? 'focus' : 'focus-ring',
+          p > clamp(0.2 + index * 0.075, 0.2, 0.68)
+        );
+      }
     });
-    const arrow=scene.querySelector('.arrow');
-    if(arrow)setStyles(arrow,{transform:'translateY('+(Math.sin(p*Math.PI*2)*5)+'px)',opacity:String(.62+.38*p)});
-    const minutes=String(Math.floor(t/60)).padStart(2,'0');
-    const seconds=String(Math.floor(t%60)).padStart(2,'0');
-    timeLabel.textContent=minutes+':'+seconds+' / 00:48';
+
+    const arrow = scene.querySelector('.arrow');
+
+    if (arrow) {
+      setStyles(arrow, {
+        transform: 'translateY(' + (Math.sin(p * Math.PI * 2) * 5) + 'px)',
+        opacity: String(0.62 + 0.38 * p)
+      });
+    }
+
+    const minutes = String(Math.floor(t / 60)).padStart(2, '0');
+    const seconds = String(Math.floor(t % 60)).padStart(2, '0');
+
+    timeLabel.textContent = minutes + ':' + seconds + ' / 00:48';
+
     return true;
   }
 
-  // The GitHub renderer supplies time explicitly. Audio is the master clock;
-  // duration here is only the visual loop period for the longer WAV.
-  window.SPMOTION={width:1080,height:1920,fps:FPS,duration:DURATION};
-  window.SPMOTION_FRAME=renderFrame;
+  // The renderer supplies the frame time explicitly.
+  // Audio is the master clock; duration is the visual loop period.
+  window.SPMOTION = {
+    width: 1080,
+    height: 1920,
+    fps: FPS,
+    duration: DURATION
+  };
 
-  // Preview-only clock. It exits as soon as the renderer announces export mode.
+  window.SPMOTION_FRAME = renderFrame;
+
+  // Preview-only scaling and animation.
   fitPreview();
-  if(typeof ResizeObserver==='function')new ResizeObserver(fitPreview).observe(root);
+
+  if (typeof ResizeObserver === 'function') {
+    new ResizeObserver(fitPreview).observe(root);
+  }
+
   renderFrame(0);
-  if(!window.__SPMOTION_RENDER_MODE__){
-    const previewStart=performance.now();
-    const preview=()=>{
-      if(window.__SPMOTION_RENDER_MODE__)return;
-      renderFrame((performance.now()-previewStart)/1000);
+
+  if (!window.__SPMOTION_RENDER_MODE__) {
+    const previewStart = performance.now();
+
+    const preview = () => {
+      if (window.__SPMOTION_RENDER_MODE__) return;
+
+      renderFrame((performance.now() - previewStart) / 1000);
       requestAnimationFrame(preview);
     };
+
     requestAnimationFrame(preview);
   }
 })();
