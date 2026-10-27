@@ -12,6 +12,9 @@ on:
         required: true
         default: "1.0"
 
+permissions:
+  contents: read
+
 jobs:
   render:
     runs-on: ubuntu-latest
@@ -32,6 +35,8 @@ jobs:
         uses: actions/setup-python@v6
         with:
           python-version: "3.11"
+          cache: pip
+          cache-dependency-path: renderer/requirements.txt
 
       - name: Cache Playwright browsers
         uses: actions/cache@v4
@@ -40,6 +45,16 @@ jobs:
           key: playwright-chromium-${{ runner.os }}-v1
           restore-keys: |
             playwright-chromium-${{ runner.os }}-
+
+      - name: Cache Kokoro model files
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/huggingface
+            ~/.cache/torch
+          key: kokoro-models-${{ runner.os }}-v1
+          restore-keys: |
+            kokoro-models-${{ runner.os }}-
 
       - name: Install FFmpeg and espeak-ng
         run: |
@@ -59,13 +74,11 @@ jobs:
           python -m pip install --force-reinstall "numpy<2" "spacy==3.8.7"
           python -m pip install --no-deps "https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.8.0/en_core_web_sm-3.8.0-py3-none-any.whl"
 
-      - name: Diagnose spaCy installation
+      - name: Validate Python environment
         run: |
-          python -m pip show spacy numpy en-core-web-sm
-          python -c "import sys, spacy, numpy; print('Python:', sys.version); print('spaCy:', spacy.__version__); print('NumPy:', numpy.__version__)"
           python -m pip check
-          python -m spacy validate
-          python -c "import spacy; nlp=spacy.load('en_core_web_sm'); print('spaCy model OK:', nlp.meta['version']); print(nlp('Test Kokoro voiceover.'))"
+          python -c "import numpy, spacy, kokoro; print('NumPy:', numpy.__version__); print('spaCy:', spacy.__version__); print('Kokoro import OK')"
+          python -c "import spacy; nlp=spacy.load('en_core_web_sm'); print('spaCy model OK:', nlp.meta['version'])"
 
       - name: Generate voiceover — master clock
         run: |
@@ -75,7 +88,7 @@ jobs:
             --speed "${{ inputs.speed }}" \
             --output speech.wav
 
-      - name: Render HTML
+      - name: Render HTML — streamed frames
         working-directory: renderer
         run: |
           node render.mjs ../example ./.frames ../visual.webm ../speech.wav
@@ -84,9 +97,14 @@ jobs:
         run: |
           node renderer/mux.mjs visual.webm speech.wav final.webm
 
+      - name: Validate final media
+        run: |
+          ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 final.webm
+          ffprobe -v error -select_streams v:0 -show_entries stream=width,height,r_frame_rate -of default=noprint_wrappers=1 final.webm
+          ffprobe -v error -select_streams a:0 -show_entries stream=codec_name,sample_rate -of default=noprint_wrappers=1 final.webm
+
       - name: Upload final video
         uses: actions/upload-artifact@v4
         with:
           name: sp-motion-output
-          path: |
-            final.webm
+          path: final.webm
