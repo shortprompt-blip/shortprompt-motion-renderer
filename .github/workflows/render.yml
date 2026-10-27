@@ -97,9 +97,22 @@ jobs:
         run: |
           node renderer/mux.mjs visual.webm speech.wav final.webm
 
-      - name: Validate final media
+      - name: Validate final media and A/V duration parity
         run: |
-          ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 final.webm
+          set -euo pipefail
+          test -s final.webm
+          AUDIO_SECONDS="$(ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 speech.wav)"
+          VIDEO_SECONDS="$(ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 final.webm)"
+          echo "Speech WAV: ${AUDIO_SECONDS}s"
+          echo "Final WebM: ${VIDEO_SECONDS}s"
+          python - "$AUDIO_SECONDS" "$VIDEO_SECONDS" <<'PYVALIDATE'
+          import sys
+          audio, video = map(float, sys.argv[1:3])
+          delta = abs(audio - video)
+          print(f"A/V duration delta: {delta:.3f}s")
+          if delta > 0.75:
+              raise SystemExit(f"A/V duration mismatch: {delta:.3f}s exceeds 0.75s")
+          PYVALIDATE
           ffprobe -v error -select_streams v:0 -show_entries stream=width,height,r_frame_rate -of default=noprint_wrappers=1 final.webm
           ffprobe -v error -select_streams a:0 -show_entries stream=codec_name,sample_rate -of default=noprint_wrappers=1 final.webm
 
