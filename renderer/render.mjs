@@ -54,11 +54,25 @@ try {
     const width = Number(m.width || 1080);
     const height = Number(m.height || 1920);
     if (!Number.isInteger(width) || !Number.isInteger(height) || width <= 0 || height <= 0) throw new Error("SP-MOTION width/height must be positive integers");
-    const designDuration = Number.isFinite(declaredDuration) && declaredDuration > 0 ? declaredDuration : null;
+    if (!Number.isFinite(declaredDuration) || declaredDuration <= 0) {
+      throw new Error("video.html must declare window.SPMOTION.duration > 0");
+    }
+    // No visual looping or implicit stretching: the HTML timeline and synthesized WAV
+    // must agree before capture. A small tolerance allows container/codec rounding.
+    const tolerance = Math.max(0.5, audioDuration * 0.02);
+    const delta = Math.abs(declaredDuration - audioDuration);
+    if (delta > tolerance) {
+      throw new Error(
+        `TIMELINE MISMATCH: HTML declares ${declaredDuration.toFixed(3)}s, ` +
+        `but speech.wav is ${audioDuration.toFixed(3)}s (difference ${delta.toFixed(3)}s; ` +
+        `allowed ${tolerance.toFixed(3)}s). Adjust the HTML animation timeline or voiceover script. ` +
+        `The renderer will not loop, speed up, trim, or stretch either track.`
+      );
+    }
     window.__SPMOTION_AUDIO_DURATION__ = audioDuration;
-    window.__SPMOTION_DESIGN_DURATION__ = designDuration;
+    window.__SPMOTION_DESIGN_DURATION__ = declaredDuration;
     window.__SPMOTION_RENDER_MODE__ = "html-autonomous";
-    return { width, height, fps, designDuration, duration: audioDuration };
+    return { width, height, fps, designDuration: declaredDuration, duration: audioDuration };
   }, audioDuration);
 
   await page.setViewportSize({ width: meta.width, height: meta.height });
@@ -73,7 +87,7 @@ try {
   ffmpeg.on("error", error => { ffmpegError = error; });
   ffmpegExit = new Promise((resolve, reject) => ffmpeg.on("close", code => code === 0 ? resolve() : reject(ffmpegError || new Error(`ffmpeg exited with code ${code}`))));
 
-  console.log("SP-MOTION MODE: HTML-AUTONOMOUS / STREAMING FRAMES");
+  console.log("SP-MOTION MODE: HTML-AUTONOMOUS / SINGLE TIMELINE / STREAMING FRAMES");
   console.log(`AUDIO MASTER: ${meta.duration.toFixed(3)}s`);
   console.log(`FRAME COUNT: ${frameCount} at ${meta.fps} fps`);
   console.log(`FRAME SIZE: ${meta.width}x${meta.height}`);
@@ -81,8 +95,9 @@ try {
 
   const captureStartedAt = performance.now();
   for (let i = 0; i < frameCount; i++) {
-    const actualTime = i / meta.fps;
-    const localTime = meta.designDuration > 0 ? actualTime % meta.designDuration : actualTime;
+    const actualTime = Math.min(i / meta.fps, meta.duration);
+    // One continuous timeline from 0 to the endpoint. Never modulo-loop the HTML.
+    const localTime = actualTime;
     await page.evaluate(({ actualTime, localTime, audioDuration, designDuration }) => {
       window.__SPMOTION_TIME__ = actualTime;
       window.__SPMOTION_LOCAL_TIME__ = localTime;
