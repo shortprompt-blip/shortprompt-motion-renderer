@@ -1,6 +1,7 @@
 import { chromium } from "playwright";
 import fs from "node:fs/promises";
 import path from "node:path";
+import { pathToFileURL } from "node:url";
 import { spawn } from "node:child_process";
 import { performance } from "node:perf_hooks";
 
@@ -43,7 +44,15 @@ let ffmpeg;
 let ffmpegExit;
 
 try {
-  await page.goto(new URL(`file://${htmlPath}`).href, { waitUntil: "load" });
+  // Set export mode BEFORE page scripts run. This prevents HTML-authored preview
+  // requestAnimationFrame loops from competing with the renderer's audio-master clock.
+  await page.addInitScript(() => {
+    window.__SPMOTION_RENDER_MODE__ = "html-autonomous";
+    window.__SPMOTION_EXPORT__ = true;
+  });
+  const htmlUrl = pathToFileURL(htmlPath);
+  htmlUrl.searchParams.set("export", "1");
+  await page.goto(htmlUrl.href, { waitUntil: "load" });
   await page.waitForFunction(() => document.fonts?.status === "loaded");
 
   const meta = await page.evaluate((audioDuration) => {
@@ -57,9 +66,9 @@ try {
     if (!Number.isFinite(declaredDuration) || declaredDuration <= 0) {
       throw new Error("video.html must declare window.SPMOTION.duration > 0");
     }
-    // Audio remains the master clock. For small authoring/TTS drift, map the full
-    // authored HTML timeline onto the WAV duration; do not alter the WAV. Reject
-    // large mismatches because they indicate a genuinely misplanned video.
+    // The WAV is the master clock. Only small authoring/TTS drift is mapped to
+    // the visual timeline. Larger mismatches must be fixed in the authored HTML
+    // or narration rather than hidden by changing audio playback speed.
     const tolerance = Math.max(1.0, audioDuration * 0.05);
     const delta = Math.abs(declaredDuration - audioDuration);
     if (delta > tolerance) {
@@ -74,7 +83,6 @@ try {
     window.__SPMOTION_AUDIO_DURATION__ = audioDuration;
     window.__SPMOTION_DESIGN_DURATION__ = declaredDuration;
     window.__SPMOTION_TIMELINE_SCALE__ = timelineScale;
-    window.__SPMOTION_RENDER_MODE__ = "html-autonomous";
     return { width, height, fps, designDuration: declaredDuration, duration: audioDuration, timelineScale, timelineDelta: delta, tolerance };
   }, audioDuration);
 
@@ -91,6 +99,7 @@ try {
   ffmpegExit = new Promise((resolve, reject) => ffmpeg.on("close", code => code === 0 ? resolve() : reject(ffmpegError || new Error(`ffmpeg exited with code ${code}`))));
 
   console.log("SP-MOTION MODE: HTML-AUTONOMOUS / SINGLE TIMELINE / STREAMING FRAMES");
+  console.log("EXPORT MODE: ENABLED BEFORE HTML SCRIPTS");
   console.log(`AUDIO MASTER: ${meta.duration.toFixed(3)}s`);
   console.log(`HTML DESIGN TIMELINE: ${meta.designDuration.toFixed(3)}s`);
   console.log(`VISUAL TIMELINE SCALE: ${meta.timelineScale.toFixed(6)}x (delta ${meta.timelineDelta.toFixed(3)}s; tolerance ${meta.tolerance.toFixed(3)}s)`);
@@ -101,8 +110,6 @@ try {
   const captureStartedAt = performance.now();
   for (let i = 0; i < frameCount; i++) {
     const actualTime = Math.min(i / meta.fps, meta.duration);
-    // One continuous timeline from 0 to the HTML endpoint, mapped to the audio master.
-    // Small timing differences are absorbed by visuals only; narration is untouched.
     const localTime = Math.min(actualTime * meta.timelineScale, meta.designDuration);
     await page.evaluate(({ actualTime, localTime, audioDuration, designDuration }) => {
       window.__SPMOTION_TIME__ = actualTime;
@@ -114,7 +121,7 @@ try {
       document.dispatchEvent(new CustomEvent("sp-motion-time", { detail: { time: actualTime, localTime, audioDuration, designDuration } }));
     }, { actualTime, localTime, audioDuration: meta.duration, designDuration: meta.designDuration });
 
-    // Keep a deterministic layout/paint boundary before each captured frame.
+    // A paint boundary is awaited for every deterministic timestamp before capture.
     await page.evaluate(() => new Promise(requestAnimationFrame));
     const png = await page.screenshot({ type: "png", animations: "allow" });
     if (!ffmpeg.stdin.write(png)) await waitForDrain(ffmpeg.stdin);
