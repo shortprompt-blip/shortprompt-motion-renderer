@@ -1,13 +1,1 @@
-Want to run AI on your own computer instead of sending every prompt to a hosted chatbot? Here’s a quick start with Ollama.
-
-First, open the official Ollama website and download the Windows installer. Install it, then open PowerShell or Windows Terminal.
-
-Now run this command: ollama run gemma3:4b.
-
-The first launch downloads the model, so you’ll need an internet connection and several gigabytes of free disk space. When the download finishes, Ollama opens an interactive chat in your terminal. Type a prompt and press Enter to test it.
-
-This Gemma 3 four-billion-parameter model is a practical starting point, but speed depends on your hardware. If it feels too slow, try a smaller model such as gemma3:1b.
-
-After the model is downloaded, local prompts can run on your computer without sending them to a cloud model. That is different from Ollama’s cloud models, which run on remote servers.
-
-Check the model name before downloading, and use Ollama’s official documentation for current requirements. Follow for more practical AI tutorials.
+Want to create an Instagram carousel that mixes photos and videos? You can now build one in Edits. Open Projects, tap the plus button, and choose Carousel. Select the photos and videos you want to include, then arrange them on the canvas. Need another slide? Tap plus to add one, or use the shortcut on the final slide. To change the order, open a slide's three-dot menu and move it where you want. Use layouts to keep spacing consistent, then add text, audio, filters, or crops. When you're done, share the carousel directly to Instagram from Edits. One important note: Meta announced the feature for iOS first, with Android availability to follow. Check your version of the app before trying it.
