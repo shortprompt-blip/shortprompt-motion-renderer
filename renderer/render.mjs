@@ -6,7 +6,6 @@ import { spawn } from "node:child_process";
 import { performance } from "node:perf_hooks";
 
 const projectDir = path.resolve(process.argv[2] || "../example");
-// Retained for CLI compatibility. Frames are streamed to FFmpeg, not saved here.
 const _legacyOutDir = process.argv[3];
 const output = path.resolve(process.argv[4] || "./visual.webm");
 const audioPath = path.resolve(process.argv[5] || "./speech.wav");
@@ -44,8 +43,7 @@ let ffmpeg;
 let ffmpegExit;
 
 try {
-  // Set export mode BEFORE page scripts run. This prevents HTML-authored preview
-  // requestAnimationFrame loops from competing with the renderer's audio-master clock.
+  // Export mode is set before page scripts to prevent a second preview clock.
   await page.addInitScript(() => {
     window.__SPMOTION_RENDER_MODE__ = "html-autonomous";
     window.__SPMOTION_EXPORT__ = true;
@@ -63,27 +61,15 @@ try {
     const width = Number(m.width || 1080);
     const height = Number(m.height || 1920);
     if (!Number.isInteger(width) || !Number.isInteger(height) || width <= 0 || height <= 0) throw new Error("SP-MOTION width/height must be positive integers");
-    if (!Number.isFinite(declaredDuration) || declaredDuration <= 0) {
-      throw new Error("video.html must declare window.SPMOTION.duration > 0");
-    }
-    // The WAV is the master clock. Only small authoring/TTS drift is mapped to
-    // the visual timeline. Larger mismatches must be fixed in the authored HTML
-    // or narration rather than hidden by changing audio playback speed.
-    const tolerance = Math.max(1.0, audioDuration * 0.05);
-    const delta = Math.abs(declaredDuration - audioDuration);
-    if (delta > tolerance) {
-      throw new Error(
-        `TIMELINE MISMATCH: HTML declares ${declaredDuration.toFixed(3)}s, ` +
-        `but speech.wav is ${audioDuration.toFixed(3)}s (difference ${delta.toFixed(3)}s; ` +
-        `allowed ${tolerance.toFixed(3)}s). Fix the HTML timeline or narration; ` +
-        `the renderer only auto-aligns small differences up to 5%.`
-      );
-    }
+    if (!Number.isFinite(declaredDuration) || declaredDuration <= 0) throw new Error("video.html must declare window.SPMOTION.duration > 0");
+
+    // AUDIO IS MASTER: never fail because HTML and voiceover durations differ.
+    // Map the entire authored visual timeline onto the exact WAV duration.
     const timelineScale = declaredDuration / audioDuration;
     window.__SPMOTION_AUDIO_DURATION__ = audioDuration;
     window.__SPMOTION_DESIGN_DURATION__ = declaredDuration;
     window.__SPMOTION_TIMELINE_SCALE__ = timelineScale;
-    return { width, height, fps, designDuration: declaredDuration, duration: audioDuration, timelineScale, timelineDelta: delta, tolerance };
+    return { width, height, fps, designDuration: declaredDuration, duration: audioDuration, timelineScale, timelineDelta: Math.abs(declaredDuration - audioDuration) };
   }, audioDuration);
 
   await page.setViewportSize({ width: meta.width, height: meta.height });
@@ -102,7 +88,7 @@ try {
   console.log("EXPORT MODE: ENABLED BEFORE HTML SCRIPTS");
   console.log(`AUDIO MASTER: ${meta.duration.toFixed(3)}s`);
   console.log(`HTML DESIGN TIMELINE: ${meta.designDuration.toFixed(3)}s`);
-  console.log(`VISUAL TIMELINE SCALE: ${meta.timelineScale.toFixed(6)}x (delta ${meta.timelineDelta.toFixed(3)}s; tolerance ${meta.tolerance.toFixed(3)}s)`);
+  console.log(`VISUAL TIMELINE SCALE: ${meta.timelineScale.toFixed(6)}x (delta ${meta.timelineDelta.toFixed(3)}s; mismatch is auto-aligned)`);
   console.log(`FRAME COUNT: ${frameCount} at ${meta.fps} fps`);
   console.log(`FRAME SIZE: ${meta.width}x${meta.height}`);
   console.log(`BROWSER STARTUP: ${((performance.now() - browserStartedAt) / 1000).toFixed(2)}s`);
@@ -121,11 +107,9 @@ try {
       document.dispatchEvent(new CustomEvent("sp-motion-time", { detail: { time: actualTime, localTime, audioDuration, designDuration } }));
     }, { actualTime, localTime, audioDuration: meta.duration, designDuration: meta.designDuration });
 
-    // A paint boundary is awaited for every deterministic timestamp before capture.
     await page.evaluate(() => new Promise(requestAnimationFrame));
     const png = await page.screenshot({ type: "png", animations: "allow" });
     if (!ffmpeg.stdin.write(png)) await waitForDrain(ffmpeg.stdin);
-
     if ((i + 1) % Math.max(1, Math.floor(meta.fps)) === 0 || i === frameCount - 1) {
       const elapsed = (performance.now() - captureStartedAt) / 1000;
       process.stdout.write(`FRAME ${i + 1}/${frameCount} — ${((i + 1) / Math.max(elapsed, 0.001)).toFixed(1)} fps capture rate\n`);
