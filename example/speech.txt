@@ -1,15 +1,15 @@
-AI is changing gaming — but your setup still needs to deliver every detail.
+What if your PlayStation 5 could run an AI language model locally?
 
-On PlayStation 5, immersive audio helps you follow the action, hear directional cues and stay connected with your team.
+A new project called PS5LM Plus brings llama dot cpp to a jailbroken PS5 and uses the console's GPU.
 
-That is where a good gaming headset can make a difference: clear game sound, a comfortable fit and a microphone your teammates can understand.
+The developer reports around twenty tokens per second with a quantized Qwen 3.8 model with twenty-seven billion parameters. Smaller models can be much faster.
 
-AI is also pushing gaming further — from smarter non-player characters to more dynamic worlds and tools that help developers build richer experiences.
+But there's a catch. This is not an official PlayStation feature. You need a compatible console, a jailbreak, and homebrew software. It does not work on a normal, fully updated PS5.
 
-But better technology only matters when your setup lets you enjoy it.
+The console can act as a local AI server, so other devices on your home network can chat with the model.
 
-If you are upgrading your PS5 gaming setup, check the recommended product link in the description or pinned comment.
+It's a fascinating experiment — not a reason to modify your main console.
 
-Affiliate link — check the product details and current availability on Amazon.
+And if you're upgrading your gaming setup, check the headset link in the description.
 
 Follow ShortPrompt for more AI and technology updates.
