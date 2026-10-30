@@ -10,7 +10,10 @@
 #stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:radial-gradient(ellipse at 80% 10%,#172b4a 0%,transparent 40%),linear-gradient(150deg,#080b13,#0b1220 58%,#080b13)}
 .top{position:absolute;top:54px;left:66px;right:66px;display:flex;justify-content:space-between;align-items:center;color:#9eacc1;font-size:22px;letter-spacing:3px;text-transform:uppercase}
 .brand{font-weight:800;color:#fff}.pill{border:1px solid #39516e;border-radius:24px;padding:12px 20px;color:#a9c9ed}
-.scene{position:absolute;inset:150px 66px 120px;opacity:0;transform:translateY(26px);transition:none}
+.scene{position:absolute;inset:150px 66px 120px;opacity:0;transform:translateY(0);transition:none;will-change:opacity,transform}
+.scene > *{will-change:opacity,transform}
+.scene .source,.scene .node,.scene .product,.scene .obscol,.scene .key{will-change:opacity,transform}
+.scene .source.active{box-shadow:0 0 0 2px #52e0d055}
 .kicker{font-size:23px;letter-spacing:3px;text-transform:uppercase;color:var(--cyan);font-weight:800;margin-bottom:22px}
 h1{font-size:76px;line-height:1.02;letter-spacing:-2px;margin:0 0 28px;font-weight:850}
 h2{font-size:58px;line-height:1.06;letter-spacing:-1.5px;margin:0 0 26px}
@@ -167,29 +170,126 @@ h2{font-size:58px;line-height:1.06;letter-spacing:-1.5px;margin:0 0 26px}
 </div>
 <script>
 (() => {
-  const DURATION=52, scenes=[...document.querySelectorAll('.scene')];
-  const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
-  const ease=v=>{v=clamp(v,0,1);return v*v*(3-2*v)};
-  function frame(t){
-    t=clamp(Number(t)||0,0,DURATION);
-    scenes.forEach((el)=>{
-      const s=+el.dataset.start,e=+el.dataset.end;
-      const enter=ease((t-s)/0.55),leave=1-ease((t-(e-0.45))/0.45);
-      const opacity=clamp(enter*leave,0,1);
-      el.style.opacity=opacity;
-      el.style.transform=`translateY(${(1-opacity)*26}px)`;
-      el.style.pointerEvents=opacity>0.5?'auto':'none';
+  const DURATION=52;
+  const scenes=[...document.querySelectorAll('.scene')];
+  const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
+  const smooth=v=>{v=clamp(v);return v*v*(3-2*v)};
+  const outQuad=v=>1-(1-clamp(v))*(1-clamp(v));
+  const mix=(a,b,p)=>a+(b-a)*p;
+
+  // Capture each scene's original direct children once. Their reveal times are
+  // distributed over the complete scene, not compressed into a short intro.
+  const sceneItems=scenes.map(scene=>[...scene.children]);
+  const setReveal=(el,p,delay,span,dy=34,scale=.985)=>{
+    const q=smooth((p-delay)/span);
+    el.style.opacity=q.toFixed(4);
+    el.style.transform=`translate3d(0,${((1-q)*dy).toFixed(2)}px,0) scale(${mix(scale,1,q).toFixed(4)})`;
+  };
+  const setTarget=(el,p,at,span=.16,dy=22)=>{
+    if(!el)return;
+    const q=smooth((p-at)/span);
+    el.style.opacity=q.toFixed(4);
+    el.style.transform=`translate3d(0,${((1-q)*dy).toFixed(2)}px,0)`;
+  };
+  const setBar=(el,p,from,to)=>{
+    if(!el)return;
+    const q=smooth((p-from)/(to-from));
+    el.style.transform=`scaleX(${q.toFixed(4)})`;
+    el.style.transformOrigin='left center';
+  };
+
+  function animateScene(index,p,t){
+    const scene=scenes[index];
+    const items=sceneItems[index];
+    const n=items.length;
+    // The content unfolds throughout each scene. The last item is deliberately
+    // held until the final quarter to preserve visual movement under narration.
+    items.forEach((el,i)=>{
+      const delay=n===1?.16:.07+(i/(Math.max(1,n-1)))*.66;
+      setReveal(el,p,delay,.15,28,.99);
     });
-    document.getElementById('progress').style.width=(t/DURATION*100)+'%';
-    const sec=Math.floor(t);
+
+    if(index===0){
+      const card=scene.querySelector('.card');
+      if(card){const q=smooth((p-.30)/.42);card.style.transform=`translate3d(0,${(18*(1-q)).toFixed(2)}px,0) scale(${(.96+.04*q).toFixed(4)})`;}
+      const ps=scene.querySelector('.ps5');
+      if(ps){const q=smooth((p-.40)/.32);ps.style.transform=`translate3d(${(22*(1-q)).toFixed(2)}px,0,0) rotate(${(-5+5*q).toFixed(2)}deg)`;}
+      const big=scene.querySelector('.big');
+      if(big){const q=smooth((p-.68)/.22);big.style.opacity=q.toFixed(4);big.style.transform=`translateY(${(18*(1-q)).toFixed(1)}px)`;}
+    }
+    if(index===1){
+      const rows=scene.querySelectorAll('.source');
+      rows.forEach((el,i)=>setTarget(el,p,.24+i*.17,.13,18));
+      const badge=scene.querySelector('.big');
+      if(badge){const q=smooth((p-.65)/.2);badge.style.transform=`scale(${(.88+.12*q).toFixed(3)})`;}
+    }
+    if(index===2){
+      const nodes=scene.querySelectorAll('.node');
+      nodes.forEach((el,i)=>setTarget(el,p,.16+i*.13,.14,26));
+      const arrows=scene.querySelectorAll('.arrow');
+      arrows.forEach((el,i)=>setTarget(el,p,.28+i*.16,.12,0));
+      const hdcp=scene.querySelector('.card');
+      if(hdcp)setTarget(hdcp,p,.57,.22,30);
+    }
+    if(index===3){
+      const cols=scene.querySelectorAll('.obscol');
+      cols.forEach((el,i)=>setTarget(el,p,.22+i*.18,.18,22));
+      const rows=scene.querySelectorAll('.source');
+      rows.forEach((el,i)=>setTarget(el,p,.56+i*.16,.14,18));
+    }
+    if(index===4){
+      const lines=scene.querySelectorAll('.check');
+      lines.forEach((el,i)=>setTarget(el,p,.18+i*.12,.13,16));
+      const warning=scene.querySelector('.card[style*="border-color"]');
+      if(warning)setTarget(warning,p,.72,.18,24);
+    }
+    if(index===5){
+      const products=scene.querySelectorAll('.product');
+      products.forEach((el,i)=>{
+        setTarget(el,p,.20+i*.27,.22,34);
+        const q=smooth((p-(.57+i*.10))/.20);
+        el.style.borderColor=`rgba(82,224,208,${(.25+.55*q).toFixed(3)})`;
+      });
+    }
+    if(index===6){
+      const rows=scene.querySelectorAll('.source');
+      rows.forEach((el,i)=>setTarget(el,p,.43+i*.16,.14,18));
+      const sub=scene.querySelector('.sub');
+      if(sub){const q=smooth((p-.70)/.18);sub.style.opacity=q.toFixed(4);}
+    }
+  }
+
+  function frame(time){
+    const t=clamp(Number(time)||0,0,DURATION);
+    scenes.forEach((el,i)=>{
+      const a=Number(el.dataset.start),b=Number(el.dataset.end);
+      const p=clamp((t-a)/(b-a));
+      const active=t>=a&&t<=b;
+      const fadeIn=smooth((t-a)/.85);
+      const fadeOut=1-smooth((t-(b-.65))/.65);
+      el.style.opacity=(active?fadeIn*fadeOut:0).toFixed(4);
+      el.style.transform=`translate3d(0,${(active?(1-fadeIn)*18:18).toFixed(2)}px,0)`;
+      el.style.pointerEvents=active?'auto':'none';
+      if(active) animateScene(i,p,t);
+      else sceneItems[i].forEach(node=>{node.style.opacity='0';});
+    });
+    document.getElementById('progress').style.width=(t/DURATION*100).toFixed(3)+'%';
+    const sec=Math.min(DURATION,Math.floor(t));
     document.getElementById('timecode').textContent=`00:${String(sec).padStart(2,'0')} / 00:52`;
   }
+
   window.SPMOTION={width:1080,height:1920,fps:30,duration:DURATION};
   window.SPMOTION_FRAME=frame;
   window.SPMOTION_RENDER=frame;
+  // Preview is only a convenience clock. Export always calls frame(time)
+  // directly and is not affected by requestAnimationFrame.
   let previewStart=performance.now();
-  function preview(now){if(!window.__SPMOTION_EXPORT){frame(((now-previewStart)/1000)%DURATION);}requestAnimationFrame(preview);}
-  frame(0);requestAnimationFrame(preview);
+  function preview(now){
+    if(!window.__SPMOTION_EXPORT) frame(((now-previewStart)/1000)%DURATION);
+    requestAnimationFrame(preview);
+  }
+  frame(0);
+  requestAnimationFrame(preview);
 })();
 </script>
 </body>
