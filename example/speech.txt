@@ -1,15 +1,9 @@
-What if your PlayStation 5 could run an AI language model locally?
+Want to record PS5 gameplay for YouTube? You can start with the console itself: press the Create button, then choose Start New Recording. For longer or more flexible production, use an external capture card and OBS on a computer.
 
-A new project called PS5LM Plus brings llama dot cpp to a jailbroken PS5 and uses the console's GPU.
+First, connect the PS5 directly to your display and turn HDCP off in Settings, System, HDMI. Then connect PS5 HDMI to the card's HDMI In, the card's HDMI Out to your display, and USB to your computer.
 
-The developer reports around twenty tokens per second with a quantized Qwen 3.8 model with twenty-seven billion parameters. Smaller models can be much faster.
+In OBS, add a Video Capture Device source and select the capture card. Check the resolution, frame rate and audio before recording.
 
-But there's a catch. This is not an official PlayStation feature. You need a compatible console, a jailbreak, and homebrew software. It does not work on a normal, fully updated PS5.
+Here are two options: the UGREEN capture card for a simpler entry-level setup, and the Elgato option for a more dedicated capture workflow. Check each listing's exact capture specs before buying.
 
-The console can act as a local AI server, so other devices on your home network can chat with the model.
-
-It's a fascinating experiment — not a reason to modify your main console.
-
-And if you're upgrading your gaming setup, check the headset link in the description.
-
-Follow ShortPrompt for more AI and technology updates.
+Want the product links? Open the description or pinned comment. Follow for more gaming and creator workflows.

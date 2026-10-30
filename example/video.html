@@ -1,18 +1,196 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Can a PS5 Run AI Locally?</title>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1080, initial-scale=1, maximum-scale=1">
+<title>How to Record PS5 Gameplay for YouTube</title>
 <style>
-:root{--bg:#080d18;--panel:#111c2e;--blue:#4b8dff;--cyan:#58e1e8;--white:#f4f7ff;--muted:#9eacc4;--green:#6ce0a2;--red:#ff727c}*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--bg);font-family:Inter,Arial,sans-serif;color:var(--white)}#stage{position:relative;width:1080px;height:1920px;transform-origin:top left;overflow:hidden;background:radial-gradient(ellipse at 75% 20%,#142c51 0%,transparent 45%),linear-gradient(155deg,#080d18,#0b1324 55%,#080d18)}.grid{position:absolute;inset:0;background-image:linear-gradient(#ffffff08 1px,transparent 1px),linear-gradient(90deg,#ffffff08 1px,transparent 1px);background-size:70px 70px;mask-image:linear-gradient(to bottom,black,transparent 88%)}.orb{position:absolute;width:650px;height:650px;border-radius:50%;background:#245fc52a;filter:blur(70px);left:390px;top:170px}.top{position:absolute;top:80px;left:76px;right:76px;display:flex;justify-content:space-between;color:var(--muted);font-size:28px;letter-spacing:4px;text-transform:uppercase}.brand{color:var(--cyan);font-weight:800}.content{position:absolute;left:76px;right:76px;top:260px;bottom:170px}.eyebrow{font-size:28px;color:var(--cyan);letter-spacing:5px;text-transform:uppercase;font-weight:800;margin-bottom:32px}.headline{font-size:90px;line-height:.98;font-weight:900;letter-spacing:-4px;max-width:900px}.sub{font-size:38px;line-height:1.25;color:var(--muted);margin-top:34px;max-width:900px}.visual{position:absolute;left:0;right:0;top:470px;height:850px;display:flex;align-items:center;justify-content:center}.console{width:720px;height:360px;border-radius:44px;background:linear-gradient(145deg,#f7f8fc,#aeb8ca);box-shadow:0 35px 90px #0009;position:relative;transform:perspective(1000px) rotateY(-13deg) rotateX(5deg)}.console:before{content:'';position:absolute;left:50%;top:22px;bottom:22px;width:14px;background:#7f8ca3;border-radius:20px;transform:translateX(-50%)}.console:after{content:'PLAY';position:absolute;left:70px;bottom:38px;color:#66748d;font-size:22px;letter-spacing:6px}.screen{position:absolute;left:95px;right:95px;top:58px;bottom:58px;border-radius:18px;background:linear-gradient(135deg,#081a36,#143b72);display:flex;align-items:center;justify-content:center;flex-direction:column;box-shadow:inset 0 0 35px #0009}.screen b{font-size:52px;letter-spacing:3px}.screen small{font-size:24px;color:var(--cyan);margin-top:20px}.stats{display:flex;gap:22px;width:100%;margin-top:40px}.stat{flex:1;background:#14233b;border:1px solid #2b466b;border-radius:24px;padding:28px;text-align:center}.stat strong{display:block;font-size:58px;color:var(--cyan)}.stat span{font-size:22px;color:var(--muted)}.terminal{width:100%;background:#050a12;border:1px solid #294365;border-radius:26px;padding:34px;font:26px/1.6 ui-monospace,monospace;color:#a7f3cf;box-shadow:0 25px 70px #0008}.terminal .dim{color:#7187a6}.terminal .bright{color:#fff}.barwrap{width:100%;background:#182841;height:24px;border-radius:20px;overflow:hidden;margin-top:12px}.bar{height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--cyan));border-radius:20px}.warning{width:100%;padding:34px;border-radius:28px;background:#351d2b;border:2px solid #a44c64;font-size:32px;line-height:1.35}.warning b{color:#ff9aa5}.headphones{width:470px;height:470px;border:34px solid #5b9aff;border-bottom-color:transparent;border-radius:240px 240px 90px 90px;position:relative}.headphones:before,.headphones:after{content:'';position:absolute;bottom:-10px;width:100px;height:180px;border-radius:35px;background:linear-gradient(120deg,#dce6f7,#62718d);box-shadow:0 20px 50px #0008}.headphones:before{left:-55px}.headphones:after{right:-55px}.pill{display:inline-block;margin-top:34px;padding:18px 30px;border-radius:50px;background:#173b69;color:#b9d8ff;font-size:26px;font-weight:700}.footer{position:absolute;bottom:0;left:0;right:0;display:flex;justify-content:space-between;color:#7788a3;font-size:22px}.progress{position:absolute;bottom:70px;left:0;right:0;height:6px;background:#25334a;border-radius:10px}.progress i{display:block;height:100%;width:0;background:var(--cyan)}
-</style></head><body><div id="stage"><div class="grid"></div><div class="orb"></div><div class="top"><span class="brand">SHORTPROMPT / AI & TECH</span><span>FIELD NOTE 026</span></div><main class="content"><div class="eyebrow" id="eyebrow"></div><div class="headline" id="headline"></div><div class="sub" id="sub"></div><div class="visual" id="visual"></div><div class="footer"><span>LOCAL AI EXPERIMENT</span><span id="counter">01 / 06</span></div><div class="progress"><i id="progress"></i></div></main></div>
+:root{--bg:#080b13;--panel:#111827;--panel2:#172235;--line:#2a3a52;--white:#f5f7fb;--muted:#aab6c8;--blue:#4da3ff;--cyan:#52e0d0;--gold:#ffc66d;--red:#ff6b7a}
+*{box-sizing:border-box}html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:var(--bg);color:var(--white);font-family:Inter,Arial,sans-serif}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:radial-gradient(ellipse at 80% 10%,#172b4a 0%,transparent 40%),linear-gradient(150deg,#080b13,#0b1220 58%,#080b13)}
+.top{position:absolute;top:54px;left:66px;right:66px;display:flex;justify-content:space-between;align-items:center;color:#9eacc1;font-size:22px;letter-spacing:3px;text-transform:uppercase}
+.brand{font-weight:800;color:#fff}.pill{border:1px solid #39516e;border-radius:24px;padding:12px 20px;color:#a9c9ed}
+.scene{position:absolute;inset:150px 66px 120px;opacity:0;transform:translateY(26px);transition:none}
+.kicker{font-size:23px;letter-spacing:3px;text-transform:uppercase;color:var(--cyan);font-weight:800;margin-bottom:22px}
+h1{font-size:76px;line-height:1.02;letter-spacing:-2px;margin:0 0 28px;font-weight:850}
+h2{font-size:58px;line-height:1.06;letter-spacing:-1.5px;margin:0 0 26px}
+.sub{font-size:30px;line-height:1.35;color:var(--muted);max-width:850px}
+.card{background:linear-gradient(145deg,#172338,#101827);border:1px solid #2a3b54;border-radius:30px;padding:32px;box-shadow:0 22px 60px #0005}
+.screen{border:2px solid #314761;border-radius:26px;background:#0d1522;overflow:hidden}
+.screenbar{height:56px;background:#1c2b40;display:flex;align-items:center;padding:0 22px;gap:12px;color:#b8c6d8;font-size:18px}
+.dot{width:11px;height:11px;border-radius:50%;background:#67809d}
+.ps{display:flex;align-items:center;gap:28px;padding:34px}
+.ps5{width:130px;height:210px;border-radius:34px 14px 30px 14px;background:linear-gradient(90deg,#dce6f4,#75849b 45%,#f7f9fc 48%,#bac8d9);box-shadow:15px 15px 35px #0008;position:relative}
+.ps5:after{content:"";position:absolute;right:18px;top:20px;width:8px;height:170px;background:#53637a;border-radius:8px}
+.psinfo{flex:1}.psinfo strong{font-size:34px}.psinfo p{font-size:24px;color:var(--muted);line-height:1.35}
+.key{display:inline-flex;padding:12px 22px;border:2px solid #a8bdd6;border-radius:14px;font-size:23px;margin:8px 8px 0 0}
+.stepnum{font-size:22px;color:var(--cyan);font-weight:800;letter-spacing:2px}
+.diagram{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:30px}
+.node{flex:1;min-height:190px;border:2px solid #36516f;border-radius:24px;background:#142137;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:18px}
+.node b{font-size:26px}.node small{font-size:19px;color:var(--muted);margin-top:12px}.arrow{font-size:38px;color:var(--cyan)}
+.big{font-size:88px;font-weight:900;letter-spacing:-3px}
+.check{font-size:27px;line-height:1.55;color:#d8e2f0}.check span{color:var(--cyan);font-weight:900}
+.obs{background:#171b23;border:1px solid #424b59;border-radius:24px;overflow:hidden}
+.obshead{background:#252c38;padding:20px 26px;font-size:23px;font-weight:800}
+.obsbody{display:flex;gap:18px;padding:22px}
+.obscol{flex:1;background:#202733;border-radius:14px;padding:18px;min-height:230px}
+.obscol b{font-size:23px}.obscol p{font-size:20px;color:#b7c3d1;line-height:1.4}
+.source{background:#17253a;border:1px solid #38516f;border-radius:14px;padding:18px 20px;margin-top:14px;font-size:23px}
+.source.active{border-color:var(--cyan);box-shadow:0 0 0 2px #52e0d055}
+.productrow{display:flex;gap:20px;margin-top:32px}
+.product{flex:1;border-radius:28px;padding:28px;background:linear-gradient(145deg,#1a2a40,#111827);border:1px solid #344c69;min-height:390px}
+.product .type{font-size:19px;letter-spacing:2px;text-transform:uppercase;color:var(--cyan);font-weight:800}
+.product h3{font-size:39px;margin:20px 0 14px}
+.product p{font-size:23px;line-height:1.35;color:#c0cada}
+.product .tag{display:inline-block;margin-top:16px;border-radius:22px;padding:10px 16px;background:#233a54;color:#dcecff;font-size:18px}
+.footer{position:absolute;bottom:48px;left:66px;right:66px;display:flex;justify-content:space-between;color:#7f91a9;font-size:19px;letter-spacing:1.5px}
+.progress{position:absolute;bottom:0;left:0;height:7px;background:linear-gradient(90deg,var(--blue),var(--cyan));width:0}
+.glow{color:var(--cyan)}.warning{color:var(--gold)}
+.smallnote{font-size:20px;color:#9eacc1;line-height:1.4;margin-top:22px}
+</style>
+</head>
+<body>
+<div id="stage">
+  <div class="top"><div class="brand">SHORTPROMPT</div><div class="pill">PS5 CREATOR SETUP</div></div>
+
+  <section class="scene" data-start="0" data-end="6">
+    <div class="kicker">Gaming creator workflow</div>
+    <h1>Record PS5<br><span class="glow">gameplay</span> for YouTube</h1>
+    <p class="sub">Two ways to capture your footage. One built into the console. One built around a capture card and OBS.</p>
+    <div class="card" style="margin-top:54px">
+      <div class="ps">
+        <div class="ps5"></div>
+        <div class="psinfo"><strong>PLAYSTATION 5</strong><p>GAMEPLAY → CAPTURE → EDIT → YOUTUBE</p><div class="key">CREATE</div><div class="key">RECORD</div></div>
+      </div>
+    </div>
+    <div class="big" style="margin-top:40px">PS5 → PC</div>
+  </section>
+
+  <section class="scene" data-start="6" data-end="13">
+    <div class="kicker">Method 01 · Built in</div>
+    <h2>Start with the<br>PS5 Create button</h2>
+    <div class="screen" style="margin-top:38px">
+      <div class="screenbar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span style="margin-left:12px">PS5 · Create menu</span></div>
+      <div style="padding:28px">
+        <div class="source active">▶ &nbsp; Start New Recording</div>
+        <div class="source">◷ &nbsp; Save Recent Gameplay</div>
+        <div class="source">▣ &nbsp; Take Screenshot</div>
+      </div>
+    </div>
+    <p class="sub" style="margin-top:30px">Press Create on the DualSense controller. Choose Start New Recording, then stop it from the same menu.</p>
+    <div class="card" style="margin-top:28px;display:flex;align-items:center;gap:24px"><div class="big glow">1h</div><div class="check">Up to one hour of gameplay per manual recording, according to PlayStation support.</div></div>
+  </section>
+
+  <section class="scene" data-start="13" data-end="20">
+    <div class="kicker">Method 02 · Capture card</div>
+    <h2>For a PC workflow,<br>route the HDMI signal</h2>
+    <div class="diagram">
+      <div class="node"><b>PS5</b><small>HDMI OUT</small></div><div class="arrow">→</div>
+      <div class="node"><b>CAPTURE<br>CARD</b><small>HDMI IN / OUT</small></div><div class="arrow">→</div>
+      <div class="node"><b>DISPLAY</b><small>HDMI</small></div>
+    </div>
+    <div class="diagram" style="margin-top:18px">
+      <div style="flex:1"></div><div class="arrow">↓ USB</div><div class="node"><b>COMPUTER</b><small>OBS STUDIO</small></div><div style="flex:1"></div>
+    </div>
+    <div class="card" style="margin-top:36px">
+      <div class="stepnum">BEFORE CONNECTING THE CARD</div>
+      <h2 style="font-size:42px;margin-top:14px">Disable HDCP</h2>
+      <p class="check">PS5 Settings → System → HDMI → turn off <span>Enable HDCP</span>.</p>
+      <p class="smallnote">Do this with the console connected directly to the TV or monitor. Protected streaming apps may not be capturable.</p>
+    </div>
+  </section>
+
+  <section class="scene" data-start="20" data-end="28">
+    <div class="kicker">OBS Studio · Setup</div>
+    <h2>Add the capture<br>card as a source</h2>
+    <div class="obs" style="margin-top:32px">
+      <div class="obshead">OBS Studio · Sources</div>
+      <div class="obsbody">
+        <div class="obscol"><b>Scenes</b><p>PS5 Gameplay</p><p>Starting Soon</p></div>
+        <div class="obscol"><b>Sources</b><p>＋ Video Capture Device</p><p>Audio Input Capture</p><p>Text / Overlay</p></div>
+      </div>
+      <div style="padding:0 22px 24px"><div class="source active">Device: USB Video / Elgato / UGREEN</div><div class="source">Resolution / FPS: match the capture card</div></div>
+    </div>
+    <p class="sub" style="margin-top:28px">In OBS, add a Video Capture Device source and select your card. Set a supported resolution and frame rate, then check audio.</p>
+  </section>
+
+  <section class="scene" data-start="28" data-end="36">
+    <div class="kicker">Before you hit record</div>
+    <h2>Check the signal<br>and the sound</h2>
+    <div class="card" style="margin-top:34px">
+      <div class="check"><span>01</span> &nbsp; PS5 image appears in OBS</div>
+      <div class="check"><span>02</span> &nbsp; Display passthrough works</div>
+      <div class="check"><span>03</span> &nbsp; Game audio reaches OBS</div>
+      <div class="check"><span>04</span> &nbsp; Mic and party audio are routed correctly</div>
+      <div class="check"><span>05</span> &nbsp; Short test recording plays back smoothly</div>
+    </div>
+    <div class="card" style="margin-top:24px;border-color:#7a633d">
+      <div class="stepnum warning">IMPORTANT</div>
+      <p class="check">Capture resolution is not the same as HDMI passthrough resolution. Check the exact model's supported modes.</p>
+    </div>
+  </section>
+
+  <section class="scene" data-start="36" data-end="45">
+    <div class="kicker">Two product options</div>
+    <h2>Choose the capture<br>card for your setup</h2>
+    <div class="productrow">
+      <div class="product">
+        <div class="type">Entry option</div>
+        <h3>UGREEN</h3>
+        <p>For a simpler, lower-cost capture setup. Check the linked model's actual capture resolution and frame rate.</p>
+        <span class="tag">Budget route</span>
+      </div>
+      <div class="product">
+        <div class="type">Dedicated option</div>
+        <h3>Elgato</h3>
+        <p>For a more established capture workflow. Verify the exact linked model before comparing technical limits.</p>
+        <span class="tag">Creator setup</span>
+      </div>
+    </div>
+    <p class="smallnote">The product links identify the offers. This comparison does not assume identical specs across models.</p>
+  </section>
+
+  <section class="scene" data-start="45" data-end="52">
+    <div class="kicker">Your PS5 recording setup</div>
+    <h1>Capture.<br>Record.<br><span class="glow">Publish.</span></h1>
+    <div class="card" style="margin-top:36px">
+      <h2 style="font-size:42px">Want the product links?</h2>
+      <p class="check">Open the video description or pinned comment.</p>
+      <div class="source">UGREEN capture card ↗</div>
+      <div class="source">Elgato capture card ↗</div>
+    </div>
+    <p class="sub" style="margin-top:34px">Follow for more gaming and creator workflows.</p>
+  </section>
+
+  <div class="footer"><span>HOW TO RECORD PS5 GAMEPLAY</span><span id="timecode">00:00 / 00:52</span></div>
+  <div class="progress" id="progress"></div>
+</div>
 <script>
-const W=1080,H=1920,D=52;const $=id=>document.getElementById(id);const scenes=[
-{a:0,b:7,e:'THE QUESTION',h:'CAN A PS5\nRUN AI LOCALLY?',s:'A PlayStation console… running its own language model?',v:'console'},
-{a:7,b:15,e:'THE PROJECT',h:'MEET PS5LM PLUS',s:'A community homebrew project ports llama.cpp to the PS5 GPU.',v:'terminal'},
-{a:15,b:24,e:'THE BENCHMARK',h:'27 BILLION\nPARAMETERS',s:'Developer-reported result: around 20 tokens per second with quantized Qwen 3.8 27B.',v:'stats'},
-{a:24,b:32,e:'THE CATCH',h:'NOT A NORMAL PS5',s:'It needs a compatible jailbroken console and homebrew software. Not an official Sony feature.',v:'warning'},
-{a:32,b:41,e:'LOCAL SERVER',h:'YOUR PS5. YOUR LAN.',s:'Other devices on the same home network can send prompts to the model running on the console.',v:'network'},
-{a:41,b:52,e:'GAMING SETUP',h:'AI EXPERIMENT.\nGAMING UPGRADE.',s:'The LLM does not need a headset. But your gaming setup can still use one.',v:'headphones'}
-];
-function visual(type,t){if(type==='console')return `<div class="console"><div class="screen"><b>PLAYSTATION 5</b><small>LOCAL AI? / EXPERIMENT</small></div></div>`;if(type==='terminal')return `<div class="terminal"><div class="dim">$ ps5lm-plus --start</div><div class="bright">Loading llama.cpp backend…</div><div>GPU: AMD RDNA 2 / Vulkan</div><div>Model format: GGUF</div><div class="bright">Server ready on local network_</div></div>`;if(type==='stats')return `<div style="width:100%"><div class="stats"><div class="stat"><strong>27B</strong><span>model parameters</span></div><div class="stat"><strong>~20</strong><span>tokens / second</span></div></div><div class="terminal" style="margin-top:28px"><div>Qwen 3.8 27B · quantized</div><div class="barwrap"><div class="bar" style="width:${Math.min(100,Math.max(5,(t-15)/9*100))}%"></div></div><div class="dim" style="margin-top:20px">Developer-reported benchmark</div></div></div>`;if(type==='warning')return `<div class="warning"><b>IMPORTANT LIMITATION</b><br><br>Requires jailbreak + compatible firmware<br><br>Not supported by Sony<br><br>Not available on a standard updated PS5</div>`;if(type==='network')return `<div style="width:100%;text-align:center"><div class="stat" style="width:65%;margin:auto"><strong>PS5</strong><span>LOCAL LLM SERVER</span></div><div style="height:100px;width:3px;background:var(--cyan);margin:auto"></div><div style="display:flex;gap:24px"><div class="stat"><strong>PC</strong><span>Browser chat</span></div><div class="stat"><strong>PHONE</strong><span>Local network</span></div></div><div class="pill">NO CLOUD REQUEST REQUIRED WHILE RUNNING</div></div>`;return `<div style="text-align:center"><div class="headphones"></div><div class="pill">OPTIONAL GAMING ACCESSORY</div></div>`}
-function frame(t){t=Math.max(0,Math.min(D,t));let i=scenes.findIndex(x=>t>=x.a&&t<x.b);if(i<0)i=scenes.length-1;let x=scenes[i],p=(t-x.a)/(x.b-x.a);$('eyebrow').textContent=x.e;$('headline').innerHTML=x.h.replace(/\n/g,'<br>');$('sub').textContent=x.s;$('visual').innerHTML=visual(x.v,t);$('counter').textContent=String(i+1).padStart(2,'0')+' / 06';$('progress').style.width=(t/D*100)+'%';$('headline').style.transform=`translateY(${(1-Math.min(1,p*4))*22}px)`;$('headline').style.opacity=Math.min(1,p*5+.05)}
-function resize(){let s=Math.min(innerWidth/W,innerHeight/H);$('stage').style.transform=`scale(${s})`;document.body.style.width=innerWidth+'px';document.body.style.height=innerHeight+'px'}window.addEventListener('resize',resize);resize();window.SPMOTION={width:W,height:H,fps:30,duration:D};window.SPMOTION_FRAME=frame;window.SPMOTION_RENDER=frame;let start=performance.now();function preview(){frame(((performance.now()-start)/1000)%D);requestAnimationFrame(preview)}if(!new URLSearchParams(location.search).has('export'))preview();else frame(0);
-</script></body></html>
+(() => {
+  const DURATION=52, scenes=[...document.querySelectorAll('.scene')];
+  const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+  const ease=v=>{v=clamp(v,0,1);return v*v*(3-2*v)};
+  function frame(t){
+    t=clamp(Number(t)||0,0,DURATION);
+    scenes.forEach((el)=>{
+      const s=+el.dataset.start,e=+el.dataset.end;
+      const enter=ease((t-s)/0.55),leave=1-ease((t-(e-0.45))/0.45);
+      const opacity=clamp(enter*leave,0,1);
+      el.style.opacity=opacity;
+      el.style.transform=`translateY(${(1-opacity)*26}px)`;
+      el.style.pointerEvents=opacity>0.5?'auto':'none';
+    });
+    document.getElementById('progress').style.width=(t/DURATION*100)+'%';
+    const sec=Math.floor(t);
+    document.getElementById('timecode').textContent=`00:${String(sec).padStart(2,'0')} / 00:52`;
+  }
+  window.SPMOTION={width:1080,height:1920,fps:30,duration:DURATION};
+  window.SPMOTION_FRAME=frame;
+  window.SPMOTION_RENDER=frame;
+  let previewStart=performance.now();
+  function preview(now){if(!window.__SPMOTION_EXPORT){frame(((now-previewStart)/1000)%DURATION);}requestAnimationFrame(preview);}
+  frame(0);requestAnimationFrame(preview);
+})();
+</script>
+</body>
+</html>
