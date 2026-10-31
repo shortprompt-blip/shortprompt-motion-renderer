@@ -35,6 +35,9 @@
 #sp-obs-audio-root .sp-state span{color:#aab6c8;font-size:clamp(13px,2vw,20px)}
 #sp-obs-audio-root .sp-footer{position:absolute;bottom:3%;left:6%;right:6%;display:flex;justify-content:space-between;color:#7f91a9;font-size:clamp(10px,1.6vw,17px);letter-spacing:.12em;text-transform:uppercase}
 #sp-obs-audio-root .sp-progress{position:absolute;bottom:0;left:0;height:6px;width:0;background:linear-gradient(90deg,#4da3ff,#52e0d0)}
+/* Standalone export viewport: prevent percentage-height collapse to zero. */
+html,body{margin:0;padding:0;width:1080px;height:1920px;min-width:1080px;min-height:1920px;overflow:hidden;background:#070b13}
+#sp-obs-audio-root{width:1080px;height:1920px;min-width:1080px;min-height:1920px}
 </style>
 </head>
 <body>
