@@ -1,90 +1,45 @@
 <!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Fix Bad Microphone Audio in OBS</title>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>OBS Audio Problems</title>
 <style>
-#sp-obs-audio-root{position:relative;width:100%;height:100%;overflow:hidden;box-sizing:border-box;background:radial-gradient(ellipse at 78% 12%,#18304c 0%,transparent 42%),linear-gradient(145deg,#070b13,#0d1725 58%,#080c14);color:#f5f7fb;font-family:Inter,Arial,sans-serif}
-#sp-obs-audio-root *{box-sizing:border-box}
-#sp-obs-audio-root .sp-top{position:absolute;top:3%;left:6%;right:6%;display:flex;justify-content:space-between;align-items:center;font-size:clamp(12px,2.0vw,22px);letter-spacing:.18em;color:#9eacc1;text-transform:uppercase}
-#sp-obs-audio-root .sp-brand{font-weight:900;color:#fff}
-#sp-obs-audio-root .sp-pill{border:1px solid #39516e;border-radius:999px;padding:.55em .9em;color:#a9c9ed;font-size:.78em}
-#sp-obs-audio-root .sp-scene{position:absolute;inset:12% 6% 10%;opacity:0;visibility:hidden;transform:translateY(12px)}
-#sp-obs-audio-root .sp-reveal{opacity:0;transform:translate3d(0,22px,0)}
-#sp-obs-audio-root .sp-kicker{font-size:clamp(12px,2vw,22px);letter-spacing:.16em;text-transform:uppercase;color:#52e0d0;font-weight:800;margin-bottom:2.5%}
-#sp-obs-audio-root h1{font-size:clamp(38px,7vw,76px);line-height:1.02;letter-spacing:-.035em;margin:0 0 4%;font-weight:900}
-#sp-obs-audio-root h2{font-size:clamp(30px,5.5vw,58px);line-height:1.05;letter-spacing:-.03em;margin:0 0 4%;font-weight:850}
-#sp-obs-audio-root .sp-cyan{color:#52e0d0}
-#sp-obs-audio-root .sp-sub{font-size:clamp(17px,2.8vw,30px);line-height:1.35;color:#aab6c8;max-width:94%}
-#sp-obs-audio-root .sp-panel{margin-top:5%;padding:5%;border-radius:28px;background:linear-gradient(145deg,#172338,#101827);border:1px solid #2a3b54;box-shadow:0 18px 50px #0005}
-#sp-obs-audio-root .sp-row{display:flex;align-items:center;gap:4%;padding:3.2% 3%;margin:2.2% 0;border:1px solid #344b67;border-radius:15px;background:#142137;font-size:clamp(16px,2.8vw,28px)}
-#sp-obs-audio-root .sp-num{color:#52e0d0;font-weight:900;font-size:1.15em;min-width:1.5em}
-#sp-obs-audio-root .sp-muted{color:#aab6c8;font-size:.78em;display:block;margin-top:.35em}
-#sp-obs-audio-root .sp-meter{height:24px;border-radius:99px;background:#263448;overflow:hidden;margin-top:5%}
-#sp-obs-audio-root .sp-meterfill{height:100%;width:0;background:linear-gradient(90deg,#4da3ff,#52e0d0);border-radius:99px}
-#sp-obs-audio-root .sp-db{display:flex;justify-content:space-between;color:#aab6c8;font-size:clamp(12px,1.8vw,19px);margin-top:1.5%}
-#sp-obs-audio-root .sp-chip{display:inline-block;padding:.45em .8em;border:1px solid #36516f;border-radius:10px;color:#cfe4ff;background:#142137;margin:.25em .2em;font-size:clamp(13px,2vw,21px)}
-#sp-obs-audio-root .sp-chain{display:flex;flex-direction:column;gap:12px;margin-top:5%}
-#sp-obs-audio-root .sp-filter{padding:4%;border-radius:16px;border:1px solid #35506e;background:#142137;display:flex;justify-content:space-between;align-items:center;font-size:clamp(17px,2.8vw,28px)}
-#sp-obs-audio-root .sp-filter small{color:#52e0d0;font-size:.65em;letter-spacing:.1em}
-#sp-obs-audio-root .sp-warning{border-color:#84653b;background:#261f17;color:#f7d8a4}
-#sp-obs-audio-root .sp-beforeafter{display:grid;grid-template-columns:1fr 1fr;gap:4%;margin-top:6%}
-#sp-obs-audio-root .sp-state{padding:6% 4%;border-radius:20px;background:#172338;border:1px solid #344b67;text-align:center}
-#sp-obs-audio-root .sp-state strong{display:block;font-size:clamp(19px,3.2vw,34px);margin-bottom:10%}
-#sp-obs-audio-root .sp-state span{color:#aab6c8;font-size:clamp(13px,2vw,20px)}
-#sp-obs-audio-root .sp-footer{position:absolute;bottom:3%;left:6%;right:6%;display:flex;justify-content:space-between;color:#7f91a9;font-size:clamp(10px,1.6vw,17px);letter-spacing:.12em;text-transform:uppercase}
-#sp-obs-audio-root .sp-progress{position:absolute;bottom:0;left:0;height:6px;width:0;background:linear-gradient(90deg,#4da3ff,#52e0d0)}
-/* Standalone export viewport: prevent percentage-height collapse to zero. */
-html,body{margin:0;padding:0;width:1080px;height:1920px;min-width:1080px;min-height:1920px;overflow:hidden;background:#070b13}
-#sp-obs-audio-root{width:1080px;height:1920px;min-width:1080px;min-height:1920px}
-</style>
-</head>
-<body>
-<div id="sp-obs-audio-root">
- <div class="sp-top"><span class="sp-brand">SHORTPROMPT</span><span class="sp-pill">CREATOR AUDIO</span></div>
- <section class="sp-scene" data-start="0" data-end="7">
-  <div class="sp-kicker">OBS Studio · Audio fix</div><h1>Your mic sounds<br><span class="sp-cyan">bad?</span></h1>
-  <p class="sp-sub">Fix the recording chain before replacing your gear.</p>
-  <div class="sp-panel"><div class="sp-row"><span class="sp-num">01</span><div>Noise and room sound<span class="sp-muted">Fan · keyboard · echo</span></div></div><div class="sp-row"><span class="sp-num">02</span><div>Uneven voice level<span class="sp-muted">Too quiet · sudden peaks</span></div></div></div>
- </section>
- <section class="sp-scene" data-start="7" data-end="15">
-  <div class="sp-kicker">Step 01 · Input source</div><h2>Choose the<br>right microphone</h2>
-  <div class="sp-panel"><div class="sp-row"><span class="sp-num">✓</span><div>Mic / Auxiliary Audio<span class="sp-muted">Select the device you actually speak into</span></div></div><div class="sp-row"><span class="sp-num">!</span><div>Disable duplicate inputs<span class="sp-muted">Avoid capturing the same mic twice</span></div></div></div>
-  <p class="sp-sub">Speak at your normal distance and watch the mixer meter.</p>
- </section>
- <section class="sp-scene" data-start="15" data-end="25">
-  <div class="sp-kicker">Step 02 · Noise suppression</div><h2>Reduce steady<br>background noise</h2>
-  <div class="sp-panel"><div class="sp-row"><span class="sp-num">1</span><div>Right-click mic → Filters</div></div><div class="sp-row"><span class="sp-num">2</span><div>Add Noise Suppression</div></div><div class="sp-row"><span class="sp-num">3</span><div>Try RNNoise<span class="sp-muted">Useful for mild, steady fan noise</span></div></div></div>
-  <p class="sp-sub">Too much suppression can make speech sound damaged.</p>
- </section>
- <section class="sp-scene" data-start="25" data-end="35">
-  <div class="sp-kicker">Step 03 · Noise gate</div><h2>Quiet the gaps<br>between sentences</h2>
-  <div class="sp-panel"><div class="sp-row"><span class="sp-num">OPEN</span><div>Below your quiet voice</div></div><div class="sp-row"><span class="sp-num">CLOSE</span><div>Above the room noise</div></div></div>
-  <p class="sp-sub">Adjust by listening. If words disappear, the gate is too aggressive.</p>
- </section>
- <section class="sp-scene" data-start="35" data-end="45">
-  <div class="sp-kicker">Step 04 · Compressor</div><h2>Control sudden<br>loud peaks</h2>
-  <div class="sp-panel"><div class="sp-row"><span class="sp-num">LOW</span><div>Normal speaking voice</div></div><div class="sp-row"><span class="sp-num">HIGH</span><div>Shouts and sudden peaks</div></div><div class="sp-meter"><div class="sp-meterfill" data-fill="72"></div></div><div class="sp-db"><span>Input dynamics</span><span>More consistent output</span></div></div>
-  <p class="sp-sub">The compressor reduces louder moments so your voice stays more even.</p>
- </section>
- <section class="sp-scene" data-start="45" data-end="55">
-  <div class="sp-kicker">Step 05 · Limiter</div><h2>Prevent digital<br>clipping</h2>
-  <div class="sp-chain"><div class="sp-filter">Noise Suppression <small>01</small></div><div class="sp-filter">Noise Gate <small>02</small></div><div class="sp-filter">Compressor <small>03</small></div><div class="sp-filter sp-warning">Limiter · LAST <small>04</small></div></div>
-  <p class="sp-sub">Place the limiter last in the filter chain.</p>
- </section>
- <section class="sp-scene" data-start="55" data-end="65">
-  <div class="sp-kicker">Final check</div><h2>Record. Listen.<br><span class="sp-cyan">Adjust.</span></h2>
-  <div class="sp-beforeafter"><div class="sp-state"><strong>BEFORE</strong><span>Noisy · uneven</span></div><div class="sp-state"><strong>AFTER</strong><span>Cleaner · controlled</span></div></div>
-  <div class="sp-panel"><p class="sp-sub">Want to improve the sound at its source, too?</p><div class="sp-row"><span class="sp-num">↗</span><div>USB microphone + full setup guide<span class="sp-muted">Description · pinned comment</span></div></div></div>
- </section>
- <div class="sp-footer"><span>FIX BAD MIC AUDIO IN OBS</span><span id="sp-time">00:00 / 01:05</span></div><div class="sp-progress" id="sp-progress"></div>
-</div>
-<script>
-(()=>{'use strict';const D=65,FPS=30,root=document.getElementById('sp-obs-audio-root'),scenes=[...root.querySelectorAll('.sp-scene')],clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v)),ease=v=>{v=clamp(v);return v*v*(3-2*v)};
-scenes.forEach(s=>{s.querySelectorAll('.sp-kicker,h1,h2,.sp-sub,.sp-panel,.sp-row,.sp-filter,.sp-state').forEach(el=>el.classList.add('sp-reveal'));});
-function frame(input){const t=clamp(Number(input)||0,0,D);scenes.forEach((s,i)=>{const a=+s.dataset.start,b=+s.dataset.end,on=t>=a&&(t<b||(i===scenes.length-1&&t<=D));s.style.visibility=on?'visible':'hidden';s.style.opacity=on?'1':'0';if(on){const local=t-a,p=ease(local/.8);s.style.transform=`translate3d(0,${(1-p)*12}px,0)`;const items=[...s.querySelectorAll('.sp-reveal')],spread=Math.min(5.2,(b-a)*.58),step=items.length>1?spread/(items.length-1):0;items.forEach((el,j)=>{const q=ease((local-j*step)/.85);el.style.opacity=String(q);el.style.transform=`translate3d(0,${(1-q)*22}px,0)`;});const fill=s.querySelector('[data-fill]');if(fill){const q=ease((local-3)/4);fill.style.width=(q*+fill.dataset.fill)+'%';}}else{s.style.transform='translate3d(0,12px,0)';}});const p=root.querySelector('#sp-progress');p.style.width=(t/D*100)+'%';const sec=Math.floor(t),mm=String(Math.floor(sec/60)).padStart(2,'0'),ss=String(sec%60).padStart(2,'0');root.querySelector('#sp-time').textContent=`${mm}:${ss} / 01:05`;return true;}
-window.SPMOTION={width:1080,height:1920,fps:FPS,duration:D};window.SPMOTION_FRAME=frame;window.SPMOTION_RENDER=frame;window.__SPMOTION_RENDER_MODE__='renderer-driven';frame(0);
-})();
-</script>
+#sp-obs-audio-sync{position:relative;width:100%;height:100%;min-height:100%;overflow:hidden;background:#080d17;color:#f4f7fb;font-family:Inter,Arial,sans-serif;box-sizing:border-box}
+#sp-obs-audio-sync *{box-sizing:border-box}
+#sp-obs-audio-sync .bg{position:absolute;inset:0;background:radial-gradient(ellipse at 78% 8%,#17334d 0%,transparent 42%),linear-gradient(145deg,#080d17,#101b2b 60%,#080d17)}
+#sp-obs-audio-sync .top{position:absolute;top:4%;left:6%;right:6%;display:flex;justify-content:space-between;color:#9fb1c7;font-size:clamp(10px,1.5vw,20px);letter-spacing:.16em}
+#sp-obs-audio-sync .brand{font-weight:900;color:#fff}
+#sp-obs-audio-sync .pill{border:1px solid #42617d;border-radius:30px;padding:.55em 1em;color:#a9d8ef}
+#sp-obs-audio-sync .scene{position:absolute;inset:14% 6% 11%;display:none;opacity:0}
+#sp-obs-audio-sync .scene.active{display:block;opacity:1}
+#sp-obs-audio-sync .eyebrow{color:#56dfcf;font-size:clamp(11px,1.7vw,22px);font-weight:800;letter-spacing:.16em;text-transform:uppercase;margin-bottom:2.2%}
+#sp-obs-audio-sync h1{font-size:clamp(34px,7.2vw,86px);line-height:1.01;letter-spacing:-.045em;margin:0 0 3%;font-weight:900}
+#sp-obs-audio-sync h2{font-size:clamp(27px,5.6vw,66px);line-height:1.05;letter-spacing:-.035em;margin:0 0 4%}
+#sp-obs-audio-sync .cyan{color:#56dfcf}
+#sp-obs-audio-sync .muted{color:#aebdd0;font-size:clamp(15px,2.6vw,31px);line-height:1.35;max-width:92%}
+#sp-obs-audio-sync .panel{background:linear-gradient(145deg,#18283c,#101b2a);border:1px solid #2b4560;border-radius:24px;padding:4%;margin-top:4%;box-shadow:0 18px 55px #0005}
+#sp-obs-audio-sync .row{display:flex;align-items:center;gap:3%;margin:2.2% 0;font-size:clamp(14px,2.5vw,29px)}
+#sp-obs-audio-sync .num{color:#56dfcf;font-weight:900;font-size:1.15em;min-width:1.6em}
+#sp-obs-audio-sync .chip{display:inline-block;border:1px solid #42617d;border-radius:12px;padding:.45em .7em;color:#dcecff;background:#14263a;font-size:clamp(13px,2vw,24px)}
+#sp-obs-audio-sync .window{border:1px solid #40556d;border-radius:18px;overflow:hidden;background:#0d1521;margin-top:4%}
+#sp-obs-audio-sync .bar{background:#1c2c40;padding:2.2% 3%;color:#b9c9dc;font-size:clamp(12px,1.8vw,21px)}
+#sp-obs-audio-sync .content{padding:3%}
+#sp-obs-audio-sync .wave{display:flex;align-items:center;gap:5px;height:95px;margin-top:5%}
+#sp-obs-audio-sync .wave i{display:block;width:3%;border-radius:6px;background:#56dfcf;height:20%}
+#sp-obs-audio-sync .wave i:nth-child(3n){height:70%}#sp-obs-audio-sync .wave i:nth-child(4n){height:42%}#sp-obs-audio-sync .wave i:nth-child(5n){height:88%}
+#sp-obs-audio-sync .footer{position:absolute;bottom:4%;left:6%;right:6%;display:flex;justify-content:space-between;color:#8195ad;font-size:clamp(10px,1.5vw,18px);letter-spacing:.12em}
+#sp-obs-audio-sync .progress{position:absolute;bottom:0;left:0;height:6px;width:0;background:linear-gradient(90deg,#4a9fff,#56dfcf)}
+#sp-obs-audio-sync .product{display:flex;gap:5%;align-items:center}
+#sp-obs-audio-sync .headphones{width:28%;aspect-ratio:1;border:9px solid #dce8f4;border-bottom-color:transparent;border-radius:50% 50% 20% 20%;position:relative;margin:0 auto}
+#sp-obs-audio-sync .headphones:before,#sp-obs-audio-sync .headphones:after{content:"";position:absolute;bottom:-12%;width:24%;height:48%;background:#56dfcf;border-radius:10px}
+#sp-obs-audio-sync .headphones:before{left:-13%}#sp-obs-audio-sync .headphones:after{right:-13%}
+#sp-obs-audio-sync .small{font-size:clamp(11px,1.6vw,19px);color:#9eb0c4;line-height:1.4}
+</style></head><body style="margin:0;width:100%;height:100%;background:#080d17">
+<div id="sp-obs-audio-sync"><div class="bg"></div><div class="top"><span class="brand">SHORTPROMPT</span><span class="pill">OBS AUDIO FIX</span></div>
+<section class="scene" data-start="0" data-end="9"><div class="eyebrow">OBS Studio troubleshooting</div><h1>Echo.<br><span class="cyan">Double audio.</span><br>Audio delay?</h1><p class="muted">Fix the routing before you buy new gear.</p><div class="panel"><div class="row"><span class="num">01</span> Find the duplicate signal</div><div class="row"><span class="num">02</span> Set monitoring correctly</div><div class="row"><span class="num">03</span> Measure sync offset</div></div></section>
+<section class="scene" data-start="9" data-end="20"><div class="eyebrow">Problem 01 · Echo</div><h2>Are you monitoring<br>through <span class="cyan">speakers?</span></h2><p class="muted">Speaker audio can enter the microphone again and return to the stream.</p><div class="window"><div class="bar">SIGNAL PATH · EXPLANATORY RECONSTRUCTION</div><div class="content"><div class="row"><span class="chip">OBS audio</span> → <span class="chip">Speakers</span></div><div class="row"><span class="chip">Speakers</span> → <span class="chip">Microphone</span></div><div class="row"><span class="chip">Echo returns to stream</span></div></div></div></section>
+<section class="scene" data-start="20" data-end="32"><div class="eyebrow">Fix 01 · Monitoring</div><h2>Use headphones.<br>Check <span class="cyan">Monitor Off.</span></h2><div class="window"><div class="bar">OBS · ADVANCED AUDIO PROPERTIES</div><div class="content"><div class="row">Microphone <span style="margin-left:auto" class="chip">Monitor Off</span></div><div class="row">Desktop Audio <span style="margin-left:auto" class="chip">Monitor Off</span></div><div class="row">Monitoring Device <span style="margin-left:auto" class="chip">Your headphones</span></div></div></div><p class="small">Illustrative OBS layout. Use other monitoring modes only when your workflow requires them; avoid routing the same signal twice.</p></section>
+<section class="scene" data-start="32" data-end="43"><div class="eyebrow">Problem 02 · Double audio</div><h2>One microphone.<br><span class="cyan">One active input.</span></h2><div class="panel"><div class="row"><span class="num">A</span> Global Mic/Aux device</div><div class="row"><span class="num">B</span> Separate Audio Input Capture</div><div class="row">Both active? You may capture the mic twice.</div></div><p class="muted">Check Settings → Audio and your scene sources. Keep one intended input active, then record a test.</p></section>
+<section class="scene" data-start="43" data-end="57"><div class="eyebrow">Problem 03 · Lip sync</div><h2>Adjust the <span class="cyan">Sync Offset</span><br>in milliseconds.</h2><div class="window"><div class="bar">ADVANCED AUDIO PROPERTIES · EXAMPLE</div><div class="content"><div class="row">Microphone <span style="margin-left:auto" class="chip">+120 ms</span></div><div class="row">Capture Card <span style="margin-left:auto" class="chip">0 ms</span></div><div class="wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div><p class="small">+120 ms is illustrative only, not a universal setting. Record a clap, review playback, then adjust the source that is early or late in small steps.</p></section>
+<section class="scene" data-start="57" data-end="68"><div class="eyebrow">Optional monitoring gear</div><h2>Hear the problem<br>before you publish.</h2><div class="panel product"><div class="headphones"></div><div><h2 style="font-size:clamp(22px,4vw,46px);margin:0 0 3%">OneOdio Pro-10</h2><p class="muted">Wired headphones for monitoring and test playback.</p></div></div><p class="small">An optional workflow companion. Headphones help you hear routing problems; they do not remove echo or automatically correct sync.</p></section>
+<section class="scene" data-start="68" data-end="78"><div class="eyebrow">Final test</div><h1>Record.<br>Listen.<br><span class="cyan">Adjust.</span></h1><div class="panel"><div class="row"><span class="num">✓</span> No duplicate mic source</div><div class="row"><span class="num">✓</span> Monitoring routed to headphones</div><div class="row"><span class="num">✓</span> Sync checked with a test recording</div></div><p class="muted">Full guide and headphone link are in the description and pinned comment.</p></section>
+<div class="footer"><span>SHORTPROMPT · CREATOR WORKFLOW</span><span id="sp-time">00:00 / 01:18</span></div><div class="progress" id="sp-progress"></div></div>
+<script>(function(){const root=document.getElementById('sp-obs-audio-sync');if(!root)return;const scenes=Array.from(root.querySelectorAll('.scene'));const duration=78;function frame(input){const t=Math.max(0,Math.min(duration,Number(input)||0));let active=-1;scenes.forEach((s,i)=>{const a=+s.dataset.start,b=+s.dataset.end;const on=t>=a&&(t<b||(i===scenes.length-1&&t<=duration));s.classList.toggle('active',on);if(on)active=i;});const p=root.querySelector('#sp-progress');if(p)p.style.width=(t/duration*100)+'%';const sec=Math.floor(t),mm=String(Math.floor(sec/60)).padStart(2,'0'),ss=String(sec%60).padStart(2,'0');const c=root.querySelector('#sp-time');if(c)c.textContent=mm+':'+ss+' / 01:18';return active;}window.SPMOTION_FRAME=frame;window.SPMOTION_RENDER=frame;frame(0);})();</script>
 </body></html>

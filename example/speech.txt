@@ -1,7 +1,13 @@
-Your microphone sounds distant, noisy, or uneven? Before buying anything, fix these five OBS settings.
-First, select the correct microphone in the Audio Mixer and speak at your normal volume. Keep the mic close and at a consistent distance.
-Open Filters on your microphone source. Add Noise Suppression and start with RNNoise for steady background sounds like PC fan noise. Too much suppression can damage your voice.
-Next, use a Noise Gate only if noise is noticeable between sentences. Set it carefully so quiet words are not cut off.
-Add a Compressor to control sudden loud peaks. Then place a Limiter last to help prevent clipping.
-Record a short test with both quiet and loud speech, then listen back on headphones.
-Want to improve the sound at its source, too? A dedicated USB microphone can help capture your voice more clearly. I've included a suitable option and the complete setup guide in the description and pinned comment.
+Your OBS stream sounds doubled, echoey, or out of sync? You usually don't need new software. You need to find where the audio is being routed.
+
+First, wear headphones while checking OBS. If you monitor the microphone through speakers, the mic can pick that sound up again and create echo.
+
+Open Edit, then Advanced Audio Properties. Find the microphone or capture source. Set Audio Monitoring to Monitor Off if you don't need to hear it through OBS. If you do need monitoring, choose the correct headphones as your monitoring device, and avoid routing the same source back twice.
+
+Now check duplicate sources. If your microphone is enabled both as a global audio device and as a separate source, you may be capturing it twice. Keep one intended input active, then make a short test recording.
+
+For lip-sync delay, open Advanced Audio Properties and adjust Sync Offset in milliseconds on the source that is actually early or late. Don't guess: record a clap, review it, and change the offset in small steps.
+
+The OneOdio Pro-10 is an optional wired headphone for monitoring your sound while you test. It won't remove echo or fix sync automatically; it helps you hear the problem.
+
+Record another test and listen back. The full guide and headphone link are in the description and pinned comment.
