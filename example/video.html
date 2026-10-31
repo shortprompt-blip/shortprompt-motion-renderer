@@ -2,310 +2,86 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=1080, initial-scale=1, maximum-scale=1">
-<title>How to Record PS5 Gameplay for YouTube</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fix Bad Microphone Audio in OBS</title>
 <style>
-:root{--bg:#080b13;--panel:#111827;--panel2:#172235;--line:#2a3a52;--white:#f5f7fb;--muted:#aab6c8;--blue:#4da3ff;--cyan:#52e0d0;--gold:#ffc66d;--red:#ff6b7a}
-*{box-sizing:border-box}html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:var(--bg);color:var(--white);font-family:Inter,Arial,sans-serif}
-#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:radial-gradient(ellipse at 80% 10%,#172b4a 0%,transparent 40%),linear-gradient(150deg,#080b13,#0b1220 58%,#080b13)}
-.top{position:absolute;top:54px;left:66px;right:66px;display:flex;justify-content:space-between;align-items:center;color:#9eacc1;font-size:22px;letter-spacing:3px;text-transform:uppercase}
-.brand{font-weight:800;color:#fff}.pill{border:1px solid #39516e;border-radius:24px;padding:12px 20px;color:#a9c9ed}
-.scene{position:absolute;inset:150px 66px 120px;opacity:0;transform:translateY(0);transition:none;will-change:opacity,transform}
-.scene > *{will-change:opacity,transform}
-.scene .source,.scene .node,.scene .product,.scene .obscol,.scene .key{will-change:opacity,transform}
-.scene .source.active{box-shadow:0 0 0 2px #52e0d055}
-.kicker{font-size:23px;letter-spacing:3px;text-transform:uppercase;color:var(--cyan);font-weight:800;margin-bottom:22px}
-h1{font-size:76px;line-height:1.02;letter-spacing:-2px;margin:0 0 28px;font-weight:850}
-h2{font-size:58px;line-height:1.06;letter-spacing:-1.5px;margin:0 0 26px}
-.sub{font-size:30px;line-height:1.35;color:var(--muted);max-width:850px}
-.card{background:linear-gradient(145deg,#172338,#101827);border:1px solid #2a3b54;border-radius:30px;padding:32px;box-shadow:0 22px 60px #0005}
-.screen{border:2px solid #314761;border-radius:26px;background:#0d1522;overflow:hidden}
-.screenbar{height:56px;background:#1c2b40;display:flex;align-items:center;padding:0 22px;gap:12px;color:#b8c6d8;font-size:18px}
-.dot{width:11px;height:11px;border-radius:50%;background:#67809d}
-.ps{display:flex;align-items:center;gap:28px;padding:34px}
-.ps5{width:130px;height:210px;border-radius:34px 14px 30px 14px;background:linear-gradient(90deg,#dce6f4,#75849b 45%,#f7f9fc 48%,#bac8d9);box-shadow:15px 15px 35px #0008;position:relative}
-.ps5:after{content:"";position:absolute;right:18px;top:20px;width:8px;height:170px;background:#53637a;border-radius:8px}
-.psinfo{flex:1}.psinfo strong{font-size:34px}.psinfo p{font-size:24px;color:var(--muted);line-height:1.35}
-.key{display:inline-flex;padding:12px 22px;border:2px solid #a8bdd6;border-radius:14px;font-size:23px;margin:8px 8px 0 0}
-.stepnum{font-size:22px;color:var(--cyan);font-weight:800;letter-spacing:2px}
-.diagram{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:30px}
-.node{flex:1;min-height:190px;border:2px solid #36516f;border-radius:24px;background:#142137;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:18px}
-.node b{font-size:26px}.node small{font-size:19px;color:var(--muted);margin-top:12px}.arrow{font-size:38px;color:var(--cyan)}
-.big{font-size:88px;font-weight:900;letter-spacing:-3px}
-.check{font-size:27px;line-height:1.55;color:#d8e2f0}.check span{color:var(--cyan);font-weight:900}
-.obs{background:#171b23;border:1px solid #424b59;border-radius:24px;overflow:hidden}
-.obshead{background:#252c38;padding:20px 26px;font-size:23px;font-weight:800}
-.obsbody{display:flex;gap:18px;padding:22px}
-.obscol{flex:1;background:#202733;border-radius:14px;padding:18px;min-height:230px}
-.obscol b{font-size:23px}.obscol p{font-size:20px;color:#b7c3d1;line-height:1.4}
-.source{background:#17253a;border:1px solid #38516f;border-radius:14px;padding:18px 20px;margin-top:14px;font-size:23px}
-.source.active{border-color:var(--cyan);box-shadow:0 0 0 2px #52e0d055}
-.productrow{display:flex;gap:20px;margin-top:32px}
-.product{flex:1;border-radius:28px;padding:28px;background:linear-gradient(145deg,#1a2a40,#111827);border:1px solid #344c69;min-height:390px}
-.product .type{font-size:19px;letter-spacing:2px;text-transform:uppercase;color:var(--cyan);font-weight:800}
-.product h3{font-size:39px;margin:20px 0 14px}
-.product p{font-size:23px;line-height:1.35;color:#c0cada}
-.product .tag{display:inline-block;margin-top:16px;border-radius:22px;padding:10px 16px;background:#233a54;color:#dcecff;font-size:18px}
-.footer{position:absolute;bottom:48px;left:66px;right:66px;display:flex;justify-content:space-between;color:#7f91a9;font-size:19px;letter-spacing:1.5px}
-.progress{position:absolute;bottom:0;left:0;height:7px;background:linear-gradient(90deg,var(--blue),var(--cyan));width:0}
-.glow{color:var(--cyan)}.warning{color:var(--gold)}
-.smallnote{font-size:20px;color:#9eacc1;line-height:1.4;margin-top:22px}
+#sp-obs-audio-root{position:relative;width:100%;height:100%;overflow:hidden;box-sizing:border-box;background:radial-gradient(ellipse at 78% 12%,#18304c 0%,transparent 42%),linear-gradient(145deg,#070b13,#0d1725 58%,#080c14);color:#f5f7fb;font-family:Inter,Arial,sans-serif}
+#sp-obs-audio-root *{box-sizing:border-box}
+#sp-obs-audio-root .sp-top{position:absolute;top:3%;left:6%;right:6%;display:flex;justify-content:space-between;align-items:center;font-size:clamp(12px,2.0vw,22px);letter-spacing:.18em;color:#9eacc1;text-transform:uppercase}
+#sp-obs-audio-root .sp-brand{font-weight:900;color:#fff}
+#sp-obs-audio-root .sp-pill{border:1px solid #39516e;border-radius:999px;padding:.55em .9em;color:#a9c9ed;font-size:.78em}
+#sp-obs-audio-root .sp-scene{position:absolute;inset:12% 6% 10%;opacity:0;visibility:hidden;transform:translateY(12px)}
+#sp-obs-audio-root .sp-reveal{opacity:0;transform:translate3d(0,22px,0)}
+#sp-obs-audio-root .sp-kicker{font-size:clamp(12px,2vw,22px);letter-spacing:.16em;text-transform:uppercase;color:#52e0d0;font-weight:800;margin-bottom:2.5%}
+#sp-obs-audio-root h1{font-size:clamp(38px,7vw,76px);line-height:1.02;letter-spacing:-.035em;margin:0 0 4%;font-weight:900}
+#sp-obs-audio-root h2{font-size:clamp(30px,5.5vw,58px);line-height:1.05;letter-spacing:-.03em;margin:0 0 4%;font-weight:850}
+#sp-obs-audio-root .sp-cyan{color:#52e0d0}
+#sp-obs-audio-root .sp-sub{font-size:clamp(17px,2.8vw,30px);line-height:1.35;color:#aab6c8;max-width:94%}
+#sp-obs-audio-root .sp-panel{margin-top:5%;padding:5%;border-radius:28px;background:linear-gradient(145deg,#172338,#101827);border:1px solid #2a3b54;box-shadow:0 18px 50px #0005}
+#sp-obs-audio-root .sp-row{display:flex;align-items:center;gap:4%;padding:3.2% 3%;margin:2.2% 0;border:1px solid #344b67;border-radius:15px;background:#142137;font-size:clamp(16px,2.8vw,28px)}
+#sp-obs-audio-root .sp-num{color:#52e0d0;font-weight:900;font-size:1.15em;min-width:1.5em}
+#sp-obs-audio-root .sp-muted{color:#aab6c8;font-size:.78em;display:block;margin-top:.35em}
+#sp-obs-audio-root .sp-meter{height:24px;border-radius:99px;background:#263448;overflow:hidden;margin-top:5%}
+#sp-obs-audio-root .sp-meterfill{height:100%;width:0;background:linear-gradient(90deg,#4da3ff,#52e0d0);border-radius:99px}
+#sp-obs-audio-root .sp-db{display:flex;justify-content:space-between;color:#aab6c8;font-size:clamp(12px,1.8vw,19px);margin-top:1.5%}
+#sp-obs-audio-root .sp-chip{display:inline-block;padding:.45em .8em;border:1px solid #36516f;border-radius:10px;color:#cfe4ff;background:#142137;margin:.25em .2em;font-size:clamp(13px,2vw,21px)}
+#sp-obs-audio-root .sp-chain{display:flex;flex-direction:column;gap:12px;margin-top:5%}
+#sp-obs-audio-root .sp-filter{padding:4%;border-radius:16px;border:1px solid #35506e;background:#142137;display:flex;justify-content:space-between;align-items:center;font-size:clamp(17px,2.8vw,28px)}
+#sp-obs-audio-root .sp-filter small{color:#52e0d0;font-size:.65em;letter-spacing:.1em}
+#sp-obs-audio-root .sp-warning{border-color:#84653b;background:#261f17;color:#f7d8a4}
+#sp-obs-audio-root .sp-beforeafter{display:grid;grid-template-columns:1fr 1fr;gap:4%;margin-top:6%}
+#sp-obs-audio-root .sp-state{padding:6% 4%;border-radius:20px;background:#172338;border:1px solid #344b67;text-align:center}
+#sp-obs-audio-root .sp-state strong{display:block;font-size:clamp(19px,3.2vw,34px);margin-bottom:10%}
+#sp-obs-audio-root .sp-state span{color:#aab6c8;font-size:clamp(13px,2vw,20px)}
+#sp-obs-audio-root .sp-footer{position:absolute;bottom:3%;left:6%;right:6%;display:flex;justify-content:space-between;color:#7f91a9;font-size:clamp(10px,1.6vw,17px);letter-spacing:.12em;text-transform:uppercase}
+#sp-obs-audio-root .sp-progress{position:absolute;bottom:0;left:0;height:6px;width:0;background:linear-gradient(90deg,#4da3ff,#52e0d0)}
 </style>
 </head>
 <body>
-<div id="stage">
-  <div class="top"><div class="brand">SHORTPROMPT</div><div class="pill">PS5 CREATOR SETUP</div></div>
-
-  <section class="scene" data-start="0" data-end="8">
-    <div class="kicker">Gaming creator workflow</div>
-    <h1>Record PS5<br><span class="glow">gameplay</span> for YouTube</h1>
-    <p class="sub">Two ways to capture your footage. One built into the console. One built around a capture card and OBS.</p>
-    <div class="card" style="margin-top:54px">
-      <div class="ps">
-        <div class="ps5"></div>
-        <div class="psinfo"><strong>PLAYSTATION 5</strong><p>GAMEPLAY → CAPTURE → EDIT → YOUTUBE</p><div class="key">CREATE</div><div class="key">RECORD</div></div>
-      </div>
-    </div>
-    <div class="big" style="margin-top:40px">PS5 → PC</div>
-  </section>
-
-  <section class="scene" data-start="8" data-end="18">
-    <div class="kicker">Method 01 · Built in</div>
-    <h2>Start with the<br>PS5 Create button</h2>
-    <div class="screen" style="margin-top:38px">
-      <div class="screenbar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span style="margin-left:12px">PS5 · Create menu</span></div>
-      <div style="padding:28px">
-        <div class="source active">▶ &nbsp; Start New Recording</div>
-        <div class="source">◷ &nbsp; Save Recent Gameplay</div>
-        <div class="source">▣ &nbsp; Take Screenshot</div>
-      </div>
-    </div>
-    <p class="sub" style="margin-top:30px">Press Create on the DualSense controller. Choose Start New Recording, then stop it from the same menu.</p>
-    <div class="card" style="margin-top:28px;display:flex;align-items:center;gap:24px"><div class="big glow">1h</div><div class="check">Up to one hour of gameplay per manual recording, according to PlayStation support.</div></div>
-  </section>
-
-  <section class="scene" data-start="18" data-end="30">
-    <div class="kicker">Method 02 · Capture card</div>
-    <h2>For a PC workflow,<br>route the HDMI signal</h2>
-    <div class="diagram">
-      <div class="node"><b>PS5</b><small>HDMI OUT</small></div><div class="arrow">→</div>
-      <div class="node"><b>CAPTURE<br>CARD</b><small>HDMI IN / OUT</small></div><div class="arrow">→</div>
-      <div class="node"><b>DISPLAY</b><small>HDMI</small></div>
-    </div>
-    <div class="diagram" style="margin-top:18px">
-      <div style="flex:1"></div><div class="arrow">↓ USB</div><div class="node"><b>COMPUTER</b><small>OBS STUDIO</small></div><div style="flex:1"></div>
-    </div>
-    <div class="card" style="margin-top:36px">
-      <div class="stepnum">BEFORE CONNECTING THE CARD</div>
-      <h2 style="font-size:42px;margin-top:14px">Disable HDCP</h2>
-      <p class="check">PS5 Settings → System → HDMI → turn off <span>Enable HDCP</span>.</p>
-      <p class="smallnote">Do this with the console connected directly to the TV or monitor. Protected streaming apps may not be capturable.</p>
-    </div>
-  </section>
-
-  <section class="scene" data-start="30" data-end="39">
-    <div class="kicker">OBS Studio · Setup</div>
-    <h2>Add the capture<br>card as a source</h2>
-    <div class="obs" style="margin-top:32px">
-      <div class="obshead">OBS Studio · Sources</div>
-      <div class="obsbody">
-        <div class="obscol"><b>Scenes</b><p>PS5 Gameplay</p><p>Starting Soon</p></div>
-        <div class="obscol"><b>Sources</b><p>＋ Video Capture Device</p><p>Audio Input Capture</p><p>Text / Overlay</p></div>
-      </div>
-      <div style="padding:0 22px 24px"><div class="source active">Device: USB Video / Elgato / UGREEN</div><div class="source">Resolution / FPS: match the capture card</div></div>
-    </div>
-    <p class="sub" style="margin-top:28px">In OBS, add a Video Capture Device source and select your card. Set a supported resolution and frame rate, then check audio.</p>
-  </section>
-
-  <section class="scene" data-start="39" data-end="47">
-    <div class="kicker">Before you hit record</div>
-    <h2>Check the signal<br>and the sound</h2>
-    <div class="card" style="margin-top:34px">
-      <div class="check"><span>01</span> &nbsp; PS5 image appears in OBS</div>
-      <div class="check"><span>02</span> &nbsp; Display passthrough works</div>
-      <div class="check"><span>03</span> &nbsp; Game audio reaches OBS</div>
-      <div class="check"><span>04</span> &nbsp; Mic and party audio are routed correctly</div>
-      <div class="check"><span>05</span> &nbsp; Short test recording plays back smoothly</div>
-    </div>
-    <div class="card" style="margin-top:24px;border-color:#7a633d">
-      <div class="stepnum warning">IMPORTANT</div>
-      <p class="check">Capture resolution is not the same as HDMI passthrough resolution. Check the exact model's supported modes.</p>
-    </div>
-  </section>
-
-  <section class="scene" data-start="47" data-end="56">
-    <div class="kicker">Two product options</div>
-    <h2>Choose the capture<br>card for your setup</h2>
-    <div class="productrow">
-      <div class="product">
-        <div class="type">Entry option</div>
-        <h3>UGREEN</h3>
-        <p>For a simpler, lower-cost capture setup. Check the linked model's actual capture resolution and frame rate.</p>
-        <span class="tag">Budget route</span>
-      </div>
-      <div class="product">
-        <div class="type">Dedicated option</div>
-        <h3>Elgato</h3>
-        <p>For a more established capture workflow. Verify the exact linked model before comparing technical limits.</p>
-        <span class="tag">Creator setup</span>
-      </div>
-    </div>
-    <p class="smallnote">The product links identify the offers. This comparison does not assume identical specs across models.</p>
-  </section>
-
-  <section class="scene" data-start="56" data-end="62.6">
-    <div class="kicker">Your PS5 recording setup</div>
-    <h1>Capture.<br>Record.<br><span class="glow">Publish.</span></h1>
-    <div class="card" style="margin-top:36px">
-      <h2 style="font-size:42px">Want the product links?</h2>
-      <p class="check">Open the video description or pinned comment.</p>
-      <div class="source">UGREEN capture card ↗</div>
-      <div class="source">Elgato capture card ↗</div>
-    </div>
-    <p class="sub" style="margin-top:34px">Follow for more gaming and creator workflows.</p>
-  </section>
-
-  <div class="footer"><span>HOW TO RECORD PS5 GAMEPLAY</span><span id="timecode">00:00 / 01:03</span></div>
-  <div class="progress" id="progress"></div>
+<div id="sp-obs-audio-root">
+ <div class="sp-top"><span class="sp-brand">SHORTPROMPT</span><span class="sp-pill">CREATOR AUDIO</span></div>
+ <section class="sp-scene" data-start="0" data-end="7">
+  <div class="sp-kicker">OBS Studio · Audio fix</div><h1>Your mic sounds<br><span class="sp-cyan">bad?</span></h1>
+  <p class="sp-sub">Fix the recording chain before replacing your gear.</p>
+  <div class="sp-panel"><div class="sp-row"><span class="sp-num">01</span><div>Noise and room sound<span class="sp-muted">Fan · keyboard · echo</span></div></div><div class="sp-row"><span class="sp-num">02</span><div>Uneven voice level<span class="sp-muted">Too quiet · sudden peaks</span></div></div></div>
+ </section>
+ <section class="sp-scene" data-start="7" data-end="15">
+  <div class="sp-kicker">Step 01 · Input source</div><h2>Choose the<br>right microphone</h2>
+  <div class="sp-panel"><div class="sp-row"><span class="sp-num">✓</span><div>Mic / Auxiliary Audio<span class="sp-muted">Select the device you actually speak into</span></div></div><div class="sp-row"><span class="sp-num">!</span><div>Disable duplicate inputs<span class="sp-muted">Avoid capturing the same mic twice</span></div></div></div>
+  <p class="sp-sub">Speak at your normal distance and watch the mixer meter.</p>
+ </section>
+ <section class="sp-scene" data-start="15" data-end="25">
+  <div class="sp-kicker">Step 02 · Noise suppression</div><h2>Reduce steady<br>background noise</h2>
+  <div class="sp-panel"><div class="sp-row"><span class="sp-num">1</span><div>Right-click mic → Filters</div></div><div class="sp-row"><span class="sp-num">2</span><div>Add Noise Suppression</div></div><div class="sp-row"><span class="sp-num">3</span><div>Try RNNoise<span class="sp-muted">Useful for mild, steady fan noise</span></div></div></div>
+  <p class="sp-sub">Too much suppression can make speech sound damaged.</p>
+ </section>
+ <section class="sp-scene" data-start="25" data-end="35">
+  <div class="sp-kicker">Step 03 · Noise gate</div><h2>Quiet the gaps<br>between sentences</h2>
+  <div class="sp-panel"><div class="sp-row"><span class="sp-num">OPEN</span><div>Below your quiet voice</div></div><div class="sp-row"><span class="sp-num">CLOSE</span><div>Above the room noise</div></div></div>
+  <p class="sp-sub">Adjust by listening. If words disappear, the gate is too aggressive.</p>
+ </section>
+ <section class="sp-scene" data-start="35" data-end="45">
+  <div class="sp-kicker">Step 04 · Compressor</div><h2>Control sudden<br>loud peaks</h2>
+  <div class="sp-panel"><div class="sp-row"><span class="sp-num">LOW</span><div>Normal speaking voice</div></div><div class="sp-row"><span class="sp-num">HIGH</span><div>Shouts and sudden peaks</div></div><div class="sp-meter"><div class="sp-meterfill" data-fill="72"></div></div><div class="sp-db"><span>Input dynamics</span><span>More consistent output</span></div></div>
+  <p class="sp-sub">The compressor reduces louder moments so your voice stays more even.</p>
+ </section>
+ <section class="sp-scene" data-start="45" data-end="55">
+  <div class="sp-kicker">Step 05 · Limiter</div><h2>Prevent digital<br>clipping</h2>
+  <div class="sp-chain"><div class="sp-filter">Noise Suppression <small>01</small></div><div class="sp-filter">Noise Gate <small>02</small></div><div class="sp-filter">Compressor <small>03</small></div><div class="sp-filter sp-warning">Limiter · LAST <small>04</small></div></div>
+  <p class="sp-sub">Place the limiter last in the filter chain.</p>
+ </section>
+ <section class="sp-scene" data-start="55" data-end="65">
+  <div class="sp-kicker">Final check</div><h2>Record. Listen.<br><span class="sp-cyan">Adjust.</span></h2>
+  <div class="sp-beforeafter"><div class="sp-state"><strong>BEFORE</strong><span>Noisy · uneven</span></div><div class="sp-state"><strong>AFTER</strong><span>Cleaner · controlled</span></div></div>
+  <div class="sp-panel"><p class="sp-sub">Want to improve the sound at its source, too?</p><div class="sp-row"><span class="sp-num">↗</span><div>USB microphone + full setup guide<span class="sp-muted">Description · pinned comment</span></div></div></div>
+ </section>
+ <div class="sp-footer"><span>FIX BAD MIC AUDIO IN OBS</span><span id="sp-time">00:00 / 01:05</span></div><div class="sp-progress" id="sp-progress"></div>
 </div>
-
 <script>
-(() => {
-  'use strict';
-  const DURATION=62.6, FPS=30;
-  const scenes=[...document.querySelectorAll('.scene')];
-  const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
-  const smooth=v=>{v=clamp(v);return v*v*(3-2*v)};
-  const easeOut=v=>1-Math.pow(1-clamp(v),3);
-  const show=(el,local,at,dur=1.15,dy=22)=>{
-    if(!el)return;
-    const q=smooth((local-at)/dur);
-    el.style.opacity=q.toFixed(4);
-    el.style.transform=`translate3d(0,${((1-q)*dy).toFixed(2)}px,0)`;
-  };
-  const setWidth=(el,local,at,dur=1.7)=>{
-    if(!el)return;
-    const q=easeOut((local-at)/dur);
-    el.style.transformOrigin='left center';
-    el.style.transform=`scaleX(${q.toFixed(4)})`;
-  };
-  const pulse=(el,local,period=3,amount=2)=>{
-    if(!el)return;
-    el.style.transform=`translateY(${(Math.sin(local/period*Math.PI*2)*amount).toFixed(2)}px)`;
-  };
-  const typeText=(el,text,local,at,dur)=>{
-    if(!el)return;
-    const p=clamp((local-at)/dur);
-    el.textContent=text.slice(0,Math.floor(text.length*p));
-  };
-
-  function animate(index,local){
-    const s=scenes[index];
-    const all=[...s.children];
-    // Each scene has a deliberate sequence: heading, visual, then supporting detail.
-    // Elements remain readable after entering; no 150ms reveal bursts.
-    const base=[0.15,0.75,1.45,2.2,3.0,3.8,4.6];
-    all.forEach((el,i)=>show(el,local,base[Math.min(i,base.length-1)],1.15,20));
-
-    if(index===0){
-      const card=s.querySelector('.card');
-      const ps=s.querySelector('.ps5');
-      const keys=s.querySelectorAll('.key');
-      show(card,local,1.8,1.8,26);
-      pulse(ps,local,5,3);
-      keys.forEach((el,i)=>show(el,local,3.0+i*.75,1.0,12));
-      show(s.querySelector('.big'),local,5.0,1.2,18);
-    }
-    if(index===1){
-      const rows=s.querySelectorAll('.source');
-      rows.forEach((el,i)=>show(el,local,1.8+i*1.45,1.1,18));
-      show(s.querySelector('.card'),local,6.1,1.4,18);
-      pulse(s.querySelector('.big'),local,4.5,2);
-    }
-    if(index===2){
-      const nodes=s.querySelectorAll('.node');
-      nodes.forEach((el,i)=>show(el,local,1.2+i*1.7,1.25,20));
-      const arrows=s.querySelectorAll('.arrow');
-      arrows.forEach((el,i)=>show(el,local,2.0+i*1.7,1.0,0));
-      show(s.querySelector('.card'),local,7.0,1.8,22);
-      const hdcp=s.querySelector('.card');
-      if(hdcp)hdcp.style.borderColor=local>8.7?'#52e0d0':'#7a633d';
-    }
-    if(index===3){
-      show(s.querySelector('.obs'),local,1.6,1.5,18);
-      const cols=s.querySelectorAll('.obscol');
-      cols.forEach((el,i)=>show(el,local,2.8+i*1.6,1.25,16));
-      const rows=s.querySelectorAll('.source');
-      rows.forEach((el,i)=>show(el,local,5.2+i*1.5,1.1,14));
-    }
-    if(index===4){
-      const lines=s.querySelectorAll('.check');
-      lines.forEach((el,i)=>show(el,local,1.5+i*0.85,0.9,14));
-      const cards=s.querySelectorAll('.card');
-      if(cards[1])show(cards[1],local,6.0,1.0,18);
-    }
-    if(index===5){
-      const products=s.querySelectorAll('.product');
-      products.forEach((el,i)=>{
-        show(el,local,1.7+i*2.0,1.6,26);
-        const q=smooth((local-(4.0+i*1.2))/1.8);
-        el.style.borderColor=`rgba(82,224,208,${(.25+.55*q).toFixed(3)})`;
-      });
-      show(s.querySelector('.smallnote'),local,6.7,1.1,14);
-    }
-    if(index===6){
-      const rows=s.querySelectorAll('.source');
-      rows.forEach((el,i)=>show(el,local,2.0+i*1.35,1.0,14));
-      show(s.querySelector('.sub'),local,4.7,1.2,16);
-    }
-  }
-
-  function frame(inputTime){
-    const t=clamp(Number(inputTime)||0,0,DURATION);
-    let active=-1;
-    scenes.forEach((scene,i)=>{
-      const a=Number(scene.dataset.start),b=Number(scene.dataset.end);
-      const on=t>=a&&(t<b||(i===scenes.length-1&&t<=DURATION));
-      scene.style.visibility=on?'visible':'hidden';
-      scene.style.opacity=on?'1':'0';
-      scene.style.pointerEvents=on?'auto':'none';
-      if(on){
-        active=i;
-        const local=t-a;
-        // Gentle scene entrance; the internal actions continue across the scene.
-        const enter=smooth(local/0.75);
-        scene.style.transform=`translate3d(0,${((1-enter)*12).toFixed(2)}px,0)`;
-        animate(i,local);
-      } else {
-        scene.style.transform='translate3d(0,12px,0)';
-      }
-    });
-    const progress=document.getElementById('progress');
-    if(progress)progress.style.width=(t/DURATION*100).toFixed(3)+'%';
-    const sec=Math.min(DURATION,Math.floor(t));
-    const mm=String(Math.floor(sec/60)).padStart(2,'0');
-    const ss=String(sec%60).padStart(2,'0');
-    const time=document.getElementById('timecode');
-    if(time)time.textContent=`${mm}:${ss} / 01:03`;
-    return active;
-  }
-
-  window.SPMOTION={width:1080,height:1920,fps:FPS,duration:DURATION};
-  window.SPMOTION_FRAME=frame;
-  window.SPMOTION_RENDER=frame;
-  window.__SPMOTION_RENDER_MODE__='html-autonomous';
-  frame(0);
-  if(!window.__SPMOTION_EXPORT){
-    const start=performance.now();
-    const tick=now=>{
-      if(window.__SPMOTION_EXPORT)return;
-      frame((now-start)/1000);
-      requestAnimationFrame(tick);
-    };
-    requestAnimationFrame(tick);
-  }
+(()=>{'use strict';const D=65,FPS=30,root=document.getElementById('sp-obs-audio-root'),scenes=[...root.querySelectorAll('.sp-scene')],clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v)),ease=v=>{v=clamp(v);return v*v*(3-2*v)};
+scenes.forEach(s=>{s.querySelectorAll('.sp-kicker,h1,h2,.sp-sub,.sp-panel,.sp-row,.sp-filter,.sp-state').forEach(el=>el.classList.add('sp-reveal'));});
+function frame(input){const t=clamp(Number(input)||0,0,D);scenes.forEach((s,i)=>{const a=+s.dataset.start,b=+s.dataset.end,on=t>=a&&(t<b||(i===scenes.length-1&&t<=D));s.style.visibility=on?'visible':'hidden';s.style.opacity=on?'1':'0';if(on){const local=t-a,p=ease(local/.8);s.style.transform=`translate3d(0,${(1-p)*12}px,0)`;const items=[...s.querySelectorAll('.sp-reveal')],spread=Math.min(5.2,(b-a)*.58),step=items.length>1?spread/(items.length-1):0;items.forEach((el,j)=>{const q=ease((local-j*step)/.85);el.style.opacity=String(q);el.style.transform=`translate3d(0,${(1-q)*22}px,0)`;});const fill=s.querySelector('[data-fill]');if(fill){const q=ease((local-3)/4);fill.style.width=(q*+fill.dataset.fill)+'%';}}else{s.style.transform='translate3d(0,12px,0)';}});const p=root.querySelector('#sp-progress');p.style.width=(t/D*100)+'%';const sec=Math.floor(t),mm=String(Math.floor(sec/60)).padStart(2,'0'),ss=String(sec%60).padStart(2,'0');root.querySelector('#sp-time').textContent=`${mm}:${ss} / 01:05`;return true;}
+window.SPMOTION={width:1080,height:1920,fps:FPS,duration:D};window.SPMOTION_FRAME=frame;window.SPMOTION_RENDER=frame;window.__SPMOTION_RENDER_MODE__='renderer-driven';frame(0);
 })();
 </script>
-
-</body>
-</html>
+</body></html>

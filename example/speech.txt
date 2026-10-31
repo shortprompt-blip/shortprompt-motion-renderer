@@ -1,9 +1,7 @@
-Want to record PS5 gameplay for YouTube? You can start with the console itself: press the Create button, then choose Start New Recording. For longer or more flexible production, use an external capture card and OBS on a computer.
-
-First, connect the PS5 directly to your display and turn HDCP off in Settings, System, HDMI. Then connect PS5 HDMI to the card's HDMI In, the card's HDMI Out to your display, and USB to your computer.
-
-In OBS, add a Video Capture Device source and select the capture card. Check the resolution, frame rate and audio before recording.
-
-Here are two options: the UGREEN capture card for a simpler entry-level setup, and the Elgato option for a more dedicated capture workflow. Check each listing's exact capture specs before buying.
-
-Want the product links? Open the description or pinned comment. Follow for more gaming and creator workflows.
+Your microphone sounds distant, noisy, or uneven? Before buying anything, fix these five OBS settings.
+First, select the correct microphone in the Audio Mixer and speak at your normal volume. Keep the mic close and at a consistent distance.
+Open Filters on your microphone source. Add Noise Suppression and start with RNNoise for steady background sounds like PC fan noise. Too much suppression can damage your voice.
+Next, use a Noise Gate only if noise is noticeable between sentences. Set it carefully so quiet words are not cut off.
+Add a Compressor to control sudden loud peaks. Then place a Limiter last to help prevent clipping.
+Record a short test with both quiet and loud speech, then listen back on headphones.
+Want to improve the sound at its source, too? A dedicated USB microphone can help capture your voice more clearly. I've included a suitable option and the complete setup guide in the description and pinned comment.
