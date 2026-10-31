@@ -56,7 +56,7 @@ h2{font-size:58px;line-height:1.06;letter-spacing:-1.5px;margin:0 0 26px}
 <div id="stage">
   <div class="top"><div class="brand">SHORTPROMPT</div><div class="pill">PS5 CREATOR SETUP</div></div>
 
-  <section class="scene" data-start="0" data-end="6">
+  <section class="scene" data-start="0" data-end="8">
     <div class="kicker">Gaming creator workflow</div>
     <h1>Record PS5<br><span class="glow">gameplay</span> for YouTube</h1>
     <p class="sub">Two ways to capture your footage. One built into the console. One built around a capture card and OBS.</p>
@@ -69,7 +69,7 @@ h2{font-size:58px;line-height:1.06;letter-spacing:-1.5px;margin:0 0 26px}
     <div class="big" style="margin-top:40px">PS5 → PC</div>
   </section>
 
-  <section class="scene" data-start="6" data-end="13">
+  <section class="scene" data-start="8" data-end="18">
     <div class="kicker">Method 01 · Built in</div>
     <h2>Start with the<br>PS5 Create button</h2>
     <div class="screen" style="margin-top:38px">
@@ -84,7 +84,7 @@ h2{font-size:58px;line-height:1.06;letter-spacing:-1.5px;margin:0 0 26px}
     <div class="card" style="margin-top:28px;display:flex;align-items:center;gap:24px"><div class="big glow">1h</div><div class="check">Up to one hour of gameplay per manual recording, according to PlayStation support.</div></div>
   </section>
 
-  <section class="scene" data-start="13" data-end="20">
+  <section class="scene" data-start="18" data-end="30">
     <div class="kicker">Method 02 · Capture card</div>
     <h2>For a PC workflow,<br>route the HDMI signal</h2>
     <div class="diagram">
@@ -103,7 +103,7 @@ h2{font-size:58px;line-height:1.06;letter-spacing:-1.5px;margin:0 0 26px}
     </div>
   </section>
 
-  <section class="scene" data-start="20" data-end="28">
+  <section class="scene" data-start="30" data-end="39">
     <div class="kicker">OBS Studio · Setup</div>
     <h2>Add the capture<br>card as a source</h2>
     <div class="obs" style="margin-top:32px">
@@ -117,7 +117,7 @@ h2{font-size:58px;line-height:1.06;letter-spacing:-1.5px;margin:0 0 26px}
     <p class="sub" style="margin-top:28px">In OBS, add a Video Capture Device source and select your card. Set a supported resolution and frame rate, then check audio.</p>
   </section>
 
-  <section class="scene" data-start="28" data-end="36">
+  <section class="scene" data-start="39" data-end="47">
     <div class="kicker">Before you hit record</div>
     <h2>Check the signal<br>and the sound</h2>
     <div class="card" style="margin-top:34px">
@@ -133,7 +133,7 @@ h2{font-size:58px;line-height:1.06;letter-spacing:-1.5px;margin:0 0 26px}
     </div>
   </section>
 
-  <section class="scene" data-start="36" data-end="45">
+  <section class="scene" data-start="47" data-end="56">
     <div class="kicker">Two product options</div>
     <h2>Choose the capture<br>card for your setup</h2>
     <div class="productrow">
@@ -153,7 +153,7 @@ h2{font-size:58px;line-height:1.06;letter-spacing:-1.5px;margin:0 0 26px}
     <p class="smallnote">The product links identify the offers. This comparison does not assume identical specs across models.</p>
   </section>
 
-  <section class="scene" data-start="45" data-end="52">
+  <section class="scene" data-start="56" data-end="62.6">
     <div class="kicker">Your PS5 recording setup</div>
     <h1>Capture.<br>Record.<br><span class="glow">Publish.</span></h1>
     <div class="card" style="margin-top:36px">
@@ -165,132 +165,147 @@ h2{font-size:58px;line-height:1.06;letter-spacing:-1.5px;margin:0 0 26px}
     <p class="sub" style="margin-top:34px">Follow for more gaming and creator workflows.</p>
   </section>
 
-  <div class="footer"><span>HOW TO RECORD PS5 GAMEPLAY</span><span id="timecode">00:00 / 00:52</span></div>
+  <div class="footer"><span>HOW TO RECORD PS5 GAMEPLAY</span><span id="timecode">00:00 / 01:03</span></div>
   <div class="progress" id="progress"></div>
 </div>
+
 <script>
 (() => {
-  const DURATION=52;
+  'use strict';
+  const DURATION=62.6, FPS=30;
   const scenes=[...document.querySelectorAll('.scene')];
   const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
   const smooth=v=>{v=clamp(v);return v*v*(3-2*v)};
-  const outQuad=v=>1-(1-clamp(v))*(1-clamp(v));
-  const mix=(a,b,p)=>a+(b-a)*p;
-
-  // Capture each scene's original direct children once. Their reveal times are
-  // distributed over the complete scene, not compressed into a short intro.
-  const sceneItems=scenes.map(scene=>[...scene.children]);
-  const setReveal=(el,p,delay,span,dy=34,scale=.985)=>{
-    const q=smooth((p-delay)/span);
-    el.style.opacity=q.toFixed(4);
-    el.style.transform=`translate3d(0,${((1-q)*dy).toFixed(2)}px,0) scale(${mix(scale,1,q).toFixed(4)})`;
-  };
-  const setTarget=(el,p,at,span=.16,dy=22)=>{
+  const easeOut=v=>1-Math.pow(1-clamp(v),3);
+  const show=(el,local,at,dur=1.15,dy=22)=>{
     if(!el)return;
-    const q=smooth((p-at)/span);
+    const q=smooth((local-at)/dur);
     el.style.opacity=q.toFixed(4);
     el.style.transform=`translate3d(0,${((1-q)*dy).toFixed(2)}px,0)`;
   };
-  const setBar=(el,p,from,to)=>{
+  const setWidth=(el,local,at,dur=1.7)=>{
     if(!el)return;
-    const q=smooth((p-from)/(to-from));
-    el.style.transform=`scaleX(${q.toFixed(4)})`;
+    const q=easeOut((local-at)/dur);
     el.style.transformOrigin='left center';
+    el.style.transform=`scaleX(${q.toFixed(4)})`;
+  };
+  const pulse=(el,local,period=3,amount=2)=>{
+    if(!el)return;
+    el.style.transform=`translateY(${(Math.sin(local/period*Math.PI*2)*amount).toFixed(2)}px)`;
+  };
+  const typeText=(el,text,local,at,dur)=>{
+    if(!el)return;
+    const p=clamp((local-at)/dur);
+    el.textContent=text.slice(0,Math.floor(text.length*p));
   };
 
-  function animateScene(index,p,t){
-    const scene=scenes[index];
-    const items=sceneItems[index];
-    const n=items.length;
-    // The content unfolds throughout each scene. The last item is deliberately
-    // held until the final quarter to preserve visual movement under narration.
-    items.forEach((el,i)=>{
-      const delay=n===1?.16:.07+(i/(Math.max(1,n-1)))*.66;
-      setReveal(el,p,delay,.15,28,.99);
-    });
+  function animate(index,local){
+    const s=scenes[index];
+    const all=[...s.children];
+    // Each scene has a deliberate sequence: heading, visual, then supporting detail.
+    // Elements remain readable after entering; no 150ms reveal bursts.
+    const base=[0.15,0.75,1.45,2.2,3.0,3.8,4.6];
+    all.forEach((el,i)=>show(el,local,base[Math.min(i,base.length-1)],1.15,20));
 
     if(index===0){
-      const card=scene.querySelector('.card');
-      if(card){const q=smooth((p-.30)/.42);card.style.transform=`translate3d(0,${(18*(1-q)).toFixed(2)}px,0) scale(${(.96+.04*q).toFixed(4)})`;}
-      const ps=scene.querySelector('.ps5');
-      if(ps){const q=smooth((p-.40)/.32);ps.style.transform=`translate3d(${(22*(1-q)).toFixed(2)}px,0,0) rotate(${(-5+5*q).toFixed(2)}deg)`;}
-      const big=scene.querySelector('.big');
-      if(big){const q=smooth((p-.68)/.22);big.style.opacity=q.toFixed(4);big.style.transform=`translateY(${(18*(1-q)).toFixed(1)}px)`;}
+      const card=s.querySelector('.card');
+      const ps=s.querySelector('.ps5');
+      const keys=s.querySelectorAll('.key');
+      show(card,local,1.8,1.8,26);
+      pulse(ps,local,5,3);
+      keys.forEach((el,i)=>show(el,local,3.0+i*.75,1.0,12));
+      show(s.querySelector('.big'),local,5.0,1.2,18);
     }
     if(index===1){
-      const rows=scene.querySelectorAll('.source');
-      rows.forEach((el,i)=>setTarget(el,p,.24+i*.17,.13,18));
-      const badge=scene.querySelector('.big');
-      if(badge){const q=smooth((p-.65)/.2);badge.style.transform=`scale(${(.88+.12*q).toFixed(3)})`;}
+      const rows=s.querySelectorAll('.source');
+      rows.forEach((el,i)=>show(el,local,1.8+i*1.45,1.1,18));
+      show(s.querySelector('.card'),local,6.1,1.4,18);
+      pulse(s.querySelector('.big'),local,4.5,2);
     }
     if(index===2){
-      const nodes=scene.querySelectorAll('.node');
-      nodes.forEach((el,i)=>setTarget(el,p,.16+i*.13,.14,26));
-      const arrows=scene.querySelectorAll('.arrow');
-      arrows.forEach((el,i)=>setTarget(el,p,.28+i*.16,.12,0));
-      const hdcp=scene.querySelector('.card');
-      if(hdcp)setTarget(hdcp,p,.57,.22,30);
+      const nodes=s.querySelectorAll('.node');
+      nodes.forEach((el,i)=>show(el,local,1.2+i*1.7,1.25,20));
+      const arrows=s.querySelectorAll('.arrow');
+      arrows.forEach((el,i)=>show(el,local,2.0+i*1.7,1.0,0));
+      show(s.querySelector('.card'),local,7.0,1.8,22);
+      const hdcp=s.querySelector('.card');
+      if(hdcp)hdcp.style.borderColor=local>8.7?'#52e0d0':'#7a633d';
     }
     if(index===3){
-      const cols=scene.querySelectorAll('.obscol');
-      cols.forEach((el,i)=>setTarget(el,p,.22+i*.18,.18,22));
-      const rows=scene.querySelectorAll('.source');
-      rows.forEach((el,i)=>setTarget(el,p,.56+i*.16,.14,18));
+      show(s.querySelector('.obs'),local,1.6,1.5,18);
+      const cols=s.querySelectorAll('.obscol');
+      cols.forEach((el,i)=>show(el,local,2.8+i*1.6,1.25,16));
+      const rows=s.querySelectorAll('.source');
+      rows.forEach((el,i)=>show(el,local,5.2+i*1.5,1.1,14));
     }
     if(index===4){
-      const lines=scene.querySelectorAll('.check');
-      lines.forEach((el,i)=>setTarget(el,p,.18+i*.12,.13,16));
-      const warning=scene.querySelector('.card[style*="border-color"]');
-      if(warning)setTarget(warning,p,.72,.18,24);
+      const lines=s.querySelectorAll('.check');
+      lines.forEach((el,i)=>show(el,local,1.5+i*0.85,0.9,14));
+      const cards=s.querySelectorAll('.card');
+      if(cards[1])show(cards[1],local,6.0,1.0,18);
     }
     if(index===5){
-      const products=scene.querySelectorAll('.product');
+      const products=s.querySelectorAll('.product');
       products.forEach((el,i)=>{
-        setTarget(el,p,.20+i*.27,.22,34);
-        const q=smooth((p-(.57+i*.10))/.20);
+        show(el,local,1.7+i*2.0,1.6,26);
+        const q=smooth((local-(4.0+i*1.2))/1.8);
         el.style.borderColor=`rgba(82,224,208,${(.25+.55*q).toFixed(3)})`;
       });
+      show(s.querySelector('.smallnote'),local,6.7,1.1,14);
     }
     if(index===6){
-      const rows=scene.querySelectorAll('.source');
-      rows.forEach((el,i)=>setTarget(el,p,.43+i*.16,.14,18));
-      const sub=scene.querySelector('.sub');
-      if(sub){const q=smooth((p-.70)/.18);sub.style.opacity=q.toFixed(4);}
+      const rows=s.querySelectorAll('.source');
+      rows.forEach((el,i)=>show(el,local,2.0+i*1.35,1.0,14));
+      show(s.querySelector('.sub'),local,4.7,1.2,16);
     }
   }
 
-  function frame(time){
-    const t=clamp(Number(time)||0,0,DURATION);
-    scenes.forEach((el,i)=>{
-      const a=Number(el.dataset.start),b=Number(el.dataset.end);
-      const p=clamp((t-a)/(b-a));
-      const active=t>=a&&t<=b;
-      const fadeIn=smooth((t-a)/.85);
-      const fadeOut=1-smooth((t-(b-.65))/.65);
-      el.style.opacity=(active?fadeIn*fadeOut:0).toFixed(4);
-      el.style.transform=`translate3d(0,${(active?(1-fadeIn)*18:18).toFixed(2)}px,0)`;
-      el.style.pointerEvents=active?'auto':'none';
-      if(active) animateScene(i,p,t);
-      else sceneItems[i].forEach(node=>{node.style.opacity='0';});
+  function frame(inputTime){
+    const t=clamp(Number(inputTime)||0,0,DURATION);
+    let active=-1;
+    scenes.forEach((scene,i)=>{
+      const a=Number(scene.dataset.start),b=Number(scene.dataset.end);
+      const on=t>=a&&(t<b||(i===scenes.length-1&&t<=DURATION));
+      scene.style.visibility=on?'visible':'hidden';
+      scene.style.opacity=on?'1':'0';
+      scene.style.pointerEvents=on?'auto':'none';
+      if(on){
+        active=i;
+        const local=t-a;
+        // Gentle scene entrance; the internal actions continue across the scene.
+        const enter=smooth(local/0.75);
+        scene.style.transform=`translate3d(0,${((1-enter)*12).toFixed(2)}px,0)`;
+        animate(i,local);
+      } else {
+        scene.style.transform='translate3d(0,12px,0)';
+      }
     });
-    document.getElementById('progress').style.width=(t/DURATION*100).toFixed(3)+'%';
+    const progress=document.getElementById('progress');
+    if(progress)progress.style.width=(t/DURATION*100).toFixed(3)+'%';
     const sec=Math.min(DURATION,Math.floor(t));
-    document.getElementById('timecode').textContent=`00:${String(sec).padStart(2,'0')} / 00:52`;
+    const mm=String(Math.floor(sec/60)).padStart(2,'0');
+    const ss=String(sec%60).padStart(2,'0');
+    const time=document.getElementById('timecode');
+    if(time)time.textContent=`${mm}:${ss} / 01:03`;
+    return active;
   }
 
-  window.SPMOTION={width:1080,height:1920,fps:30,duration:DURATION};
+  window.SPMOTION={width:1080,height:1920,fps:FPS,duration:DURATION};
   window.SPMOTION_FRAME=frame;
   window.SPMOTION_RENDER=frame;
-  // Preview is only a convenience clock. Export always calls frame(time)
-  // directly and is not affected by requestAnimationFrame.
-  let previewStart=performance.now();
-  function preview(now){
-    if(!window.__SPMOTION_EXPORT) frame(((now-previewStart)/1000)%DURATION);
-    requestAnimationFrame(preview);
-  }
+  window.__SPMOTION_RENDER_MODE__='html-autonomous';
   frame(0);
-  requestAnimationFrame(preview);
+  if(!window.__SPMOTION_EXPORT){
+    const start=performance.now();
+    const tick=now=>{
+      if(window.__SPMOTION_EXPORT)return;
+      frame((now-start)/1000);
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
 })();
 </script>
+
 </body>
 </html>
