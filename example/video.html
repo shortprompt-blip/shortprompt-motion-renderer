@@ -1,46 +1,153 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>OBS Audio Problems</title>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1080, initial-scale=1">
+<title>FIFINE AM8: USB/XLR Dynamic Microphone</title>
 <style>
-#sp-obs-audio-sync{position:absolute;inset:0;width:100%;height:100%;min-height:100vh;overflow:hidden;background:#080d17;color:#f4f7fb;font-family:Inter,Arial,sans-serif;box-sizing:border-box}
-#sp-obs-audio-sync *{box-sizing:border-box}
-#sp-obs-audio-sync .bg{position:absolute;inset:0;background:radial-gradient(ellipse at 78% 8%,#17334d 0%,transparent 42%),linear-gradient(145deg,#080d17,#101b2b 60%,#080d17)}
-#sp-obs-audio-sync .top{position:absolute;top:4%;left:6%;right:6%;display:flex;justify-content:space-between;color:#9fb1c7;font-size:clamp(10px,1.5vw,20px);letter-spacing:.16em}
-#sp-obs-audio-sync .brand{font-weight:900;color:#fff}
-#sp-obs-audio-sync .pill{border:1px solid #42617d;border-radius:30px;padding:.55em 1em;color:#a9d8ef}
-#sp-obs-audio-sync .scene{position:absolute;inset:14% 6% 11%;display:block;opacity:0;visibility:hidden}
-#sp-obs-audio-sync .scene.active{opacity:1;visibility:visible}
-#sp-obs-audio-sync:not(.js-ready) .scene:first-of-type{opacity:1;visibility:visible}
-#sp-obs-audio-sync .eyebrow{color:#56dfcf;font-size:clamp(11px,1.7vw,22px);font-weight:800;letter-spacing:.16em;text-transform:uppercase;margin-bottom:2.2%}
-#sp-obs-audio-sync h1{font-size:clamp(34px,7.2vw,86px);line-height:1.01;letter-spacing:-.045em;margin:0 0 3%;font-weight:900}
-#sp-obs-audio-sync h2{font-size:clamp(27px,5.6vw,66px);line-height:1.05;letter-spacing:-.035em;margin:0 0 4%}
-#sp-obs-audio-sync .cyan{color:#56dfcf}
-#sp-obs-audio-sync .muted{color:#aebdd0;font-size:clamp(15px,2.6vw,31px);line-height:1.35;max-width:92%}
-#sp-obs-audio-sync .panel{background:linear-gradient(145deg,#18283c,#101b2a);border:1px solid #2b4560;border-radius:24px;padding:4%;margin-top:4%;box-shadow:0 18px 55px #0005}
-#sp-obs-audio-sync .row{display:flex;align-items:center;gap:3%;margin:2.2% 0;font-size:clamp(14px,2.5vw,29px)}
-#sp-obs-audio-sync .num{color:#56dfcf;font-weight:900;font-size:1.15em;min-width:1.6em}
-#sp-obs-audio-sync .chip{display:inline-block;border:1px solid #42617d;border-radius:12px;padding:.45em .7em;color:#dcecff;background:#14263a;font-size:clamp(13px,2vw,24px)}
-#sp-obs-audio-sync .window{border:1px solid #40556d;border-radius:18px;overflow:hidden;background:#0d1521;margin-top:4%}
-#sp-obs-audio-sync .bar{background:#1c2c40;padding:2.2% 3%;color:#b9c9dc;font-size:clamp(12px,1.8vw,21px)}
-#sp-obs-audio-sync .content{padding:3%}
-#sp-obs-audio-sync .wave{display:flex;align-items:center;gap:5px;height:95px;margin-top:5%}
-#sp-obs-audio-sync .wave i{display:block;width:3%;border-radius:6px;background:#56dfcf;height:20%}
-#sp-obs-audio-sync .wave i:nth-child(3n){height:70%}#sp-obs-audio-sync .wave i:nth-child(4n){height:42%}#sp-obs-audio-sync .wave i:nth-child(5n){height:88%}
-#sp-obs-audio-sync .footer{position:absolute;bottom:4%;left:6%;right:6%;display:flex;justify-content:space-between;color:#8195ad;font-size:clamp(10px,1.5vw,18px);letter-spacing:.12em}
-#sp-obs-audio-sync .progress{position:absolute;bottom:0;left:0;height:6px;width:0;background:linear-gradient(90deg,#4a9fff,#56dfcf)}
-#sp-obs-audio-sync .product{display:flex;gap:5%;align-items:center}
-#sp-obs-audio-sync .headphones{width:28%;aspect-ratio:1;border:9px solid #dce8f4;border-bottom-color:transparent;border-radius:50% 50% 20% 20%;position:relative;margin:0 auto}
-#sp-obs-audio-sync .headphones:before,#sp-obs-audio-sync .headphones:after{content:"";position:absolute;bottom:-12%;width:24%;height:48%;background:#56dfcf;border-radius:10px}
-#sp-obs-audio-sync .headphones:before{left:-13%}#sp-obs-audio-sync .headphones:after{right:-13%}
-#sp-obs-audio-sync .small{font-size:clamp(11px,1.6vw,19px);color:#9eb0c4;line-height:1.4}
-</style></head><body>
-<div id="sp-obs-audio-sync"><div class="bg"></div><div class="top"><span class="brand">SHORTPROMPT</span><span class="pill">OBS AUDIO FIX</span></div>
-<section class="scene" data-start="0" data-end="9"><div class="eyebrow">OBS Studio troubleshooting</div><h1>Echo.<br><span class="cyan">Double audio.</span><br>Audio delay?</h1><p class="muted">Fix the routing before you buy new gear.</p><div class="panel"><div class="row"><span class="num">01</span> Find the duplicate signal</div><div class="row"><span class="num">02</span> Set monitoring correctly</div><div class="row"><span class="num">03</span> Measure sync offset</div></div></section>
-<section class="scene" data-start="9" data-end="20"><div class="eyebrow">Problem 01 · Echo</div><h2>Are you monitoring<br>through <span class="cyan">speakers?</span></h2><p class="muted">Speaker audio can enter the microphone again and return to the stream.</p><div class="window"><div class="bar">SIGNAL PATH · EXPLANATORY RECONSTRUCTION</div><div class="content"><div class="row"><span class="chip">OBS audio</span> → <span class="chip">Speakers</span></div><div class="row"><span class="chip">Speakers</span> → <span class="chip">Microphone</span></div><div class="row"><span class="chip">Echo returns to stream</span></div></div></div></section>
-<section class="scene" data-start="20" data-end="32"><div class="eyebrow">Fix 01 · Monitoring</div><h2>Use headphones.<br>Check <span class="cyan">Monitor Off.</span></h2><div class="window"><div class="bar">OBS · ADVANCED AUDIO PROPERTIES</div><div class="content"><div class="row">Microphone <span style="margin-left:auto" class="chip">Monitor Off</span></div><div class="row">Desktop Audio <span style="margin-left:auto" class="chip">Monitor Off</span></div><div class="row">Monitoring Device <span style="margin-left:auto" class="chip">Your headphones</span></div></div></div><p class="small">Illustrative OBS layout. Use other monitoring modes only when your workflow requires them; avoid routing the same signal twice.</p></section>
-<section class="scene" data-start="32" data-end="43"><div class="eyebrow">Problem 02 · Double audio</div><h2>One microphone.<br><span class="cyan">One active input.</span></h2><div class="panel"><div class="row"><span class="num">A</span> Global Mic/Aux device</div><div class="row"><span class="num">B</span> Separate Audio Input Capture</div><div class="row">Both active? You may capture the mic twice.</div></div><p class="muted">Check Settings → Audio and your scene sources. Keep one intended input active, then record a test.</p></section>
-<section class="scene" data-start="43" data-end="57"><div class="eyebrow">Problem 03 · Lip sync</div><h2>Adjust the <span class="cyan">Sync Offset</span><br>in milliseconds.</h2><div class="window"><div class="bar">ADVANCED AUDIO PROPERTIES · EXAMPLE</div><div class="content"><div class="row">Microphone <span style="margin-left:auto" class="chip">+120 ms</span></div><div class="row">Capture Card <span style="margin-left:auto" class="chip">0 ms</span></div><div class="wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div><p class="small">+120 ms is illustrative only, not a universal setting. Record a clap, review playback, then adjust the source that is early or late in small steps.</p></section>
-<section class="scene" data-start="57" data-end="68"><div class="eyebrow">Optional monitoring gear</div><h2>Hear the problem<br>before you publish.</h2><div class="panel product"><div class="headphones"></div><div><h2 style="font-size:clamp(22px,4vw,46px);margin:0 0 3%">OneOdio Pro-10</h2><p class="muted">Wired headphones for monitoring and test playback.</p></div></div><p class="small">An optional workflow companion. Headphones help you hear routing problems; they do not remove echo or automatically correct sync.</p></section>
-<section class="scene" data-start="68" data-end="78"><div class="eyebrow">Final test</div><h1>Record.<br>Listen.<br><span class="cyan">Adjust.</span></h1><div class="panel"><div class="row"><span class="num">✓</span> No duplicate mic source</div><div class="row"><span class="num">✓</span> Monitoring routed to headphones</div><div class="row"><span class="num">✓</span> Sync checked with a test recording</div></div><p class="muted">Full guide and headphone link are in the description and pinned comment.</p></section>
-<div class="footer"><span>SHORTPROMPT · CREATOR WORKFLOW</span><span id="sp-time">00:00 / 01:18</span></div><div class="progress" id="sp-progress"></div></div>
-<script>window.SPMOTION=window.SPMOTION||{};window.SPMOTION.duration=78;(function(){const root=document.getElementById('sp-obs-audio-sync');if(!root)return;const scenes=Array.from(root.querySelectorAll('.scene'));const duration=78;function frame(input){const t=Math.max(0,Math.min(duration,Number(input)||0));let active=-1;scenes.forEach((s,i)=>{const a=+s.dataset.start,b=+s.dataset.end;const on=t>=a&&(t<b||(i===scenes.length-1&&t<=duration));s.classList.toggle('active',on);if(on)active=i;});const p=root.querySelector('#sp-progress');if(p)p.style.width=(t/duration*100)+'%';const sec=Math.floor(t),mm=String(Math.floor(sec/60)).padStart(2,'0'),ss=String(sec%60).padStart(2,'0');const c=root.querySelector('#sp-time');if(c)c.textContent=mm+':'+ss+' / 01:18';return active;}window.SPMOTION_FRAME=frame;window.SPMOTION_RENDER=frame;root.classList.add('js-ready');frame(0);})();</script>
-</body></html>
+#sp-fifine-am8{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;box-sizing:border-box;background:#070c16;color:#f4f7fb;font-family:Inter,Arial,sans-serif}
+#sp-fifine-am8 *{box-sizing:border-box}
+#sp-fifine-am8 .bg{position:absolute;inset:0;background:radial-gradient(ellipse at 82% 12%,#123f50 0%,transparent 42%),radial-gradient(ellipse at 12% 78%,#172c4a 0%,transparent 38%),linear-gradient(145deg,#070c16,#101b2b 62%,#080d18)}
+#sp-fifine-am8 .top{position:absolute;top:4%;left:6%;right:6%;display:flex;justify-content:space-between;align-items:center;color:#a9b9cb;font-size:clamp(12px,1.6vw,20px);letter-spacing:.16em}
+#sp-fifine-am8 .brand{font-weight:900;color:#fff}
+#sp-fifine-am8 .pill{border:1px solid #3d6478;border-radius:30px;padding:.55em 1em;color:#8de7e0}
+#sp-fifine-am8 .scene{position:absolute;inset:14% 7% 12%;opacity:0;visibility:hidden;transform:translateY(18px)}
+#sp-fifine-am8 .eyebrow{font-size:clamp(12px,1.7vw,21px);font-weight:800;letter-spacing:.17em;text-transform:uppercase;color:#62e3d5;margin-bottom:3%}
+#sp-fifine-am8 h1{font-size:clamp(48px,8vw,92px);line-height:.98;letter-spacing:-.05em;margin:0 0 4%;font-weight:900}
+#sp-fifine-am8 h2{font-size:clamp(38px,6.2vw,70px);line-height:1.02;letter-spacing:-.045em;margin:0 0 4%;font-weight:850}
+#sp-fifine-am8 .cyan{color:#62e3d5}
+#sp-fifine-am8 .muted{font-size:clamp(19px,2.6vw,30px);line-height:1.35;color:#b7c5d6;max-width:92%}
+#sp-fifine-am8 .panel{background:linear-gradient(145deg,#17283b,#0f1b2b);border:1px solid #2b4b61;border-radius:28px;padding:4%;margin-top:5%;box-shadow:0 22px 70px #0005}
+#sp-fifine-am8 .row{display:flex;align-items:center;gap:3%;margin:2.6% 0;font-size:clamp(17px,2.5vw,28px)}
+#sp-fifine-am8 .num{color:#62e3d5;font-weight:900;min-width:1.5em}
+#sp-fifine-am8 .chip{display:inline-block;border:1px solid #43677c;border-radius:12px;padding:.4em .7em;background:#12273a;color:#e2f5f6;font-size:clamp(14px,2vw,23px)}
+#sp-fifine-am8 .micwrap{height:510px;display:flex;align-items:center;justify-content:center;position:relative;margin-top:2%}
+#sp-fifine-am8 .mic{width:220px;height:350px;border-radius:76px 76px 45px 45px;background:linear-gradient(100deg,#111923,#303b49 35%,#111923 68%,#05090f);border:2px solid #536779;box-shadow:0 35px 80px #0009;position:relative}
+#sp-fifine-am8 .mic:before{content:"";position:absolute;left:22px;right:22px;top:22px;height:112px;border-radius:55px;background:repeating-linear-gradient(0deg,#111820 0 5px,#53606a 6px 8px);border:2px solid #536779}
+#sp-fifine-am8 .mic:after{content:"";position:absolute;left:50%;bottom:68px;transform:translateX(-50%);width:42px;height:42px;border-radius:50%;background:#152638;border:2px solid #62e3d5;box-shadow:0 0 28px #62e3d566}
+#sp-fifine-am8 .base{position:absolute;bottom:16px;width:360px;height:28px;border-radius:50%;background:linear-gradient(90deg,#101722,#344454,#101722);border:1px solid #4a5c6b}
+#sp-fifine-am8 .callout{position:absolute;border:1px solid #3b6579;background:#102536dd;border-radius:16px;padding:16px 20px;font-size:22px;color:#dff7f4}
+#sp-fifine-am8 .callout.left{left:0;top:30%}.callout.right{right:0;top:57%}
+#sp-fifine-am8 .specgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:5%}
+#sp-fifine-am8 .spec{border:1px solid #35556a;border-radius:20px;background:#122338;padding:24px}
+#sp-fifine-am8 .spec strong{display:block;font-size:38px;color:#62e3d5;margin-bottom:8px}
+#sp-fifine-am8 .spec span{font-size:20px;color:#b7c5d6}
+#sp-fifine-am8 .path{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:7%}
+#sp-fifine-am8 .node{flex:1;text-align:center;border:1px solid #3c6277;border-radius:18px;background:#13283b;padding:24px 12px;font-size:24px;font-weight:800}
+#sp-fifine-am8 .arrow{font-size:32px;color:#62e3d5}
+#sp-fifine-am8 .note{font-size:19px;color:#9fb1c3;line-height:1.4;margin-top:4%}
+#sp-fifine-am8 .footer{position:absolute;bottom:4%;left:6%;right:6%;display:flex;justify-content:space-between;color:#8095aa;font-size:clamp(10px,1.45vw,17px);letter-spacing:.12em}
+#sp-fifine-am8 .progress{position:absolute;bottom:0;left:0;height:7px;width:0;background:linear-gradient(90deg,#4da3ff,#62e3d5)}
+#sp-fifine-am8 .cta{border:1px solid #4d8790;background:linear-gradient(145deg,#15384a,#102334);padding:30px;border-radius:24px;font-size:27px;margin-top:5%}
+</style>
+</head>
+<body>
+<div id="sp-fifine-am8">
+<div class="bg"></div>
+<div class="top"><span class="brand">SHORTPROMPT</span><span class="pill">CREATOR AUDIO · BUYER GUIDE</span></div>
+
+<section class="scene" data-start="0" data-end="8">
+ <div class="eyebrow">USB microphone · 2026</div>
+ <h1>One mic.<br><span class="cyan">Two ways</span><br>to connect.</h1>
+ <p class="muted">A closer look at the FIFINE AmpliGame AM8 for streaming, gaming and voice recording.</p>
+ <div class="micwrap"><div class="mic"></div><div class="base"></div><div class="callout left">USB-C</div><div class="callout right">XLR</div></div>
+</section>
+
+<section class="scene" data-start="8" data-end="17">
+ <div class="eyebrow">01 · Capsule and pickup</div>
+ <h2>Dynamic.<br><span class="cyan">Cardioid.</span></h2>
+ <p class="muted">The AM8 is a dynamic microphone with a cardioid pickup pattern. FIFINE specifies a 50 Hz–16 kHz frequency range.</p>
+ <div class="panel">
+  <div class="row"><span class="num">01</span> Dynamic microphone capsule</div>
+  <div class="row"><span class="num">02</span> Cardioid pickup pattern</div>
+  <div class="row"><span class="num">03</span> Speak into the top, not the side</div>
+ </div>
+ <p class="note">Schematic visual reconstruction · specifications from FIFINE's product documentation.</p>
+</section>
+
+<section class="scene" data-start="17" data-end="27">
+ <div class="eyebrow">02 · USB mode</div>
+ <h2>Start simple.<br><span class="cyan">Plug in and go.</span></h2>
+ <div class="path"><div class="node">AM8</div><div class="arrow">→</div><div class="node">USB-C</div><div class="arrow">→</div><div class="node">PC / Mac</div></div>
+ <div class="panel">
+  <div class="row"><span class="num">✓</span> USB cable included</div>
+  <div class="row"><span class="num">✓</span> Select “fifine Microphone” as input</div>
+  <div class="row"><span class="num">✓</span> Headphone monitoring available</div>
+ </div>
+ <p class="note">USB setup is the simplest route for a first-time creator.</p>
+</section>
+
+<section class="scene" data-start="27" data-end="37">
+ <div class="eyebrow">03 · On-mic controls</div>
+ <h2>Useful controls.<br><span class="cyan">USB only.</span></h2>
+ <div class="specgrid">
+  <div class="spec"><strong>GAIN</strong><span>Adjust microphone level</span></div>
+  <div class="spec"><strong>MUTE</strong><span>Tap-to-mute button</span></div>
+  <div class="spec"><strong>3.5 mm</strong><span>Headphone output</span></div>
+  <div class="spec"><strong>RGB</strong><span>Lighting modes</span></div>
+ </div>
+ <p class="note">These onboard functions are available in USB mode, not when connected over XLR.</p>
+</section>
+
+<section class="scene" data-start="37" data-end="48">
+ <div class="eyebrow">04 · XLR upgrade path</div>
+ <h2>Want an interface?<br><span class="cyan">Use XLR.</span></h2>
+ <div class="path"><div class="node">AM8</div><div class="arrow">→</div><div class="node">XLR cable</div><div class="arrow">→</div><div class="node">Interface<br>/ Mixer</div></div>
+ <div class="panel">
+  <div class="row"><span class="num">!</span> XLR cable is not included in the base kit</div>
+  <div class="row"><span class="num">!</span> Mute, RGB and headphone monitoring are disabled</div>
+ </div>
+ <p class="note">The XLR connection is an upgrade path, not a second USB-style control mode.</p>
+</section>
+
+<section class="scene" data-start="48" data-end="58">
+ <div class="eyebrow">05 · Placement matters</div>
+ <h2>Get close.<br><span class="cyan">Aim correctly.</span></h2>
+ <div class="panel">
+  <div class="row"><span class="num">2–6 in</span> FIFINE's suggested speaking distance</div>
+  <div class="row"><span class="num">TOP</span> Point the capsule toward your mouth</div>
+  <div class="row"><span class="num">ROOM</span> A dynamic mic does not erase every noise</div>
+ </div>
+ <p class="note">This is a placement guideline, not a guarantee of keyboard-noise rejection or room treatment.</p>
+</section>
+
+<section class="scene" data-start="58" data-end="68">
+ <div class="eyebrow">The verdict</div>
+ <h1>USB now.<br><span class="cyan">XLR later.</span></h1>
+ <p class="muted">A sensible feature set if you want a dynamic USB mic with an upgrade path. Check the exact listing and bundle before buying.</p>
+ <div class="cta">FULL SETUP GUIDE<br><span class="cyan">PRODUCT LINK · DESCRIPTION / PINNED COMMENT</span></div>
+ <p class="note">Affiliate link may earn ShortPrompt a commission at no extra cost to you.</p>
+</section>
+
+<div class="footer"><span>FIFINE AMPLIGAME AM8 · PRODUCT OVERVIEW</span><span id="sp-time">00:00 / 01:08</span></div>
+<div class="progress" id="sp-progress"></div>
+</div>
+<script>
+(() => {
+ const root=document.getElementById('sp-fifine-am8');
+ const scenes=[...root.querySelectorAll('.scene')];
+ const duration=68;
+ function frame(input){
+  const t=Math.max(0,Math.min(duration,Number(input)||0));
+  let active=-1;
+  scenes.forEach((s,i)=>{
+   const a=Number(s.dataset.start),b=Number(s.dataset.end);
+   const on=t>=a&&(t<b||(i===scenes.length-1&&t<=duration));
+   s.style.visibility=on?'visible':'hidden';
+   s.style.opacity=on?'1':'0';
+   s.style.transform=on?'translateY(0px)':'translateY(18px)';
+   if(on) active=i;
+  });
+  const p=root.querySelector('#sp-progress'); if(p)p.style.width=(t/duration*100)+'%';
+  const sec=Math.floor(t),mm=String(Math.floor(sec/60)).padStart(2,'0'),ss=String(sec%60).padStart(2,'0');
+  const c=root.querySelector('#sp-time');if(c)c.textContent=mm+':'+ss+' / 01:08';
+  return active;
+ }
+ window.SPMOTION={width:1080,height:1920,fps:30,duration};
+ window.SPMOTION_FRAME=frame;
+ window.SPMOTION_RENDER=frame;
+ frame(0);
+})();
+</script>
+</body>
+</html>

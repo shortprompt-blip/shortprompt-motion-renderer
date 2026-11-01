@@ -1,13 +1,1 @@
-Your OBS stream sounds doubled, echoey, or out of sync? You usually don't need new software. You need to find where the audio is being routed.
-
-First, wear headphones while checking OBS. If you monitor the microphone through speakers, the mic can pick that sound up again and create echo.
-
-Open Edit, then Advanced Audio Properties. Find the microphone or capture source. Set Audio Monitoring to Monitor Off if you don't need to hear it through OBS. If you do need monitoring, choose the correct headphones as your monitoring device, and avoid routing the same source back twice.
-
-Now check duplicate sources. If your microphone is enabled both as a global audio device and as a separate source, you may be capturing it twice. Keep one intended input active, then make a short test recording.
-
-For lip-sync delay, open Advanced Audio Properties and adjust Sync Offset in milliseconds on the source that is actually early or late. Don't guess: record a clap, review it, and change the offset in small steps.
-
-The OneOdio Pro-10 is an optional wired headphone for monitoring your sound while you test. It won't remove echo or fix sync automatically; it helps you hear the problem.
-
-Record another test and listen back. The full guide and headphone link are in the description and pinned comment.
+Need a USB microphone for streaming or gaming? The FIFINE AM8 combines a dynamic capsule with USB and XLR connections. It uses a cardioid pickup pattern and has a specified frequency range of 50 hertz to 16 kilohertz. USB is the simple route: connect it to your computer, select fifine Microphone, then use the onboard gain and mute controls. You also get a headphone output for direct monitoring and RGB lighting. These onboard functions work in USB mode. XLR gives you an upgrade path to an audio interface or mixer. But the XLR cable is not included, and the mic's onboard controls and headphone monitoring are disabled. FIFINE recommends speaking into the top from about two to six inches away. Placement still matters; this is not automatic noise cancellation. The AM8 suits creators who want USB now and XLR later. Check the exact bundle and current offer in the description. The full guide is linked there too.
