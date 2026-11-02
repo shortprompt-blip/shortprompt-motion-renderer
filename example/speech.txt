@@ -1,15 +1,15 @@
-Your phone can shoot sharp video and still make you sound far away. That is because the built-in microphone is several feet from your voice, picking up the room along with you.
+If your game, Discord and microphone are mixed together, changing one volume can ruin the others. Here is how to separate them in OBS Studio.
 
-Here is a simple mobile audio setup using the RØDE Wireless Micro USB-C.
+This setup requires Windows 10 version 2004 or later, or Windows 11, and OBS 28 or newer.
 
-First, plug the USB-C receiver directly into your phone. Remove a thick case if it blocks the port. Take the transmitters out of the charging case and let them connect.
+Add each sound as its own source. Use Application Audio Capture for the game and Discord, then add your microphone as Audio Input Capture. OBS 30.1 or later can also capture audio through Game Capture or Window Capture.
 
-Clip one transmitter near your upper chest, with the microphone unobstructed. Keep fabric from rubbing against it. Outdoors, fit the supplied furry windshield to reduce wind hitting the microphone.
+Open the Audio Mixer, choose Advanced Audio Properties, and assign the tracks.
 
-Before recording, make a short test. Speak at your normal volume, listen back with headphones, and check that your voice is clear without clipping. The on-screen waveform here is an illustrative animation, not a measured product test.
+Use Track 1 for the complete mix. Keep all three sources checked on Track 1. Then assign Discord to Track 2, game audio to Track 3, and your microphone to Track 4.
 
-The kit has two transmitters, so you can mic two people. RØDE specifies 24-bit, 48-kilohertz audio, up to seven hours from a transmitter, and up to twenty-one hours with the charging case.
+Go to Settings, Output, switch to Advanced mode, and enable those recording tracks. Record to MKV, then remux to MP4 if needed.
 
-The USB-C version supports Android 11 and later, and iOS 14 and later. Check your phone and camera app before buying.
+Separate tracks let you edit each source later. Your live stream still needs a complete mix. Most standard video players play only one track, so check the recording in an editor.
 
-For better smartphone audio, placement and a quick test matter as much as the microphone. Find the setup guide and product link in the description or pinned comment.
+Make a short test. Lower Discord, mute the game, and confirm each track behaves independently. Follow for more OBS creator fixes.
