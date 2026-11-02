@@ -1,1 +1,15 @@
-Need a USB microphone for streaming or gaming? The FIFINE AM8 combines a dynamic capsule with USB and XLR connections. It uses a cardioid pickup pattern and has a specified frequency range of 50 hertz to 16 kilohertz. USB is the simple route: connect it to your computer, select fifine Microphone, then use the onboard gain and mute controls. You also get a headphone output for direct monitoring and RGB lighting. These onboard functions work in USB mode. XLR gives you an upgrade path to an audio interface or mixer. But the XLR cable is not included, and the mic's onboard controls and headphone monitoring are disabled. FIFINE recommends speaking into the top from about two to six inches away. Placement still matters; this is not automatic noise cancellation. The AM8 suits creators who want USB now and XLR later. Check the exact bundle and current offer in the description. The full guide is linked there too.
+Your phone can shoot sharp video and still make you sound far away. That is because the built-in microphone is several feet from your voice, picking up the room along with you.
+
+Here is a simple mobile audio setup using the RØDE Wireless Micro USB-C.
+
+First, plug the USB-C receiver directly into your phone. Remove a thick case if it blocks the port. Take the transmitters out of the charging case and let them connect.
+
+Clip one transmitter near your upper chest, with the microphone unobstructed. Keep fabric from rubbing against it. Outdoors, fit the supplied furry windshield to reduce wind hitting the microphone.
+
+Before recording, make a short test. Speak at your normal volume, listen back with headphones, and check that your voice is clear without clipping. The on-screen waveform here is an illustrative animation, not a measured product test.
+
+The kit has two transmitters, so you can mic two people. RØDE specifies 24-bit, 48-kilohertz audio, up to seven hours from a transmitter, and up to twenty-one hours with the charging case.
+
+The USB-C version supports Android 11 and later, and iOS 14 and later. Check your phone and camera app before buying.
+
+For better smartphone audio, placement and a quick test matter as much as the microphone. Find the setup guide and product link in the description or pinned comment.
