@@ -1,15 +1,19 @@
-Want to generate continuous motion for a 3D character or humanoid robot? This tutorial walks through NVIDIA MotionBricks, from installation to your first generated animation.
+ComfyUI lets you build AI image and video workflows locally, using a visual graph instead of a single prompt box. In this tutorial, we will install it on Windows, load an official video workflow, and explain what kind of PC you actually need.
 
-MotionBricks is not a text-to-video tool. It generates movement between recent character poses and target poses. The same runtime supports the SOMA human skeleton and the Unitree G1 robot.
+Start with the official ComfyUI Desktop download. Install the application, launch it, and let it complete its first setup. The interface is a node graph: each block performs one task, and the connections pass data from one step to the next.
 
-Start with a supported Windows or Linux x86-64 machine and an NVIDIA GPU. NVIDIA’s tested demo setup uses an RTX 4090. The runtime depends on TensorRT, Warp, Newton, Git LFS, and uv.
+For a first local video test, use the official Wan 2.2 five-billion-parameter text-and-image-to-video workflow. Update ComfyUI, open Workflow, choose Browse Templates, then Video, and select Wan 2.2 five-B video generation. The template shows which model components are required.
 
-Install Git LFS and uv, clone the official NVlabs repository, pull the large files, and synchronize the Python environment. The first launch builds a TensorRT plan, so allow a few minutes.
+The workflow uses three model files: the Wan 2.2 five-B diffusion model, the Wan 2.2 VAE, and the UMT5 XXL FP8 text encoder. If you install them manually, place them in diffusion_models, vae, and text_encoders respectively. Keep the filenames and folders exactly as documented.
 
-Now launch the Inbetweener demo. Select SOMA, choose a starting pose, add target poses, and press Generate. MotionBricks fills in the transition between them.
+Enter a short prompt in the text encoder node, check the model loaders, and press Run. For image-to-video, enable the image input and provide a starting frame. The workflow then generates a sequence of frames that ComfyUI can decode and preview.
 
-For a reusable interaction, open the Smart Primitive Editor. Define an interaction box, a pivot, and target poses. Then use the Scene Editor to place that primitive in a scene.
+Now the hardware question. Video generation is strongly affected by GPU memory, or VRAM. System RAM and SSD capacity matter too, but they do not replace VRAM. The official ComfyUI guide says the Wan 2.2 five-B workflow can fit on an eight-gigabyte graphics card using native offloading. That is a practical starting point, not a promise of fast generation or support for every model.
 
-Finally, launch Scene Preview and load the scene. Walk toward the obstacle and watch the character generate a vault, duck-under, or sitting interaction.
+The two example PCs shown here illustrate different memory classes: a desktop RTX 5070 with twelve gigabytes of VRAM, and an RTX 5090 Laptop GPU configuration with twenty-four gigabytes. They are examples, not required purchases. The laptop GPU is not the same as a desktop RTX 5090, and results depend on power limits, cooling, settings, model precision, resolution, and frame count.
 
-The model generates the motion; your application decides the target. That distinction is the key to integrating MotionBricks into a real animation workflow.
+For heavier fourteen-B workflows, expect substantially greater memory pressure. Quantization, offloading, lower resolution, and shorter clips can help, but they involve trade-offs. More system RAM or a larger SSD cannot turn a twelve-gigabyte GPU into a twenty-four-gigabyte one.
+
+The sensible approach is to start with the five-B template, generate a short low-resolution test, and increase resolution or duration only after it works reliably. Check the model card and workflow notes before downloading large files.
+
+ComfyUI is a flexible local workflow tool, not a one-click guarantee of unlimited video generation. The official workflow and hardware notes are linked in the description. You can use the same setup to learn the pipeline before deciding whether a more powerful GPU is worth it.

@@ -1,115 +1,144 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=1080,initial-scale=1"><title>How to Install and Use NVIDIA MotionBricks</title>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=1080,initial-scale=1"><title>Generate AI Video Locally with ComfyUI</title>
 <style>
-#sp-ai-video-root{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;box-sizing:border-box;background:#080d16;color:#f4f7fb;font-family:Inter,Arial,sans-serif}
-#sp-ai-video-root *{box-sizing:border-box}
-#sp-ai-video-root .backdrop{position:absolute;inset:0;background:radial-gradient(ellipse at 82% 10%,#173b5b 0%,transparent 38%),radial-gradient(ellipse at 8% 85%,#20264b 0%,transparent 40%),linear-gradient(145deg,#080d16,#101b2a 60%,#080d16)}
-#sp-ai-video-root .top{position:absolute;top:4%;left:6%;right:6%;display:flex;justify-content:space-between;align-items:center;color:#aab9ca;font-size:18px;letter-spacing:.16em}
-#sp-ai-video-root .brand{font-weight:900;color:#fff}
-#sp-ai-video-root .tag{padding:11px 18px;border:1px solid #42617d;border-radius:30px;color:#a9d7ff;font-size:15px}
-#sp-ai-video-root .scene{position:absolute;inset:15% 6% 13%;visibility:hidden;opacity:0;overflow:hidden}
-#sp-ai-video-root .kicker{font-size:20px;color:#69dfd0;font-weight:850;letter-spacing:.16em;text-transform:uppercase;margin-bottom:28px}
-#sp-ai-video-root h1{font-size:75px;line-height:1.02;letter-spacing:-.055em;margin:0 0 30px;font-weight:900;max-width:920px}
-#sp-ai-video-root .subtitle{font-size:29px;line-height:1.36;color:#bdc9d7;max-width:900px;margin:0 0 38px}
-#sp-ai-video-root .panel{background:linear-gradient(145deg,#17283b,#101a28);border:1px solid #36536c;border-radius:25px;padding:26px;box-shadow:0 24px 65px #0006}
-#sp-ai-video-root .terminal{margin-top:30px;background:#080f18;border-color:#31536a}
-#sp-ai-video-root .termbar{display:flex;align-items:center;gap:9px;padding-bottom:20px;border-bottom:1px solid #263d50;color:#94aabe;font-size:15px;letter-spacing:.12em}
-#sp-ai-video-root .termbar i{width:11px;height:11px;border-radius:50%;background:#63869b}
-#sp-ai-video-root .termbar span{margin-left:12px}
-#sp-ai-video-root pre{white-space:pre-wrap;overflow-wrap:anywhere;color:#a7e9d8;font:22px/1.48 ui-monospace,Consolas,monospace;margin:22px 0 0}
-#sp-ai-video-root .steps{display:grid;gap:16px;margin-top:28px}
-#sp-ai-video-root .step{display:flex;align-items:center;gap:22px;background:#142437;border:1px solid #34536d;border-radius:17px;padding:22px 24px;font-size:25px;color:#e5edf5}
-#sp-ai-video-root .step b{color:#70e2d4;font-size:23px;letter-spacing:.08em}
-#sp-ai-video-root .diagram{display:flex;gap:14px;align-items:stretch;margin-top:42px}
-#sp-ai-video-root .node{flex:1;min-height:190px;border:1px solid #42647e;border-radius:20px;background:#14263a;padding:23px 14px;display:flex;flex-direction:column;justify-content:center;text-align:center}
-#sp-ai-video-root .node strong{font-size:26px;color:#fff}
-#sp-ai-video-root .node small{font-size:17px;line-height:1.35;color:#a9bed0;margin-top:13px}
-#sp-ai-video-root .metrics{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:34px}
-#sp-ai-video-root .metric{background:#14263a;border:1px solid #42647e;border-radius:20px;padding:27px}
-#sp-ai-video-root .metric strong{display:block;font-size:51px;color:#70e2d4;line-height:1.05}
-#sp-ai-video-root .metric span{display:block;font-size:19px;color:#c0cedb;margin-top:12px}
-#sp-ai-video-root .codepanel{margin-top:30px;background:#080f18;border:1px solid #31536a;border-radius:22px;padding:25px}
-#sp-ai-video-root .codehead{font-size:15px;letter-spacing:.14em;color:#9eb5c9;border-bottom:1px solid #263d50;padding-bottom:16px}
-#sp-ai-video-root .matrix{margin-top:26px;overflow:hidden}
-#sp-ai-video-root table{width:100%;border-collapse:collapse;font-size:20px}
-#sp-ai-video-root th,#sp-ai-video-root td{padding:19px 14px;text-align:left;border-bottom:1px solid #34495e}
-#sp-ai-video-root th{background:#20374c;color:#8fe5d8;font-size:17px}
-#sp-ai-video-root td{color:#d9e3ec}
-#sp-ai-video-root .callout{margin-top:35px;font-size:28px;line-height:1.45;color:#d8e6f1}
-#sp-ai-video-root .scene-index{position:absolute;bottom:12px;right:5px;color:#647c91;font-size:15px;letter-spacing:.18em}
-#sp-ai-video-root .footer{position:absolute;bottom:4%;left:6%;right:6%;display:flex;justify-content:space-between;color:#71879a;font-size:15px;letter-spacing:.12em}
-#sp-ai-video-root .progress{position:absolute;left:0;bottom:0;height:7px;width:0;background:linear-gradient(90deg,#4b9ed0,#70e2d4)}
+#sp-comfy-guide{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;background:#f5f4ef;color:#172b3b;font-family:Inter,Arial,sans-serif;box-sizing:border-box}
+#sp-comfy-guide *{box-sizing:border-box}
+#sp-comfy-guide .paper{position:absolute;inset:0;background:linear-gradient(120deg,#f8f7f2 0%,#eef3f4 100%)}
+#sp-comfy-guide .masthead{position:absolute;top:4%;left:6%;right:6%;display:flex;justify-content:space-between;align-items:center;font-size:17px;letter-spacing:.14em;color:#496172;font-weight:800}
+#sp-comfy-guide .brand{color:#172b3b;font-weight:950}
+#sp-comfy-guide .section-tag{padding:10px 16px;background:#fff;border:1px solid #d7e0e3;border-radius:5px;color:#466276}
+#sp-comfy-guide .scene{position:absolute;inset:14% 6% 11%;opacity:0;visibility:hidden}
+#sp-comfy-guide .kicker{font-size:18px;font-weight:900;letter-spacing:.18em;color:#d56a35;margin-bottom:22px}
+#sp-comfy-guide h1{font-size:67px;line-height:1.04;letter-spacing:-.045em;margin:0 0 20px;max-width:930px;color:#173248;font-weight:900}
+#sp-comfy-guide .subtitle{font-size:27px;line-height:1.35;color:#5d7180;margin:0;max-width:900px}
+#sp-comfy-guide .visual{position:absolute;left:0;right:0;top:36%;height:53%;display:flex;align-items:center;justify-content:center}
+#sp-comfy-guide .scene-foot{position:absolute;left:0;right:0;bottom:0;border-top:1px solid #d5dfe1;padding-top:16px;display:flex;justify-content:space-between;font-size:14px;letter-spacing:.12em;color:#84949c}
+#sp-comfy-guide .scene-foot b{color:#d56a35}
+#sp-comfy-guide .graph{display:flex;align-items:center;gap:18px;width:100%}
+#sp-comfy-guide .node{flex:1;min-height:220px;border-radius:16px;padding:30px 20px;background:#fff;border:1px solid #d5e0e2;box-shadow:0 18px 40px #1d3b4b12;display:flex;flex-direction:column;justify-content:center;gap:18px}
+#sp-comfy-guide .node b{font-size:24px;letter-spacing:.06em}
+#sp-comfy-guide .node small{font-size:20px;color:#657987}
+#sp-comfy-guide .n1{border-top:8px solid #e2a13b} #sp-comfy-guide .n2{border-top:8px solid #4e93bb} #sp-comfy-guide .n3{border-top:8px solid #6eaa86}
+#sp-comfy-guide .arrow{font-size:42px;color:#d56a35;font-weight:800}
+#sp-comfy-guide .browser,#sp-comfy-guide .workflow-ui{width:100%;background:#fff;border:1px solid #d4dfe2;border-radius:18px;box-shadow:0 20px 50px #17324816;overflow:hidden}
+#sp-comfy-guide .browserbar{height:56px;background:#eaf0f1;display:flex;align-items:center;gap:9px;padding:0 20px;color:#6e818c;font-size:17px}
+#sp-comfy-guide .browserbar i{width:11px;height:11px;background:#c3d0d4;border-radius:50%}
+#sp-comfy-guide .browserbar span{margin-left:12px}
+#sp-comfy-guide .download{display:flex;align-items:center;gap:22px;padding:35px}
+#sp-comfy-guide .appicon{width:76px;height:76px;background:#eaf3f6;color:#1e5b7b;border-radius:18px;display:grid;place-items:center;font-size:42px;font-weight:900}
+#sp-comfy-guide .download b{font-size:29px;display:block} #sp-comfy-guide .download small{font-size:18px;color:#6c7d86;display:block;margin-top:8px}
+#sp-comfy-guide .pill{margin-left:auto;border-radius:30px;background:#eaf4ec;color:#437d58;padding:10px 15px;font-size:14px;font-weight:900;letter-spacing:.08em}
+#sp-comfy-guide .pill.blue{background:#e8f1f8;color:#2e6b91}
+#sp-comfy-guide .steps{display:flex;gap:14px;padding:0 35px 35px}
+#sp-comfy-guide .steps span{flex:1;background:#f2f5f4;border:1px solid #dfe6e5;border-radius:10px;padding:20px;font-size:20px;font-weight:750}
+#sp-comfy-guide .workflow-ui{display:flex;min-height:280px}
+#sp-comfy-guide .side{width:260px;background:#edf2f2;padding:28px;display:flex;flex-direction:column;gap:18px;color:#61737d;font-size:19px}
+#sp-comfy-guide .side b{color:#1b3548;font-size:17px;letter-spacing:.12em}
+#sp-comfy-guide .side .selected{background:#dcebf2;color:#236a91;padding:12px;border-radius:8px}
+#sp-comfy-guide .template-card{display:flex;align-items:center;gap:26px;padding:30px;flex:1}
+#sp-comfy-guide .thumb{width:170px;height:170px;border-radius:14px;background:linear-gradient(135deg,#e4f0f2,#f7e9dc);display:grid;place-content:center;text-align:center;font-size:26px;color:#35627c;line-height:1.3}
+#sp-comfy-guide .thumb strong{font-size:52px}
+#sp-comfy-guide .template-card b{font-size:26px;display:block} #sp-comfy-guide .template-card small{display:block;font-size:18px;color:#71828a;margin:12px 0 20px}
+#sp-comfy-guide .file-list{display:grid;grid-template-columns:1fr;gap:14px;width:100%}
+#sp-comfy-guide .file-list>div{background:#fff;border:1px solid #d9e1e1;border-left:8px solid #4f94b8;border-radius:10px;padding:17px 22px;display:grid;grid-template-columns:190px 1fr;gap:7px 15px;align-items:center}
+#sp-comfy-guide .file-list b{font-size:16px;letter-spacing:.08em;color:#527184}
+#sp-comfy-guide code{font-size:19px;color:#19394e;font-family:Consolas,monospace}
+#sp-comfy-guide .file-list small{grid-column:2;color:#87949a;font-size:15px}
+#sp-comfy-guide .run-flow{width:100%;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+#sp-comfy-guide .run-card{background:#fff;border:1px solid #d6e0e1;border-radius:13px;padding:23px;min-height:155px}
+#sp-comfy-guide .run-card b{font-size:17px;letter-spacing:.1em;color:#54778b}
+#sp-comfy-guide .run-card p{font-size:21px;color:#314d5e;line-height:1.35}
+#sp-comfy-guide .run-card.action{border-color:#e7bd7b;background:#fffaf0} #sp-comfy-guide .run-card.output{border-color:#a9cdb4}
+#sp-comfy-guide .frames{display:flex;gap:8px} #sp-comfy-guide .frames i{height:48px;flex:1;border-radius:6px;background:linear-gradient(135deg,#b6d5dc,#f1d8bd)}
+#sp-comfy-guide .memory{display:flex;gap:15px;width:100%}
+#sp-comfy-guide .mem-block{flex:1;background:#fff;border:1px solid #d7e1e1;border-radius:14px;padding:23px;min-height:190px;display:flex;flex-direction:column;gap:12px}
+#sp-comfy-guide .mem-block strong{font-size:38px;color:#d56a35} #sp-comfy-guide .mem-block b{font-size:22px} #sp-comfy-guide .mem-block small{font-size:17px;line-height:1.35;color:#74858c}
+#sp-comfy-guide .callout{position:absolute;bottom:0;left:0;right:0;background:#e8f1f5;border-left:7px solid #4b8ead;padding:18px 23px;font-size:21px;line-height:1.35;color:#31566d}
+#sp-comfy-guide .compare{display:flex;gap:20px;width:100%}
+#sp-comfy-guide .pc{flex:1;background:#fff;border:1px solid #d5dfe1;border-radius:16px;padding:24px;box-shadow:0 16px 38px #18384a10}
+#sp-comfy-guide .pc.premium{background:#f1f6f8;border-color:#b9d0d8}
+#sp-comfy-guide .pc-label{font-size:14px;letter-spacing:.12em;color:#758992;font-weight:900}
+#sp-comfy-guide .gpu{font-size:27px;font-weight:850;margin:26px 0 6px;color:#1b3b50}
+#sp-comfy-guide .pc strong{font-size:64px;color:#d56a35;display:block;line-height:1.1}
+#sp-comfy-guide .pc small{font-size:17px;color:#6e7f87}
+#sp-comfy-guide .pc p{font-size:17px;line-height:1.35;color:#627780;margin-top:22px}
+#sp-comfy-guide .trade{display:grid;grid-template-columns:1fr 1fr;gap:14px;width:100%}
+#sp-comfy-guide .trade>div{background:#fff;border:1px solid #d6e0e0;border-radius:12px;padding:24px;min-height:145px}
+#sp-comfy-guide .trade b{display:block;color:#d56a35;font-size:19px;letter-spacing:.08em;margin-bottom:13px}
+#sp-comfy-guide .trade span{font-size:19px;color:#4e6573;line-height:1.35}
+#sp-comfy-guide .ladder{width:100%;display:grid;gap:14px}
+#sp-comfy-guide .level{display:flex;align-items:center;gap:20px;background:#fff;border:1px solid #d5e0e1;border-radius:12px;padding:18px 24px}
+#sp-comfy-guide .level>b{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:#e9f1f3;color:#2d6e8f;font-size:23px}
+#sp-comfy-guide .level span{font-size:22px;flex:1} #sp-comfy-guide .level strong{font-size:15px;letter-spacing:.1em;color:#d56a35}
+#sp-comfy-guide .end-card{width:100%;background:#fff;border:1px solid #d6e0e1;border-radius:18px;padding:48px;text-align:center;box-shadow:0 20px 45px #17324812}
+#sp-comfy-guide .bigcheck{width:76px;height:76px;margin:0 auto 20px;border-radius:50%;background:#e7f2e9;color:#4b8a5d;font-size:43px;display:grid;place-items:center}
+#sp-comfy-guide .end-card h3{font-size:38px;margin:0 0 15px} #sp-comfy-guide .end-card p{font-size:23px;color:#687b84}
+#sp-comfy-guide .note{position:absolute;bottom:-28px;left:0;font-size:14px;color:#89979c;font-style:italic}
+#sp-comfy-guide .progress{position:absolute;bottom:0;left:0;height:6px;width:0;background:#d56a35}
 </style></head><body>
-<div id="sp-ai-video-root"><div class="backdrop"></div>
-<div class="top"><span class="brand">SHORTPROMPT</span><span class="tag">MOTIONBRICKS · 3D MOTION</span></div>
+<div id="sp-comfy-guide"><div class="paper"></div><div class="masthead"><span class="brand">SHORTPROMPT / FIELD GUIDE</span><span class="section-tag">LOCAL AI VIDEO · COMFYUI</span></div>
 
-        <section class="scene" data-id="hook" data-start="0.000" data-end="11.000">
-          <div class="kicker">NVIDIA · MOTION GENERATION</div>
-          <h1>Build motion from<br><span class='accent'>poses, not prompts.</span></h1>
-          <p class="subtitle">MotionBricks generates transitions for human characters and humanoid robots.</p>
-          <div class="metrics"><div class="metric" data-reveal><strong>SOMA</strong><span>human skeleton</span></div><div class="metric" data-reveal><strong>Unitree G1</strong><span>humanoid robot</span></div><div class="metric" data-reveal><strong>30 Hz</strong><span>motion generation</span></div><div class="metric" data-reveal><strong>1–4</strong><span>target poses</span></div></div>
-          <div class="scene-index">HOOK</div>
-        </section>
-        <section class="scene" data-id="requirements" data-start="11.000" data-end="23.000">
-          <div class="kicker">01 · REQUIREMENTS</div>
-          <h1>Check the machine first</h1>
-          <p class="subtitle">The official runtime uses TensorRT and an NVIDIA GPU. NVIDIA reports testing the demos on Windows and Linux x86-64 with an RTX 4090.</p>
-          <div class="matrix panel" data-reveal><table><thead><tr><th>Requirement</th><th>Project setup</th></tr></thead><tbody><tr><td>OS</td><td>Windows / Linux · x86-64</td></tr><tr><td>GPU</td><td>NVIDIA GPU · RTX 4090 tested</td></tr><tr><td>Python</td><td>3.12 or newer</td></tr><tr><td>Tools</td><td>Git LFS + uv + TensorRT</td></tr></tbody></table></div>
-          <div class="scene-index">REQUIREMENTS</div>
-        </section>
-        <section class="scene" data-id="install" data-start="23.000" data-end="36.000">
-          <div class="kicker">02 · INSTALL</div>
-          <h1>Clone the official repo</h1>
-          <p class="subtitle">Pull the large Git LFS assets and let uv install the pinned Python environment.</p>
-          <div class="terminal panel" data-reveal><div class="termbar"><i></i><i></i><i></i><span>TERMINAL · RECONSTRUCTED</span></div><pre>git lfs install
-git clone https://github.com/NVlabs/motionbricks.git
-cd motionbricks
-git lfs pull
-uv sync</pre></div>
-          <div class="scene-index">INSTALL</div>
-        </section>
-        <section class="scene" data-id="inbetweener" data-start="36.000" data-end="49.000">
-          <div class="kicker">03 · FIRST GENERATION</div>
-          <h1>Open the Inbetweener</h1>
-          <p class="subtitle">Start with SOMA, place target poses in the viewer, and generate the motion between them.</p>
-          <div class="steps"><div class="step" data-reveal><b>01</b><span>Launch: uv run python -m app.inbetweener_demo --model soma</span></div><div class="step" data-reveal><b>02</b><span>Select the SOMA character</span></div><div class="step" data-reveal><b>03</b><span>Choose the Start pose</span></div><div class="step" data-reveal><b>04</b><span>Add and position target poses</span></div><div class="step" data-reveal><b>05</b><span>Press Generate and inspect the transition</span></div></div>
-          <div class="scene-index">INBETWEENER</div>
-        </section>
-        <section class="scene" data-id="poses" data-start="49.000" data-end="62.000">
-          <div class="kicker">04 · HOW IT WORKS</div>
-          <h1>Four context poses.<br>Up to four targets.</h1>
-          <p class="subtitle">The model reads recent motion and the target poses. Your application decides the goal; MotionBricks generates the transition.</p>
-          <div class="diagram"><div class="node" data-reveal><strong>Context</strong><small>Four recent poses</small></div><div class="node" data-reveal><strong>MotionBricks</strong><small>Generates transition</small></div><div class="node" data-reveal><strong>Target</strong><small>1–4 goal poses</small></div></div>
-          <div class="scene-index">POSES</div>
-        </section>
-        <section class="scene" data-id="primitive" data-start="62.000" data-end="76.000">
-          <div class="kicker">05 · REUSABLE INTERACTIONS</div>
-          <h1>Build a Smart Primitive</h1>
-          <p class="subtitle">Define the interaction box, pivot and target-pose hierarchy in the Smart Primitive Editor.</p>
-          <div class="steps"><div class="step" data-reveal><b>01</b><span>Launch: uv run python -m app.smart_primitive_editor</span></div><div class="step" data-reveal><b>02</b><span>Create an Interaction box</span></div><div class="step" data-reveal><b>03</b><span>Add a Pivot node</span></div><div class="step" data-reveal><b>04</b><span>Add Entry and target poses</span></div><div class="step" data-reveal><b>05</b><span>Save the reusable primitive</span></div></div>
-          <div class="scene-index">PRIMITIVE</div>
-        </section>
-        <section class="scene" data-id="scene" data-start="76.000" data-end="89.000">
-          <div class="kicker">06 · PLAY A SCENE</div>
-          <h1>Assemble and preview</h1>
-          <p class="subtitle">Use the Scene Editor to place primitives, then run Scene Preview and test the interaction.</p>
-          <div class="terminal panel" data-reveal><div class="termbar"><i></i><i></i><i></i><span>TERMINAL · RECONSTRUCTED</span></div><pre>uv run python -m app.scene_editor
-
-uv run python -m app.scene_preview \
-  --scene assets/scenes/soma_gym.scene.json
-
-# Try the Unitree G1 scene:
-uv run python -m app.scene_preview \
-  --scene assets/scenes/g1_gym.scene.json</pre></div>
-          <div class="scene-index">SCENE</div>
-        </section>
-        <section class="scene" data-id="finish" data-start="89.000" data-end="98.636">
-          <div class="kicker">FINAL CHECK</div>
-          <h1>The model moves.<br>Your app decides where.</h1>
-          <p class="subtitle">Open the official guide and repository from the description and pinned comment.</p>
-          <div class="panel callout" data-reveal>MotionBricks is a pose-conditioned motion generator, not a text-to-video system. The demo apps are reference integrations, not a turnkey production animation suite.</div>
-          <div class="scene-index">FINISH</div>
-        </section>
-<div class="footer"><span>HOW TO INSTALL AND USE NVIDIA MOTIONBRICKS</span><span id="sp-timecode">00:00 / 01:39</span></div><div class="progress" id="sp-progress"></div></div>
-<script>(()=>{'use strict';const root=document.getElementById('sp-ai-video-root');const scenes=[...root.querySelectorAll('.scene')];const duration=98.636;const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));const smooth=v=>{v=clamp(v);return v*v*(3-2*v)};function frame(inputTime){const t=clamp(Number(inputTime)||0,0,duration);let active=-1;scenes.forEach((s,i)=>{const a=Number(s.dataset.start),b=Number(s.dataset.end);const on=t>=a&&(t<b||(i===scenes.length-1&&t<=duration));s.style.visibility=on?'visible':'hidden';s.style.opacity=on?'1':'0';if(on){active=i;const local=t-a;const q=smooth(local/.75);s.style.transform=`translate3d(0,${((1-q)*14).toFixed(2)}px,0)`;s.querySelectorAll('[data-reveal]').forEach((el,j)=>{const r=smooth((local-(.45+j*.55))/.75);el.style.opacity=r.toFixed(4);el.style.transform=`translate3d(0,${((1-r)*20).toFixed(2)}px,0)`})}else{s.style.transform='translate3d(0,14px,0)'}});const p=root.querySelector('#sp-progress');if(p)p.style.width=(t/duration*100).toFixed(3)+'%';const sec=Math.floor(t),mm=String(Math.floor(sec/60)).padStart(2,'0'),ss=String(sec%60).padStart(2,'0');const tc=root.querySelector('#sp-timecode');if(tc)tc.textContent=`${mm}:${ss} / 01:39`;return active}window.SPMOTION={width:1080,height:1920,fps:30,duration};window.SPMOTION_FRAME=frame;window.SPMOTION_RENDER=frame;frame(0)})();</script>
-</body></html>
+    <section class="scene" data-id="s1" data-start="0.000" data-end="18.696">
+      <div class="kicker">THE IDEA</div><h1>A visual graph, not a magic prompt box</h1><p class="subtitle">Build an AI video workflow locally</p>
+      <div class="visual v-node"><div class="graph"><div class="node n1"><b>TEXT / IMAGE</b><small>Input</small></div><div class="arrow">→</div><div class="node n2"><b>MODEL</b><small>Diffusion + encoder</small></div><div class="arrow">→</div><div class="node n3"><b>VIDEO</b><small>Frames + preview</small></div></div><div class="note">ComfyUI workflow graph · explanatory reconstruction</div></div>
+      <div class="scene-foot"><span>SHORTPROMPT · COMFYUI FIELD GUIDE</span><b>01 / 10</b></div>
+    </section>
+    <section class="scene" data-id="s2" data-start="18.696" data-end="36.522">
+      <div class="kicker">INSTALL</div><h1>Start with the Desktop app</h1><p class="subtitle">Official download → install → first launch</p>
+      <div class="visual v-install"><div class="browser"><div class="browserbar"><i></i><i></i><i></i><span>comfy.org/download</span></div><div class="download"><div class="appicon">C</div><div><b>ComfyUI Desktop</b><small>Official desktop application · Windows / macOS</small></div><span class="pill">OFFICIAL</span></div><div class="steps"><span>01&nbsp; Download</span><span>02&nbsp; Install</span><span>03&nbsp; Launch</span></div></div></div>
+      <div class="scene-foot"><span>SHORTPROMPT · COMFYUI FIELD GUIDE</span><b>02 / 10</b></div>
+    </section>
+    <section class="scene" data-id="s3" data-start="36.522" data-end="53.913">
+      <div class="kicker">WORKFLOW</div><h1>Find the official video template</h1><p class="subtitle">Workflow → Browse Templates → Video</p>
+      <div class="visual v-template"><div class="workflow-ui"><div class="side"><b>WORKFLOW</b><span>Browse Templates</span><span class="selected">Video</span><span>Image</span><span>Audio</span></div><div class="template-card"><div class="thumb">WAN<br><strong>2.2</strong></div><div><b>Wan 2.2 5B video generation</b><small>Text + image to video · official template</small><span class="pill blue">VIDEO TEMPLATE</span></div></div></div><div class="note">Interface recreated for explanation; not a live capture.</div></div>
+      <div class="scene-foot"><span>SHORTPROMPT · COMFYUI FIELD GUIDE</span><b>03 / 10</b></div>
+    </section>
+    <section class="scene" data-id="s4" data-start="53.913" data-end="73.913">
+      <div class="kicker">MODEL FILES</div><h1>Three model components</h1><p class="subtitle">Diffusion model · VAE · Text encoder</p>
+      <div class="visual v-files"><div class="file-list"><div><b>DIFFUSION MODEL</b><code>wan2.2_ti2v_5B_fp16.safetensors</code><small>models/diffusion_models/</small></div><div><b>VAE</b><code>wan2.2_vae.safetensors</code><small>models/vae/</small></div><div><b>TEXT ENCODER</b><code>umt5_xxl_fp8_e4m3fn_scaled.safetensors</code><small>models/text_encoders/</small></div></div></div>
+      <div class="scene-foot"><span>SHORTPROMPT · COMFYUI FIELD GUIDE</span><b>04 / 10</b></div>
+    </section>
+    <section class="scene" data-id="s5" data-start="73.913" data-end="91.739">
+      <div class="kicker">RUN</div><h1>Prompt, check, generate</h1><p class="subtitle">Prompt → model loaders → Run → preview</p>
+      <div class="visual v-run"><div class="run-flow"><div class="run-card"><b>01 · PROMPT</b><p>A red bicycle rolling through a sunlit street...</p></div><div class="run-card"><b>02 · MODEL LOADERS</b><p>Diffusion ✓ &nbsp; VAE ✓ &nbsp; Text encoder ✓</p></div><div class="run-card action"><b>03 · RUN</b><p>Queue prompt and generate frames</p></div><div class="run-card output"><b>04 · PREVIEW</b><div class="frames"><i></i><i></i><i></i><i></i></div></div></div><div class="note">Prompt and preview are illustrative, not a generated result.</div></div>
+      <div class="scene-foot"><span>SHORTPROMPT · COMFYUI FIELD GUIDE</span><b>05 / 10</b></div>
+    </section>
+    <section class="scene" data-id="s6" data-start="91.739" data-end="120.000">
+      <div class="kicker">VRAM</div><h1>GPU memory is the main constraint</h1><p class="subtitle">VRAM ≠ system RAM ≠ SSD storage</p>
+      <div class="visual v-vram"><div class="memory"><div class="mem-block"><strong>VRAM</strong><b>GPU memory</b><small>Holds active model data</small></div><div class="mem-block"><strong>RAM</strong><b>System memory</b><small>Supports the application and offloading</small></div><div class="mem-block"><strong>SSD</strong><b>Storage</b><small>Stores downloaded model files</small></div></div><div class="callout">Official Wan 2.2 5B guide: can fit on 8 GB VRAM with ComfyUI native offloading.</div></div>
+      <div class="scene-foot"><span>SHORTPROMPT · COMFYUI FIELD GUIDE</span><b>06 / 10</b></div>
+    </section>
+    <section class="scene" data-id="s7" data-start="120.000" data-end="146.522">
+      <div class="kicker">TWO EXAMPLES</div><h1>Two very different GPU memory tiers</h1><p class="subtitle">RTX 5070 desktop · RTX 5090 Laptop GPU</p>
+      <div class="visual v-compare"><div class="compare"><div class="pc"><span class="pc-label">DESKTOP EXAMPLE</span><div class="gpu">RTX 5070</div><strong>12 GB</strong><small>GPU VRAM</small><p>CyberPowerPC Luxe · desktop GPU</p></div><div class="pc premium"><span class="pc-label">LAPTOP EXAMPLE</span><div class="gpu">RTX 5090</div><strong>24 GB</strong><small>GPU VRAM</small><p>ASUS ROG Strix SCAR 18 · Laptop GPU</p></div></div><div class="note">Examples supplied for comparison, not purchase recommendations. Laptop and desktop GPU implementations are not equivalent.</div></div>
+      <div class="scene-foot"><span>SHORTPROMPT · COMFYUI FIELD GUIDE</span><b>07 / 10</b></div>
+    </section>
+    <section class="scene" data-id="s8" data-start="146.522" data-end="163.043">
+      <div class="kicker">LARGER MODELS</div><h1>More memory pressure, more trade-offs</h1><p class="subtitle">Quantization · offloading · resolution · frames</p>
+      <div class="visual v-trade"><div class="trade"><div><b>QUANTIZATION</b><span>Lower memory use; quality / compatibility trade-offs</span></div><div><b>OFFLOADING</b><span>Moves data between GPU and system memory; can reduce speed</span></div><div><b>RESOLUTION</b><span>Lower output dimensions reduce workload</span></div><div><b>FRAME COUNT</b><span>Shorter clips need fewer generated frames</span></div></div></div>
+      <div class="scene-foot"><span>SHORTPROMPT · COMFYUI FIELD GUIDE</span><b>08 / 10</b></div>
+    </section>
+    <section class="scene" data-id="s9" data-start="163.043" data-end="178.696">
+      <div class="kicker">A SAFE START</div><h1>Begin with a short 5B test</h1><p class="subtitle">Low resolution first; scale only after validation</p>
+      <div class="visual v-start"><div class="ladder"><div class="level l1"><b>1</b><span>Load official 5B workflow</span><strong>START</strong></div><div class="level l2"><b>2</b><span>Generate a short, low-resolution clip</span><strong>TEST</strong></div><div class="level l3"><b>3</b><span>Increase resolution / duration gradually</span><strong>SCALE</strong></div></div></div>
+      <div class="scene-foot"><span>SHORTPROMPT · COMFYUI FIELD GUIDE</span><b>09 / 10</b></div>
+    </section>
+    <section class="scene" data-id="s10" data-start="178.696" data-end="198.696">
+      <div class="kicker">TAKEAWAY</div><h1>Local video generation, with realistic limits</h1><p class="subtitle">Use official templates and check model requirements</p>
+      <div class="visual v-end"><div class="end-card"><div class="bigcheck">✓</div><h3>Learn the workflow first.</h3><p>Then decide what hardware your actual projects require.</p><span class="pill blue">OFFICIAL DOCS IN DESCRIPTION</span></div></div>
+      <div class="scene-foot"><span>SHORTPROMPT · COMFYUI FIELD GUIDE</span><b>10 / 10</b></div>
+    </section>
+<div class="progress" id="sp-progress"></div></div>
+<script>(()=>{'use strict';
+const root=document.getElementById('sp-comfy-guide');const scenes=[...root.querySelectorAll('.scene')];
+const duration=198.696;const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
+const ease=v=>{v=clamp(v);return v*v*(3-2*v)};
+function frame(inputTime){const t=clamp(Number(inputTime)||0,0,duration);let active=-1;
+scenes.forEach((s,i)=>{const a=Number(s.dataset.start),b=Number(s.dataset.end);const on=t>=a&&(t<b||(i===scenes.length-1&&t<=duration));
+s.style.visibility=on?'visible':'hidden';s.style.opacity=on?'1':'0';
+if(on){active=i;const local=t-a;const p=ease(local/0.8);s.style.transform=`translate3d(0,${((1-p)*13).toFixed(2)}px,0)`;
+s.querySelectorAll('.visual > *').forEach((el,j)=>{const q=ease((local-(.25+j*.35))/.7);el.style.opacity=q.toFixed(4);el.style.transform=`translate3d(0,${((1-q)*10).toFixed(2)}px,0)`})}
+else{s.style.transform='translate3d(0,13px,0)'}});
+const bar=root.querySelector('#sp-progress');if(bar)bar.style.width=(t/duration*100).toFixed(3)+'%';return active}
+window.SPMOTION={width:1080,height:1920,fps:30,duration};window.SPMOTION_FRAME=frame;window.SPMOTION_RENDER=frame;frame(0);
+})();</script></div></body></html>
