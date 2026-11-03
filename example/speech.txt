@@ -1,13 +1,15 @@
-Want to turn a long recording into a transcript with speaker labels and word-level timestamps? In this tutorial, we’ll set up NVIDIA Nemotron 3.5 Transcribe with its official vLLM integration.
+Want to generate continuous motion for a 3D character or humanoid robot? This tutorial walks through NVIDIA MotionBricks, from installation to your first generated animation.
 
-First, check your hardware. The reference BF16 setup targets one NVIDIA H100 with 80 gigabytes of memory. NVIDIA also publishes an FP8 profile for an RTX PRO 6000 Blackwell with 96 gigabytes. This is not a lightweight laptop model.
+MotionBricks is not a text-to-video tool. It generates movement between recent character poses and target poses. The same runtime supports the SOMA human skeleton and the Unitree G1 robot.
 
-Install Git, uv, Python 3.13, and a compatible CUDA environment. Clone NVIDIA’s NeMo Speech repository, install the ASR and vLLM extras, then download the Nemotron 3.5 Transcribe checkpoint from Hugging Face.
+Start with a supported Windows or Linux x86-64 machine and an NVIDIA GPU. NVIDIA’s tested demo setup uses an RTX 4090. The runtime depends on TensorRT, Warp, Newton, Git LFS, and uv.
 
-Start the vLLM server using NVIDIA’s documented launch profile. The server exposes an OpenAI-compatible endpoint on port 8000.
+Install Git LFS and uv, clone the official NVlabs repository, pull the large files, and synchronize the Python environment. The first launch builds a TensorRT plan, so allow a few minutes.
 
-Now encode a WAV recording as base64 and send it with a transcription instruction to the chat completions endpoint. Keep reasoning disabled and temperature at zero for transcription.
+Now launch the Inbetweener demo. Select SOMA, choose a starting pose, add target poses, and press Generate. MotionBricks fills in the transition between them.
 
-For speaker attribution and word timestamps, use the documented speaker-tag prompt, enable CTC timestamp capture, and keep the timestamp middleware enabled. Check the returned alignment error before using the word timings.
+For a reusable interaction, open the Smart Primitive Editor. Define an interaction box, a pivot, and target poses. Then use the Scene Editor to place that primitive in a scene.
 
-That’s the complete workflow: prepare the GPU environment, launch the model, send audio, and inspect the transcript. Full commands and sources are in the guide linked below.
+Finally, launch Scene Preview and load the scene. Walk toward the obstacle and watch the character generate a vault, duck-under, or sitting interaction.
+
+The model generates the motion; your application decides the target. That distinction is the key to integrating MotionBricks into a real animation workflow.

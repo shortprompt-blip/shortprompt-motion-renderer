@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=1080,initial-scale=1"><title>How to Use NVIDIA Nemotron 3.5 Transcribe</title>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=1080,initial-scale=1"><title>How to Install and Use NVIDIA MotionBricks</title>
 <style>
 #sp-ai-video-root{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;box-sizing:border-box;background:#080d16;color:#f4f7fb;font-family:Inter,Arial,sans-serif}
 #sp-ai-video-root *{box-sizing:border-box}
@@ -41,80 +41,75 @@
 #sp-ai-video-root .progress{position:absolute;left:0;bottom:0;height:7px;width:0;background:linear-gradient(90deg,#4b9ed0,#70e2d4)}
 </style></head><body>
 <div id="sp-ai-video-root"><div class="backdrop"></div>
-<div class="top"><span class="brand">SHORTPROMPT</span><span class="tag">NEMOTRON 3.5 · TRANSCRIBE</span></div>
+<div class="top"><span class="brand">SHORTPROMPT</span><span class="tag">MOTIONBRICKS · 3D MOTION</span></div>
 
-        <section class="scene" data-id="hook" data-start="0.000" data-end="10.500">
-          <div class="kicker">NVIDIA · SPEECH AI</div>
-          <h1>Transcribe audio.<br>Know <span class='accent'>who said what.</span></h1>
-          <p class="subtitle">An open-weight speech model with transcription, speaker attribution and word timing.</p>
-          <div class="metrics"><div class="metric" data-reveal><strong>40</strong><span>supported languages</span></div><div class="metric" data-reveal><strong>1 hour</strong><span>maximum recording length</span></div><div class="metric" data-reveal><strong>34B</strong><span>total parameters</span></div><div class="metric" data-reveal><strong>4.3B</strong><span>active parameters</span></div></div>
+        <section class="scene" data-id="hook" data-start="0.000" data-end="11.000">
+          <div class="kicker">NVIDIA · MOTION GENERATION</div>
+          <h1>Build motion from<br><span class='accent'>poses, not prompts.</span></h1>
+          <p class="subtitle">MotionBricks generates transitions for human characters and humanoid robots.</p>
+          <div class="metrics"><div class="metric" data-reveal><strong>SOMA</strong><span>human skeleton</span></div><div class="metric" data-reveal><strong>Unitree G1</strong><span>humanoid robot</span></div><div class="metric" data-reveal><strong>30 Hz</strong><span>motion generation</span></div><div class="metric" data-reveal><strong>1–4</strong><span>target poses</span></div></div>
           <div class="scene-index">HOOK</div>
         </section>
-        <section class="scene" data-id="hardware" data-start="10.500" data-end="21.500">
-          <div class="kicker">01 · HARDWARE FIRST</div>
-          <h1>This is a <span class='accent'>GPU deployment.</span></h1>
-          <p class="subtitle">Choose a supported accelerator before installing the stack.</p>
-          <div class="matrix panel" data-reveal><table><thead><tr><th>Checkpoint</th><th>Published profile</th></tr></thead><tbody><tr><td>BF16</td><td>1 × NVIDIA H100 · 80 GB</td></tr><tr><td>FP8</td><td>RTX PRO 6000 Blackwell · 96 GB</td></tr><tr><td>NVFP4</td><td>Blackwell GPU · 96 GB profile</td></tr></tbody></table></div>
-          <div class="scene-index">HARDWARE</div>
+        <section class="scene" data-id="requirements" data-start="11.000" data-end="23.000">
+          <div class="kicker">01 · REQUIREMENTS</div>
+          <h1>Check the machine first</h1>
+          <p class="subtitle">The official runtime uses TensorRT and an NVIDIA GPU. NVIDIA reports testing the demos on Windows and Linux x86-64 with an RTX 4090.</p>
+          <div class="matrix panel" data-reveal><table><thead><tr><th>Requirement</th><th>Project setup</th></tr></thead><tbody><tr><td>OS</td><td>Windows / Linux · x86-64</td></tr><tr><td>GPU</td><td>NVIDIA GPU · RTX 4090 tested</td></tr><tr><td>Python</td><td>3.12 or newer</td></tr><tr><td>Tools</td><td>Git LFS + uv + TensorRT</td></tr></tbody></table></div>
+          <div class="scene-index">REQUIREMENTS</div>
         </section>
-        <section class="scene" data-id="environment" data-start="21.500" data-end="34.000">
-          <div class="kicker">02 · ENVIRONMENT</div>
-          <h1>Prepare NeMo Speech</h1>
-          <p class="subtitle">The documented vLLM path uses Python 3.13, vLLM 0.32.0 and NVIDIA NeMo Speech.</p>
-          <div class="terminal panel" data-reveal><div class="termbar"><i></i><i></i><i></i><span>TERMINAL · RECONSTRUCTED</span></div><pre>git clone https://github.com/NVIDIA-NeMo/Speech.git
-cd Speech
-uv venv --python 3.13 .venv
-UV_PROJECT_ENVIRONMENT=$PWD/.venv uv sync --extra asr --extra vllm --locked --no-install-project
-uv pip install --python .venv/bin/python --no-deps -e .</pre></div>
-          <div class="scene-index">ENVIRONMENT</div>
+        <section class="scene" data-id="install" data-start="23.000" data-end="36.000">
+          <div class="kicker">02 · INSTALL</div>
+          <h1>Clone the official repo</h1>
+          <p class="subtitle">Pull the large Git LFS assets and let uv install the pinned Python environment.</p>
+          <div class="terminal panel" data-reveal><div class="termbar"><i></i><i></i><i></i><span>TERMINAL · RECONSTRUCTED</span></div><pre>git lfs install
+git clone https://github.com/NVlabs/motionbricks.git
+cd motionbricks
+git lfs pull
+uv sync</pre></div>
+          <div class="scene-index">INSTALL</div>
         </section>
-        <section class="scene" data-id="checkpoint" data-start="34.000" data-end="44.000">
-          <div class="kicker">03 · MODEL CHECKPOINT</div>
-          <h1>Download the weights</h1>
-          <p class="subtitle">Keep the checkpoint variant aligned with your GPU and the matching model-card profile.</p>
-          <div class="terminal panel" data-reveal><div class="termbar"><i></i><i></i><i></i><span>TERMINAL · RECONSTRUCTED</span></div><pre>source .venv/bin/activate
-hf download nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B \
-  --local-dir ./NVIDIA-Nemotron-3.5-Transcribe-30B-A4B</pre></div>
-          <div class="scene-index">CHECKPOINT</div>
+        <section class="scene" data-id="inbetweener" data-start="36.000" data-end="49.000">
+          <div class="kicker">03 · FIRST GENERATION</div>
+          <h1>Open the Inbetweener</h1>
+          <p class="subtitle">Start with SOMA, place target poses in the viewer, and generate the motion between them.</p>
+          <div class="steps"><div class="step" data-reveal><b>01</b><span>Launch: uv run python -m app.inbetweener_demo --model soma</span></div><div class="step" data-reveal><b>02</b><span>Select the SOMA character</span></div><div class="step" data-reveal><b>03</b><span>Choose the Start pose</span></div><div class="step" data-reveal><b>04</b><span>Add and position target poses</span></div><div class="step" data-reveal><b>05</b><span>Press Generate and inspect the transition</span></div></div>
+          <div class="scene-index">INBETWEENER</div>
         </section>
-        <section class="scene" data-id="server" data-start="44.000" data-end="57.000">
-          <div class="kicker">04 · SERVE THE MODEL</div>
-          <h1>Launch vLLM</h1>
-          <p class="subtitle">The full NVIDIA launch profile enables the speech plugin, audio limits and timestamp middleware.</p>
-          <div class="steps"><div class="step" data-reveal><b>01</b><span>Set VLLM_PLUGINS=nemo_speechlm</span></div><div class="step" data-reveal><b>02</b><span>Set audio decode limit to 3600 seconds</span></div><div class="step" data-reveal><b>03</b><span>Enable the V1 runner for CTC word timestamps</span></div><div class="step" data-reveal><b>04</b><span>Run vLLM 0.32.0 with the BF16 H100 profile</span></div><div class="step" data-reveal><b>05</b><span>Expose the OpenAI-compatible API on port 8000</span></div></div>
-          <div class="scene-index">SERVER</div>
+        <section class="scene" data-id="poses" data-start="49.000" data-end="62.000">
+          <div class="kicker">04 · HOW IT WORKS</div>
+          <h1>Four context poses.<br>Up to four targets.</h1>
+          <p class="subtitle">The model reads recent motion and the target poses. Your application decides the goal; MotionBricks generates the transition.</p>
+          <div class="diagram"><div class="node" data-reveal><strong>Context</strong><small>Four recent poses</small></div><div class="node" data-reveal><strong>MotionBricks</strong><small>Generates transition</small></div><div class="node" data-reveal><strong>Target</strong><small>1–4 goal poses</small></div></div>
+          <div class="scene-index">POSES</div>
         </section>
-        <section class="scene" data-id="request" data-start="57.000" data-end="71.000">
-          <div class="kicker">05 · SEND AUDIO</div>
-          <h1>One request.<br>One transcript.</h1>
-          <p class="subtitle">Base64-encode a WAV file and send it with an explicit transcription instruction.</p>
-          <div class="codepanel" data-reveal><div class="codehead">PYTHON · EXAMPLE</div><pre>client = OpenAI(base_url="http://127.0.0.1:8000/v1", api_key="EMPTY")
+        <section class="scene" data-id="primitive" data-start="62.000" data-end="76.000">
+          <div class="kicker">05 · REUSABLE INTERACTIONS</div>
+          <h1>Build a Smart Primitive</h1>
+          <p class="subtitle">Define the interaction box, pivot and target-pose hierarchy in the Smart Primitive Editor.</p>
+          <div class="steps"><div class="step" data-reveal><b>01</b><span>Launch: uv run python -m app.smart_primitive_editor</span></div><div class="step" data-reveal><b>02</b><span>Create an Interaction box</span></div><div class="step" data-reveal><b>03</b><span>Add a Pivot node</span></div><div class="step" data-reveal><b>04</b><span>Add Entry and target poses</span></div><div class="step" data-reveal><b>05</b><span>Save the reusable primitive</span></div></div>
+          <div class="scene-index">PRIMITIVE</div>
+        </section>
+        <section class="scene" data-id="scene" data-start="76.000" data-end="89.000">
+          <div class="kicker">06 · PLAY A SCENE</div>
+          <h1>Assemble and preview</h1>
+          <p class="subtitle">Use the Scene Editor to place primitives, then run Scene Preview and test the interaction.</p>
+          <div class="terminal panel" data-reveal><div class="termbar"><i></i><i></i><i></i><span>TERMINAL · RECONSTRUCTED</span></div><pre>uv run python -m app.scene_editor
 
-response = client.chat.completions.create(
-  model="nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B",
-  messages=[{"role":"user","content":[
-    {"type":"text","text":"Transcribe the following audio."},
-    {"type":"audio_url","audio_url":{"url": audio_data_url}}
-  ]}],
-  temperature=0,
-  extra_body={"chat_template_kwargs":{"enable_thinking":False}}
-)</pre></div>
-          <div class="scene-index">REQUEST</div>
+uv run python -m app.scene_preview \
+  --scene assets/scenes/soma_gym.scene.json
+
+# Try the Unitree G1 scene:
+uv run python -m app.scene_preview \
+  --scene assets/scenes/g1_gym.scene.json</pre></div>
+          <div class="scene-index">SCENE</div>
         </section>
-        <section class="scene" data-id="timestamps" data-start="71.000" data-end="83.000">
-          <div class="kicker">06 · SPEAKERS + TIMING</div>
-          <h1>Add speaker tags<br>and word timing</h1>
-          <p class="subtitle">Use the speaker-tag prompt and CTC timestamp capture; inspect the alignment error before consuming timings.</p>
-          <div class="diagram"><div class="node" data-reveal><strong>Prompt</strong><small>Request <spk:0>, <spk:1>…</small></div><div class="node" data-reveal><strong>Middleware</strong><small>CTC timestamp alignment</small></div><div class="node" data-reveal><strong>Output</strong><small>Word start / end / speaker</small></div></div>
-          <div class="scene-index">TIMESTAMPS</div>
-        </section>
-        <section class="scene" data-id="finish" data-start="83.000" data-end="94.091">
+        <section class="scene" data-id="finish" data-start="89.000" data-end="98.636">
           <div class="kicker">FINAL CHECK</div>
-          <h1>Your transcript pipeline<br>is ready to inspect.</h1>
-          <p class="subtitle">Full guide and official resources: check the description and pinned comment.</p>
-          <div class="panel callout" data-reveal>IMPORTANT: the vLLM BF16 example is an H100 80 GB profile. FP8 and NVFP4 use different validated hardware and launch settings. DFlash2 is not compatible with CTC timestamps in the documented configuration.</div>
+          <h1>The model moves.<br>Your app decides where.</h1>
+          <p class="subtitle">Open the official guide and repository from the description and pinned comment.</p>
+          <div class="panel callout" data-reveal>MotionBricks is a pose-conditioned motion generator, not a text-to-video system. The demo apps are reference integrations, not a turnkey production animation suite.</div>
           <div class="scene-index">FINISH</div>
         </section>
-<div class="footer"><span>HOW TO USE NVIDIA NEMOTRON 3.5 TRANSCRIBE</span><span id="sp-timecode">00:00 / 01:34</span></div><div class="progress" id="sp-progress"></div></div>
-<script>(()=>{'use strict';const root=document.getElementById('sp-ai-video-root');const scenes=[...root.querySelectorAll('.scene')];const duration=94.091;const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));const smooth=v=>{v=clamp(v);return v*v*(3-2*v)};function frame(inputTime){const t=clamp(Number(inputTime)||0,0,duration);let active=-1;scenes.forEach((s,i)=>{const a=Number(s.dataset.start),b=Number(s.dataset.end);const on=t>=a&&(t<b||(i===scenes.length-1&&t<=duration));s.style.visibility=on?'visible':'hidden';s.style.opacity=on?'1':'0';if(on){active=i;const local=t-a;const q=smooth(local/.75);s.style.transform=`translate3d(0,${((1-q)*14).toFixed(2)}px,0)`;s.querySelectorAll('[data-reveal]').forEach((el,j)=>{const r=smooth((local-(.45+j*.55))/.75);el.style.opacity=r.toFixed(4);el.style.transform=`translate3d(0,${((1-r)*20).toFixed(2)}px,0)`})}else{s.style.transform='translate3d(0,14px,0)'}});const p=root.querySelector('#sp-progress');if(p)p.style.width=(t/duration*100).toFixed(3)+'%';const sec=Math.floor(t),mm=String(Math.floor(sec/60)).padStart(2,'0'),ss=String(sec%60).padStart(2,'0');const tc=root.querySelector('#sp-timecode');if(tc)tc.textContent=`${mm}:${ss} / 01:34`;return active}window.SPMOTION={width:1080,height:1920,fps:30,duration};window.SPMOTION_FRAME=frame;window.SPMOTION_RENDER=frame;frame(0)})();</script>
+<div class="footer"><span>HOW TO INSTALL AND USE NVIDIA MOTIONBRICKS</span><span id="sp-timecode">00:00 / 01:39</span></div><div class="progress" id="sp-progress"></div></div>
+<script>(()=>{'use strict';const root=document.getElementById('sp-ai-video-root');const scenes=[...root.querySelectorAll('.scene')];const duration=98.636;const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));const smooth=v=>{v=clamp(v);return v*v*(3-2*v)};function frame(inputTime){const t=clamp(Number(inputTime)||0,0,duration);let active=-1;scenes.forEach((s,i)=>{const a=Number(s.dataset.start),b=Number(s.dataset.end);const on=t>=a&&(t<b||(i===scenes.length-1&&t<=duration));s.style.visibility=on?'visible':'hidden';s.style.opacity=on?'1':'0';if(on){active=i;const local=t-a;const q=smooth(local/.75);s.style.transform=`translate3d(0,${((1-q)*14).toFixed(2)}px,0)`;s.querySelectorAll('[data-reveal]').forEach((el,j)=>{const r=smooth((local-(.45+j*.55))/.75);el.style.opacity=r.toFixed(4);el.style.transform=`translate3d(0,${((1-r)*20).toFixed(2)}px,0)`})}else{s.style.transform='translate3d(0,14px,0)'}});const p=root.querySelector('#sp-progress');if(p)p.style.width=(t/duration*100).toFixed(3)+'%';const sec=Math.floor(t),mm=String(Math.floor(sec/60)).padStart(2,'0'),ss=String(sec%60).padStart(2,'0');const tc=root.querySelector('#sp-timecode');if(tc)tc.textContent=`${mm}:${ss} / 01:39`;return active}window.SPMOTION={width:1080,height:1920,fps:30,duration};window.SPMOTION_FRAME=frame;window.SPMOTION_RENDER=frame;frame(0)})();</script>
 </body></html>
