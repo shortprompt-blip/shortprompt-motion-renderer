@@ -1,58 +1,120 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=1080,initial-scale=1"><title>Separate Game, Discord and Mic Audio in OBS Studio</title>
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=1080,initial-scale=1"><title>How to Use NVIDIA Nemotron 3.5 Transcribe</title>
 <style>
-#sp-obs-audio{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;background:#0b0e13;color:#f4f6fa;font-family:Inter,Arial,sans-serif;box-sizing:border-box}
-#sp-obs-audio *{box-sizing:border-box}
-#sp-obs-audio .bg{position:absolute;inset:0;background:radial-gradient(ellipse at 85% 12%,#273c4b 0%,transparent 36%),linear-gradient(145deg,#0b0e13,#151c25 55%,#0a0d12)}
-#sp-obs-audio .top{position:absolute;top:3.6%;left:5.5%;right:5.5%;display:flex;justify-content:space-between;align-items:center;color:#aeb8c5;font-size:18px;letter-spacing:.14em}
-#sp-obs-audio .brand{font-weight:900;color:#fff}
-#sp-obs-audio .tag{padding:11px 18px;border:1px solid #53616e;border-radius:30px;color:#a8c8ff;font-size:16px}
-#sp-obs-audio .scene{position:absolute;inset:13% 5.5% 12%;visibility:hidden;opacity:0}
-#sp-obs-audio .kicker{font-size:19px;color:#8db8ff;font-weight:850;letter-spacing:.16em;text-transform:uppercase;margin-bottom:25px}
-#sp-obs-audio h1{font-size:82px;line-height:.98;letter-spacing:-.055em;margin:0 0 28px;font-weight:900}
-#sp-obs-audio h2{font-size:66px;line-height:1.02;letter-spacing:-.05em;margin:0 0 26px;font-weight:900}
-#sp-obs-audio .blue{color:#83b6ff}
-#sp-obs-audio .muted{font-size:29px;line-height:1.34;color:#bdc7d3}
-#sp-obs-audio .subtle{font-size:20px;color:#9caaba;line-height:1.4}
-#sp-obs-audio .window{border:2px solid #53616e;border-radius:22px;background:#171c24;overflow:hidden;box-shadow:0 24px 65px #0008;margin-top:30px}
-#sp-obs-audio .winbar{height:55px;background:#242c36;display:flex;align-items:center;padding:0 20px;gap:10px;color:#dce4ed;font-size:18px}
-#sp-obs-audio .dot{width:11px;height:11px;border-radius:50%;background:#788797}
-#sp-obs-audio .winname{margin-left:10px;font-weight:750}
-#sp-obs-audio .workspace{padding:24px;display:grid;grid-template-columns:1fr 1fr;gap:18px}
-#sp-obs-audio .dock{background:#11161e;border:1px solid #35404d;border-radius:13px;padding:18px;min-height:310px}
-#sp-obs-audio .docktitle{font-size:17px;font-weight:850;color:#b7c4d2;letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px}
-#sp-obs-audio .source{display:flex;align-items:center;justify-content:space-between;padding:17px 14px;border-radius:10px;background:#222b36;border:1px solid #3d4a59;margin:10px 0;font-size:22px}
-#sp-obs-audio .source small{font-size:15px;color:#9aabba}
-#sp-obs-audio .meter{height:12px;background:#303a44;border-radius:12px;overflow:hidden;margin-top:10px}
-#sp-obs-audio .fill{height:100%;width:68%;background:linear-gradient(90deg,#57bd8d,#c6d65d,#e6a34d);border-radius:12px}
-#sp-obs-audio .single{margin-top:30px;border:1px solid #485665;background:#18222d;border-radius:18px;padding:24px;text-align:center}
-#sp-obs-audio .combined{font-size:26px;font-weight:850}
-#sp-obs-audio .split{display:flex;justify-content:center;gap:15px;margin-top:18px}
-#sp-obs-audio .chip{padding:15px 18px;border:1px solid #4b6077;background:#1e2c3b;border-radius:12px;font-size:19px;font-weight:800}
-#sp-obs-audio .matrix{width:100%;border-collapse:separate;border-spacing:0;margin-top:26px;background:#151b23;border:1px solid #465362;border-radius:15px;overflow:hidden}
-#sp-obs-audio .matrix th,#sp-obs-audio .matrix td{padding:18px 12px;text-align:center;border-bottom:1px solid #34404c;font-size:18px}
-#sp-obs-audio .matrix th{background:#242d38;color:#c9d5e2;font-size:16px}
-#sp-obs-audio .matrix td:first-child{text-align:left;font-weight:800;color:#e9eef5}
-#sp-obs-audio .check{display:inline-flex;width:28px;height:28px;border-radius:7px;align-items:center;justify-content:center;background:#2b6c59;color:#fff;font-weight:900}
-#sp-obs-audio .off{background:#29323c;color:#657483}
-#sp-obs-audio .trackcards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:26px}
-#sp-obs-audio .track{background:#1a2531;border:1px solid #465a70;border-radius:15px;padding:20px}
-#sp-obs-audio .track strong{display:block;font-size:30px;color:#8dbaff;margin-bottom:7px}
-#sp-obs-audio .track span{font-size:19px;color:#d1dce7}
-#sp-obs-audio .lanes{margin-top:28px;background:#151d27;border:1px solid #465463;border-radius:18px;padding:22px}
-#sp-obs-audio .lane{display:flex;align-items:center;gap:14px;margin:14px 0;font-size:18px}
-#sp-obs-audio .lane b{width:110px;color:#cbd6e1}
-#sp-obs-audio .clips{height:24px;flex:1;border-radius:6px;background:#273544;overflow:hidden}
-#sp-obs-audio .clip{height:100%;border-radius:6px;background:linear-gradient(90deg,#4c8fc9,#83b6ff)}
-#sp-obs-audio .warning{padding:22px;border-radius:16px;border:1px solid #8b6d3e;background:#332a1d;color:#f0d29c;font-size:21px;line-height:1.4;margin-top:24px}
-#sp-obs-audio .footer{position:absolute;bottom:4%;left:5.5%;right:5.5%;display:flex;justify-content:space-between;color:#7f8d9c;font-size:16px;letter-spacing:.12em}
-#sp-obs-audio .progress{position:absolute;left:0;bottom:0;height:7px;width:0;background:linear-gradient(90deg,#4e8ac5,#a3c9ff)}
-</style></head><body><div id="sp-obs-audio"><div class="bg"></div>
-<div class="top"><span class="brand">SHORTPROMPT</span><span class="tag">OBS AUDIO WORKFLOW</span></div>
-<section class="scene" data-start="0.0000" data-end="11.3631"><div class="kicker">OBS Studio · Streamer setup</div><h1>Game. Discord.<br><span class="blue">Your mic.</span></h1><p class="muted">Stop recording everything as one mixed audio track.</p><div class="single"><div class="combined">ONE MIXED AUDIO SOURCE</div><div class="meter"><div class="fill"></div></div><div class="split"><span class="chip">GAME</span><span class="chip">DISCORD</span><span class="chip">MIC</span></div><p class="subtle">One volume change affects the whole mix.</p></div></section>
-<section class="scene" data-start="11.3631" data-end="19.0900"><div class="kicker">Before you start</div><h2>Check your<br><span class="blue">Windows + OBS</span> version.</h2><div class="trackcards"><div class="track"><strong>Windows 10</strong><span>Version 2004 or later</span></div><div class="track"><strong>Windows 11</strong><span>Supported</span></div><div class="track"><strong>OBS 28+</strong><span>Application Audio Capture</span></div><div class="track"><strong>OBS 30.1+</strong><span>Game / Window Capture can include audio</span></div></div><p class="subtle">Application Audio Capture is documented for Windows 10 2004+ and Windows 11.</p></section>
-<section class="scene" data-start="19.0900" data-end="36.8164"><div class="kicker">01 · Separate the sources</div><h2>One app.<br><span class="blue">One OBS source.</span></h2><div class="window"><div class="winbar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span class="winname">OBS Studio · Sources (reconstructed)</span></div><div class="workspace"><div class="dock"><div class="docktitle">Sources</div><div class="source">Game Audio <small>Application Audio Capture</small></div><div class="source">Discord <small>Application Audio Capture</small></div><div class="source">Microphone <small>Audio Input Capture</small></div></div><div class="dock"><div class="docktitle">Audio Mixer</div><div class="source">GAME <small>LEVEL</small></div><div class="meter"><div class="fill"></div></div><div class="source">DISCORD <small>LEVEL</small></div><div class="meter"><div class="fill" style="width:42%"></div></div><div class="source">MIC <small>LEVEL</small></div><div class="meter"><div class="fill" style="width:57%"></div></div></div></div></div><p class="subtle">Reconstructed OBS interface · illustrative layout, not a live capture.</p></section>
-<section class="scene" data-start="36.8164" data-end="56.8154"><div class="kicker">02 · Advanced Audio Properties</div><h2>Route each source<br><span class="blue">to its own track.</span></h2><div class="window"><div class="winbar"><i class="dot"></i><span class="winname">Advanced Audio Properties · reconstructed</span></div><div style="padding:18px"><table class="matrix"><thead><tr><th>Source</th><th>Track 1<br>Full mix</th><th>Track 2<br>Discord</th><th>Track 3<br>Game</th><th>Track 4<br>Mic</th></tr></thead><tbody><tr><td>Discord</td><td><i class="check">✓</i></td><td><i class="check">✓</i></td><td><i class="check off">–</i></td><td><i class="check off">–</i></td></tr><tr><td>Game</td><td><i class="check">✓</i></td><td><i class="check off">–</i></td><td><i class="check">✓</i></td><td><i class="check off">–</i></td></tr><tr><td>Mic</td><td><i class="check">✓</i></td><td><i class="check off">–</i></td><td><i class="check off">–</i></td><td><i class="check">✓</i></td></tr></tbody></table></div></div><p class="subtle">Track 1 keeps the complete mix. Tracks 2–4 isolate each source for editing.</p></section>
-<section class="scene" data-start="56.8154" data-end="66.8149"><div class="kicker">03 · Recording output</div><h2>Enable the tracks<br><span class="blue">you want to record.</span></h2><div class="window"><div class="winbar"><i class="dot"></i><span class="winname">Settings · Output (reconstructed)</span></div><div class="workspace"><div class="dock"><div class="docktitle">Output Mode</div><div class="source">Advanced <small>Selected</small></div><div class="source">Recording <small>Enabled</small></div><div class="source">Format <small>MKV</small></div></div><div class="dock"><div class="docktitle">Audio Tracks</div><div class="source">Track 1 <i class="check">✓</i></div><div class="source">Track 2 <i class="check">✓</i></div><div class="source">Track 3 <i class="check">✓</i></div><div class="source">Track 4 <i class="check">✓</i></div></div></div></div><p class="subtle">OBS recommends MKV for multitrack recordings; remux to MP4 when required.</p></section>
-<section class="scene" data-start="66.8149" data-end="80.9051"><div class="kicker">04 · Test the recording</div><h2>One live mix.<br><span class="blue">Separate edit tracks.</span></h2><div class="lanes"><div class="lane"><b>Track 1 · Mix</b><div class="clips"><div class="clip" style="width:92%"></div></div></div><div class="lane"><b>Track 2 · Chat</b><div class="clips"><div class="clip" style="width:55%"></div></div></div><div class="lane"><b>Track 3 · Game</b><div class="clips"><div class="clip" style="width:78%"></div></div></div><div class="lane"><b>Track 4 · Mic</b><div class="clips"><div class="clip" style="width:66%"></div></div></div></div><div class="warning">Most standard video players play only one audio track. Check multitrack recordings in an editor.</div><div class="trackcards"><div class="track"><strong>01</strong><span>Lower Discord</span></div><div class="track"><strong>02</strong><span>Mute the game</span></div><div class="track"><strong>03</strong><span>Check each track</span></div><div class="track"><strong>04</strong><span>Save a test recording</span></div></div><p class="subtle" style="margin-top:20px">Follow for more OBS creator fixes.</p></section>
-<section class="scene" data-start="80.9051" data-end="90.4500"><div class="kicker">05 · Final check</div><h2>Test every source.<br><span class="blue">Then go live.</span></h2><div class="trackcards"><div class="track"><strong>01</strong><span>Lower Discord</span></div><div class="track"><strong>02</strong><span>Mute the game</span></div><div class="track"><strong>03</strong><span>Check each track</span></div><div class="track"><strong>04</strong><span>Save a test recording</span></div></div><div class="warning">Track 1 keeps the full mix. Tracks 2–4 are for editing. Follow for more OBS creator fixes.</div></section>\n<div class="footer"><span>OBS STUDIO · SEPARATE AUDIO TRACKS</span><span id="sp-obs-time">00:00 / 01:30</span></div><div class="progress" id="sp-obs-progress"></div></div>
-<script>(()=>{'use strict';const root=document.getElementById('sp-obs-audio');const scenes=[...root.querySelectorAll('.scene')];const duration=90.4500;const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));const smooth=v=>{v=clamp(v);return v*v*(3-2*v)};function frame(input){const t=clamp(Number(input)||0,0,duration);let active=-1;scenes.forEach((s,i)=>{const a=Number(s.dataset.start),b=Number(s.dataset.end);const on=t>=a&&(t<b||(i===scenes.length-1&&t<=duration));s.style.visibility=on?'visible':'hidden';s.style.opacity=on?'1':'0';const q=on?smooth((t-a)/.7):0;s.style.transform=`translate3d(0,${((1-q)*15).toFixed(2)}px,0)`;if(on)active=i});const p=root.querySelector('#sp-obs-progress');if(p)p.style.width=(t/duration*100).toFixed(3)+'%';const sec=Math.floor(t),mm=String(Math.floor(sec/60)).padStart(2,'0'),ss=String(sec%60).padStart(2,'0');const c=root.querySelector('#sp-obs-time');if(c)c.textContent=`${mm}:${ss} / ${String(Math.floor(duration/60)).padStart(2,'0')}:${String(Math.floor(duration%60)).padStart(2,'0')}`;return active}window.SPMOTION={width:1080,height:1920,fps:30,duration};window.SPMOTION_FRAME=frame;window.SPMOTION_RENDER=frame;frame(0)})();</script></body></html>
+#sp-ai-video-root{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;box-sizing:border-box;background:#080d16;color:#f4f7fb;font-family:Inter,Arial,sans-serif}
+#sp-ai-video-root *{box-sizing:border-box}
+#sp-ai-video-root .backdrop{position:absolute;inset:0;background:radial-gradient(ellipse at 82% 10%,#173b5b 0%,transparent 38%),radial-gradient(ellipse at 8% 85%,#20264b 0%,transparent 40%),linear-gradient(145deg,#080d16,#101b2a 60%,#080d16)}
+#sp-ai-video-root .top{position:absolute;top:4%;left:6%;right:6%;display:flex;justify-content:space-between;align-items:center;color:#aab9ca;font-size:18px;letter-spacing:.16em}
+#sp-ai-video-root .brand{font-weight:900;color:#fff}
+#sp-ai-video-root .tag{padding:11px 18px;border:1px solid #42617d;border-radius:30px;color:#a9d7ff;font-size:15px}
+#sp-ai-video-root .scene{position:absolute;inset:15% 6% 13%;visibility:hidden;opacity:0;overflow:hidden}
+#sp-ai-video-root .kicker{font-size:20px;color:#69dfd0;font-weight:850;letter-spacing:.16em;text-transform:uppercase;margin-bottom:28px}
+#sp-ai-video-root h1{font-size:75px;line-height:1.02;letter-spacing:-.055em;margin:0 0 30px;font-weight:900;max-width:920px}
+#sp-ai-video-root .subtitle{font-size:29px;line-height:1.36;color:#bdc9d7;max-width:900px;margin:0 0 38px}
+#sp-ai-video-root .panel{background:linear-gradient(145deg,#17283b,#101a28);border:1px solid #36536c;border-radius:25px;padding:26px;box-shadow:0 24px 65px #0006}
+#sp-ai-video-root .terminal{margin-top:30px;background:#080f18;border-color:#31536a}
+#sp-ai-video-root .termbar{display:flex;align-items:center;gap:9px;padding-bottom:20px;border-bottom:1px solid #263d50;color:#94aabe;font-size:15px;letter-spacing:.12em}
+#sp-ai-video-root .termbar i{width:11px;height:11px;border-radius:50%;background:#63869b}
+#sp-ai-video-root .termbar span{margin-left:12px}
+#sp-ai-video-root pre{white-space:pre-wrap;overflow-wrap:anywhere;color:#a7e9d8;font:22px/1.48 ui-monospace,Consolas,monospace;margin:22px 0 0}
+#sp-ai-video-root .steps{display:grid;gap:16px;margin-top:28px}
+#sp-ai-video-root .step{display:flex;align-items:center;gap:22px;background:#142437;border:1px solid #34536d;border-radius:17px;padding:22px 24px;font-size:25px;color:#e5edf5}
+#sp-ai-video-root .step b{color:#70e2d4;font-size:23px;letter-spacing:.08em}
+#sp-ai-video-root .diagram{display:flex;gap:14px;align-items:stretch;margin-top:42px}
+#sp-ai-video-root .node{flex:1;min-height:190px;border:1px solid #42647e;border-radius:20px;background:#14263a;padding:23px 14px;display:flex;flex-direction:column;justify-content:center;text-align:center}
+#sp-ai-video-root .node strong{font-size:26px;color:#fff}
+#sp-ai-video-root .node small{font-size:17px;line-height:1.35;color:#a9bed0;margin-top:13px}
+#sp-ai-video-root .metrics{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:34px}
+#sp-ai-video-root .metric{background:#14263a;border:1px solid #42647e;border-radius:20px;padding:27px}
+#sp-ai-video-root .metric strong{display:block;font-size:51px;color:#70e2d4;line-height:1.05}
+#sp-ai-video-root .metric span{display:block;font-size:19px;color:#c0cedb;margin-top:12px}
+#sp-ai-video-root .codepanel{margin-top:30px;background:#080f18;border:1px solid #31536a;border-radius:22px;padding:25px}
+#sp-ai-video-root .codehead{font-size:15px;letter-spacing:.14em;color:#9eb5c9;border-bottom:1px solid #263d50;padding-bottom:16px}
+#sp-ai-video-root .matrix{margin-top:26px;overflow:hidden}
+#sp-ai-video-root table{width:100%;border-collapse:collapse;font-size:20px}
+#sp-ai-video-root th,#sp-ai-video-root td{padding:19px 14px;text-align:left;border-bottom:1px solid #34495e}
+#sp-ai-video-root th{background:#20374c;color:#8fe5d8;font-size:17px}
+#sp-ai-video-root td{color:#d9e3ec}
+#sp-ai-video-root .callout{margin-top:35px;font-size:28px;line-height:1.45;color:#d8e6f1}
+#sp-ai-video-root .scene-index{position:absolute;bottom:12px;right:5px;color:#647c91;font-size:15px;letter-spacing:.18em}
+#sp-ai-video-root .footer{position:absolute;bottom:4%;left:6%;right:6%;display:flex;justify-content:space-between;color:#71879a;font-size:15px;letter-spacing:.12em}
+#sp-ai-video-root .progress{position:absolute;left:0;bottom:0;height:7px;width:0;background:linear-gradient(90deg,#4b9ed0,#70e2d4)}
+</style></head><body>
+<div id="sp-ai-video-root"><div class="backdrop"></div>
+<div class="top"><span class="brand">SHORTPROMPT</span><span class="tag">NEMOTRON 3.5 · TRANSCRIBE</span></div>
+
+        <section class="scene" data-id="hook" data-start="0.000" data-end="10.500">
+          <div class="kicker">NVIDIA · SPEECH AI</div>
+          <h1>Transcribe audio.<br>Know <span class='accent'>who said what.</span></h1>
+          <p class="subtitle">An open-weight speech model with transcription, speaker attribution and word timing.</p>
+          <div class="metrics"><div class="metric" data-reveal><strong>40</strong><span>supported languages</span></div><div class="metric" data-reveal><strong>1 hour</strong><span>maximum recording length</span></div><div class="metric" data-reveal><strong>34B</strong><span>total parameters</span></div><div class="metric" data-reveal><strong>4.3B</strong><span>active parameters</span></div></div>
+          <div class="scene-index">HOOK</div>
+        </section>
+        <section class="scene" data-id="hardware" data-start="10.500" data-end="21.500">
+          <div class="kicker">01 · HARDWARE FIRST</div>
+          <h1>This is a <span class='accent'>GPU deployment.</span></h1>
+          <p class="subtitle">Choose a supported accelerator before installing the stack.</p>
+          <div class="matrix panel" data-reveal><table><thead><tr><th>Checkpoint</th><th>Published profile</th></tr></thead><tbody><tr><td>BF16</td><td>1 × NVIDIA H100 · 80 GB</td></tr><tr><td>FP8</td><td>RTX PRO 6000 Blackwell · 96 GB</td></tr><tr><td>NVFP4</td><td>Blackwell GPU · 96 GB profile</td></tr></tbody></table></div>
+          <div class="scene-index">HARDWARE</div>
+        </section>
+        <section class="scene" data-id="environment" data-start="21.500" data-end="34.000">
+          <div class="kicker">02 · ENVIRONMENT</div>
+          <h1>Prepare NeMo Speech</h1>
+          <p class="subtitle">The documented vLLM path uses Python 3.13, vLLM 0.32.0 and NVIDIA NeMo Speech.</p>
+          <div class="terminal panel" data-reveal><div class="termbar"><i></i><i></i><i></i><span>TERMINAL · RECONSTRUCTED</span></div><pre>git clone https://github.com/NVIDIA-NeMo/Speech.git
+cd Speech
+uv venv --python 3.13 .venv
+UV_PROJECT_ENVIRONMENT=$PWD/.venv uv sync --extra asr --extra vllm --locked --no-install-project
+uv pip install --python .venv/bin/python --no-deps -e .</pre></div>
+          <div class="scene-index">ENVIRONMENT</div>
+        </section>
+        <section class="scene" data-id="checkpoint" data-start="34.000" data-end="44.000">
+          <div class="kicker">03 · MODEL CHECKPOINT</div>
+          <h1>Download the weights</h1>
+          <p class="subtitle">Keep the checkpoint variant aligned with your GPU and the matching model-card profile.</p>
+          <div class="terminal panel" data-reveal><div class="termbar"><i></i><i></i><i></i><span>TERMINAL · RECONSTRUCTED</span></div><pre>source .venv/bin/activate
+hf download nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B \
+  --local-dir ./NVIDIA-Nemotron-3.5-Transcribe-30B-A4B</pre></div>
+          <div class="scene-index">CHECKPOINT</div>
+        </section>
+        <section class="scene" data-id="server" data-start="44.000" data-end="57.000">
+          <div class="kicker">04 · SERVE THE MODEL</div>
+          <h1>Launch vLLM</h1>
+          <p class="subtitle">The full NVIDIA launch profile enables the speech plugin, audio limits and timestamp middleware.</p>
+          <div class="steps"><div class="step" data-reveal><b>01</b><span>Set VLLM_PLUGINS=nemo_speechlm</span></div><div class="step" data-reveal><b>02</b><span>Set audio decode limit to 3600 seconds</span></div><div class="step" data-reveal><b>03</b><span>Enable the V1 runner for CTC word timestamps</span></div><div class="step" data-reveal><b>04</b><span>Run vLLM 0.32.0 with the BF16 H100 profile</span></div><div class="step" data-reveal><b>05</b><span>Expose the OpenAI-compatible API on port 8000</span></div></div>
+          <div class="scene-index">SERVER</div>
+        </section>
+        <section class="scene" data-id="request" data-start="57.000" data-end="71.000">
+          <div class="kicker">05 · SEND AUDIO</div>
+          <h1>One request.<br>One transcript.</h1>
+          <p class="subtitle">Base64-encode a WAV file and send it with an explicit transcription instruction.</p>
+          <div class="codepanel" data-reveal><div class="codehead">PYTHON · EXAMPLE</div><pre>client = OpenAI(base_url="http://127.0.0.1:8000/v1", api_key="EMPTY")
+
+response = client.chat.completions.create(
+  model="nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B",
+  messages=[{"role":"user","content":[
+    {"type":"text","text":"Transcribe the following audio."},
+    {"type":"audio_url","audio_url":{"url": audio_data_url}}
+  ]}],
+  temperature=0,
+  extra_body={"chat_template_kwargs":{"enable_thinking":False}}
+)</pre></div>
+          <div class="scene-index">REQUEST</div>
+        </section>
+        <section class="scene" data-id="timestamps" data-start="71.000" data-end="83.000">
+          <div class="kicker">06 · SPEAKERS + TIMING</div>
+          <h1>Add speaker tags<br>and word timing</h1>
+          <p class="subtitle">Use the speaker-tag prompt and CTC timestamp capture; inspect the alignment error before consuming timings.</p>
+          <div class="diagram"><div class="node" data-reveal><strong>Prompt</strong><small>Request <spk:0>, <spk:1>…</small></div><div class="node" data-reveal><strong>Middleware</strong><small>CTC timestamp alignment</small></div><div class="node" data-reveal><strong>Output</strong><small>Word start / end / speaker</small></div></div>
+          <div class="scene-index">TIMESTAMPS</div>
+        </section>
+        <section class="scene" data-id="finish" data-start="83.000" data-end="94.091">
+          <div class="kicker">FINAL CHECK</div>
+          <h1>Your transcript pipeline<br>is ready to inspect.</h1>
+          <p class="subtitle">Full guide and official resources: check the description and pinned comment.</p>
+          <div class="panel callout" data-reveal>IMPORTANT: the vLLM BF16 example is an H100 80 GB profile. FP8 and NVFP4 use different validated hardware and launch settings. DFlash2 is not compatible with CTC timestamps in the documented configuration.</div>
+          <div class="scene-index">FINISH</div>
+        </section>
+<div class="footer"><span>HOW TO USE NVIDIA NEMOTRON 3.5 TRANSCRIBE</span><span id="sp-timecode">00:00 / 01:34</span></div><div class="progress" id="sp-progress"></div></div>
+<script>(()=>{'use strict';const root=document.getElementById('sp-ai-video-root');const scenes=[...root.querySelectorAll('.scene')];const duration=94.091;const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));const smooth=v=>{v=clamp(v);return v*v*(3-2*v)};function frame(inputTime){const t=clamp(Number(inputTime)||0,0,duration);let active=-1;scenes.forEach((s,i)=>{const a=Number(s.dataset.start),b=Number(s.dataset.end);const on=t>=a&&(t<b||(i===scenes.length-1&&t<=duration));s.style.visibility=on?'visible':'hidden';s.style.opacity=on?'1':'0';if(on){active=i;const local=t-a;const q=smooth(local/.75);s.style.transform=`translate3d(0,${((1-q)*14).toFixed(2)}px,0)`;s.querySelectorAll('[data-reveal]').forEach((el,j)=>{const r=smooth((local-(.45+j*.55))/.75);el.style.opacity=r.toFixed(4);el.style.transform=`translate3d(0,${((1-r)*20).toFixed(2)}px,0)`})}else{s.style.transform='translate3d(0,14px,0)'}});const p=root.querySelector('#sp-progress');if(p)p.style.width=(t/duration*100).toFixed(3)+'%';const sec=Math.floor(t),mm=String(Math.floor(sec/60)).padStart(2,'0'),ss=String(sec%60).padStart(2,'0');const tc=root.querySelector('#sp-timecode');if(tc)tc.textContent=`${mm}:${ss} / 01:34`;return active}window.SPMOTION={width:1080,height:1920,fps:30,duration};window.SPMOTION_FRAME=frame;window.SPMOTION_RENDER=frame;frame(0)})();</script>
+</body></html>

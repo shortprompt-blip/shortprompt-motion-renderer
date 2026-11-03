@@ -1,15 +1,13 @@
-If your game, Discord and microphone are mixed together, changing one volume can ruin the others. Here is how to separate them in OBS Studio.
+Want to turn a long recording into a transcript with speaker labels and word-level timestamps? In this tutorial, we’ll set up NVIDIA Nemotron 3.5 Transcribe with its official vLLM integration.
 
-This setup requires Windows 10 version 2004 or later, or Windows 11, and OBS 28 or newer.
+First, check your hardware. The reference BF16 setup targets one NVIDIA H100 with 80 gigabytes of memory. NVIDIA also publishes an FP8 profile for an RTX PRO 6000 Blackwell with 96 gigabytes. This is not a lightweight laptop model.
 
-Add each sound as its own source. Use Application Audio Capture for the game and Discord, then add your microphone as Audio Input Capture. OBS 30.1 or later can also capture audio through Game Capture or Window Capture.
+Install Git, uv, Python 3.13, and a compatible CUDA environment. Clone NVIDIA’s NeMo Speech repository, install the ASR and vLLM extras, then download the Nemotron 3.5 Transcribe checkpoint from Hugging Face.
 
-Open the Audio Mixer, choose Advanced Audio Properties, and assign the tracks.
+Start the vLLM server using NVIDIA’s documented launch profile. The server exposes an OpenAI-compatible endpoint on port 8000.
 
-Use Track 1 for the complete mix. Keep all three sources checked on Track 1. Then assign Discord to Track 2, game audio to Track 3, and your microphone to Track 4.
+Now encode a WAV recording as base64 and send it with a transcription instruction to the chat completions endpoint. Keep reasoning disabled and temperature at zero for transcription.
 
-Go to Settings, Output, switch to Advanced mode, and enable those recording tracks. Record to MKV, then remux to MP4 if needed.
+For speaker attribution and word timestamps, use the documented speaker-tag prompt, enable CTC timestamp capture, and keep the timestamp middleware enabled. Check the returned alignment error before using the word timings.
 
-Separate tracks let you edit each source later. Your live stream still needs a complete mix. Most standard video players play only one track, so check the recording in an editor.
-
-Make a short test. Lower Discord, mute the game, and confirm each track behaves independently. Follow for more OBS creator fixes.
+That’s the complete workflow: prepare the GPU environment, launch the model, send audio, and inspect the transcript. Full commands and sources are in the guide linked below.
