@@ -8,7 +8,7 @@ Next, open Graphics and select Warzone under Program Settings. NVIDIA App can re
 
 Now for the AI feature: Project G-Assist. It is a local assistant inside the NVIDIA ecosystem. On supported RTX systems, you can ask it to optimize a game's settings, analyze frame rate, inspect responsiveness, show performance metrics, and create charts for CPU and GPU usage. For example, ask: “Analyze Warzone performance” or “Create a chart of GPU utilization and frame rate.”
 
-There are important limits. G-Assist requires a GeForce RTX 20, 30, 40, or 50 series GPU with at least six gigabytes of VRAM, a supported NVIDIA driver, and a recent NVIDIA App. Voice commands require RTX 30 series or newer, and NVIDIA currently lists English as the supported language. A Quadro P620 or another non-RTX card cannot use this feature. The assistant is a diagnostic helper, not a guarantee that every recommendation will improve your game.
+There are important limits. G-Assist requires a GeForce RTX 20, 30, 40, or 50 series GPU with at least six gigabytes of VRAM, a supported NVIDIA driver, and a recent NVIDIA App. Voice commands require RTX 30 series or newer, and NVIDIA currently lists English as the supported language. Non-RTX graphics cards are not supported by this feature. The assistant is a diagnostic helper, not a guarantee that every recommendation will improve your game.
 
 Inside Warzone, check NVIDIA Reflex Low Latency. When available, start with Enabled. Test Enabled plus Boost only if you have a reason to keep GPU clocks elevated; compare the result rather than assuming Boost is always faster. Reflex targets system latency, not raw average FPS.
 
