@@ -1,25 +1,23 @@
-Want better performance in Call of Duty Warzone? Before changing every graphics setting, use the NVIDIA tools that can actually tell you what is limiting your PC.
+Want better gaming performance from your NVIDIA GPU? NVIDIA App gives you several useful controls, but the best settings depend on the game, your display and your priorities. Here is a practical setup you can use as a starting point.
 
-In this guide, we will combine the NVIDIA App, Project G-Assist, NVIDIA Reflex, and a repeatable performance test. The goal is not to promise a magic FPS boost. It is to identify the bottleneck, change one thing at a time, and keep the game responsive.
+First, open NVIDIA App and check your driver. Install a Game Ready Driver when you need support for a new release or a relevant fix, and read the release notes. Newer does not automatically mean faster in every game. Keep a stable version if everything is working well.
 
-Start with the NVIDIA App. Open Drivers and check that your graphics driver is current for your exact GPU and device type. Desktop, notebook, and workstation drivers are not interchangeable in every case. Activision publishes separate recommended versions, including a workstation branch for Quadro cards. Do not install a driver just because its version number is newer: check the supported product list first.
+Open Graphics and look at Optimize. NVIDIA App can recommend game settings based on your hardware and display. Use the Quality and Performance balance as a starting point, then test the game. Do not assume the automatic preset is always best.
 
-Next, open Graphics and select Warzone under Program Settings. NVIDIA App can recommend game settings based on your GPU, CPU, and display. Treat this as a starting profile, not a benchmark result. Apply it, launch the game, and record a baseline before making more changes.
+Next, separate Global Settings from Program Settings. Keep global driver options close to their defaults. Use a profile for each game when you need different behavior. A competitive shooter and a cinematic single-player game do not necessarily need the same settings. Avoid forcing maximum performance or low latency globally just because a guide says so.
 
-Now for the AI feature: Project G-Assist. It is a local assistant inside the NVIDIA ecosystem. On supported RTX systems, you can ask it to optimize a game's settings, analyze frame rate, inspect responsiveness, show performance metrics, and create charts for CPU and GPU usage. For example, ask: “Analyze Warzone performance” or “Create a chart of GPU utilization and frame rate.”
+For supported RTX games, DLSS Super Resolution can improve performance by rendering internally at a lower resolution and reconstructing the image. Start with Quality, then try Balanced or Performance if you need more FPS. Check sharpness and fine detail. DLAA is different: it improves anti-aliasing at native resolution and is not a performance upscaler.
 
-There are important limits. G-Assist requires a GeForce RTX 20, 30, 40, or 50 series GPU with at least six gigabytes of VRAM, a supported NVIDIA driver, and a recent NVIDIA App. Voice commands require RTX 30 series or newer, and NVIDIA currently lists English as the supported language. Non-RTX graphics cards are not supported by this feature. The assistant is a diagnostic helper, not a guarantee that every recommendation will improve your game.
+Frame Generation can make supported games look smoother by adding generated frames. It does not increase the game's underlying simulation or input sampling rate. It is often more useful in single-player games with a stable base frame rate. For competitive play, compare responsiveness carefully. In supported games, enable NVIDIA Reflex in the game's own settings when low latency matters.
 
-Inside Warzone, check NVIDIA Reflex Low Latency. When available, start with Enabled. Test Enabled plus Boost only if you have a reason to keep GPU clocks elevated; compare the result rather than assuming Boost is always faster. Reflex targets system latency, not raw average FPS.
+Now check your display. Set its native resolution and highest supported refresh rate in Windows and NVIDIA display settings. If your monitor supports G-SYNC or compatible variable refresh, enable it and test for tearing and stutter. Frame caps and V-Sync involve latency trade-offs, so do not copy a universal number without checking your own setup.
 
-DLSS is different: it is an AI upscaling feature for compatible RTX hardware and supported game builds. Warzone has had DLSS support, but menus and features can change between releases. Only enable it if the current graphics menu actually offers it. Compare image clarity and frame pacing at the resolution you play. Do not use frame generation figures as if they were the same as native rendered frames.
+Use Alt plus Z to open the NVIDIA overlay. Performance statistics can help you monitor FPS, GPU usage and frame-time behavior. Keep only the capture and overlay features you actually use.
 
-Now measure the result. Use the NVIDIA performance overlay or a tool such as FrameView to capture average FPS, one-percent lows, GPU utilization, GPU temperature, and latency where available. Run the same map or training area for the same amount of time. Keep resolution, FOV, and the test route unchanged. Change one setting, repeat the test, and compare.
+If available, Automatic GPU Tuning can scan and apply a performance profile. Treat it as an optional overclock: check temperatures, fan noise and stability, and revert if games crash or visual artifacts appear.
 
-If GPU usage stays near one hundred percent, you are probably GPU-limited in that scene. If GPU usage is low while frame rate is poor, investigate CPU limits, power settings, background tasks, or a frame cap. High temperatures alone do not prove thermal throttling: check clock speed, power limits, and whether performance falls as the system heats up.
+The most important step is testing. Choose a repeatable benchmark or game scene. Record average FPS, one-percent lows if available, frame times and temperatures. Change one setting, repeat the test under similar conditions, and keep it only if the improvement is consistent.
 
-Finally, let Warzone finish shader preloading after a driver or game update. Activision warns that leaving the main menu can interrupt the process and cause performance problems. Keep the system stable before chasing tiny setting changes.
+The baseline is simple: conservative global settings, per-game profiles, correct display refresh, DLSS and Frame Generation chosen by workload, Reflex when supported, and changes measured rather than guessed. The recommended ultrawide gaming display is linked in the description. Check the product listing for current specifications and availability.
 
-The workflow is simple: update carefully, inspect with G-Assist if your RTX hardware qualifies, enable Reflex, use DLSS only when the game supports it, and verify every change with repeatable measurements.
-
-Want the complete checklist and source links? Open the guide linked in the description and pinned comment.
+Subscribe to ShortPrompt for more practical PC gaming guides.
