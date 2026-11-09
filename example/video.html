@@ -1,79 +1,76 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=1920,initial-scale=1">
-<title>NVIDIA App Gaming Tuning — ShortPrompt</title>
+<title>DLSS vs Frame Generation vs NVIDIA Reflex — ShortPrompt</title>
 <style>
-#sp-nv-tuning{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;background:#071018;color:#edf4f7;font-family:Inter,Arial,sans-serif;isolation:isolate}
-#sp-nv-tuning *{box-sizing:border-box}
-#sp-nv-tuning .bg{position:absolute;inset:0;background:radial-gradient(ellipse at 78% 20%,#183d2a 0,transparent 35%),linear-gradient(135deg,#071018,#0b1821 55%,#050a10)}
-#sp-nv-tuning .grid{position:absolute;inset:0;opacity:.12;background-image:linear-gradient(#8da7b4 1px,transparent 1px),linear-gradient(90deg,#8da7b4 1px,transparent 1px);background-size:48px 48px}
-#sp-nv-tuning .top{position:absolute;top:4.5%;left:5%;right:5%;display:flex;justify-content:space-between;align-items:center;color:#9db3bf;font-size:18px;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
-#sp-nv-tuning .brand{color:#f2f8fa}.dot{display:inline-block;width:12px;height:12px;border-radius:3px;background:#76e23e;margin-right:12px;box-shadow:0 0 20px #76e23e}
-#sp-nv-tuning .pill{border:1px solid #47734b;color:#8bea68;border-radius:30px;padding:10px 18px;font-size:14px}
-#sp-nv-tuning .main{position:absolute;inset:14% 5% 12%;display:grid;grid-template-columns:.88fr 1.12fr;gap:4%;align-items:center}
-#sp-nv-tuning .eyebrow{color:#8bea68;font-size:20px;letter-spacing:.2em;font-weight:900;text-transform:uppercase;margin-bottom:22px}
-#sp-nv-tuning h1{font-size:76px;line-height:1.02;letter-spacing:-.045em;margin:0 0 26px;font-weight:900}
-#sp-nv-tuning h1 span{color:#8bea68}
-#sp-nv-tuning .desc{font-size:29px;line-height:1.38;color:#b7c8d0;max-width:720px}
-#sp-nv-tuning .note{margin-top:30px;border-left:4px solid #83e74d;background:#12251c;padding:18px 22px;font-size:19px;line-height:1.4;color:#d6e4dc}
-#sp-nv-tuning .window{border:1px solid #375363;border-radius:24px;background:linear-gradient(145deg,#132633,#0a151e);box-shadow:0 30px 90px #0008;overflow:hidden;min-height:620px}
-#sp-nv-tuning .bar{height:66px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;border-bottom:1px solid #29414d;color:#9db5c1;font-size:16px;font-weight:800;letter-spacing:.12em}
-#sp-nv-tuning .dots{display:flex;gap:8px}.dots i{width:9px;height:9px;background:#5e7b89;border-radius:50%}
-#sp-nv-tuning .body{padding:30px}
-#sp-nv-tuning .tabs{display:flex;gap:12px;margin-bottom:25px}
-#sp-nv-tuning .tab{padding:13px 20px;border-radius:10px;background:#182d39;color:#9db4c0;font-size:16px;font-weight:800}
-#sp-nv-tuning .tab.active{background:#254b2b;color:#a4f37b;border:1px solid #5c9b46}
-#sp-nv-tuning .feature{padding:24px;border:1px solid #36515e;border-radius:16px;background:#10212b;margin-bottom:20px}
-#sp-nv-tuning .feature h2{margin:0 0 12px;font-size:28px}.feature p{margin:0;color:#a9bdc7;font-size:18px;line-height:1.4}
-#sp-nv-tuning .tiles{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-#sp-nv-tuning .tile{min-height:108px;border:1px solid #304b57;border-radius:14px;padding:19px;background:#0d1b24;display:flex;flex-direction:column;justify-content:space-between}
-#sp-nv-tuning .tile small{font-size:13px;color:#91aab6;letter-spacing:.13em;text-transform:uppercase}
-#sp-nv-tuning .tile strong{font-size:24px;color:#e9f2f5}
-#sp-nv-tuning .tile strong.green{color:#8bea68}
-#sp-nv-tuning .status{margin-top:20px;padding:15px 18px;background:#162b20;border:1px solid #315a39;border-radius:12px;color:#a9ed8d;font-size:16px;font-weight:800}
-#sp-nv-tuning .foot{position:absolute;bottom:4.3%;left:5%;right:5%;display:flex;justify-content:space-between;color:#718b99;font-size:14px;letter-spacing:.13em;text-transform:uppercase}
-#sp-nv-tuning .progress{position:absolute;bottom:0;left:0;height:6px;background:#82e84b;width:0}
+#sp-dlss-reflex{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;box-sizing:border-box;background:#070d13;color:#f1f6f8;font-family:Inter,Arial,sans-serif;isolation:isolate}
+#sp-dlss-reflex *{box-sizing:border-box}
+#sp-dlss-reflex .bg{position:absolute;inset:0;background:radial-gradient(ellipse at 75% 20%,#21432d 0,transparent 34%),radial-gradient(ellipse at 15% 85%,#0c3c46 0,transparent 30%),linear-gradient(135deg,#060b11,#101b25 55%,#05090e)}
+#sp-dlss-reflex .grid{position:absolute;inset:0;opacity:.1;background-image:linear-gradient(#a1b7c0 1px,transparent 1px),linear-gradient(90deg,#a1b7c0 1px,transparent 1px);background-size:54px 54px}
+#sp-dlss-reflex .top{position:absolute;top:4.5%;left:5%;right:5%;display:flex;justify-content:space-between;align-items:center;font-size:17px;font-weight:900;letter-spacing:.16em;color:#a1b4be}
+#sp-dlss-reflex .brand{color:#f5fafb}#sp-dlss-reflex .mark{display:inline-block;width:12px;height:12px;background:#83e348;margin-right:12px;border-radius:3px;box-shadow:0 0 18px #83e348}
+#sp-dlss-reflex .pill{border:1px solid #426a49;color:#a0eb75;padding:10px 18px;border-radius:24px;font-size:13px}
+#sp-dlss-reflex .layout{position:absolute;inset:14% 5% 12%;display:grid;grid-template-columns:.85fr 1.15fr;gap:4%;align-items:center}
+#sp-dlss-reflex .eyebrow{font-size:18px;color:#9aeb6c;font-weight:900;letter-spacing:.2em;margin-bottom:24px}
+#sp-dlss-reflex h1{font-size:70px;line-height:1.03;letter-spacing:-.045em;margin:0 0 25px;font-weight:950}
+#sp-dlss-reflex h1 span{color:#91e85d}
+#sp-dlss-reflex .sub{font-size:26px;line-height:1.35;color:#b6c7ce}
+#sp-dlss-reflex .note{margin-top:26px;padding:17px 20px;border-left:4px solid #8de65c;background:#14271e;color:#d7e6dc;font-size:18px;line-height:1.4}
+#sp-dlss-reflex .stage{min-height:620px;border:1px solid #38505d;border-radius:22px;background:linear-gradient(145deg,#142633,#0a151e);box-shadow:0 28px 85px #0008;overflow:hidden}
+#sp-dlss-reflex .stagebar{height:65px;padding:0 28px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #2d4653;color:#9db2bd;font-size:15px;font-weight:900;letter-spacing:.13em}
+#sp-dlss-reflex .stagebody{padding:30px}
+#sp-dlss-reflex .diagram{height:245px;display:flex;align-items:center;justify-content:center;gap:20px;margin-bottom:26px}
+#sp-dlss-reflex .node{width:29%;min-height:150px;border:1px solid #42606b;border-radius:16px;background:#10212c;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px}
+#sp-dlss-reflex .node strong{font-size:24px;color:#eff7f8}#sp-dlss-reflex .node small{font-size:14px;color:#9bb1bc;margin-top:12px;letter-spacing:.08em}
+#sp-dlss-reflex #sp-dlss-reflex .node.active{border-color:#8fe65d;box-shadow:0 0 25px #78d94a33;background:#1a3324}
+#sp-dlss-reflex .node.done{border-color:#4d7955;background:#15291e}
+#sp-dlss-reflex .metric{opacity:.38}
+#sp-dlss-reflex .metric.revealed{opacity:1;border-color:#719d58}
+#sp-dlss-reflex #sp-dlss-reflex .arrow{font-size:34px;color:#8ce45b;font-weight:900}
+#sp-dlss-reflex .metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+#sp-dlss-reflex .metric{min-height:125px;padding:19px;border:1px solid #354f5d;border-radius:14px;background:#0d1b24}
+#sp-dlss-reflex .metric small{display:block;font-size:13px;color:#93aab5;letter-spacing:.13em;text-transform:uppercase}
+#sp-dlss-reflex .metric strong{display:block;margin-top:13px;font-size:23px;color:#9be76b}
+#sp-dlss-reflex .caption{margin-top:20px;color:#c2d0d5;font-size:18px;line-height:1.4;min-height:50px}
+#sp-dlss-reflex .foot{position:absolute;bottom:4%;left:5%;right:5%;display:flex;justify-content:space-between;color:#728994;font-size:13px;letter-spacing:.14em}
+#sp-dlss-reflex .progress{position:absolute;left:0;bottom:0;height:6px;width:0;background:#8ee65b}
 </style></head>
-<body>
-<div id="sp-nv-tuning">
- <div class="bg"></div><div class="grid"></div>
- <div class="top"><div class="brand"><i class="dot"></i>SHORTPROMPT / PC GAMING LAB</div><div class="pill">NVIDIA APP • COMPLETE TUNING GUIDE</div></div>
- <div class="main">
-  <div class="copy"><div class="eyebrow" id="eyebrow">01 / FOUNDATION</div><h1 id="headline">Stop copying <span>random presets</span></h1><div class="desc" id="description">A balanced setup starts with defaults, driver notes and repeatable testing.</div><div class="note" id="note">GLOBAL SETTINGS ≠ PER-GAME SETTINGS</div></div>
-  <div class="window">
-   <div class="bar"><div>NVIDIA APP / GRAPHICS CONTROL</div><div class="dots"><i></i><i></i><i></i></div></div>
-   <div class="body">
-    <div class="tabs"><div class="tab active">Graphics</div><div class="tab">System</div><div class="tab">Overlay</div></div>
-    <div class="feature"><h2 id="paneltitle">Build a stable baseline</h2><p id="paneldesc">Update deliberately. Read release notes. Test changes one at a time.</p></div>
-    <div class="tiles" id="tiles"></div>
-    <div class="status" id="status">● RECONSTRUCTED UI — EXPLANATORY SIMULATION</div>
-   </div>
-  </div>
- </div>
- <div class="foot"><span>SHORTPROMPT • PRACTICAL PC GAMING</span><span id="scene-count">01 / 08</span></div>
- <div class="progress" id="progress"></div>
+<body><div id="sp-dlss-reflex">
+<div class="bg"></div><div class="grid"></div>
+<div class="top"><div class="brand"><i class="mark"></i>SHORTPROMPT / GAMING EXPLAINED</div><div class="pill">DLSS • FRAME GENERATION • REFLEX</div></div>
+<div class="layout">
+<div class="copy"><div class="eyebrow" id="eyebrow">THE BIG QUESTION</div><h1 id="headline">Three tools.<br><span>Three jobs.</span></h1><div class="sub" id="sub">Image reconstruction, generated frames and lower latency are not the same thing.</div><div class="note" id="note">A higher FPS counter does not automatically mean lower input latency.</div></div>
+<div class="stage">
+<div class="stagebar"><span id="stage-title">HOW THE PIPELINE WORKS</span><span>ILLUSTRATIVE DIAGRAM</span></div>
+<div class="stagebody"><div class="diagram" id="diagram"></div><div class="metrics" id="metrics"></div><div class="caption" id="caption"></div></div>
+</div></div>
+<div class="foot"><span>SHORTPROMPT • FACT-LED VISUAL EXPLAINER</span><span id="scene-number">01 / 05</span></div>
+<div class="progress" id="progress"></div>
 </div>
 <script>
-const scenes = [
-{a:0,b:34,e:"01 / BASELINE",h:"Start with a <span>stable baseline</span>",d:"Update deliberately. Read release notes. Keep a known-good driver.",p:"Driver and baseline",q:"Newer drivers are not automatically faster in every game.",t:["GAME READY","RELEASE NOTES","STABLE VERSION","TEST FIRST"]},
-{a:34,b:75,e:"02 / GRAPHICS",h:"Optimize, then <span>validate</span>",d:"Use NVIDIA App Optimize as a recommendation, not a command.",p:"NVIDIA App / Graphics",q:"Balance Quality and Performance, then test in the actual game.",t:["OPTIMIZE","QUALITY","PERFORMANCE","IN-GAME TEST"]},
-{a:75,b:119,e:"03 / PROFILES",h:"Global vs <span>per-game</span>",d:"Keep global options conservative. Isolate changes in Program Settings.",p:"Build game-specific profiles",q:"Competitive and cinematic games can need different priorities.",t:["GLOBAL DEFAULTS","PROGRAM SETTINGS","COMPETITIVE","SINGLE PLAYER"]},
-{a:119,b:158,e:"04 / RTX FEATURES",h:"Choose the right <span>RTX feature</span>",d:"DLSS, Frame Generation and Reflex solve different problems.",p:"Performance or responsiveness?",q:"Generated frames improve displayed smoothness, not base simulation rate.",t:["DLSS QUALITY","BALANCED","FRAME GENERATION","REFLEX"]},
-{a:158,b:190,e:"05 / DISPLAY",h:"Configure your <span>display</span>",d:"Use native resolution and maximum supported refresh rate.",p:"G-SYNC and frame caps",q:"Test tearing, stutter and latency. There is no universal cap for every setup.",t:["NATIVE RESOLUTION","MAX REFRESH","G-SYNC","FRAME CAP"]},
-{a:190,b:218.888617,e:"06 / TESTING",h:"Measure every <span>change</span>",d:"One setting at a time. Keep only repeatable improvements.",p:"A repeatable benchmark",q:"Compare average FPS, 1% lows, frame times and temperatures.",t:["AVERAGE FPS","1% LOWS","FRAME TIME","STABILITY"]}
-]
+const D=214.550340;
+const S=[
+{a:0,b:43,e:"THE BIG QUESTION",h:"Three tools.<br><span>Three jobs.</span>",sub:"Image reconstruction, generated frames and lower latency are not the same thing.",title:"THREE DIFFERENT OUTCOMES",nodes:[["DLSS SR","IMAGE"],["FRAME GEN","SMOOTHNESS"],["REFLEX","LATENCY"]],metrics:[["WHAT CHANGES","IMAGE"],["WHAT YOU SEE","MOTION"],["WHAT YOU FEEL","RESPONSE"]],cap:"A higher FPS counter does not automatically mean lower input latency."},
+{a:43,b:91,e:"01 / DLSS SUPER RESOLUTION",h:"Render less.<br><span>Reconstruct more.</span>",sub:"The game renders at a lower internal resolution. AI reconstructs the output image.",title:"THE UPSCALING PIPELINE",nodes:[["LOWER RES","FEWER PIXELS"],["AI MODEL","RECONSTRUCT"],["DISPLAY RES","OUTPUT"]],metrics:[["PURPOSE","MORE FPS"],["TRADE-OFF","IMAGE DETAIL"],["SUPPORT","RTX 20–50"]],cap:"Start with Quality. Test Balanced or Performance when you need more headroom."},
+{a:91,b:143,e:"02 / FRAME GENERATION",h:"More frames.<br><span>Different source.</span>",sub:"AI generates additional frames between traditionally rendered frames.",title:"RENDERED VS GENERATED",nodes:[["RENDERED","FRAME 1"],["GENERATED","INSERTED"],["RENDERED","FRAME 2"]],metrics:[["PURPOSE","SMOOTHER MOTION"],["NOT EQUAL TO","BASE FPS"],["SUPPORT","40 / 50 SERIES"]],cap:"Multi Frame Generation and Dynamic Multi Frame Generation are RTX 50 Series features."},
+{a:143,b:181,e:"03 / NVIDIA REFLEX",h:"Reduce the<br><span>render queue.</span>",sub:"Reflex synchronizes CPU and GPU work to reduce system latency.",title:"INPUT TO DISPLAY",nodes:[["CPU","GAME WORK"],["GPU","JUST-IN-TIME"],["DISPLAY","RESPONSE"]],metrics:[["PURPOSE","LOWER LATENCY"],["BEST FIT","RESPONSIVE PLAY"],["ENABLE","IN-GAME"]],cap:"Use Reflex in supported games when responsiveness is a priority."},
+{a:181,b:D,e:"04 / WHICH ONE?",h:"Choose by the<br><span>problem.</span>",sub:"Single-player and competitive games can benefit from different combinations.",title:"THE PRACTICAL DECISION",nodes:[["SINGLE PLAYER","DLSS + FG"],["COMPETITIVE","REFLEX"],["BOTH","TEST"]],metrics:[["IMAGE","DLSS SR"],["SMOOTHNESS","FRAME GEN"],["RESPONSE","REFLEX"]],cap:"Judge frame pacing, visual artifacts and responsiveness—not only the FPS counter."}
+];
 function render(t){
- const s=scenes.find((x,i)=>t>=x.a&&(t<x.b||i===scenes.length-1))||scenes[0];
- const idx=scenes.indexOf(s);
+ const i=S.findIndex((s,n)=>t>=s.a&&(t<s.b||n===S.length-1));const s=S[Math.max(0,i)];
+ const phase=Math.max(0,Math.min(0.999,(t-s.a)/(s.b-s.a)));
+ const activeNode=Math.min(2,Math.floor(phase*3));
  document.getElementById("eyebrow").textContent=s.e;
  document.getElementById("headline").innerHTML=s.h;
- document.getElementById("description").textContent=s.d;
- document.getElementById("paneltitle").textContent=s.p;
- document.getElementById("paneldesc").textContent=s.q;
- document.getElementById("scene-count").textContent=String(idx+1).padStart(2,"0")+" / 08";
- document.getElementById("tiles").innerHTML=s.t.map((x,i)=>`<div class="tile"><small>SETTING ${String(i+1).padStart(2,"0")}</small><strong class="${i===0?'green':''}">${x}</strong></div>`).join("");
- document.getElementById("progress").style.width=(t/589.025805*100)+"%";
+ document.getElementById("sub").textContent=s.sub;
+ document.getElementById("stage-title").textContent=s.title;
+ document.getElementById("diagram").innerHTML=s.nodes.map((n,j)=>`<div class="node ${j<activeNode?'done':(j===activeNode?'active':'')}"><strong>${n[0]}</strong><small>${n[1]}</small></div>${j<2?'<div class="arrow">›</div>':''}`).join("");
+ document.getElementById("metrics").innerHTML=s.metrics.map((m,j)=>`<div class="metric ${phase>=(j+1)*0.22?'revealed':''}"><small>${m[0]}</small><strong>${m[1]}</strong></div>`).join("");
+ document.getElementById("caption").textContent=s.cap;
+ document.getElementById("note").textContent=s.cap;
+ document.getElementById("scene-number").textContent=String(Math.max(0,i)+1).padStart(2,"0")+" / 05";
+ document.getElementById("progress").style.width=(t/D*100)+"%";
 }
-window.SPMOTION={width:1920,height:1080,fps:30,duration:218.888617};
-window.SPMOTION_FRAME=function(time){render(Math.max(0,Math.min(time,589.025805)));};
+window.SPMOTION={width:1920,height:1080,fps:30,duration:D};
+window.SPMOTION_FRAME=function(time){render(Math.max(0,Math.min(time,D)));};
 render(0);
 </script></body></html>

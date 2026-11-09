@@ -1,23 +1,21 @@
-Want better gaming performance from your NVIDIA GPU? NVIDIA App gives you several useful controls, but the best settings depend on the game, your display and your priorities. Here is a practical setup you can use as a starting point.
+Three NVIDIA technologies are often grouped together as performance boosters. But DLSS Super Resolution, Frame Generation and NVIDIA Reflex do three different jobs. If you treat them as interchangeable, you can end up with a higher FPS counter but the wrong gaming experience.
 
-First, open NVIDIA App and check your driver. Install a Game Ready Driver when you need support for a new release or a relevant fix, and read the release notes. Newer does not automatically mean faster in every game. Keep a stable version if everything is working well.
+Let's separate them.
 
-Open Graphics and look at Optimize. NVIDIA App can recommend game settings based on your hardware and display. Use the Quality and Performance balance as a starting point, then test the game. Do not assume the automatic preset is always best.
+First: DLSS Super Resolution. The game renders internally at a lower resolution, then an AI model reconstructs the image for your display resolution. Because the GPU has fewer pixels to render directly, this can improve performance. It is available across GeForce RTX 20, 30, 40 and 50 Series, in supported games. Start with Quality when image clarity matters, then test Balanced or Performance if you need more headroom. The trade-off is image detail: lower internal resolutions can introduce softness or artifacts, depending on the game and mode.
 
-Next, separate Global Settings from Program Settings. Keep global driver options close to their defaults. Use a profile for each game when you need different behavior. A competitive shooter and a cinematic single-player game do not necessarily need the same settings. Avoid forcing maximum performance or low latency globally just because a guide says so.
+Second: Frame Generation. Instead of only increasing the number of frames the game renders itself, this technology generates additional frames between rendered ones. The result can look smoother, especially in demanding single-player games. But generated frames are not the same as newly rendered game frames. They do not make the game simulation or your input sampling run at the same higher rate. That is why the starting frame rate matters: Frame Generation is generally more useful when the game already runs at a reasonably stable base rate.
 
-For supported RTX games, DLSS Super Resolution can improve performance by rendering internally at a lower resolution and reconstructing the image. Start with Quality, then try Balanced or Performance if you need more FPS. Check sharpness and fine detail. DLAA is different: it improves anti-aliasing at native resolution and is not a performance upscaler.
+NVIDIA's current hardware support is generation-dependent. Standard DLSS Frame Generation is supported on GeForce RTX 40 and 50 Series. Multi Frame Generation and Dynamic Multi Frame Generation are RTX 50 Series features. Support also depends on the game and its implementation, so check the official compatibility list rather than assuming every title offers every mode.
 
-Frame Generation can make supported games look smoother by adding generated frames. It does not increase the game's underlying simulation or input sampling rate. It is often more useful in single-player games with a stable base frame rate. For competitive play, compare responsiveness carefully. In supported games, enable NVIDIA Reflex in the game's own settings when low latency matters.
+Third: NVIDIA Reflex. Reflex targets system latency, not image resolution. It synchronizes CPU and GPU work to reduce the render queue and help your inputs appear on screen sooner. In competitive games, where aiming and reaction time matter, this can be more important than increasing the displayed frame count. Enable Reflex in the game's settings when the title supports it. Some games offer On and On plus Boost; the exact options and behavior depend on the game.
 
-Now check your display. Set its native resolution and highest supported refresh rate in Windows and NVIDIA display settings. If your monitor supports G-SYNC or compatible variable refresh, enable it and test for tearing and stutter. Frame caps and V-Sync involve latency trade-offs, so do not copy a universal number without checking your own setup.
+So, which should you use?
 
-Use Alt plus Z to open the NVIDIA overlay. Performance statistics can help you monitor FPS, GPU usage and frame-time behavior. Keep only the capture and overlay features you actually use.
+For a demanding single-player game, try DLSS Super Resolution first. If the base frame rate is stable and the game supports it, test Frame Generation for smoother motion. For competitive shooters, prioritize a stable base frame rate and Reflex. You can still use DLSS Super Resolution if you need performance, but judge the image quality and responsiveness together.
 
-If available, Automatic GPU Tuning can scan and apply a performance profile. Treat it as an optional overclock: check temperatures, fan noise and stability, and revert if games crash or visual artifacts appear.
+And remember: a high generated FPS number does not automatically mean low input latency. Look at frame pacing, responsiveness and visual artifacts, not just the counter.
 
-The most important step is testing. Choose a repeatable benchmark or game scene. Record average FPS, one-percent lows if available, frame times and temperatures. Change one setting, repeat the test under similar conditions, and keep it only if the improvement is consistent.
+The simple rule is this: DLSS Super Resolution helps render the image more efficiently. Frame Generation adds displayed frames. Reflex reduces system latency. They can work together, but they solve different problems.
 
-The baseline is simple: conservative global settings, per-game profiles, correct display refresh, DLSS and Frame Generation chosen by workload, Reflex when supported, and changes measured rather than guessed. The recommended ultrawide gaming display is linked in the description. Check the product listing for current specifications and availability.
-
-Subscribe to ShortPrompt for more practical PC gaming guides.
+Check the links in the description for NVIDIA's official feature and compatibility pages. Subscribe to ShortPrompt for more practical gaming technology explainers.
