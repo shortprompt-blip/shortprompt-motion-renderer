@@ -1,13 +1,1 @@
-Anthropic’s Claude Fable 5.2 is built for demanding technical work. And its latest demonstrations go far beyond chat.
-
-In one experiment, it coordinated more than one thousand subagents for eight days to build a working operating system from an empty folder. The result could boot on a laptop, with drivers, storage, windows, a login screen and an installer.
-
-Anthropic also worked with Diode to turn short prompts into three physical devices: a USB speakerphone, a home voice assistant hub and a handheld virtual pet.
-
-Fable designed the circuit boards, enclosures and firmware. Diode built the prototypes, which worked without electrical redesigns.
-
-In robotics, Anthropic shows tasks including solving a puzzle cube, unscrewing a bottle cap and drawing a robot.
-
-And in mathematics, one thousand Fable agents formalized Fermat’s Last Theorem in thirty hours. Anthropic says Opus 5.5 reached only twenty-six percent at eighteen hours in the same setup.
-
-These are company-reported demonstrations, not a guarantee that every task will work this way.
+An AI can sound certain, and still invent the answer. In a 2026 Nature study, researchers asked three popular AI models a simple question: What does PGGB stand for? ChatGPT, Claude and DeepSeek each produced a confident definition. All three were wrong. The paper explains one reason: many evaluations reward correct answers, but do not adequately reward saying, I don't know. So when a model is uncertain, guessing can look better than admitting it. The lesson? Treat fluent answers as claims, not proof. Check the sources before you trust them. Follow ShortPrompt for more real tests of AI.
