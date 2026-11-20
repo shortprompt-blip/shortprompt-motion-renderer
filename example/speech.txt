@@ -1,1 +1,13 @@
-Your GPU is at ninety-nine percent while gaming. Is that bad? Usually, no. It often means the graphics card is fully occupied doing the work needed to render frames. That can be a normal GPU-limited situation. The important question is whether performance is meeting your target. If it is, you may not need to change anything. If it is not, try lowering demanding graphics settings and compare frame time. Do not chase one-hundred-percent CPU and GPU usage just for the numbers.
+Anthropic’s Claude Fable 5.2 is built for demanding technical work. And its latest demonstrations go far beyond chat.
+
+In one experiment, it coordinated more than one thousand subagents for eight days to build a working operating system from an empty folder. The result could boot on a laptop, with drivers, storage, windows, a login screen and an installer.
+
+Anthropic also worked with Diode to turn short prompts into three physical devices: a USB speakerphone, a home voice assistant hub and a handheld virtual pet.
+
+Fable designed the circuit boards, enclosures and firmware. Diode built the prototypes, which worked without electrical redesigns.
+
+In robotics, Anthropic shows tasks including solving a puzzle cube, unscrewing a bottle cap and drawing a robot.
+
+And in mathematics, one thousand Fable agents formalized Fermat’s Last Theorem in thirty hours. Anthropic says Opus 5.5 reached only twenty-six percent at eighteen hours in the same setup.
+
+These are company-reported demonstrations, not a guarantee that every task will work this way.
