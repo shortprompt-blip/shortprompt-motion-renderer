@@ -10,6 +10,16 @@ const _legacyOutDir = process.argv[3];
 const output = path.resolve(process.argv[4] || "./visual.webm");
 const audioPath = path.resolve(process.argv[5] || "./speech.wav");
 const htmlPath = path.join(projectDir, "video.html");
+
+// JPEG substantially reduces the amount of image data transferred from Chromium
+// to FFmpeg. Set SPMOTION_CAPTURE_FORMAT=png for lossless capture/rollback.
+const captureFormat = (process.env.SPMOTION_CAPTURE_FORMAT || "jpeg").toLowerCase();
+if (!["jpeg", "png"].includes(captureFormat)) {
+  throw new Error("SPMOTION_CAPTURE_FORMAT must be 'jpeg' or 'png'");
+}
+const jpegQuality = Math.min(100, Math.max(70, Number(process.env.SPMOTION_JPEG_QUALITY || 95)));
+const ffmpegCpuUsed = Math.min(8, Math.max(0, Number(process.env.SPMOTION_VP9_CPU_USED || 5)));
+
 await Promise.all([fs.access(htmlPath), fs.access(audioPath)]);
 
 function probeDuration(file) {
@@ -27,10 +37,18 @@ function probeDuration(file) {
   });
 }
 
+// Remove both listeners on either outcome. The previous implementation left
+// one error listener behind after every successful drain, causing listener growth.
 function waitForDrain(stream) {
   return new Promise((resolve, reject) => {
-    stream.once("drain", resolve);
-    stream.once("error", reject);
+    const cleanup = () => {
+      stream.removeListener("drain", onDrain);
+      stream.removeListener("error", onError);
+    };
+    const onDrain = () => { cleanup(); resolve(); };
+    const onError = error => { cleanup(); reject(error); };
+    stream.once("drain", onDrain);
+    stream.once("error", onError);
   });
 }
 
@@ -63,8 +81,7 @@ try {
     if (!Number.isInteger(width) || !Number.isInteger(height) || width <= 0 || height <= 0) throw new Error("SP-MOTION width/height must be positive integers");
     if (!Number.isFinite(declaredDuration) || declaredDuration <= 0) throw new Error("video.html must declare window.SPMOTION.duration > 0");
 
-    // AUDIO IS MASTER: never fail because HTML and voiceover durations differ.
-    // Map the entire authored visual timeline onto the exact WAV duration.
+    // AUDIO IS MASTER: preserve the complete WAV and map the visual timeline to it.
     const timelineScale = declaredDuration / audioDuration;
     window.__SPMOTION_AUDIO_DURATION__ = audioDuration;
     window.__SPMOTION_DESIGN_DURATION__ = declaredDuration;
@@ -74,11 +91,12 @@ try {
 
   await page.setViewportSize({ width: meta.width, height: meta.height });
   const frameCount = Math.ceil(meta.duration * meta.fps);
+  const imageCodec = captureFormat === "jpeg" ? "mjpeg" : "png";
   ffmpeg = spawn("ffmpeg", [
     "-y", "-hide_banner", "-loglevel", "warning",
-    "-f", "image2pipe", "-vcodec", "png", "-framerate", String(meta.fps), "-i", "pipe:0",
+    "-f", "image2pipe", "-vcodec", imageCodec, "-framerate", String(meta.fps), "-i", "pipe:0",
     "-an", "-t", meta.duration.toFixed(6), "-c:v", "libvpx-vp9", "-pix_fmt", "yuv420p",
-    "-b:v", "8M", "-deadline", "good", "-cpu-used", "4", "-row-mt", "1", output
+    "-b:v", "8M", "-deadline", "good", "-cpu-used", String(ffmpegCpuUsed), "-row-mt", "1", output
   ], { stdio: ["pipe", "inherit", "inherit"] });
   let ffmpegError = null;
   ffmpeg.on("error", error => { ffmpegError = error; });
@@ -86,6 +104,8 @@ try {
 
   console.log("SP-MOTION MODE: HTML-AUTONOMOUS / SINGLE TIMELINE / STREAMING FRAMES");
   console.log("EXPORT MODE: ENABLED BEFORE HTML SCRIPTS");
+  console.log(`CAPTURE: ${captureFormat.toUpperCase()}${captureFormat === "jpeg" ? ` quality ${jpegQuality}` : " (lossless)"}`);
+  console.log(`VP9 CPU-USED: ${ffmpegCpuUsed}`);
   console.log(`AUDIO MASTER: ${meta.duration.toFixed(3)}s`);
   console.log(`HTML DESIGN TIMELINE: ${meta.designDuration.toFixed(3)}s`);
   console.log(`VISUAL TIMELINE SCALE: ${meta.timelineScale.toFixed(6)}x (delta ${meta.timelineDelta.toFixed(3)}s; mismatch is auto-aligned)`);
@@ -97,7 +117,10 @@ try {
   for (let i = 0; i < frameCount; i++) {
     const actualTime = Math.min(i / meta.fps, meta.duration);
     const localTime = Math.min(actualTime * meta.timelineScale, meta.designDuration);
-    await page.evaluate(({ actualTime, localTime, audioDuration, designDuration }) => {
+
+    // One browser round-trip per frame: update the deterministic frame state,
+    // dispatch the timeline event, then wait for the browser's next paint frame.
+    await page.evaluate(({ actualTime, localTime, audioDuration, designDuration }) => new Promise(resolve => {
       window.__SPMOTION_TIME__ = actualTime;
       window.__SPMOTION_LOCAL_TIME__ = localTime;
       window.__SPMOTION_AUDIO_DURATION__ = audioDuration;
@@ -105,11 +128,14 @@ try {
       if (typeof window.SPMOTION_FRAME !== "function") throw new Error("video.html must expose SPMOTION_FRAME(time)");
       window.SPMOTION_FRAME(localTime);
       document.dispatchEvent(new CustomEvent("sp-motion-time", { detail: { time: actualTime, localTime, audioDuration, designDuration } }));
-    }, { actualTime, localTime, audioDuration: meta.duration, designDuration: meta.designDuration });
+      requestAnimationFrame(() => resolve());
+    }), { actualTime, localTime, audioDuration: meta.duration, designDuration: meta.designDuration });
 
-    await page.evaluate(() => new Promise(requestAnimationFrame));
-    const png = await page.screenshot({ type: "png", animations: "allow" });
-    if (!ffmpeg.stdin.write(png)) await waitForDrain(ffmpeg.stdin);
+    const image = captureFormat === "jpeg"
+      ? await page.screenshot({ type: "jpeg", quality: jpegQuality, animations: "allow" })
+      : await page.screenshot({ type: "png", animations: "allow" });
+    if (!ffmpeg.stdin.write(image)) await waitForDrain(ffmpeg.stdin);
+
     if ((i + 1) % Math.max(1, Math.floor(meta.fps)) === 0 || i === frameCount - 1) {
       const elapsed = (performance.now() - captureStartedAt) / 1000;
       process.stdout.write(`FRAME ${i + 1}/${frameCount} — ${((i + 1) / Math.max(elapsed, 0.001)).toFixed(1)} fps capture rate\n`);
