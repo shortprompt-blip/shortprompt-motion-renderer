@@ -1,48 +1,68 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=1080,initial-scale=1"><title>Gemini 4 Argon: From Prompt to Complex Projects | ShortPrompt</title>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=1080,initial-scale=1"><title>How to Create a CLAUDE.md File for Claude Code | ShortPrompt</title>
 <style>
-#sp-gemini-argon{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;box-sizing:border-box;background:radial-gradient(ellipse at 80% 8%,#273e72 0,transparent 36%),radial-gradient(ellipse at 12% 90%,#07535c 0,transparent 36%),linear-gradient(145deg,#070c18,#101b31 62%,#080d19);color:#f4f7ff;font-family:Arial,Helvetica,sans-serif}
-#sp-gemini-argon *{box-sizing:border-box}
-#sp-gemini-argon .grid{position:absolute;inset:0;opacity:.07;background-image:linear-gradient(#b5c9ff 1px,transparent 1px),linear-gradient(90deg,#b5c9ff 1px,transparent 1px);background-size:56px 56px}
-#sp-gemini-argon .top{position:absolute;top:58px;left:68px;right:68px;display:flex;justify-content:space-between;align-items:center;font-size:22px;letter-spacing:3px;font-weight:900;color:#fff}
-#sp-gemini-argon .pill{border:1px solid #536b92;border-radius:30px;padding:12px 20px;font-size:16px;color:#bcd1ef;letter-spacing:1px}
-#sp-gemini-argon .scene{position:absolute;inset:210px 68px 170px;opacity:0;visibility:hidden;transform:translateY(20px)}
-#sp-gemini-argon .kicker{font-size:22px;letter-spacing:4px;color:#72e6ed;font-weight:900;margin-bottom:28px}
-#sp-gemini-argon h1{font-size:84px;line-height:1.02;letter-spacing:-4px;margin:0 0 28px;font-weight:950}
-#sp-gemini-argon h2{font-size:66px;line-height:1.05;letter-spacing:-2px;margin:0 0 30px;font-weight:900}
-#sp-gemini-argon .accent{color:#70e7e9}
-#sp-gemini-argon .sub{font-size:32px;line-height:1.38;color:#c0cce0;max-width:900px}
-#sp-gemini-argon .panel{position:absolute;left:0;right:0;bottom:80px;border:1px solid #3c5275;border-radius:32px;background:linear-gradient(145deg,#1a2943,#10192a);padding:38px;box-shadow:0 28px 80px #0007}
-#sp-gemini-argon .metric{font-size:112px;line-height:1;font-weight:950;letter-spacing:-5px;color:#75e8ed}
-#sp-gemini-argon .metriclabel{font-size:27px;color:#c7d4e9;margin-top:16px;letter-spacing:1px}
-#sp-gemini-argon .flow{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-top:58px}
-#sp-gemini-argon .node{flex:1;min-height:210px;border:1px solid #47658b;border-radius:26px;background:#14233a;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:20px;font-size:27px;font-weight:900}
-#sp-gemini-argon .node small{font-size:18px;color:#91a9ca;margin-top:14px;letter-spacing:2px}
-#sp-gemini-argon .arrow{font-size:48px;color:#70e7e9}
-#sp-gemini-argon .code{font-family:Consolas,monospace;font-size:23px;line-height:1.65;color:#d7e6fa;white-space:pre-line}
-#sp-gemini-argon .code .green{color:#72e6bd}#sp-gemini-argon .code .blue{color:#75c9ff}
-#sp-gemini-argon .library{height:470px;position:relative;overflow:hidden;border-radius:28px;background:linear-gradient(180deg,#19334c,#0b1727);border:1px solid #4d7091;margin-top:35px}
-#sp-gemini-argon .sun{position:absolute;width:170px;height:170px;border-radius:50%;background:#ffd98c;filter:blur(2px);right:130px;top:45px;box-shadow:0 0 100px #ffd98c77}
-#sp-gemini-argon .shelf{position:absolute;left:70px;right:70px;height:12px;background:#c99a66;border-radius:8px;box-shadow:0 10px 24px #0008}
-#sp-gemini-argon .book{position:absolute;bottom:12px;width:36px;border-radius:5px 5px 0 0;background:linear-gradient(90deg,#55a6ba,#b77b64)}
-#sp-gemini-argon .footer{position:absolute;bottom:55px;left:68px;right:68px;display:flex;justify-content:space-between;color:#8297b8;font-size:17px;letter-spacing:2px;font-weight:800}
-#sp-gemini-argon .progress{position:absolute;bottom:0;left:0;height:8px;width:0;background:linear-gradient(90deg,#55dfe9,#a28cff)}
-#sp-gemini-argon .badge{display:inline-block;border:1px solid #557292;border-radius:14px;padding:14px 18px;color:#9de6e6;font-size:19px;letter-spacing:2px;font-weight:900}
-#sp-gemini-argon .periodic{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:36px}
-#sp-gemini-argon .element{height:105px;border:1px solid #45658a;border-radius:16px;background:linear-gradient(145deg,#1b3553,#102038);padding:12px;text-align:left}
-#sp-gemini-argon .element b{font-size:27px;color:#7ce8e6}#sp-gemini-argon .element small{display:block;color:#a8bdd8;font-size:13px;margin-top:6px}
+#sp-claude-md{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;box-sizing:border-box;background:radial-gradient(ellipse at 85% 8%,#263c76 0,transparent 34%),radial-gradient(ellipse at 8% 90%,#075765 0,transparent 34%),linear-gradient(145deg,#070c18,#111b31 62%,#080d19);color:#f4f7ff;font-family:Arial,Helvetica,sans-serif}
+#sp-claude-md *{box-sizing:border-box}
+#sp-claude-md .grid{position:absolute;inset:0;opacity:.065;background-image:linear-gradient(#b5c9ff 1px,transparent 1px),linear-gradient(90deg,#b5c9ff 1px,transparent 1px);background-size:56px 56px}
+#sp-claude-md .top{position:absolute;top:58px;left:68px;right:68px;display:flex;justify-content:space-between;align-items:center;font-size:22px;letter-spacing:3px;font-weight:900}
+#sp-claude-md .pill{border:1px solid #536b92;border-radius:30px;padding:12px 20px;font-size:16px;color:#bcd1ef;letter-spacing:1px}
+#sp-claude-md .scene{position:absolute;inset:205px 68px 160px;opacity:0;visibility:hidden;transform:translateY(18px)}
+#sp-claude-md .kicker{font-size:21px;letter-spacing:4px;color:#72e6ed;font-weight:900;margin-bottom:26px}
+#sp-claude-md h1{font-size:82px;line-height:1.02;letter-spacing:-4px;margin:0 0 28px;font-weight:950}
+#sp-claude-md h2{font-size:68px;line-height:1.06;letter-spacing:-2.6px;margin:0 0 28px;font-weight:900}
+#sp-claude-md .accent{color:#70e7e9}
+#sp-claude-md .sub{font-size:31px;line-height:1.38;color:#c0cce0;max-width:900px}
+#sp-claude-md .panel{position:absolute;left:0;right:0;bottom:38px;border:1px solid #3c5275;border-radius:30px;background:linear-gradient(145deg,#1a2943,#10192a);padding:34px;box-shadow:0 28px 80px #0007}
+#sp-claude-md .terminal{border:1px solid #3d587a;border-radius:22px;background:#080f1d;padding:32px 36px;font:31px/1.65 Consolas,monospace;color:#dceaff;margin-top:42px}
+#sp-claude-md .prompt{color:#78e6bd}.muted{color:#8298b9}.green{color:#78e6bd}.blue{color:#79caff}.gold{color:#ffd98c}
+#sp-claude-md .file{border:1px solid #4a668c;border-radius:22px;background:#0c1728;overflow:hidden;margin-top:36px;box-shadow:0 24px 70px #0007}
+#sp-claude-md .filehead{padding:19px 26px;background:#1b2b46;border-bottom:1px solid #3c5275;font:22px Consolas,monospace;color:#9ed9ed}
+#sp-claude-md .filebody{padding:26px 30px;font:23px/1.62 Consolas,monospace;color:#dce8fa}
+#sp-claude-md .line{display:block;white-space:pre-wrap}
+#sp-claude-md .list{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:38px}
+#sp-claude-md .item{min-height:128px;border:1px solid #425d81;border-radius:20px;background:linear-gradient(145deg,#182944,#101a2d);padding:22px 24px;font-size:26px;font-weight:800;display:flex;align-items:center;gap:16px}
+#sp-claude-md .num{font-size:22px;color:#70e7e9;font-weight:900}
+#sp-claude-md .flow{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:50px}
+#sp-claude-md .node{flex:1;min-height:180px;border:1px solid #47658b;border-radius:24px;background:#14233a;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:18px;font-size:25px;font-weight:900}
+#sp-claude-md .node small{font-size:17px;color:#91a9ca;margin-top:12px;letter-spacing:1px}
+#sp-claude-md .arrow{font-size:42px;color:#70e7e9}
+#sp-claude-md .warning{border:1px solid #806a42;background:#2b251b;border-radius:22px;padding:25px 28px;margin-top:35px;font-size:25px;line-height:1.4;color:#f3dfb7}
+#sp-claude-md .badge{display:inline-block;border:1px solid #557292;border-radius:14px;padding:13px 18px;color:#9de6e6;font-size:18px;letter-spacing:2px;font-weight:900;margin-top:25px}
+#sp-claude-md .footer{position:absolute;bottom:52px;left:68px;right:68px;display:flex;justify-content:space-between;color:#8297b8;font-size:17px;letter-spacing:2px;font-weight:800}
+#sp-claude-md .progress{position:absolute;bottom:0;left:0;height:8px;width:0;background:linear-gradient(90deg,#55dfe9,#a28cff)}
+#sp-claude-md .scene .reveal{opacity:0;transform:translateY(14px)}
 </style></head><body>
-<div id="sp-gemini-argon"><div class="grid"></div><div class="top"><span>SHORTPROMPT</span><span class="pill">GEMINI 4 • ARGON</span></div>
-<section class="scene" data-start="0" data-end="7.2"><div class="kicker">FROM PROMPT TO PROJECT</div><h1>AI IS MOVING<br>BEYOND <span class="accent">ANSWERS.</span></h1><div class="sub">Gemini 4 Argon is built for complex, multi-step work.</div><div class="panel"><div class="badge">THE BIG SHIFT</div><div class="flow"><div class="node">IDEA<small>YOUR PROMPT</small></div><div class="arrow">→</div><div class="node">REASONING<small>MULTI-STEP WORK</small></div><div class="arrow">→</div><div class="node">PROJECT<small>USEFUL OUTPUT</small></div></div></div></section>
-<section class="scene" data-start="7.2" data-end="16.8"><div class="kicker">WHAT GOOGLE SAYS</div><h2>BUILT FOR<br><span class="accent">LONG-HORIZON</span><br>TASKS.</h2><div class="sub">Coding, research, cybersecurity, and complex professional workflows.</div><div class="panel"><div class="metric">1M</div><div class="metriclabel">Unified input + output token context via Gemini API</div><div class="sub" style="font-size:22px;margin-top:24px">A large context window helps the model work across extensive material.</div></div></section>
-<section class="scene" data-start="16.8" data-end="28.2"><div class="kicker">GOOGLE DEMONSTRATION</div><h2>FROM A SHORT PROMPT<br>TO A <span class="accent">3D LIBRARY.</span></h2><div class="sub">Google says Argon wrote around 5,000 lines of mathematical code, starting with no assets or libraries.</div><div class="library"><div class="sun"></div><div class="shelf" style="top:280px"><i class="book" style="left:45px;height:100px"></i><i class="book" style="left:90px;height:120px;background:#6a9b7e"></i><i class="book" style="left:140px;height:88px;background:#b67a69"></i><i class="book" style="left:190px;height:130px;background:#7e91bd"></i><i class="book" style="left:245px;height:102px;background:#b3a06b"></i></div><div class="shelf" style="top:420px"><i class="book" style="left:80px;height:90px;background:#6e91b5"></i><i class="book" style="left:130px;height:110px;background:#b67a69"></i><i class="book" style="left:190px;height:80px;background:#9caa76"></i><i class="book" style="left:250px;height:105px;background:#6a9b7e"></i></div></div><div class="badge" style="margin-top:24px">RECONSTRUCTED VISUAL • NOT A PRODUCT SCREENSHOT</div></section>
-<section class="scene" data-start="28.2" data-end="39.5"><div class="kicker">ANOTHER EXAMPLE</div><h2>AN <span class="accent">INTERACTIVE</span><br>PERIODIC TABLE.</h2><div class="sub">Google also showed Antigravity creating a self-navigating 3D periodic table with animated atoms.</div><div class="periodic" id="periodic"></div><div class="badge" style="margin-top:24px">CONCEPTUAL RECONSTRUCTION OF GOOGLE'S EXAMPLE</div></section>
-<section class="scene" data-start="39.5" data-end="54.3"><div class="kicker">THE IMPORTANT DISTINCTION</div><h2>ARGON IS THE<br><span class="accent">REASONING ENGINE.</span></h2><div class="sub">Google's examples combine Argon with tools such as Antigravity, Nano Banana, and Veo. The results are workflows—not magic from one model alone.</div><div class="panel"><div class="flow"><div class="node">ARGON<small>REASON + CODE</small></div><div class="arrow">+</div><div class="node">TOOLS<small>BUILD + VISUALIZE</small></div><div class="arrow">→</div><div class="node">RESULT<small>PROJECT OUTPUT</small></div></div><div class="sub" style="font-size:24px;margin-top:28px">The bigger shift: AI helping build complete projects, not just answer questions.</div></div><div class="badge" style="position:absolute;bottom:0">FULL BREAKDOWN + SOURCES IN DESCRIPTION</div></section>
-<div class="footer"><span>GEMINI 4 ARGON • SHORTPROMPT</span><span id="timecode">00:00 / 00:54</span></div><div class="progress" id="progress"></div></div>
+<div id="sp-claude-md"><div class="grid"></div><div class="top"><span>SHORTPROMPT</span><span class="pill">CLAUDE CODE • PART 01</span></div>
+<section class="scene" data-start="0" data-end="9.5">
+ <div class="kicker">STOP REPEATING YOURSELF</div><h1>MAKE CLAUDE<br>FOLLOW YOUR<br><span class="accent">PROJECT RULES.</span></h1><div class="sub">Start with one file: CLAUDE.md</div>
+ <div class="panel"><div class="badge">PART 1 OF OUR CLAUDE CODE SERIES</div><h2 style="font-size:45px;margin:24px 0 0">Subscribe for Part 2: advanced project rules.</h2></div>
+</section>
+<section class="scene" data-start="9.5" data-end="18.2">
+ <div class="kicker">STEP 01 / GENERATE A STARTER</div><h2>RUN <span class="accent">/INIT</span></h2><div class="sub">Open Claude Code in your project folder and let it inspect the codebase.</div>
+ <div class="terminal"><span class="muted">$</span> claude<br><span class="prompt">&gt;</span> /init<br><span class="green">✓</span> Analyzing project structure…<br><span class="green">✓</span> Drafting CLAUDE.md…</div>
+ <div class="badge">REVIEW THE GENERATED FILE</div>
+</section>
+<section class="scene" data-start="18.2" data-end="27.2">
+ <div class="kicker">STEP 02 / KEEP THE USEFUL CONTEXT</div><h2>GIVE CLAUDE<br>A <span class="accent">PROJECT MAP.</span></h2>
+ <div class="file"><div class="filehead">CLAUDE.md <span class="muted">— starter outline</span></div><div class="filebody"><span class="line blue"># Project overview</span><span class="line">What this project does.</span><span class="line blue" style="margin-top:12px"># Commands</span><span class="line">How to run, build and test.</span><span class="line blue" style="margin-top:12px"># Conventions</span><span class="line">Naming, patterns and coding standards.</span></div></div>
+</section>
+<section class="scene" data-start="27.2" data-end="38.2">
+ <div class="kicker">STEP 03 / STRUCTURE IT</div><h2>FOCUS ON<br><span class="accent">FIVE THINGS.</span></h2>
+ <div class="list"><div class="item"><span class="num">01</span> Project purpose</div><div class="item"><span class="num">02</span> Key commands</div><div class="item"><span class="num">03</span> Architecture</div><div class="item"><span class="num">04</span> Coding conventions</div><div class="item" style="grid-column:1/3"><span class="num">05</span> Important constraints — what must not change</div></div>
+</section>
+<section class="scene" data-start="38.2" data-end="46.5">
+ <div class="kicker">IMPORTANT / DON'T OVERLOAD IT</div><h2>KEEP IT<br><span class="accent">SHORT & ACCURATE.</span></h2><div class="sub">Remove guesses and generic advice. Keep only instructions Claude needs repeatedly.</div>
+ <div class="warning"><strong>Remember:</strong> CLAUDE.md guides Claude. It does not guarantee that every instruction will always be followed.</div>
+ <div class="badge">REVIEW • TEST • UPDATE</div>
+</section>
+<section class="scene" data-start="46.5" data-end="54.634603">
+ <div class="kicker">NEXT EPISODE</div><h1>PART 2:<br><span class="accent">ADVANCED RULES.</span></h1><div class="sub">Folder-specific instructions and a cleaner Claude Code workflow.</div>
+ <div class="panel"><div class="flow"><div class="node">CLAUDE.md<small>PROJECT BASE</small></div><div class="arrow">→</div><div class="node">ADVANCED RULES<small>PART 2</small></div><div class="arrow">→</div><div class="node">BETTER WORKFLOW<small>SHORTPROMPT</small></div></div><div class="badge">SUBSCRIBE • DON'T MISS PART 2</div></div>
+</section>
+<div class="footer"><span>CLAUDE CODE SETUP • SHORTPROMPT</span><span id="timecode">00:00 / 00:54</span></div><div class="progress" id="progress"></div></div>
 <script>
-(()=>{'use strict';const DURATION=54.3;const scenes=[...document.querySelectorAll('#sp-gemini-argon .scene')];
-const periodic=document.getElementById('periodic');['H','He','Li','Be','B','C','N','O','F','Ne','Na','Mg'].forEach((s,i)=>{const e=document.createElement('div');e.className='element';e.innerHTML='<b>'+s+'</b><small>ELEMENT '+String(i+1).padStart(2,'0')+'</small>';periodic.appendChild(e)});
-function frame(inputTime){const t=Math.max(0,Math.min(DURATION,Number(inputTime)||0));scenes.forEach((s,i)=>{const a=+s.dataset.start,b=+s.dataset.end,on=t>=a&&(t<b||(i===scenes.length-1&&t<=DURATION));s.style.visibility=on?'visible':'hidden';s.style.opacity=on?'1':'0';const local=t-a;s.style.transform=on?'translateY('+(Math.max(0,1-local/.65)*18).toFixed(2)+'px)':'translateY(18px)';if(on){const panel=s.querySelector('.panel');if(panel){const q=Math.max(0,Math.min(1,(local-1.2)/1.5));panel.style.transform='translateY('+((1-q)*22).toFixed(2)+'px)';panel.style.opacity=q.toFixed(3)}const els=s.querySelectorAll('.node,.element');els.forEach((el,j)=>{const q=Math.max(0,Math.min(1,(local-(1.7+j*.16))/.8));el.style.opacity=q.toFixed(3);el.style.transform='translateY('+((1-q)*12).toFixed(2)+'px)'})}});document.getElementById('progress').style.width=(100*t/DURATION).toFixed(3)+'%';const sec=Math.floor(t),mm=String(Math.floor(sec/60)).padStart(2,'0'),ss=String(sec%60).padStart(2,'0');document.getElementById('timecode').textContent=mm+':'+ss+' / 00:54';return true}
+(()=>{'use strict';const DURATION=54.634603;const root=document.getElementById('sp-claude-md');const scenes=[...root.querySelectorAll('.scene')];
+function frame(inputTime){const t=Math.max(0,Math.min(DURATION,Number(inputTime)||0));scenes.forEach((s,i)=>{const a=Number(s.dataset.start),b=Number(s.dataset.end),on=t>=a&&(t<b||(i===scenes.length-1&&t<=DURATION));s.style.visibility=on?'visible':'hidden';s.style.opacity=on?'1':'0';const local=t-a;s.style.transform=on?'translateY('+Math.max(0,1-local/.55)*18+'px)':'translateY(18px)';const panel=s.querySelector('.panel');if(panel){const q=Math.max(0,Math.min(1,(local-.8)/1.1));panel.style.opacity=q;panel.style.transform='translateY('+(1-q)*18+'px)'}const items=s.querySelectorAll('.item,.node,.file,.terminal,.warning,.badge');items.forEach((el,j)=>{const q=Math.max(0,Math.min(1,(local-(.9+j*.13))/.65));el.style.opacity=q;el.style.transform='translateY('+(1-q)*12+'px)'})});root.querySelector('#progress').style.width=(100*t/DURATION).toFixed(3)+'%';const sec=Math.floor(t),mm=String(Math.floor(sec/60)).padStart(2,'0'),ss=String(sec%60).padStart(2,'0');root.querySelector('#timecode').textContent=mm+':'+ss+' / 00:54';return true}
 window.SPMOTION={width:1080,height:1920,fps:30,duration:DURATION};window.SPMOTION_FRAME=frame;frame(0);
 })();
 </script></body></html>
