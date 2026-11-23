@@ -1,1 +1,17 @@
-Want Claude Code to follow your project rules instead of guessing? Start with one file: CLAUDE dot M D. This is Part One of our Claude Code setup series. Subscribe now, because Part Two will show you advanced rules for specific folders. In your project, run slash init. Claude Code explores the codebase and drafts a CLAUDE dot M D file with useful project context. Review it carefully. Keep the commands you actually use, your coding conventions, key architecture notes, and important constraints. Remove anything inaccurate or unnecessary. Keep it concise, and update it as the project changes. Remember: CLAUDE dot M D guides Claude; it does not guarantee perfect compliance. In Part Two, we'll build more advanced project rules. Subscribe to ShortPrompt so you don't miss it.
+You're probably using Microsoft Copilot the basic way. Try these seven practical hacks.
+
+First, build better prompts with four parts: goal, context, source, and expected result.
+
+Second, upload a PDF, spreadsheet, presentation, or image. Ask Copilot to extract key findings. Microsoft currently allows up to twenty files per conversation, with a fifty megabyte limit per file.
+
+Third, don't start over. Refine the answer with follow-ups: make it shorter, turn it into a checklist, or explain what is missing.
+
+Fourth, use Search mode when you need current web information, and open the citations to verify the claims.
+
+Fifth, choose Think Deeper for complex questions when the option is available on your account.
+
+Sixth, specify the audience, tone, format, and length you want.
+
+And seventh, ground the answer in a specific source. Say: use only the attached document, and tell me if the answer isn't there.
+
+Copilot works best when your instructions are clear and you verify important facts. Follow ShortPrompt for more AI tricks.

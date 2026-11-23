@@ -1,68 +1,137 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=1080,initial-scale=1"><title>How to Create a CLAUDE.md File for Claude Code | ShortPrompt</title>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1080,initial-scale=1">
+<title>7 Microsoft Copilot Tips That Actually Save Time | ShortPrompt</title>
 <style>
-#sp-claude-md{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;box-sizing:border-box;background:radial-gradient(ellipse at 85% 8%,#263c76 0,transparent 34%),radial-gradient(ellipse at 8% 90%,#075765 0,transparent 34%),linear-gradient(145deg,#070c18,#111b31 62%,#080d19);color:#f4f7ff;font-family:Arial,Helvetica,sans-serif}
-#sp-claude-md *{box-sizing:border-box}
-#sp-claude-md .grid{position:absolute;inset:0;opacity:.065;background-image:linear-gradient(#b5c9ff 1px,transparent 1px),linear-gradient(90deg,#b5c9ff 1px,transparent 1px);background-size:56px 56px}
-#sp-claude-md .top{position:absolute;top:58px;left:68px;right:68px;display:flex;justify-content:space-between;align-items:center;font-size:22px;letter-spacing:3px;font-weight:900}
-#sp-claude-md .pill{border:1px solid #536b92;border-radius:30px;padding:12px 20px;font-size:16px;color:#bcd1ef;letter-spacing:1px}
-#sp-claude-md .scene{position:absolute;inset:205px 68px 160px;opacity:0;visibility:hidden;transform:translateY(18px)}
-#sp-claude-md .kicker{font-size:21px;letter-spacing:4px;color:#72e6ed;font-weight:900;margin-bottom:26px}
-#sp-claude-md h1{font-size:82px;line-height:1.02;letter-spacing:-4px;margin:0 0 28px;font-weight:950}
-#sp-claude-md h2{font-size:68px;line-height:1.06;letter-spacing:-2.6px;margin:0 0 28px;font-weight:900}
-#sp-claude-md .accent{color:#70e7e9}
-#sp-claude-md .sub{font-size:31px;line-height:1.38;color:#c0cce0;max-width:900px}
-#sp-claude-md .panel{position:absolute;left:0;right:0;bottom:38px;border:1px solid #3c5275;border-radius:30px;background:linear-gradient(145deg,#1a2943,#10192a);padding:34px;box-shadow:0 28px 80px #0007}
-#sp-claude-md .terminal{border:1px solid #3d587a;border-radius:22px;background:#080f1d;padding:32px 36px;font:31px/1.65 Consolas,monospace;color:#dceaff;margin-top:42px}
-#sp-claude-md .prompt{color:#78e6bd}.muted{color:#8298b9}.green{color:#78e6bd}.blue{color:#79caff}.gold{color:#ffd98c}
-#sp-claude-md .file{border:1px solid #4a668c;border-radius:22px;background:#0c1728;overflow:hidden;margin-top:36px;box-shadow:0 24px 70px #0007}
-#sp-claude-md .filehead{padding:19px 26px;background:#1b2b46;border-bottom:1px solid #3c5275;font:22px Consolas,monospace;color:#9ed9ed}
-#sp-claude-md .filebody{padding:26px 30px;font:23px/1.62 Consolas,monospace;color:#dce8fa}
-#sp-claude-md .line{display:block;white-space:pre-wrap}
-#sp-claude-md .list{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:38px}
-#sp-claude-md .item{min-height:128px;border:1px solid #425d81;border-radius:20px;background:linear-gradient(145deg,#182944,#101a2d);padding:22px 24px;font-size:26px;font-weight:800;display:flex;align-items:center;gap:16px}
-#sp-claude-md .num{font-size:22px;color:#70e7e9;font-weight:900}
-#sp-claude-md .flow{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:50px}
-#sp-claude-md .node{flex:1;min-height:180px;border:1px solid #47658b;border-radius:24px;background:#14233a;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:18px;font-size:25px;font-weight:900}
-#sp-claude-md .node small{font-size:17px;color:#91a9ca;margin-top:12px;letter-spacing:1px}
-#sp-claude-md .arrow{font-size:42px;color:#70e7e9}
-#sp-claude-md .warning{border:1px solid #806a42;background:#2b251b;border-radius:22px;padding:25px 28px;margin-top:35px;font-size:25px;line-height:1.4;color:#f3dfb7}
-#sp-claude-md .badge{display:inline-block;border:1px solid #557292;border-radius:14px;padding:13px 18px;color:#9de6e6;font-size:18px;letter-spacing:2px;font-weight:900;margin-top:25px}
-#sp-claude-md .footer{position:absolute;bottom:52px;left:68px;right:68px;display:flex;justify-content:space-between;color:#8297b8;font-size:17px;letter-spacing:2px;font-weight:800}
-#sp-claude-md .progress{position:absolute;bottom:0;left:0;height:8px;width:0;background:linear-gradient(90deg,#55dfe9,#a28cff)}
-#sp-claude-md .scene .reveal{opacity:0;transform:translateY(14px)}
-</style></head><body>
-<div id="sp-claude-md"><div class="grid"></div><div class="top"><span>SHORTPROMPT</span><span class="pill">CLAUDE CODE • PART 01</span></div>
-<section class="scene" data-start="0" data-end="9.5">
- <div class="kicker">STOP REPEATING YOURSELF</div><h1>MAKE CLAUDE<br>FOLLOW YOUR<br><span class="accent">PROJECT RULES.</span></h1><div class="sub">Start with one file: CLAUDE.md</div>
- <div class="panel"><div class="badge">PART 1 OF OUR CLAUDE CODE SERIES</div><h2 style="font-size:45px;margin:24px 0 0">Subscribe for Part 2: advanced project rules.</h2></div>
-</section>
-<section class="scene" data-start="9.5" data-end="18.2">
- <div class="kicker">STEP 01 / GENERATE A STARTER</div><h2>RUN <span class="accent">/INIT</span></h2><div class="sub">Open Claude Code in your project folder and let it inspect the codebase.</div>
- <div class="terminal"><span class="muted">$</span> claude<br><span class="prompt">&gt;</span> /init<br><span class="green">✓</span> Analyzing project structure…<br><span class="green">✓</span> Drafting CLAUDE.md…</div>
- <div class="badge">REVIEW THE GENERATED FILE</div>
-</section>
-<section class="scene" data-start="18.2" data-end="27.2">
- <div class="kicker">STEP 02 / KEEP THE USEFUL CONTEXT</div><h2>GIVE CLAUDE<br>A <span class="accent">PROJECT MAP.</span></h2>
- <div class="file"><div class="filehead">CLAUDE.md <span class="muted">— starter outline</span></div><div class="filebody"><span class="line blue"># Project overview</span><span class="line">What this project does.</span><span class="line blue" style="margin-top:12px"># Commands</span><span class="line">How to run, build and test.</span><span class="line blue" style="margin-top:12px"># Conventions</span><span class="line">Naming, patterns and coding standards.</span></div></div>
-</section>
-<section class="scene" data-start="27.2" data-end="38.2">
- <div class="kicker">STEP 03 / STRUCTURE IT</div><h2>FOCUS ON<br><span class="accent">FIVE THINGS.</span></h2>
- <div class="list"><div class="item"><span class="num">01</span> Project purpose</div><div class="item"><span class="num">02</span> Key commands</div><div class="item"><span class="num">03</span> Architecture</div><div class="item"><span class="num">04</span> Coding conventions</div><div class="item" style="grid-column:1/3"><span class="num">05</span> Important constraints — what must not change</div></div>
-</section>
-<section class="scene" data-start="38.2" data-end="46.5">
- <div class="kicker">IMPORTANT / DON'T OVERLOAD IT</div><h2>KEEP IT<br><span class="accent">SHORT & ACCURATE.</span></h2><div class="sub">Remove guesses and generic advice. Keep only instructions Claude needs repeatedly.</div>
- <div class="warning"><strong>Remember:</strong> CLAUDE.md guides Claude. It does not guarantee that every instruction will always be followed.</div>
- <div class="badge">REVIEW • TEST • UPDATE</div>
-</section>
-<section class="scene" data-start="46.5" data-end="54.634603">
- <div class="kicker">NEXT EPISODE</div><h1>PART 2:<br><span class="accent">ADVANCED RULES.</span></h1><div class="sub">Folder-specific instructions and a cleaner Claude Code workflow.</div>
- <div class="panel"><div class="flow"><div class="node">CLAUDE.md<small>PROJECT BASE</small></div><div class="arrow">→</div><div class="node">ADVANCED RULES<small>PART 2</small></div><div class="arrow">→</div><div class="node">BETTER WORKFLOW<small>SHORTPROMPT</small></div></div><div class="badge">SUBSCRIBE • DON'T MISS PART 2</div></div>
-</section>
-<div class="footer"><span>CLAUDE CODE SETUP • SHORTPROMPT</span><span id="timecode">00:00 / 00:54</span></div><div class="progress" id="progress"></div></div>
+#sp-copilot{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;box-sizing:border-box;background:radial-gradient(ellipse at 80% 5%,#153d77 0,transparent 34%),radial-gradient(ellipse at 8% 95%,#0b5962 0,transparent 32%),linear-gradient(145deg,#07101f,#101b30 60%,#080e1a);color:#f5f8ff;font-family:Arial,Helvetica,sans-serif}
+#sp-copilot *{box-sizing:border-box}
+#sp-copilot .grid{position:absolute;inset:0;opacity:.055;background-image:linear-gradient(#b6d1ff 1px,transparent 1px),linear-gradient(90deg,#b6d1ff 1px,transparent 1px);background-size:54px 54px}
+#sp-copilot .top{position:absolute;top:54px;left:64px;right:64px;display:flex;justify-content:space-between;align-items:center;font-size:22px;letter-spacing:3px;font-weight:900}
+#sp-copilot .pill{border:1px solid #4c6c9a;border-radius:30px;padding:12px 19px;font-size:16px;color:#c3d9fb;letter-spacing:1px}
+#sp-copilot .chrome{position:absolute;left:54px;right:54px;top:150px;bottom:145px;border:1px solid #49658d;border-radius:30px;background:#0d1728;overflow:hidden;box-shadow:0 30px 100px #0008}
+#sp-copilot .bar{height:68px;background:#182842;border-bottom:1px solid #344c6d;display:flex;align-items:center;padding:0 25px;gap:12px}
+#sp-copilot .dot{width:13px;height:13px;border-radius:50%;background:#7892b8}
+#sp-copilot .url{margin-left:16px;border:1px solid #3d5579;background:#0d192c;border-radius:18px;padding:10px 20px;color:#9db2d2;font:18px Consolas,monospace;width:72%}
+#sp-copilot .app{display:flex;height:calc(100% - 68px)}
+#sp-copilot .rail{width:170px;background:#111e32;border-right:1px solid #2d4567;padding:25px 16px;color:#a9bbd4;font-size:17px}
+#sp-copilot .brand{font-size:22px;font-weight:900;color:#fff;margin:0 0 32px}
+#sp-copilot .nav{padding:14px 12px;border-radius:12px;margin:8px 0}
+#sp-copilot .nav.active{background:#243d60;color:#fff}
+#sp-copilot .main{flex:1;padding:44px 42px;position:relative}
+#sp-copilot .hello{font-size:38px;font-weight:800;margin-bottom:22px}
+#sp-copilot .sub{font-size:23px;color:#aebfd9;line-height:1.4}
+#sp-copilot .chat{margin-top:32px;background:#16243a;border:1px solid #3b557b;border-radius:24px;padding:27px 30px;font-size:24px;line-height:1.45;color:#eef5ff;box-shadow:0 16px 40px #0005}
+#sp-copilot .label{font-size:17px;letter-spacing:2px;font-weight:900;color:#76e3e8;margin-bottom:13px}
+#sp-copilot .answer{margin-top:24px;background:#0d1b2e;border:1px solid #2f496d;border-radius:20px;padding:25px;font-size:22px;line-height:1.48;color:#d7e5fa}
+#sp-copilot .accent{color:#76e5e8}
+#sp-copilot .chips{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+#sp-copilot .chip{padding:12px 17px;border:1px solid #4d6b91;border-radius:14px;background:#1b2f4d;color:#d9e8fb;font-size:19px;font-weight:700}
+#sp-copilot .cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px}
+#sp-copilot .card{background:#192b45;border:1px solid #49658a;border-radius:17px;padding:20px;font-size:21px;line-height:1.35;min-height:100px}
+#sp-copilot .card strong{display:block;color:#79e4e8;font-size:17px;letter-spacing:1px;margin-bottom:8px}
+#sp-copilot .promptbox{background:#071321;border:1px solid #46638a;border-radius:18px;padding:22px 24px;font:21px/1.5 Consolas,monospace;color:#dbe9fc;margin-top:24px}
+#sp-copilot .file{display:flex;align-items:center;gap:18px;background:#1a2d49;border:1px solid #506b91;border-radius:16px;padding:17px 20px;margin-top:18px;font-size:19px}
+#sp-copilot .fileicon{width:48px;height:54px;border-radius:9px;background:#dcecff;color:#24518a;display:grid;place-items:center;font-size:16px;font-weight:900}
+#sp-copilot .tipnum{position:absolute;right:40px;top:40px;color:#7194c3;font-size:20px;letter-spacing:2px;font-weight:900}
+#sp-copilot .scene{position:absolute;inset:0;opacity:0;visibility:hidden}
+#sp-copilot .footer{position:absolute;bottom:48px;left:64px;right:64px;display:flex;justify-content:space-between;color:#8da4c6;font-size:17px;letter-spacing:2px;font-weight:800}
+#sp-copilot .progress{position:absolute;bottom:0;left:0;height:8px;width:0;background:linear-gradient(90deg,#5fe3e8,#a68cff)}
+#sp-copilot .scene .reveal{opacity:0;transform:translateY(18px)}
+#sp-copilot .warning{margin-top:20px;padding:18px 20px;border:1px solid #8b7146;background:#2a251b;border-radius:15px;color:#f2dfbb;font-size:18px;line-height:1.4}
+</style>
+</head>
+<body>
+<div id="sp-copilot">
+<div class="grid"></div>
+<div class="top"><span>SHORTPROMPT</span><span class="pill">MICROSOFT COPILOT • 7 HACKS</span></div>
+<div class="chrome">
+ <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><div class="url">copilot.microsoft.com</div></div>
+ <div class="app">
+  <aside class="rail"><div class="brand">Copilot</div><div class="nav active">＋ New chat</div><div class="nav">Search</div><div class="nav">Library</div><div class="nav">Notebooks</div><div class="nav">Agents</div></aside>
+  <main class="main">
+   <section class="scene" data-start="0.000000" data-end="6.643597">
+    <div class="tipnum">THE QUICK GUIDE</div><div class="hello">Get more from <span class="accent">Copilot.</span></div><div class="sub">Seven practical techniques you can use right now.</div>
+    <div class="chat reveal"><div class="label">YOUR NEXT STEP</div>Don't just ask questions. Give Copilot a clear task, useful context, and a source.</div>
+    <div class="chips reveal"><span class="chip">PROMPT BETTER</span><span class="chip">USE YOUR FILES</span><span class="chip">VERIFY ANSWERS</span></div>
+   </section>
+   <section class="scene" data-start="6.643597" data-end="13.287193">
+    <div class="tipnum">HACK 01 / 07</div><div class="hello">Build a <span class="accent">better prompt.</span></div><div class="sub">Use Microsoft's four-part prompt framework.</div>
+    <div class="cards">
+     <div class="card reveal"><strong>01 / GOAL</strong>What do you want done?</div><div class="card reveal"><strong>02 / CONTEXT</strong>Who is it for and why?</div>
+     <div class="card reveal"><strong>03 / SOURCE</strong>Which file or information?</div><div class="card reveal"><strong>04 / EXPECTATIONS</strong>Format, tone and length.</div>
+    </div>
+    <div class="promptbox reveal"><span class="accent">PROMPT</span><br>Summarize this report for a beginner. Use only the attached file. Give me 5 bullets and 3 actions.</div>
+   </section>
+   <section class="scene" data-start="13.287193" data-end="24.530151">
+    <div class="tipnum">HACK 02 / 07</div><div class="hello">Upload a <span class="accent">real file.</span></div><div class="sub">Ask Copilot to work directly from the material you provide.</div>
+    <div class="file reveal"><span class="fileicon">PDF</span><span><b>Quarterly_Report.pdf</b><br><small style="color:#9fb4d2">Attached source</small></span></div>
+    <div class="file reveal"><span class="fileicon">XLSX</span><span><b>Sales_Data.xlsx</b><br><small style="color:#9fb4d2">Spreadsheet</small></span></div>
+    <div class="answer reveal"><span class="accent">ASK:</span> Extract the 3 most important findings, quote the relevant figures, and list anything uncertain.</div>
+    <div class="warning reveal">Supported formats and upload limits depend on the Copilot experience and account.</div>
+   </section>
+   <section class="scene" data-start="24.530151" data-end="34.750992">
+    <div class="tipnum">HACK 03 / 07</div><div class="hello">Refine. Don't <span class="accent">restart.</span></div><div class="sub">Use short follow-up instructions to improve the first result.</div>
+    <div class="chat reveal"><div class="label">FIRST ANSWER</div>A long summary with too much detail…</div>
+    <div class="answer reveal"><span class="accent">FOLLOW-UP 1</span><br>Make it 50% shorter.</div>
+    <div class="answer reveal"><span class="accent">FOLLOW-UP 2</span><br>Turn the key points into a checklist.</div>
+    <div class="answer reveal"><span class="accent">FOLLOW-UP 3</span><br>Show what is missing or unclear.</div>
+   </section>
+   <section class="scene" data-start="34.750992" data-end="43.949827">
+    <div class="tipnum">HACK 04 / 07</div><div class="hello">Use <span class="accent">Search mode.</span></div><div class="sub">When you need up-to-date information from the web.</div>
+    <div class="chat reveal"><div class="label">SEARCH REQUEST</div>Compare the latest official Copilot feature updates. Include publication dates and source links.</div>
+    <div class="answer reveal"><span class="accent">RESULT</span><br>Current web information + citations to inspect.</div>
+    <div class="warning reveal">Citations are a starting point. Open the sources and verify important claims.</div>
+   </section>
+   <section class="scene" data-start="43.949827" data-end="50.082309">
+    <div class="tipnum">HACK 05 / 07</div><div class="hello">Choose <span class="accent">Think Deeper.</span></div><div class="sub">For complex questions that need a more considered response.</div>
+    <div class="cards"><div class="card reveal"><strong>QUICK RESPONSE</strong>Simple, direct questions.</div><div class="card reveal"><strong>THINK DEEPER</strong>Complex trade-offs and problem solving.</div></div>
+    <div class="warning reveal">Conversation modes vary by account, region and availability.</div>
+   </section>
+   <section class="scene" data-start="50.082309" data-end="57.236909">
+    <div class="tipnum">HACK 06 / 07</div><div class="hello">Specify the <span class="accent">output.</span></div><div class="sub">Tell Copilot exactly how the answer should look.</div>
+    <div class="promptbox reveal">Audience: new employees<br>Tone: friendly and clear<br>Format: numbered checklist<br>Length: under 200 words</div>
+    <div class="answer reveal">One precise outcome beats a vague request.</div>
+   </section>
+   <section class="scene" data-start="57.236909" data-end="64.902512">
+    <div class="tipnum">HACK 07 / 07</div><div class="hello">Ground it in a <span class="accent">source.</span></div><div class="sub">Reduce guesswork by pointing to the exact material.</div>
+    <div class="chat reveal"><div class="label">SOURCE CONTROL</div>Use only the attached policy document. If the answer isn't in the file, say you can't find it.</div>
+    <div class="answer reveal">Then ask Copilot to show the section that supports its answer.</div>
+   </section>
+   <section class="scene" data-start="64.902512" data-end="74.612245">
+    <div class="tipnum">SHORTPROMPT / MORE AI TRICKS</div><div class="hello">Clear instructions.<br><span class="accent">Better results.</span></div>
+    <div class="sub">Always verify important facts and check the sources.</div>
+    <div class="chat reveal"><div class="label">FOLLOW SHORTPROMPT</div>Practical AI tips. Real capabilities. No hype.</div>
+    <div class="chips reveal"><span class="chip">SAVE THIS VIDEO</span><span class="chip">FOLLOW FOR MORE</span></div>
+   </section>
+  </main>
+ </div>
+</div>
+<div class="footer"><span>MICROSOFT COPILOT TIPS • SHORTPROMPT</span><span id="timecode">00:00 / 01:14</span></div>
+<div class="progress" id="progress"></div>
+</div>
 <script>
-(()=>{'use strict';const DURATION=54.634603;const root=document.getElementById('sp-claude-md');const scenes=[...root.querySelectorAll('.scene')];
-function frame(inputTime){const t=Math.max(0,Math.min(DURATION,Number(inputTime)||0));scenes.forEach((s,i)=>{const a=Number(s.dataset.start),b=Number(s.dataset.end),on=t>=a&&(t<b||(i===scenes.length-1&&t<=DURATION));s.style.visibility=on?'visible':'hidden';s.style.opacity=on?'1':'0';const local=t-a;s.style.transform=on?'translateY('+Math.max(0,1-local/.55)*18+'px)':'translateY(18px)';const panel=s.querySelector('.panel');if(panel){const q=Math.max(0,Math.min(1,(local-.8)/1.1));panel.style.opacity=q;panel.style.transform='translateY('+(1-q)*18+'px)'}const items=s.querySelectorAll('.item,.node,.file,.terminal,.warning,.badge');items.forEach((el,j)=>{const q=Math.max(0,Math.min(1,(local-(.9+j*.13))/.65));el.style.opacity=q;el.style.transform='translateY('+(1-q)*12+'px)'})});root.querySelector('#progress').style.width=(100*t/DURATION).toFixed(3)+'%';const sec=Math.floor(t),mm=String(Math.floor(sec/60)).padStart(2,'0'),ss=String(sec%60).padStart(2,'0');root.querySelector('#timecode').textContent=mm+':'+ss+' / 00:54';return true}
-window.SPMOTION={width:1080,height:1920,fps:30,duration:DURATION};window.SPMOTION_FRAME=frame;frame(0);
+(()=>{'use strict';
+const DURATION=74.612245,root=document.getElementById('sp-copilot'),scenes=[...root.querySelectorAll('.scene')];
+function frame(inputTime){
+ const t=Math.max(0,Math.min(DURATION,Number(inputTime)||0));
+ scenes.forEach((s,i)=>{
+  const a=Number(s.dataset.start),b=Number(s.dataset.end),on=t>=a&&(t<b||(i===scenes.length-1&&t<=DURATION));
+  s.style.visibility=on?'visible':'hidden';s.style.opacity=on?'1':'0';
+  const local=t-a;
+  s.querySelectorAll('.reveal').forEach((el,j)=>{
+   const q=Math.max(0,Math.min(1,(local-(.35+j*.48))/.55));
+   el.style.opacity=on?q:0;el.style.transform='translateY('+(1-q)*18+'px)';
+  });
+ });
+ root.querySelector('#progress').style.width=(100*t/DURATION).toFixed(3)+'%';
+ const sec=Math.floor(t),mm=String(Math.floor(sec/60)).padStart(2,'0'),ss=String(sec%60).padStart(2,'0');
+ root.querySelector('#timecode').textContent=mm+':'+ss+' / 01:14';
+ return true;
+}
+window.SPMOTION={width:1080,height:1920,fps:30,duration:DURATION};
+window.SPMOTION_FRAME=frame;frame(0);
 })();
-</script></body></html>
+</script>
+</body></html>
