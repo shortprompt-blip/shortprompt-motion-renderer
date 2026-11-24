@@ -3,135 +3,144 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=1080,initial-scale=1">
-<title>7 Microsoft Copilot Tips That Actually Save Time | ShortPrompt</title>
+<title>USB Microphone Setup | ShortPrompt</title>
 <style>
-#sp-copilot{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;box-sizing:border-box;background:radial-gradient(ellipse at 80% 5%,#153d77 0,transparent 34%),radial-gradient(ellipse at 8% 95%,#0b5962 0,transparent 32%),linear-gradient(145deg,#07101f,#101b30 60%,#080e1a);color:#f5f8ff;font-family:Arial,Helvetica,sans-serif}
-#sp-copilot *{box-sizing:border-box}
-#sp-copilot .grid{position:absolute;inset:0;opacity:.055;background-image:linear-gradient(#b6d1ff 1px,transparent 1px),linear-gradient(90deg,#b6d1ff 1px,transparent 1px);background-size:54px 54px}
-#sp-copilot .top{position:absolute;top:54px;left:64px;right:64px;display:flex;justify-content:space-between;align-items:center;font-size:22px;letter-spacing:3px;font-weight:900}
-#sp-copilot .pill{border:1px solid #4c6c9a;border-radius:30px;padding:12px 19px;font-size:16px;color:#c3d9fb;letter-spacing:1px}
-#sp-copilot .chrome{position:absolute;left:54px;right:54px;top:150px;bottom:145px;border:1px solid #49658d;border-radius:30px;background:#0d1728;overflow:hidden;box-shadow:0 30px 100px #0008}
-#sp-copilot .bar{height:68px;background:#182842;border-bottom:1px solid #344c6d;display:flex;align-items:center;padding:0 25px;gap:12px}
-#sp-copilot .dot{width:13px;height:13px;border-radius:50%;background:#7892b8}
-#sp-copilot .url{margin-left:16px;border:1px solid #3d5579;background:#0d192c;border-radius:18px;padding:10px 20px;color:#9db2d2;font:18px Consolas,monospace;width:72%}
-#sp-copilot .app{display:flex;height:calc(100% - 68px)}
-#sp-copilot .rail{width:170px;background:#111e32;border-right:1px solid #2d4567;padding:25px 16px;color:#a9bbd4;font-size:17px}
-#sp-copilot .brand{font-size:22px;font-weight:900;color:#fff;margin:0 0 32px}
-#sp-copilot .nav{padding:14px 12px;border-radius:12px;margin:8px 0}
-#sp-copilot .nav.active{background:#243d60;color:#fff}
-#sp-copilot .main{flex:1;padding:44px 42px;position:relative}
-#sp-copilot .hello{font-size:38px;font-weight:800;margin-bottom:22px}
-#sp-copilot .sub{font-size:23px;color:#aebfd9;line-height:1.4}
-#sp-copilot .chat{margin-top:32px;background:#16243a;border:1px solid #3b557b;border-radius:24px;padding:27px 30px;font-size:24px;line-height:1.45;color:#eef5ff;box-shadow:0 16px 40px #0005}
-#sp-copilot .label{font-size:17px;letter-spacing:2px;font-weight:900;color:#76e3e8;margin-bottom:13px}
-#sp-copilot .answer{margin-top:24px;background:#0d1b2e;border:1px solid #2f496d;border-radius:20px;padding:25px;font-size:22px;line-height:1.48;color:#d7e5fa}
-#sp-copilot .accent{color:#76e5e8}
-#sp-copilot .chips{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
-#sp-copilot .chip{padding:12px 17px;border:1px solid #4d6b91;border-radius:14px;background:#1b2f4d;color:#d9e8fb;font-size:19px;font-weight:700}
-#sp-copilot .cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px}
-#sp-copilot .card{background:#192b45;border:1px solid #49658a;border-radius:17px;padding:20px;font-size:21px;line-height:1.35;min-height:100px}
-#sp-copilot .card strong{display:block;color:#79e4e8;font-size:17px;letter-spacing:1px;margin-bottom:8px}
-#sp-copilot .promptbox{background:#071321;border:1px solid #46638a;border-radius:18px;padding:22px 24px;font:21px/1.5 Consolas,monospace;color:#dbe9fc;margin-top:24px}
-#sp-copilot .file{display:flex;align-items:center;gap:18px;background:#1a2d49;border:1px solid #506b91;border-radius:16px;padding:17px 20px;margin-top:18px;font-size:19px}
-#sp-copilot .fileicon{width:48px;height:54px;border-radius:9px;background:#dcecff;color:#24518a;display:grid;place-items:center;font-size:16px;font-weight:900}
-#sp-copilot .tipnum{position:absolute;right:40px;top:40px;color:#7194c3;font-size:20px;letter-spacing:2px;font-weight:900}
-#sp-copilot .scene{position:absolute;inset:0;opacity:0;visibility:hidden}
-#sp-copilot .footer{position:absolute;bottom:48px;left:64px;right:64px;display:flex;justify-content:space-between;color:#8da4c6;font-size:17px;letter-spacing:2px;font-weight:800}
-#sp-copilot .progress{position:absolute;bottom:0;left:0;height:8px;width:0;background:linear-gradient(90deg,#5fe3e8,#a68cff)}
-#sp-copilot .scene .reveal{opacity:0;transform:translateY(18px)}
-#sp-copilot .warning{margin-top:20px;padding:18px 20px;border:1px solid #8b7146;background:#2a251b;border-radius:15px;color:#f2dfbb;font-size:18px;line-height:1.4}
+#sp-usbmic{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;box-sizing:border-box;background:#07111e;color:#f4f8ff;font-family:Arial,Helvetica,sans-serif;}
+#sp-usbmic *{box-sizing:border-box}
+#sp-usbmic .sp-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 82% 12%,#173f64 0,transparent 38%),radial-gradient(ellipse at 5% 92%,#173b45 0,transparent 38%),linear-gradient(145deg,#07111e,#0c1929 56%,#08121f)}
+#sp-usbmic .sp-grid{position:absolute;inset:0;opacity:.07;background-image:linear-gradient(#9cc9df 1px,transparent 1px),linear-gradient(90deg,#9cc9df 1px,transparent 1px);background-size:54px 54px}
+#sp-usbmic .sp-top{position:absolute;top:54px;left:62px;right:62px;display:flex;justify-content:space-between;align-items:center;color:#9db5ca;font-size:19px;font-weight:800;letter-spacing:3px}
+#sp-usbmic .sp-brand{color:#e9f5ff}
+#sp-usbmic .sp-pill{padding:12px 18px;border:1px solid #3b5d79;border-radius:30px;background:#10243a;color:#a9dce8;font-size:15px;letter-spacing:1.5px}
+#sp-usbmic .sp-main{position:absolute;left:46px;right:46px;top:142px;bottom:128px;border:1px solid #35516d;border-radius:34px;background:linear-gradient(160deg,#101f32,#0b1727);box-shadow:0 30px 90px #0008;overflow:hidden}
+#sp-usbmic .sp-chrome{height:72px;display:flex;align-items:center;gap:12px;padding:0 25px;background:#172a40;border-bottom:1px solid #2d4965}
+#sp-usbmic .sp-dot{width:13px;height:13px;border-radius:50%;background:#7593aa}
+#sp-usbmic .sp-address{margin-left:16px;padding:11px 20px;width:70%;border:1px solid #35536f;border-radius:22px;background:#0b1929;color:#9bb7ce;font:17px Consolas,monospace}
+#sp-usbmic .sp-stage{position:absolute;inset:72px 0 0;padding:42px 44px}
+#sp-usbmic .sp-kicker{color:#68d8d0;font-size:17px;font-weight:900;letter-spacing:3px;margin-bottom:18px}
+#sp-usbmic .sp-head{font-size:49px;line-height:1.05;font-weight:900;letter-spacing:-1.5px;margin:0 0 18px;max-width:850px}
+#sp-usbmic .sp-sub{font-size:25px;line-height:1.4;color:#afc2d5;max-width:820px}
+#sp-usbmic .sp-accent{color:#71e4d4}
+#sp-usbmic .sp-muted{color:#8fa8c0}
+#sp-usbmic .sp-scene{position:absolute;inset:0;visibility:hidden;opacity:0;pointer-events:none}
+#sp-usbmic .sp-card{background:#14283d;border:1px solid #36546f;border-radius:22px;padding:24px;box-shadow:0 15px 38px #0004}
+#sp-usbmic .sp-label{font-size:15px;color:#8eabc3;font-weight:900;letter-spacing:2px;margin-bottom:12px}
+#sp-usbmic .sp-row{display:flex;align-items:center;gap:18px}
+#sp-usbmic .sp-check{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:#153f3d;color:#79e4ce;font-size:25px;font-weight:900}
+#sp-usbmic .sp-chip{display:inline-flex;align-items:center;padding:11px 15px;border:1px solid #3b627e;border-radius:12px;background:#10243a;color:#c6d8e8;font-size:17px;font-weight:700}
+#sp-usbmic .sp-mic-wrap{position:absolute;left:80px;top:290px;width:300px;height:570px;display:flex;align-items:center;justify-content:center}
+#sp-usbmic .sp-mic{position:relative;width:156px;height:270px;border-radius:78px 78px 48px 48px;background:linear-gradient(110deg,#293f55,#0b1725 55%,#3b566b);border:3px solid #6b879c;box-shadow:inset 0 0 0 10px #16293b,0 24px 55px #0008}
+#sp-usbmic .sp-mic:before{content:"";position:absolute;left:24px;right:24px;top:24px;height:92px;border-radius:55px;background:repeating-linear-gradient(0deg,#6e8798 0 3px,#253b50 3px 7px);opacity:.8}
+#sp-usbmic .sp-mic:after{content:"";position:absolute;left:66px;bottom:-94px;width:24px;height:100px;background:linear-gradient(90deg,#3b566a,#15283a);border-radius:0 0 10px 10px;box-shadow:0 90px 0 54px #263d50}
+#sp-usbmic .sp-mic-led{position:absolute;left:62px;bottom:48px;width:32px;height:8px;border-radius:8px;background:#65e3ce;box-shadow:0 0 16px #65e3ce}
+#sp-usbmic .sp-usb{position:absolute;left:315px;top:720px;width:200px;height:12px;border-radius:10px;background:#6ce2d1;transform:rotate(-24deg);transform-origin:left center;box-shadow:0 0 18px #6ce2d177}
+#sp-usbmic .sp-distance{position:absolute;left:415px;top:370px;width:270px;border-top:3px dashed #75dcd1;color:#8ce6db;text-align:center;padding-top:18px;font-size:21px;font-weight:800}
+#sp-usbmic .sp-mouth{position:absolute;left:690px;top:320px;width:115px;height:115px;border-radius:50%;border:2px solid #6b879e;background:linear-gradient(135deg,#29435b,#122237);display:grid;place-items:center;color:#b6cde0;font-size:39px}
+#sp-usbmic .sp-window{position:absolute;left:44px;right:44px;top:305px;display:flex;gap:22px;align-items:stretch}
+#sp-usbmic .sp-nav{width:220px;padding:22px;background:#0d1b2b;border:1px solid #2e4a65;border-radius:18px;color:#94aec5;font-size:18px;line-height:2.35}
+#sp-usbmic .sp-nav b{color:#e8f2fc}
+#sp-usbmic .sp-panel{flex:1;padding:26px;background:#12263a;border:1px solid #3b5a75;border-radius:18px}
+#sp-usbmic .sp-device{padding:20px 22px;border:1px solid #4d8a87;background:#123638;border-radius:15px;display:flex;justify-content:space-between;align-items:center;font-size:21px;margin:18px 0}
+#sp-usbmic .sp-meter{height:18px;border-radius:12px;background:#263d52;overflow:hidden;margin:16px 0}
+#sp-usbmic .sp-meter span{display:block;height:100%;width:68%;border-radius:12px;background:linear-gradient(90deg,#55cbb6,#a9e66e)}
+#sp-usbmic .sp-button{display:inline-block;padding:15px 22px;border-radius:13px;background:#246d70;color:#efffff;font-size:18px;font-weight:800}
+#sp-usbmic .sp-appgrid{position:absolute;left:44px;right:44px;top:315px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+#sp-usbmic .sp-knob{width:175px;height:175px;border-radius:50%;margin:12px auto 18px;border:12px solid #28465b;border-top-color:#72e2d3;display:grid;place-items:center;color:#dffaf5;font-size:30px;font-weight:900;transform:rotate(-25deg)}
+#sp-usbmic .sp-wave{height:92px;display:flex;align-items:center;justify-content:center;gap:6px;margin:18px 0}
+#sp-usbmic .sp-wave i{display:block;width:7px;border-radius:8px;background:#69dccc;opacity:.9}
+#sp-usbmic .sp-filter{display:flex;align-items:center;justify-content:space-between;padding:20px 22px;background:#10243a;border:1px solid #385671;border-radius:15px;margin-top:15px;font-size:20px}
+#sp-usbmic .sp-toggle{width:60px;height:32px;border-radius:20px;background:#2c9e8c;padding:4px;display:flex;justify-content:flex-end}
+#sp-usbmic .sp-toggle:after{content:"";width:24px;height:24px;border-radius:50%;background:#fff}
+#sp-usbmic .sp-db{font-size:72px;font-weight:900;letter-spacing:-3px;color:#75e1d0}
+#sp-usbmic .sp-dbscale{position:relative;height:38px;border-radius:12px;background:linear-gradient(90deg,#4bbd9e 0 62%,#e0bb58 62% 82%,#d65d64 82%);margin:28px 0 14px;box-shadow:0 0 30px #54d2ae22}
+#sp-usbmic .sp-dbscale:after{content:"";position:absolute;left:62%;top:-13px;height:64px;width:4px;background:#fff;box-shadow:0 0 12px #fff}
+#sp-usbmic .sp-footer{position:absolute;bottom:48px;left:62px;right:62px;display:flex;justify-content:space-between;color:#809bb4;font-size:15px;letter-spacing:2px;font-weight:800}
+#sp-usbmic .sp-progress{position:absolute;left:0;bottom:0;height:7px;width:0;background:linear-gradient(90deg,#5fd9ce,#9be6a6)}
+#sp-usbmic .sp-reveal{opacity:0;transform:translateY(24px)}
+#sp-usbmic .sp-note{font-size:17px;line-height:1.4;color:#9bb2c7}
+#sp-usbmic .sp-cta{position:absolute;left:0;right:0;bottom:0;padding:22px 24px;border:1px solid #477b7c;background:#123d3d;border-radius:18px;color:#eafffa;font-size:22px;font-weight:900;letter-spacing:1px;text-align:center}
 </style>
 </head>
 <body>
-<div id="sp-copilot">
-<div class="grid"></div>
-<div class="top"><span>SHORTPROMPT</span><span class="pill">MICROSOFT COPILOT • 7 HACKS</span></div>
-<div class="chrome">
- <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><div class="url">copilot.microsoft.com</div></div>
- <div class="app">
-  <aside class="rail"><div class="brand">Copilot</div><div class="nav active">＋ New chat</div><div class="nav">Search</div><div class="nav">Library</div><div class="nav">Notebooks</div><div class="nav">Agents</div></aside>
-  <main class="main">
-   <section class="scene" data-start="0.000000" data-end="6.643597">
-    <div class="tipnum">THE QUICK GUIDE</div><div class="hello">Get more from <span class="accent">Copilot.</span></div><div class="sub">Seven practical techniques you can use right now.</div>
-    <div class="chat reveal"><div class="label">YOUR NEXT STEP</div>Don't just ask questions. Give Copilot a clear task, useful context, and a source.</div>
-    <div class="chips reveal"><span class="chip">PROMPT BETTER</span><span class="chip">USE YOUR FILES</span><span class="chip">VERIFY ANSWERS</span></div>
-   </section>
-   <section class="scene" data-start="6.643597" data-end="13.287193">
-    <div class="tipnum">HACK 01 / 07</div><div class="hello">Build a <span class="accent">better prompt.</span></div><div class="sub">Use Microsoft's four-part prompt framework.</div>
-    <div class="cards">
-     <div class="card reveal"><strong>01 / GOAL</strong>What do you want done?</div><div class="card reveal"><strong>02 / CONTEXT</strong>Who is it for and why?</div>
-     <div class="card reveal"><strong>03 / SOURCE</strong>Which file or information?</div><div class="card reveal"><strong>04 / EXPECTATIONS</strong>Format, tone and length.</div>
+<div id="sp-usbmic">
+ <div class="sp-bg"></div><div class="sp-grid"></div>
+ <div class="sp-top"><span class="sp-brand">SHORTPROMPT</span><span class="sp-pill">CREATOR AUDIO SETUP</span></div>
+ <div class="sp-main">
+  <div class="sp-chrome"><span class="sp-dot"></span><span class="sp-dot"></span><span class="sp-dot"></span><div class="sp-address">creator-audio.local / setup-guide</div></div>
+  <div class="sp-stage">
+   <section class="sp-scene" data-start="0" data-end="7">
+    <div class="sp-kicker">CLEAN AUDIO IN 4 STEPS</div>
+    <h1 class="sp-head sp-reveal" data-in="0.2">Your mic is plugged in.<br><span class="sp-accent">Is it set up right?</span></h1>
+    <p class="sp-sub sp-reveal" data-in="1.0">Fix low volume, background noise and clipping before you hit record.</p>
+    <div class="sp-card sp-reveal" data-in="2.0" style="position:absolute;left:0;right:0;top:430px">
+     <div class="sp-label">THE 4-STEP CHECK</div><div class="sp-row" style="justify-content:space-between"><span class="sp-chip">CONNECT</span><span class="sp-chip">WINDOWS</span><span class="sp-chip">OBS</span><span class="sp-chip">TEST</span></div>
+     <div class="sp-wave" data-wave="1"></div>
     </div>
-    <div class="promptbox reveal"><span class="accent">PROMPT</span><br>Summarize this report for a beginner. Use only the attached file. Give me 5 bullets and 3 actions.</div>
    </section>
-   <section class="scene" data-start="13.287193" data-end="24.530151">
-    <div class="tipnum">HACK 02 / 07</div><div class="hello">Upload a <span class="accent">real file.</span></div><div class="sub">Ask Copilot to work directly from the material you provide.</div>
-    <div class="file reveal"><span class="fileicon">PDF</span><span><b>Quarterly_Report.pdf</b><br><small style="color:#9fb4d2">Attached source</small></span></div>
-    <div class="file reveal"><span class="fileicon">XLSX</span><span><b>Sales_Data.xlsx</b><br><small style="color:#9fb4d2">Spreadsheet</small></span></div>
-    <div class="answer reveal"><span class="accent">ASK:</span> Extract the 3 most important findings, quote the relevant figures, and list anything uncertain.</div>
-    <div class="warning reveal">Supported formats and upload limits depend on the Copilot experience and account.</div>
+   <section class="sp-scene" data-start="7" data-end="17">
+    <div class="sp-kicker">STEP 01 / CONNECT & POSITION</div><h2 class="sp-head">Start with the <span class="sp-accent">mic itself.</span></h2>
+    <p class="sp-sub">Direct USB connection. Speak toward the front. Keep it close, not across the desk.</p>
+    <div class="sp-mic-wrap sp-reveal" data-in="1.0"><div class="sp-mic"><span class="sp-mic-led"></span></div></div>
+    <div class="sp-distance sp-reveal" data-in="2.0">10–20 cm</div><div class="sp-mouth sp-reveal" data-in="2.5">●</div>
+    <div class="sp-usb sp-reveal" data-in="3.0"></div>
+    <div class="sp-card sp-reveal" data-in="4.0" style="position:absolute;left:440px;right:0;top:620px"><div class="sp-row"><span class="sp-check">✓</span><div><b style="font-size:22px">USB-C → PC</b><div class="sp-note">Avoid a USB hub when possible</div></div></div></div>
    </section>
-   <section class="scene" data-start="24.530151" data-end="34.750992">
-    <div class="tipnum">HACK 03 / 07</div><div class="hello">Refine. Don't <span class="accent">restart.</span></div><div class="sub">Use short follow-up instructions to improve the first result.</div>
-    <div class="chat reveal"><div class="label">FIRST ANSWER</div>A long summary with too much detail…</div>
-    <div class="answer reveal"><span class="accent">FOLLOW-UP 1</span><br>Make it 50% shorter.</div>
-    <div class="answer reveal"><span class="accent">FOLLOW-UP 2</span><br>Turn the key points into a checklist.</div>
-    <div class="answer reveal"><span class="accent">FOLLOW-UP 3</span><br>Show what is missing or unclear.</div>
+   <section class="sp-scene" data-start="17" data-end="28">
+    <div class="sp-kicker">STEP 02 / WINDOWS INPUT</div><h2 class="sp-head">Select the <span class="sp-accent">right input.</span></h2><p class="sp-sub">Open Settings → System → Sound, then choose your microphone.</p>
+    <div class="sp-window sp-reveal" data-in="1.0"><div class="sp-nav">System<br><b>Sound</b><br>Display<br>Notifications<br>Power</div><div class="sp-panel"><div class="sp-label">INPUT / CHOOSE A DEVICE</div><div class="sp-device"><span>USB Microphone</span><span class="sp-check">✓</span></div><div class="sp-label">TEST YOUR MICROPHONE</div><div class="sp-meter"><span></span></div><div class="sp-row" style="justify-content:space-between"><span class="sp-note">Speak normally</span><span class="sp-button">Start test</span></div><div class="sp-note" style="margin-top:18px">Adjust input volume if your voice is too quiet or distorted.</div></div></div>
    </section>
-   <section class="scene" data-start="34.750992" data-end="43.949827">
-    <div class="tipnum">HACK 04 / 07</div><div class="hello">Use <span class="accent">Search mode.</span></div><div class="sub">When you need up-to-date information from the web.</div>
-    <div class="chat reveal"><div class="label">SEARCH REQUEST</div>Compare the latest official Copilot feature updates. Include publication dates and source links.</div>
-    <div class="answer reveal"><span class="accent">RESULT</span><br>Current web information + citations to inspect.</div>
-    <div class="warning reveal">Citations are a starting point. Open the sources and verify important claims.</div>
+   <section class="sp-scene" data-start="28" data-end="38">
+    <div class="sp-kicker">STEP 03 / GAIN & MONITORING</div><h2 class="sp-head">Set your gain <span class="sp-accent">before OBS.</span></h2><p class="sp-sub">Use the companion app to calibrate input and check your headphones.</p>
+    <div class="sp-appgrid sp-reveal" data-in="1.0"><div class="sp-card"><div class="sp-label">INPUT GAIN</div><div class="sp-knob">AUTO</div><div style="text-align:center;font-size:20px;font-weight:800">Gain setup</div><div class="sp-note" style="text-align:center;margin-top:8px">Speak at normal volume</div></div><div class="sp-card"><div class="sp-label">HEADPHONE MONITOR</div><div class="sp-wave"><i style="height:20px"></i><i style="height:42px"></i><i style="height:66px"></i><i style="height:48px"></i><i style="height:78px"></i><i style="height:38px"></i><i style="height:58px"></i><i style="height:28px"></i></div><div class="sp-row"><span class="sp-check">✓</span><b style="font-size:20px">Signal detected</b></div></div></div>
+    <div class="sp-card sp-reveal" data-in="4.0" style="position:absolute;left:44px;right:44px;top:760px"><div class="sp-row"><span class="sp-check">✓</span><div><b style="font-size:21px">Monitor with headphones</b><div class="sp-note">Use voice cleanup only when you need it</div></div></div></div>
    </section>
-   <section class="scene" data-start="43.949827" data-end="50.082309">
-    <div class="tipnum">HACK 05 / 07</div><div class="hello">Choose <span class="accent">Think Deeper.</span></div><div class="sub">For complex questions that need a more considered response.</div>
-    <div class="cards"><div class="card reveal"><strong>QUICK RESPONSE</strong>Simple, direct questions.</div><div class="card reveal"><strong>THINK DEEPER</strong>Complex trade-offs and problem solving.</div></div>
-    <div class="warning reveal">Conversation modes vary by account, region and availability.</div>
+   <section class="sp-scene" data-start="38" data-end="49">
+    <div class="sp-kicker">STEP 04 / OBS FILTERS</div><h2 class="sp-head">Add your mic <span class="sp-accent">to OBS.</span></h2><p class="sp-sub">Create an Audio Input Capture source, then open its Filters.</p>
+    <div class="sp-card sp-reveal" data-in="1.0" style="position:absolute;left:44px;right:44px;top:310px"><div class="sp-label">AUDIO MIXER / SOURCES</div><div class="sp-row" style="justify-content:space-between"><b style="font-size:22px">Microphone</b><span class="sp-chip">USB Microphone</span></div><div class="sp-meter"><span style="width:55%"></span></div><div class="sp-filter"><span>Noise Suppression · RNNoise</span><span class="sp-toggle"></span></div><div class="sp-note" style="margin-top:18px">Useful for steady fan or room noise. Avoid over-processing your voice.</div></div>
    </section>
-   <section class="scene" data-start="50.082309" data-end="57.236909">
-    <div class="tipnum">HACK 06 / 07</div><div class="hello">Specify the <span class="accent">output.</span></div><div class="sub">Tell Copilot exactly how the answer should look.</div>
-    <div class="promptbox reveal">Audience: new employees<br>Tone: friendly and clear<br>Format: numbered checklist<br>Length: under 200 words</div>
-    <div class="answer reveal">One precise outcome beats a vague request.</div>
+   <section class="sp-scene" data-start="49" data-end="58">
+    <div class="sp-kicker">LEVEL CHECK / NO CLIPPING</div><h2 class="sp-head">Keep your voice <span class="sp-accent">out of red.</span></h2><p class="sp-sub">Watch the meter while speaking at your normal volume.</p>
+    <div class="sp-card sp-reveal" data-in="1.0" style="position:absolute;left:44px;right:44px;top:360px"><div class="sp-label">OBS INPUT LEVEL</div><div class="sp-db">−12 to −6 dB</div><div class="sp-dbscale"></div><div class="sp-row" style="justify-content:space-between"><span class="sp-note">SAFE HEADROOM</span><span style="color:#ef8585;font-weight:900;font-size:17px">AVOID 0 dB / RED</span></div></div>
+    <div class="sp-wave sp-reveal" data-in="3.0" style="position:absolute;left:60px;right:60px;top:720px"></div>
    </section>
-   <section class="scene" data-start="57.236909" data-end="64.902512">
-    <div class="tipnum">HACK 07 / 07</div><div class="hello">Ground it in a <span class="accent">source.</span></div><div class="sub">Reduce guesswork by pointing to the exact material.</div>
-    <div class="chat reveal"><div class="label">SOURCE CONTROL</div>Use only the attached policy document. If the answer isn't in the file, say you can't find it.</div>
-    <div class="answer reveal">Then ask Copilot to show the section that supports its answer.</div>
+   <section class="sp-scene" data-start="58" data-end="65">
+    <div class="sp-kicker">FINAL CHECK / RECORD & LISTEN</div><h2 class="sp-head">Test before <span class="sp-accent">going live.</span></h2><p class="sp-sub">Record a short sample. Listen back on headphones. Balance game and voice separately.</p>
+    <div class="sp-card sp-reveal" data-in="1.0" style="position:absolute;left:44px;right:44px;top:390px"><div class="sp-row"><span class="sp-check">✓</span><div><b style="font-size:24px">Test recording saved</b><div class="sp-note">20-second sample · headphones check</div></div></div><div class="sp-wave" style="margin-top:28px"><i style="height:25px"></i><i style="height:60px"></i><i style="height:42px"></i><i style="height:76px"></i><i style="height:50px"></i><i style="height:34px"></i><i style="height:68px"></i><i style="height:40px"></i><i style="height:58px"></i><i style="height:30px"></i></div></div>
    </section>
-   <section class="scene" data-start="64.902512" data-end="74.612245">
-    <div class="tipnum">SHORTPROMPT / MORE AI TRICKS</div><div class="hello">Clear instructions.<br><span class="accent">Better results.</span></div>
-    <div class="sub">Always verify important facts and check the sources.</div>
-    <div class="chat reveal"><div class="label">FOLLOW SHORTPROMPT</div>Practical AI tips. Real capabilities. No hype.</div>
-    <div class="chips reveal"><span class="chip">SAVE THIS VIDEO</span><span class="chip">FOLLOW FOR MORE</span></div>
+   <section class="sp-scene" data-start="65" data-end="73">
+    <div class="sp-kicker">YOUR SETUP IS READY</div><h2 class="sp-head">Clear voice.<br><span class="sp-accent">Clean recording.</span></h2><p class="sp-sub">Use the full guide to check every setting and find the gear link.</p>
+    <div class="sp-card sp-reveal" data-in="1.0" style="position:absolute;left:44px;right:44px;top:430px"><div class="sp-row" style="justify-content:space-between"><span class="sp-chip">FULL GUIDE</span><span class="sp-chip">GEAR LINK</span></div><div class="sp-cta" style="position:relative;margin-top:25px">DESCRIPTION / PINNED COMMENT</div></div>
+    <div class="sp-note sp-reveal" data-in="3.0" style="position:absolute;left:44px;right:44px;top:760px;text-align:center;font-weight:800;letter-spacing:2px">FOLLOW FOR MORE CREATOR SETUP FIXES</div>
    </section>
-  </main>
+  </div>
  </div>
-</div>
-<div class="footer"><span>MICROSOFT COPILOT TIPS • SHORTPROMPT</span><span id="timecode">00:00 / 01:14</span></div>
-<div class="progress" id="progress"></div>
+ <div class="sp-footer"><span>SHORTPROMPT · CREATOR HOW-TO</span><span id="sp-time">00:00 / 01:13</span></div><div class="sp-progress" id="sp-progress"></div>
 </div>
 <script>
 (()=>{'use strict';
-const DURATION=74.612245,root=document.getElementById('sp-copilot'),scenes=[...root.querySelectorAll('.scene')];
+const DURATION=73,root=document.getElementById('sp-usbmic'),scenes=[...root.querySelectorAll('.sp-scene')];
+const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
+const ease=v=>{v=clamp(v);return v*v*(3-2*v)};
+function buildWave(){root.querySelectorAll('.sp-wave[data-wave]').forEach(w=>{if(w.dataset.built)return;w.dataset.built='1';for(let i=0;i<46;i++){const e=document.createElement('i');const h=12+Math.abs(Math.sin(i*.63)*Math.cos(i*.19))*62;e.style.height=h+'px';e.style.opacity=String(.45+(i%5)*.1);w.appendChild(e)}})}
 function frame(inputTime){
- const t=Math.max(0,Math.min(DURATION,Number(inputTime)||0));
+ const t=clamp(Number(inputTime)||0,0,DURATION);
  scenes.forEach((s,i)=>{
-  const a=Number(s.dataset.start),b=Number(s.dataset.end),on=t>=a&&(t<b||(i===scenes.length-1&&t<=DURATION));
-  s.style.visibility=on?'visible':'hidden';s.style.opacity=on?'1':'0';
-  const local=t-a;
-  s.querySelectorAll('.reveal').forEach((el,j)=>{
-   const q=Math.max(0,Math.min(1,(local-(.35+j*.48))/.55));
-   el.style.opacity=on?q:0;el.style.transform='translateY('+(1-q)*18+'px)';
-  });
+  const a=Number(s.dataset.start),b=Number(s.dataset.end),active=t>=a&&(t<b||(i===scenes.length-1&&t<=DURATION));
+  const local=t-a,fadeIn=ease((t-a)/.55),fadeOut=ease((b-t)/.55),opacity=active?Math.min(fadeIn,fadeOut):0;
+  s.style.visibility=active?'visible':'hidden';s.style.opacity=String(opacity);
+  s.querySelectorAll('.sp-reveal').forEach(el=>{const at=Number(el.dataset.in||0),q=ease((local-at)/.62);el.style.opacity=String(active?q:0);el.style.transform='translateY('+((1-q)*24)+'px)'});
+  const mic=s.querySelector('.sp-mic-wrap');if(mic){const q=ease((local-1.1)/2);mic.style.transform='translateY('+(14*(1-q))+'px) scale('+(0.96+.04*q)+')'}
+  const dist=s.querySelector('.sp-distance');if(dist){const q=ease((local-2)/1.2);dist.style.opacity=String(q);dist.style.transform='scaleX('+(.7+.3*q)+')'}
  });
- root.querySelector('#progress').style.width=(100*t/DURATION).toFixed(3)+'%';
- const sec=Math.floor(t),mm=String(Math.floor(sec/60)).padStart(2,'0'),ss=String(sec%60).padStart(2,'0');
- root.querySelector('#timecode').textContent=mm+':'+ss+' / 01:14';
+ const p=root.querySelector('#sp-progress');p.style.width=(100*t/DURATION).toFixed(3)+'%';
+ const sec=Math.floor(t),mm=String(Math.floor(sec/60)).padStart(2,'0'),ss=String(sec%60).padStart(2,'0');root.querySelector('#sp-time').textContent=mm+':'+ss+' / 01:13';
  return true;
 }
 window.SPMOTION={width:1080,height:1920,fps:30,duration:DURATION};
-window.SPMOTION_FRAME=frame;frame(0);
+window.SPMOTION_FRAME=frame;
+window.SPMOTION_RENDER=frame;
+buildWave();
+const initial=new URLSearchParams(location.search).get('t');frame(initial===null?0:Number(initial));
 })();
 </script>
 </body></html>

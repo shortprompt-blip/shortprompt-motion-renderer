@@ -1,17 +1,15 @@
-You're probably using Microsoft Copilot the basic way. Try these seven practical hacks.
+Want cleaner audio for YouTube, streaming, or gaming? Set up your USB microphone in four quick steps.
 
-First, build better prompts with four parts: goal, context, source, and expected result.
+First, connect it directly to your PC. Place it about ten to twenty centimetres from your mouth, and speak toward the front of the microphone.
 
-Second, upload a PDF, spreadsheet, presentation, or image. Ask Copilot to extract key findings. Microsoft currently allows up to twenty files per conversation, with a fifty megabyte limit per file.
+Open Windows Settings, choose System, then Sound. Under Input, select your microphone, run the microphone test, and adjust the input level until your voice is clear without distortion.
 
-Third, don't start over. Refine the answer with follow-ups: make it shorter, turn it into a checklist, or explain what is missing.
+Next, open the microphone’s companion app. Run its gain setup, check your headphone monitoring, and enable voice cleanup only if your room has noticeable background noise.
 
-Fourth, use Search mode when you need current web information, and open the citations to verify the claims.
+In OBS, add an Audio Input Capture source and choose your microphone. Open Filters and add Noise Suppression with RNNoise to reduce steady fan or room noise.
 
-Fifth, choose Think Deeper for complex questions when the option is available on your account.
+Watch the audio meter while speaking. Aim for peaks around minus twelve to minus six decibels, and never let your voice hit the red.
 
-Sixth, specify the audience, tone, format, and length you want.
+Finally, record a short test and listen back with headphones. Keep your game audio and microphone balanced separately.
 
-And seventh, ground the answer in a specific source. Say: use only the attached document, and tell me if the answer isn't there.
-
-Copilot works best when your instructions are clear and you verify important facts. Follow ShortPrompt for more AI tricks.
+Find the full setup guide and gear link in the description or pinned comment. Follow for more creator setup fixes.
