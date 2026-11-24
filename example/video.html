@@ -3,144 +3,114 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=1080,initial-scale=1">
-<title>USB Microphone Setup | ShortPrompt</title>
+<meta name="color-scheme" content="dark">
+<title>Best GTA 6 Settings for PS5 | ShortPrompt</title>
 <style>
-#sp-usbmic{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;box-sizing:border-box;background:#07111e;color:#f4f8ff;font-family:Arial,Helvetica,sans-serif;}
-#sp-usbmic *{box-sizing:border-box}
-#sp-usbmic .sp-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 82% 12%,#173f64 0,transparent 38%),radial-gradient(ellipse at 5% 92%,#173b45 0,transparent 38%),linear-gradient(145deg,#07111e,#0c1929 56%,#08121f)}
-#sp-usbmic .sp-grid{position:absolute;inset:0;opacity:.07;background-image:linear-gradient(#9cc9df 1px,transparent 1px),linear-gradient(90deg,#9cc9df 1px,transparent 1px);background-size:54px 54px}
-#sp-usbmic .sp-top{position:absolute;top:54px;left:62px;right:62px;display:flex;justify-content:space-between;align-items:center;color:#9db5ca;font-size:19px;font-weight:800;letter-spacing:3px}
-#sp-usbmic .sp-brand{color:#e9f5ff}
-#sp-usbmic .sp-pill{padding:12px 18px;border:1px solid #3b5d79;border-radius:30px;background:#10243a;color:#a9dce8;font-size:15px;letter-spacing:1.5px}
-#sp-usbmic .sp-main{position:absolute;left:46px;right:46px;top:142px;bottom:128px;border:1px solid #35516d;border-radius:34px;background:linear-gradient(160deg,#101f32,#0b1727);box-shadow:0 30px 90px #0008;overflow:hidden}
-#sp-usbmic .sp-chrome{height:72px;display:flex;align-items:center;gap:12px;padding:0 25px;background:#172a40;border-bottom:1px solid #2d4965}
-#sp-usbmic .sp-dot{width:13px;height:13px;border-radius:50%;background:#7593aa}
-#sp-usbmic .sp-address{margin-left:16px;padding:11px 20px;width:70%;border:1px solid #35536f;border-radius:22px;background:#0b1929;color:#9bb7ce;font:17px Consolas,monospace}
-#sp-usbmic .sp-stage{position:absolute;inset:72px 0 0;padding:42px 44px}
-#sp-usbmic .sp-kicker{color:#68d8d0;font-size:17px;font-weight:900;letter-spacing:3px;margin-bottom:18px}
-#sp-usbmic .sp-head{font-size:49px;line-height:1.05;font-weight:900;letter-spacing:-1.5px;margin:0 0 18px;max-width:850px}
-#sp-usbmic .sp-sub{font-size:25px;line-height:1.4;color:#afc2d5;max-width:820px}
-#sp-usbmic .sp-accent{color:#71e4d4}
-#sp-usbmic .sp-muted{color:#8fa8c0}
-#sp-usbmic .sp-scene{position:absolute;inset:0;visibility:hidden;opacity:0;pointer-events:none}
-#sp-usbmic .sp-card{background:#14283d;border:1px solid #36546f;border-radius:22px;padding:24px;box-shadow:0 15px 38px #0004}
-#sp-usbmic .sp-label{font-size:15px;color:#8eabc3;font-weight:900;letter-spacing:2px;margin-bottom:12px}
-#sp-usbmic .sp-row{display:flex;align-items:center;gap:18px}
-#sp-usbmic .sp-check{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:#153f3d;color:#79e4ce;font-size:25px;font-weight:900}
-#sp-usbmic .sp-chip{display:inline-flex;align-items:center;padding:11px 15px;border:1px solid #3b627e;border-radius:12px;background:#10243a;color:#c6d8e8;font-size:17px;font-weight:700}
-#sp-usbmic .sp-mic-wrap{position:absolute;left:80px;top:290px;width:300px;height:570px;display:flex;align-items:center;justify-content:center}
-#sp-usbmic .sp-mic{position:relative;width:156px;height:270px;border-radius:78px 78px 48px 48px;background:linear-gradient(110deg,#293f55,#0b1725 55%,#3b566b);border:3px solid #6b879c;box-shadow:inset 0 0 0 10px #16293b,0 24px 55px #0008}
-#sp-usbmic .sp-mic:before{content:"";position:absolute;left:24px;right:24px;top:24px;height:92px;border-radius:55px;background:repeating-linear-gradient(0deg,#6e8798 0 3px,#253b50 3px 7px);opacity:.8}
-#sp-usbmic .sp-mic:after{content:"";position:absolute;left:66px;bottom:-94px;width:24px;height:100px;background:linear-gradient(90deg,#3b566a,#15283a);border-radius:0 0 10px 10px;box-shadow:0 90px 0 54px #263d50}
-#sp-usbmic .sp-mic-led{position:absolute;left:62px;bottom:48px;width:32px;height:8px;border-radius:8px;background:#65e3ce;box-shadow:0 0 16px #65e3ce}
-#sp-usbmic .sp-usb{position:absolute;left:315px;top:720px;width:200px;height:12px;border-radius:10px;background:#6ce2d1;transform:rotate(-24deg);transform-origin:left center;box-shadow:0 0 18px #6ce2d177}
-#sp-usbmic .sp-distance{position:absolute;left:415px;top:370px;width:270px;border-top:3px dashed #75dcd1;color:#8ce6db;text-align:center;padding-top:18px;font-size:21px;font-weight:800}
-#sp-usbmic .sp-mouth{position:absolute;left:690px;top:320px;width:115px;height:115px;border-radius:50%;border:2px solid #6b879e;background:linear-gradient(135deg,#29435b,#122237);display:grid;place-items:center;color:#b6cde0;font-size:39px}
-#sp-usbmic .sp-window{position:absolute;left:44px;right:44px;top:305px;display:flex;gap:22px;align-items:stretch}
-#sp-usbmic .sp-nav{width:220px;padding:22px;background:#0d1b2b;border:1px solid #2e4a65;border-radius:18px;color:#94aec5;font-size:18px;line-height:2.35}
-#sp-usbmic .sp-nav b{color:#e8f2fc}
-#sp-usbmic .sp-panel{flex:1;padding:26px;background:#12263a;border:1px solid #3b5a75;border-radius:18px}
-#sp-usbmic .sp-device{padding:20px 22px;border:1px solid #4d8a87;background:#123638;border-radius:15px;display:flex;justify-content:space-between;align-items:center;font-size:21px;margin:18px 0}
-#sp-usbmic .sp-meter{height:18px;border-radius:12px;background:#263d52;overflow:hidden;margin:16px 0}
-#sp-usbmic .sp-meter span{display:block;height:100%;width:68%;border-radius:12px;background:linear-gradient(90deg,#55cbb6,#a9e66e)}
-#sp-usbmic .sp-button{display:inline-block;padding:15px 22px;border-radius:13px;background:#246d70;color:#efffff;font-size:18px;font-weight:800}
-#sp-usbmic .sp-appgrid{position:absolute;left:44px;right:44px;top:315px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
-#sp-usbmic .sp-knob{width:175px;height:175px;border-radius:50%;margin:12px auto 18px;border:12px solid #28465b;border-top-color:#72e2d3;display:grid;place-items:center;color:#dffaf5;font-size:30px;font-weight:900;transform:rotate(-25deg)}
-#sp-usbmic .sp-wave{height:92px;display:flex;align-items:center;justify-content:center;gap:6px;margin:18px 0}
-#sp-usbmic .sp-wave i{display:block;width:7px;border-radius:8px;background:#69dccc;opacity:.9}
-#sp-usbmic .sp-filter{display:flex;align-items:center;justify-content:space-between;padding:20px 22px;background:#10243a;border:1px solid #385671;border-radius:15px;margin-top:15px;font-size:20px}
-#sp-usbmic .sp-toggle{width:60px;height:32px;border-radius:20px;background:#2c9e8c;padding:4px;display:flex;justify-content:flex-end}
-#sp-usbmic .sp-toggle:after{content:"";width:24px;height:24px;border-radius:50%;background:#fff}
-#sp-usbmic .sp-db{font-size:72px;font-weight:900;letter-spacing:-3px;color:#75e1d0}
-#sp-usbmic .sp-dbscale{position:relative;height:38px;border-radius:12px;background:linear-gradient(90deg,#4bbd9e 0 62%,#e0bb58 62% 82%,#d65d64 82%);margin:28px 0 14px;box-shadow:0 0 30px #54d2ae22}
-#sp-usbmic .sp-dbscale:after{content:"";position:absolute;left:62%;top:-13px;height:64px;width:4px;background:#fff;box-shadow:0 0 12px #fff}
-#sp-usbmic .sp-footer{position:absolute;bottom:48px;left:62px;right:62px;display:flex;justify-content:space-between;color:#809bb4;font-size:15px;letter-spacing:2px;font-weight:800}
-#sp-usbmic .sp-progress{position:absolute;left:0;bottom:0;height:7px;width:0;background:linear-gradient(90deg,#5fd9ce,#9be6a6)}
-#sp-usbmic .sp-reveal{opacity:0;transform:translateY(24px)}
-#sp-usbmic .sp-note{font-size:17px;line-height:1.4;color:#9bb2c7}
-#sp-usbmic .sp-cta{position:absolute;left:0;right:0;bottom:0;padding:22px 24px;border:1px solid #477b7c;background:#123d3d;border-radius:18px;color:#eafffa;font-size:22px;font-weight:900;letter-spacing:1px;text-align:center}
+#sp-gta6{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;box-sizing:border-box;background:#080d16;color:#f4f7fc;font-family:Inter,Arial,Helvetica,sans-serif}
+#sp-gta6 *{box-sizing:border-box}
+#sp-gta6 .bg{position:absolute;inset:0;background:radial-gradient(ellipse at 85% 8%,#3c3152 0,transparent 38%),radial-gradient(ellipse at 8% 95%,#143c46 0,transparent 38%),linear-gradient(145deg,#080d16,#101a2a 54%,#090f19)}
+#sp-gta6 .grid{position:absolute;inset:0;opacity:.055;background-image:linear-gradient(#a8c1dc 1px,transparent 1px),linear-gradient(90deg,#a8c1dc 1px,transparent 1px);background-size:54px 54px}
+#sp-gta6 .top{position:absolute;top:48px;left:58px;right:58px;display:flex;justify-content:space-between;align-items:center;font-size:19px;letter-spacing:3px;font-weight:900;color:#e9f2fb}
+#sp-gta6 .tag{padding:12px 18px;border:1px solid #53627b;border-radius:30px;background:#152237;color:#c9d6e6;font-size:14px;letter-spacing:1.5px}
+#sp-gta6 .shell{position:absolute;left:42px;right:42px;top:128px;bottom:122px;border:1px solid #394d68;border-radius:30px;background:linear-gradient(160deg,#121e30,#0d1726);box-shadow:0 28px 90px #0009;overflow:hidden}
+#sp-gta6 .chrome{height:66px;background:#1a2940;border-bottom:1px solid #344a67;display:flex;align-items:center;padding:0 24px;gap:10px}
+#sp-gta6 .dot{width:12px;height:12px;border-radius:50%;background:#8294ac}
+#sp-gta6 .url{margin-left:14px;padding:10px 18px;border:1px solid #405571;border-radius:20px;background:#0c1726;color:#a9bdd2;font:16px Consolas,monospace;width:68%}
+#sp-gta6 .content{position:absolute;inset:66px 0 0;padding:38px 42px}
+#sp-gta6 .scene{position:absolute;inset:0;visibility:hidden;opacity:0;padding:38px 42px}
+#sp-gta6 .eyebrow{font-size:16px;font-weight:900;letter-spacing:2.7px;color:#79dfcf;margin-bottom:18px}
+#sp-gta6 h1,#sp-gta6 h2{font-size:48px;line-height:1.07;letter-spacing:-1.5px;margin:0 0 18px;font-weight:900;max-width:850px}
+#sp-gta6 .accent{color:#8ae2d2}
+#sp-gta6 .sub{font-size:23px;line-height:1.42;color:#b8c7d9;max-width:850px;margin:0}
+#sp-gta6 .panel{position:absolute;left:42px;right:42px;top:300px;padding:26px;border:1px solid #405775;border-radius:20px;background:linear-gradient(145deg,#192b43,#101d30);box-shadow:0 16px 38px #0005}
+#sp-gta6 .label{font-size:14px;letter-spacing:2px;font-weight:900;color:#8ea8c4;margin-bottom:14px}
+#sp-gta6 .row{display:flex;align-items:center;justify-content:space-between;gap:14px}
+#sp-gta6 .item{padding:17px 18px;border:1px solid #3c526e;border-radius:13px;background:#122137;color:#d9e5f2;font-size:19px;margin:10px 0}
+#sp-gta6 .item strong{color:#8de3d2}
+#sp-gta6 .selected{border-color:#79ddcf;background:#12333a;box-shadow:inset 0 0 0 1px #79ddcf44}
+#sp-gta6 .check{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#164d49;color:#a3f1df;font-weight:900;margin-right:10px}
+#sp-gta6 .chip{display:inline-block;padding:10px 14px;border:1px solid #4a627e;border-radius:10px;background:#12243a;color:#d7e4f2;font-size:16px;font-weight:800}
+#sp-gta6 .note{color:#91a8c1;font-size:15px;line-height:1.4}
+#sp-gta6 .warning{padding:17px 19px;border:1px solid #806d47;border-radius:14px;background:#2b261d;color:#f1dfbd;font-size:18px;line-height:1.4}
+#sp-gta6 .big{font-size:82px;line-height:1;font-weight:950;letter-spacing:-4px;color:#8ce3d3}
+#sp-gta6 .meter{height:14px;background:#263b52;border-radius:10px;overflow:hidden;margin:18px 0}
+#sp-gta6 .meter span{display:block;height:100%;width:72%;background:linear-gradient(90deg,#55bfae,#9ce2bd);border-radius:10px}
+#sp-gta6 .tiles{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px}
+#sp-gta6 .tile{padding:24px;border:1px solid #3b526e;border-radius:16px;background:#15263c;min-height:154px}
+#sp-gta6 .tile b{display:block;font-size:18px;color:#8de2d2;margin-bottom:9px;letter-spacing:1px}
+#sp-gta6 .tile span{font-size:21px;line-height:1.4;color:#dce7f3}
+#sp-gta6 .menu{display:flex;gap:12px;flex-wrap:wrap;margin:18px 0 26px}
+#sp-gta6 .menu span{padding:11px 16px;border-radius:12px;background:#1b2b41;border:1px solid #3c536e;color:#a9bfd6;font-size:16px;font-weight:800}
+#sp-gta6 .menu .active{background:#17413e;border-color:#75d9cb;color:#e7fff9}
+#sp-gta6 .footer{position:absolute;left:58px;right:58px;bottom:44px;display:flex;justify-content:space-between;align-items:center;color:#8ca2bc;font-size:14px;letter-spacing:1.8px;font-weight:800}
+#sp-gta6 .progress{position:absolute;bottom:0;left:0;height:7px;width:0;background:linear-gradient(90deg,#61cbbb,#b2e4b7)}
+#sp-gta6 .reveal{opacity:0;transform:translateY(22px)}
+#sp-gta6 .source{position:absolute;right:18px;bottom:14px;color:#8297b0;font-size:11px;letter-spacing:1px}
 </style>
 </head>
 <body>
-<div id="sp-usbmic">
- <div class="sp-bg"></div><div class="sp-grid"></div>
- <div class="sp-top"><span class="sp-brand">SHORTPROMPT</span><span class="sp-pill">CREATOR AUDIO SETUP</span></div>
- <div class="sp-main">
-  <div class="sp-chrome"><span class="sp-dot"></span><span class="sp-dot"></span><span class="sp-dot"></span><div class="sp-address">creator-audio.local / setup-guide</div></div>
-  <div class="sp-stage">
-   <section class="sp-scene" data-start="0" data-end="7">
-    <div class="sp-kicker">CLEAN AUDIO IN 4 STEPS</div>
-    <h1 class="sp-head sp-reveal" data-in="0.2">Your mic is plugged in.<br><span class="sp-accent">Is it set up right?</span></h1>
-    <p class="sp-sub sp-reveal" data-in="1.0">Fix low volume, background noise and clipping before you hit record.</p>
-    <div class="sp-card sp-reveal" data-in="2.0" style="position:absolute;left:0;right:0;top:430px">
-     <div class="sp-label">THE 4-STEP CHECK</div><div class="sp-row" style="justify-content:space-between"><span class="sp-chip">CONNECT</span><span class="sp-chip">WINDOWS</span><span class="sp-chip">OBS</span><span class="sp-chip">TEST</span></div>
-     <div class="sp-wave" data-wave="1"></div>
-    </div>
+<div id="sp-gta6">
+ <div class="bg"></div><div class="grid"></div>
+ <div class="top"><span>SHORTPROMPT</span><span class="tag">UI RECONSTRUCTION · PS5 / GTA VI</span></div>
+ <div class="shell">
+  <div class="chrome"><span class="dot"></span><span class="dot"></span><span class="dot"></span><div class="url">settings.playstation.local / gta-vi-setup</div></div>
+  <div class="content">
+   <section class="scene" data-start="0" data-end="21">
+    <div class="eyebrow">BEFORE YOUR NEXT SESSION</div>
+    <h1 class="reveal" data-in="-0.7">Best GTA 6 settings<br><span class="accent">for your PS5.</span></h1>
+    <p class="sub reveal" data-in="-0.35">Sharper image. Better comfort. More responsive controls.</p>
+    <div class="panel reveal" data-in="-0.7"><div class="label">THE IMPORTANT REALITY CHECK</div><div class="row"><div class="big">30 FPS</div><span class="chip">ROCKSTAR TARGET</span></div><div class="warning" style="margin-top:20px">No PS5 menu setting unlocks 60 FPS in GTA VI.</div><div class="note" style="margin-top:14px">UI reconstruction · Not a live console capture</div></div>
    </section>
-   <section class="sp-scene" data-start="7" data-end="17">
-    <div class="sp-kicker">STEP 01 / CONNECT & POSITION</div><h2 class="sp-head">Start with the <span class="sp-accent">mic itself.</span></h2>
-    <p class="sp-sub">Direct USB connection. Speak toward the front. Keep it close, not across the desk.</p>
-    <div class="sp-mic-wrap sp-reveal" data-in="1.0"><div class="sp-mic"><span class="sp-mic-led"></span></div></div>
-    <div class="sp-distance sp-reveal" data-in="2.0">10–20 cm</div><div class="sp-mouth sp-reveal" data-in="2.5">●</div>
-    <div class="sp-usb sp-reveal" data-in="3.0"></div>
-    <div class="sp-card sp-reveal" data-in="4.0" style="position:absolute;left:440px;right:0;top:620px"><div class="sp-row"><span class="sp-check">✓</span><div><b style="font-size:22px">USB-C → PC</b><div class="sp-note">Avoid a USB hub when possible</div></div></div></div>
+   <section class="scene" data-start="21" data-end="42">
+    <div class="eyebrow">01 / PS5 VIDEO OUTPUT</div><h2>Let your TV choose<br><span class="accent">the right resolution.</span></h2>
+    <p class="sub">Open Settings → Screen and Video → Video Output.</p>
+    <div class="panel reveal" data-in="1.0"><div class="label">VIDEO OUTPUT</div><div class="item selected"><div class="row"><span>Resolution</span><strong>Automatic ✓</strong></div></div><div class="item"><div class="row"><span>4K Video Transfer Rate</span><strong>Automatic</strong></div></div><div class="item"><div class="row"><span>Adjust Display Area</span><span class="chip">Set to screen</span></div></div><p class="note">Automatic selects the highest resolution supported by your display.</p></div>
    </section>
-   <section class="sp-scene" data-start="17" data-end="28">
-    <div class="sp-kicker">STEP 02 / WINDOWS INPUT</div><h2 class="sp-head">Select the <span class="sp-accent">right input.</span></h2><p class="sp-sub">Open Settings → System → Sound, then choose your microphone.</p>
-    <div class="sp-window sp-reveal" data-in="1.0"><div class="sp-nav">System<br><b>Sound</b><br>Display<br>Notifications<br>Power</div><div class="sp-panel"><div class="sp-label">INPUT / CHOOSE A DEVICE</div><div class="sp-device"><span>USB Microphone</span><span class="sp-check">✓</span></div><div class="sp-label">TEST YOUR MICROPHONE</div><div class="sp-meter"><span></span></div><div class="sp-row" style="justify-content:space-between"><span class="sp-note">Speak normally</span><span class="sp-button">Start test</span></div><div class="sp-note" style="margin-top:18px">Adjust input volume if your voice is too quiet or distorted.</div></div></div>
+   <section class="scene" data-start="42" data-end="63">
+    <div class="eyebrow">02 / HDR · VRR · ALLM</div><h2>Enable the features<br><span class="accent">your TV supports.</span></h2>
+    <div class="tiles reveal" data-in="0.7"><div class="tile"><b>HDR</b><span>On When Supported<br>Run Adjust HDR</span></div><div class="tile"><b>VRR</b><span>Automatic, if compatible</span></div><div class="tile"><b>120 Hz OUTPUT</b><span>Enable if your TV supports it</span></div><div class="tile"><b>ALLM</b><span>Automatic low-latency mode</span></div></div>
+    <div class="warning reveal" data-in="3.0" style="position:absolute;left:42px;right:42px;bottom:32px">120 Hz output does not mean GTA VI runs at 120 FPS.</div>
    </section>
-   <section class="sp-scene" data-start="28" data-end="38">
-    <div class="sp-kicker">STEP 03 / GAIN & MONITORING</div><h2 class="sp-head">Set your gain <span class="sp-accent">before OBS.</span></h2><p class="sp-sub">Use the companion app to calibrate input and check your headphones.</p>
-    <div class="sp-appgrid sp-reveal" data-in="1.0"><div class="sp-card"><div class="sp-label">INPUT GAIN</div><div class="sp-knob">AUTO</div><div style="text-align:center;font-size:20px;font-weight:800">Gain setup</div><div class="sp-note" style="text-align:center;margin-top:8px">Speak at normal volume</div></div><div class="sp-card"><div class="sp-label">HEADPHONE MONITOR</div><div class="sp-wave"><i style="height:20px"></i><i style="height:42px"></i><i style="height:66px"></i><i style="height:48px"></i><i style="height:78px"></i><i style="height:38px"></i><i style="height:58px"></i><i style="height:28px"></i></div><div class="sp-row"><span class="sp-check">✓</span><b style="font-size:20px">Signal detected</b></div></div></div>
-    <div class="sp-card sp-reveal" data-in="4.0" style="position:absolute;left:44px;right:44px;top:760px"><div class="sp-row"><span class="sp-check">✓</span><div><b style="font-size:21px">Monitor with headphones</b><div class="sp-note">Use voice cleanup only when you need it</div></div></div></div>
+   <section class="scene" data-start="63" data-end="80.5">
+    <div class="eyebrow">03 / GTA VI · DISPLAY</div><h2>Make movement<br><span class="accent">look clearer.</span></h2>
+    <div class="menu"><span>Controller</span><span>Gameplay</span><span class="active">Display</span><span>UI</span><span>Camera</span><span>Audio</span></div>
+    <div class="panel reveal" data-in="1.0" style="top:390px"><div class="label">VISUAL EFFECTS</div><div class="item"><div class="row"><span>Motion Blur Strength</span><strong>0</strong></div><div class="meter"><span style="width:0%"></span></div></div><div class="item"><div class="row"><span>HDR Calibration</span><strong>Adjust for your TV →</strong></div></div><p class="note">Zero motion blur is a clarity-first recommendation. Personal preference may differ.</p></div>
    </section>
-   <section class="sp-scene" data-start="38" data-end="49">
-    <div class="sp-kicker">STEP 04 / OBS FILTERS</div><h2 class="sp-head">Add your mic <span class="sp-accent">to OBS.</span></h2><p class="sp-sub">Create an Audio Input Capture source, then open its Filters.</p>
-    <div class="sp-card sp-reveal" data-in="1.0" style="position:absolute;left:44px;right:44px;top:310px"><div class="sp-label">AUDIO MIXER / SOURCES</div><div class="sp-row" style="justify-content:space-between"><b style="font-size:22px">Microphone</b><span class="sp-chip">USB Microphone</span></div><div class="sp-meter"><span style="width:55%"></span></div><div class="sp-filter"><span>Noise Suppression · RNNoise</span><span class="sp-toggle"></span></div><div class="sp-note" style="margin-top:18px">Useful for steady fan or room noise. Avoid over-processing your voice.</div></div>
+   <section class="scene" data-start="80.5" data-end="90">
+    <div class="eyebrow">04 / GTA VI · CAMERA</div><h2>Reduce camera motion<br><span class="accent">if it feels uncomfortable.</span></h2>
+    <div class="panel reveal" data-in="0.8"><div class="label">CAMERA · COMFORT</div><div class="item selected"><div class="row"><span>Camera Shake</span><strong>Off ✓</strong></div></div><div class="item"><div class="row"><span>Camera Bob</span><strong>Low · 0–5</strong></div><div class="meter"><span style="width:28%"></span></div></div><div class="note">Comfort settings are personal. Lower them only if you prefer a steadier view.</div></div>
    </section>
-   <section class="sp-scene" data-start="49" data-end="58">
-    <div class="sp-kicker">LEVEL CHECK / NO CLIPPING</div><h2 class="sp-head">Keep your voice <span class="sp-accent">out of red.</span></h2><p class="sp-sub">Watch the meter while speaking at your normal volume.</p>
-    <div class="sp-card sp-reveal" data-in="1.0" style="position:absolute;left:44px;right:44px;top:360px"><div class="sp-label">OBS INPUT LEVEL</div><div class="sp-db">−12 to −6 dB</div><div class="sp-dbscale"></div><div class="sp-row" style="justify-content:space-between"><span class="sp-note">SAFE HEADROOM</span><span style="color:#ef8585;font-weight:900;font-size:17px">AVOID 0 dB / RED</span></div></div>
-    <div class="sp-wave sp-reveal" data-in="3.0" style="position:absolute;left:60px;right:60px;top:720px"></div>
+   <section class="scene" data-start="90" data-end="98.5">
+    <div class="eyebrow">05 / GTA VI · CONTROLLER</div><h2>Start with balanced<br><span class="accent">aim assistance.</span></h2>
+    <div class="panel reveal" data-in="0.8"><div class="label">GAMEPLAY · COMBAT</div><div class="item selected"><div class="row"><span>Targeting</span><strong>Partial ✓</strong></div></div><div class="item"><div class="row"><span>Aim Assist Strength</span><strong>4 / 10</strong></div><div class="meter"><span style="width:40%"></span></div></div><div class="warning">Use this as a starting point, then tune it to your skill and preference.</div></div>
    </section>
-   <section class="sp-scene" data-start="58" data-end="65">
-    <div class="sp-kicker">FINAL CHECK / RECORD & LISTEN</div><h2 class="sp-head">Test before <span class="sp-accent">going live.</span></h2><p class="sp-sub">Record a short sample. Listen back on headphones. Balance game and voice separately.</p>
-    <div class="sp-card sp-reveal" data-in="1.0" style="position:absolute;left:44px;right:44px;top:390px"><div class="sp-row"><span class="sp-check">✓</span><div><b style="font-size:24px">Test recording saved</b><div class="sp-note">20-second sample · headphones check</div></div></div><div class="sp-wave" style="margin-top:28px"><i style="height:25px"></i><i style="height:60px"></i><i style="height:42px"></i><i style="height:76px"></i><i style="height:50px"></i><i style="height:34px"></i><i style="height:68px"></i><i style="height:40px"></i><i style="height:58px"></i><i style="height:30px"></i></div></div>
+   <section class="scene" data-start="98.5" data-end="114.5">
+    <div class="eyebrow">06 / GAMEPLAY · UI · AUDIO</div><h2>Finish the setup<br><span class="accent">for your play style.</span></h2>
+    <div class="tiles reveal" data-in="0.7"><div class="tile"><b>MOVEMENT SPEED</b><span>Choose a faster option if preferred</span></div><div class="tile"><b>SUBTITLES</b><span>On for every dialogue line</span></div><div class="tile"><b>STREAMING</b><span>Mute licensed music when needed</span></div><div class="tile"><b>3D AUDIO</b><span>Use compatible headphones / setup</span></div></div>
+    <p class="note reveal" data-in="3.0" style="position:absolute;left:42px;right:42px;bottom:28px">PS5 supports Tempest 3D Audio; Rockstar lists enhanced spatial audio in GTA VI.</p>
    </section>
-   <section class="sp-scene" data-start="65" data-end="73">
-    <div class="sp-kicker">YOUR SETUP IS READY</div><h2 class="sp-head">Clear voice.<br><span class="sp-accent">Clean recording.</span></h2><p class="sp-sub">Use the full guide to check every setting and find the gear link.</p>
-    <div class="sp-card sp-reveal" data-in="1.0" style="position:absolute;left:44px;right:44px;top:430px"><div class="sp-row" style="justify-content:space-between"><span class="sp-chip">FULL GUIDE</span><span class="sp-chip">GEAR LINK</span></div><div class="sp-cta" style="position:relative;margin-top:25px">DESCRIPTION / PINNED COMMENT</div></div>
-    <div class="sp-note sp-reveal" data-in="3.0" style="position:absolute;left:44px;right:44px;top:760px;text-align:center;font-weight:800;letter-spacing:2px">FOLLOW FOR MORE CREATOR SETUP FIXES</div>
+   <section class="scene" data-start="114.5" data-end="127.5">
+    <div class="eyebrow">PS5 PRO · PLATFORM DIFFERENCE</div><h2>On PS5 Pro, some upgrades<br><span class="accent">are already built in.</span></h2>
+    <div class="panel reveal" data-in="0.8"><div class="label">ROCKSTAR'S CONFIRMED FEATURES</div><div class="item selected"><span class="check">✓</span><strong>PSSR · improved image clarity</strong></div><div class="item selected"><span class="check">✓</span><strong>Ray-traced shadows</strong></div><p class="note">These are PS5 Pro features, not hidden switches to unlock a higher frame rate.</p></div>
+   </section>
+   <section class="scene" data-start="127.5" data-end="141">
+    <div class="eyebrow">YOUR QUICK CHECKLIST</div><h2>Clearer image.<br><span class="accent">More comfortable play.</span></h2>
+    <div class="panel reveal" data-in="0.7"><div class="item"><span class="check">✓</span>Automatic resolution + calibrated HDR</div><div class="item"><span class="check">✓</span>VRR / ALLM when supported</div><div class="item"><span class="check">✓</span>Motion blur and camera comfort tuned</div><div class="item"><span class="check">✓</span>Controls and subtitles set to taste</div><div class="warning" style="margin-top:18px">No fake FPS promises. Test your own display and settings.</div></div>
+    <div class="note reveal" data-in="3.0" style="position:absolute;left:42px;right:42px;bottom:25px;text-align:center;font-weight:900;letter-spacing:2px;color:#a5e7dc">FOLLOW FOR MORE GAMING SETUP GUIDES</div>
    </section>
   </div>
  </div>
- <div class="sp-footer"><span>SHORTPROMPT · CREATOR HOW-TO</span><span id="sp-time">00:00 / 01:13</span></div><div class="sp-progress" id="sp-progress"></div>
+ <div class="footer"><span>SHORTPROMPT · SOURCES: ROCKSTAR / PLAYSTATION</span><span id="time">00:00 / 02:21</span></div><div class="progress" id="progress"></div>
 </div>
 <script>
 (()=>{'use strict';
-const DURATION=73,root=document.getElementById('sp-usbmic'),scenes=[...root.querySelectorAll('.sp-scene')];
+const DURATION=141,root=document.getElementById('sp-gta6'),scenes=[...root.querySelectorAll('.scene')];
 const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
 const ease=v=>{v=clamp(v);return v*v*(3-2*v)};
-function buildWave(){root.querySelectorAll('.sp-wave[data-wave]').forEach(w=>{if(w.dataset.built)return;w.dataset.built='1';for(let i=0;i<46;i++){const e=document.createElement('i');const h=12+Math.abs(Math.sin(i*.63)*Math.cos(i*.19))*62;e.style.height=h+'px';e.style.opacity=String(.45+(i%5)*.1);w.appendChild(e)}})}
-function frame(inputTime){
- const t=clamp(Number(inputTime)||0,0,DURATION);
- scenes.forEach((s,i)=>{
-  const a=Number(s.dataset.start),b=Number(s.dataset.end),active=t>=a&&(t<b||(i===scenes.length-1&&t<=DURATION));
-  const local=t-a,fadeIn=ease((t-a)/.55),fadeOut=ease((b-t)/.55),opacity=active?Math.min(fadeIn,fadeOut):0;
-  s.style.visibility=active?'visible':'hidden';s.style.opacity=String(opacity);
-  s.querySelectorAll('.sp-reveal').forEach(el=>{const at=Number(el.dataset.in||0),q=ease((local-at)/.62);el.style.opacity=String(active?q:0);el.style.transform='translateY('+((1-q)*24)+'px)'});
-  const mic=s.querySelector('.sp-mic-wrap');if(mic){const q=ease((local-1.1)/2);mic.style.transform='translateY('+(14*(1-q))+'px) scale('+(0.96+.04*q)+')'}
-  const dist=s.querySelector('.sp-distance');if(dist){const q=ease((local-2)/1.2);dist.style.opacity=String(q);dist.style.transform='scaleX('+(.7+.3*q)+')'}
- });
- const p=root.querySelector('#sp-progress');p.style.width=(100*t/DURATION).toFixed(3)+'%';
- const sec=Math.floor(t),mm=String(Math.floor(sec/60)).padStart(2,'0'),ss=String(sec%60).padStart(2,'0');root.querySelector('#sp-time').textContent=mm+':'+ss+' / 01:13';
- return true;
-}
+function frame(inputTime){const t=clamp(Number(inputTime)||0,0,DURATION);scenes.forEach((s,i)=>{const a=Number(s.dataset.start),b=Number(s.dataset.end),on=t>=a&&(t<b||(i===scenes.length-1&&t<=DURATION)),local=t-a;const fadeIn=i===0?1:ease((t-a)/.55);const alpha=on?Math.min(fadeIn,ease((b-t)/.55)):0;s.style.visibility=on?'visible':'hidden';s.style.opacity=String(alpha);s.querySelectorAll('.reveal').forEach(el=>{const q=ease((local-Number(el.dataset.in||0))/.7);el.style.opacity=String(on?q:0);el.style.transform='translateY('+((1-q)*22)+'px)'})});root.querySelector('#progress').style.width=(100*t/DURATION).toFixed(3)+'%';const sec=Math.floor(t),m=String(Math.floor(sec/60)).padStart(2,'0'),s=String(sec%60).padStart(2,'0');root.querySelector('#time').textContent=m+':'+s+' / 02:21';return true}
 window.SPMOTION={width:1080,height:1920,fps:30,duration:DURATION};
-window.SPMOTION_FRAME=frame;
-window.SPMOTION_RENDER=frame;
-buildWave();
-const initial=new URLSearchParams(location.search).get('t');frame(initial===null?0:Number(initial));
+window.SPMOTION_FRAME=frame;window.SPMOTION_RENDER=frame;
+const params=new URLSearchParams(location.search),initial=params.get('t');frame(initial===null?0:Number(initial));
 })();
 </script>
 </body></html>

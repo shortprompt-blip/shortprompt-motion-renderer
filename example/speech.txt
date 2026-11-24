@@ -1,15 +1,15 @@
-Want cleaner audio for YouTube, streaming, or gaming? Set up your USB microphone in four quick steps.
+Before you launch GTA Six, change these settings on your PS5. They can make the image clearer, the controls more comfortable, and the game feel more responsive. But one important warning: no menu setting unlocks sixty frames per second. Rockstar says GTA Six targets thirty FPS on console.
 
-First, connect it directly to your PC. Place it about ten to twenty centimetres from your mouth, and speak toward the front of the microphone.
+First, open PS5 Settings, then Screen and Video. Leave Resolution on Automatic, so your console selects the highest mode your TV supports. If your TV supports HDR, enable it when supported and run Adjust HDR. Calibrate it for your actual display, not a random online number.
 
-Open Windows Settings, choose System, then Sound. Under Input, select your microphone, run the microphone test, and adjust the input level until your voice is clear without distortion.
+Next, enable VRR and 120 Hertz output only if your TV supports them. Turn on ALLM if available, or use your TV's Game Mode. These options can improve compatibility and reduce display processing delay, but they do not turn GTA Six into a 120 FPS game.
 
-Next, open the microphone’s companion app. Run its gain setup, check your headphone monitoring, and enable voice cleanup only if your room has noticeable background noise.
+Now open GTA Six Settings. Under Display, lower Motion Blur Strength to zero if you want a sharper image while turning or driving. Then calibrate the game's HDR using your screen. Avoid copying brightness values from another television.
 
-In OBS, add an Audio Input Capture source and choose your microphone. Open Filters and add Noise Suppression with RNNoise to reduce steady fan or room noise.
+Under Camera, switch Camera Shake off if it bothers you, and reduce Camera Bob until movement feels comfortable. Under Controller, try Partial Targeting with Aim Assist around four as a starting point, then adjust it to your skill and preference.
 
-Watch the audio meter while speaking. Aim for peaks around minus twelve to minus six decibels, and never let your voice hit the red.
+Under Gameplay, choose a movement speed that suits you. Turn subtitles on if you want every line of dialogue. If you stream or record, check the Audio options and mute licensed music when needed.
 
-Finally, record a short test and listen back with headphones. Keep your game audio and microphone balanced separately.
+One last thing: on PS5 Pro, Rockstar says GTA Six uses PSSR for improved clarity and adds ray-traced shadows. Those are platform features, not hidden performance switches.
 
-Find the full setup guide and gear link in the description or pinned comment. Follow for more creator setup fixes.
+Save your settings, restart the game if needed, and test them in a busy scene. Better clarity and comfort, without fake FPS promises. Follow ShortPrompt for more practical gaming guides.
