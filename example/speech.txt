@@ -1,35 +1,15 @@
-[01 | 000.00-031.33s | HOOK]
-This is an AI avatar of yourself: a digital presenter you can reuse for tutorials, updates, and short videos without recording every take. In this guide, we’ll build a personal avatar in HeyGen, create a first talking video, and show the checks that make the result more convincing. The footage and interface visuals in this video are illustrative reconstructions, not a live recording of a HeyGen account.
+Want to edit your microphone and desktop audio independently? Record them on separate tracks in OBS Studio, while keeping one complete mix for easy playback.
 
-[02 | 031.33-060.79s | ROADMAP]
-The workflow is simple. First, prepare a clean reference video. Next, create your personal avatar and complete the required consent step. Then choose a look, write a short script, generate a test, and refine the delivery. I’ll use the documented real-person avatar flow. HeyGen’s model names and interface can vary by account and rollout, so follow the labels currently shown in your workspace.
+Open Settings, then Output. Change Output Mode to Advanced and select the Recording tab. Enable Tracks 1, 2, and 3. Now open Edit, Advanced Audio Properties, or use the audio mixer menu.
 
-[03 | 060.79-094.46s | PREPARE]
-Before opening the creator, set up the recording. Use a phone or webcam at eye level, keep the lens close to your natural eye line, and frame your head and upper body with a little space around you. Choose a quiet room with even light on your face. Avoid strong backlighting, busy backgrounds, and rapid camera movement. Wear something simple, and record in a way that feels like your normal on-camera delivery.
+Assign your microphone to Track 1 and Track 2. Assign Desktop Audio to Track 1 and Track 3. If your game is a separate source, enable Track 4 in Recording and assign the game to Tracks 1 and 4.
 
-[04 | 094.46-126.73s | RECORD]
-For the Avatar V real-person flow, HeyGen’s current help guide asks for a short fifteen-second video. Treat that as a reference capture, not a full tutorial recording. Look into the lens, speak naturally, and include clear but relaxed facial expressions and gestures. Keep your face visible and avoid cuts or filters. The source clip should represent you accurately; don’t upload another person’s likeness unless you have their explicit permission.
+That’s the essential setup. If practical creator tutorials like this help your workflow, subscribe to ShortPrompt. I publish step-by-step guides for AI and creator tools.
 
-[05 | 126.73-159.46s | CREATE]
-Open HeyGen and go to Avatar, then Avatars. Choose New Avatar and the option to clone a real person, where available. Follow the current capture or upload prompts and submit the reference clip. The official guide describes Avatar V as learning the person’s movement and expressiveness from the video. The processing time and available model options can differ, so wait for the avatar to appear in your library before continuing.
+Here’s why this routing works. Track 1 contains the full mix, so it plays normally in most video players. Track 2 contains only the microphone, and Track 3 contains only desktop audio. You can lower, mute, or clean up those sources independently in your editor.
 
-[06 | 159.46-190.79s | CONSENT AND LOOK]
-Complete the consent recording when the platform asks for it. This is an identity and permission step, not something to skip. Once the avatar is ready, review the available looks. Choose a clear, front-facing image with a natural expression and suitable lighting. HeyGen’s look tools can vary clothing, background, and camera angle, but consistency matters more than novelty. Start with one clean presenter look before creating variations.
+For recording, MKV is a sensible format because an unexpected shutdown is less likely to ruin the entire file. If your editor needs MP4, use OBS’s remux recordings feature after recording.
 
-[07 | 190.79-216.04s | CTA]
-You now have the foundation for a reusable digital presenter. If you want practical tutorials on AI tools, local AI, and creator workflows without unnecessary theory, subscribe to ShortPrompt. We’ll keep the focus on what you can actually configure, what it costs, and what limitations to check before using it in a real project.
+Now make a short test. Open the file in your editing software and check each track: the master mix, the mic alone, and desktop audio alone. Some ordinary players only play one track, so verify the tracks in an editor before changing your settings.
 
-[08 | 216.04-251.58s | SCRIPT AND VOICE]
-Select the avatar and choose Use in video to open the video editor, or use the current quick creation flow if it is available in your account. Add a short script first—around twenty to thirty seconds is enough for a useful test. Choose a voice you’re authorized to use, or create your own voice clone by completing its consent process. Read the script aloud once before generating; awkward written sentences usually sound awkward when spoken.
-
-[09 | 251.58-284.32s | GENERATE]
-Generate the first version and review it from beginning to end. Check lip synchronization, pronunciation of names, facial movement, and whether the gestures fit the words. Don’t judge only the preview frame. If a sentence looks unnatural, shorten it and regenerate that section. For a Short, keep one idea per video and make the opening sentence deliver the promise immediately. A realistic avatar still needs a strong script and editing.
-
-[10 | 284.32-317.99s | EDIT]
-Now add the parts that make the video yours. Place supporting footage or generated illustrations beside the avatar when they explain the point. Add captions, but keep them readable on a phone and away from the platform controls. Use cuts to remove pauses, and keep background music low enough that every word remains clear. These supporting images are generated illustrations; they are not HeyGen screenshots or proof of a live avatar render.
-
-[11 | 317.99-354.46s | LIMITS AND PRIVACY]
-A digital twin can save repeated recording, but it is not a substitute for editorial judgment. Review every output before publishing. Check the current plan and credit rules because generation costs and model availability change. Keep source footage and voice data private, use only your own likeness or licensed consent, and never use an avatar to impersonate someone or mislead viewers. For important claims, show real evidence rather than asking the avatar to make the video feel authoritative.
-
-[12 | 354.46-390.00s | TAKEAWAY AND BRIDGE]
-The complete process is: prepare a clear reference, create the avatar with consent, select a strong look, write a short script, generate a test, and refine the result. Start with one repeatable format, such as a weekly update or a thirty-second tutorial intro. In the next ShortPrompt guide, we’ll turn a finished avatar clip into a complete vertical video with captions, B-roll, and a retention-focused opening. Follow the series to build the workflow step by step.
+Your separate audio tracks are ready. Next, watch the OBS microphone guide to balance your voice and reduce background noise.
