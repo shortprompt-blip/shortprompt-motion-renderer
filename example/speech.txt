@@ -1,15 +1,11 @@
-Want to edit your microphone and desktop audio independently? Record them on separate tracks in OBS Studio, while keeping one complete mix for easy playback.
+Can you unlock sixty frames per second in Grand Theft Auto six on PlayStation five? Here is the honest answer, and the settings that are still worth checking.
 
-Open Settings, then Output. Change Output Mode to Advanced and select the Recording tab. Enable Tracks 1, 2, and 3. Now open Edit, Advanced Audio Properties, or use the audio mixer menu.
+Rockstar’s published target for GTA six on current generation consoles is thirty frames per second. The studio has not announced a sixty FPS performance mode. And Rockstar’s technology production director later explained that even PlayStation five Pro’s processor is not powerful enough to run the game’s complex simulation at sixty frames per second with its current visual design.
 
-Assign your microphone to Track 1 and Track 2. Assign Desktop Audio to Track 1 and Track 3. If your game is a separate source, enable Track 4 in Recording and assign the game to Tracks 1 and 4.
+So there is no hidden PS5 menu, secret graphics option, or TV setting that turns GTA six into a sixty FPS game. Be careful with videos claiming a guaranteed unlock.
 
-That’s the essential setup. If practical creator tutorials like this help your workflow, subscribe to ShortPrompt. I publish step-by-step guides for AI and creator tools.
+But you can still optimize your display experience. On PS5, open Settings, then Screen and Video, then Video Output. If your TV supports it, set VRR to Automatic and 120 Hertz Output to Automatic. These options allow compatible games and displays to use variable refresh or high refresh output. They do not generate extra game frames when GTA six is running at thirty.
 
-Here’s why this routing works. Track 1 contains the full mix, so it plays normally in most video players. Track 2 contains only the microphone, and Track 3 contains only desktop audio. You can lower, mute, or clean up those sources independently in your editor.
+Enable ALLM if your television supports it, or manually select Game Mode on your TV to reduce input lag. Use the HDMI port recommended for high bandwidth features and the supplied Ultra High Speed cable.
 
-For recording, MKV is a sensible format because an unexpected shutdown is less likely to ruin the entire file. If your editor needs MP4, use OBS’s remux recordings feature after recording.
-
-Now make a short test. Open the file in your editing software and check each track: the master mix, the mic alone, and desktop audio alone. Some ordinary players only play one track, so verify the tracks in an editor before changing your settings.
-
-Your separate audio tracks are ready. Next, watch the OBS microphone guide to balance your voice and reduce background noise.
+Bottom line: you can improve display responsiveness and compatibility, but you cannot force GTA six to sixty FPS on PS5. Check official updates, and don’t confuse a 120 Hertz signal with sixty frames rendered by the game.
